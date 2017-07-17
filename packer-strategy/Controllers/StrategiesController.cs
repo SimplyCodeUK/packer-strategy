@@ -30,7 +30,7 @@ namespace packer_strategy.Controllers
         [HttpGet("{id}")]
         [Route("{id}", Name = "GetStrategy")]
         [ProducesResponseType(typeof(Strategy), 200)]
-        public IActionResult Get(long id)
+        public IActionResult Get(string id)
         {
             var item = _repository.Find(id);
             if (item == null)
@@ -56,7 +56,7 @@ namespace packer_strategy.Controllers
 
         // PUT api/strategies/5
         [HttpPut("{id}")]
-        public IActionResult Put(long id, [FromBody] Strategy value)
+        public IActionResult Put(string id, [FromBody] Strategy value)
         {
             if (value == null || value.Key != id)
             {
@@ -69,8 +69,9 @@ namespace packer_strategy.Controllers
                 return NotFound();
             }
 
-            todo.IsComplete = value.IsComplete;
             todo.Name = value.Name;
+            todo.Notes = value.Notes;
+            todo.Time = value.Time;
 
             _repository.Update(todo);
             return new NoContentResult();
@@ -78,7 +79,7 @@ namespace packer_strategy.Controllers
 
         // DELETE api/strategies/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(long id)
+        public IActionResult Delete(string id)
         {
             var todo = _repository.Find(id);
             if (todo == null)

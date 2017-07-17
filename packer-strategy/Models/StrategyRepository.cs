@@ -26,12 +26,12 @@ namespace packer_strategy.Models
             _context.SaveChanges();
         }
 
-        public Strategy Find(long key)
+        public Strategy Find(string key)
         {
             return _context.Strategies.FirstOrDefault(t => t.Key == key);
         }
 
-        public void Remove(long key)
+        public void Remove(string key)
         {
             var entity = _context.Strategies.First(t => t.Key == key);
             _context.Strategies.Remove(entity);
