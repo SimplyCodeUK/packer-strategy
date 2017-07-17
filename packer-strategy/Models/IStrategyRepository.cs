@@ -9,8 +9,8 @@ namespace packer_strategy.Models
     {
         void Add(Strategy item);
         IEnumerable<Strategy> GetAll();
-        Strategy Find(long key);
-        void Remove(long key);
+        Strategy Find(string key);
+        void Remove(string key);
         void Update(Strategy item);
     }
 }
