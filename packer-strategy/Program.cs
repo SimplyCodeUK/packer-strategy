@@ -22,5 +22,10 @@ namespace packer_strategy
 
             host.Run();
         }
+
+        // class cannot be created Main is the public static entry point
+        private Program()
+        {
+        }
     }
 }
