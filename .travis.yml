@@ -1,0 +1,14 @@
+sudo: required
+dist: trusty
+language: csharp
+solution: packer-strategy.sln
+mono:
+  - latest
+dotnet: 1.0.1
+
+install:
+  - nuget restore packer-strategy.sln
+  - dotnet restore packer-strategy.sln
+
+script:
+  - msbuild /t:Rebuild packer-strategy.sln
