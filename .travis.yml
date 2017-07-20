@@ -12,4 +12,4 @@ install:
 
 script:
   - msbuild /t:Rebuild packer-strategy.sln
-  - cd ./packer-strategy-test & dotnet test --no-build --logger:trx;LogFileName=test.xml
+  - dotnet test packer-strategy-test/packer-strategy-test.csproj --no-build --logger:trx;LogFileName=test.xml
