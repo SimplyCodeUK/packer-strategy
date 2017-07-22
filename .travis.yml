@@ -13,3 +13,6 @@ install:
 script:
   - msbuild /t:Rebuild packer-strategy.sln
   - dotnet test packer-strategy-test/packer-strategy-test.csproj --no-build --logger:trx;LogFileName=test.xml
+
+notifications:
+  slack: simplycodeuk:FZI8WzeengkGv5LI7WQSCrJs
