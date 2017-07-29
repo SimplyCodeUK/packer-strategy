@@ -1,19 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "packer-strategy", "packer-strategy\packer-strategy.csproj", "{3D341C40-1350-41BD-A2AF-463577EA71F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "packer-strategy", "packer-strategy\packer-strategy.csproj", "{3D341C40-1350-41BD-A2AF-463577EA71F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8966A5E7-72BB-48F0-A9D8-AAFB4ADF88DC}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		.travis.yml = .travis.yml
+		CONTRIBUTORS.md = CONTRIBUTORS.md
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "packer-strategy-test", "packer-strategy-test\packer-strategy-test.csproj", "{08BE10BC-8248-4847-9BA3-6672261BD67C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "packer-strategy-test", "packer-strategy-test\packer-strategy-test.csproj", "{08BE10BC-8248-4847-9BA3-6672261BD67C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

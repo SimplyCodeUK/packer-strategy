@@ -1,7 +1,9 @@
-﻿using System;
+﻿//
+// Copyright (c) Simply Code Ltd. All rights reserved.
+// Licensed under the MIT License.
+// See LICENSE file in the project root for full license information.
+//
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,14 +53,14 @@ namespace packer_strategy.Controllers
 
             _repository.Add(value);
 
-            return CreatedAtRoute("GetStrategy", new { id = value.Key }, value);
+            return CreatedAtRoute("GetStrategy", new { id = value.Id }, value);
         }
 
         // PUT api/strategies/5
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] Strategy value)
         {
-            if (value == null || value.Key != id)
+            if (value == null || value.Id != id)
             {
                 return BadRequest();
             }

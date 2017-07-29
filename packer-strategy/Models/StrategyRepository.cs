@@ -1,7 +1,10 @@
-﻿using System;
+﻿//
+// Copyright (c) Simply Code Ltd. All rights reserved.
+// Licensed under the MIT License.
+// See LICENSE file in the project root for full license information.
+//
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace packer_strategy.Models
 {
@@ -28,12 +31,12 @@ namespace packer_strategy.Models
 
         public Strategy Find(string key)
         {
-            return _context.Strategies.FirstOrDefault(t => t.Key == key);
+            return _context.Strategies.FirstOrDefault(t => t.Id == key);
         }
 
         public void Remove(string key)
         {
-            var entity = _context.Strategies.First(t => t.Key == key);
+            var entity = _context.Strategies.First(t => t.Id == key);
             _context.Strategies.Remove(entity);
             _context.SaveChanges();
         }
