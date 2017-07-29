@@ -2,17 +2,24 @@ sudo: required
 dist: trusty
 language: csharp
 solution: packer-strategy.sln
+
 mono:
   - latest
+  - 5.0.1
+
 dotnet: 1.0.1
+
+env:
+  - CONFIG=Debug
+  - CONFIG=Release
 
 install:
   - nuget restore packer-strategy.sln
   - dotnet restore packer-strategy.sln
 
 script:
-  - msbuild /t:Rebuild packer-strategy.sln
-  - dotnet test packer-strategy-test/packer-strategy-test.csproj --no-build --logger:trx;LogFileName=test.xml
+  - msbuild /p:Configuration=$CONFIG /t:Rebuild packer-strategy.sln
+  - dotnet test packer-strategy-test/packer-strategy-test.csproj --configuration $CONFIG --no-build --logger:trx
 
 notifications:
   slack: simplycodeuk:FZI8WzeengkGv5LI7WQSCrJs
