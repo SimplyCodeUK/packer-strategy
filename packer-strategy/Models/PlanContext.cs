@@ -48,7 +48,7 @@ namespace packer_strategy.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Plan.Plan>()
-                .HasKey(c => c.ID);
+                .HasKey(c => c.Id);
             modelBuilder.Entity<Plan.Stage>()
                 .HasKey(c => new { c.StrategyId, c.Level });
         }
