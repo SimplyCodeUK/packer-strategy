@@ -5,7 +5,6 @@
 //
 using System;
 using System.Collections.Generic;
-using System.Net;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,23 +13,17 @@ using packer_strategy.Models.Plan;
 
 namespace packer_strategy.Controllers
 {
-    /*!
-     * \class   PlansController
-     *
-     * \brief   A controller for handling plans.
-     */
+    /*! A controller for handling plans. */
     [Route("api/[controller]")]
     public class PlansController : Controller
     {
-        /*! \brief   The repository */
+        /*! The repository */
         private readonly IPlanRepository _repository;
 
         /*!
-         * \fn  public PlansController(IPlanRepository repository)
+         * Constructor.
          *
-         * \brief   Constructor.
-         *
-         * \param   repository  The repository.
+         * @param   repository  The repository.
          */
         public PlansController(IPlanRepository repository)
         {
@@ -38,11 +31,10 @@ namespace packer_strategy.Controllers
         }
 
         /*!
-         * \fn  public IEnumerable<Plan> Get()
+         * (An Action that handles HTTP GET requests) enumerates the items in this collection that meet
+         * given criteria.
          *
-         * \brief   GET api/strategies.
-         *
-         * \return  An enumerator that allows foreach to be used to process the matched items.
+         * @return  An enumerator that allows foreach to be used to process the matched items.
          */
         [HttpGet]
         public IEnumerable<Plan> Get()
@@ -51,46 +43,47 @@ namespace packer_strategy.Controllers
         }
 
         /*!
-         * \fn  public IActionResult Get(string id)
+         * (An Action that handles HTTP GET requests) gets an i action result using the given
+         * identifier.
          *
-         * \brief   GET api/strategies/5.
+         * @param   id  The Identifier to get.
          *
-         * \param   id  The Identifier to get.
-         *
-         * \return  An IActionResult.
+         * @return  An IActionResult.
          */
         [HttpGet("{id}")]
-        [Route("{id}", Name = "GetStrategy")]
+        [Route("{id}", Name = "GetPlan")]
         [ProducesResponseType(typeof(Plan), 200)]
         public IActionResult Get(string id)
         {
-            var item = _repository.Find(id);
-            if (item == null)
+            IActionResult result = NotFound();
+            var           item = _repository.Find(id);
+
+            if (item != null)
             {
-                return NotFound();
+                result = Ok();
             }
-            return new ObjectResult(item);
+
+            return result;
         }
 
         /*!
-         * \fn  public IActionResult Post([FromBody] Plan value)
+         * (An Action that handles HTTP POST requests) post this message.
          *
-         * \brief   POST api/strategies.
+         * @param   value   The value.
          *
-         * \param   value   The value.
-         *
-         * \return  An IActionResult.
+         * @return  An IActionResult.
          */
         [HttpPost]
         public IActionResult Post([FromBody] Plan value)
         {
             IActionResult result = BadRequest();
+
             if (value != null)
             {
                 try
                 {
                     _repository.Add(value);
-                    result = CreatedAtRoute("GetStrategy", new { id = value.Id }, value);
+                    result = CreatedAtRoute("GetPlan", new { id = value.ID }, value);
                 }
                 catch (Exception)
                 {
@@ -101,57 +94,59 @@ namespace packer_strategy.Controllers
         }
 
         /*!
-         * \fn  public IActionResult Put(string id, [FromBody] Plan value)
+         * Puts.
          *
-         * \brief   PUT api/strategies/5.
+         * @param   id      The identifier.
+         * @param   value   The value.
          *
-         * \param   id      The identifier.
-         * \param   value   The value.
-         *
-         * \return  An IActionResult.
+         * @return  An IActionResult.
          */
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] Plan value)
         {
-            if (value == null || value.Id != id)
+            IActionResult result = BadRequest();
+
+            if (id != null)
             {
-                return BadRequest();
+                Plan plan = _repository.Find(id);
+
+                if (plan == null)
+                {
+                    result = NotFound();
+                }
+                else
+                {
+                    plan.ID = id;
+                    plan.Name = value.Name;
+                    plan.Notes = value.Notes;
+                    plan.Time = value.Time;
+
+                    _repository.Update(plan);
+
+                    result = Ok();
+                }
             }
-
-            var todo = _repository.Find(id);
-            if (todo == null)
-            {
-                return NotFound();
-            }
-
-            todo.Name = value.Name;
-            todo.Notes = value.Notes;
-            todo.Time = value.Time;
-
-            _repository.Update(todo);
-            return new NoContentResult();
+            return result;
         }
 
         /*!
-         * \fn  public IActionResult Delete(string id)
+         * Deletes the given ID.
          *
-         * \brief   DELETE api/strategies/5.
+         * @param   id  The Identifier to delete.
          *
-         * \param   id  The Identifier to delete.
-         *
-         * \return  An IActionResult.
+         * @return  An IActionResult.
          */
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            var todo = _repository.Find(id);
-            if (todo == null)
-            {
-                return NotFound();
-            }
+            IActionResult result = NotFound();
 
-            _repository.Remove(id);
-            return new NoContentResult();
+            if (_repository.Find(id) != null)
+            {
+                _repository.Remove(id);
+                result = Ok();
+            }
+            return result;
         }
     }
 }

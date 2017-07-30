@@ -7,19 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace packer_strategy.Models
 {
-    /*!
-     * \class   PlanContext
-     *
-     * \brief   A plan context.
-     */
+    /*! A plan context. */
     public class PlanContext : DbContext
     {
         /*!
-         * \fn  public PlanContext(DbContextOptions<PlanContext> options) : base(options)
+         * Constructor.
          *
-         * \brief   Constructor.
-         *
-         * \param   options Options for controlling the operation.
+         * @param   options Options for controlling the operation.
          */
         public PlanContext(DbContextOptions<PlanContext> options)
             : base(options)
@@ -27,33 +21,26 @@ namespace packer_strategy.Models
         }
 
         /*!
-         * \property    public DbSet<Plan.Plan> Strategies
+         * Gets or sets the plans.
          *
-         * \brief   Gets or sets the strategies.
-         *
-         * \return  The strategies.
+         * @return  The plans.
          */
-        public DbSet<Plan.Plan> Strategies { get; set; }
+        public DbSet<Plan.Plan> Plans { get; set; }
 
         /*!
-         * \property    public DbSet<Plan.Stage> Stages
+         * Gets or sets the stages.
          *
-         * \brief   Gets or sets the stages.
-         *
-         * \return  The stages.
+         * @return  The stages.
          */
         public DbSet<Plan.Stage> Stages { get; set; }
 
         /*!
-         * \fn  protected override void OnModelCreating(ModelBuilder modelBuilder)
+         * Override this method to further configure the model that was discovered by convention from
+         * the entity types exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" /> properties
+         * on your derived context. The resulting model may be cached and re-used for subsequent
+         * instances of your derived context.
          *
-         * \brief   Override this method to further configure the model that was discovered by convention
-         *          from the entity types exposed in
-         *          <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" /> properties on your derived
-         *          context. The resulting model may be cached and re-used for subsequent instances of
-         *          your derived context.
-         *
-         * \param   modelBuilder    The builder being used to construct the model for this context.
+         * @param   modelBuilder    The builder being used to construct the model for this context.
          *                          Databases (and other extensions) typically define extension methods on
          *                          this object that allow you to configure aspects of the model that are
          *                          specific to a given database.
@@ -61,7 +48,7 @@ namespace packer_strategy.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Plan.Plan>()
-                .HasKey(c => c.Id);
+                .HasKey(c => c.ID);
             modelBuilder.Entity<Plan.Stage>()
                 .HasKey(c => new { c.StrategyId, c.Level });
         }

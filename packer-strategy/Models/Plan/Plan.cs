@@ -8,55 +8,41 @@ using System.Collections.Generic;
 
 namespace packer_strategy.Models.Plan
 {
-    /*!
-     * \class   Plan
-     *
-     * \brief   A plan.
-     */
+    /*! A plan. */
     public class Plan
     {
         /*!
-         * \property    public string Id
+         * Gets or sets the identifier.
          *
-         * \brief   Gets or sets the identifier.
-         *
-         * \return  The identifier.
+         * @return  The identifier.
          */
-        public string Id { get; set; }
+        public string ID { get; set; }
 
         /*!
-         * \property    public string Name
+         * Gets or sets the name.
          *
-         * \brief   Gets or sets the name.
-         *
-         * \return  The name.
+         * @return  The name.
          */
         public string Name { get; set; }
 
         /*!
-         * \property    public string Notes
+         * Gets or sets the notes.
          *
-         * \brief   Gets or sets the notes.
-         *
-         * \return  The notes.
+         * @return  The notes.
          */
         public string Notes { get; set; }
 
         /*!
-         * \property    public DateTime Time
+         * Gets or sets the Date/Time of the time.
          *
-         * \brief   Gets or sets the Date/Time of the time.
-         *
-         * \return  The time.
+         * @return  The time.
          */
         public DateTime Time { get; set; }
 
         /*!
-         * \property    public List<Stage> Stages
+         * Gets or sets the stages.
          *
-         * \brief   Gets or sets the stages.
-         *
-         * \return  The stages.
+         * @return  The stages.
          */
         public List<Stage> Stages { get; set; }
     }

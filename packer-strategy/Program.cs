@@ -10,19 +10,13 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace packer_strategy
 {
-    /*!
-     * \class   Program
-     *
-     * \brief   A program.
-     */
+    /*! A program. */
     public class Program
     {
         /*!
-         * \fn  public static void Main(string[] args)
+         * Main entry-point for this application.
          *
-         * \brief   Main entry-point for this application.
-         *
-         * \param   args    An array of command-line argument strings.
+         * @param   args    An array of command-line argument strings.
          */
         public static void Main(string[] args)
         {
@@ -37,11 +31,7 @@ namespace packer_strategy
             host.Run();
         }
 
-        /*!
-         * \fn  private Program()
-         *
-         * \brief   class cannot be created Main is the public static entry point.
-         */
+        /*! Constructor that prevents a default instance of this class from being created. */
         private Program()
         {
         }

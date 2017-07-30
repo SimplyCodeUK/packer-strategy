@@ -7,57 +7,43 @@ using System.Collections.Generic;
 
 namespace packer_strategy.Models
 {
-    /*!
-     * \interface   IPlanRepository
-     *
-     * \brief   Interface for plan repository.
-     */
+    /*! Interface for plan repository. */
     public interface IPlanRepository
     {
         /*!
-         * \fn  void Add(Plan.Plan item);
+         * Adds item.
          *
-         * \brief   Adds item.
-         *
-         * \param   item    The item to add.
+         * @param   item    The item to add.
          */
         void Add(Plan.Plan item);
 
         /*!
-         * \fn  IEnumerable<Plan.Plan> GetAll();
+         * Gets all items in this collection.
          *
-         * \brief   Gets all items in this collection.
-         *
-         * \return  An enumerator that allows foreach to be used to process all items in this collection.
+         * @return  An enumerator that allows foreach to be used to process all items in this collection.
          */
         IEnumerable<Plan.Plan> GetAll();
 
         /*!
-         * \fn  Plan.Plan Find(string key);
+         * Searches for the first match for the given string.
          *
-         * \brief   Searches for the first match for the given string.
+         * @param   key The key.
          *
-         * \param   key The key.
-         *
-         * \return  A Plan.Plan.
+         * @return  A Plan.Plan.
          */
         Plan.Plan Find(string key);
 
         /*!
-         * \fn  void Remove(string key);
+         * Removes the given key.
          *
-         * \brief   Removes the given key.
-         *
-         * \param   key The key to remove.
+         * @param   key The key to remove.
          */
         void Remove(string key);
 
         /*!
-         * \fn  void Update(Plan.Plan item);
+         * Updates the given item.
          *
-         * \brief   Updates the given item.
-         *
-         * \param   item    The item.
+         * @param   item    The item.
          */
         void Update(Plan.Plan item);
     }
