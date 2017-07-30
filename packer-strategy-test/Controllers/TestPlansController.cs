@@ -4,6 +4,7 @@
 // See LICENSE file in the project root for full license information.
 //
 using System;
+using System.Collections.Generic;
 using System.Net;
 
 using Microsoft.AspNetCore.Mvc;
@@ -16,26 +17,20 @@ using packer_strategy.Models.Plan;
 
 namespace packer_strategy_test
 {
-    /*!
-     * \class   TestPlansController
-     *
-     * \brief   (Unit Test Fixture) a controller for handling test plans.
-     */
+    /*! (Unit Test Fixture) a controller for handling test plans. */
     [TestFixture]
     public class TestPlansController
     {
-        /*! \brief   Options for controlling the operation */
-        private DbContextOptions<PlanContext> options;
-        /*! \brief   The builder */
+        /*! The builder */
         private DbContextOptionsBuilder<PlanContext> builder;
+        /*! Options for controlling the operation */
+        private DbContextOptions<PlanContext> options;
+        /*! Context for the plan */
         private PlanContext planContext;
+        /*! The plan repository */
         private PlanRepository planRepository;
- 
-        /*!
-         * \fn  public void BeforeTest()
-         *
-         * \brief   Initialises this object.
-         */
+
+        /*! Tests before. */
         [SetUp]
         public void BeforeTest()
         {
@@ -46,60 +41,47 @@ namespace packer_strategy_test
             planRepository = new PlanRepository(planContext);
         }
 
-        /*!
-         * \fn  public void Create()
-         *
-         * \brief   (Unit Test Method) creates this object.
-         */
+        /*! (Unit Test Method) creates this object. */
         [Test]
         public void Create()
         {
-            var controller = new PlansController(planRepository);
+            PlansController controller = new PlansController(planRepository);
+
             Assert.IsNotNull(controller);
         }
 
-        /*!
-         * \fn  public void Post()
-         *
-         * \brief   (Unit Test Method) post this message.
-         */
+        /*! (Unit Test Method) post this message. */
         [Test]
         public void Post()
         {
-            var controller = new PlansController(planRepository);
-            var plan = new Plan { Id = Guid.NewGuid().ToString() };
-            var result = controller.Post(plan);
+            PlansController controller = new PlansController(planRepository);
+            Plan            plan = new Plan { ID = Guid.NewGuid().ToString() };
+            var             result = controller.Post(plan);
+
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
             Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
         }
 
-        /*!
-         * \fn  public void PostBad()
-         *
-         * \brief   (Unit Test Method) posts the bad.
-         */
+        /*! (Unit Test Method) posts the bad. */
         [Test]
         public void PostBad()
         {
-            var controller = new PlansController(planRepository);
-            var result = controller.Post(null);
+            PlansController controller = new PlansController(planRepository);
+            var             result = controller.Post(null);
+
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
             Assert.AreEqual((int)HttpStatusCode.BadRequest, ((BadRequestResult)result).StatusCode);
         }
 
-        /*!
-         * \fn  public void PostAlreadyExists()
-         *
-         * \brief   (Unit Test Method) posts the already exists.
-         */
+        /*! (Unit Test Method) posts the already exists. */
         [Test]
         public void PostAlreadyExists()
         {
-            var controller = new PlansController(planRepository);
-            var plan = new Plan { Id = Guid.NewGuid().ToString() };
-            var result = controller.Post(plan);
+            PlansController controller = new PlansController(planRepository);
+            Plan            plan = new Plan { ID = Guid.NewGuid().ToString() };
+            var             result = controller.Post(plan);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
@@ -108,6 +90,109 @@ namespace packer_strategy_test
             result = controller.Post(plan);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<ForbidResult>(result);
+        }
+
+        /*! (Unit Test Method) gets all. */
+        [Test]
+        public void GetAll()
+        {
+            int             plansToAdd = 10;
+            PlansController controller = new PlansController(planRepository);
+            List<string>    ids = new List<string>();
+
+            for (int plan=0; plan<plansToAdd; ++plan )
+            {
+                string id = Guid.NewGuid().ToString();
+
+                ids.Add(id);
+                controller.Post(new Plan { ID = id });
+            }
+
+            IEnumerable<Plan> plans = controller.Get();
+
+            Assert.IsNotNull(plans);
+            foreach (Plan plan in plans)
+            {
+                if ( ids.Contains(plan.ID) ) ids.Remove(plan.ID);
+            }
+            Assert.IsEmpty(ids, "IDS not found " + String.Join(",", ids));
+        }
+
+        /*! (Unit Test Method) gets this object. */
+        [Test]
+        public void Get()
+        {
+            PlansController controller = new PlansController(planRepository);
+            string          id = Guid.NewGuid().ToString();
+
+            controller.Post(new Plan { ID = id });
+
+            var result = controller.Get(id);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<OkResult>(result);
+            Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
+        }
+
+        /*! (Unit Test Method) gets not found. */
+        [Test]
+        public void GetNotFound()
+        {
+            PlansController controller = new PlansController(planRepository);
+            string          id = Guid.NewGuid().ToString();
+
+            var result = controller.Get(id);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<NotFoundResult>(result);
+            Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundResult)result).StatusCode);
+        }
+
+        /*! (Unit Test Method) puts this object. */
+        [Test]
+        public void Put()
+        {
+            PlansController controller = new PlansController(planRepository);
+            string          id = Guid.NewGuid().ToString();
+            Plan            plan = new Plan { ID = id, Name = "A name" };
+
+            controller.Post(plan);
+
+            plan.Name = "B name";
+            var result = controller.Put(id, plan);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<OkResult>(result);
+            Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
+        }
+
+        /*! (Unit Test Method) puts the bad. */
+        [Test]
+        public void PutBad()
+        {
+            PlansController controller = new PlansController(planRepository);
+            Plan            plan = new Plan();
+
+            var result = controller.Put(null, plan);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<BadRequestResult>(result);
+            Assert.AreEqual((int)HttpStatusCode.BadRequest, ((BadRequestResult)result).StatusCode);
+        }
+
+        /*! (Unit Test Method) puts not found. */
+        [Test]
+        public void PutNotFound()
+        {
+            PlansController controller = new PlansController(planRepository);
+            string id = Guid.NewGuid().ToString();
+            Plan plan = new Plan();
+
+            var result = controller.Put(id, plan);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<NotFoundResult>(result);
+            Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundResult)result).StatusCode);
         }
     }
 }

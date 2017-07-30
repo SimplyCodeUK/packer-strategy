@@ -14,19 +14,13 @@ using packer_strategy.Models;
 
 namespace packer_strategy
 {
-    /*!
-     * \class   Startup
-     *
-     * \brief   A startup.
-     */
+    /*! A startup. */
     public class Startup
     {
         /*!
-         * \fn  public Startup(IHostingEnvironment env)
+         * Constructor.
          *
-         * \brief   Constructor.
-         *
-         * \param   env The environment.
+         * @param   env The environment.
          */
         public Startup(IHostingEnvironment env)
         {
@@ -39,21 +33,16 @@ namespace packer_strategy
         }
 
         /*!
-         * \property    public IConfigurationRoot Configuration
+         * Gets the configuration.
          *
-         * \brief   Gets the configuration.
-         *
-         * \return  The configuration.
+         * @return  The configuration.
          */
         public IConfigurationRoot Configuration { get; }
 
         /*!
-         * \fn  public void ConfigureServices(IServiceCollection services)
+         * Configure services.
          *
-         * \brief   This method gets called by the runtime. Use this method to add services to the
-         *          container.
-         *
-         * \param   services    The services.
+         * @param   services    The services.
          */
         public void ConfigureServices(IServiceCollection services)
         {
@@ -66,14 +55,11 @@ namespace packer_strategy
         }
 
         /*!
-         * \fn  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+         * Configures.
          *
-         * \brief   This method gets called by the runtime. Use this method to configure the HTTP request
-         *          pipeline.
-         *
-         * \param   app             The application.
-         * \param   env             The environment.
-         * \param   loggerFactory   The logger factory.
+         * @param   app             The application.
+         * @param   env             The environment.
+         * @param   loggerFactory   The logger factory.
          */
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
