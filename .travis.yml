@@ -18,8 +18,9 @@ install:
   - dotnet restore packer-strategy.sln
 
 script:
-  - msbuild /p:Configuration=$CONFIG /t:Rebuild packer-strategy.sln
+  - msbuild /p:Configuration=$CONFIG /t:rebuild packer-strategy.sln
   - dotnet test packer-strategy-test/packer-strategy-test.csproj --configuration $CONFIG --no-build --logger:trx
+  - msbuild /p:Configuration=$CONFIG /t:package packer-strategy.sln
 
 notifications:
   slack: simplycodeuk:FZI8WzeengkGv5LI7WQSCrJs

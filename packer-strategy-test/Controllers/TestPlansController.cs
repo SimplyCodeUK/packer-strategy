@@ -21,12 +21,6 @@ namespace packer_strategy_test
     [TestFixture]
     public class TestPlansController
     {
-        /*! The builder */
-        private DbContextOptionsBuilder<PlanContext> builder;
-        /*! Options for controlling the operation */
-        private DbContextOptions<PlanContext> options;
-        /*! Context for the plan */
-        private PlanContext planContext;
         /*! The plan repository */
         private PlanRepository planRepository;
 
@@ -34,10 +28,11 @@ namespace packer_strategy_test
         [SetUp]
         public void BeforeTest()
         {
-            builder = new DbContextOptionsBuilder<PlanContext>();
+            DbContextOptionsBuilder<PlanContext> builder = new DbContextOptionsBuilder<PlanContext>();
             builder.UseInMemoryDatabase();
-            options = builder.Options;
-            planContext = new PlanContext(options);
+
+            PlanContext planContext = new PlanContext(builder.Options);
+
             planRepository = new PlanRepository(planContext);
         }
 
@@ -55,7 +50,7 @@ namespace packer_strategy_test
         public void Post()
         {
             PlansController controller = new PlansController(planRepository);
-            Plan            plan = new Plan { ID = Guid.NewGuid().ToString() };
+            Plan            plan = new Plan { Id = Guid.NewGuid().ToString() };
             var             result = controller.Post(plan);
 
             Assert.IsNotNull(result);
@@ -80,7 +75,7 @@ namespace packer_strategy_test
         public void PostAlreadyExists()
         {
             PlansController controller = new PlansController(planRepository);
-            Plan            plan = new Plan { ID = Guid.NewGuid().ToString() };
+            Plan            plan = new Plan { Id = Guid.NewGuid().ToString() };
             var             result = controller.Post(plan);
 
             Assert.IsNotNull(result);
@@ -105,7 +100,7 @@ namespace packer_strategy_test
                 string id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
-                controller.Post(new Plan { ID = id });
+                controller.Post(new Plan { Id = id });
             }
 
             IEnumerable<Plan> plans = controller.Get();
@@ -113,7 +108,10 @@ namespace packer_strategy_test
             Assert.IsNotNull(plans);
             foreach (Plan plan in plans)
             {
-                if ( ids.Contains(plan.ID) ) ids.Remove(plan.ID);
+                if (ids.Contains(plan.Id))
+                {
+                    ids.Remove(plan.Id);
+                }
             }
             Assert.IsEmpty(ids, "IDS not found " + String.Join(",", ids));
         }
@@ -125,7 +123,7 @@ namespace packer_strategy_test
             PlansController controller = new PlansController(planRepository);
             string          id = Guid.NewGuid().ToString();
 
-            controller.Post(new Plan { ID = id });
+            controller.Post(new Plan { Id = id });
 
             var result = controller.Get(id);
 
@@ -154,7 +152,7 @@ namespace packer_strategy_test
         {
             PlansController controller = new PlansController(planRepository);
             string          id = Guid.NewGuid().ToString();
-            Plan            plan = new Plan { ID = id, Name = "A name" };
+            Plan            plan = new Plan { Id = id, Name = "A name" };
 
             controller.Post(plan);
 

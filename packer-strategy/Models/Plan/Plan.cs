@@ -16,7 +16,7 @@ namespace packer_strategy.Models.Plan
          *
          * @return  The identifier.
          */
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         /*!
          * Gets or sets the name.

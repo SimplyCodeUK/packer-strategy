@@ -83,7 +83,7 @@ namespace packer_strategy.Controllers
                 try
                 {
                     _repository.Add(value);
-                    result = CreatedAtRoute("GetPlan", new { id = value.ID }, value);
+                    result = CreatedAtRoute("GetPlan", new { id = value.Id }, value);
                 }
                 catch (Exception)
                 {
@@ -116,7 +116,7 @@ namespace packer_strategy.Controllers
                 }
                 else
                 {
-                    plan.ID = id;
+                    plan.Id = id;
                     plan.Name = value.Name;
                     plan.Notes = value.Notes;
                     plan.Time = value.Time;

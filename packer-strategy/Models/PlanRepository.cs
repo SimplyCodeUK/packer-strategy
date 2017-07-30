@@ -55,7 +55,7 @@ namespace packer_strategy.Models
          */
         public Plan.Plan Find(string key)
         {
-            return _context.Plans.FirstOrDefault(t => t.ID == key);
+            return _context.Plans.FirstOrDefault(t => t.Id == key);
         }
 
         /*!
@@ -65,7 +65,7 @@ namespace packer_strategy.Models
          */
         public void Remove(string key)
         {
-            var entity = _context.Plans.First(t => t.ID == key);
+            var entity = _context.Plans.First(t => t.Id == key);
             _context.Plans.Remove(entity);
             _context.SaveChanges();
         }
