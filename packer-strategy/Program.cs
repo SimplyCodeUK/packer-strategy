@@ -10,8 +10,20 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace packer_strategy
 {
+    /*!
+     * \class   Program
+     *
+     * \brief   A program.
+     */
     public class Program
     {
+        /*!
+         * \fn  public static void Main(string[] args)
+         *
+         * \brief   Main entry-point for this application.
+         *
+         * \param   args    An array of command-line argument strings.
+         */
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
@@ -25,7 +37,11 @@ namespace packer_strategy
             host.Run();
         }
 
-        // class cannot be created Main is the public static entry point
+        /*!
+         * \fn  private Program()
+         *
+         * \brief   class cannot be created Main is the public static entry point.
+         */
         private Program()
         {
         }
