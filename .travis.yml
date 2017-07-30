@@ -20,7 +20,7 @@ install:
 script:
   - msbuild /p:Configuration=$CONFIG /t:rebuild packer-strategy.sln
   - dotnet test packer-strategy-test/packer-strategy-test.csproj --configuration $CONFIG --no-build --logger:trx
-  - msbuild /p:Configuration=$CONFIG /t:package packer-strategy.sln
+  - dotnet pack packer-strategy.sln --configuration $CONFIG
 
 notifications:
   slack: simplycodeuk:FZI8WzeengkGv5LI7WQSCrJs
