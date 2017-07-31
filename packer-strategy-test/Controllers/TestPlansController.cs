@@ -192,5 +192,36 @@ namespace packer_strategy_test
             Assert.IsInstanceOf<NotFoundResult>(result);
             Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundResult)result).StatusCode);
         }
+
+        /*! (Unit Test Method) deletes this object. */
+        [Test]
+        public void Delete()
+        {
+            PlansController controller = new PlansController(planRepository);
+            string id = Guid.NewGuid().ToString();
+            Plan plan = new Plan { Id = id };
+
+            controller.Post(plan);
+
+            var result = controller.Delete(id);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<OkResult>(result);
+            Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
+        }
+
+         /*! (Unit Test Method) deletes the not found. */
+        [Test]
+        public void DeleteNotFound()
+        {
+            PlansController controller = new PlansController(planRepository);
+            string id = Guid.NewGuid().ToString();
+
+            var result = controller.Delete(id);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<NotFoundResult>(result);
+            Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundResult)result).StatusCode);
+        }
     }
 }
