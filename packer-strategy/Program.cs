@@ -10,10 +10,10 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace packer_strategy
 {
-    /*! A program. */
+    /** A program. */
     public class Program
     {
-        /*!
+        /**
          * Main entry-point for this application.
          *
          * @param   args    An array of command-line argument strings.
@@ -31,7 +31,7 @@ namespace packer_strategy
             host.Run();
         }
 
-        /*! Constructor that prevents a default instance of this class from being created. */
+        /** Constructor that prevents a default instance of this class from being created. */
         private Program()
         {
         }

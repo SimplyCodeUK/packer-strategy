@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace packer_strategy.Models
 {
-    /*! A plan context. */
+    /** A plan context. */
     public class PlanContext : DbContext
     {
-        /*!
+        /**
          * Constructor.
          *
          * @param   options Options for controlling the operation.
@@ -20,21 +20,21 @@ namespace packer_strategy.Models
         {
         }
 
-        /*!
+        /**
          * Gets or sets the plans.
          *
          * @return  The plans.
          */
         public DbSet<Plan.Plan> Plans { get; set; }
 
-        /*!
+        /**
          * Gets or sets the stages.
          *
          * @return  The stages.
          */
         public DbSet<Plan.Stage> Stages { get; set; }
 
-        /*!
+        /**
          * Override this method to further configure the model that was discovered by convention from
          * the entity types exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" /> properties
          * on your derived context. The resulting model may be cached and re-used for subsequent

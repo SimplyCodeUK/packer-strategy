@@ -8,38 +8,38 @@ using System.Collections.Generic;
 
 namespace packer_strategy.Models.Plan
 {
-    /*! A plan. */
+    /** A plan. */
     public class Plan
     {
-        /*!
+        /**
          * Gets or sets the identifier.
          *
          * @return  The identifier.
          */
         public string Id { get; set; }
 
-        /*!
+        /**
          * Gets or sets the name.
          *
          * @return  The name.
          */
         public string Name { get; set; }
 
-        /*!
+        /**
          * Gets or sets the notes.
          *
          * @return  The notes.
          */
         public string Notes { get; set; }
 
-        /*!
+        /**
          * Gets or sets the Date/Time of the time.
          *
          * @return  The time.
          */
         public DateTime Time { get; set; }
 
-        /*!
+        /**
          * Gets or sets the stages.
          *
          * @return  The stages.

@@ -8,13 +8,12 @@ using System.Linq;
 
 namespace packer_strategy.Models
 {
-    /*! A plan repository. */
+    /** A plan repository. */
     public class PlanRepository : IPlanRepository
     {
-        /*! The context */
-        private readonly PlanContext _context;
+        private readonly PlanContext _context;  ///< The context
 
-        /*!
+        /**
          * Constructor.
          *
          * @param   context The context.
@@ -25,7 +24,7 @@ namespace packer_strategy.Models
             Add(new Plan.Plan { Name = "Item1" });
         }
 
-        /*!
+        /**
          * Gets all items in this collection.
          *
          * @return  An enumerator that allows foreach to be used to process all items in this collection.
@@ -35,7 +34,7 @@ namespace packer_strategy.Models
             return _context.Plans.ToList();
         }
 
-        /*!
+        /**
          * Adds item.
          *
          * @param   item    The item to add.
@@ -46,7 +45,7 @@ namespace packer_strategy.Models
             _context.SaveChanges();
         }
 
-        /*!
+        /**
          * Searches for the first match for the given string.
          *
          * @param   key The key.
@@ -58,7 +57,7 @@ namespace packer_strategy.Models
             return _context.Plans.FirstOrDefault(t => t.Id == key);
         }
 
-        /*!
+        /**
          * Removes the given key.
          *
          * @param   key The key to remove.
@@ -70,7 +69,7 @@ namespace packer_strategy.Models
             _context.SaveChanges();
         }
 
-        /*!
+        /**
          * Updates the given item.
          *
          * @param   item    The item.

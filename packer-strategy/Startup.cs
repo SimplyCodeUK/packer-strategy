@@ -14,10 +14,10 @@ using packer_strategy.Models;
 
 namespace packer_strategy
 {
-    /*! A startup. */
+    /** A startup. */
     public class Startup
     {
-        /*!
+        /**
          * Constructor.
          *
          * @param   env The environment.
@@ -32,14 +32,14 @@ namespace packer_strategy
             Configuration = builder.Build();
         }
 
-        /*!
+        /**
          * Gets the configuration.
          *
          * @return  The configuration.
          */
         public IConfigurationRoot Configuration { get; }
 
-        /*!
+        /**
          * Configure services.
          *
          * @param   services    The services.
@@ -54,7 +54,7 @@ namespace packer_strategy
             services.AddSingleton<IPlanRepository, PlanRepository>();
         }
 
-        /*!
+        /**
          * Configures.
          *
          * @param   app             The application.
