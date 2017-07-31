@@ -146,19 +146,19 @@ namespace packer_strategy.Controllers
          * Patches.
          *
          * @param   id      The identifier.
-         * @param   patch   The patch.
+         * @param   update  The patch.
          *
          * @return  An IActionResult.
          */
         [HttpPatch("{id}")]
-        public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> patch)
+        public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> update)
         {
             IActionResult result = NotFound();
             var item = _repository.Find(id);
 
             if (item != null)
             {
-                patch.ApplyTo(item);
+                update.ApplyTo(item);
                 result = Ok(item);
             }
 
