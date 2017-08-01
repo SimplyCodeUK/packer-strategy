@@ -6,28 +6,36 @@
 
 namespace packer_strategy.Models.Plan
 {
-    /** A stage. */
+    /// <summary>
+    ///     A stage.
+    /// </summary>
     public class Stage
     {
-        /**
-         * Gets or sets the identifier of the strategy.
-         *
-         * @return  The identifier of the strategy.
-         */
+        /// <summary>
+        ///     Gets or sets the identifier of the strategy.
+        /// </summary>
+        ///
+        /// <value>
+        ///     The identifier of the strategy.
+        /// </value>
         public string StrategyId { get; set; }
 
-        /**
-         * Gets or sets the level.
-         *
-         * @return  The level.
-         */
+        /// <summary>
+        ///     Gets or sets the level.
+        /// </summary>
+        ///
+        /// <value>
+        ///     The level.
+        /// </value>
         public int Level { get; set; }
 
-        /**
-         * Gets or sets the collation.
-         *
-         * @return  The collation.
-         */
+        /// <summary>
+        ///     Gets or sets the collation.
+        /// </summary>
+        ///
+        /// <value>
+        ///     The collation.
+        /// </value>
         public int Collation { get; set; }
     }
 }

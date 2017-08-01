@@ -18,13 +18,20 @@ using packer_strategy.Models.Plan;
 
 namespace packer_strategy_test
 {
-    /** (Unit Test Fixture) a controller for handling test plans. */
+    /// <summary>
+    ///     (Unit Test Fixture) a controller for handling test plans.
+    /// </summary>
     [TestFixture]
     public class TestPlansController
     {
-        private PlanRepository planRepository;  ///< The plan repository
+        /// <summary>
+        ///     The plan repository.
+        /// </summary>
+        private PlanRepository planRepository;
 
-        /** Tests before. */
+        /// <summary>
+        ///     Tests before.
+        /// </summary>
         [SetUp]
         public void BeforeTest()
         {
@@ -36,7 +43,9 @@ namespace packer_strategy_test
             planRepository = new PlanRepository(planContext);
         }
 
-        /** (Unit Test Method) creates this object. */
+        /// <summary>
+        ///     (Unit Test Method) creates this object.
+        /// </summary>
         [Test]
         public void Create()
         {
@@ -45,7 +54,9 @@ namespace packer_strategy_test
             Assert.IsNotNull(controller);
         }
 
-        /** (Unit Test Method) post this message. */
+        /// <summary>
+        ///     (Unit Test Method) post this message.
+        /// </summary>
         [Test]
         public void Post()
         {
@@ -58,7 +69,9 @@ namespace packer_strategy_test
             Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
         }
 
-        /** (Unit Test Method) posts the bad. */
+        /// <summary>
+        ///     (Unit Test Method) posts the bad.
+        /// </summary>
         [Test]
         public void PostBad()
         {
@@ -70,7 +83,9 @@ namespace packer_strategy_test
             Assert.AreEqual((int)HttpStatusCode.BadRequest, ((BadRequestResult)result).StatusCode);
         }
 
-        /** (Unit Test Method) posts the already exists. */
+        /// <summary>
+        ///     (Unit Test Method) posts the already exists.
+        /// </summary>
         [Test]
         public void PostAlreadyExists()
         {
@@ -88,7 +103,9 @@ namespace packer_strategy_test
             Assert.AreEqual((int)HttpStatusCode.Conflict, ((StatusCodeResult)result).StatusCode);
         }
 
-        /** (Unit Test Method) gets all. */
+        /// <summary>
+        ///     (Unit Test Method) gets all.
+        /// </summary>
         [Test]
         public void GetAll()
         {
@@ -117,7 +134,9 @@ namespace packer_strategy_test
             Assert.IsEmpty(ids, "IDS not found " + String.Join(",", ids));
         }
 
-        /** (Unit Test Method) gets this object. */
+        /// <summary>
+        ///     (Unit Test Method) gets this object.
+        /// </summary>
         [Test]
         public void Get()
         {
@@ -144,7 +163,9 @@ namespace packer_strategy_test
             Assert.AreEqual(plan.Notes, startNote);
         }
 
-        /** (Unit Test Method) gets not found. */
+        /// <summary>
+        ///     (Unit Test Method) gets not found.
+        /// </summary>
         [Test]
         public void GetNotFound()
         {
@@ -157,7 +178,9 @@ namespace packer_strategy_test
             Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundResult)result).StatusCode);
         }
 
-        /** (Unit Test Method) puts this object. */
+        /// <summary>
+        ///     (Unit Test Method) puts this object.
+        /// </summary>
         [Test]
         public void Put()
         {
@@ -188,7 +211,9 @@ namespace packer_strategy_test
             Assert.AreEqual(plan.Name, putName);
         }
 
-        /** (Unit Test Method) puts not found. */
+        /// <summary>
+        ///     (Unit Test Method) puts not found.
+        /// </summary>
         [Test]
         public void PutNotFound()
         {
@@ -202,7 +227,9 @@ namespace packer_strategy_test
             Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundResult)result).StatusCode);
         }
 
-        /** (Unit Test Method) deletes this object. */
+        /// <summary>
+        ///     (Unit Test Method) deletes this object.
+        /// </summary>
         [Test]
         public void Delete()
         {
@@ -219,7 +246,9 @@ namespace packer_strategy_test
             Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
         }
 
-        /** (Unit Test Method) deletes the not found. */
+        /// <summary>
+        ///     (Unit Test Method) deletes the not found.
+        /// </summary>
         [Test]
         public void DeleteNotFound()
         {
@@ -232,7 +261,9 @@ namespace packer_strategy_test
             Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundResult)result).StatusCode);
         }
 
-        /** (Unit Test Method) patches this object. */
+        /// <summary>
+        ///     (Unit Test Method) patches this object.
+        /// </summary>
         [Test]
         public void Patch()
         {
@@ -278,7 +309,9 @@ namespace packer_strategy_test
             Assert.AreEqual(plan.Notes, startNote);
         }
 
-        /** (Unit Test Method) patches this object. */
+        /// <summary>
+        ///     (Unit Test Method) patch not found.
+        /// </summary>
         [Test]
         public void PatchNotFound()
         {

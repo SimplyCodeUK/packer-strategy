@@ -8,42 +8,54 @@ using System.Collections.Generic;
 
 namespace packer_strategy.Models.Plan
 {
-    /** A plan. */
+    /// <summary>
+    ///     A plan.
+    /// </summary>
     public class Plan
     {
-        /**
-         * Gets or sets the identifier.
-         *
-         * @return  The identifier.
-         */
+        /// <summary>
+        ///     Gets or sets the identifier.
+        /// </summary>
+        ///
+        /// <value>
+        ///     The identifier.
+        /// </value>
         public string Id { get; set; }
 
-        /**
-         * Gets or sets the name.
-         *
-         * @return  The name.
-         */
+        /// <summary>
+        ///     Gets or sets the name.
+        /// </summary>
+        ///
+        /// <value>
+        ///     The name.
+        /// </value>
         public string Name { get; set; }
 
-        /**
-         * Gets or sets the notes.
-         *
-         * @return  The notes.
-         */
+        /// <summary>
+        ///     Gets or sets the notes.
+        /// </summary>
+        ///
+        /// <value>
+        ///     The notes.
+        /// </value>
         public string Notes { get; set; }
 
-        /**
-         * Gets or sets the Date/Time of the time.
-         *
-         * @return  The time.
-         */
+        /// <summary>
+        ///     Gets or sets the Date/Time of the time.
+        /// </summary>
+        ///
+        /// <value>
+        ///     The time.
+        /// </value>
         public DateTime Time { get; set; }
 
-        /**
-         * Gets or sets the stages.
-         *
-         * @return  The stages.
-         */
+        /// <summary>
+        ///     Gets or sets the stages.
+        /// </summary>
+        ///
+        /// <value>
+        ///     The stages.
+        /// </value>
         public List<Stage> Stages { get; set; }
     }
 }
