@@ -10,14 +10,16 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace packer_strategy
 {
-    /** A program. */
+    /// <summary>
+    ///     A program.
+    /// </summary>
     public class Program
     {
-        /**
-         * Main entry-point for this application.
-         *
-         * @param   args    An array of command-line argument strings.
-         */
+        /// <summary>
+        ///     Main entry-point for this application.
+        /// </summary>
+        ///
+        /// <param name="args"> An array of command-line argument strings. </param>
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
@@ -31,7 +33,9 @@ namespace packer_strategy
             host.Run();
         }
 
-        /** Constructor that prevents a default instance of this class from being created. */
+        /// <summary>
+        ///     Constructor that prevents a default instance of this class from being created.
+        /// </summary>
         private Program()
         {
         }

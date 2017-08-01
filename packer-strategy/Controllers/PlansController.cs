@@ -15,41 +15,51 @@ using packer_strategy.Models.Plan;
 
 namespace packer_strategy.Controllers
 {
-    /** A controller for handling plans. */
+    /// <summary>
+    ///     A controller for handling plans.
+    /// </summary>
     [Route("api/[controller]")]
     public class PlansController : Controller
     {
-        private readonly IPlanRepository _repository;   ///< The repository
+        /// <summary>
+        ///     The repository.
+        /// </summary>
+        private readonly IPlanRepository _repository;
 
-        /**
-         * Constructor.
-         *
-         * @param   repository  The repository.
-         */
+        /// <summary>
+        ///     Constructor.
+        /// </summary>
+        ///
+        /// <param name="repository">   The repository. </param>
         public PlansController(IPlanRepository repository)
         {
             _repository = repository;
         }
 
-        /**
-         * (An Action that handles HTTP GET requests) enumerates the items in this collection that meet
-         * given criteria.
-         *
-         * @return  An enumerator that allows foreach to be used to process the matched items.
-         */
+        /// <summary>
+        ///     (An Action that handles HTTP GET requests) enumerates the items in this collection that
+        ///     meet given criteria.
+        /// </summary>
+        ///
+        /// <returns>
+        ///     An enumerator that allows foreach to be used to process the matched items.
+        /// </returns>
         [HttpGet]
         public IEnumerable<Plan> Get()
         {
             return _repository.GetAll();
         }
 
-        /**
-         * (An Action that handles HTTP GET requests) gets an i action result using the given identifier.
-         *
-         * @param   id  The Identifier to get.
-         *
-         * @return  An IActionResult.
-         */
+        /// <summary>
+        ///     (An Action that handles HTTP GET requests) gets an i action result using the given
+        ///     identifier.
+        /// </summary>
+        ///
+        /// <param name="id">   The identifier. </param>
+        ///
+        /// <returns>
+        ///     An IActionResult.
+        /// </returns>
         [HttpGet("{id}")]
         [Route("{id}", Name = "GetPlan")]
         [ProducesResponseType(typeof(Plan), 200)]
@@ -66,13 +76,15 @@ namespace packer_strategy.Controllers
             return result;
         }
 
-        /**
-         * (An Action that handles HTTP POST requests) post this message.
-         *
-         * @param   value   The value.
-         *
-         * @return  An IActionResult.
-         */
+        /// <summary>
+        ///     (An Action that handles HTTP POST requests) post this message.
+        /// </summary>
+        ///
+        /// <param name="value">    The value. </param>
+        ///
+        /// <returns>
+        ///     An IActionResult.
+        /// </returns>
         [HttpPost]
         public IActionResult Post([FromBody] Plan value)
         {
@@ -93,14 +105,16 @@ namespace packer_strategy.Controllers
             return result;
         }
 
-        /**
-         * Puts.
-         *
-         * @param   id      The identifier.
-         * @param   value   The value.
-         *
-         * @return  An IActionResult.
-         */
+        /// <summary>
+        ///     Puts.
+        /// </summary>
+        ///
+        /// <param name="id">       The identifier. </param>
+        /// <param name="value">    The value. </param>
+        ///
+        /// <returns>
+        ///     An IActionResult.
+        /// </returns>
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] Plan value)
         {
@@ -122,13 +136,15 @@ namespace packer_strategy.Controllers
             return result;
         }
 
-        /**
-         * Deletes the given ID.
-         *
-         * @param   id  The Identifier to delete.
-         *
-         * @return  An IActionResult.
-         */
+        /// <summary>
+        ///     Deletes the given ID.
+        /// </summary>
+        ///
+        /// <param name="id">   The identifier. </param>
+        ///
+        /// <returns>
+        ///     An IActionResult.
+        /// </returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
@@ -142,14 +158,16 @@ namespace packer_strategy.Controllers
             return result;
         }
 
-        /**
-         * Patches.
-         *
-         * @param   id      The identifier.
-         * @param   update  The patch.
-         *
-         * @return  An IActionResult.
-         */
+        /// <summary>
+        ///     Patches.
+        /// </summary>
+        ///
+        /// <param name="id">       The identifier. </param>
+        /// <param name="update">   The update. </param>
+        ///
+        /// <returns>
+        ///     An IActionResult.
+        /// </returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> update)
         {

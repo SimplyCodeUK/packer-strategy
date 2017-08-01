@@ -7,44 +7,50 @@ using System.Collections.Generic;
 
 namespace packer_strategy.Models
 {
-    /** Interface for plan repository. */
+    /// <summary>
+    ///     Interface for plan repository.
+    /// </summary>
     public interface IPlanRepository
     {
-        /**
-         * Adds item.
-         *
-         * @param   item    The item to add.
-         */
+        /// <summary>
+        ///     Adds item.
+        /// </summary>
+        ///
+        /// <param name="item"> The item. </param>
         void Add(Plan.Plan item);
 
-        /**
-         * Gets all items in this collection.
-         *
-         * @return  An enumerator that allows foreach to be used to process all items in this collection.
-         */
+        /// <summary>
+        ///     Gets all items in this collection.
+        /// </summary>
+        ///
+        /// <returns>
+        ///     An enumerator that allows foreach to be used to process all items in this collection.
+        /// </returns>
         IEnumerable<Plan.Plan> GetAll();
 
-        /**
-         * Searches for the first match for the given string.
-         *
-         * @param   key The key.
-         *
-         * @return  A Plan.Plan.
-         */
+        /// <summary>
+        ///     Searches for the first match for the given string.
+        /// </summary>
+        ///
+        /// <param name="key">  The key to remove. </param>
+        ///
+        /// <returns>
+        ///     A Plan.Plan.
+        /// </returns>
         Plan.Plan Find(string key);
 
-        /**
-         * Removes the given key.
-         *
-         * @param   key The key to remove.
-         */
+        /// <summary>
+        ///     Removes the given key.
+        /// </summary>
+        ///
+        /// <param name="key">  The key to remove. </param>
         void Remove(string key);
 
-        /**
-         * Updates the given item.
-         *
-         * @param   item    The item.
-         */
+        /// <summary>
+        ///     Updates the given item.
+        /// </summary>
+        ///
+        /// <param name="item"> The item. </param>
         void Update(Plan.Plan item);
     }
 }

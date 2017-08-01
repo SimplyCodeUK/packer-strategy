@@ -14,14 +14,16 @@ using packer_strategy.Models;
 
 namespace packer_strategy
 {
-    /** A startup. */
+    /// <summary>
+    ///     A startup.
+    /// </summary>
     public class Startup
     {
-        /**
-         * Constructor.
-         *
-         * @param   env The environment.
-         */
+        /// <summary>
+        ///     Constructor.
+        /// </summary>
+        ///
+        /// <param name="env">  The environment. </param>
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -32,18 +34,20 @@ namespace packer_strategy
             Configuration = builder.Build();
         }
 
-        /**
-         * Gets the configuration.
-         *
-         * @return  The configuration.
-         */
+        /// <summary>
+        ///     Gets the configuration.
+        /// </summary>
+        ///
+        /// <value>
+        ///     The configuration.
+        /// </value>
         public IConfigurationRoot Configuration { get; }
 
-        /**
-         * Configure services.
-         *
-         * @param   services    The services.
-         */
+        /// <summary>
+        ///     Configure services.
+        /// </summary>
+        ///
+        /// <param name="services"> The services. </param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<PlanContext>(options => options.UseInMemoryDatabase());
@@ -54,13 +58,13 @@ namespace packer_strategy
             services.AddSingleton<IPlanRepository, PlanRepository>();
         }
 
-        /**
-         * Configures.
-         *
-         * @param   app             The application.
-         * @param   env             The environment.
-         * @param   loggerFactory   The logger factory.
-         */
+        /// <summary>
+        ///     Configures.
+        /// </summary>
+        ///
+        /// <param name="app">              The application. </param>
+        /// <param name="env">              The environment. </param>
+        /// <param name="loggerFactory">    The logger factory. </param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));

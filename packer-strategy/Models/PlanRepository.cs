@@ -8,60 +8,77 @@ using System.Linq;
 
 namespace packer_strategy.Models
 {
-    /** A plan repository. */
+    /// <summary>
+    ///     A plan repository.
+    /// </summary>
     public class PlanRepository : IPlanRepository
     {
-        private readonly PlanContext _context;  ///< The context
+        /// <summary>
+        ///     The context.
+        /// </summary>
+        private readonly PlanContext _context;
 
-        /**
-         * Constructor.
-         *
-         * @param   context The context.
-         */
+        /// <summary>
+        ///     Constructor.
+        /// </summary>
+        ///
+        /// <param name="context">  The context. </param>
         public PlanRepository(PlanContext context)
         {
             _context = context;
             Add(new Plan.Plan { Name = "Item1" });
         }
 
-        /**
-         * Gets all items in this collection.
-         *
-         * @return  An enumerator that allows foreach to be used to process all items in this collection.
-         */
+        /// <summary>
+        ///     Gets all items in this collection.
+        /// </summary>
+        ///
+        /// <returns>
+        ///     An enumerator that allows foreach to be used to process all items in this collection.
+        /// </returns>
+        ///
+        /// <seealso cref="M:packer_strategy.Models.IPlanRepository.GetAll()"/>
         public IEnumerable<Plan.Plan> GetAll()
         {
             return _context.Plans.ToList();
         }
 
-        /**
-         * Adds item.
-         *
-         * @param   item    The item to add.
-         */
+        /// <summary>
+        ///     Adds item.
+        /// </summary>
+        ///
+        /// <param name="item"> The item. </param>
+        ///
+        /// <seealso cref="M:packer_strategy.Models.IPlanRepository.Add(Plan.Plan)"/>
         public void Add(Plan.Plan item)
         {
             _context.Plans.Add(item);
             _context.SaveChanges();
         }
 
-        /**
-         * Searches for the first match for the given string.
-         *
-         * @param   key The key.
-         *
-         * @return  A Plan.Plan.
-         */
+        /// <summary>
+        ///     Searches for the first match for the given string.
+        /// </summary>
+        ///
+        /// <param name="key">  The key to remove. </param>
+        ///
+        /// <returns>
+        ///     A Plan.Plan.
+        /// </returns>
+        ///
+        /// <seealso cref="M:packer_strategy.Models.IPlanRepository.Find(string)"/>
         public Plan.Plan Find(string key)
         {
             return _context.Plans.FirstOrDefault(t => t.Id == key);
         }
 
-        /**
-         * Removes the given key.
-         *
-         * @param   key The key to remove.
-         */
+        /// <summary>
+        ///     Removes the given key.
+        /// </summary>
+        ///
+        /// <param name="key">  The key to remove. </param>
+        ///
+        /// <seealso cref="M:packer_strategy.Models.IPlanRepository.Remove(string)"/>
         public void Remove(string key)
         {
             var entity = _context.Plans.First(t => t.Id == key);
@@ -69,11 +86,13 @@ namespace packer_strategy.Models
             _context.SaveChanges();
         }
 
-        /**
-         * Updates the given item.
-         *
-         * @param   item    The item.
-         */
+        /// <summary>
+        ///     Updates the given item.
+        /// </summary>
+        ///
+        /// <param name="item"> The item. </param>
+        ///
+        /// <seealso cref="M:packer_strategy.Models.IPlanRepository.Update(Plan.Plan)"/>
         public void Update(Plan.Plan item)
         {
             _context.Plans.Update(item);
