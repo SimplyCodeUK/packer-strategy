@@ -3,6 +3,7 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
+using System.Collections.Generic;
 
 namespace packer_strategy.Models.Plan
 {
@@ -55,13 +56,42 @@ namespace packer_strategy.Models.Plan
         }
 
         /// <summary>
+        ///     Default constructor.
+        /// </summary>
+        public Stage()
+        {
+            this.Limits = new List<Limit>();
+        }
+
+        /// <summary>
+        ///     Identifier for the plan.
+        /// </summary>
+        private string planId;
+
+        /// <summary>
         ///     Gets or sets the identifier of the plan.
         /// </summary>
         ///
         /// <value>
         ///     The identifier of the plan.
         /// </value>
-        public string PlanId { get; set; }
+        public string PlanId {
+            get {
+                return planId;
+            }
+            set {
+                planId = value;
+                foreach (Limit limit in Limits)
+                {
+                    limit.PlanId = value;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     The level.
+        /// </summary>
+        private Levels level;
 
         /// <summary>
         ///     Gets or sets the level.
@@ -70,7 +100,21 @@ namespace packer_strategy.Models.Plan
         /// <value>
         ///     The level.
         /// </value>
-        public Levels Level { get; set; }
+        public Levels Level
+        {
+            get
+            {
+                return level;
+            }
+            set
+            {
+                level = value;
+                foreach (Limit limit in Limits)
+                {
+                    limit.Level = value;
+                }
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the collation.
@@ -1205,5 +1249,14 @@ namespace packer_strategy.Models.Plan
         ///     The minimum block breadth.
         /// </value>
         public long MinBlockBreadth { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the limits.
+        /// </summary>
+        ///
+        /// <value>
+        ///     The limits.
+        /// </value>
+        public List<Limit> Limits { get; set; }
     }
 }
