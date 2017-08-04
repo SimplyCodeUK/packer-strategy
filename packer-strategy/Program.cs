@@ -10,14 +10,10 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace packer_strategy
 {
-    /// <summary>
-    ///     A program.
-    /// </summary>
+    /// <summary>   A program. </summary>
     public class Program
     {
-        /// <summary>
-        ///     Main entry-point for this application.
-        /// </summary>
+        /// <summary>   Main entry-point for this application. </summary>
         ///
         /// <param name="args"> An array of command-line argument strings. </param>
         public static void Main(string[] args)

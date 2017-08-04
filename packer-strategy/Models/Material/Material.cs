@@ -6,112 +6,66 @@
 
 namespace packer_strategy.Models.Material
 {
-    /// <summary>
-    ///     A material.
-    /// </summary>
+    /// <summary>   A material. </summary>
     public class Material
     {
-        /// <summary>
-        ///     Values that represent types.
-        /// </summary>
+        /// <summary>   Values that represent material types. </summary>
         public enum Type
         {
-            /// <summary>
-            ///     An enum constant representing the product option.
-            /// </summary>
-            Product,
-            /// <summary>
-            ///     An enum constant representing the carton option.
-            /// </summary>
+            /// <summary>   An enum constant representing the Minimum option. </summary>
+            Min,
+
+            /// <summary>   An enum constant representing the product option. </summary>
+            Product=Min,
+            /// <summary>   An enum constant representing the carton option. </summary>
             Carton,
-            /// <summary>
-            ///     An enum constant representing the board option.
-            /// </summary>
+            /// <summary>   An enum constant representing the board option. </summary>
             UBoard,
-            /// <summary>
-            ///     An enum constant representing the can option.
-            /// </summary>
+            /// <summary>   An enum constant representing the can option. </summary>
             Can,
-            /// <summary>
-            ///     An enum constant representing the bottle option.
-            /// </summary>
+            /// <summary>   An enum constant representing the bottle option. </summary>
             Bottle,
-            /// <summary>
-            ///     An enum constant representing the tub option.
-            /// </summary>
+            /// <summary>   An enum constant representing the tub option. </summary>
             Tub,
-            /// <summary>
-            ///     An enum constant representing the jar option.
-            /// </summary>
+            /// <summary>   An enum constant representing the jar option. </summary>
             Jar,
-            /// <summary>
-            ///     An enum constant representing the sleeve option.
-            /// </summary>
+            /// <summary>   An enum constant representing the sleeve option. </summary>
             Sleeve,
-            /// <summary>
-            ///     An enum constant representing the wrap around option.
-            /// </summary>
+            /// <summary>   An enum constant representing the wrap around option. </summary>
             WrapAround,
-            /// <summary>
-            ///     An enum constant representing the shrinkwrap option.
-            /// </summary>
+            /// <summary>   An enum constant representing the shrinkwrap option. </summary>
             Shrinkwrap,
-            /// <summary>
-            ///     An enum constant representing the crate option.
-            /// </summary>
+            /// <summary>   An enum constant representing the crate option. </summary>
             Crate,
-            /// <summary>
-            ///     An enum constant representing the container option.
-            /// </summary>
+            /// <summary>   An enum constant representing the container option. </summary>
             Container,
-            /// <summary>
-            ///     An enum constant representing the tray option.
-            /// </summary>
+            /// <summary>   An enum constant representing the tray option. </summary>
             Tray,
-            /// <summary>
-            ///     An enum constant representing the pad option.
-            /// </summary>
+            /// <summary>   An enum constant representing the pad option. </summary>
             Pad,
-            /// <summary>
-            ///     An enum constant representing the slipsheet option.
-            /// </summary>
+            /// <summary>   An enum constant representing the slipsheet option. </summary>
             Slipsheet,
-            /// <summary>
-            ///     An enum constant representing the pallet option.
-            /// </summary>
+            /// <summary>   An enum constant representing the pallet option. </summary>
             Pallet,
-            /// <summary>
-            ///     An enum constant representing the divider option.
-            /// </summary>
+            /// <summary>   An enum constant representing the divider option. </summary>
             Divider,
-            /// <summary>
-            ///     An enum constant representing the liner option.
-            /// </summary>
+            /// <summary>   An enum constant representing the liner option. </summary>
             Liner,
-            /// <summary>
-            ///     An enum constant representing the strapping option.
-            /// </summary>
+            /// <summary>   An enum constant representing the strapping option. </summary>
             Strapping,
-            /// <summary>
-            ///     An enum constant representing the edgeboard option.
-            /// </summary>
+            /// <summary>   An enum constant representing the edgeboard option. </summary>
             Edgeboard,
-            /// <summary>
-            ///     An enum constant representing the collar option.
-            /// </summary>
+            /// <summary>   An enum constant representing the collar option. </summary>
             Collar,
-            /// <summary>
-            ///     An enum constant representing the cap option.
-            /// </summary>
+            /// <summary>   An enum constant representing the Capability option. </summary>
             Cap,
-            /// <summary>
-            ///     An enum constant representing the lid option.
-            /// </summary>
+            /// <summary>   An enum constant representing the lid option. </summary>
             Lid,
-            /// <summary>
-            ///     An enum constant representing the seal option.
-            /// </summary>
-            Seal
+            /// <summary>   An enum constant representing the seal option. </summary>
+            Seal,
+
+            /// <summary>   An enum constant representing the Maximum option. </summary>
+            Max
         }
     }
 }
