@@ -14,13 +14,34 @@ namespace packer_strategy.Models.Plan
     public class Plan
     {
         /// <summary>
+        ///     Default constructor.
+        /// </summary>
+        public Plan()
+        {
+            this.Stages = new List<Stage>();
+        }
+
+        /// <summary>
+        ///     The identifier.
+        /// </summary>
+        private string _id;
+
+        /// <summary>
         ///     Gets or sets the identifier.
         /// </summary>
         ///
         /// <value>
         ///     The identifier.
         /// </value>
-        public string Id { get; set; }
+        public string Id {
+            get { return _id; }
+            set {
+                _id = value;
+                foreach (Stage stage in Stages) {
+                    stage.PlanId = value;
+                }
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the name.

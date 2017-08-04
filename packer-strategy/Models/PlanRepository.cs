@@ -26,7 +26,6 @@ namespace packer_strategy.Models
         public PlanRepository(PlanContext context)
         {
             _context = context;
-            Add(new Plan.Plan { Name = "Item1" });
         }
 
         /// <summary>
