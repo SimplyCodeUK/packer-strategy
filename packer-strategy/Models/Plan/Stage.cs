@@ -55,13 +55,13 @@ namespace packer_strategy.Models.Plan
         }
 
         /// <summary>
-        ///     Gets or sets the identifier of the strategy.
+        ///     Gets or sets the identifier of the plan.
         /// </summary>
         ///
         /// <value>
-        ///     The identifier of the strategy.
+        ///     The identifier of the plan.
         /// </value>
-        public string StrategyId { get; set; }
+        public string PlanId { get; set; }
 
         /// <summary>
         ///     Gets or sets the level.
