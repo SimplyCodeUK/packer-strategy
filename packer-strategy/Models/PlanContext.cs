@@ -7,14 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace packer_strategy.Models
 {
-    /// <summary>
-    ///     A plan context.
-    /// </summary>
     public class PlanContext : DbContext
     {
-        /// <summary>
-        ///     Constructor.
-        /// </summary>
+        /// <summary>   Constructor. </summary>
         ///
         /// <param name="options">  Options for controlling the operation. </param>
         public PlanContext(DbContextOptions<PlanContext> options)
@@ -22,22 +17,14 @@ namespace packer_strategy.Models
         {
         }
 
-        /// <summary>
-        ///     Gets or sets the plans.
-        /// </summary>
+        /// <summary>   Gets or sets the plans. </summary>
         ///
-        /// <value>
-        ///     The plans.
-        /// </value>
+        /// <value> The plans. </value>
         public DbSet<Plan.Plan> Plans { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the stages.
-        /// </summary>
+        /// <summary>   Gets or sets the stages. </summary>
         ///
-        /// <value>
-        ///     The stages.
-        /// </value>
+        /// <value> The stages. </value>
         public DbSet<Plan.Stage> Stages { get; set; }
 
         /// <summary>
@@ -57,8 +44,6 @@ namespace packer_strategy.Models
         ///                             Databases (and other extensions) typically define extension
         ///                             methods on this object that allow you to configure aspects of the
         ///                             model that are specific to a given database. </param>
-        ///
-        /// <seealso cref="M:Microsoft.EntityFrameworkCore.DbContext.OnModelCreating(ModelBuilder)"/>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Plan.Plan>()

@@ -15,20 +15,14 @@ using packer_strategy.Models.Plan;
 
 namespace packer_strategy.Controllers
 {
-    /// <summary>
-    ///     A controller for handling plans.
-    /// </summary>
+    /// <summary>   A controller for handling plans. </summary>
     [Route("api/[controller]")]
     public class PlansController : Controller
     {
-        /// <summary>
-        ///     The repository.
-        /// </summary>
+        /// <summary>   The repository. </summary>
         private readonly IPlanRepository _repository;
 
-        /// <summary>
-        ///     Constructor.
-        /// </summary>
+        /// <summary>   Constructor. </summary>
         ///
         /// <param name="repository">   The repository. </param>
         public PlansController(IPlanRepository repository)
@@ -41,9 +35,7 @@ namespace packer_strategy.Controllers
         ///     meet given criteria.
         /// </summary>
         ///
-        /// <returns>
-        ///     An enumerator that allows foreach to be used to process the matched items.
-        /// </returns>
+        /// <returns>   An enumerator that allows foreach to be used to process the matched items. </returns>
         [HttpGet]
         public IEnumerable<Plan> Get()
         {
@@ -57,38 +49,35 @@ namespace packer_strategy.Controllers
         ///
         /// <param name="id">   The identifier. </param>
         ///
-        /// <returns>
-        ///     An IActionResult.
-        /// </returns>
+        /// <returns>   An IActionResult. </returns>
         [HttpGet("{id}")]
         [Route("{id}", Name = "GetPlan")]
         [ProducesResponseType(typeof(Plan), 200)]
         public IActionResult Get(string id)
         {
-            IActionResult result = NotFound();
             var           item = _repository.Find(id);
+            IActionResult result;
 
-            if (item != null)
+            if (item == null)
+            {
+                result = NotFound();
+            }
+            else
             {
                 result = Ok(item);
             }
-
             return result;
         }
 
-        /// <summary>
-        ///     (An Action that handles HTTP POST requests) post this message.
-        /// </summary>
+        /// <summary>   (An Action that handles HTTP POST requests) post this message. </summary>
         ///
         /// <param name="value">    The value. </param>
         ///
-        /// <returns>
-        ///     An IActionResult.
-        /// </returns>
+        /// <returns>   An IActionResult. </returns>
         [HttpPost]
         public IActionResult Post([FromBody] Plan value)
         {
-            IActionResult result = BadRequest();
+            IActionResult result;
 
             if (value != null)
             {
@@ -102,82 +91,85 @@ namespace packer_strategy.Controllers
                     result = StatusCode((int)HttpStatusCode.Conflict);
                 }
             }
-            return result;
-        }
-
-        /// <summary>
-        ///     Puts.
-        /// </summary>
-        ///
-        /// <param name="id">       The identifier. </param>
-        /// <param name="value">    The value. </param>
-        ///
-        /// <returns>
-        ///     An IActionResult.
-        /// </returns>
-        [HttpPut("{id}")]
-        public IActionResult Put(string id, [FromBody] Plan value)
-        {
-            IActionResult result = NotFound();
-            Plan          plan = _repository.Find(id);
-
-            if (plan != null)
+            else
             {
-                plan.Id = id;
-                plan.Name = value.Name;
-                plan.Notes = value.Notes;
-                plan.Time = value.Time;
-
-                _repository.Update(plan);
-
-                result = Ok();
+                result = BadRequest();
             }
 
             return result;
         }
 
-        /// <summary>
-        ///     Deletes the given ID.
-        /// </summary>
+        /// <summary>   Puts. </summary>
+        ///
+        /// <param name="id">       The identifier. </param>
+        /// <param name="value">    The value. </param>
+        ///
+        /// <returns>   An IActionResult. </returns>
+        [HttpPut("{id}")]
+        public IActionResult Put(string id, [FromBody] Plan value)
+        {
+            Plan          plan = _repository.Find(id);
+            IActionResult result;
+
+            if (plan != null)
+            {
+                plan = value;
+                plan.Id = id;
+
+                _repository.Update(plan);
+
+                result = Ok();
+            }
+            else
+            {
+                result = NotFound();
+            }
+
+            return result;
+        }
+
+        /// <summary>   Deletes the given ID. </summary>
         ///
         /// <param name="id">   The identifier. </param>
         ///
-        /// <returns>
-        ///     An IActionResult.
-        /// </returns>
+        /// <returns>   An IActionResult. </returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            IActionResult result = NotFound();
+            IActionResult result;
 
             if (_repository.Find(id) != null)
             {
                 _repository.Remove(id);
                 result = Ok();
             }
+            else
+            {
+                result = NotFound();
+            }
             return result;
         }
 
-        /// <summary>
-        ///     Patches.
-        /// </summary>
+        /// <summary>   Patches. </summary>
         ///
         /// <param name="id">       The identifier. </param>
         /// <param name="update">   The update. </param>
         ///
-        /// <returns>
-        ///     An IActionResult.
-        /// </returns>
+        /// <returns>   An IActionResult. </returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> update)
         {
-            IActionResult result = NotFound();
-            var item = _repository.Find(id);
+            var           item = _repository.Find(id);
+            IActionResult result;
 
             if (item != null)
             {
                 update.ApplyTo(item);
                 result = Ok(item);
+            }
+            else
+            {
+                result = NotFound();
             }
 
             return result;

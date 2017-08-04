@@ -8,31 +8,21 @@ using System.Collections.Generic;
 
 namespace packer_strategy.Models.Plan
 {
-    /// <summary>
-    ///     A plan.
-    /// </summary>
+    /// <summary>   A plan. </summary>
     public class Plan
     {
-        /// <summary>
-        ///     Default constructor.
-        /// </summary>
+        /// <summary>   Default constructor. </summary>
         public Plan()
         {
             this.Stages = new List<Stage>();
         }
 
-        /// <summary>
-        ///     The identifier.
-        /// </summary>
+        /// <summary>   The identifier. </summary>
         private string _id;
 
-        /// <summary>
-        ///     Gets or sets the identifier.
-        /// </summary>
+        /// <summary>   Gets or sets the identifier. </summary>
         ///
-        /// <value>
-        ///     The identifier.
-        /// </value>
+        /// <value> The identifier. </value>
         public string Id {
             get { return _id; }
             set {
@@ -43,40 +33,19 @@ namespace packer_strategy.Models.Plan
             }
         }
 
-        /// <summary>
-        ///     Gets or sets the name.
-        /// </summary>
+        /// <summary>   Gets or sets the name. </summary>
         ///
-        /// <value>
-        ///     The name.
-        /// </value>
+        /// <value> The name. </value>
         public string Name { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the notes.
-        /// </summary>
+        /// <summary>   Gets or sets the notes. </summary>
         ///
-        /// <value>
-        ///     The notes.
-        /// </value>
+        /// <value> The notes. </value>
         public string Notes { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the Date/Time of the time.
-        /// </summary>
+        /// <summary>   Gets or sets the stages. </summary>
         ///
-        /// <value>
-        ///     The time.
-        /// </value>
-        public DateTime Time { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the stages.
-        /// </summary>
-        ///
-        /// <value>
-        ///     The stages.
-        /// </value>
+        /// <value> The stages. </value>
         public List<Stage> Stages { get; set; }
     }
 }
