@@ -464,10 +464,10 @@ namespace packer_strategy.Models.Plan
         /// <value> The external volume step. </value>
         public double ExternalVolumeStep { get; set; }
 
-        /// <summary>   Gets or sets the external pound ratio. </summary>
+        /// <summary>   Gets or sets the external length to breadth ratio. </summary>
         ///
-        /// <value> The external pound ratio. </value>
-        public double ExternalLBRatio { get; set; }
+        /// <value> The external length to breadth ratio. </value>
+        public double ExternalLengthToBreadthRatio { get; set; }
 
         /// <summary>   Gets or sets the external length to breadth ratio minimum. </summary>
         ///
@@ -484,10 +484,10 @@ namespace packer_strategy.Models.Plan
         /// <value> The external length to breadth ratio step. </value>
         public double ExternalLengthToBreadthRatioStep { get; set; }
 
-        /// <summary>   Gets or sets the external length to breadth ratio. </summary>
+        /// <summary>   Gets or sets the external length to height ratio. </summary>
         ///
-        /// <value> The external length to breadth ratio. </value>
-        public double ExternalLengthToBreadthRatio { get; set; }
+        /// <value> The external length to height ratio. </value>
+        public double ExternalLengthToHeightRatio { get; set; }
 
         /// <summary>   Gets or sets the external length to height ratio minimum. </summary>
         ///

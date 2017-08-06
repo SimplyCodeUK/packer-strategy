@@ -9,11 +9,6 @@ namespace packer_strategy.Models.Plan
     /// <summary>   A limit. </summary>
     public class Limit
     {
-        /// <summary>   Default constructor. </summary>
-        public Limit()
-        {
-        }
-
         /// <summary>   Gets or sets the identifier of the plan. </summary>
         ///
         /// <value> The identifier of the plan. </value>
@@ -78,6 +73,11 @@ namespace packer_strategy.Models.Plan
         ///
         /// <value> The quality code minimum. </value>
         public string QualityCodeMin { get; set; }
+
+        /// <summary>   Gets or sets the usage. </summary>
+        ///
+        /// <value> The usage. </value>
+        public Usage.Type Usage { get; set; }
 
         /// <summary>   Gets or sets a value indicating whether the inverted. </summary>
         ///
@@ -238,10 +238,5 @@ namespace packer_strategy.Models.Plan
         ///
         /// <value> The type of the costing. </value>
         public Cost.Type CostingType { get; set; }
-
-        /// <summary>   Gets or sets the usage. </summary>
-        ///
-        /// <value> The usage. </value>
-        public Usage.Type Usage { get; set; }
     }
 }
