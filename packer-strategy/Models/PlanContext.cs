@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace packer_strategy.Models
 {
+    /// <summary>   A plan context. </summary>
     public class PlanContext : DbContext
     {
         /// <summary>   Constructor. </summary>
