@@ -300,5 +300,54 @@ namespace packer_strategy_test
             Assert.IsInstanceOf<NotFoundResult>(result);
             Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundResult)result).StatusCode);
         }
+
+        /// <summary>   (Unit Test Method) posts a complex pan. </summary>
+        [Test]
+        public void PostComplexPan()
+        {
+            PlansController controller = new PlansController(_planRepository);
+            string          id = Guid.NewGuid().ToString();
+            Stage.Levels    level = Stage.Levels.MultiPack;
+
+            // Create a plan with a stage that has a limit
+            Stage stage = new Stage();
+            stage.Limits.Add(new Limit());
+            stage.Level = level;
+
+            Plan plan = new Plan();
+            plan.Stages.Add(stage);
+
+            plan.Id = id;
+
+            var result = controller.Post(plan);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<CreatedAtRouteResult>(result);
+            Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
+
+            // Get the plan
+            result = controller.Get(id);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<OkObjectResult>(result);
+
+            OkObjectResult objectResult = (OkObjectResult)result;
+            Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
+            Assert.IsInstanceOf<Plan>(objectResult.Value);
+
+            // Test the plan
+            plan = (Plan)objectResult.Value;
+            Assert.AreEqual(plan.Id, id);
+
+            // Test for one stage
+            Assert.AreEqual(plan.Stages.Count, 1);
+            Assert.AreEqual(plan.Stages[0].PlanId, id);
+            Assert.AreEqual(plan.Stages[0].Level, level);
+
+            // Test for one limit in the stage
+            Assert.AreEqual(plan.Stages[0].Limits.Count, 1);
+            Assert.AreEqual(plan.Stages[0].Limits[0].PlanId, id);
+            Assert.AreEqual(plan.Stages[0].Limits[0].Level, level);
+        }
     }
 }
