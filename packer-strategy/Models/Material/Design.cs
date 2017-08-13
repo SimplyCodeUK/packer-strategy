@@ -14,14 +14,12 @@ namespace packer_strategy.Models.Material
         {
             /// <summary>   An enum constant representing the Minimum option. </summary>
             Min,
-
             /// <summary>   An enum constant representing the fefco option. </summary>
-            Fefco=Min,
+            Fefco = Min,
             /// <summary>   An enum constant representing the ecma option. </summary>
             Ecma,
             /// <summary>   An enum constant representing the user option. </summary>
             User,
-
             /// <summary>   An enum constant representing the Maximum option. </summary>
             Max
         }

@@ -3,10 +3,11 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
-using System.Collections.Generic;
 
 namespace packer_strategy.Models.Plan
 {
+    using System.Collections.Generic;
+
     /// <summary>   A plan. </summary>
     public class Plan
     {
@@ -22,11 +23,14 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the identifier. </summary>
         ///
         /// <value> The identifier. </value>
-        public string Id {
+        public string Id
+        {
             get { return _id; }
-            set {
+            set
+            {
                 _id = value;
-                foreach (Stage stage in Stages) {
+                foreach (Stage stage in Stages)
+                {
                     stage.PlanId = value;
                 }
             }
@@ -35,16 +39,25 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the name. </summary>
         ///
         /// <value> The name. </value>
-        public string Name { get; set; }
+        public string Name
+        {
+            get; set;
+        }
 
         /// <summary>   Gets or sets the notes. </summary>
         ///
         /// <value> The notes. </value>
-        public string Notes { get; set; }
+        public string Notes
+        {
+            get; set;
+        }
 
         /// <summary>   Gets or sets the stages. </summary>
         ///
         /// <value> The stages. </value>
-        public List<Stage> Stages { get; set; }
+        public List<Stage> Stages
+        {
+            get; set;
+        }
     }
 }

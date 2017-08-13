@@ -3,18 +3,17 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
-using System;
-using System.Collections.Generic;
-using System.Net;
-
-using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc;
-
-using packer_strategy.Models;
-using packer_strategy.Models.Plan;
 
 namespace packer_strategy.Controllers
 {
+    using Microsoft.AspNetCore.JsonPatch;
+    using Microsoft.AspNetCore.Mvc;
+    using packer_strategy.Models;
+    using packer_strategy.Models.Plan;
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+
     /// <summary>   A controller for handling plans. </summary>
     [Route("api/[controller]")]
     public class PlansController : Controller
@@ -55,7 +54,7 @@ namespace packer_strategy.Controllers
         [ProducesResponseType(typeof(Plan), 200)]
         public IActionResult Get(string id)
         {
-            var           item = _repository.Find(id);
+            var item = _repository.Find(id);
             IActionResult result;
 
             if (item == null)
@@ -108,7 +107,7 @@ namespace packer_strategy.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] Plan value)
         {
-            Plan          item = _repository.Find(id);
+            Plan item = _repository.Find(id);
             IActionResult result;
 
             if (item != null)
@@ -159,7 +158,7 @@ namespace packer_strategy.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> update)
         {
-            var           item = _repository.Find(id);
+            var item = _repository.Find(id);
             IActionResult result;
 
             if (item != null)

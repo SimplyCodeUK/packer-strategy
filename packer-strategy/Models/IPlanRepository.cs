@@ -3,10 +3,11 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
-using System.Collections.Generic;
 
 namespace packer_strategy.Models
 {
+    using System.Collections.Generic;
+
     /// <summary>   Interface for plan repository. </summary>
     public interface IPlanRepository
     {

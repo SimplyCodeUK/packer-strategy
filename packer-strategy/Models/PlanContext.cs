@@ -3,10 +3,11 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
-using Microsoft.EntityFrameworkCore;
 
 namespace packer_strategy.Models
 {
+    using Microsoft.EntityFrameworkCore;
+
     /// <summary>   A plan context. </summary>
     public class PlanContext : DbContext
     {
@@ -21,12 +22,18 @@ namespace packer_strategy.Models
         /// <summary>   Gets or sets the plans. </summary>
         ///
         /// <value> The plans. </value>
-        public DbSet<Plan.Plan> Plans { get; set; }
+        public DbSet<Plan.Plan> Plans
+        {
+            get; set;
+        }
 
         /// <summary>   Gets or sets the stages. </summary>
         ///
         /// <value> The stages. </value>
-        public DbSet<Plan.Stage> Stages { get; set; }
+        public DbSet<Plan.Stage> Stages
+        {
+            get; set;
+        }
 
         /// <summary>
         ///     Override this method to further configure the model that was discovered by convention
