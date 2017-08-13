@@ -3,10 +3,11 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
-using Microsoft.EntityFrameworkCore;
 
 namespace packer_strategy.Models
 {
+    using Microsoft.EntityFrameworkCore;
+
     /// <summary>   A material context. </summary>
     public class MaterialContext : DbContext
     {
@@ -21,7 +22,10 @@ namespace packer_strategy.Models
         /// <summary>   Gets or sets the materials. </summary>
         ///
         /// <value> The materials. </value>
-        public DbSet<Material.Material> Materials { get; set; }
+        public DbSet<Material.Material> Materials
+        {
+            get; set;
+        }
 
         /// <summary>
         ///     Override this method to further configure the model that was discovered by convention

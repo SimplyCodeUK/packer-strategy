@@ -3,21 +3,20 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
-using System;
-using System.Collections.Generic;
-using System.Net;
-
-using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NUnit.Framework;
-
-using packer_strategy.Controllers;
-using packer_strategy.Models;
-using packer_strategy.Models.Plan;
 
 namespace packer_strategy_test
 {
+    using Microsoft.AspNetCore.JsonPatch;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using NUnit.Framework;
+    using packer_strategy.Controllers;
+    using packer_strategy.Models;
+    using packer_strategy.Models.Plan;
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+
     /// <summary>   (Unit Test Fixture) a controller for handling test plans. </summary>
     [TestFixture]
     public class TestPlansController
@@ -51,8 +50,8 @@ namespace packer_strategy_test
         public void Post()
         {
             PlansController controller = new PlansController(_repository);
-            Plan            item = new Plan { Id = Guid.NewGuid().ToString() };
-            var             result = controller.Post(item);
+            Plan item = new Plan { Id = Guid.NewGuid().ToString() };
+            var result = controller.Post(item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
@@ -64,7 +63,7 @@ namespace packer_strategy_test
         public void PostBad()
         {
             PlansController controller = new PlansController(_repository);
-            var             result = controller.Post(null);
+            var result = controller.Post(null);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -76,8 +75,8 @@ namespace packer_strategy_test
         public void PostAlreadyExists()
         {
             PlansController controller = new PlansController(_repository);
-            Plan            item = new Plan { Id = Guid.NewGuid().ToString() };
-            var             result = controller.Post(item);
+            Plan item = new Plan { Id = Guid.NewGuid().ToString() };
+            var result = controller.Post(item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
@@ -93,11 +92,11 @@ namespace packer_strategy_test
         [Test]
         public void GetAll()
         {
-            int             itemsToAdd = 10;
+            int itemsToAdd = 10;
             PlansController controller = new PlansController(_repository);
-            List<string>    ids = new List<string>();
+            List<string> ids = new List<string>();
 
-            for (int item=0; item < itemsToAdd; ++item)
+            for (int item = 0; item < itemsToAdd; ++item)
             {
                 string id = Guid.NewGuid().ToString();
 
@@ -122,11 +121,11 @@ namespace packer_strategy_test
         [Test]
         public void Get()
         {
-            string          startName = "A name";
-            string          startNote = "Some notes";
+            string startName = "A name";
+            string startNote = "Some notes";
             PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Plan            item = new Plan { Id = id, Name = startName, Notes = startNote };
+            string id = Guid.NewGuid().ToString();
+            Plan item = new Plan { Id = id, Name = startName, Notes = startNote };
 
             controller.Post(item);
 
@@ -150,8 +149,8 @@ namespace packer_strategy_test
         public void GetNotFound()
         {
             PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            var             result = controller.Get(id);
+            string id = Guid.NewGuid().ToString();
+            var result = controller.Get(id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundResult>(result);
@@ -162,11 +161,11 @@ namespace packer_strategy_test
         [Test]
         public void Put()
         {
-            string          startName = "A name";
-            string          putName = "B name";
+            string startName = "A name";
+            string putName = "B name";
             PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Plan            item = new Plan { Id = id, Name = startName };
+            string id = Guid.NewGuid().ToString();
+            Plan item = new Plan { Id = id, Name = startName };
 
             controller.Post(item);
 
@@ -194,9 +193,9 @@ namespace packer_strategy_test
         public void PutNotFound()
         {
             PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Plan            item = new Plan();
-            var             result = controller.Put(id, item);
+            string id = Guid.NewGuid().ToString();
+            Plan item = new Plan();
+            var result = controller.Put(id, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundResult>(result);
@@ -208,8 +207,8 @@ namespace packer_strategy_test
         public void Delete()
         {
             PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Plan            item = new Plan { Id = id };
+            string id = Guid.NewGuid().ToString();
+            Plan item = new Plan { Id = id };
 
             controller.Post(item);
 
@@ -225,8 +224,8 @@ namespace packer_strategy_test
         public void DeleteNotFound()
         {
             PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            var             result = controller.Delete(id);
+            string id = Guid.NewGuid().ToString();
+            var result = controller.Delete(id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundResult>(result);
@@ -237,12 +236,12 @@ namespace packer_strategy_test
         [Test]
         public void Patch()
         {
-            string          startName = "A name";
-            string          patchName = "B name";
-            string          startNote = "Some notes";
+            string startName = "A name";
+            string patchName = "B name";
+            string startNote = "Some notes";
             PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Plan            item = new Plan { Id = id, Name = startName, Notes = startNote };
+            string id = Guid.NewGuid().ToString();
+            Plan item = new Plan { Id = id, Name = startName, Notes = startNote };
 
             // Create a new plan
             controller.Post(item);
@@ -283,11 +282,11 @@ namespace packer_strategy_test
         [Test]
         public void PatchNotFound()
         {
-            string          startName = "A name";
-            string          patchName = "B name";
-            string          startNote = "Some notes";
+            string startName = "A name";
+            string patchName = "B name";
+            string startNote = "Some notes";
             PlansController controller = new PlansController(_repository);
-            Plan            item = new Plan { Id = Guid.NewGuid().ToString(), Name = startName, Notes = startNote };
+            Plan item = new Plan { Id = Guid.NewGuid().ToString(), Name = startName, Notes = startNote };
 
             controller.Post(item);
 
@@ -306,8 +305,8 @@ namespace packer_strategy_test
         public void PostComplexPan()
         {
             PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Stage.Levels    level = Stage.Levels.MultiPack;
+            string id = Guid.NewGuid().ToString();
+            Stage.Levels level = Stage.Levels.MultiPack;
 
             // Create a plan with a stage that has a limit
             Stage stage = new Stage();

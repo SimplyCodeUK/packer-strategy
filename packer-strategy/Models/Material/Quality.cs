@@ -14,7 +14,6 @@ namespace packer_strategy.Models.Material
         {
             /// <summary>   An enum constant representing the Minimum option. </summary>
             Min,
-
             /// <summary>   An enum constant representing the Maximum option. </summary>
             Max
         }

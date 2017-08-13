@@ -3,11 +3,12 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
-using System.Collections.Generic;
-using System.Linq;
 
 namespace packer_strategy.Models
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>   A material repository. </summary>
     public class MaterialRepository : IMaterialRepository
     {
@@ -51,7 +52,7 @@ namespace packer_strategy.Models
         /// <returns>   A Material.Material. </returns>
         public Material.Material Find(Material.Material.Type type, string key)
         {
-            return _context.Materials.FirstOrDefault(t => t.IdType==type && t.Id == key);
+            return _context.Materials.FirstOrDefault(t => t.IdType == type && t.Id == key);
         }
 
         /// <summary>   Removes the given key. </summary>

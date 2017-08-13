@@ -3,18 +3,17 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
-using System;
-using System.Collections.Generic;
-using System.Net;
-
-using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc;
-
-using packer_strategy.Models;
-using packer_strategy.Models.Material;
 
 namespace packer_strategy.Controllers
 {
+    using Microsoft.AspNetCore.JsonPatch;
+    using Microsoft.AspNetCore.Mvc;
+    using packer_strategy.Models;
+    using packer_strategy.Models.Material;
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+
     /// <summary>   A controller for handling materials. </summary>
     [Route("api/[controller]")]
     public class MaterialsController : Controller
@@ -56,7 +55,7 @@ namespace packer_strategy.Controllers
         [ProducesResponseType(typeof(Material), 200)]
         public IActionResult Get(Material.Type type, string id)
         {
-            var           item = _repository.Find(type, id);
+            var item = _repository.Find(type, id);
             IActionResult result;
 
             if (item == null)
@@ -85,7 +84,7 @@ namespace packer_strategy.Controllers
                 try
                 {
                     _repository.Add(value);
-                    result = CreatedAtRoute("GetMaterial", new { type=value.IdType, id = value.Id }, value);
+                    result = CreatedAtRoute("GetMaterial", new { type = value.IdType, id = value.Id }, value);
                 }
                 catch (Exception)
                 {
@@ -110,7 +109,7 @@ namespace packer_strategy.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(Material.Type type, string id, [FromBody] Material value)
         {
-            Material      item = _repository.Find(type, id);
+            Material item = _repository.Find(type, id);
             IActionResult result;
 
             if (item != null)
@@ -163,7 +162,7 @@ namespace packer_strategy.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(Material.Type type, string id, [FromBody]JsonPatchDocument<Material> update)
         {
-            var           item = _repository.Find(type, id);
+            var item = _repository.Find(type, id);
             IActionResult result;
 
             if (item != null)

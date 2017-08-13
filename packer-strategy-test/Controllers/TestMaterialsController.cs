@@ -3,21 +3,20 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
-using System;
-using System.Collections.Generic;
-using System.Net;
-
-using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NUnit.Framework;
-
-using packer_strategy.Controllers;
-using packer_strategy.Models;
-using packer_strategy.Models.Material;
 
 namespace packer_strategy_test
 {
+    using Microsoft.AspNetCore.JsonPatch;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using NUnit.Framework;
+    using packer_strategy.Controllers;
+    using packer_strategy.Models;
+    using packer_strategy.Models.Material;
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+
     /// <summary>   (Unit Test Fixture) a controller for handling test materials. </summary>
     [TestFixture]
     public class TestMaterialsController
@@ -51,8 +50,8 @@ namespace packer_strategy_test
         public void Post()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material            item = new Material { Id = Guid.NewGuid().ToString() };
-            var                 result = controller.Post(item);
+            Material item = new Material { Id = Guid.NewGuid().ToString() };
+            var result = controller.Post(item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
@@ -64,7 +63,7 @@ namespace packer_strategy_test
         public void PostBad()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            var                 result = controller.Post(null);
+            var result = controller.Post(null);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -76,8 +75,8 @@ namespace packer_strategy_test
         public void PostAlreadyExists()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material            item = new Material { Id = Guid.NewGuid().ToString() };
-            var                 result = controller.Post(item);
+            Material item = new Material { Id = Guid.NewGuid().ToString() };
+            var result = controller.Post(item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
@@ -93,17 +92,17 @@ namespace packer_strategy_test
         [Test]
         public void GetAll()
         {
-            int                 itemsToAdd = 10;
+            int itemsToAdd = 10;
             MaterialsController controller = new MaterialsController(_repository);
-            List<string>        ids = new List<string>();
-            Material.Type       type = Material.Type.Bottle;
+            List<string> ids = new List<string>();
+            Material.Type type = Material.Type.Bottle;
 
             for (int item = 0; item < itemsToAdd; ++item)
             {
                 string id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
-                controller.Post(new Material { IdType= type, Id = id });
+                controller.Post(new Material { IdType = type, Id = id });
             }
 
             IEnumerable<Material> items = controller.Get(type);
@@ -111,7 +110,7 @@ namespace packer_strategy_test
             Assert.IsNotNull(items);
             foreach (Material item in items)
             {
-                if (ids.Contains(item.Id) && item.IdType == type )
+                if (ids.Contains(item.Id) && item.IdType == type)
                 {
                     ids.Remove(item.Id);
                 }
@@ -123,12 +122,12 @@ namespace packer_strategy_test
         [Test]
         public void Get()
         {
-            string              startName = "A name";
-            string              startNote = "Some notes";
+            string startName = "A name";
+            string startNote = "Some notes";
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type       type = Material.Type.Can;
-            string              id = Guid.NewGuid().ToString();
-            Material            item = new Material { IdType = type, Id = id, Name = startName, Notes = startNote };
+            Material.Type type = Material.Type.Can;
+            string id = Guid.NewGuid().ToString();
+            Material item = new Material { IdType = type, Id = id, Name = startName, Notes = startNote };
 
             controller.Post(item);
 
@@ -153,9 +152,9 @@ namespace packer_strategy_test
         public void GetNotFound()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type       type = Material.Type.Cap;
-            string              id = Guid.NewGuid().ToString();
-            var                 result = controller.Get(type, id);
+            Material.Type type = Material.Type.Cap;
+            string id = Guid.NewGuid().ToString();
+            var result = controller.Get(type, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundResult>(result);
@@ -166,12 +165,12 @@ namespace packer_strategy_test
         [Test]
         public void Put()
         {
-            string              startName = "A name";
-            string              putName = "B name";
+            string startName = "A name";
+            string putName = "B name";
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type       type = Material.Type.Cap;
-            string              id = Guid.NewGuid().ToString();
-            Material            item = new Material { IdType = type, Id = id,  Name = startName };
+            Material.Type type = Material.Type.Cap;
+            string id = Guid.NewGuid().ToString();
+            Material item = new Material { IdType = type, Id = id, Name = startName };
 
             controller.Post(item);
 
@@ -200,10 +199,10 @@ namespace packer_strategy_test
         public void PutNotFound()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type       type = Material.Type.Carton;
-            string              id = Guid.NewGuid().ToString();
-            Material            item = new Material();
-            var                 result = controller.Put(type, id, item);
+            Material.Type type = Material.Type.Carton;
+            string id = Guid.NewGuid().ToString();
+            Material item = new Material();
+            var result = controller.Put(type, id, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundResult>(result);
@@ -215,9 +214,9 @@ namespace packer_strategy_test
         public void Delete()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type       type = Material.Type.Collar;
-            string              id = Guid.NewGuid().ToString();
-            Material            item = new Material { IdType = type, Id = id };
+            Material.Type type = Material.Type.Collar;
+            string id = Guid.NewGuid().ToString();
+            Material item = new Material { IdType = type, Id = id };
 
             controller.Post(item);
 
@@ -233,9 +232,9 @@ namespace packer_strategy_test
         public void DeleteNotFound()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type       type = Material.Type.Collar;
-            string              id = Guid.NewGuid().ToString();
-            var                 result = controller.Delete(type, id);
+            Material.Type type = Material.Type.Collar;
+            string id = Guid.NewGuid().ToString();
+            var result = controller.Delete(type, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundResult>(result);
@@ -246,13 +245,13 @@ namespace packer_strategy_test
         [Test]
         public void Patch()
         {
-            string              startName = "A name";
-            string              patchName = "B name";
-            string              startNote = "Some notes";
+            string startName = "A name";
+            string patchName = "B name";
+            string startNote = "Some notes";
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type       type = Material.Type.Crate;
-            string              id = Guid.NewGuid().ToString();
-            Material            item = new Material { IdType = type, Id = id, Name = startName, Notes = startNote };
+            Material.Type type = Material.Type.Crate;
+            string id = Guid.NewGuid().ToString();
+            Material item = new Material { IdType = type, Id = id, Name = startName, Notes = startNote };
 
             // Create a new material
             controller.Post(item);
@@ -295,13 +294,13 @@ namespace packer_strategy_test
         [Test]
         public void PatchNotFound()
         {
-            string              startName = "A name";
-            string              patchName = "B name";
-            string              startNote = "Some notes";
+            string startName = "A name";
+            string patchName = "B name";
+            string startNote = "Some notes";
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type       type = Material.Type.Crate;
-            string              id = Guid.NewGuid().ToString();
-            Material            item = new Material { IdType = type, Id = id, Name = startName, Notes = startNote };
+            Material.Type type = Material.Type.Crate;
+            string id = Guid.NewGuid().ToString();
+            Material item = new Material { IdType = type, Id = id, Name = startName, Notes = startNote };
 
             controller.Post(item);
 
@@ -320,11 +319,11 @@ namespace packer_strategy_test
         public void PostComplexPan()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type       type = Material.Type.Crate;
-            string              id = Guid.NewGuid().ToString();
+            Material.Type type = Material.Type.Crate;
+            string id = Guid.NewGuid().ToString();
 
             // Create a material with a costing
-            Costing  costing = new Costing();
+            Costing costing = new Costing();
             Material item = new Material();
             item.Costings.Add(costing);
 

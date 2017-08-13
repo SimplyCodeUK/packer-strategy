@@ -3,13 +3,13 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
-using System.IO;
-
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 
 namespace packer_strategy
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using System.IO;
+
     /// <summary>   A program. </summary>
     public class Program
     {

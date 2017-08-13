@@ -3,17 +3,17 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 //
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-
-using packer_strategy.Models;
 
 namespace packer_strategy
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
+    using packer_strategy.Models;
+
     /// <summary>   A startup. </summary>
     public class Startup
     {
@@ -33,7 +33,10 @@ namespace packer_strategy
         /// <summary>   Gets the configuration. </summary>
         ///
         /// <value> The configuration. </value>
-        public IConfigurationRoot Configuration { get; }
+        public IConfigurationRoot Configuration
+        {
+            get;
+        }
 
         /// <summary>   Configure services. </summary>
         ///
