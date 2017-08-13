@@ -14,34 +14,34 @@ using NUnit.Framework;
 
 using packer_strategy.Controllers;
 using packer_strategy.Models;
-using packer_strategy.Models.Plan;
+using packer_strategy.Models.Material;
 
 namespace packer_strategy_test
 {
-    /// <summary>   (Unit Test Fixture) a controller for handling test plans. </summary>
+    /// <summary>   (Unit Test Fixture) a controller for handling test materials. </summary>
     [TestFixture]
-    public class TestPlansController
+    public class TestMaterialsController
     {
-        /// <summary>   The plan repository. </summary>
-        private PlanRepository _repository;
+        /// <summary>   The repository. </summary>
+        private MaterialRepository _repository;
 
         /// <summary>   Tests before. </summary>
         [SetUp]
         public void BeforeTest()
         {
-            DbContextOptionsBuilder<PlanContext> builder = new DbContextOptionsBuilder<PlanContext>();
+            DbContextOptionsBuilder<MaterialContext> builder = new DbContextOptionsBuilder<MaterialContext>();
             builder.UseInMemoryDatabase();
 
-            PlanContext context = new PlanContext(builder.Options);
+            MaterialContext context = new MaterialContext(builder.Options);
 
-            _repository = new PlanRepository(context);
+            _repository = new MaterialRepository(context);
         }
 
         /// <summary>   (Unit Test Method) creates this object. </summary>
         [Test]
         public void Create()
         {
-            PlansController controller = new PlansController(_repository);
+            MaterialsController controller = new MaterialsController(_repository);
 
             Assert.IsNotNull(controller);
         }
@@ -50,9 +50,9 @@ namespace packer_strategy_test
         [Test]
         public void Post()
         {
-            PlansController controller = new PlansController(_repository);
-            Plan            item = new Plan { Id = Guid.NewGuid().ToString() };
-            var             result = controller.Post(item);
+            MaterialsController controller = new MaterialsController(_repository);
+            Material            item = new Material { Id = Guid.NewGuid().ToString() };
+            var                 result = controller.Post(item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
@@ -63,8 +63,8 @@ namespace packer_strategy_test
         [Test]
         public void PostBad()
         {
-            PlansController controller = new PlansController(_repository);
-            var             result = controller.Post(null);
+            MaterialsController controller = new MaterialsController(_repository);
+            var                 result = controller.Post(null);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -75,9 +75,9 @@ namespace packer_strategy_test
         [Test]
         public void PostAlreadyExists()
         {
-            PlansController controller = new PlansController(_repository);
-            Plan            item = new Plan { Id = Guid.NewGuid().ToString() };
-            var             result = controller.Post(item);
+            MaterialsController controller = new MaterialsController(_repository);
+            Material            item = new Material { Id = Guid.NewGuid().ToString() };
+            var                 result = controller.Post(item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
@@ -93,24 +93,25 @@ namespace packer_strategy_test
         [Test]
         public void GetAll()
         {
-            int             itemsToAdd = 10;
-            PlansController controller = new PlansController(_repository);
-            List<string>    ids = new List<string>();
+            int                 itemsToAdd = 10;
+            MaterialsController controller = new MaterialsController(_repository);
+            List<string>        ids = new List<string>();
+            Material.Type       type = Material.Type.Bottle;
 
-            for (int item=0; item < itemsToAdd; ++item)
+            for (int item = 0; item < itemsToAdd; ++item)
             {
                 string id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
-                controller.Post(new Plan { Id = id });
+                controller.Post(new Material { IdType= type, Id = id });
             }
 
-            IEnumerable<Plan> items = controller.Get();
+            IEnumerable<Material> items = controller.Get(type);
 
             Assert.IsNotNull(items);
-            foreach (Plan item in items)
+            foreach (Material item in items)
             {
-                if (ids.Contains(item.Id))
+                if (ids.Contains(item.Id) && item.IdType == type )
                 {
                     ids.Remove(item.Id);
                 }
@@ -122,24 +123,26 @@ namespace packer_strategy_test
         [Test]
         public void Get()
         {
-            string          startName = "A name";
-            string          startNote = "Some notes";
-            PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Plan            item = new Plan { Id = id, Name = startName, Notes = startNote };
+            string              startName = "A name";
+            string              startNote = "Some notes";
+            MaterialsController controller = new MaterialsController(_repository);
+            Material.Type       type = Material.Type.Can;
+            string              id = Guid.NewGuid().ToString();
+            Material            item = new Material { IdType = type, Id = id, Name = startName, Notes = startNote };
 
             controller.Post(item);
 
-            var result = controller.Get(id);
+            var result = controller.Get(type, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Plan>(objectResult.Value);
+            Assert.IsInstanceOf<Material>(objectResult.Value);
 
-            item = (Plan)objectResult.Value;
+            item = (Material)objectResult.Value;
+            Assert.AreEqual(item.IdType, type);
             Assert.AreEqual(item.Id, id);
             Assert.AreEqual(item.Name, startName);
             Assert.AreEqual(item.Notes, startNote);
@@ -149,9 +152,10 @@ namespace packer_strategy_test
         [Test]
         public void GetNotFound()
         {
-            PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            var             result = controller.Get(id);
+            MaterialsController controller = new MaterialsController(_repository);
+            Material.Type       type = Material.Type.Cap;
+            string              id = Guid.NewGuid().ToString();
+            var                 result = controller.Get(type, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundResult>(result);
@@ -162,29 +166,31 @@ namespace packer_strategy_test
         [Test]
         public void Put()
         {
-            string          startName = "A name";
-            string          putName = "B name";
-            PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Plan            item = new Plan { Id = id, Name = startName };
+            string              startName = "A name";
+            string              putName = "B name";
+            MaterialsController controller = new MaterialsController(_repository);
+            Material.Type       type = Material.Type.Cap;
+            string              id = Guid.NewGuid().ToString();
+            Material            item = new Material { IdType = type, Id = id,  Name = startName };
 
             controller.Post(item);
 
             item.Name = putName;
-            var result = controller.Put(id, item);
+            var result = controller.Put(type, id, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkResult>(result);
             Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
 
-            // Get the plan and check the returned object has the new Name
-            result = controller.Get(id);
+            // Get the material and check the returned object has the new Name
+            result = controller.Get(type, id);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Plan>(objectResult.Value);
-            item = (Plan)objectResult.Value;
+            Assert.IsInstanceOf<Material>(objectResult.Value);
+            item = (Material)objectResult.Value;
+            Assert.AreEqual(item.IdType, type);
             Assert.AreEqual(item.Id, id);
             Assert.AreEqual(item.Name, putName);
         }
@@ -193,10 +199,11 @@ namespace packer_strategy_test
         [Test]
         public void PutNotFound()
         {
-            PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Plan            item = new Plan();
-            var             result = controller.Put(id, item);
+            MaterialsController controller = new MaterialsController(_repository);
+            Material.Type       type = Material.Type.Carton;
+            string              id = Guid.NewGuid().ToString();
+            Material            item = new Material();
+            var                 result = controller.Put(type, id, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundResult>(result);
@@ -207,13 +214,14 @@ namespace packer_strategy_test
         [Test]
         public void Delete()
         {
-            PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Plan            item = new Plan { Id = id };
+            MaterialsController controller = new MaterialsController(_repository);
+            Material.Type       type = Material.Type.Collar;
+            string              id = Guid.NewGuid().ToString();
+            Material            item = new Material { IdType = type, Id = id };
 
             controller.Post(item);
 
-            var result = controller.Delete(id);
+            var result = controller.Delete(type, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkResult>(result);
@@ -224,9 +232,10 @@ namespace packer_strategy_test
         [Test]
         public void DeleteNotFound()
         {
-            PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            var             result = controller.Delete(id);
+            MaterialsController controller = new MaterialsController(_repository);
+            Material.Type       type = Material.Type.Collar;
+            string              id = Guid.NewGuid().ToString();
+            var                 result = controller.Delete(type, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundResult>(result);
@@ -237,21 +246,22 @@ namespace packer_strategy_test
         [Test]
         public void Patch()
         {
-            string          startName = "A name";
-            string          patchName = "B name";
-            string          startNote = "Some notes";
-            PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Plan            item = new Plan { Id = id, Name = startName, Notes = startNote };
+            string              startName = "A name";
+            string              patchName = "B name";
+            string              startNote = "Some notes";
+            MaterialsController controller = new MaterialsController(_repository);
+            Material.Type       type = Material.Type.Crate;
+            string              id = Guid.NewGuid().ToString();
+            Material            item = new Material { IdType = type, Id = id, Name = startName, Notes = startNote };
 
-            // Create a new plan
+            // Create a new material
             controller.Post(item);
 
-            // Patch the plan with a new name
-            JsonPatchDocument<Plan> patch = new JsonPatchDocument<Plan>();
+            // Patch the material with a new name
+            JsonPatchDocument<Material> patch = new JsonPatchDocument<Material>();
             patch.Replace(e => e.Name, patchName);
 
-            var result = controller.Patch(id, patch);
+            var result = controller.Patch(type, id, patch);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
@@ -259,21 +269,23 @@ namespace packer_strategy_test
             // Check the returned object from the patch has the same Note but different Name
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Plan>(objectResult.Value);
+            Assert.IsInstanceOf<Material>(objectResult.Value);
 
-            item = (Plan)objectResult.Value;
+            item = (Material)objectResult.Value;
+            Assert.AreEqual(item.IdType, type);
             Assert.AreEqual(item.Id, id);
             Assert.AreEqual(item.Name, patchName);
             Assert.AreEqual(item.Notes, startNote);
 
-            // Get the plan and check the returned object has the same Note and new Name
-            result = controller.Get(id);
+            // Get the material and check the returned object has the same Note and new Name
+            result = controller.Get(type, id);
             Assert.IsInstanceOf<OkObjectResult>(result);
             objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Plan>(objectResult.Value);
+            Assert.IsInstanceOf<Material>(objectResult.Value);
 
-            item = (Plan)objectResult.Value;
+            item = (Material)objectResult.Value;
+            Assert.AreEqual(item.IdType, type);
             Assert.AreEqual(item.Id, id);
             Assert.AreEqual(item.Name, patchName);
             Assert.AreEqual(item.Notes, startNote);
@@ -283,40 +295,40 @@ namespace packer_strategy_test
         [Test]
         public void PatchNotFound()
         {
-            string          startName = "A name";
-            string          patchName = "B name";
-            string          startNote = "Some notes";
-            PlansController controller = new PlansController(_repository);
-            Plan            item = new Plan { Id = Guid.NewGuid().ToString(), Name = startName, Notes = startNote };
+            string              startName = "A name";
+            string              patchName = "B name";
+            string              startNote = "Some notes";
+            MaterialsController controller = new MaterialsController(_repository);
+            Material.Type       type = Material.Type.Crate;
+            string              id = Guid.NewGuid().ToString();
+            Material            item = new Material { IdType = type, Id = id, Name = startName, Notes = startNote };
 
             controller.Post(item);
 
-            JsonPatchDocument<Plan> patch = new JsonPatchDocument<Plan>();
+            JsonPatchDocument<Material> patch = new JsonPatchDocument<Material>();
             patch.Replace(e => e.Name, patchName);
 
-            var result = controller.Patch(Guid.NewGuid().ToString(), patch);
+            var result = controller.Patch(type, Guid.NewGuid().ToString(), patch);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundResult>(result);
             Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundResult)result).StatusCode);
         }
 
-        /// <summary>   (Unit Test Method) posts a complex pan. </summary>
+        /// <summary>   (Unit Test Method) posts the complex pan. </summary>
         [Test]
         public void PostComplexPan()
         {
-            PlansController controller = new PlansController(_repository);
-            string          id = Guid.NewGuid().ToString();
-            Stage.Levels    level = Stage.Levels.MultiPack;
+            MaterialsController controller = new MaterialsController(_repository);
+            Material.Type       type = Material.Type.Crate;
+            string              id = Guid.NewGuid().ToString();
 
-            // Create a plan with a stage that has a limit
-            Stage stage = new Stage();
-            stage.Limits.Add(new Limit());
-            stage.Level = level;
+            // Create a material with a costing
+            Costing  costing = new Costing();
+            Material item = new Material();
+            item.Costings.Add(costing);
 
-            Plan item = new Plan();
-            item.Stages.Add(stage);
-
+            item.IdType = type;
             item.Id = id;
 
             var result = controller.Post(item);
@@ -325,29 +337,20 @@ namespace packer_strategy_test
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
             Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
 
-            // Get the plan
-            result = controller.Get(id);
+            // Get the material
+            result = controller.Get(type, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Plan>(objectResult.Value);
+            Assert.IsInstanceOf<Material>(objectResult.Value);
 
-            // Test the plan
-            item = (Plan)objectResult.Value;
+            // Test the material
+            item = (Material)objectResult.Value;
+            Assert.AreEqual(item.IdType, type);
             Assert.AreEqual(item.Id, id);
-
-            // Test for one stage
-            Assert.AreEqual(item.Stages.Count, 1);
-            Assert.AreEqual(item.Stages[0].PlanId, id);
-            Assert.AreEqual(item.Stages[0].Level, level);
-
-            // Test for one limit in the stage
-            Assert.AreEqual(item.Stages[0].Limits.Count, 1);
-            Assert.AreEqual(item.Stages[0].Limits[0].PlanId, id);
-            Assert.AreEqual(item.Stages[0].Limits[0].Level, level);
         }
     }
 }

@@ -11,21 +11,21 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 using packer_strategy.Models;
-using packer_strategy.Models.Plan;
+using packer_strategy.Models.Material;
 
 namespace packer_strategy.Controllers
 {
-    /// <summary>   A controller for handling plans. </summary>
+    /// <summary>   A controller for handling materials. </summary>
     [Route("api/[controller]")]
-    public class PlansController : Controller
+    public class MaterialsController : Controller
     {
         /// <summary>   The repository. </summary>
-        private readonly IPlanRepository _repository;
+        private readonly IMaterialRepository _repository;
 
         /// <summary>   Constructor. </summary>
         ///
         /// <param name="repository">   The repository. </param>
-        public PlansController(IPlanRepository repository)
+        public MaterialsController(IMaterialRepository repository)
         {
             _repository = repository;
         }
@@ -37,9 +37,9 @@ namespace packer_strategy.Controllers
         ///
         /// <returns>   An enumerator that allows foreach to be used to process the matched items. </returns>
         [HttpGet]
-        public IEnumerable<Plan> Get()
+        public IEnumerable<Material> Get(Material.Type type)
         {
-            return _repository.GetAll();
+            return _repository.GetAll(type);
         }
 
         /// <summary>
@@ -47,15 +47,16 @@ namespace packer_strategy.Controllers
         ///     identifier.
         /// </summary>
         ///
+        /// <param name="type"> The type. </param>
         /// <param name="id">   The identifier. </param>
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpGet("{id}")]
-        [Route("{id}", Name = "GetPlan")]
-        [ProducesResponseType(typeof(Plan), 200)]
-        public IActionResult Get(string id)
+        [Route("{id}", Name = "GetMaterial")]
+        [ProducesResponseType(typeof(Material), 200)]
+        public IActionResult Get(Material.Type type, string id)
         {
-            var           item = _repository.Find(id);
+            var           item = _repository.Find(type, id);
             IActionResult result;
 
             if (item == null)
@@ -75,7 +76,7 @@ namespace packer_strategy.Controllers
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPost]
-        public IActionResult Post([FromBody] Plan value)
+        public IActionResult Post([FromBody] Material value)
         {
             IActionResult result;
 
@@ -84,7 +85,7 @@ namespace packer_strategy.Controllers
                 try
                 {
                     _repository.Add(value);
-                    result = CreatedAtRoute("GetPlan", new { id = value.Id }, value);
+                    result = CreatedAtRoute("GetMaterial", new { type=value.IdType, id = value.Id }, value);
                 }
                 catch (Exception)
                 {
@@ -101,14 +102,15 @@ namespace packer_strategy.Controllers
 
         /// <summary>   Puts. </summary>
         ///
+        /// <param name="type">     The type. </param>
         /// <param name="id">       The identifier. </param>
         /// <param name="value">    The value. </param>
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPut("{id}")]
-        public IActionResult Put(string id, [FromBody] Plan value)
+        public IActionResult Put(Material.Type type, string id, [FromBody] Material value)
         {
-            Plan          item = _repository.Find(id);
+            Material      item = _repository.Find(type, id);
             IActionResult result;
 
             if (item != null)
@@ -130,17 +132,18 @@ namespace packer_strategy.Controllers
 
         /// <summary>   Deletes the given ID. </summary>
         ///
+        /// <param name="type"> The type. </param>
         /// <param name="id">   The identifier. </param>
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpDelete("{id}")]
-        public IActionResult Delete(string id)
+        public IActionResult Delete(Material.Type type, string id)
         {
             IActionResult result;
 
-            if (_repository.Find(id) != null)
+            if (_repository.Find(type, id) != null)
             {
-                _repository.Remove(id);
+                _repository.Remove(type, id);
                 result = Ok();
             }
             else
@@ -152,14 +155,15 @@ namespace packer_strategy.Controllers
 
         /// <summary>   Patches. </summary>
         ///
+        /// <param name="type">     The type. </param>
         /// <param name="id">       The identifier. </param>
         /// <param name="update">   The update. </param>
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPatch("{id}")]
-        public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> update)
+        public IActionResult Patch(Material.Type type, string id, [FromBody]JsonPatchDocument<Material> update)
         {
-            var           item = _repository.Find(id);
+            var           item = _repository.Find(type, id);
             IActionResult result;
 
             if (item != null)
