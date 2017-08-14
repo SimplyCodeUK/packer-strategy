@@ -21,6 +21,7 @@ namespace packer_strategy.Controllers
     {
         /// <summary>   The repository. </summary>
         private readonly IMaterialRepository _repository;
+        private readonly List<string> _types;
 
         /// <summary>   Constructor. </summary>
         ///
@@ -28,6 +29,11 @@ namespace packer_strategy.Controllers
         public MaterialsController(IMaterialRepository repository)
         {
             _repository = repository;
+            _types = new List<string>();
+            for (Material.Type type = Material.Type.Min; type < Material.Type.Max; ++type)
+            {
+                _types.Add(Attributes.ShortName(type));
+            }
         }
 
         /// <summary>   (An Action that handles HTTP GET requests) gets the get. </summary>
@@ -36,12 +42,7 @@ namespace packer_strategy.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            List<string> types = new List<string>();
-            for (Material.Type type = Material.Type.Min; type < Material.Type.Max; ++type)
-            {
-                types.Add(Attributes.ShortName(type));
-            }
-            return Ok(types);
+            return Ok(_types);
         }
 
         /// <summary>
