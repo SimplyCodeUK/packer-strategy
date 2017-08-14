@@ -11,7 +11,6 @@ namespace packer_strategy.Controllers
     using packer_strategy.Models;
     using packer_strategy.Models.Plan;
     using System;
-    using System.Collections.Generic;
     using System.Net;
 
     /// <summary>   A controller for handling plans. </summary>
@@ -29,16 +28,13 @@ namespace packer_strategy.Controllers
             _repository = repository;
         }
 
-        /// <summary>
-        ///     (An Action that handles HTTP GET requests) enumerates the items in this collection that
-        ///     meet given criteria.
-        /// </summary>
+        /// <summary>   (An Action that handles HTTP GET requests) gets the get. </summary>
         ///
-        /// <returns>   An enumerator that allows foreach to be used to process the matched items. </returns>
+        /// <returns>   An IActionResult. </returns>
         [HttpGet]
-        public IEnumerable<Plan> Get()
+        public IActionResult Get()
         {
-            return _repository.GetAll();
+            return Ok(_repository.GetAll());
         }
 
         /// <summary>
