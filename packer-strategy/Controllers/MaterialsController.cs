@@ -8,6 +8,7 @@ namespace packer_strategy.Controllers
 {
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
+    using packer_strategy.Helpers;
     using packer_strategy.Models;
     using packer_strategy.Models.Material;
     using System;
@@ -29,16 +30,32 @@ namespace packer_strategy.Controllers
             _repository = repository;
         }
 
+        /// <summary>   (An Action that handles HTTP GET requests) gets the get. </summary>
+        ///
+        /// <returns>   An IActionResult. </returns>
+        [HttpGet]
+        public IActionResult Get()
+        {
+            List<string> types = new List<string>();
+            for (Material.Type type = Material.Type.Min; type < Material.Type.Max; ++type)
+            {
+                types.Add(Attributes.ShortName(type));
+            }
+            return Ok(types);
+        }
+
         /// <summary>
         ///     (An Action that handles HTTP GET requests) enumerates the items in this collection that
         ///     meet given criteria.
         /// </summary>
         ///
+        /// <param name="type"> The type. </param>
+        ///
         /// <returns>   An enumerator that allows foreach to be used to process the matched items. </returns>
-        [HttpGet]
-        public IEnumerable<Material> Get(Material.Type type)
+        [HttpGet("{type}")]
+        public IActionResult Get(Material.Type type)
         {
-            return _repository.GetAll(type);
+            return Ok(_repository.GetAll(type));
         }
 
         /// <summary>
@@ -50,8 +67,8 @@ namespace packer_strategy.Controllers
         /// <param name="id">   The identifier. </param>
         ///
         /// <returns>   An IActionResult. </returns>
-        [HttpGet("{id}")]
-        [Route("{id}", Name = "GetMaterial")]
+        [HttpGet("{type}/{id}")]
+        [Route("{type}/{id}", Name = "GetMaterial")]
         [ProducesResponseType(typeof(Material), 200)]
         public IActionResult Get(Material.Type type, string id)
         {
@@ -71,11 +88,12 @@ namespace packer_strategy.Controllers
 
         /// <summary>   (An Action that handles HTTP POST requests) post this message. </summary>
         ///
+        /// <param name="type">     The type. </param>
         /// <param name="value">    The value. </param>
         ///
         /// <returns>   An IActionResult. </returns>
-        [HttpPost]
-        public IActionResult Post([FromBody] Material value)
+        [HttpPost("{type}")]
+        public IActionResult Post(Material.Type type, [FromBody] Material value)
         {
             IActionResult result;
 
@@ -83,6 +101,7 @@ namespace packer_strategy.Controllers
             {
                 try
                 {
+                    value.IdType = type;
                     _repository.Add(value);
                     result = CreatedAtRoute("GetMaterial", new { type = value.IdType, id = value.Id }, value);
                 }
@@ -106,7 +125,7 @@ namespace packer_strategy.Controllers
         /// <param name="value">    The value. </param>
         ///
         /// <returns>   An IActionResult. </returns>
-        [HttpPut("{id}")]
+        [HttpPut("{type}/{id}")]
         public IActionResult Put(Material.Type type, string id, [FromBody] Material value)
         {
             Material item = _repository.Find(type, id);
@@ -135,7 +154,7 @@ namespace packer_strategy.Controllers
         /// <param name="id">   The identifier. </param>
         ///
         /// <returns>   An IActionResult. </returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{type}/{id}")]
         public IActionResult Delete(Material.Type type, string id)
         {
             IActionResult result;
@@ -159,7 +178,7 @@ namespace packer_strategy.Controllers
         /// <param name="update">   The update. </param>
         ///
         /// <returns>   An IActionResult. </returns>
-        [HttpPatch("{id}")]
+        [HttpPatch("{type}/{id}")]
         public IActionResult Patch(Material.Type type, string id, [FromBody]JsonPatchDocument<Material> update)
         {
             var item = _repository.Find(type, id);

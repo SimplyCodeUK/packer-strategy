@@ -104,9 +104,16 @@ namespace packer_strategy_test
                 controller.Post(new Plan { Id = id });
             }
 
-            IEnumerable<Plan> items = controller.Get();
+            IActionResult result = controller.Get();
 
-            Assert.IsNotNull(items);
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<OkObjectResult>(result);
+
+            OkObjectResult objectResult = (OkObjectResult)result;
+            Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
+            Assert.IsInstanceOf<IEnumerable<Plan>>(objectResult.Value);
+
+            IEnumerable<Plan> items = (IEnumerable<Plan>)objectResult.Value;
             foreach (Plan item in items)
             {
                 if (ids.Contains(item.Id))
