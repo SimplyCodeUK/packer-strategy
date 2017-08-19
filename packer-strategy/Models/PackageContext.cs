@@ -49,7 +49,11 @@ namespace packer_strategy.Models
             modelBuilder.Entity<Package.Package>()
                 .HasKey(c => c.Id);
             modelBuilder.Entity<Package.Costing>()
-                .HasKey(c => new { c.PackageId, c.Index });
+                .HasKey(c => new { c.OwnerId, c.Index });
+            modelBuilder.Entity<Package.Stage>()
+                .HasKey(c => new { c.OwnerId, c.Level });
+            modelBuilder.Entity<Plan.Limit>()
+                .HasKey(c => new { c.OwnerId, c.StageLevel, c.Index });
         }
     }
 }

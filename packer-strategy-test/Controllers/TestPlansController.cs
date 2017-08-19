@@ -347,13 +347,13 @@ namespace packer_strategy_test
 
             // Test for one stage
             Assert.AreEqual(item.Stages.Count, 1);
-            Assert.AreEqual(item.Stages[0].PlanId, id);
+            Assert.AreEqual(item.Stages[0].OwnerId, id);
             Assert.AreEqual(item.Stages[0].Level, level);
 
             // Test for one limit in the stage
             Assert.AreEqual(item.Stages[0].Limits.Count, 1);
-            Assert.AreEqual(item.Stages[0].Limits[0].PlanId, id);
-            Assert.AreEqual(item.Stages[0].Limits[0].Level, level);
+            Assert.AreEqual(item.Stages[0].Limits[0].OwnerId, id);
+            Assert.AreEqual(item.Stages[0].Limits[0].StageLevel, level);
         }
     }
 }

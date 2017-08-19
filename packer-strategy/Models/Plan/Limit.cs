@@ -9,18 +9,18 @@ namespace packer_strategy.Models.Plan
     /// <summary>   A limit. </summary>
     public class Limit
     {
-        /// <summary>   Gets or sets the identifier of the plan. </summary>
+        /// <summary>   Gets or sets the identifier that owns this item. </summary>
         ///
-        /// <value> The identifier of the plan. </value>
-        public string PlanId
+        /// <value> The identifier of the owner. </value>
+        public string OwnerId
         {
             get; set;
         }
 
-        /// <summary>   Gets or sets the level. </summary>
+        /// <summary>   Gets or sets the stage level. </summary>
         ///
-        /// <value> The level. </value>
-        public Stage.Levels Level
+        /// <value> The stage level. </value>
+        public Stage.Levels StageLevel
         {
             get; set;
         }

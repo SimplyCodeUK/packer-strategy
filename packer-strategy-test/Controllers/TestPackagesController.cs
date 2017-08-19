@@ -340,7 +340,7 @@ namespace packer_strategy_test
 
             // Test for one stage
             Assert.AreEqual(item.Costings.Count, 1);
-            Assert.AreEqual(item.Costings[0].PackageId, id);
+            Assert.AreEqual(item.Costings[0].OwnerId, id);
             Assert.AreEqual(item.Costings[0].Index, 0);
             Assert.AreEqual(item.Costings[0].RequiredQuantity, quantity);
             Assert.AreEqual(item.Costings[0].RequiredWeight, weight);

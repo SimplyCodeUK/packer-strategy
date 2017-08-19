@@ -57,9 +57,9 @@ namespace packer_strategy.Models
             modelBuilder.Entity<Plan.Plan>()
                 .HasKey(c => c.Id);
             modelBuilder.Entity<Plan.Stage>()
-                .HasKey(c => new { c.PlanId, c.Level });
+                .HasKey(c => new { c.OwnerId, c.Level });
             modelBuilder.Entity<Plan.Limit>()
-                .HasKey(c => new { c.PlanId, c.Level, c.Index });
+                .HasKey(c => new { c.OwnerId, c.StageLevel, c.Index });
         }
     }
 }

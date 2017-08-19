@@ -31,7 +31,7 @@ namespace packer_strategy.Models.Plan
                 _id = value;
                 foreach (Stage stage in Stages)
                 {
-                    stage.PlanId = value;
+                    stage.OwnerId = value;
                 }
             }
         }
