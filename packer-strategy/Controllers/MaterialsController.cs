@@ -6,14 +6,14 @@
 
 namespace packer_strategy.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
     using packer_strategy.Helpers;
     using packer_strategy.Models;
     using packer_strategy.Models.Material;
-    using System;
-    using System.Collections.Generic;
-    using System.Net;
 
     /// <summary>   A controller for handling materials. </summary>
     [Route("api/[controller]")]
@@ -21,7 +21,8 @@ namespace packer_strategy.Controllers
     {
         /// <summary>   The repository. </summary>
         private readonly IMaterialRepository _repository;
-        private readonly List<string> _types;
+        private readonly Dictionary<string, Material.Type> _types;
+        private readonly List<string> _typeNames;
 
         /// <summary>   Constructor. </summary>
         ///
@@ -29,10 +30,13 @@ namespace packer_strategy.Controllers
         public MaterialsController(IMaterialRepository repository)
         {
             _repository = repository;
-            _types = new List<string>();
+            _types = new Dictionary<string, Material.Type>();
+            _typeNames = new List<string>();
             for (Material.Type type = Material.Type.Min; type < Material.Type.Max; ++type)
             {
-                _types.Add(Attributes.ShortName(type));
+                string urlName = Attributes.UrlName(type);
+                _types[urlName] = type;
+                _typeNames.Add(urlName);
             }
         }
 
@@ -42,7 +46,7 @@ namespace packer_strategy.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_types);
+            return Ok(_typeNames);
         }
 
         /// <summary>
@@ -54,9 +58,19 @@ namespace packer_strategy.Controllers
         ///
         /// <returns>   An enumerator that allows foreach to be used to process the matched items. </returns>
         [HttpGet("{type}")]
-        public IActionResult Get(Material.Type type)
+        public IActionResult Get(string type)
         {
-            return Ok(_repository.GetAll(type));
+            IActionResult result;
+
+            if (_types.ContainsKey(type))
+            {
+                result = Ok(_repository.GetAll(_types[type]));
+            }
+            else
+            {
+                result = BadRequest();
+            }
+            return result;
         }
 
         /// <summary>
@@ -71,18 +85,25 @@ namespace packer_strategy.Controllers
         [HttpGet("{type}/{id}")]
         [Route("{type}/{id}", Name = "GetMaterial")]
         [ProducesResponseType(typeof(Material), 200)]
-        public IActionResult Get(Material.Type type, string id)
+        public IActionResult Get(string type, string id)
         {
-            var item = _repository.Find(type, id);
             IActionResult result;
 
-            if (item == null)
+            if (_types.ContainsKey(type))
             {
-                result = NotFound();
+                var item = _repository.Find(_types[type], id);
+                if (item == null)
+                {
+                    result = NotFound(id);
+                }
+                else
+                {
+                    result = Ok(item);
+                }
             }
             else
             {
-                result = Ok(item);
+                result = BadRequest();
             }
             return result;
         }
@@ -94,21 +115,28 @@ namespace packer_strategy.Controllers
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPost("{type}")]
-        public IActionResult Post(Material.Type type, [FromBody] Material value)
+        public IActionResult Post(string type, [FromBody] Material value)
         {
             IActionResult result;
 
             if (value != null)
             {
-                try
+                if (_types.ContainsKey(type))
                 {
-                    value.IdType = type;
-                    _repository.Add(value);
-                    result = CreatedAtRoute("GetMaterial", new { type = value.IdType, id = value.Id }, value);
+                    try
+                    {
+                        value.IdType = _types[type];
+                        _repository.Add(value);
+                        result = CreatedAtRoute("GetMaterial", new { type, value.Id }, value);
+                    }
+                    catch (Exception)
+                    {
+                        result = StatusCode((int)HttpStatusCode.Conflict);
+                    }
                 }
-                catch (Exception)
+                else
                 {
-                    result = StatusCode((int)HttpStatusCode.Conflict);
+                    result = BadRequest();
                 }
             }
             else
@@ -127,23 +155,31 @@ namespace packer_strategy.Controllers
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPut("{type}/{id}")]
-        public IActionResult Put(Material.Type type, string id, [FromBody] Material value)
+        public IActionResult Put(string type, string id, [FromBody] Material value)
         {
-            Material item = _repository.Find(type, id);
             IActionResult result;
 
-            if (item != null)
+            if (_types.ContainsKey(type))
             {
-                item = value;
-                item.Id = id;
+                Material item = _repository.Find(_types[type], id);
 
-                _repository.Update(item);
+                if (item != null)
+                {
+                    item = value;
+                    item.Id = id;
 
-                result = Ok();
+                    _repository.Update(item);
+
+                    result = Ok();
+                }
+                else
+                {
+                    result = NotFound(id);
+                }
             }
             else
             {
-                result = NotFound();
+                result = BadRequest();
             }
 
             return result;
@@ -156,19 +192,27 @@ namespace packer_strategy.Controllers
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpDelete("{type}/{id}")]
-        public IActionResult Delete(Material.Type type, string id)
+        public IActionResult Delete(string type, string id)
         {
             IActionResult result;
 
-            if (_repository.Find(type, id) != null)
+            if (_types.ContainsKey(type))
             {
-                _repository.Remove(type, id);
-                result = Ok();
+                if (_repository.Find(_types[type], id) != null)
+                {
+                    _repository.Remove(_types[type], id);
+                    result = Ok();
+                }
+                else
+                {
+                    result = NotFound(id);
+                }
             }
             else
             {
-                result = NotFound();
+                result = BadRequest();
             }
+
             return result;
         }
 
@@ -180,19 +224,27 @@ namespace packer_strategy.Controllers
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPatch("{type}/{id}")]
-        public IActionResult Patch(Material.Type type, string id, [FromBody]JsonPatchDocument<Material> update)
+        public IActionResult Patch(string type, string id, [FromBody]JsonPatchDocument<Material> update)
         {
-            var item = _repository.Find(type, id);
             IActionResult result;
 
-            if (item != null)
+            if (_types.ContainsKey(type))
             {
-                update.ApplyTo(item);
-                result = Ok(item);
+                var item = _repository.Find(_types[type], id);
+
+                if (item != null)
+                {
+                    update.ApplyTo(item);
+                    result = Ok(item);
+                }
+                else
+                {
+                    result = NotFound(id);
+                }
             }
             else
             {
-                result = NotFound();
+                result = BadRequest();
             }
 
             return result;

@@ -16,79 +16,79 @@ namespace packer_strategy.Models.Material
         public enum Type
         {
             /// <summary>   An enum constant representing the Minimum option. </summary>
-            [Display(ShortName = "product")]
+            [Display(ShortName = "Product")]
             Min,
             /// <summary>   An enum constant representing the product option. </summary>
-            [Display(ShortName = "product")]
+            [Display(ShortName = "Product")]
             Product = Min,
             /// <summary>   An enum constant representing the carton option. </summary>
-            [Display(ShortName = "carton")]
+            [Display(ShortName = "Carton")]
             Carton,
             /// <summary>   An enum constant representing the board option. </summary>
-            [Display(ShortName = "uboard")]
+            [Display(ShortName = "UBoard")]
             UBoard,
             /// <summary>   An enum constant representing the can option. </summary>
-            [Display(ShortName = "can")]
+            [Display(ShortName = "Can")]
             Can,
             /// <summary>   An enum constant representing the bottle option. </summary>
-            [Display(ShortName = "bottle")]
+            [Display(ShortName = "Bottle")]
             Bottle,
             /// <summary>   An enum constant representing the tub option. </summary>
-            [Display(ShortName = "tub")]
+            [Display(ShortName = "Tub")]
             Tub,
             /// <summary>   An enum constant representing the jar option. </summary>
-            [Display(ShortName = "jar")]
+            [Display(ShortName = "Jar")]
             Jar,
             /// <summary>   An enum constant representing the sleeve option. </summary>
-            [Display(ShortName = "sleeve")]
+            [Display(ShortName = "Sleeve")]
             Sleeve,
             /// <summary>   An enum constant representing the wrap around option. </summary>
-            [Display(ShortName = "wraparound")]
+            [Display(ShortName = "Wraparound")]
             WrapAround,
             /// <summary>   An enum constant representing the shrinkwrap option. </summary>
-            [Display(ShortName = "shrinkwrap")]
+            [Display(ShortName = "Shrinkwrap")]
             Shrinkwrap,
             /// <summary>   An enum constant representing the crate option. </summary>
-            [Display(ShortName = "crate")]
+            [Display(ShortName = "Crate")]
             Crate,
             /// <summary>   An enum constant representing the container option. </summary>
-            [Display(ShortName = "container")]
+            [Display(ShortName = "Container")]
             Container,
             /// <summary>   An enum constant representing the tray option. </summary>
-            [Display(ShortName = "tray")]
+            [Display(ShortName = "Tray")]
             Tray,
             /// <summary>   An enum constant representing the pad option. </summary>
-            [Display(ShortName = "pad")]
+            [Display(ShortName = "Pad")]
             Pad,
             /// <summary>   An enum constant representing the slipsheet option. </summary>
-            [Display(ShortName = "slipsheet")]
+            [Display(ShortName = "Slipsheet")]
             Slipsheet,
             /// <summary>   An enum constant representing the pallet option. </summary>
-            [Display(ShortName = "pallet")]
+            [Display(ShortName = "Pallet")]
             Pallet,
             /// <summary>   An enum constant representing the divider option. </summary>
-            [Display(ShortName = "divider")]
+            [Display(ShortName = "Divider")]
             Divider,
             /// <summary>   An enum constant representing the liner option. </summary>
-            [Display(ShortName = "liner")]
+            [Display(ShortName = "Liner")]
             Liner,
             /// <summary>   An enum constant representing the strapping option. </summary>
-            [Display(ShortName = "strapping")]
+            [Display(ShortName = "Strapping")]
             Strapping,
             /// <summary>   An enum constant representing the edgeboard option. </summary>
-            [Display(ShortName = "edgeboard")]
+            [Display(ShortName = "Edgeboard")]
             Edgeboard,
             /// <summary>   An enum constant representing the collar option. </summary>
-            [Display(ShortName = "collar")]
+            [Display(ShortName = "Collar")]
             Collar,
             /// <summary>   An enum constant representing the Capability option. </summary>
-            [Display(ShortName = "cap")]
+            [Display(ShortName = "Cap")]
             Cap,
             /// <summary>   An enum constant representing the lid option. </summary>
-            [Display(ShortName = "lid")]
+            [Display(ShortName = "Lid")]
             Lid,
             /// <summary>   An enum constant representing the seal option. </summary>
-            [Display(ShortName = "seal")]
+            [Display(ShortName = "Seal")]
             Seal,
             /// <summary>   An enum constant representing the Maximum option. </summary>
             Max

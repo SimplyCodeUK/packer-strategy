@@ -15,32 +15,32 @@ namespace packer_strategy_test
     using NUnit.Framework;
     using packer_strategy.Controllers;
     using packer_strategy.Models;
-    using packer_strategy.Models.Plan;
+    using packer_strategy.Models.Package;
 
-    /// <summary>   (Unit Test Fixture) a controller for handling test plans. </summary>
+    /// <summary>   (Unit Test Fixture) a controller for handling test packages. </summary>
     [TestFixture]
-    public class TestPlansController
+    public class TestPackagesController
     {
-        /// <summary>   The plan repository. </summary>
-        private PlanRepository _repository;
+        /// <summary>   The package repository. </summary>
+        private PackageRepository _repository;
 
         /// <summary>   Tests before. </summary>
         [SetUp]
         public void BeforeTest()
         {
-            DbContextOptionsBuilder<PlanContext> builder = new DbContextOptionsBuilder<PlanContext>();
-            builder.UseInMemoryDatabase("testplan");
+            DbContextOptionsBuilder<PackageContext> builder = new DbContextOptionsBuilder<PackageContext>();
+            builder.UseInMemoryDatabase("testpackage");
 
-            PlanContext context = new PlanContext(builder.Options);
+            PackageContext context = new PackageContext(builder.Options);
 
-            _repository = new PlanRepository(context);
+            _repository = new PackageRepository(context);
         }
 
         /// <summary>   (Unit Test Method) creates this object. </summary>
         [Test]
         public void Create()
         {
-            PlansController controller = new PlansController(_repository);
+            PackagesController controller = new PackagesController(_repository);
 
             Assert.IsNotNull(controller);
         }
@@ -49,8 +49,8 @@ namespace packer_strategy_test
         [Test]
         public void Post()
         {
-            PlansController controller = new PlansController(_repository);
-            Plan item = new Plan { Id = Guid.NewGuid().ToString() };
+            PackagesController controller = new PackagesController(_repository);
+            Package item = new Package { Id = Guid.NewGuid().ToString() };
             var result = controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -62,7 +62,7 @@ namespace packer_strategy_test
         [Test]
         public void PostNoData()
         {
-            PlansController controller = new PlansController(_repository);
+            PackagesController controller = new PackagesController(_repository);
             var result = controller.Post(null);
 
             Assert.IsNotNull(result);
@@ -74,8 +74,8 @@ namespace packer_strategy_test
         [Test]
         public void PostAlreadyExists()
         {
-            PlansController controller = new PlansController(_repository);
-            Plan item = new Plan { Id = Guid.NewGuid().ToString() };
+            PackagesController controller = new PackagesController(_repository);
+            Package item = new Package { Id = Guid.NewGuid().ToString() };
             var result = controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -93,7 +93,7 @@ namespace packer_strategy_test
         public void GetAll()
         {
             int itemsToAdd = 10;
-            PlansController controller = new PlansController(_repository);
+            PackagesController controller = new PackagesController(_repository);
             List<string> ids = new List<string>();
 
             for (int item = 0; item < itemsToAdd; ++item)
@@ -101,7 +101,7 @@ namespace packer_strategy_test
                 string id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
-                controller.Post(new Plan { Id = id });
+                controller.Post(new Package { Id = id });
             }
 
             IActionResult result = controller.Get();
@@ -111,10 +111,10 @@ namespace packer_strategy_test
 
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<IEnumerable<Plan>>(objectResult.Value);
+            Assert.IsInstanceOf<IEnumerable<Package>>(objectResult.Value);
 
-            IEnumerable<Plan> items = (IEnumerable<Plan>)objectResult.Value;
-            foreach (Plan item in items)
+            IEnumerable<Package> items = (IEnumerable<Package>)objectResult.Value;
+            foreach (Package item in items)
             {
                 if (ids.Contains(item.Id))
                 {
@@ -129,10 +129,9 @@ namespace packer_strategy_test
         public void Get()
         {
             string startName = "A name";
-            string startNote = "Some notes";
-            PlansController controller = new PlansController(_repository);
+            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { Id = id, Name = startName, Notes = startNote };
+            Package item = new Package { Id = id, Name = startName };
 
             controller.Post(item);
 
@@ -143,19 +142,18 @@ namespace packer_strategy_test
 
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Plan>(objectResult.Value);
+            Assert.IsInstanceOf<Package>(objectResult.Value);
 
-            item = (Plan)objectResult.Value;
+            item = (Package)objectResult.Value;
             Assert.AreEqual(item.Id, id);
             Assert.AreEqual(item.Name, startName);
-            Assert.AreEqual(item.Notes, startNote);
         }
 
         /// <summary>   (Unit Test Method) gets not found. </summary>
         [Test]
         public void GetNotFound()
         {
-            PlansController controller = new PlansController(_repository);
+            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
             var result = controller.Get(id);
 
@@ -170,9 +168,9 @@ namespace packer_strategy_test
         {
             string startName = "A name";
             string putName = "B name";
-            PlansController controller = new PlansController(_repository);
+            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { Id = id, Name = startName };
+            Package item = new Package { Id = id, Name = startName };
 
             controller.Post(item);
 
@@ -183,14 +181,14 @@ namespace packer_strategy_test
             Assert.IsInstanceOf<OkResult>(result);
             Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
 
-            // Get the plan and check the returned object has the new Name
+            // Get the package and check the returned object has the new Name
             result = controller.Get(id);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Plan>(objectResult.Value);
-            item = (Plan)objectResult.Value;
+            Assert.IsInstanceOf<Package>(objectResult.Value);
+            item = (Package)objectResult.Value;
             Assert.AreEqual(item.Id, id);
             Assert.AreEqual(item.Name, putName);
         }
@@ -199,9 +197,9 @@ namespace packer_strategy_test
         [Test]
         public void PutNotFound()
         {
-            PlansController controller = new PlansController(_repository);
+            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan();
+            Package item = new Package();
             var result = controller.Put(id, item);
 
             Assert.IsNotNull(result);
@@ -213,9 +211,9 @@ namespace packer_strategy_test
         [Test]
         public void Delete()
         {
-            PlansController controller = new PlansController(_repository);
+            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { Id = id };
+            Package item = new Package { Id = id };
 
             controller.Post(item);
 
@@ -230,7 +228,7 @@ namespace packer_strategy_test
         [Test]
         public void DeleteNotFound()
         {
-            PlansController controller = new PlansController(_repository);
+            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
             var result = controller.Delete(id);
 
@@ -245,16 +243,15 @@ namespace packer_strategy_test
         {
             string startName = "A name";
             string patchName = "B name";
-            string startNote = "Some notes";
-            PlansController controller = new PlansController(_repository);
+            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { Id = id, Name = startName, Notes = startNote };
+            Package item = new Package { Id = id, Name = startName };
 
-            // Create a new plan
+            // Create a new package
             controller.Post(item);
 
-            // Patch the plan with a new name
-            JsonPatchDocument<Plan> patch = new JsonPatchDocument<Plan>();
+            // Patch the package with a new name
+            JsonPatchDocument<Package> patch = new JsonPatchDocument<Package>();
             patch.Replace(e => e.Name, patchName);
 
             var result = controller.Patch(id, patch);
@@ -265,24 +262,22 @@ namespace packer_strategy_test
             // Check the returned object from the patch has the same Note but different Name
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Plan>(objectResult.Value);
+            Assert.IsInstanceOf<Package>(objectResult.Value);
 
-            item = (Plan)objectResult.Value;
+            item = (Package)objectResult.Value;
             Assert.AreEqual(item.Id, id);
             Assert.AreEqual(item.Name, patchName);
-            Assert.AreEqual(item.Notes, startNote);
 
-            // Get the plan and check the returned object has the same Note and new Name
+            // Get the package and check the returned object has the same Note and new Name
             result = controller.Get(id);
             Assert.IsInstanceOf<OkObjectResult>(result);
             objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Plan>(objectResult.Value);
+            Assert.IsInstanceOf<Package>(objectResult.Value);
 
-            item = (Plan)objectResult.Value;
+            item = (Package)objectResult.Value;
             Assert.AreEqual(item.Id, id);
             Assert.AreEqual(item.Name, patchName);
-            Assert.AreEqual(item.Notes, startNote);
         }
 
         /// <summary>   (Unit Test Method) patch not found. </summary>
@@ -291,13 +286,12 @@ namespace packer_strategy_test
         {
             string startName = "A name";
             string patchName = "B name";
-            string startNote = "Some notes";
-            PlansController controller = new PlansController(_repository);
-            Plan item = new Plan { Id = Guid.NewGuid().ToString(), Name = startName, Notes = startNote };
+            PackagesController controller = new PackagesController(_repository);
+            Package item = new Package { Id = Guid.NewGuid().ToString(), Name = startName };
 
             controller.Post(item);
 
-            JsonPatchDocument<Plan> patch = new JsonPatchDocument<Plan>();
+            JsonPatchDocument<Package> patch = new JsonPatchDocument<Package>();
             patch.Replace(e => e.Name, patchName);
 
             var result = controller.Patch(Guid.NewGuid().ToString(), patch);
@@ -311,17 +305,16 @@ namespace packer_strategy_test
         [Test]
         public void PostComplexPan()
         {
-            PlansController controller = new PlansController(_repository);
+            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
-            Stage.Levels level = Stage.Levels.MultiPack;
+            long quantity = 1000;
+            double weight = 2000.0;
 
-            // Create a plan with a stage that has a limit
-            Stage stage = new Stage();
-            stage.Limits.Add(new Limit());
-            stage.Level = level;
+            // Create a package with a stage that has a limit
+            Costing costing = new Costing { RequiredQuantity= quantity, RequiredWeight= weight };
 
-            Plan item = new Plan();
-            item.Stages.Add(stage);
+            Package item = new Package();
+            item.Costings.Add(costing);
 
             item.Id = id;
 
@@ -331,7 +324,7 @@ namespace packer_strategy_test
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
             Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
 
-            // Get the plan
+            // Get the package
             result = controller.Get(id);
 
             Assert.IsNotNull(result);
@@ -339,21 +332,18 @@ namespace packer_strategy_test
 
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Plan>(objectResult.Value);
+            Assert.IsInstanceOf<Package>(objectResult.Value);
 
             // Test the plan
-            item = (Plan)objectResult.Value;
+            item = (Package)objectResult.Value;
             Assert.AreEqual(item.Id, id);
 
             // Test for one stage
-            Assert.AreEqual(item.Stages.Count, 1);
-            Assert.AreEqual(item.Stages[0].PlanId, id);
-            Assert.AreEqual(item.Stages[0].Level, level);
-
-            // Test for one limit in the stage
-            Assert.AreEqual(item.Stages[0].Limits.Count, 1);
-            Assert.AreEqual(item.Stages[0].Limits[0].PlanId, id);
-            Assert.AreEqual(item.Stages[0].Limits[0].Level, level);
+            Assert.AreEqual(item.Costings.Count, 1);
+            Assert.AreEqual(item.Costings[0].PackageId, id);
+            Assert.AreEqual(item.Costings[0].Index, 0);
+            Assert.AreEqual(item.Costings[0].RequiredQuantity, quantity);
+            Assert.AreEqual(item.Costings[0].RequiredWeight, weight);
         }
     }
 }

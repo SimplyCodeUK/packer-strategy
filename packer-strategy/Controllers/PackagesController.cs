@@ -11,19 +11,19 @@ namespace packer_strategy.Controllers
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
     using packer_strategy.Models;
-    using packer_strategy.Models.Plan;
+    using packer_strategy.Models.Package;
 
-    /// <summary>   A controller for handling plans. </summary>
+    /// <summary>   A controller for handling packages. </summary>
     [Route("api/[controller]")]
-    public class PlansController : Controller
+    public class PackagesController : Controller
     {
         /// <summary>   The repository. </summary>
-        private readonly IPlanRepository _repository;
+        private readonly IPackageRepository _repository;
 
         /// <summary>   Constructor. </summary>
         ///
         /// <param name="repository">   The repository. </param>
-        public PlansController(IPlanRepository repository)
+        public PackagesController(IPackageRepository repository)
         {
             _repository = repository;
         }
@@ -46,8 +46,8 @@ namespace packer_strategy.Controllers
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpGet("{id}")]
-        [Route("{id}", Name = "GetPlan")]
-        [ProducesResponseType(typeof(Plan), 200)]
+        [Route("{id}", Name = "GetPackage")]
+        [ProducesResponseType(typeof(Package), 200)]
         public IActionResult Get(string id)
         {
             var item = _repository.Find(id);
@@ -70,7 +70,7 @@ namespace packer_strategy.Controllers
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPost]
-        public IActionResult Post([FromBody] Plan value)
+        public IActionResult Post([FromBody] Package value)
         {
             IActionResult result;
 
@@ -79,7 +79,7 @@ namespace packer_strategy.Controllers
                 try
                 {
                     _repository.Add(value);
-                    result = CreatedAtRoute("GetPlan", new { id = value.Id }, value);
+                    result = CreatedAtRoute("GetPackage", new { id = value.Id }, value);
                 }
                 catch (Exception)
                 {
@@ -101,9 +101,9 @@ namespace packer_strategy.Controllers
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPut("{id}")]
-        public IActionResult Put(string id, [FromBody] Plan value)
+        public IActionResult Put(string id, [FromBody] Package value)
         {
-            Plan item = _repository.Find(id);
+            Package item = _repository.Find(id);
             IActionResult result;
 
             if (item != null)
@@ -152,7 +152,7 @@ namespace packer_strategy.Controllers
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPatch("{id}")]
-        public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> update)
+        public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Package> update)
         {
             var item = _repository.Find(id);
             IActionResult result;
