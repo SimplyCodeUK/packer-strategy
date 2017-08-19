@@ -15,6 +15,7 @@ namespace packer_strategy.Models.Package
         public Package()
         {
             this.Costings = new List<Costing>();
+            this.Stages = new List<Stage>();
         }
 
         /// <summary>   The identifier. </summary>
@@ -31,7 +32,11 @@ namespace packer_strategy.Models.Package
                 _id = value;
                 foreach (Costing costing in Costings)
                 {
-                    costing.PackageId = value;
+                    costing.OwnerId = value;
+                }
+                foreach (Stage stage in Stages)
+                {
+                    stage.OwnerId = value;
                 }
             }
         }
@@ -75,5 +80,13 @@ namespace packer_strategy.Models.Package
         ///
         /// <value> The costings. </value>
         public List<Costing> Costings { get; set; }
+
+        /// <summary>   Gets or sets the stages. </summary>
+        ///
+        /// <value> The stages. </value>
+        public List<Stage> Stages
+        {
+            get; set;
+        }
     }
 }

@@ -79,23 +79,23 @@ namespace packer_strategy.Models.Plan
         }
 
         /// <summary>   Identifier for the plan. </summary>
-        private string _planId;
+        private string _ownerId;
 
-        /// <summary>   Gets or sets the identifier of the plan. </summary>
+        /// <summary>   Gets or sets the identifier that owns this item. </summary>
         ///
-        /// <value> The identifier of the plan. </value>
-        public string PlanId
+        /// <value> The identifier of the owner. </value>
+        public string OwnerId
         {
             get
             {
-                return _planId;
+                return _ownerId;
             }
             set
             {
-                _planId = value;
+                _ownerId = value;
                 foreach (Limit limit in Limits)
                 {
-                    limit.PlanId = value;
+                    limit.OwnerId = value;
                 }
             }
         }
@@ -117,7 +117,7 @@ namespace packer_strategy.Models.Plan
                 level = value;
                 foreach (Limit limit in Limits)
                 {
-                    limit.Level = value;
+                    limit.StageLevel = value;
                 }
             }
         }

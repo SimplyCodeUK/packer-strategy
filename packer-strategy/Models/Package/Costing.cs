@@ -9,10 +9,10 @@ namespace packer_strategy.Models.Package
     /// <summary>   A costing. </summary>
     public class Costing
     {
-        /// <summary>   Gets or sets the identifier of the package. </summary>
+        /// <summary>   Gets or sets the identifier that owns this item. </summary>
         ///
-        /// <value> The identifier of the package. </value>
-        public string PackageId { get; set; }
+        /// <value> The identifier of the owner. </value>
+        public string OwnerId { get; set; }
 
         /// <summary>   Gets or sets the zero-based index of this object. </summary>
         ///
