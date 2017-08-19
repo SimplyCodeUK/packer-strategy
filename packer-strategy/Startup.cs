@@ -43,14 +43,16 @@ namespace packer_strategy
         /// <param name="services"> The services. </param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<PlanContext>(options => options.UseInMemoryDatabase());
-            services.AddDbContext<MaterialContext>(options => options.UseInMemoryDatabase());
+            services.AddDbContext<PlanContext>(options => options.UseInMemoryDatabase("plan"));
+            services.AddDbContext<MaterialContext>(options => options.UseInMemoryDatabase("material"));
+            services.AddDbContext<PackageContext>(options => options.UseInMemoryDatabase("package"));
 
             // Add framework services.
             services.AddMvc();
 
             services.AddSingleton<IPlanRepository, PlanRepository>();
             services.AddSingleton<IMaterialRepository, MaterialRepository>();
+            services.AddSingleton<IPackageRepository, PackageRepository>();
         }
 
         /// <summary>   Configures. </summary>

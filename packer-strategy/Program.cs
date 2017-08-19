@@ -6,9 +6,9 @@
 
 namespace packer_strategy
 {
+    using System.IO;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using System.IO;
 
     /// <summary>   A program. </summary>
     public class Program
