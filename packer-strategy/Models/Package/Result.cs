@@ -36,6 +36,7 @@ namespace packer_strategy.Models.Package
             Max
         };
 
+        /// <summary>   Default constructor. </summary>
         public Result()
         {
             Layers = new List<Layer>();
