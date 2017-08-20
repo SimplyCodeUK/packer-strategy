@@ -20,7 +20,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the stage level. </summary>
         ///
         /// <value> The stage level. </value>
-        public Stage.Levels StageLevel
+        public Stage.StageLevel StageLevel
         {
             get; set;
         }

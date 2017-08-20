@@ -14,6 +14,24 @@ namespace packer_strategy.Models.Package
         /// <summary>   Default constructor. </summary>
         public Stage()
         {
+            Results = new List<Result>();
         }
+
+        /// <summary>   Sets owner identifier. </summary>
+        ///
+        /// <param name="value">    The value. </param>
+        protected override void SetOwnerId(string value)
+        {
+            base.SetOwnerId(value);
+            foreach (Result result in Results)
+            {
+                result.OwnerId = value;
+            }
+        }
+
+        /// <summary>   Gets or sets the results. </summary>
+        ///
+        /// <value> The results. </value>
+        List<Result> Results { get; set; }
     }
 }
