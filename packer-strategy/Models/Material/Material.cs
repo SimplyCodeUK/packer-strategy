@@ -216,7 +216,7 @@ namespace packer_strategy.Models.Material
         /// <summary>   Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
-        public Plan.Stage.Forms Form
+        public Plan.Stage.PackForm Form
         {
             get; set;
         }

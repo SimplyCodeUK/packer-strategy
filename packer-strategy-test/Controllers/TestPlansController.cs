@@ -313,7 +313,7 @@ namespace packer_strategy_test
         {
             PlansController controller = new PlansController(_repository);
             string id = Guid.NewGuid().ToString();
-            Stage.Levels level = Stage.Levels.MultiPack;
+            Stage.StageLevel level = Stage.StageLevel.MultiPack;
 
             // Create a plan with a stage that has a limit
             Stage stage = new Stage();

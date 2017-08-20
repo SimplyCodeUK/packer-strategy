@@ -11,8 +11,8 @@ namespace packer_strategy.Models.Plan
     /// <summary>   A stage. </summary>
     public class Stage
     {
-        /// <summary>   Values that represent levels. </summary>
-        public enum Levels
+        /// <summary>   Values that represent stage levels. </summary>
+        public enum StageLevel
         {
             /// <summary>   An enum constant representing the new option. </summary>
             New,
@@ -34,8 +34,8 @@ namespace packer_strategy.Models.Plan
             Container
         }
 
-        /// <summary>   Values that represent forms. </summary>
-        public enum Forms
+        /// <summary>   Values that represent pack forms. </summary>
+        public enum PackForm
         {
             /// <summary>   An enum constant representing the Minimum option. </summary>
             Min,
@@ -55,8 +55,8 @@ namespace packer_strategy.Models.Plan
             Max
         };
 
-        /// <summary>   Values that represent shapes. </summary>
-        public enum Shapes
+        /// <summary>   Values that represent pack shapes. </summary>
+        public enum PackShape
         {
             /// <summary>   An enum constant representing the Minimum option. </summary>
             Min,
@@ -81,6 +81,18 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Identifier for the plan. </summary>
         private string _ownerId;
 
+        /// <summary>   Sets owner identifier. </summary>
+        ///
+        /// <param name="value">    The value. </param>
+        protected virtual void SetOwnerId(string value)
+        {
+            _ownerId = value;
+            foreach (Limit limit in Limits)
+            {
+                limit.OwnerId = value;
+            }
+        }
+
         /// <summary>   Gets or sets the identifier that owns this item. </summary>
         ///
         /// <value> The identifier of the owner. </value>
@@ -92,29 +104,25 @@ namespace packer_strategy.Models.Plan
             }
             set
             {
-                _ownerId = value;
-                foreach (Limit limit in Limits)
-                {
-                    limit.OwnerId = value;
-                }
+                SetOwnerId(value);
             }
         }
 
         /// <summary>   The level. </summary>
-        private Levels level;
+        private StageLevel _level;
 
         /// <summary>   Gets or sets the level. </summary>
         ///
         /// <value> The level. </value>
-        public Levels Level
+        public StageLevel Level
         {
             get
             {
-                return level;
+                return _level;
             }
             set
             {
-                level = value;
+                _level = value;
                 foreach (Limit limit in Limits)
                 {
                     limit.StageLevel = value;
@@ -141,7 +149,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the shape. </summary>
         ///
         /// <value> The shape. </value>
-        public Shapes Shape
+        public PackShape Shape
         {
             get; set;
         }
@@ -149,7 +157,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
-        public Forms Form
+        public PackForm Form
         {
             get; set;
         }
