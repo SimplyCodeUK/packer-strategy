@@ -12,7 +12,7 @@ namespace packer_strategy.Models.Material
         /// <summary>   Gets or sets the type of the material identifier. </summary>
         ///
         /// <value> The type of the material identifier. </value>
-        public Material.Type MaterialIdType
+        public MaterialType MaterialIdType
         {
             get; set;
         }

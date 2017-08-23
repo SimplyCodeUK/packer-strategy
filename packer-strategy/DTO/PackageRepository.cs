@@ -4,12 +4,15 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.Models
+namespace packer_strategy.DTO
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Models.Package;
 
     /// <summary>   A package repository. </summary>
+    ///
+    /// <seealso cref="T:packer_strategy.DTO.IPackageRepository"/>
     public class PackageRepository : IPackageRepository
     {
         /// <summary>   The context. </summary>
@@ -28,7 +31,9 @@ namespace packer_strategy.Models
         /// <returns>
         ///     An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
-        public IEnumerable<Package.Package> GetAll()
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IPackageRepository.GetAll()"/>
+        public IEnumerable<Package> GetAll()
         {
             return _context.Packages.ToList();
         }
@@ -36,7 +41,9 @@ namespace packer_strategy.Models
         /// <summary>   Adds item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
-        public void Add(Package.Package item)
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IPackageRepository.Add(Package)"/>
+        public void Add(Package item)
         {
             _context.Packages.Add(item);
             _context.SaveChanges();
@@ -46,8 +53,10 @@ namespace packer_strategy.Models
         ///
         /// <param name="key">  The key. </param>
         ///
-        /// <returns>   A Package.Package. </returns>
-        public Package.Package Find(string key)
+        /// <returns>   A Package. </returns>
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IPackageRepository.Find(string)"/>
+        public Package Find(string key)
         {
             return _context.Packages.FirstOrDefault(t => t.Id == key);
         }
@@ -55,6 +64,8 @@ namespace packer_strategy.Models
         /// <summary>   Removes the given key. </summary>
         ///
         /// <param name="key">  The key. </param>
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IPackageRepository.Remove(string)"/>
         public void Remove(string key)
         {
             var entity = _context.Packages.First(t => t.Id == key);
@@ -65,7 +76,9 @@ namespace packer_strategy.Models
         /// <summary>   Updates the given item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
-        public void Update(Package.Package item)
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IPackageRepository.Update(Package)"/>
+        public void Update(Package item)
         {
             _context.Packages.Update(item);
             _context.SaveChanges();

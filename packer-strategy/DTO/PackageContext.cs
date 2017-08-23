@@ -4,25 +4,26 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.Models
+namespace packer_strategy.DTO
 {
     using Microsoft.EntityFrameworkCore;
+    using Models.Package;
 
-    /// <summary>   A material context. </summary>
-    public class MaterialContext : DbContext
+    /// <summary>   A package context. </summary>
+    public class PackageContext : DbContext
     {
         /// <summary>   Constructor. </summary>
         ///
         /// <param name="options">  Options for controlling the operation. </param>
-        public MaterialContext(DbContextOptions<MaterialContext> options)
+        public PackageContext(DbContextOptions<PackageContext> options)
             : base(options)
         {
         }
 
-        /// <summary>   Gets or sets the materials. </summary>
+        /// <summary>   Gets or sets the packages. </summary>
         ///
-        /// <value> The materials. </value>
-        public DbSet<Material.Material> Materials
+        /// <value> The packages. </value>
+        public DbSet<Package> Packages
         {
             get; set;
         }
@@ -46,10 +47,14 @@ namespace packer_strategy.Models
         ///                             model that are specific to a given database. </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Material.Material>()
-                .HasKey(c => new { c.IdType, c.Id });
-            modelBuilder.Entity<Material.Costing>()
-                .HasKey(c => new { c.MaterialIdType, c.MaterialId, c.Quantity });
+            modelBuilder.Entity<Package>()
+                .HasKey(c => c.Id);
+            modelBuilder.Entity<Costing>()
+                .HasKey(c => new { c.OwnerId, c.Index });
+            modelBuilder.Entity<Stage>()
+                .HasKey(c => new { c.OwnerId, c.Level });
+            modelBuilder.Entity<Models.Plan.Limit>()
+                .HasKey(c => new { c.OwnerId, c.StageLevel, c.Index });
         }
     }
 }

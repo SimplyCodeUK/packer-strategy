@@ -8,30 +8,30 @@ namespace packer_strategy.Models.Package
 {
     using System.Collections.Generic;
 
+    /// <summary>   Values that represent layer rotations. </summary>
+    public enum LayerRotation
+    {
+        /// <summary>   An enum constant representing the unknown option. </summary>
+        Unknown,
+        /// <summary>   An enum constant representing the Minimum option. </summary>
+        Min = 1,
+        /// <summary>   An enum constant representing the east west option. </summary>
+        EastWest = Min,
+        /// <summary>   An enum constant representing the north south option. </summary>
+        NorthSouth,
+        /// <summary>   An enum constant representing the degrees 180 option. </summary>
+        Degrees180,
+        /// <summary>   An enum constant representing the degrees 90 option. </summary>
+        Degrees90,
+        /// <summary>   An enum constant representing the none option. </summary>
+        None,
+        /// <summary>   An enum constant representing the Maximum option. </summary>
+        Max
+    }
+
     /// <summary>   A layer. </summary>
     public class Layer
     {
-        /// <summary>   Values that represent layer rotations. </summary>
-        public enum LayerRotation
-        {
-            /// <summary>   An enum constant representing the unknown option. </summary>
-            Unknown,
-            /// <summary>   An enum constant representing the Minimum option. </summary>
-            Min = 1,
-            /// <summary>   An enum constant representing the east west option. </summary>
-            EastWest = Min,
-            /// <summary>   An enum constant representing the north south option. </summary>
-            NorthSouth,
-            /// <summary>   An enum constant representing the degrees 180 option. </summary>
-            Degrees180,
-            /// <summary>   An enum constant representing the degrees 90 option. </summary>
-            Degrees90,
-            /// <summary>   An enum constant representing the none option. </summary>
-            None,
-            /// <summary>   An enum constant representing the Maximum option. </summary>
-            Max
-        }
-
         /// <summary>   Default constructor. </summary>
         public Layer()
         {
@@ -46,7 +46,7 @@ namespace packer_strategy.Models.Package
         /// <summary>   Gets or sets the level. </summary>
         ///
         /// <value> The level. </value>
-        public Plan.Stage.StageLevel Level { get; set; }
+        public Plan.StageLevel Level { get; set; }
 
         /// <summary>   Gets or sets the zero-based index of this object. </summary>
         ///

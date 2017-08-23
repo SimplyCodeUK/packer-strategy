@@ -6,22 +6,18 @@
 
 namespace packer_strategy.Models.Plan
 {
-    /// <summary>   A cost. </summary>
-    public class Cost
+    /// <summary>   Values that represent cost types. </summary>
+    public enum CostType
     {
-        /// <summary>   Values that represent cost types. </summary>
-        public enum Type
-        {
-            /// <summary>   An enum constant representing the Minimum option. </summary>
-            Min,
-            /// <summary>   An enum constant representing the unit option. </summary>
-            Unit = Min,
-            /// <summary>   An enum constant representing the area option. </summary>
-            Area,
-            /// <summary>   An enum constant representing the volume option. </summary>
-            Volume,
-            /// <summary>   An enum constant representing the Maximum option. </summary>
-            Max
-        }
+        /// <summary>   An enum constant representing the Minimum option. </summary>
+        Min,
+        /// <summary>   An enum constant representing the unit option. </summary>
+        Unit = Min,
+        /// <summary>   An enum constant representing the area option. </summary>
+        Area,
+        /// <summary>   An enum constant representing the volume option. </summary>
+        Volume,
+        /// <summary>   An enum constant representing the Maximum option. </summary>
+        Max
     }
 }

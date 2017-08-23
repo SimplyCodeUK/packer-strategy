@@ -4,33 +4,26 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.Models
+namespace packer_strategy.DTO
 {
     using Microsoft.EntityFrameworkCore;
+    using Models.Material;
 
-    /// <summary>   A plan context. </summary>
-    public class PlanContext : DbContext
+    /// <summary>   A material context. </summary>
+    public class MaterialContext : DbContext
     {
         /// <summary>   Constructor. </summary>
         ///
         /// <param name="options">  Options for controlling the operation. </param>
-        public PlanContext(DbContextOptions<PlanContext> options)
+        public MaterialContext(DbContextOptions<MaterialContext> options)
             : base(options)
         {
         }
 
-        /// <summary>   Gets or sets the plans. </summary>
+        /// <summary>   Gets or sets the materials. </summary>
         ///
-        /// <value> The plans. </value>
-        public DbSet<Plan.Plan> Plans
-        {
-            get; set;
-        }
-
-        /// <summary>   Gets or sets the stages. </summary>
-        ///
-        /// <value> The stages. </value>
-        public DbSet<Plan.Stage> Stages
+        /// <value> The materials. </value>
+        public DbSet<Material> Materials
         {
             get; set;
         }
@@ -54,12 +47,10 @@ namespace packer_strategy.Models
         ///                             model that are specific to a given database. </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Plan.Plan>()
-                .HasKey(c => c.Id);
-            modelBuilder.Entity<Plan.Stage>()
-                .HasKey(c => new { c.OwnerId, c.Level });
-            modelBuilder.Entity<Plan.Limit>()
-                .HasKey(c => new { c.OwnerId, c.StageLevel, c.Index });
+            modelBuilder.Entity<Material>()
+                .HasKey(c => new { c.IdType, c.Id });
+            modelBuilder.Entity<Costing>()
+                .HasKey(c => new { c.MaterialIdType, c.MaterialId, c.Quantity });
         }
     }
 }

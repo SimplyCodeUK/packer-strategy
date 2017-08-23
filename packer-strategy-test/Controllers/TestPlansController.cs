@@ -14,7 +14,7 @@ namespace packer_strategy_test
     using Microsoft.EntityFrameworkCore;
     using NUnit.Framework;
     using packer_strategy.Controllers;
-    using packer_strategy.Models;
+    using packer_strategy.DTO;
     using packer_strategy.Models.Plan;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test plans. </summary>
@@ -313,7 +313,7 @@ namespace packer_strategy_test
         {
             PlansController controller = new PlansController(_repository);
             string id = Guid.NewGuid().ToString();
-            Stage.StageLevel level = Stage.StageLevel.MultiPack;
+            StageLevel level = StageLevel.MultiPack;
 
             // Create a plan with a stage that has a limit
             Stage stage = new Stage();

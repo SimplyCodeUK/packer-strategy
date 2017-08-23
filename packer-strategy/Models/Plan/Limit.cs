@@ -20,7 +20,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the stage level. </summary>
         ///
         /// <value> The stage level. </value>
-        public Stage.StageLevel StageLevel
+        public StageLevel StageLevel
         {
             get; set;
         }
@@ -44,7 +44,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the type of the material. </summary>
         ///
         /// <value> The type of the material. </value>
-        public Material.Material.Type MaterialType
+        public Material.MaterialType MaterialType
         {
             get; set;
         }
@@ -68,7 +68,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the type of the design. </summary>
         ///
         /// <value> The type of the design. </value>
-        public Material.Design.Type DesignType
+        public Material.DesignType DesignType
         {
             get; set;
         }
@@ -92,7 +92,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the type of the quality. </summary>
         ///
         /// <value> The type of the quality. </value>
-        public Material.Quality.Type QualityType
+        public Material.QualityType QualityType
         {
             get; set;
         }
@@ -116,7 +116,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the usage. </summary>
         ///
         /// <value> The usage. </value>
-        public Usage.Type Usage
+        public UsageType Usage
         {
             get; set;
         }
@@ -372,7 +372,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the type of the costing. </summary>
         ///
         /// <value> The type of the costing. </value>
-        public Cost.Type CostingType
+        public CostType CostingType
         {
             get; set;
         }

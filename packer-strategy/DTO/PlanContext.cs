@@ -4,25 +4,34 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.Models
+namespace packer_strategy.DTO
 {
     using Microsoft.EntityFrameworkCore;
+    using Models.Plan;
 
-    /// <summary>   A package context. </summary>
-    public class PackageContext : DbContext
+    /// <summary>   A plan context. </summary>
+    public class PlanContext : DbContext
     {
         /// <summary>   Constructor. </summary>
         ///
         /// <param name="options">  Options for controlling the operation. </param>
-        public PackageContext(DbContextOptions<PackageContext> options)
+        public PlanContext(DbContextOptions<PlanContext> options)
             : base(options)
         {
         }
 
-        /// <summary>   Gets or sets the packages. </summary>
+        /// <summary>   Gets or sets the plans. </summary>
         ///
-        /// <value> The packages. </value>
-        public DbSet<Package.Package> Packages
+        /// <value> The plans. </value>
+        public DbSet<Plan> Plans
+        {
+            get; set;
+        }
+
+        /// <summary>   Gets or sets the stages. </summary>
+        ///
+        /// <value> The stages. </value>
+        public DbSet<Stage> Stages
         {
             get; set;
         }
@@ -46,13 +55,11 @@ namespace packer_strategy.Models
         ///                             model that are specific to a given database. </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Package.Package>()
+            modelBuilder.Entity<Plan>()
                 .HasKey(c => c.Id);
-            modelBuilder.Entity<Package.Costing>()
-                .HasKey(c => new { c.OwnerId, c.Index });
-            modelBuilder.Entity<Package.Stage>()
+            modelBuilder.Entity<Stage>()
                 .HasKey(c => new { c.OwnerId, c.Level });
-            modelBuilder.Entity<Plan.Limit>()
+            modelBuilder.Entity<Limit>()
                 .HasKey(c => new { c.OwnerId, c.StageLevel, c.Index });
         }
     }

@@ -11,9 +11,9 @@ namespace packer_strategy.Controllers
     using System.Net;
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
-    using packer_strategy.Helpers;
-    using packer_strategy.Models;
-    using packer_strategy.Models.Material;
+    using Helpers;
+    using DTO;
+    using Models.Material;
 
     /// <summary>   A controller for handling materials. </summary>
     [Route("api/[controller]")]
@@ -21,7 +21,7 @@ namespace packer_strategy.Controllers
     {
         /// <summary>   The repository. </summary>
         private readonly IMaterialRepository _repository;
-        private readonly Dictionary<string, Material.Type> _types;
+        private readonly Dictionary<string, MaterialType> _types;
         private readonly List<string> _typeNames;
 
         /// <summary>   Constructor. </summary>
@@ -30,9 +30,9 @@ namespace packer_strategy.Controllers
         public MaterialsController(IMaterialRepository repository)
         {
             _repository = repository;
-            _types = new Dictionary<string, Material.Type>();
+            _types = new Dictionary<string, MaterialType>();
             _typeNames = new List<string>();
-            for (Material.Type type = Material.Type.Min; type < Material.Type.Max; ++type)
+            for (MaterialType type = MaterialType.Min; type < MaterialType.Max; ++type)
             {
                 string urlName = Attributes.UrlName(type);
                 _types[urlName] = type;

@@ -13,9 +13,9 @@ namespace packer_strategy_test
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using NUnit.Framework;
+    using packer_strategy.DTO;
     using packer_strategy.Controllers;
     using packer_strategy.Helpers;
-    using packer_strategy.Models;
     using packer_strategy.Models.Material;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test materials. </summary>
@@ -67,7 +67,7 @@ namespace packer_strategy_test
         public void PostNoData()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            var result = controller.Post(Attributes.UrlName(Material.Type.Bottle), null);
+            var result = controller.Post(Attributes.UrlName(MaterialType.Bottle), null);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -113,7 +113,7 @@ namespace packer_strategy_test
             int itemsToAdd = 10;
             MaterialsController controller = new MaterialsController(_repository);
             List<string> ids = new List<string>();
-            Material.Type type = Material.Type.Bottle;
+            MaterialType type = MaterialType.Bottle;
             string nameType = Attributes.UrlName(type);
 
             for (int item = 0; item < itemsToAdd; ++item)
@@ -163,7 +163,7 @@ namespace packer_strategy_test
             string startName = "A name";
             string startNote = "Some notes";
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type type = Material.Type.Can;
+            MaterialType type = MaterialType.Can;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
             Material item = new Material { Id = id, Name = startName, Notes = startNote };
@@ -224,7 +224,7 @@ namespace packer_strategy_test
         public void GetNotFound()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type type = Material.Type.Cap;
+            MaterialType type = MaterialType.Cap;
             string id = Guid.NewGuid().ToString();
             var result = controller.Get(Attributes.UrlName(type), id);
 
@@ -240,7 +240,7 @@ namespace packer_strategy_test
             string startName = "A name";
             string putName = "B name";
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type type = Material.Type.Cap;
+            MaterialType type = MaterialType.Cap;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
             Material item = new Material { Id = id, Name = startName };
@@ -286,7 +286,7 @@ namespace packer_strategy_test
         public void PutNotFound()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type type = Material.Type.Carton;
+            MaterialType type = MaterialType.Carton;
             string id = Guid.NewGuid().ToString();
             Material item = new Material();
             var result = controller.Put(Attributes.UrlName(type), id, item);
@@ -301,7 +301,7 @@ namespace packer_strategy_test
         public void Delete()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type type = Material.Type.Collar;
+            MaterialType type = MaterialType.Collar;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
             Material item = new Material { Id = id };
@@ -333,7 +333,7 @@ namespace packer_strategy_test
         public void DeleteNotFound()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type type = Material.Type.Collar;
+            MaterialType type = MaterialType.Collar;
             string id = Guid.NewGuid().ToString();
             var result = controller.Delete(Attributes.UrlName(type), id);
 
@@ -350,7 +350,7 @@ namespace packer_strategy_test
             string patchName = "B name";
             string startNote = "Some notes";
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type type = Material.Type.Crate;
+            MaterialType type = MaterialType.Crate;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
             Material item = new Material { Id = id, Name = startName, Notes = startNote };
@@ -419,7 +419,7 @@ namespace packer_strategy_test
             string patchName = "B name";
             string startNote = "Some notes";
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type type = Material.Type.Crate;
+            MaterialType type = MaterialType.Crate;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
             Material item = new Material { Id = id, Name = startName, Notes = startNote };
@@ -441,7 +441,7 @@ namespace packer_strategy_test
         public void PostComplexPan()
         {
             MaterialsController controller = new MaterialsController(_repository);
-            Material.Type type = Material.Type.Crate;
+            MaterialType type = MaterialType.Crate;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
 
