@@ -59,7 +59,7 @@ namespace packer_strategy.Models.Package
         /// <summary>   Gets or sets the type of the material. </summary>
         ///
         /// <value> The type of the material. </value>
-        public Material.Type MaterialType { get; set; }
+        public Models.Material.MaterialType MaterialType { get; set; }
 
         /// <summary>   Gets or sets the material code. </summary>
         ///

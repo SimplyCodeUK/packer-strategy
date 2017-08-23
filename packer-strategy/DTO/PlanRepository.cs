@@ -4,12 +4,15 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.Models
+namespace packer_strategy.DTO
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Models.Plan;
 
     /// <summary>   A plan repository. </summary>
+    ///
+    /// <seealso cref="T:packer_strategy.DTO.IPlanRepository"/>
     public class PlanRepository : IPlanRepository
     {
         /// <summary>   The context. </summary>
@@ -28,7 +31,9 @@ namespace packer_strategy.Models
         /// <returns>
         ///     An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
-        public IEnumerable<Plan.Plan> GetAll()
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.GetAll()"/>
+        public IEnumerable<Plan> GetAll()
         {
             return _context.Plans.ToList();
         }
@@ -36,7 +41,9 @@ namespace packer_strategy.Models
         /// <summary>   Adds item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void Add(Plan.Plan item)
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Add(Plan)"/>
+        public void Add(Plan item)
         {
             _context.Plans.Add(item);
             _context.SaveChanges();
@@ -46,8 +53,10 @@ namespace packer_strategy.Models
         ///
         /// <param name="key">  The key to remove. </param>
         ///
-        /// <returns>   A Plan.Plan. </returns>
-        public Plan.Plan Find(string key)
+        /// <returns>   A Plan. </returns>
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Find(string)"/>
+        public Plan Find(string key)
         {
             return _context.Plans.FirstOrDefault(t => t.Id == key);
         }
@@ -55,6 +64,8 @@ namespace packer_strategy.Models
         /// <summary>   Removes the given key. </summary>
         ///
         /// <param name="key">  The key to remove. </param>
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Remove(string)"/>
         public void Remove(string key)
         {
             var entity = _context.Plans.First(t => t.Id == key);
@@ -65,7 +76,9 @@ namespace packer_strategy.Models
         /// <summary>   Updates the given item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void Update(Plan.Plan item)
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Update(Plan)"/>
+        public void Update(Plan item)
         {
             _context.Plans.Update(item);
             _context.SaveChanges();

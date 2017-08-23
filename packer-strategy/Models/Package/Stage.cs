@@ -9,7 +9,7 @@ namespace packer_strategy.Models.Package
     using System.Collections.Generic;
 
     /// <summary>   A stage. </summary>
-    public class Stage : Models.Plan.Stage
+    public class Stage : Plan.Stage
     {
         /// <summary>   Default constructor. </summary>
         public Stage()
@@ -20,6 +20,8 @@ namespace packer_strategy.Models.Package
         /// <summary>   Sets owner identifier. </summary>
         ///
         /// <param name="value">    The value. </param>
+        ///
+        /// <seealso cref="M:packer_strategy.Models.Plan.Stage.SetOwnerId(string)"/>
         protected override void SetOwnerId(string value)
         {
             base.SetOwnerId(value);

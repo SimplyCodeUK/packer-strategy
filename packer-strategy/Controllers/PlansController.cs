@@ -10,8 +10,8 @@ namespace packer_strategy.Controllers
     using System.Net;
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
-    using packer_strategy.Models;
-    using packer_strategy.Models.Plan;
+    using DTO;
+    using Models.Plan;
 
     /// <summary>   A controller for handling plans. </summary>
     [Route("api/[controller]")]

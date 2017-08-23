@@ -14,7 +14,7 @@ namespace packer_strategy_test
     using Microsoft.EntityFrameworkCore;
     using NUnit.Framework;
     using packer_strategy.Controllers;
-    using packer_strategy.Models;
+    using packer_strategy.DTO;
     using packer_strategy.Models.Package;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test packages. </summary>

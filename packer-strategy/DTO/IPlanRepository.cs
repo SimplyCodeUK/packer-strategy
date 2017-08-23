@@ -4,9 +4,10 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.Models
+namespace packer_strategy.DTO
 {
     using System.Collections.Generic;
+    using Models.Plan;
 
     /// <summary>   Interface for plan repository. </summary>
     public interface IPlanRepository
@@ -14,21 +15,21 @@ namespace packer_strategy.Models
         /// <summary>   Adds item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        void Add(Plan.Plan item);
+        void Add(Plan item);
 
         /// <summary>   Gets all items in this collection. </summary>
         ///
         /// <returns>
         ///     An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
-        IEnumerable<Plan.Plan> GetAll();
+        IEnumerable<Plan> GetAll();
 
         /// <summary>   Searches for the first match for the given string. </summary>
         ///
         /// <param name="key">  The key to remove. </param>
         ///
         /// <returns>   A Plan.Plan. </returns>
-        Plan.Plan Find(string key);
+        Plan Find(string key);
 
         /// <summary>   Removes the given key. </summary>
         ///
@@ -38,6 +39,6 @@ namespace packer_strategy.Models
         /// <summary>   Updates the given item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        void Update(Plan.Plan item);
+        void Update(Plan item);
     }
 }

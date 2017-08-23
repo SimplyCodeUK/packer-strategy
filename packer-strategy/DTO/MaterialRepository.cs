@@ -4,12 +4,15 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.Models
+namespace packer_strategy.DTO
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Models.Material;
 
     /// <summary>   A material repository. </summary>
+    ///
+    /// <seealso cref="T:packer_strategy.DTO.IMaterialRepository"/>
     public class MaterialRepository : IMaterialRepository
     {
         /// <summary>   The context. </summary>
@@ -30,7 +33,9 @@ namespace packer_strategy.Models
         /// <returns>
         ///     An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
-        public IEnumerable<Material.Material> GetAll(Material.Material.Type type)
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.GetAll(MaterialType)"/>
+        public IEnumerable<Material> GetAll(MaterialType type)
         {
             return _context.Materials.ToList();
         }
@@ -38,7 +43,9 @@ namespace packer_strategy.Models
         /// <summary>   Adds item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
-        public void Add(Material.Material item)
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Add(Material)"/>
+        public void Add(Material item)
         {
             _context.Materials.Add(item);
             _context.SaveChanges();
@@ -49,8 +56,10 @@ namespace packer_strategy.Models
         /// <param name="type"> The type. </param>
         /// <param name="key">  The key. </param>
         ///
-        /// <returns>   A Material.Material. </returns>
-        public Material.Material Find(Material.Material.Type type, string key)
+        /// <returns>   A Material. </returns>
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Find(MaterialType,string)"/>
+        public Material Find(MaterialType type, string key)
         {
             return _context.Materials.FirstOrDefault(t => t.IdType == type && t.Id == key);
         }
@@ -59,7 +68,9 @@ namespace packer_strategy.Models
         ///
         /// <param name="type"> The type. </param>
         /// <param name="key">  The key. </param>
-        public void Remove(Material.Material.Type type, string key)
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Remove(MaterialType,string)"/>
+        public void Remove(MaterialType type, string key)
         {
             var entity = _context.Materials.First(t => t.IdType == type && t.Id == key);
             _context.Materials.Remove(entity);
@@ -69,7 +80,9 @@ namespace packer_strategy.Models
         /// <summary>   Updates the given item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
-        public void Update(Material.Material item)
+        ///
+        /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Update(Material)"/>
+        public void Update(Material item)
         {
             _context.Materials.Update(item);
             _context.SaveChanges();

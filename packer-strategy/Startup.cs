@@ -12,7 +12,7 @@ namespace packer_strategy
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
-    using packer_strategy.Models;
+    using DTO;
 
     /// <summary>   A startup. </summary>
     public class Startup
