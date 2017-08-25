@@ -4,22 +4,22 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.PackageDTO
+namespace packer_strategy.DTO.DtoPackage
 {
     using System.Collections.Generic;
 
     /// <summary>   A stage. </summary>
-    public class StageDTO : PlanDTO.StageDTO
+    public class DtoStage : DtoPlan.DtoStage
     {
         /// <summary>   Default constructor. </summary>
-        public StageDTO()
+        public DtoStage()
         {
-            Results = new List<ResultDTO>();
+            Results = new List<DtoResult>();
         }
 
         /// <summary>   Gets or sets the results. </summary>
         ///
         /// <value> The results. </value>
-        public List<ResultDTO> Results { get; set; }
+        public List<DtoResult> Results { get; set; }
     }
 }

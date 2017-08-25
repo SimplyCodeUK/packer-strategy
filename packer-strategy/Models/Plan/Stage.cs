@@ -7,67 +7,7 @@
 namespace packer_strategy.Models.Plan
 {
     using System.Collections.Generic;
-
-    /// <summary>   Values that represent stage levels. </summary>
-    public enum StageLevel
-    {
-        /// <summary>   An enum constant representing the new option. </summary>
-        New,
-        /// <summary>   An enum constant representing the variable product option. </summary>
-        VariableProduct,
-        /// <summary>   An enum constant representing the product pack option. </summary>
-        ProductPack,
-        /// <summary>   An enum constant representing the multi pack option. </summary>
-        MultiPack,
-        /// <summary>   An enum constant representing the shelf unit option. </summary>
-        ShelfUnit,
-        /// <summary>   An enum constant representing the transit pack option. </summary>
-        TransitPack,
-        /// <summary>   An enum constant representing the transport load option. </summary>
-        TransportLoad,
-        /// <summary>   An enum constant representing the multi stack option. </summary>
-        MultiStack,
-        /// <summary>   An enum constant representing the container option. </summary>
-        Container
-    }
-
-    /// <summary>   Values that represent pack forms. </summary>
-    public enum PackForm
-    {
-        /// <summary>   An enum constant representing the Minimum option. </summary>
-        Min,
-        /// <summary>   An enum constant representing the none option. </summary>
-        None = Min,
-        /// <summary>   An enum constant representing the box option. </summary>
-        Box,
-        /// <summary>   An enum constant representing the cylinder option. </summary>
-        Cylinder,
-        /// <summary>   An enum constant representing the tub option. </summary>
-        Tub,
-        /// <summary>   An enum constant representing the cone option. </summary>
-        Cone,
-        /// <summary>   An enum constant representing the bottle option. </summary>
-        Bottle,
-        /// <summary>   An enum constant representing the Maximum option. </summary>
-        Max
-    };
-
-    /// <summary>   Values that represent pack shapes. </summary>
-    public enum PackShape
-    {
-        /// <summary>   An enum constant representing the Minimum option. </summary>
-        Min,
-        /// <summary>   An enum constant representing the rectangle option. </summary>
-        Rectangle = Min,
-        /// <summary>   An enum constant representing the circle option. </summary>
-        Circle,
-        /// <summary>   An enum constant representing the oval option. </summary>
-        Oval,
-        /// <summary>   An enum constant representing the round rectangle option. </summary>
-        RoundRectangle,
-        /// <summary>   An enum constant representing the Maximum option. </summary>
-        Max
-    };
+    using Helpers.Enums;
 
     /// <summary>   A stage. </summary>
     public class Stage

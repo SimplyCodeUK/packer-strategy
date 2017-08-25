@@ -8,6 +8,7 @@ namespace packer_strategy.DTO
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Helpers.Enums;
     using Models.Material;
 
     /// <summary>   A material repository. </summary>

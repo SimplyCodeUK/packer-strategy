@@ -4,19 +4,18 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.PackageDTO
+namespace packer_strategy.DTO.DtoPackage
 {
     using System.Collections.Generic;
-    using Models.Plan;
-    using Models.Package;
+    using Helpers.Enums;
 
     /// <summary>   A layer. </summary>
-    public class LayerDTO
+    public class DtoLayer
     {
         /// <summary>   Default constructor. </summary>
-        public LayerDTO()
+        public DtoLayer()
         {
-            Collations = new List<CollationDTO>();
+            Collations = new List<DtoCollation>();
         }
 
         /// <summary>   Gets or sets the identifier that owns this item. </summary>
@@ -127,6 +126,6 @@ namespace packer_strategy.DTO.PackageDTO
         /// <summary>   Gets or sets the collations. </summary>
         ///
         /// <value> The collations. </value>
-        public List<CollationDTO> Collations { get; set; }
+        public List<DtoCollation> Collations { get; set; }
     }
 }

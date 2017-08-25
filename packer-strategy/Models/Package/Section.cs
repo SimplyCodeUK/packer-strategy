@@ -6,6 +6,8 @@
 
 namespace packer_strategy.Models.Package
 {
+    using Helpers.Enums;
+
     /// <summary>   A section. </summary>
     public class Section
     {
@@ -17,7 +19,7 @@ namespace packer_strategy.Models.Package
         /// <summary>   Gets or sets the shape. </summary>
         ///
         /// <value> The shape. </value>
-        public Plan.PackShape Shape { get; set; }
+        public PackShape Shape { get; set; }
 
         /// <summary>   Gets or sets the status. </summary>
         ///

@@ -4,85 +4,86 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.MaterialDTO
+namespace packer_strategy.DTO.DtoPackage
 {
     using System.Collections.Generic;
-    using Models.Material;
-    using Models.Plan;
+    using Helpers.Enums;
 
-    /// <summary>   A material. </summary>
-    public class MaterialDTO
+    /// <summary>   A result. </summary>
+    public class DtoResult
     {
         /// <summary>   Default constructor. </summary>
-        public MaterialDTO()
+        public DtoResult()
         {
-            this.Costings = new List<CostingDTO>();
+            Layers = new List<DtoLayer>();
+            Materials = new List<DtoMaterial>();
+            Sections = new List<DtoSection>();
         }
 
-        /// <summary>   Gets or sets the type of the identifier. </summary>
+        /// <summary>   Gets or sets the identifier that owns this item. </summary>
         ///
-        /// <value> The type of the identifier. </value>
-        public MaterialType IdType { get; set; }
+        /// <value> The identifier of the owner. </value>
+        public string OwnerId { get; set; }
 
-        /// <summary>   Gets or sets the identifier. </summary>
+        /// <summary>   Gets or sets the level. </summary>
         ///
-        /// <value> The identifier. </value>
-        public string Id { get; set; }
+        /// <value> The level. </value>
+        public StageLevel Level { get; set; }
 
-        /// <summary>   Gets or sets the name. </summary>
+        /// <summary>   Gets or sets the zero-based index of this object. </summary>
         ///
-        /// <value> The name. </value>
-        public string Name { get; set; }
+        /// <value> The index. </value>
+        public long Index { get; set; }
 
-        /// <summary>   Gets or sets the notes. </summary>
+        /// <summary>   Gets or sets a value indicating whether the used. </summary>
         ///
-        /// <value> The notes. </value>
-        public string Notes { get; set; }
+        /// <value> True if used, false if not. </value>
+        public bool Used { get; set; }
 
-        /// <summary>   Gets or sets the colour. </summary>
+        /// <summary>   Gets or sets the generator. </summary>
         ///
-        /// <value> The colour. </value>
-        public string Colour { get; set; }
+        /// <value> The generator. </value>
+        public PatternGenerator Generator { get; set; }
 
-        /// <summary>   Gets or sets the drawing. </summary>
+        /// <summary>   Gets or sets the sub generator. </summary>
         ///
-        /// <value> The drawing. </value>
-        public string Drawing { get; set; }
+        /// <value> The sub generator. </value>
+        public long SubGenerator { get; set; }
 
-        /// <summary>   Gets or sets the bar code. </summary>
+        /// <summary>   Gets or sets the solution. </summary>
         ///
-        /// <value> The bar code. </value>
-        public string BarCode { get; set; }
+        /// <value> The solution. </value>
+        public long Solution { get; set; }
 
-        /// <summary>   Gets or sets the computer code. </summary>
+        /// <summary>   Gets or sets the parent level. </summary>
         ///
-        /// <value> The computer code. </value>
-        public string ComputerCode { get; set; }
+        /// <value> The parent level. </value>
+        public StageLevel ParentLevel { get; set; }
 
-        /// <summary>   Gets or sets the finish. </summary>
+        /// <summary>   Gets or sets the parent solution. </summary>
         ///
-        /// <value> The finish. </value>
-        public string Finish { get; set; }
+        /// <value> The parent solution. </value>
+        public long ParentSolution { get; set; }
 
-        /// <summary>   Gets or sets the print. </summary>
+        /// <summary>   Gets or sets the lift. </summary>
         ///
-        /// <value> The print. </value>
-        public string Print { get; set; }
-
-        /// <summary>   Gets or sets the type of the print. </summary>
-        ///
-        /// <value> The type of the print. </value>
-        public long PrintType { get; set; }
+        /// <value> The lift. </value>
+        public long Lift { get; set; }
 
         /// <summary>   Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
         public PackForm Form { get; set; }
 
-        /// <summary>   Gets or sets the type of the closure. </summary>
+        /// <summary>   Gets or sets the closure. </summary>
         ///
-        /// <value> The type of the closure. </value>
-        public long ClosureType { get; set; }
+        /// <value> The closure. </value>
+        public long Closure { get; set; }
+
+        /// <summary>   Gets or sets the height of the closure. </summary>
+        ///
+        /// <value> The height of the closure. </value>
+        public double ClosureHeight { get; set; }
 
         /// <summary>   Gets or sets the closure weight. </summary>
         ///
@@ -154,20 +155,20 @@ namespace packer_strategy.DTO.MaterialDTO
         /// <value> The load capacity. </value>
         public double LoadCapacity { get; set; }
 
-        /// <summary>   Gets or sets the centre of gravity x coordinate. </summary>
+        /// <summary>   Gets or sets the length of the centre of gravity. </summary>
         ///
-        /// <value> The centre of gravity x coordinate. </value>
-        public double CentreOfGravityX { get; set; }
+        /// <value> The length of the centre of gravity. </value>
+        public double CentreOfGravityLength { get; set; }
 
-        /// <summary>   Gets or sets the centre of gravity y coordinate. </summary>
+        /// <summary>   Gets or sets the centre of gravity breadth. </summary>
         ///
-        /// <value> The centre of gravity y coordinate. </value>
-        public double CentreOfGravityY { get; set; }
+        /// <value> The centre of gravity breadth. </value>
+        public double CentreOfGravityBreadth { get; set; }
 
-        /// <summary>   Gets or sets the centre of gravity z coordinate. </summary>
+        /// <summary>   Gets or sets the height of the centre of gravity. </summary>
         ///
-        /// <value> The centre of gravity z coordinate. </value>
-        public double CentreOfGravityZ { get; set; }
+        /// <value> The height of the centre of gravity. </value>
+        public double CentreOfGravityHeight { get; set; }
 
         /// <summary>   Gets or sets the caliper. </summary>
         ///
@@ -234,9 +235,34 @@ namespace packer_strategy.DTO.MaterialDTO
         /// <value> The target compression. </value>
         public double TargetCompression { get; set; }
 
-        /// <summary>   Gets or sets the costings. </summary>
+        /// <summary>   Gets or sets the safety factor. </summary>
         ///
-        /// <value> The costings. </value>
-        public List<CostingDTO> Costings { get; set; }
+        /// <value> The safety factor. </value>
+        public double SafetyFactor { get; set; }
+
+        /// <summary>   Gets or sets the area utilisation. </summary>
+        ///
+        /// <value> The area utilisation. </value>
+        public double AreaUtilisation { get; set; }
+
+        /// <summary>   Gets or sets the volume utilisation. </summary>
+        ///
+        /// <value> The volume utilisation. </value>
+        public double VolumeUtilisation { get; set; }
+
+        /// <summary>   Gets or sets the layers. </summary>
+        ///
+        /// <value> The layers. </value>
+        public List<DtoLayer> Layers { get; set; }
+
+        /// <summary>   Gets or sets the materials. </summary>
+        ///
+        /// <value> The materials. </value>
+        public List<DtoMaterial> Materials { get; set; }
+
+        /// <summary>   Gets or sets the sections. </summary>
+        ///
+        /// <value> The sections. </value>
+        public List<DtoSection> Sections { get; set; }
     }
 }

@@ -7,6 +7,7 @@
 namespace packer_strategy.Models.Package
 {
     using System.Collections.Generic;
+    using Helpers.Enums;
 
     /// <summary>   A package. </summary>
     public class Package
@@ -59,7 +60,7 @@ namespace packer_strategy.Models.Package
         /// <summary>   Gets or sets the type of the material. </summary>
         ///
         /// <value> The type of the material. </value>
-        public Models.Material.MaterialType MaterialType { get; set; }
+        public MaterialType MaterialType { get; set; }
 
         /// <summary>   Gets or sets the material code. </summary>
         ///

@@ -11,8 +11,9 @@ namespace packer_strategy.Controllers
     using System.Net;
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
-    using Helpers;
     using DTO;
+    using Helpers;
+    using Helpers.Enums;
     using Models.Material;
 
     /// <summary>   A controller for handling materials. </summary>
