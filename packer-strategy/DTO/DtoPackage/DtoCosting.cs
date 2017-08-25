@@ -6,18 +6,13 @@
 
 namespace packer_strategy.DTO.DtoPackage
 {
-    /// <summary>   A costing. </summary>
+    /// <summary>   A dto costing. </summary>
     public class DtoCosting
     {
         /// <summary>   Gets or sets the identifier that owns this item. </summary>
         ///
         /// <value> The identifier of the owner. </value>
         public string OwnerId { get; set; }
-
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
-        ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
 
         /// <summary>   Gets or sets the required quantity. </summary>
         ///

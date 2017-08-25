@@ -9,13 +9,14 @@ namespace packer_strategy.DTO.DtoMaterial
     using System.Collections.Generic;
     using Helpers.Enums;
 
-    /// <summary>   A material. </summary>
+    /// <summary>   A dto material. </summary>
     public class DtoMaterial
     {
         /// <summary>   Default constructor. </summary>
         public DtoMaterial()
         {
             this.Costings = new List<DtoCosting>();
+            this.Layers = new List<DtoLayer>();
         }
 
         /// <summary>   Gets or sets the type of the identifier. </summary>
@@ -237,5 +238,10 @@ namespace packer_strategy.DTO.DtoMaterial
         ///
         /// <value> The costings. </value>
         public List<DtoCosting> Costings { get; set; }
+
+        /// <summary>   Gets or sets the costings. </summary>
+        ///
+        /// <value> The costings. </value>
+        public List<DtoLayer> Layers { get; set; }
     }
 }

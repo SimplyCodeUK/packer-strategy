@@ -35,7 +35,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.GetAll()"/>
         public IEnumerable<Plan> GetAll()
         {
-            return _context.Plans.ToList();
+            return _context.GetPlans();
         }
 
         /// <summary>   Adds item. </summary>
@@ -45,7 +45,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Add(Plan)"/>
         public void Add(Plan item)
         {
-            _context.Plans.Add(item);
+            _context.AddPlan(item);
             _context.SaveChanges();
         }
 
@@ -58,7 +58,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Find(string)"/>
         public Plan Find(string key)
         {
-            return _context.Plans.FirstOrDefault(t => t.Id == key);
+            return _context.FindPlan(key);
         }
 
         /// <summary>   Removes the given key. </summary>
@@ -68,8 +68,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Remove(string)"/>
         public void Remove(string key)
         {
-            var entity = _context.Plans.First(t => t.Id == key);
-            _context.Plans.Remove(entity);
+            _context.RemovePlan(key);
             _context.SaveChanges();
         }
 
@@ -80,7 +79,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Update(Plan)"/>
         public void Update(Plan item)
         {
-            _context.Plans.Update(item);
+            _context.UpdatePlan(item);
             _context.SaveChanges();
         }
     }

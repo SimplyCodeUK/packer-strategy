@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.Models.Package
+namespace packer_strategy.Models.Material
 {
     using System.Collections.Generic;
     using Helpers.Enums;
@@ -18,20 +18,15 @@ namespace packer_strategy.Models.Package
             Collations = new List<Collation>();
         }
 
+        /// <summary>   Gets or sets the type of the material identifier. </summary>
+        ///
+        /// <value> The type of the material identifier. </value>
+        public MaterialType MaterialType { get; set; }
+
         /// <summary>   Gets or sets the identifier that owns this item. </summary>
         ///
         /// <value> The identifier of the owner. </value>
-        public string OwnerId { get; set; }
-
-        /// <summary>   Gets or sets the level. </summary>
-        ///
-        /// <value> The level. </value>
-        public StageLevel Level { get; set; }
-
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
-        ///
-        /// <value> The index. </value>
-        public long ResultIndex { get; set; }
+        public string MaterialId { get; set; }
 
         /// <summary>   Gets or sets the zero-based index of this object. </summary>
         ///

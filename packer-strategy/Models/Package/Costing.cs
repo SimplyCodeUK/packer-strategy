@@ -14,11 +14,6 @@ namespace packer_strategy.Models.Package
         /// <value> The identifier of the owner. </value>
         public string OwnerId { get; set; }
 
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
-        ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
-
         /// <summary>   Gets or sets the required quantity. </summary>
         ///
         /// <value> The required quantity. </value>

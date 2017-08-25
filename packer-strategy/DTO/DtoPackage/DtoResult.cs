@@ -9,7 +9,7 @@ namespace packer_strategy.DTO.DtoPackage
     using System.Collections.Generic;
     using Helpers.Enums;
 
-    /// <summary>   A result. </summary>
+    /// <summary>   A dto result. </summary>
     public class DtoResult
     {
         /// <summary>   Default constructor. </summary>

@@ -38,7 +38,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.GetAll(MaterialType)"/>
         public IEnumerable<Material> GetAll(MaterialType type)
         {
-            return _context.Materials.ToList();
+            return _context.GetMaterials();
         }
 
         /// <summary>   Adds item. </summary>
@@ -48,7 +48,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Add(Material)"/>
         public void Add(Material item)
         {
-            _context.Materials.Add(item);
+            _context.AddMaterial(item);
             _context.SaveChanges();
         }
 
@@ -62,7 +62,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Find(MaterialType,string)"/>
         public Material Find(MaterialType type, string key)
         {
-            return _context.Materials.FirstOrDefault(t => t.IdType == type && t.Id == key);
+            return _context.FindMaterial(type, key);
         }
 
         /// <summary>   Removes the given key. </summary>
@@ -73,8 +73,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Remove(MaterialType,string)"/>
         public void Remove(MaterialType type, string key)
         {
-            var entity = _context.Materials.First(t => t.IdType == type && t.Id == key);
-            _context.Materials.Remove(entity);
+            _context.RemoveMaterial(type, key);
             _context.SaveChanges();
         }
 
@@ -85,7 +84,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Update(Material)"/>
         public void Update(Material item)
         {
-            _context.Materials.Update(item);
+            _context.UpdateMaterial(item);
             _context.SaveChanges();
         }
     }

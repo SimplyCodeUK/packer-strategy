@@ -8,6 +8,7 @@ namespace packer_strategy.DTO
 {
     using Microsoft.EntityFrameworkCore;
     using Models.Material;
+    using Helpers.Enums;
 
     /// <summary>   A material context. </summary>
     public class MaterialContext : DbContext
@@ -23,9 +24,49 @@ namespace packer_strategy.DTO
         /// <summary>   Gets or sets the materials. </summary>
         ///
         /// <value> The materials. </value>
-        public DbSet<Material> Materials
+        private DbSet<Material> Materials { get; set; }
+
+        /// <summary>   Gets the materials. </summary>
+        ///
+        /// <returns>   The materials. </returns>
+        public DbSet<Material> GetMaterials()
         {
-            get; set;
+            return Materials;
+        }
+
+        /// <summary>   Adds a material. </summary>
+        ///
+        /// <param name="item"> The item. </param>
+        public void AddMaterial(Material item)
+        {
+            Materials.Add(item);
+        }
+
+        /// <summary>   Searches for the first material. </summary>
+        ///
+        /// <param name="key">  The key. </param>
+        ///
+        /// <returns>   The found material. </returns>
+        public Material FindMaterial(MaterialType type, string key)
+        {
+            return Materials.Find(type, key);
+        }
+
+        /// <summary>   Removes the material described by key. </summary>
+        ///
+        /// <param name="key">  The key. </param>
+        public void RemoveMaterial(MaterialType type, string key)
+        {
+            var entity = Materials.Find(type, key);
+            Materials.Remove(entity);
+        }
+
+        /// <summary>   Updates the material described by item. </summary>
+        ///
+        /// <param name="item"> The item. </param>
+        public void UpdateMaterial(Material item)
+        {
+            Materials.Update(item);
         }
 
         /// <summary>
@@ -51,6 +92,10 @@ namespace packer_strategy.DTO
                 .HasKey(c => new { c.IdType, c.Id });
             modelBuilder.Entity<Costing>()
                 .HasKey(c => new { c.MaterialIdType, c.MaterialId, c.Quantity });
+            modelBuilder.Entity<Layer>()
+                .HasKey(c => new { c.MaterialType, c.MaterialId, c.Index });
+            modelBuilder.Entity<Collation>()
+                .HasKey(c => new { c.MaterialType, c.MaterialId, c.LayerIndex, c.Index });
         }
     }
 }

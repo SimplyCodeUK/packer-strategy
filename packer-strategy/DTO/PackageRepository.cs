@@ -35,7 +35,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IPackageRepository.GetAll()"/>
         public IEnumerable<Package> GetAll()
         {
-            return _context.Packages.ToList();
+            return _context.GetPackages();
         }
 
         /// <summary>   Adds item. </summary>
@@ -45,7 +45,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IPackageRepository.Add(Package)"/>
         public void Add(Package item)
         {
-            _context.Packages.Add(item);
+            _context.AddPackage(item);
             _context.SaveChanges();
         }
 
@@ -58,7 +58,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IPackageRepository.Find(string)"/>
         public Package Find(string key)
         {
-            return _context.Packages.FirstOrDefault(t => t.Id == key);
+            return _context.FindPackage(key);
         }
 
         /// <summary>   Removes the given key. </summary>
@@ -68,8 +68,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IPackageRepository.Remove(string)"/>
         public void Remove(string key)
         {
-            var entity = _context.Packages.First(t => t.Id == key);
-            _context.Packages.Remove(entity);
+            _context.RemovePackage(key);
             _context.SaveChanges();
         }
 
@@ -80,7 +79,7 @@ namespace packer_strategy.DTO
         /// <seealso cref="M:packer_strategy.DTO.IPackageRepository.Update(Package)"/>
         public void Update(Package item)
         {
-            _context.Packages.Update(item);
+            _context.UpdatePackage(item);
             _context.SaveChanges();
         }
     }

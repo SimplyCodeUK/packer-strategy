@@ -7,6 +7,7 @@
 namespace packer_strategy.Models.Plan
 {
     using System.Collections.Generic;
+    using Helpers.Enums;
 
     /// <summary>   A plan. </summary>
     public class Plan
@@ -39,25 +40,16 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the name. </summary>
         ///
         /// <value> The name. </value>
-        public string Name
-        {
-            get; set;
-        }
+        public string Name { get; set; }
 
         /// <summary>   Gets or sets the notes. </summary>
         ///
         /// <value> The notes. </value>
-        public string Notes
-        {
-            get; set;
-        }
+        public string Notes { get; set; }
 
         /// <summary>   Gets or sets the stages. </summary>
         ///
         /// <value> The stages. </value>
-        public List<Stage> Stages
-        {
-            get; set;
-        }
+        public List<Stage> Stages { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace packer_strategy.DTO.DtoPackage
 {
     using System.Collections.Generic;
 
-    /// <summary>   A stage. </summary>
+    /// <summary>   A dto stage. </summary>
     public class DtoStage : DtoPlan.DtoStage
     {
         /// <summary>   Default constructor. </summary>
