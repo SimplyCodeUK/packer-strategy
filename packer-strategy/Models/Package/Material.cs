@@ -14,17 +14,11 @@ namespace packer_strategy.Models.Package
         /// <summary>   Default constructor. </summary>
         public Material()
         {
-            Layers = new List<Layer>();
         }
 
         /// <summary>   Gets or sets the number of.  </summary>
         ///
         /// <value> The count. </value>
         public long Count { get; set;  }
-
-        /// <summary>   Gets or sets the layers. </summary>
-        ///
-        /// <value> The layers. </value>
-        public List<Layer>  Layers { get; set; }
     }
 }

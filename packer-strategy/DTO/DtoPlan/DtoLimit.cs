@@ -8,7 +8,7 @@ namespace packer_strategy.DTO.DtoPlan
 {
     using Helpers.Enums;
 
-    /// <summary>   A limit. </summary>
+    /// <summary>   A dto limit. </summary>
     public class DtoLimit
     {
         /// <summary>   Gets or sets the identifier that owns this item. </summary>

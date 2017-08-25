@@ -23,9 +23,49 @@ namespace packer_strategy.DTO
         /// <summary>   Gets or sets the packages. </summary>
         ///
         /// <value> The packages. </value>
-        public DbSet<Package> Packages
+        private DbSet<Package> Packages { get; set; }
+
+        /// <summary>   Gets the packages. </summary>
+        ///
+        /// <returns>   The packages. </returns>
+        public DbSet<Package> GetPackages()
         {
-            get; set;
+            return Packages;
+        }
+
+        /// <summary>   Adds a package. </summary>
+        ///
+        /// <param name="item"> The item. </param>
+        public void AddPackage(Package item)
+        {
+            Packages.Add(item);
+        }
+
+        /// <summary>   Searches for the first package. </summary>
+        ///
+        /// <param name="key">  The key. </param>
+        ///
+        /// <returns>   The found package. </returns>
+        public Package FindPackage(string key)
+        {
+            return Packages.Find(key);
+        }
+
+        /// <summary>   Removes the package described by key. </summary>
+        ///
+        /// <param name="key">  The key. </param>
+        public void RemovePackage(string key)
+        {
+            var entity = Packages.Find(key);
+            Packages.Remove(entity);
+        }
+
+        /// <summary>   Updates the package described by item. </summary>
+        ///
+        /// <param name="item"> The item. </param>
+        public void UpdatePackage(Package item)
+        {
+            Packages.Update(item);
         }
 
         /// <summary>
@@ -50,7 +90,7 @@ namespace packer_strategy.DTO
             modelBuilder.Entity<Package>()
                 .HasKey(c => c.Id);
             modelBuilder.Entity<Costing>()
-                .HasKey(c => new { c.OwnerId, c.Index });
+                .HasKey(c => new { c.OwnerId, c.RequiredQuantity });
             modelBuilder.Entity<Stage>()
                 .HasKey(c => new { c.OwnerId, c.Level });
             modelBuilder.Entity<Models.Plan.Limit>()

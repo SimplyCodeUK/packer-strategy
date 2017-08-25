@@ -8,7 +8,7 @@ namespace packer_strategy.DTO.DtoMaterial
 {
     using Helpers.Enums;
 
-    /// <summary>   A costing. </summary>
+    /// <summary>   A dto costing. </summary>
     public class DtoCosting
     {
         /// <summary>   Gets or sets the type of the material identifier. </summary>

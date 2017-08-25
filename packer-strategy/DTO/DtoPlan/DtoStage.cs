@@ -9,7 +9,7 @@ namespace packer_strategy.DTO.DtoPlan
     using System.Collections.Generic;
     using Helpers.Enums;
 
-    /// <summary>   A stage dto. </summary>
+    /// <summary>   A dto stage. </summary>
     public class DtoStage
     {
         /// <summary>   Default constructor. </summary>

@@ -8,7 +8,7 @@ namespace packer_strategy.DTO.DtoPlan
 {
     using System.Collections.Generic;
 
-    /// <summary>   A plan. </summary>
+    /// <summary>   A dto plan. </summary>
     public class DtoPlan
     {
         /// <summary>   Default constructor. </summary>

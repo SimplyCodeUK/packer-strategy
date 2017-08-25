@@ -8,6 +8,7 @@ namespace packer_strategy.Models.Package
 {
     using System.Collections.Generic;
     using Helpers.Enums;
+    using Models.Material;
 
     /// <summary>   A result. </summary>
     public class Result

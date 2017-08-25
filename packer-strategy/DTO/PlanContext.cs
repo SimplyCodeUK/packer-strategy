@@ -23,17 +23,49 @@ namespace packer_strategy.DTO
         /// <summary>   Gets or sets the plans. </summary>
         ///
         /// <value> The plans. </value>
-        public DbSet<Plan> Plans
+        private DbSet<Plan> Plans { get; set; }
+
+        /// <summary>   Gets the plans. </summary>
+        ///
+        /// <returns>   The plans. </returns>
+        public DbSet<Plan> GetPlans()
         {
-            get; set;
+            return Plans;
         }
 
-        /// <summary>   Gets or sets the stages. </summary>
+        /// <summary>   Adds a plan. </summary>
         ///
-        /// <value> The stages. </value>
-        public DbSet<Stage> Stages
+        /// <param name="item"> The item. </param>
+        public void AddPlan(Plan item)
         {
-            get; set;
+            Plans.Add(item);
+        }
+
+        /// <summary>   Searches for the first plan. </summary>
+        ///
+        /// <param name="key">  The key. </param>
+        ///
+        /// <returns>   The found plan. </returns>
+        public Plan FindPlan(string key)
+        {
+            return Plans.Find(key);
+        }
+
+        /// <summary>   Removes the plan described by key. </summary>
+        ///
+        /// <param name="key">  The key. </param>
+        public void RemovePlan(string key)
+        {
+            var entity = Plans.Find(key);
+            Plans.Remove(entity);
+        }
+
+        /// <summary>   Updates the plan described by item. </summary>
+        ///
+        /// <param name="item"> The item. </param>
+        public void UpdatePlan(Plan item)
+        {
+            Plans.Update(item);
         }
 
         /// <summary>

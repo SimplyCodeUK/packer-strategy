@@ -8,8 +8,8 @@ namespace packer_strategy.DTO.DtoPackage
 {
     using System.Collections.Generic;
 
-    /// <summary>   A material. </summary>
-    public class DtoMaterial : Models.Material.Material
+    /// <summary>   A dto material. </summary>
+    public class DtoMaterial
     {
         /// <summary>   Default constructor. </summary>
         public DtoMaterial()

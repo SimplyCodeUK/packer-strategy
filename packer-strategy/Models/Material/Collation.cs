@@ -4,11 +4,28 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.Models.Package
+namespace packer_strategy.Models.Material
 {
+    using Helpers.Enums;
+
     /// <summary>   A collation. </summary>
     public class Collation
     {
+        /// <summary>   Gets or sets the type of the material. </summary>
+        ///
+        /// <value> The type of the material. </value>
+        public MaterialType MaterialType { get; set; }
+
+        /// <summary>   Gets or sets the identifier of the material. </summary>
+        ///
+        /// <value> The identifier of the material. </value>
+        public string MaterialId { get; set; }
+
+        /// <summary>   Gets or sets the zero-based index of the layer. </summary>
+        ///
+        /// <value> The layer index. </value>
+        public long LayerIndex { get; set; }
+
         /// <summary>   Gets or sets the zero-based index of this object. </summary>
         ///
         /// <value> The index. </value>

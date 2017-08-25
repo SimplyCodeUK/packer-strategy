@@ -8,7 +8,7 @@ namespace packer_strategy.DTO.DtoPackage
 {
     using Helpers.Enums;
 
-    /// <summary>   A section. </summary>
+    /// <summary>   A dto section. </summary>
     public class DtoSection
     {
         /// <summary>   Gets or sets the number of.  </summary>
