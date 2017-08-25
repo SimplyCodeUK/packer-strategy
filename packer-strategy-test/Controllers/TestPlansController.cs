@@ -15,6 +15,7 @@ namespace packer_strategy_test
     using NUnit.Framework;
     using packer_strategy.Controllers;
     using packer_strategy.DTO;
+    using packer_strategy.Helpers.Enums;
     using packer_strategy.Models.Plan;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test plans. </summary>

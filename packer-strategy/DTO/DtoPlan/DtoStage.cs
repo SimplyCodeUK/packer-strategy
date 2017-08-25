@@ -4,18 +4,18 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.PlanDTO
+namespace packer_strategy.DTO.DtoPlan
 {
     using System.Collections.Generic;
-    using Models.Plan;
+    using Helpers.Enums;
 
     /// <summary>   A stage dto. </summary>
-    public class StageDTO
+    public class DtoStage
     {
         /// <summary>   Default constructor. </summary>
-        public StageDTO()
+        public DtoStage()
         {
-            this.Limits = new List<LimitDTO>();
+            this.Limits = new List<DtoLimit>();
         }
 
         /// <summary>   Gets or sets the identifier that owns this item. </summary>
@@ -666,6 +666,6 @@ namespace packer_strategy.DTO.PlanDTO
         /// <summary>   Gets or sets the limits. </summary>
         ///
         /// <value> The limits. </value>
-        public List<LimitDTO> Limits { get; set; }
+        public List<DtoLimit> Limits { get; set; }
     }
 }

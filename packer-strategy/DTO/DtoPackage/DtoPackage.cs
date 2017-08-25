@@ -4,18 +4,19 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.PackageDTO
+namespace packer_strategy.DTO.DtoPackage
 {
     using System.Collections.Generic;
+    using Helpers.Enums;
 
     /// <summary>   A package. </summary>
-    public class PackageDTO
+    public class DtoPackage
     {
         /// <summary>   Default constructor. </summary>
-        public PackageDTO()
+        public DtoPackage()
         {
-            this.Costings = new List<CostingDTO>();
-            this.Stages = new List<StageDTO>();
+            this.Costings = new List<DtoCosting>();
+            this.Stages = new List<DtoStage>();
         }
 
         /// <summary>   Gets or sets the identifier. </summary>
@@ -41,7 +42,7 @@ namespace packer_strategy.DTO.PackageDTO
         /// <summary>   Gets or sets the type of the material. </summary>
         ///
         /// <value> The type of the material. </value>
-        public Models.Material.MaterialType MaterialType { get; set; }
+        public MaterialType MaterialType { get; set; }
 
         /// <summary>   Gets or sets the material code. </summary>
         ///
@@ -61,11 +62,11 @@ namespace packer_strategy.DTO.PackageDTO
         /// <summary>   Gets or sets the costings. </summary>
         ///
         /// <value> The costings. </value>
-        public List<CostingDTO> Costings { get; set; }
+        public List<DtoCosting> Costings { get; set; }
 
         /// <summary>   Gets or sets the stages. </summary>
         ///
         /// <value> The stages. </value>
-        public List<StageDTO> Stages { get; set; }
+        public List<DtoStage> Stages { get; set; }
     }
 }

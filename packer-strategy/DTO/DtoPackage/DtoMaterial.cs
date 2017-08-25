@@ -4,17 +4,17 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.PackageDTO
+namespace packer_strategy.DTO.DtoPackage
 {
     using System.Collections.Generic;
 
     /// <summary>   A material. </summary>
-    public class MaterialDTO : Models.Material.Material
+    public class DtoMaterial : Models.Material.Material
     {
         /// <summary>   Default constructor. </summary>
-        public MaterialDTO()
+        public DtoMaterial()
         {
-            Layers = new List<LayerDTO>();
+            Layers = new List<DtoLayer>();
         }
 
         /// <summary>   Gets or sets the number of.  </summary>
@@ -25,6 +25,6 @@ namespace packer_strategy.DTO.PackageDTO
         /// <summary>   Gets or sets the layers. </summary>
         ///
         /// <value> The layers. </value>
-        public List<LayerDTO>  Layers { get; set; }
+        public List<DtoLayer>  Layers { get; set; }
     }
 }

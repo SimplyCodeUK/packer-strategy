@@ -16,6 +16,7 @@ namespace packer_strategy_test
     using packer_strategy.DTO;
     using packer_strategy.Controllers;
     using packer_strategy.Helpers;
+    using packer_strategy.Helpers.Enums;
     using packer_strategy.Models.Material;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test materials. </summary>

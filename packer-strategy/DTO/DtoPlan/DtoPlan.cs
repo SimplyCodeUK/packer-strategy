@@ -4,17 +4,17 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.PlanDTO
+namespace packer_strategy.DTO.DtoPlan
 {
     using System.Collections.Generic;
 
     /// <summary>   A plan. </summary>
-    public class PlanDTO
+    public class DtoPlan
     {
         /// <summary>   Default constructor. </summary>
-        public PlanDTO()
+        public DtoPlan()
         {
-            this.Stages = new List<StageDTO>();
+            this.Stages = new List<DtoStage>();
         }
 
         /// <summary>   Gets or sets the identifier. </summary>
@@ -35,6 +35,6 @@ namespace packer_strategy.DTO.PlanDTO
         /// <summary>   Gets or sets the stages. </summary>
         ///
         /// <value> The stages. </value>
-        public List<StageDTO> Stages { get; set; }
+        public List<DtoStage> Stages { get; set; }
     }
 }

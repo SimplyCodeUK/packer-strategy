@@ -6,6 +6,8 @@
 
 namespace packer_strategy.Models.Plan
 {
+    using Helpers.Enums;
+
     /// <summary>   A limit. </summary>
     public class Limit
     {
@@ -44,7 +46,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the type of the material. </summary>
         ///
         /// <value> The type of the material. </value>
-        public Material.MaterialType MaterialType
+        public MaterialType MaterialType
         {
             get; set;
         }
@@ -68,7 +70,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the type of the design. </summary>
         ///
         /// <value> The type of the design. </value>
-        public Material.DesignType DesignType
+        public DesignType DesignType
         {
             get; set;
         }
@@ -92,7 +94,7 @@ namespace packer_strategy.Models.Plan
         /// <summary>   Gets or sets the type of the quality. </summary>
         ///
         /// <value> The type of the quality. </value>
-        public Material.QualityType QualityType
+        public QualityType QualityType
         {
             get; set;
         }

@@ -4,10 +4,10 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.PackageDTO
+namespace packer_strategy.DTO.DtoPackage
 {
     /// <summary>   A costing. </summary>
-    public class CostingDTO
+    public class DtoCosting
     {
         /// <summary>   Gets or sets the identifier that owns this item. </summary>
         ///

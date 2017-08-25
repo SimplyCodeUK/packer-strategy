@@ -4,12 +4,12 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.MaterialDTO
+namespace packer_strategy.DTO.DtoMaterial
 {
-    using Models.Material;
+    using Helpers.Enums;
 
     /// <summary>   A costing. </summary>
-    public class CostingDTO
+    public class DtoCosting
     {
         /// <summary>   Gets or sets the type of the material identifier. </summary>
         ///

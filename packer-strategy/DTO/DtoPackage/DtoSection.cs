@@ -4,12 +4,12 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.PackageDTO
+namespace packer_strategy.DTO.DtoPackage
 {
-    using Models.Plan;
+    using Helpers.Enums;
 
     /// <summary>   A section. </summary>
-    public class SectionDTO
+    public class DtoSection
     {
         /// <summary>   Gets or sets the number of.  </summary>
         ///

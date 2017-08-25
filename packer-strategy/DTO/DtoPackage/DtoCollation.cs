@@ -4,10 +4,10 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.PackageDTO
+namespace packer_strategy.DTO.DtoPackage
 {
     /// <summary>   A collation. </summary>
-    public class CollationDTO
+    public class DtoCollation
     {
         /// <summary>   Gets or sets the zero-based index of this object. </summary>
         ///

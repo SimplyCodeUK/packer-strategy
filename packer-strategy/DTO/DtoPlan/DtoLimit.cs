@@ -4,13 +4,12 @@
 // See LICENSE file in the project root for full license information.
 //
 
-namespace packer_strategy.DTO.PlanDTO
+namespace packer_strategy.DTO.DtoPlan
 {
-    using Models.Material;
-    using Models.Plan;
+    using Helpers.Enums;
 
     /// <summary>   A limit. </summary>
-    public class LimitDTO
+    public class DtoLimit
     {
         /// <summary>   Gets or sets the identifier that owns this item. </summary>
         ///
