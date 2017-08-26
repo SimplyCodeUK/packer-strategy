@@ -44,6 +44,7 @@ namespace packer_strategy.DTO
 
         /// <summary>   Searches for the first material. </summary>
         ///
+        /// <param name="type"> The type. </param>
         /// <param name="key">  The key. </param>
         ///
         /// <returns>   The found material. </returns>
@@ -52,8 +53,9 @@ namespace packer_strategy.DTO
             return Materials.Find(type, key);
         }
 
-        /// <summary>   Removes the material described by key. </summary>
+        /// <summary>   Removes the material. </summary>
         ///
+        /// <param name="type"> The type. </param>
         /// <param name="key">  The key. </param>
         public void RemoveMaterial(MaterialType type, string key)
         {
