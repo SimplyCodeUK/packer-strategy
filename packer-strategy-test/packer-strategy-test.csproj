@@ -16,12 +16,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
-    <PackageReference Include="NUnit" Version="3.7.1" />
+    <PackageReference Include="NUnit" Version="3.8.1" />
     <PackageReference Include="NUnit.ConsoleRunner" Version="3.7.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.8.0" />
     <PackageReference Include="OpenCover" Version="4.6.519" />
     <PackageReference Include="OpenCoverToCoberturaConverter" Version="0.2.6" />
-    <PackageReference Include="ReportGenerator" Version="2.5.10" />
+    <PackageReference Include="ReportGenerator" Version="2.5.11" />
   </ItemGroup>
 
   <ItemGroup>
