@@ -1,30 +1,32 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.DTO
+namespace PackIt.DTO
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Helpers.Enums;
-    using Models.Material;
+    using PackIt.Helpers.Enums;
+    using PackIt.Models.Material;
 
     /// <summary>   A material repository. </summary>
     ///
-    /// <seealso cref="T:packer_strategy.DTO.IMaterialRepository"/>
+    /// <seealso cref="T:PackIt.DTO.IMaterialRepository"/>
     public class MaterialRepository : IMaterialRepository
     {
         /// <summary>   The context. </summary>
-        private readonly MaterialContext _context;
+        private readonly MaterialContext context;
 
-        /// <summary>   Constructor. </summary>
+        /// <summary>
+        /// Initialises a new instance of the <see cref="MaterialRepository" /> class.
+        /// </summary>
         ///
         /// <param name="context">  The context. </param>
         public MaterialRepository(MaterialContext context)
         {
-            _context = context;
+            this.context = context;
         }
 
         /// <summary>   Gets all items in this collection. </summary>
@@ -35,21 +37,21 @@ namespace packer_strategy.DTO
         ///     An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
         ///
-        /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.GetAll(MaterialType)"/>
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.GetAll(MaterialType)"/>
         public IEnumerable<Material> GetAll(MaterialType type)
         {
-            return _context.GetMaterials();
+            return this.context.GetMaterials();
         }
 
         /// <summary>   Adds item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
         ///
-        /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Add(Material)"/>
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Add(Material)"/>
         public void Add(Material item)
         {
-            _context.AddMaterial(item);
-            _context.SaveChanges();
+            this.context.AddMaterial(item);
+            this.context.SaveChanges();
         }
 
         /// <summary>   Searches for the first match for the given string. </summary>
@@ -59,10 +61,10 @@ namespace packer_strategy.DTO
         ///
         /// <returns>   A Material. </returns>
         ///
-        /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Find(MaterialType,string)"/>
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Find(MaterialType,string)"/>
         public Material Find(MaterialType type, string key)
         {
-            return _context.FindMaterial(type, key);
+            return this.context.FindMaterial(type, key);
         }
 
         /// <summary>   Removes the given key. </summary>
@@ -70,22 +72,22 @@ namespace packer_strategy.DTO
         /// <param name="type"> The type. </param>
         /// <param name="key">  The key. </param>
         ///
-        /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Remove(MaterialType,string)"/>
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Remove(MaterialType,string)"/>
         public void Remove(MaterialType type, string key)
         {
-            _context.RemoveMaterial(type, key);
-            _context.SaveChanges();
+            this.context.RemoveMaterial(type, key);
+            this.context.SaveChanges();
         }
 
         /// <summary>   Updates the given item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
         ///
-        /// <seealso cref="M:packer_strategy.DTO.IMaterialRepository.Update(Material)"/>
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Update(Material)"/>
         public void Update(Material item)
         {
-            _context.UpdateMaterial(item);
-            _context.SaveChanges();
+            this.context.UpdateMaterial(item);
+            this.context.SaveChanges();
         }
     }
 }

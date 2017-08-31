@@ -1,29 +1,31 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.DTO
+namespace PackIt.DTO
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Models.Plan;
+    using PackIt.Models.Plan;
 
     /// <summary>   A plan repository. </summary>
     ///
-    /// <seealso cref="T:packer_strategy.DTO.IPlanRepository"/>
+    /// <seealso cref="T:PackIt.DTO.IPlanRepository"/>
     public class PlanRepository : IPlanRepository
     {
         /// <summary>   The context. </summary>
-        private readonly PlanContext _context;
+        private readonly PlanContext context;
 
-        /// <summary>   Constructor. </summary>
+        /// <summary>
+        /// Initialises a new instance of the <see cref="PlanRepository" /> class.
+        /// </summary>
         ///
         /// <param name="context">  The context. </param>
         public PlanRepository(PlanContext context)
         {
-            _context = context;
+            this.context = context;
         }
 
         /// <summary>   Gets all items in this collection. </summary>
@@ -32,21 +34,21 @@ namespace packer_strategy.DTO
         ///     An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
         ///
-        /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.GetAll()"/>
+        /// <seealso cref="M:PackIt.DTO.IPlanRepository.GetAll()"/>
         public IEnumerable<Plan> GetAll()
         {
-            return _context.GetPlans();
+            return this.context.GetPlans();
         }
 
         /// <summary>   Adds item. </summary>
         ///
         /// <param name="item"> The item. </param>
         ///
-        /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Add(Plan)"/>
+        /// <seealso cref="M:PackIt.DTO.IPlanRepository.Add(Plan)"/>
         public void Add(Plan item)
         {
-            _context.AddPlan(item);
-            _context.SaveChanges();
+            this.context.AddPlan(item);
+            this.context.SaveChanges();
         }
 
         /// <summary>   Searches for the first match for the given string. </summary>
@@ -55,32 +57,32 @@ namespace packer_strategy.DTO
         ///
         /// <returns>   A Plan. </returns>
         ///
-        /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Find(string)"/>
+        /// <seealso cref="M:PackIt.DTO.IPlanRepository.Find(string)"/>
         public Plan Find(string key)
         {
-            return _context.FindPlan(key);
+            return this.context.FindPlan(key);
         }
 
         /// <summary>   Removes the given key. </summary>
         ///
         /// <param name="key">  The key to remove. </param>
         ///
-        /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Remove(string)"/>
+        /// <seealso cref="M:PackIt.DTO.IPlanRepository.Remove(string)"/>
         public void Remove(string key)
         {
-            _context.RemovePlan(key);
-            _context.SaveChanges();
+            this.context.RemovePlan(key);
+            this.context.SaveChanges();
         }
 
         /// <summary>   Updates the given item. </summary>
         ///
         /// <param name="item"> The item. </param>
         ///
-        /// <seealso cref="M:packer_strategy.DTO.IPlanRepository.Update(Plan)"/>
+        /// <seealso cref="M:PackIt.DTO.IPlanRepository.Update(Plan)"/>
         public void Update(Plan item)
         {
-            _context.UpdatePlan(item);
-            _context.SaveChanges();
+            this.context.UpdatePlan(item);
+            this.context.SaveChanges();
         }
     }
 }

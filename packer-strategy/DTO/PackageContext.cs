@@ -1,18 +1,20 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.DTO
+namespace PackIt.DTO
 {
     using Microsoft.EntityFrameworkCore;
-    using Models.Package;
+    using PackIt.Models.Package;
 
     /// <summary>   A package context. </summary>
     public class PackageContext : DbContext
     {
-        /// <summary>   Constructor. </summary>
+        /// <summary>
+        /// Initialises a new instance of the <see cref="PackageContext" /> class.
+        /// </summary>
         ///
         /// <param name="options">  Options for controlling the operation. </param>
         public PackageContext(DbContextOptions<PackageContext> options)
@@ -30,7 +32,7 @@ namespace packer_strategy.DTO
         /// <returns>   The packages. </returns>
         public DbSet<Package> GetPackages()
         {
-            return Packages;
+            return this.Packages;
         }
 
         /// <summary>   Adds a package. </summary>
@@ -38,7 +40,7 @@ namespace packer_strategy.DTO
         /// <param name="item"> The item. </param>
         public void AddPackage(Package item)
         {
-            Packages.Add(item);
+            this.Packages.Add(item);
         }
 
         /// <summary>   Searches for the first package. </summary>
@@ -48,7 +50,7 @@ namespace packer_strategy.DTO
         /// <returns>   The found package. </returns>
         public Package FindPackage(string key)
         {
-            return Packages.Find(key);
+            return this.Packages.Find(key);
         }
 
         /// <summary>   Removes the package described by key. </summary>
@@ -56,8 +58,8 @@ namespace packer_strategy.DTO
         /// <param name="key">  The key. </param>
         public void RemovePackage(string key)
         {
-            var entity = Packages.Find(key);
-            Packages.Remove(entity);
+            Package entity = this.Packages.Find(key);
+            this.Packages.Remove(entity);
         }
 
         /// <summary>   Updates the package described by item. </summary>
@@ -65,26 +67,28 @@ namespace packer_strategy.DTO
         /// <param name="item"> The item. </param>
         public void UpdatePackage(Package item)
         {
-            Packages.Update(item);
+            this.Packages.Update(item);
         }
 
         /// <summary>
-        ///     Override this method to further configure the model that was discovered by convention
-        ///     from the entity types exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" />
-        ///     properties on your derived context. The resulting model may be cached and re-used for
-        ///     subsequent instances of your derived context.
+        /// Override this method to further configure the model that was discovered by convention
+        /// from the entity types exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" />
+        /// properties on your derived context. The resulting model may be cached and re-used for
+        /// subsequent instances of your derived context.
         /// </summary>
         ///
         /// <remarks>
-        ///     If a model is explicitly set on the options for this context (via
-        ///     <see cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" />)
-        ///     then this method will not be run.
+        /// If a model is explicitly set on the options for this context (via
+        /// <see cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" />)
+        /// then this method will not be run.
         /// </remarks>
         ///
-        /// <param name="modelBuilder"> The builder being used to construct the model for this context.
-        ///                             Databases (and other extensions) typically define extension
-        ///                             methods on this object that allow you to configure aspects of the
-        ///                             model that are specific to a given database. </param>
+        /// <param name="modelBuilder">
+        /// The builder being used to construct the model for this context.
+        /// Databases (and other extensions) typically define extension
+        /// methods on this object that allow you to configure aspects of the
+        /// model that are specific to a given database.
+        /// </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Package>()
@@ -93,8 +97,10 @@ namespace packer_strategy.DTO
                 .HasKey(c => new { c.OwnerId, c.RequiredQuantity });
             modelBuilder.Entity<Stage>()
                 .HasKey(c => new { c.OwnerId, c.Level });
-            modelBuilder.Entity<Models.Plan.Limit>()
-                .HasKey(c => new { c.OwnerId, c.StageLevel, c.Index });
+            modelBuilder.Entity<Result>()
+                .HasKey(c => new { c.OwnerId, c.Level, c.Index });
+            modelBuilder.Entity<Section>()
+                .HasKey(c => new { c.OwnerId, c.StageLevel, c.ResultIndex, c.Index });
         }
     }
 }

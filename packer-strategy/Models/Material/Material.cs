@@ -1,18 +1,26 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.Models.Material
+namespace PackIt.Models.Material
 {
     using System.Collections.Generic;
-    using Helpers.Enums;
+    using PackIt.Helpers.Enums;
 
     /// <summary>   A material. </summary>
     public class Material
     {
-        /// <summary>   Default constructor. </summary>
+        /// <summary>   Defines the. </summary>
+        private MaterialType idType;
+
+        /// <summary>   The identifier. </summary>
+        private string id;
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="Material" /> class.
+        /// </summary>
         public Material()
         {
             this.Costings = new List<Costing>();
@@ -20,38 +28,40 @@ namespace packer_strategy.Models.Material
             this.IdType = MaterialType.Bottle;
         }
 
-        /// <summary>   Defines the. </summary>
-        private MaterialType _idType;
-
         /// <summary>   Gets or sets the type of the identifier. </summary>
         ///
         /// <value> The type of the identifier. </value>
         public MaterialType IdType
         {
-            get { return _idType; }
+            get
+            {
+                return this.idType;
+            }
+
             set
             {
-                _idType = value;
-                foreach (Costing costing in Costings)
+                this.idType = value;
+                foreach (Costing costing in this.Costings)
                 {
                     costing.MaterialIdType = value;
                 }
             }
         }
 
-        /// <summary>   The identifier. </summary>
-        private string _id;
-
         /// <summary>   Gets or sets the identifier. </summary>
         ///
         /// <value> The identifier. </value>
         public string Id
         {
-            get { return _id; }
+            get
+            {
+                return this.id;
+            }
+
             set
             {
-                _id = value;
-                foreach (Costing costing in Costings)
+                this.id = value;
+                foreach (Costing costing in this.Costings)
                 {
                     costing.MaterialId = value;
                 }

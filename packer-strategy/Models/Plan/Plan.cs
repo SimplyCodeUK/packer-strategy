@@ -1,36 +1,42 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.Models.Plan
+namespace PackIt.Models.Plan
 {
     using System.Collections.Generic;
-    using Helpers.Enums;
+    using PackIt.Helpers.Enums;
 
     /// <summary>   A plan. </summary>
     public class Plan
     {
-        /// <summary>   Default constructor. </summary>
+        /// <summary>   The identifier. </summary>
+        private string id;
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="Plan" /> class.
+        /// </summary>
         public Plan()
         {
             this.Stages = new List<Stage>();
         }
-
-        /// <summary>   The identifier. </summary>
-        private string _id;
 
         /// <summary>   Gets or sets the identifier. </summary>
         ///
         /// <value> The identifier. </value>
         public string Id
         {
-            get { return _id; }
+            get
+            {
+                return this.id;
+            }
+
             set
             {
-                _id = value;
-                foreach (Stage stage in Stages)
+                this.id = value;
+                foreach (Stage stage in this.Stages)
                 {
                     stage.OwnerId = value;
                 }

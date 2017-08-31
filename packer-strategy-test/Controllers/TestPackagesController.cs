@@ -1,10 +1,10 @@
-//
+// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy_test
+namespace PackItTest
 {
     using System;
     using System.Collections.Generic;
@@ -13,16 +13,19 @@ namespace packer_strategy_test
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using NUnit.Framework;
-    using packer_strategy.Controllers;
-    using packer_strategy.DTO;
-    using packer_strategy.Models.Package;
+    using PackIt.Controllers;
+    using PackIt.DTO;
+    using PackIt.Models.Package;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test packages. </summary>
     [TestFixture]
     public class TestPackagesController
     {
         /// <summary>   The package repository. </summary>
-        private PackageRepository _repository;
+        private PackageRepository repository;
+
+        /// <summary>   The controller under test. </summary>
+        private PackagesController controller;
 
         /// <summary>   Tests before. </summary>
         [SetUp]
@@ -33,25 +36,19 @@ namespace packer_strategy_test
 
             PackageContext context = new PackageContext(builder.Options);
 
-            _repository = new PackageRepository(context);
-        }
+            this.repository = new PackageRepository(context);
+            Assert.IsNotNull(this.repository);
 
-        /// <summary>   (Unit Test Method) creates this object. </summary>
-        [Test]
-        public void Create()
-        {
-            PackagesController controller = new PackagesController(_repository);
-
-            Assert.IsNotNull(controller);
+            this.controller = new PackagesController(this.repository);
+            Assert.IsNotNull(this.controller);
         }
 
         /// <summary>   (Unit Test Method) post this message. </summary>
         [Test]
         public void Post()
         {
-            PackagesController controller = new PackagesController(_repository);
             Package item = new Package { Id = Guid.NewGuid().ToString() };
-            var result = controller.Post(item);
+            var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
@@ -62,8 +59,7 @@ namespace packer_strategy_test
         [Test]
         public void PostNoData()
         {
-            PackagesController controller = new PackagesController(_repository);
-            var result = controller.Post(null);
+            var result = this.controller.Post(null);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -74,15 +70,14 @@ namespace packer_strategy_test
         [Test]
         public void PostAlreadyExists()
         {
-            PackagesController controller = new PackagesController(_repository);
             Package item = new Package { Id = Guid.NewGuid().ToString() };
-            var result = controller.Post(item);
+            var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
             Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
 
-            result = controller.Post(item);
+            result = this.controller.Post(item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<StatusCodeResult>(result);
             Assert.AreEqual((int)HttpStatusCode.Conflict, ((StatusCodeResult)result).StatusCode);
@@ -93,7 +88,6 @@ namespace packer_strategy_test
         public void GetAll()
         {
             int itemsToAdd = 10;
-            PackagesController controller = new PackagesController(_repository);
             List<string> ids = new List<string>();
 
             for (int item = 0; item < itemsToAdd; ++item)
@@ -101,10 +95,10 @@ namespace packer_strategy_test
                 string id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
-                controller.Post(new Package { Id = id });
+                this.controller.Post(new Package { Id = id });
             }
 
-            IActionResult result = controller.Get();
+            IActionResult result = this.controller.Get();
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
@@ -121,7 +115,8 @@ namespace packer_strategy_test
                     ids.Remove(item.Id);
                 }
             }
-            Assert.IsEmpty(ids, "IDS not found " + String.Join(",", ids));
+
+            Assert.IsEmpty(ids, "IDS not found " + string.Join(",", ids));
         }
 
         /// <summary>   (Unit Test Method) gets this object. </summary>
@@ -129,13 +124,12 @@ namespace packer_strategy_test
         public void Get()
         {
             string startName = "A name";
-            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
             Package item = new Package { Id = id, Name = startName };
 
-            controller.Post(item);
+            this.controller.Post(item);
 
-            var result = controller.Get(id);
+            var result = this.controller.Get(id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
@@ -153,9 +147,8 @@ namespace packer_strategy_test
         [Test]
         public void GetNotFound()
         {
-            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
-            var result = controller.Get(id);
+            var result = this.controller.Get(id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
@@ -168,21 +161,20 @@ namespace packer_strategy_test
         {
             string startName = "A name";
             string putName = "B name";
-            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
             Package item = new Package { Id = id, Name = startName };
 
-            controller.Post(item);
+            this.controller.Post(item);
 
             item.Name = putName;
-            var result = controller.Put(id, item);
+            var result = this.controller.Put(id, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkResult>(result);
             Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
 
             // Get the package and check the returned object has the new Name
-            result = controller.Get(id);
+            result = this.controller.Get(id);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
             OkObjectResult objectResult = (OkObjectResult)result;
@@ -197,10 +189,9 @@ namespace packer_strategy_test
         [Test]
         public void PutNotFound()
         {
-            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
             Package item = new Package();
-            var result = controller.Put(id, item);
+            var result = this.controller.Put(id, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
@@ -211,13 +202,12 @@ namespace packer_strategy_test
         [Test]
         public void Delete()
         {
-            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
             Package item = new Package { Id = id };
 
-            controller.Post(item);
+            this.controller.Post(item);
 
-            var result = controller.Delete(id);
+            var result = this.controller.Delete(id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkResult>(result);
@@ -228,9 +218,8 @@ namespace packer_strategy_test
         [Test]
         public void DeleteNotFound()
         {
-            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
-            var result = controller.Delete(id);
+            var result = this.controller.Delete(id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
@@ -243,18 +232,17 @@ namespace packer_strategy_test
         {
             string startName = "A name";
             string patchName = "B name";
-            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
             Package item = new Package { Id = id, Name = startName };
 
             // Create a new package
-            controller.Post(item);
+            this.controller.Post(item);
 
             // Patch the package with a new name
             JsonPatchDocument<Package> patch = new JsonPatchDocument<Package>();
             patch.Replace(e => e.Name, patchName);
 
-            var result = controller.Patch(id, patch);
+            var result = this.controller.Patch(id, patch);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
@@ -269,7 +257,7 @@ namespace packer_strategy_test
             Assert.AreEqual(item.Name, patchName);
 
             // Get the package and check the returned object has the same Note and new Name
-            result = controller.Get(id);
+            result = this.controller.Get(id);
             Assert.IsInstanceOf<OkObjectResult>(result);
             objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
@@ -286,15 +274,14 @@ namespace packer_strategy_test
         {
             string startName = "A name";
             string patchName = "B name";
-            PackagesController controller = new PackagesController(_repository);
             Package item = new Package { Id = Guid.NewGuid().ToString(), Name = startName };
 
-            controller.Post(item);
+            this.controller.Post(item);
 
             JsonPatchDocument<Package> patch = new JsonPatchDocument<Package>();
             patch.Replace(e => e.Name, patchName);
 
-            var result = controller.Patch(Guid.NewGuid().ToString(), patch);
+            var result = this.controller.Patch(Guid.NewGuid().ToString(), patch);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
@@ -305,27 +292,26 @@ namespace packer_strategy_test
         [Test]
         public void PostComplexPan()
         {
-            PackagesController controller = new PackagesController(_repository);
             string id = Guid.NewGuid().ToString();
             long quantity = 1000;
             double weight = 2000.0;
 
             // Create a package with a stage that has a limit
-            Costing costing = new Costing { RequiredQuantity= quantity, RequiredWeight= weight };
+            Costing costing = new Costing { RequiredQuantity = quantity, RequiredWeight = weight };
 
             Package item = new Package();
             item.Costings.Add(costing);
 
             item.Id = id;
 
-            var result = controller.Post(item);
+            var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
             Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
 
             // Get the package
-            result = controller.Get(id);
+            result = this.controller.Get(id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);

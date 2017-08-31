@@ -1,10 +1,10 @@
-//
+// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy_test
+namespace PackItTest
 {
     using System;
     using System.Collections.Generic;
@@ -13,21 +13,24 @@ namespace packer_strategy_test
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using NUnit.Framework;
-    using packer_strategy.DTO;
-    using packer_strategy.Controllers;
-    using packer_strategy.Helpers;
-    using packer_strategy.Helpers.Enums;
-    using packer_strategy.Models.Material;
+    using PackIt.Controllers;
+    using PackIt.DTO;
+    using PackIt.Helpers;
+    using PackIt.Helpers.Enums;
+    using PackIt.Models.Material;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test materials. </summary>
     [TestFixture]
     public class TestMaterialsController
     {
-        /// <summary>   The repository. </summary>
-        private MaterialRepository _repository;
-
         /// <summary>   Type of the bad. </summary>
-        private static string _badType = "BadType";
+        private static string badType = "BadType";
+
+        /// <summary>   The repository. </summary>
+        private MaterialRepository repository;
+
+        /// <summary>   The controller under test. </summary>
+        private MaterialsController controller;
 
         /// <summary>   Tests before. </summary>
         [SetUp]
@@ -38,25 +41,19 @@ namespace packer_strategy_test
 
             MaterialContext context = new MaterialContext(builder.Options);
 
-            _repository = new MaterialRepository(context);
-        }
+            this.repository = new MaterialRepository(context);
+            Assert.IsNotNull(this.repository);
 
-        /// <summary>   (Unit Test Method) creates this object. </summary>
-        [Test]
-        public void Create()
-        {
-            MaterialsController controller = new MaterialsController(_repository);
-
-            Assert.IsNotNull(controller);
+            this.controller = new MaterialsController(this.repository);
+            Assert.IsNotNull(this.controller);
         }
 
         /// <summary>   (Unit Test Method) post this message. </summary>
         [Test]
         public void Post()
         {
-            MaterialsController controller = new MaterialsController(_repository);
             Material item = new Material { Id = Guid.NewGuid().ToString() };
-            var result = controller.Post(Attributes.UrlName(item.IdType), item);
+            var result = this.controller.Post(Attributes.UrlName(item.IdType), item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
@@ -67,8 +64,7 @@ namespace packer_strategy_test
         [Test]
         public void PostNoData()
         {
-            MaterialsController controller = new MaterialsController(_repository);
-            var result = controller.Post(Attributes.UrlName(MaterialType.Bottle), null);
+            var result = this.controller.Post(Attributes.UrlName(MaterialType.Bottle), null);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -79,9 +75,8 @@ namespace packer_strategy_test
         [Test]
         public void PostBadType()
         {
-            MaterialsController controller = new MaterialsController(_repository);
             Material item = new Material { Id = Guid.NewGuid().ToString() };
-            var result = controller.Post(_badType, item);
+            var result = this.controller.Post(badType, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -92,16 +87,15 @@ namespace packer_strategy_test
         [Test]
         public void PostAlreadyExists()
         {
-            MaterialsController controller = new MaterialsController(_repository);
             Material item = new Material { Id = Guid.NewGuid().ToString() };
             string nameType = Attributes.UrlName(item.IdType);
-            var result = controller.Post(nameType, item);
+            var result = this.controller.Post(nameType, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
             Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
 
-            result = controller.Post(nameType, item);
+            result = this.controller.Post(nameType, item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<StatusCodeResult>(result);
             Assert.AreEqual((int)HttpStatusCode.Conflict, ((StatusCodeResult)result).StatusCode);
@@ -112,7 +106,6 @@ namespace packer_strategy_test
         public void GetAll()
         {
             int itemsToAdd = 10;
-            MaterialsController controller = new MaterialsController(_repository);
             List<string> ids = new List<string>();
             MaterialType type = MaterialType.Bottle;
             string nameType = Attributes.UrlName(type);
@@ -122,10 +115,10 @@ namespace packer_strategy_test
                 string id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
-                controller.Post(nameType, new Material { Id = id });
+                this.controller.Post(nameType, new Material { Id = id });
             }
 
-            IActionResult result = controller.Get(nameType);
+            IActionResult result = this.controller.Get(nameType);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
@@ -142,15 +135,15 @@ namespace packer_strategy_test
                     ids.Remove(item.Id);
                 }
             }
-            Assert.IsEmpty(ids, "IDS not found " + String.Join(",", ids));
+
+            Assert.IsEmpty(ids, "IDS not found " + string.Join(",", ids));
         }
 
         /// <summary>   (Unit Test Method) gets all bad type. </summary>
         [Test]
         public void GetAllBadType()
         {
-            MaterialsController controller = new MaterialsController(_repository);
-            IActionResult result = controller.Get(_badType);
+            IActionResult result = this.controller.Get(badType);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -163,15 +156,14 @@ namespace packer_strategy_test
         {
             string startName = "A name";
             string startNote = "Some notes";
-            MaterialsController controller = new MaterialsController(_repository);
             MaterialType type = MaterialType.Can;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
             Material item = new Material { Id = id, Name = startName, Notes = startNote };
 
-            controller.Post(nameType, item);
+            this.controller.Post(nameType, item);
 
-            var result = controller.Get(nameType, id);
+            var result = this.controller.Get(nameType, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
@@ -191,9 +183,8 @@ namespace packer_strategy_test
         [Test]
         public void GetBadType()
         {
-            MaterialsController controller = new MaterialsController(_repository);
             string id = Guid.NewGuid().ToString();
-            var result = controller.Get(_badType, id);
+            var result = this.controller.Get(badType, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -206,8 +197,7 @@ namespace packer_strategy_test
         [Test]
         public void GetTypes()
         {
-            MaterialsController controller = new MaterialsController(_repository);
-            var result = controller.Get();
+            var result = this.controller.Get();
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
@@ -224,10 +214,9 @@ namespace packer_strategy_test
         [Test]
         public void GetNotFound()
         {
-            MaterialsController controller = new MaterialsController(_repository);
             MaterialType type = MaterialType.Cap;
             string id = Guid.NewGuid().ToString();
-            var result = controller.Get(Attributes.UrlName(type), id);
+            var result = this.controller.Get(Attributes.UrlName(type), id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
@@ -240,23 +229,22 @@ namespace packer_strategy_test
         {
             string startName = "A name";
             string putName = "B name";
-            MaterialsController controller = new MaterialsController(_repository);
             MaterialType type = MaterialType.Cap;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
             Material item = new Material { Id = id, Name = startName };
 
-            controller.Post(nameType, item);
+            this.controller.Post(nameType, item);
 
             item.Name = putName;
-            var result = controller.Put(nameType, id, item);
+            var result = this.controller.Put(nameType, id, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkResult>(result);
             Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
 
             // Get the material and check the returned object has the new Name
-            result = controller.Get(nameType, id);
+            result = this.controller.Get(nameType, id);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
             OkObjectResult objectResult = (OkObjectResult)result;
@@ -272,10 +260,9 @@ namespace packer_strategy_test
         [Test]
         public void PutBadType()
         {
-            MaterialsController controller = new MaterialsController(_repository);
             string id = Guid.NewGuid().ToString();
             Material item = new Material { Id = id };
-            var result = controller.Put(_badType, id, item);
+            var result = this.controller.Put(badType, id, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -286,11 +273,10 @@ namespace packer_strategy_test
         [Test]
         public void PutNotFound()
         {
-            MaterialsController controller = new MaterialsController(_repository);
             MaterialType type = MaterialType.Carton;
             string id = Guid.NewGuid().ToString();
             Material item = new Material();
-            var result = controller.Put(Attributes.UrlName(type), id, item);
+            var result = this.controller.Put(Attributes.UrlName(type), id, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
@@ -301,15 +287,14 @@ namespace packer_strategy_test
         [Test]
         public void Delete()
         {
-            MaterialsController controller = new MaterialsController(_repository);
             MaterialType type = MaterialType.Collar;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
             Material item = new Material { Id = id };
 
-            controller.Post(nameType, item);
+            this.controller.Post(nameType, item);
 
-            var result = controller.Delete(nameType, id);
+            var result = this.controller.Delete(nameType, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkResult>(result);
@@ -320,9 +305,8 @@ namespace packer_strategy_test
         [Test]
         public void DeleteBadType()
         {
-            MaterialsController controller = new MaterialsController(_repository);
             string id = Guid.NewGuid().ToString();
-            var result = controller.Delete(_badType, id);
+            var result = this.controller.Delete(badType, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -333,10 +317,9 @@ namespace packer_strategy_test
         [Test]
         public void DeleteNotFound()
         {
-            MaterialsController controller = new MaterialsController(_repository);
             MaterialType type = MaterialType.Collar;
             string id = Guid.NewGuid().ToString();
-            var result = controller.Delete(Attributes.UrlName(type), id);
+            var result = this.controller.Delete(Attributes.UrlName(type), id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
@@ -350,20 +333,19 @@ namespace packer_strategy_test
             string startName = "A name";
             string patchName = "B name";
             string startNote = "Some notes";
-            MaterialsController controller = new MaterialsController(_repository);
             MaterialType type = MaterialType.Crate;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
             Material item = new Material { Id = id, Name = startName, Notes = startNote };
 
             // Create a new material
-            controller.Post(nameType, item);
+            this.controller.Post(nameType, item);
 
             // Patch the material with a new name
             JsonPatchDocument<Material> patch = new JsonPatchDocument<Material>();
             patch.Replace(e => e.Name, patchName);
 
-            var result = controller.Patch(nameType, id, patch);
+            var result = this.controller.Patch(nameType, id, patch);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
@@ -380,7 +362,7 @@ namespace packer_strategy_test
             Assert.AreEqual(item.Notes, startNote);
 
             // Get the material and check the returned object has the same Note and new Name
-            result = controller.Get(nameType, id);
+            result = this.controller.Get(nameType, id);
             Assert.IsInstanceOf<OkObjectResult>(result);
             objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
@@ -398,14 +380,13 @@ namespace packer_strategy_test
         public void PatchBadType()
         {
             string patchName = "B name";
-            MaterialsController controller = new MaterialsController(_repository);
             string id = Guid.NewGuid().ToString();
 
             // Patch the material with a new name
             JsonPatchDocument<Material> patch = new JsonPatchDocument<Material>();
             patch.Replace(e => e.Name, patchName);
 
-            var result = controller.Patch(_badType, id, patch);
+            var result = this.controller.Patch(badType, id, patch);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
@@ -419,18 +400,17 @@ namespace packer_strategy_test
             string startName = "A name";
             string patchName = "B name";
             string startNote = "Some notes";
-            MaterialsController controller = new MaterialsController(_repository);
             MaterialType type = MaterialType.Crate;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
             Material item = new Material { Id = id, Name = startName, Notes = startNote };
 
-            controller.Post(nameType, item);
+            this.controller.Post(nameType, item);
 
             JsonPatchDocument<Material> patch = new JsonPatchDocument<Material>();
             patch.Replace(e => e.Name, patchName);
 
-            var result = controller.Patch(nameType, Guid.NewGuid().ToString(), patch);
+            var result = this.controller.Patch(nameType, Guid.NewGuid().ToString(), patch);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
@@ -441,7 +421,6 @@ namespace packer_strategy_test
         [Test]
         public void PostComplexPan()
         {
-            MaterialsController controller = new MaterialsController(_repository);
             MaterialType type = MaterialType.Crate;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
@@ -453,14 +432,14 @@ namespace packer_strategy_test
 
             item.Id = id;
 
-            var result = controller.Post(nameType, item);
+            var result = this.controller.Post(nameType, item);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
             Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
 
             // Get the material
-            result = controller.Get(nameType, id);
+            result = this.controller.Get(nameType, id);
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);

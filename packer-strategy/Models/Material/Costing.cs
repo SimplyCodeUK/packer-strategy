@@ -1,12 +1,12 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.Models.Material
+namespace PackIt.Models.Material
 {
-    using Helpers.Enums;
+    using PackIt.Helpers.Enums;
 
     /// <summary>   A costing. </summary>
     public class Costing

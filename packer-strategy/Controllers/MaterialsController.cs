@@ -1,43 +1,49 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.Controllers
+namespace PackIt.Controllers
 {
     using System;
     using System.Collections.Generic;
     using System.Net;
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
-    using DTO;
-    using Helpers;
-    using Helpers.Enums;
-    using Models.Material;
+    using PackIt.DTO;
+    using PackIt.Helpers;
+    using PackIt.Helpers.Enums;
+    using PackIt.Models.Material;
 
     /// <summary>   A controller for handling materials. </summary>
     [Route("api/[controller]")]
     public class MaterialsController : Controller
     {
         /// <summary>   The repository. </summary>
-        private readonly IMaterialRepository _repository;
-        private readonly Dictionary<string, MaterialType> _types;
-        private readonly List<string> _typeNames;
+        private readonly IMaterialRepository repository;
 
-        /// <summary>   Constructor. </summary>
+        /// <summary>   The types. </summary>
+        private readonly Dictionary<string, MaterialType> types;
+
+        /// <summary>   The type names. </summary>
+        private readonly List<string> typeNames;
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="MaterialsController" /> class.
+        /// </summary>
         ///
         /// <param name="repository">   The repository. </param>
         public MaterialsController(IMaterialRepository repository)
         {
-            _repository = repository;
-            _types = new Dictionary<string, MaterialType>();
-            _typeNames = new List<string>();
+            this.repository = repository;
+            this.types = new Dictionary<string, MaterialType>();
+            this.typeNames = new List<string>();
             for (MaterialType type = MaterialType.Min; type < MaterialType.Max; ++type)
             {
                 string urlName = Attributes.UrlName(type);
-                _types[urlName] = type;
-                _typeNames.Add(urlName);
+                this.types[urlName] = type;
+                this.typeNames.Add(urlName);
             }
         }
 
@@ -47,7 +53,7 @@ namespace packer_strategy.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_typeNames);
+            return this.Ok(this.typeNames);
         }
 
         /// <summary>
@@ -63,14 +69,15 @@ namespace packer_strategy.Controllers
         {
             IActionResult result;
 
-            if (_types.ContainsKey(type))
+            if (this.types.ContainsKey(type))
             {
-                result = Ok(_repository.GetAll(_types[type]));
+                result = this.Ok(this.repository.GetAll(this.types[type]));
             }
             else
             {
-                result = BadRequest();
+                result = this.BadRequest();
             }
+
             return result;
         }
 
@@ -90,22 +97,23 @@ namespace packer_strategy.Controllers
         {
             IActionResult result;
 
-            if (_types.ContainsKey(type))
+            if (this.types.ContainsKey(type))
             {
-                var item = _repository.Find(_types[type], id);
+                var item = this.repository.Find(this.types[type], id);
                 if (item == null)
                 {
-                    result = NotFound(id);
+                    result = this.NotFound(id);
                 }
                 else
                 {
-                    result = Ok(item);
+                    result = this.Ok(item);
                 }
             }
             else
             {
-                result = BadRequest();
+                result = this.BadRequest();
             }
+
             return result;
         }
 
@@ -122,33 +130,33 @@ namespace packer_strategy.Controllers
 
             if (value != null)
             {
-                if (_types.ContainsKey(type))
+                if (this.types.ContainsKey(type))
                 {
                     try
                     {
-                        value.IdType = _types[type];
-                        _repository.Add(value);
-                        result = CreatedAtRoute("GetMaterial", new { type, value.Id }, value);
+                        value.IdType = this.types[type];
+                        this.repository.Add(value);
+                        result = this.CreatedAtRoute("GetMaterial", new { type, value.Id }, value);
                     }
                     catch (Exception)
                     {
-                        result = StatusCode((int)HttpStatusCode.Conflict);
+                        result = this.StatusCode((int)HttpStatusCode.Conflict);
                     }
                 }
                 else
                 {
-                    result = BadRequest();
+                    result = this.BadRequest();
                 }
             }
             else
             {
-                result = BadRequest();
+                result = this.BadRequest();
             }
 
             return result;
         }
 
-        /// <summary>   Puts. </summary>
+        /// <summary>   Updates an existing Material. </summary>
         ///
         /// <param name="type">     The type. </param>
         /// <param name="id">       The identifier. </param>
@@ -160,27 +168,27 @@ namespace packer_strategy.Controllers
         {
             IActionResult result;
 
-            if (_types.ContainsKey(type))
+            if (this.types.ContainsKey(type))
             {
-                Material item = _repository.Find(_types[type], id);
+                Material item = this.repository.Find(this.types[type], id);
 
                 if (item != null)
                 {
                     item = value;
                     item.Id = id;
 
-                    _repository.Update(item);
+                    this.repository.Update(item);
 
-                    result = Ok();
+                    result = this.Ok();
                 }
                 else
                 {
-                    result = NotFound(id);
+                    result = this.NotFound(id);
                 }
             }
             else
             {
-                result = BadRequest();
+                result = this.BadRequest();
             }
 
             return result;
@@ -197,27 +205,27 @@ namespace packer_strategy.Controllers
         {
             IActionResult result;
 
-            if (_types.ContainsKey(type))
+            if (this.types.ContainsKey(type))
             {
-                if (_repository.Find(_types[type], id) != null)
+                if (this.repository.Find(this.types[type], id) != null)
                 {
-                    _repository.Remove(_types[type], id);
-                    result = Ok();
+                    this.repository.Remove(this.types[type], id);
+                    result = this.Ok();
                 }
                 else
                 {
-                    result = NotFound(id);
+                    result = this.NotFound(id);
                 }
             }
             else
             {
-                result = BadRequest();
+                result = this.BadRequest();
             }
 
             return result;
         }
 
-        /// <summary>   Patches. </summary>
+        /// <summary>   Patches an existing Material. </summary>
         ///
         /// <param name="type">     The type. </param>
         /// <param name="id">       The identifier. </param>
@@ -229,23 +237,23 @@ namespace packer_strategy.Controllers
         {
             IActionResult result;
 
-            if (_types.ContainsKey(type))
+            if (this.types.ContainsKey(type))
             {
-                var item = _repository.Find(_types[type], id);
+                var item = this.repository.Find(this.types[type], id);
 
                 if (item != null)
                 {
                     update.ApplyTo(item);
-                    result = Ok(item);
+                    result = this.Ok(item);
                 }
                 else
                 {
-                    result = NotFound(id);
+                    result = this.NotFound(id);
                 }
             }
             else
             {
-                result = BadRequest();
+                result = this.BadRequest();
             }
 
             return result;

@@ -1,18 +1,20 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.DTO.DtoPackage
+namespace PackIt.DTO.DtoPackage
 {
     using System.Collections.Generic;
-    using Helpers.Enums;
+    using PackIt.Helpers.Enums;
 
     /// <summary>   A dto package. </summary>
     public class DtoPackage
     {
-        /// <summary>   Default constructor. </summary>
+        /// <summary>
+        /// Initialises a new instance of the <see cref="DtoPackage" /> class.
+        /// </summary>
         public DtoPackage()
         {
             this.Costings = new List<DtoCosting>();

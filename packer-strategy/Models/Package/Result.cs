@@ -1,24 +1,24 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.Models.Package
+namespace PackIt.Models.Package
 {
     using System.Collections.Generic;
-    using Helpers.Enums;
-    using Models.Material;
+    using PackIt.Helpers.Enums;
 
     /// <summary>   A result. </summary>
     public class Result
     {
-        /// <summary>   Default constructor. </summary>
+        /// <summary>
+        /// Initialises a new instance of the <see cref="Result" /> class.
+        /// </summary>
         public Result()
         {
-            Layers = new List<Layer>();
-            Materials = new List<Material>();
-            Sections = new List<Section>();
+            this.Materials = new List<Material>();
+            this.Sections = new List<Section>();
         }
 
         /// <summary>   Gets or sets the identifier that owns this item. </summary>
@@ -250,11 +250,6 @@ namespace packer_strategy.Models.Package
         ///
         /// <value> The volume utilisation. </value>
         public double VolumeUtilisation { get; set; }
-
-        /// <summary>   Gets or sets the layers. </summary>
-        ///
-        /// <value> The layers. </value>
-        public List<Layer> Layers { get; set; }
 
         /// <summary>   Gets or sets the materials. </summary>
         ///

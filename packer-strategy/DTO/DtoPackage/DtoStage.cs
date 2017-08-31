@@ -1,20 +1,22 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.DTO.DtoPackage
+namespace PackIt.DTO.DtoPackage
 {
     using System.Collections.Generic;
 
     /// <summary>   A dto stage. </summary>
     public class DtoStage : DtoPlan.DtoStage
     {
-        /// <summary>   Default constructor. </summary>
+        /// <summary>
+        /// Initialises a new instance of the <see cref="DtoStage" /> class.
+        /// </summary>
         public DtoStage()
         {
-            Results = new List<DtoResult>();
+            this.Results = new List<DtoResult>();
         }
 
         /// <summary>   Gets or sets the results. </summary>
