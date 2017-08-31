@@ -1,0 +1,32 @@
+<StyleCopSettings Version="105">
+  <GlobalSettings>
+    <CollectionProperty Name="RecognizedWords">
+      <Value>caliper</Value>
+      <Value>dto</Value>
+      <Value>ecma</Value>
+      <Value>fefco</Value>
+      <Value>edgeboard</Value>
+      <Value>shrinkwrap</Value>
+      <Value>slipsheet</Value>
+    </CollectionProperty>
+    <IntegerProperty Name="MaxViolationCount">5000</IntegerProperty>
+    <StringProperty Name="Culture">en-GB</StringProperty>
+  </GlobalSettings>
+  <Analyzers>
+    <Analyzer AnalyzerId="StyleCop.CSharp.DocumentationRules">
+      <Rules>
+        <Rule Name="FileHeaderMustContainFileName">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="DocumentationHeadersMustNotContainBlankLines">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
+      <AnalyzerSettings />
+    </Analyzer>
+  </Analyzers>
+</StyleCopSettings>

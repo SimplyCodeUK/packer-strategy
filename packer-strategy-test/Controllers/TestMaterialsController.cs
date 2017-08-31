@@ -26,9 +26,6 @@ namespace PackItTest
         /// <summary>   Type of the bad. </summary>
         private static string badType = "BadType";
 
-        /// <summary>   The repository. </summary>
-        private MaterialRepository repository;
-
         /// <summary>   The controller under test. </summary>
         private MaterialsController controller;
 
@@ -40,11 +37,9 @@ namespace PackItTest
             builder.UseInMemoryDatabase("testmaterial");
 
             MaterialContext context = new MaterialContext(builder.Options);
+            MaterialRepository repository = new MaterialRepository(context);
 
-            this.repository = new MaterialRepository(context);
-            Assert.IsNotNull(this.repository);
-
-            this.controller = new MaterialsController(this.repository);
+            this.controller = new MaterialsController(repository);
             Assert.IsNotNull(this.controller);
         }
 
