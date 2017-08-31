@@ -21,9 +21,6 @@ namespace PackItTest
     [TestFixture]
     public class TestPackagesController
     {
-        /// <summary>   The package repository. </summary>
-        private PackageRepository repository;
-
         /// <summary>   The controller under test. </summary>
         private PackagesController controller;
 
@@ -35,11 +32,9 @@ namespace PackItTest
             builder.UseInMemoryDatabase("testpackage");
 
             PackageContext context = new PackageContext(builder.Options);
+            PackageRepository repository = new PackageRepository(context);
 
-            this.repository = new PackageRepository(context);
-            Assert.IsNotNull(this.repository);
-
-            this.controller = new PackagesController(this.repository);
+            this.controller = new PackagesController(repository);
             Assert.IsNotNull(this.controller);
         }
 
