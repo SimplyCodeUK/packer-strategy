@@ -1,10 +1,10 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy
+namespace PackIt
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -12,12 +12,14 @@ namespace packer_strategy
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
-    using DTO;
+    using PackIt.DTO;
 
-    /// <summary>   A startup. </summary>
+    /// <summary>   A start up. </summary>
     public class Startup
     {
-        /// <summary>   Constructor. </summary>
+        /// <summary>
+        /// Initialises a new instance of the <see cref="Startup" /> class.
+        /// </summary>
         ///
         /// <param name="env">  The environment. </param>
         public Startup(IHostingEnvironment env)
@@ -27,7 +29,7 @@ namespace packer_strategy
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            this.Configuration = builder.Build();
         }
 
         /// <summary>   Gets the configuration. </summary>
@@ -55,14 +57,14 @@ namespace packer_strategy
             services.AddSingleton<IPackageRepository, PackageRepository>();
         }
 
-        /// <summary>   Configures. </summary>
+        /// <summary>   Configures start up. </summary>
         ///
         /// <param name="app">              The application. </param>
         /// <param name="env">              The environment. </param>
         /// <param name="loggerFactory">    The logger factory. </param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
             app.UseMvc();

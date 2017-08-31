@@ -1,4 +1,4 @@
-# packer-strategy
+# PackIt
 
 ## Status
 

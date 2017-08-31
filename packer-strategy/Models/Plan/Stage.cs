@@ -1,36 +1,29 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.Models.Plan
+namespace PackIt.Models.Plan
 {
     using System.Collections.Generic;
-    using Helpers.Enums;
+    using PackIt.Helpers.Enums;
 
     /// <summary>   A stage. </summary>
     public class Stage
     {
-        /// <summary>   Default constructor. </summary>
+        /// <summary>   The owners identifier. </summary>
+        private string ownerId;
+
+        /// <summary>   The stage level. </summary>
+        private StageLevel level;
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="Stage" /> class.
+        /// </summary>
         public Stage()
         {
             this.Limits = new List<Limit>();
-        }
-
-        /// <summary>   Identifier for the plan. </summary>
-        private string _ownerId;
-
-        /// <summary>   Sets owner identifier. </summary>
-        ///
-        /// <param name="value">    The value. </param>
-        protected virtual void SetOwnerId(string value)
-        {
-            _ownerId = value;
-            foreach (Limit limit in Limits)
-            {
-                limit.OwnerId = value;
-            }
         }
 
         /// <summary>   Gets or sets the identifier that owns this item. </summary>
@@ -40,16 +33,18 @@ namespace packer_strategy.Models.Plan
         {
             get
             {
-                return _ownerId;
+                return this.ownerId;
             }
+
             set
             {
-                SetOwnerId(value);
+                this.ownerId = value;
+                foreach (Limit limit in this.Limits)
+                {
+                    limit.OwnerId = value;
+                }
             }
         }
-
-        /// <summary>   The level. </summary>
-        private StageLevel _level;
 
         /// <summary>   Gets or sets the level. </summary>
         ///
@@ -58,12 +53,13 @@ namespace packer_strategy.Models.Plan
         {
             get
             {
-                return _level;
+                return this.level;
             }
+
             set
             {
-                _level = value;
-                foreach (Limit limit in Limits)
+                this.level = value;
+                foreach (Limit limit in this.Limits)
                 {
                     limit.StageLevel = value;
                 }

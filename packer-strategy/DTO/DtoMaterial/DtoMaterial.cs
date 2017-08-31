@@ -1,18 +1,20 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.DTO.DtoMaterial
+namespace PackIt.DTO.DtoMaterial
 {
     using System.Collections.Generic;
-    using Helpers.Enums;
+    using PackIt.Helpers.Enums;
 
     /// <summary>   A dto material. </summary>
     public class DtoMaterial
     {
-        /// <summary>   Default constructor. </summary>
+        /// <summary>
+        /// Initialises a new instance of the <see cref="DtoMaterial" /> class.
+        /// </summary>
         public DtoMaterial()
         {
             this.Costings = new List<DtoCosting>();

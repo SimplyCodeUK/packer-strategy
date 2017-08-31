@@ -1,16 +1,36 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.Models.Package
+namespace PackIt.Models.Package
 {
-    using Helpers.Enums;
+    using PackIt.Helpers.Enums;
 
     /// <summary>   A section. </summary>
     public class Section
     {
+        /// <summary>   Gets or sets the identifier that owns this item. </summary>
+        ///
+        /// <value> The identifier of the owner. </value>
+        public string OwnerId { get; set; }
+
+        /// <summary>   Gets or sets the stage level. </summary>
+        ///
+        /// <value> The stage level. </value>
+        public StageLevel StageLevel { get; set; }
+
+        /// <summary>   Gets or sets the zero-based result index of this object. </summary>
+        ///
+        /// <value> The result index. </value>
+        public long ResultIndex { get; set; }
+
+        /// <summary>   Gets or sets the zero-based index of this object. </summary>
+        ///
+        /// <value> The index. </value>
+        public long Index { get; set; }
+
         /// <summary>   Gets or sets the number of.  </summary>
         ///
         /// <value> The count. </value>

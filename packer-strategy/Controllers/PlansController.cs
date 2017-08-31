@@ -1,31 +1,33 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.Controllers
+namespace PackIt.Controllers
 {
     using System;
     using System.Net;
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
-    using DTO;
-    using Models.Plan;
+    using PackIt.DTO;
+    using PackIt.Models.Plan;
 
     /// <summary>   A controller for handling plans. </summary>
     [Route("api/[controller]")]
     public class PlansController : Controller
     {
         /// <summary>   The repository. </summary>
-        private readonly IPlanRepository _repository;
+        private readonly IPlanRepository repository;
 
-        /// <summary>   Constructor. </summary>
+        /// <summary>
+        /// Initialises a new instance of the <see cref="PlansController" /> class.
+        /// </summary>
         ///
         /// <param name="repository">   The repository. </param>
         public PlansController(IPlanRepository repository)
         {
-            _repository = repository;
+            this.repository = repository;
         }
 
         /// <summary>   (An Action that handles HTTP GET requests) gets the get. </summary>
@@ -34,7 +36,7 @@ namespace packer_strategy.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_repository.GetAll());
+            return this.Ok(this.repository.GetAll());
         }
 
         /// <summary>
@@ -50,17 +52,18 @@ namespace packer_strategy.Controllers
         [ProducesResponseType(typeof(Plan), 200)]
         public IActionResult Get(string id)
         {
-            var item = _repository.Find(id);
+            var item = this.repository.Find(id);
             IActionResult result;
 
             if (item == null)
             {
-                result = NotFound(id);
+                result = this.NotFound(id);
             }
             else
             {
-                result = Ok(item);
+                result = this.Ok(item);
             }
+
             return result;
         }
 
@@ -78,23 +81,23 @@ namespace packer_strategy.Controllers
             {
                 try
                 {
-                    _repository.Add(value);
-                    result = CreatedAtRoute("GetPlan", new { id = value.Id }, value);
+                    this.repository.Add(value);
+                    result = this.CreatedAtRoute("GetPlan", new { id = value.Id }, value);
                 }
                 catch (Exception)
                 {
-                    result = StatusCode((int)HttpStatusCode.Conflict);
+                    result = this.StatusCode((int)HttpStatusCode.Conflict);
                 }
             }
             else
             {
-                result = BadRequest();
+                result = this.BadRequest();
             }
 
             return result;
         }
 
-        /// <summary>   Puts. </summary>
+        /// <summary>   Updates an existing Plan. </summary>
         ///
         /// <param name="id">       The identifier. </param>
         /// <param name="value">    The value. </param>
@@ -103,7 +106,7 @@ namespace packer_strategy.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] Plan value)
         {
-            Plan item = _repository.Find(id);
+            Plan item = this.repository.Find(id);
             IActionResult result;
 
             if (item != null)
@@ -111,13 +114,13 @@ namespace packer_strategy.Controllers
                 item = value;
                 item.Id = id;
 
-                _repository.Update(item);
+                this.repository.Update(item);
 
-                result = Ok();
+                result = this.Ok();
             }
             else
             {
-                result = NotFound(id);
+                result = this.NotFound(id);
             }
 
             return result;
@@ -133,19 +136,20 @@ namespace packer_strategy.Controllers
         {
             IActionResult result;
 
-            if (_repository.Find(id) != null)
+            if (this.repository.Find(id) != null)
             {
-                _repository.Remove(id);
-                result = Ok();
+                this.repository.Remove(id);
+                result = this.Ok();
             }
             else
             {
-                result = NotFound(id);
+                result = this.NotFound(id);
             }
+
             return result;
         }
 
-        /// <summary>   Patches. </summary>
+        /// <summary>   Patches an existing Plan. </summary>
         ///
         /// <param name="id">       The identifier. </param>
         /// <param name="update">   The update. </param>
@@ -154,17 +158,17 @@ namespace packer_strategy.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> update)
         {
-            var item = _repository.Find(id);
+            var item = this.repository.Find(id);
             IActionResult result;
 
             if (item != null)
             {
                 update.ApplyTo(item);
-                result = Ok(item);
+                result = this.Ok(item);
             }
             else
             {
-                result = NotFound(id);
+                result = this.NotFound(id);
             }
 
             return result;

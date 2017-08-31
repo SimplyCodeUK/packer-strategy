@@ -1,41 +1,48 @@
-﻿//
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
-//
+// </copyright>
 
-namespace packer_strategy.Models.Package
+namespace PackIt.Models.Package
 {
     using System.Collections.Generic;
-    using Helpers.Enums;
+    using PackIt.Helpers.Enums;
 
     /// <summary>   A package. </summary>
     public class Package
     {
-        /// <summary>   Default constructor. </summary>
+        /// <summary>   The identifier. </summary>
+        private string id;
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="Package" /> class.
+        /// </summary>
         public Package()
         {
             this.Costings = new List<Costing>();
             this.Stages = new List<Stage>();
         }
 
-        /// <summary>   The identifier. </summary>
-        private string _id;
-
         /// <summary>   Gets or sets the identifier. </summary>
         ///
         /// <value> The identifier. </value>
         public string Id
         {
-            get { return _id; }
+            get
+            {
+                return this.id;
+            }
+
             set
             {
-                _id = value;
-                foreach (Costing costing in Costings)
+                this.id = value;
+                foreach (Costing costing in this.Costings)
                 {
                     costing.OwnerId = value;
                 }
-                foreach (Stage stage in Stages)
+
+                foreach (Stage stage in this.Stages)
                 {
                     stage.OwnerId = value;
                 }
@@ -85,9 +92,6 @@ namespace packer_strategy.Models.Package
         /// <summary>   Gets or sets the stages. </summary>
         ///
         /// <value> The stages. </value>
-        public List<Stage> Stages
-        {
-            get; set;
-        }
+        public List<Stage> Stages { get; set; }
     }
 }
