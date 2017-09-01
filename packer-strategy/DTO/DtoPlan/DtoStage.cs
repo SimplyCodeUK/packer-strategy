@@ -20,10 +20,10 @@ namespace PackIt.DTO.DtoPlan
             this.Limits = new List<DtoLimit>();
         }
 
-        /// <summary>   Gets or sets the identifier that owns this item. </summary>
+        /// <summary>   Gets or sets the identifier of the Plan that owns this item. </summary>
         ///
-        /// <value> The identifier of the owner. </value>
-        public string OwnerId { get; set; }
+        /// <value> The identifier of the Plan. </value>
+        public string PlanId { get; set; }
 
         /// <summary>   Gets or sets the level. </summary>
         ///

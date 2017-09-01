@@ -12,9 +12,6 @@ namespace PackIt.Models.Plan
     /// <summary>   A plan. </summary>
     public class Plan
     {
-        /// <summary>   The identifier. </summary>
-        private string id;
-
         /// <summary>
         /// Initialises a new instance of the <see cref="Plan" /> class.
         /// </summary>
@@ -26,22 +23,7 @@ namespace PackIt.Models.Plan
         /// <summary>   Gets or sets the identifier. </summary>
         ///
         /// <value> The identifier. </value>
-        public string Id
-        {
-            get
-            {
-                return this.id;
-            }
-
-            set
-            {
-                this.id = value;
-                foreach (Stage stage in this.Stages)
-                {
-                    stage.OwnerId = value;
-                }
-            }
-        }
+        public string Id { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
         ///

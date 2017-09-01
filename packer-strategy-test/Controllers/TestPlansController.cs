@@ -298,14 +298,10 @@ namespace PackItTest
             StageLevel level = StageLevel.MultiPack;
 
             // Create a plan with a stage that has a limit
-            Stage stage = new Stage();
+            Stage stage = new Stage() { Level = level };
             stage.Limits.Add(new Limit());
-            stage.Level = level;
-
-            Plan item = new Plan();
+            Plan item = new Plan() { Id = id };
             item.Stages.Add(stage);
-
-            item.Id = id;
 
             var result = this.controller.Post(item);
 
@@ -329,13 +325,10 @@ namespace PackItTest
 
             // Test for one stage
             Assert.AreEqual(item.Stages.Count, 1);
-            Assert.AreEqual(item.Stages[0].OwnerId, id);
             Assert.AreEqual(item.Stages[0].Level, level);
 
             // Test for one limit in the stage
             Assert.AreEqual(item.Stages[0].Limits.Count, 1);
-            Assert.AreEqual(item.Stages[0].Limits[0].OwnerId, id);
-            Assert.AreEqual(item.Stages[0].Limits[0].StageLevel, level);
         }
     }
 }

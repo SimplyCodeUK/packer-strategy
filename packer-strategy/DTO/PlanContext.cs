@@ -6,6 +6,7 @@
 
 namespace PackIt.DTO
 {
+    using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
     using PackIt.Models.Plan;
 
@@ -25,14 +26,21 @@ namespace PackIt.DTO
         /// <summary>   Gets or sets the plans. </summary>
         ///
         /// <value> The plans. </value>
-        private DbSet<Plan> Plans { get; set; }
+        public DbSet<DtoPlan.DtoPlan> Plans { get; set; }
 
         /// <summary>   Gets the plans. </summary>
         ///
         /// <returns>   The plans. </returns>
-        public DbSet<Plan> GetPlans()
+        public List<Plan> GetPlans()
         {
-            return this.Plans;
+            List<Plan> ret = new List<Plan>();
+
+            foreach (DtoPlan.DtoPlan plan in this.Plans)
+            {
+                ret.Add(PlanMapper.Convert(plan));
+            }
+
+            return ret;
         }
 
         /// <summary>   Adds a plan. </summary>
@@ -40,7 +48,8 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void AddPlan(Plan item)
         {
-            this.Plans.Add(item);
+            DtoPlan.DtoPlan plan = PlanMapper.Convert(item);
+            this.Plans.Add(plan);
         }
 
         /// <summary>   Searches for the first plan. </summary>
@@ -50,7 +59,10 @@ namespace PackIt.DTO
         /// <returns>   The found plan. </returns>
         public Plan FindPlan(string key)
         {
-            return this.Plans.Find(key);
+            DtoPlan.DtoPlan plan = this.Plans.Find(key);
+            Plan ret = plan == null ? null : PlanMapper.Convert(plan);
+
+            return ret;
         }
 
         /// <summary>   Removes the plan described by key. </summary>
@@ -58,7 +70,7 @@ namespace PackIt.DTO
         /// <param name="key">  The key. </param>
         public void RemovePlan(string key)
         {
-            Plan entity = this.Plans.Find(key);
+            DtoPlan.DtoPlan entity = this.Plans.Find(key);
             this.Plans.Remove(entity);
         }
 
@@ -67,7 +79,11 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void UpdatePlan(Plan item)
         {
-            this.Plans.Update(item);
+            DtoPlan.DtoPlan entity = this.Plans.Find(item.Id);           
+            DtoPlan.DtoPlan plan = PlanMapper.Convert(item);
+            this.Plans.Remove(entity);
+            this.SaveChanges();
+            this.Plans.Add(plan);
         }
 
         /// <summary>
@@ -91,12 +107,12 @@ namespace PackIt.DTO
         /// </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Plan>()
+            modelBuilder.Entity<DtoPlan.DtoPlan>()
                 .HasKey(c => c.Id);
-            modelBuilder.Entity<Stage>()
-                .HasKey(c => new { c.OwnerId, c.Level });
-            modelBuilder.Entity<Limit>()
-                .HasKey(c => new { c.OwnerId, c.StageLevel, c.Index });
+            modelBuilder.Entity<DtoPlan.DtoStage>()
+                .HasKey(c => new { c.PlanId, c.Level });
+            modelBuilder.Entity<DtoPlan.DtoLimit>()
+                .HasKey(c => new { c.PlanId, c.StageLevel, c.Index });
         }
     }
 }

@@ -11,16 +11,6 @@ namespace PackIt.Models.Plan
     /// <summary>   A limit. </summary>
     public class Limit
     {
-        /// <summary>   Gets or sets the identifier that owns this item. </summary>
-        ///
-        /// <value> The identifier of the owner. </value>
-        public string OwnerId { get; set; }
-
-        /// <summary>   Gets or sets the stage level. </summary>
-        ///
-        /// <value> The stage level. </value>
-        public StageLevel StageLevel { get; set; }
-
         /// <summary>   Gets or sets the zero-based index of this object. </summary>
         ///
         /// <value> The index. </value>

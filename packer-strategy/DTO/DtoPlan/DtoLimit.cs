@@ -11,10 +11,10 @@ namespace PackIt.DTO.DtoPlan
     /// <summary>   A dto limit. </summary>
     public class DtoLimit
     {
-        /// <summary>   Gets or sets the identifier that owns this item. </summary>
+        /// <summary>   Gets or sets the identifier of the Plan that owns this item. </summary>
         ///
-        /// <value> The identifier of the owner. </value>
-        public string OwnerId { get; set; }
+        /// <value> The identifier of the Plan. </value>
+        public string PlanId { get; set; }
 
         /// <summary>   Gets or sets the stage level. </summary>
         ///
