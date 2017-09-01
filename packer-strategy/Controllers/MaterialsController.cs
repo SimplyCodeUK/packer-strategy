@@ -176,9 +176,7 @@ namespace PackIt.Controllers
                 {
                     item = value;
                     item.Id = id;
-
                     this.repository.Update(item);
-
                     result = this.Ok();
                 }
                 else
@@ -244,6 +242,7 @@ namespace PackIt.Controllers
                 if (item != null)
                 {
                     update.ApplyTo(item);
+                    this.repository.Update(item);
                     result = this.Ok(item);
                 }
                 else

@@ -227,7 +227,7 @@ namespace PackItTest
             MaterialType type = MaterialType.Cap;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { Id = id, Name = startName };
+            Material item = new Material { IdType = type,  Id = id, Name = startName };
 
             this.controller.Post(nameType, item);
 
@@ -331,7 +331,7 @@ namespace PackItTest
             MaterialType type = MaterialType.Crate;
             string nameType = Attributes.UrlName(type);
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { Id = id, Name = startName, Notes = startNote };
+            Material item = new Material { IdType = type, Id = id, Name = startName, Notes = startNote };
 
             // Create a new material
             this.controller.Post(nameType, item);
@@ -422,10 +422,8 @@ namespace PackItTest
 
             // Create a material with a costing
             Costing costing = new Costing();
-            Material item = new Material();
+            Material item = new Material() { Id = id };
             item.Costings.Add(costing);
-
-            item.Id = id;
 
             var result = this.controller.Post(nameType, item);
 
