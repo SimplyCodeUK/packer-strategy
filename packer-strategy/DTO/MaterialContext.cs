@@ -6,6 +6,7 @@
 
 namespace PackIt.DTO
 {
+    using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
     using PackIt.Helpers.Enums;
     using PackIt.Models.Material;
@@ -26,14 +27,21 @@ namespace PackIt.DTO
         /// <summary>   Gets or sets the materials. </summary>
         ///
         /// <value> The materials. </value>
-        private DbSet<Material> Materials { get; set; }
+        private DbSet<DtoMaterial.DtoMaterial> Materials { get; set; }
 
         /// <summary>   Gets the materials. </summary>
         ///
         /// <returns>   The materials. </returns>
-        public DbSet<Material> GetMaterials()
+        public List<Material> GetMaterials()
         {
-            return this.Materials;
+            List<Material> ret = new List<Material>();
+
+            foreach (DtoMaterial.DtoMaterial material in this.Materials)
+            {
+                ret.Add(MaterialMapper.Convert(material));
+            }
+
+            return ret;
         }
 
         /// <summary>   Adds a material. </summary>
@@ -41,7 +49,8 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void AddMaterial(Material item)
         {
-            this.Materials.Add(item);
+            DtoMaterial.DtoMaterial material = MaterialMapper.Convert(item);
+            this.Materials.Add(material);
         }
 
         /// <summary>   Searches for the first material. </summary>
@@ -52,7 +61,10 @@ namespace PackIt.DTO
         /// <returns>   The found material. </returns>
         public Material FindMaterial(MaterialType type, string key)
         {
-            return this.Materials.Find(type, key);
+            DtoMaterial.DtoMaterial material = this.Materials.Find(type, key);
+            Material ret = material == null ? null : MaterialMapper.Convert(material);
+
+            return ret;
         }
 
         /// <summary>   Removes the material. </summary>
@@ -61,7 +73,7 @@ namespace PackIt.DTO
         /// <param name="key">  The key. </param>
         public void RemoveMaterial(MaterialType type, string key)
         {
-            Material entity = this.Materials.Find(type, key);
+            DtoMaterial.DtoMaterial entity = this.Materials.Find(type, key);
             this.Materials.Remove(entity);
         }
 
@@ -70,7 +82,11 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void UpdateMaterial(Material item)
         {
-            this.Materials.Update(item);
+            DtoMaterial.DtoMaterial entity = this.Materials.Find(item.IdType, item.Id);
+            DtoMaterial.DtoMaterial material = MaterialMapper.Convert(item);
+            this.Materials.Remove(entity);
+            this.SaveChanges();
+            this.Materials.Add(material);
         }
 
         /// <summary>
@@ -94,13 +110,13 @@ namespace PackIt.DTO
         /// </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Material>()
+            modelBuilder.Entity<DtoMaterial.DtoMaterial>()
                 .HasKey(c => new { c.IdType, c.Id });
-            modelBuilder.Entity<Costing>()
-                .HasKey(c => new { c.MaterialIdType, c.MaterialId, c.Quantity });
-            modelBuilder.Entity<Layer>()
+            modelBuilder.Entity<DtoMaterial.DtoCosting>()
+                .HasKey(c => new { c.MaterialType, c.MaterialId, c.Quantity });
+            modelBuilder.Entity<DtoMaterial.DtoLayer>()
                 .HasKey(c => new { c.MaterialType, c.MaterialId, c.Index });
-            modelBuilder.Entity<Collation>()
+            modelBuilder.Entity<DtoMaterial.DtoCollation>()
                 .HasKey(c => new { c.MaterialType, c.MaterialId, c.LayerIndex, c.Index });
         }
     }

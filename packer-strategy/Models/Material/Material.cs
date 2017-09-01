@@ -12,12 +12,6 @@ namespace PackIt.Models.Material
     /// <summary>   A material. </summary>
     public class Material
     {
-        /// <summary>   Defines the. </summary>
-        private MaterialType idType;
-
-        /// <summary>   The identifier. </summary>
-        private string id;
-
         /// <summary>
         /// Initialises a new instance of the <see cref="Material" /> class.
         /// </summary>
@@ -31,42 +25,12 @@ namespace PackIt.Models.Material
         /// <summary>   Gets or sets the type of the identifier. </summary>
         ///
         /// <value> The type of the identifier. </value>
-        public MaterialType IdType
-        {
-            get
-            {
-                return this.idType;
-            }
-
-            set
-            {
-                this.idType = value;
-                foreach (Costing costing in this.Costings)
-                {
-                    costing.MaterialIdType = value;
-                }
-            }
-        }
+        public MaterialType IdType { get; set; }
 
         /// <summary>   Gets or sets the identifier. </summary>
         ///
         /// <value> The identifier. </value>
-        public string Id
-        {
-            get
-            {
-                return this.id;
-            }
-
-            set
-            {
-                this.id = value;
-                foreach (Costing costing in this.Costings)
-                {
-                    costing.MaterialId = value;
-                }
-            }
-        }
+        public string Id { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
         ///

@@ -11,16 +11,6 @@ namespace PackIt.Models.Material
     /// <summary>   A costing. </summary>
     public class Costing
     {
-        /// <summary>   Gets or sets the type of the material identifier. </summary>
-        ///
-        /// <value> The type of the material identifier. </value>
-        public MaterialType MaterialIdType { get; set; }
-
-        /// <summary>   Gets or sets the identifier of the material. </summary>
-        ///
-        /// <value> The identifier of the material. </value>
-        public string MaterialId { get; set; }
-
         /// <summary>   Gets or sets the quantity. </summary>
         ///
         /// <value> The quantity. </value>

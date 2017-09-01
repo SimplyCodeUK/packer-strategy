@@ -14,7 +14,7 @@ namespace PackIt.DTO.DtoMaterial
         /// <summary>   Gets or sets the type of the material identifier. </summary>
         ///
         /// <value> The type of the material identifier. </value>
-        public MaterialType MaterialIdType { get; set; }
+        public MaterialType MaterialType { get; set; }
 
         /// <summary>   Gets or sets the identifier of the material. </summary>
         ///

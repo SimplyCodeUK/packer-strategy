@@ -20,16 +20,6 @@ namespace PackIt.Models.Material
             this.Collations = new List<Collation>();
         }
 
-        /// <summary>   Gets or sets the type of the material identifier. </summary>
-        ///
-        /// <value> The type of the material identifier. </value>
-        public MaterialType MaterialType { get; set; }
-
-        /// <summary>   Gets or sets the identifier that owns this item. </summary>
-        ///
-        /// <value> The identifier of the owner. </value>
-        public string MaterialId { get; set; }
-
         /// <summary>   Gets or sets the zero-based index of this object. </summary>
         ///
         /// <value> The index. </value>
