@@ -7,7 +7,6 @@
 namespace PackIt.DTO
 {
     using System.Collections.Generic;
-    using System.Linq;
     using PackIt.Helpers.Enums;
     using PackIt.Models.Material;
 

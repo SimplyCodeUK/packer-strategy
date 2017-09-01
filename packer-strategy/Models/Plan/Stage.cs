@@ -12,12 +12,6 @@ namespace PackIt.Models.Plan
     /// <summary>   A stage. </summary>
     public class Stage
     {
-        /// <summary>   The owners identifier. </summary>
-        private string ownerId;
-
-        /// <summary>   The stage level. </summary>
-        private StageLevel level;
-
         /// <summary>
         /// Initialises a new instance of the <see cref="Stage" /> class.
         /// </summary>
@@ -26,45 +20,10 @@ namespace PackIt.Models.Plan
             this.Limits = new List<Limit>();
         }
 
-        /// <summary>   Gets or sets the identifier that owns this item. </summary>
-        ///
-        /// <value> The identifier of the owner. </value>
-        public string OwnerId
-        {
-            get
-            {
-                return this.ownerId;
-            }
-
-            set
-            {
-                this.ownerId = value;
-                foreach (Limit limit in this.Limits)
-                {
-                    limit.OwnerId = value;
-                }
-            }
-        }
-
         /// <summary>   Gets or sets the level. </summary>
         ///
         /// <value> The level. </value>
-        public StageLevel Level
-        {
-            get
-            {
-                return this.level;
-            }
-
-            set
-            {
-                this.level = value;
-                foreach (Limit limit in this.Limits)
-                {
-                    limit.StageLevel = value;
-                }
-            }
-        }
+        public StageLevel Level { get; set; }
 
         /// <summary>   Gets or sets the collation. </summary>
         ///

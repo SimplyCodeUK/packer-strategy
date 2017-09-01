@@ -7,7 +7,6 @@
 namespace PackIt.DTO
 {
     using System.Collections.Generic;
-    using System.Linq;
     using PackIt.Models.Plan;
 
     /// <summary>   A plan repository. </summary>
@@ -60,7 +59,8 @@ namespace PackIt.DTO
         /// <seealso cref="M:PackIt.DTO.IPlanRepository.Find(string)"/>
         public Plan Find(string key)
         {
-            return this.context.FindPlan(key);
+            Plan ret = this.context.FindPlan(key);
+            return ret;
         }
 
         /// <summary>   Removes the given key. </summary>
