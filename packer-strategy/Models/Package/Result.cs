@@ -21,21 +21,6 @@ namespace PackIt.Models.Package
             this.Sections = new List<Section>();
         }
 
-        /// <summary>   Gets or sets the identifier that owns this item. </summary>
-        ///
-        /// <value> The identifier of the owner. </value>
-        public string OwnerId { get; set; }
-
-        /// <summary>   Gets or sets the level. </summary>
-        ///
-        /// <value> The level. </value>
-        public StageLevel Level { get; set; }
-
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
-        ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
-
         /// <summary>   Gets or sets a value indicating whether the used. </summary>
         ///
         /// <value> True if used, false if not. </value>

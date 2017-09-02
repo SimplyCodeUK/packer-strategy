@@ -164,6 +164,7 @@ namespace PackIt.Controllers
             if (item != null)
             {
                 update.ApplyTo(item);
+                this.repository.Update(item);
                 result = this.Ok(item);
             }
             else

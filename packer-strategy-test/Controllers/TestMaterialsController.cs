@@ -422,7 +422,7 @@ namespace PackItTest
 
             // Create a material with a costing
             Costing costing = new Costing();
-            Material item = new Material() { Id = id };
+            Material item = new Material { Id = id };
             item.Costings.Add(costing);
 
             var result = this.controller.Post(nameType, item);

@@ -294,10 +294,8 @@ namespace PackItTest
             // Create a package with a stage that has a limit
             Costing costing = new Costing { RequiredQuantity = quantity, RequiredWeight = weight };
 
-            Package item = new Package();
+            Package item = new Package { Id = id };
             item.Costings.Add(costing);
-
-            item.Id = id;
 
             var result = this.controller.Post(item);
 
@@ -321,7 +319,6 @@ namespace PackItTest
 
             // Test for one stage
             Assert.AreEqual(item.Costings.Count, 1);
-            Assert.AreEqual(item.Costings[0].OwnerId, id);
             Assert.AreEqual(item.Costings[0].RequiredQuantity, quantity);
             Assert.AreEqual(item.Costings[0].RequiredWeight, weight);
         }

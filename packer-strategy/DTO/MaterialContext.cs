@@ -27,7 +27,7 @@ namespace PackIt.DTO
         /// <summary>   Gets or sets the materials. </summary>
         ///
         /// <value> The materials. </value>
-        private DbSet<DtoMaterial.DtoMaterial> Materials { get; set; }
+        public DbSet<DtoMaterial.DtoMaterial> Materials { get; set; }
 
         /// <summary>   Gets the materials. </summary>
         ///
@@ -36,9 +36,9 @@ namespace PackIt.DTO
         {
             List<Material> ret = new List<Material>();
 
-            foreach (DtoMaterial.DtoMaterial material in this.Materials)
+            foreach (DtoMaterial.DtoMaterial item in this.Materials)
             {
-                ret.Add(MaterialMapper.Convert(material));
+                ret.Add(MaterialMapper.Convert(item));
             }
 
             return ret;
@@ -49,8 +49,8 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void AddMaterial(Material item)
         {
-            DtoMaterial.DtoMaterial material = MaterialMapper.Convert(item);
-            this.Materials.Add(material);
+            DtoMaterial.DtoMaterial dto = MaterialMapper.Convert(item);
+            this.Materials.Add(dto);
         }
 
         /// <summary>   Searches for the first material. </summary>
@@ -61,8 +61,8 @@ namespace PackIt.DTO
         /// <returns>   The found material. </returns>
         public Material FindMaterial(MaterialType type, string key)
         {
-            DtoMaterial.DtoMaterial material = this.Materials.Find(type, key);
-            Material ret = material == null ? null : MaterialMapper.Convert(material);
+            DtoMaterial.DtoMaterial dto = this.Materials.Find(type, key);
+            Material ret = dto == null ? null : MaterialMapper.Convert(dto);
 
             return ret;
         }
@@ -83,10 +83,10 @@ namespace PackIt.DTO
         public void UpdateMaterial(Material item)
         {
             DtoMaterial.DtoMaterial entity = this.Materials.Find(item.IdType, item.Id);
-            DtoMaterial.DtoMaterial material = MaterialMapper.Convert(item);
+            DtoMaterial.DtoMaterial dto = MaterialMapper.Convert(item);
             this.Materials.Remove(entity);
             this.SaveChanges();
-            this.Materials.Add(material);
+            this.Materials.Add(dto);
         }
 
         /// <summary>

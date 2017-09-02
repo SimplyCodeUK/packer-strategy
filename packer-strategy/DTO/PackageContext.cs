@@ -6,6 +6,7 @@
 
 namespace PackIt.DTO
 {
+    using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
     using PackIt.Models.Package;
 
@@ -25,14 +26,21 @@ namespace PackIt.DTO
         /// <summary>   Gets or sets the packages. </summary>
         ///
         /// <value> The packages. </value>
-        private DbSet<Package> Packages { get; set; }
+        public DbSet<DtoPackage.DtoPackage> Packages { get; set; }
 
         /// <summary>   Gets the packages. </summary>
         ///
         /// <returns>   The packages. </returns>
-        public DbSet<Package> GetPackages()
+        public List<Package> GetPackages()
         {
-            return this.Packages;
+            List<Package> ret = new List<Package>();
+
+            foreach (DtoPackage.DtoPackage item in this.Packages)
+            {
+                ret.Add(PackageMapper.Convert(item));
+            }
+
+            return ret;
         }
 
         /// <summary>   Adds a package. </summary>
@@ -40,7 +48,8 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void AddPackage(Package item)
         {
-            this.Packages.Add(item);
+            DtoPackage.DtoPackage dto = PackageMapper.Convert(item);
+            this.Packages.Add(dto);
         }
 
         /// <summary>   Searches for the first package. </summary>
@@ -50,7 +59,10 @@ namespace PackIt.DTO
         /// <returns>   The found package. </returns>
         public Package FindPackage(string key)
         {
-            return this.Packages.Find(key);
+            DtoPackage.DtoPackage dto = this.Packages.Find(key);
+            Package ret = dto == null ? null : PackageMapper.Convert(dto);
+
+            return ret;
         }
 
         /// <summary>   Removes the package described by key. </summary>
@@ -58,7 +70,7 @@ namespace PackIt.DTO
         /// <param name="key">  The key. </param>
         public void RemovePackage(string key)
         {
-            Package entity = this.Packages.Find(key);
+            DtoPackage.DtoPackage entity = this.Packages.Find(key);
             this.Packages.Remove(entity);
         }
 
@@ -67,7 +79,11 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void UpdatePackage(Package item)
         {
-            this.Packages.Update(item);
+            DtoPackage.DtoPackage entity = this.Packages.Find(item.Id);
+            DtoPackage.DtoPackage dto = PackageMapper.Convert(item);
+            this.Packages.Remove(entity);
+            this.SaveChanges();
+            this.Packages.Add(dto);
         }
 
         /// <summary>
@@ -91,16 +107,24 @@ namespace PackIt.DTO
         /// </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Package>()
+            modelBuilder.Entity<DtoPackage.DtoPackage>()
                 .HasKey(c => c.Id);
-            modelBuilder.Entity<Costing>()
-                .HasKey(c => new { c.OwnerId, c.RequiredQuantity });
-            modelBuilder.Entity<Stage>()
-                .HasKey(c => new { c.OwnerId, c.Level });
-            modelBuilder.Entity<Result>()
-                .HasKey(c => new { c.OwnerId, c.Level, c.Index });
-            modelBuilder.Entity<Section>()
-                .HasKey(c => new { c.OwnerId, c.StageLevel, c.ResultIndex, c.Index });
+            modelBuilder.Entity<DtoPackage.DtoCosting>()
+                .HasKey(c => new { c.PackageId, c.RequiredQuantity });
+            modelBuilder.Entity<DtoPackage.DtoStage>()
+                .HasKey(c => new { c.PackageId, c.Level });
+            modelBuilder.Entity<DtoPackage.DtoLimit>()
+                .HasKey(c => new { c.PackageId, c.StageLevel, c.Index });
+            modelBuilder.Entity<DtoPackage.DtoResult>()
+                .HasKey(c => new { c.PackageId, c.StageLevel, c.Index });
+            modelBuilder.Entity<DtoPackage.DtoLayer>()
+                .HasKey(c => new { c.PackageId, c.StageLevel, c.ResultIndex, c.Index });
+            modelBuilder.Entity<DtoPackage.DtoCollation>()
+                .HasKey(c => new { c.PackageId, c.StageLevel, c.ResultIndex, c.LayerIndex, c.Index });
+            modelBuilder.Entity<DtoPackage.DtoMaterial>()
+                .HasKey(c => new { c.PackageId, c.StageLevel, c.ResultIndex, c.Index });
+            modelBuilder.Entity<DtoPackage.DtoSection>()
+                .HasKey(c => new { c.PackageId, c.StageLevel, c.ResultIndex, c.Index });
         }
     }
 }

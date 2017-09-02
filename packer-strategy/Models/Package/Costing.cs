@@ -9,11 +9,6 @@ namespace PackIt.Models.Package
     /// <summary>   A costing. </summary>
     public class Costing
     {
-        /// <summary>   Gets or sets the identifier that owns this item. </summary>
-        ///
-        /// <value> The identifier of the owner. </value>
-        public string OwnerId { get; set; }
-
         /// <summary>   Gets or sets the required quantity. </summary>
         ///
         /// <value> The required quantity. </value>

@@ -11,26 +11,6 @@ namespace PackIt.Models.Package
     /// <summary>   A section. </summary>
     public class Section
     {
-        /// <summary>   Gets or sets the identifier that owns this item. </summary>
-        ///
-        /// <value> The identifier of the owner. </value>
-        public string OwnerId { get; set; }
-
-        /// <summary>   Gets or sets the stage level. </summary>
-        ///
-        /// <value> The stage level. </value>
-        public StageLevel StageLevel { get; set; }
-
-        /// <summary>   Gets or sets the zero-based result index of this object. </summary>
-        ///
-        /// <value> The result index. </value>
-        public long ResultIndex { get; set; }
-
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
-        ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
-
         /// <summary>   Gets or sets the number of.  </summary>
         ///
         /// <value> The count. </value>

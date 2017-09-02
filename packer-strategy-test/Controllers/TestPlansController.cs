@@ -298,9 +298,9 @@ namespace PackItTest
             StageLevel level = StageLevel.MultiPack;
 
             // Create a plan with a stage that has a limit
-            Stage stage = new Stage() { Level = level };
+            Stage stage = new Stage { Level = level };
             stage.Limits.Add(new Limit());
-            Plan item = new Plan() { Id = id };
+            Plan item = new Plan { Id = id };
             item.Stages.Add(stage);
 
             var result = this.controller.Post(item);
