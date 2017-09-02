@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "packer_strategy": {
+    "PackIt": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/plans",
