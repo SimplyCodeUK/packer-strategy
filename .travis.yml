@@ -20,7 +20,7 @@ install:
 script:
   - msbuild /p:Configuration=$CONFIG /t:rebuild PackIt.sln
   - dotnet test PackItTest/PackItTest.csproj --configuration $CONFIG --no-build --logger:trx
-  - dotnet pack PackIt.sln --configuration $CONFIG
+  - dotnet pack PackIt/PackIt.csproj --configuration $CONFIG
 
 notifications:
   slack: simplycodeuk:FZI8WzeengkGv5LI7WQSCrJs
