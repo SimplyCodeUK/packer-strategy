@@ -11,6 +11,26 @@ namespace PackIt.DTO.DtoPackage
     /// <summary>   A dto section. </summary>
     public class DtoSection
     {
+        /// <summary>   Gets or sets the identifier of the Package owns this item. </summary>
+        ///
+        /// <value> The identifier of the Package. </value>
+        public string PackageId { get; set; }
+
+        /// <summary>   Gets or sets the level. </summary>
+        ///
+        /// <value> The level. </value>
+        public StageLevel StageLevel { get; set; }
+
+        /// <summary>   Gets or sets the zero-based index of the Result index. </summary>
+        ///
+        /// <value> The Result index. </value>
+        public long ResultIndex { get; set; }
+
+        /// <summary>   Gets or sets the zero-based index of the Section. </summary>
+        ///
+        /// <value> The index. </value>
+        public long Index { get; set; }
+
         /// <summary>   Gets or sets the number of.  </summary>
         ///
         /// <value> The count. </value>

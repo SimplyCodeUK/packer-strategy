@@ -22,15 +22,15 @@ namespace PackIt.DTO.DtoPackage
             this.Sections = new List<DtoSection>();
         }
 
-        /// <summary>   Gets or sets the identifier that owns this item. </summary>
+        /// <summary>   Gets or sets the identifier of the Package owns this item. </summary>
         ///
-        /// <value> The identifier of the owner. </value>
-        public string OwnerId { get; set; }
+        /// <value> The identifier of the Package. </value>
+        public string PackageId { get; set; }
 
         /// <summary>   Gets or sets the level. </summary>
         ///
         /// <value> The level. </value>
-        public StageLevel Level { get; set; }
+        public StageLevel StageLevel { get; set; }
 
         /// <summary>   Gets or sets the zero-based index of this object. </summary>
         ///

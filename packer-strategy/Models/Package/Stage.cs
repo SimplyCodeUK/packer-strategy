@@ -17,13 +17,9 @@ namespace PackIt.Models.Package
         /// </summary>
         public Stage()
         {
+            this.Limits = new List<Limit>();
             this.Results = new List<Result>();
         }
-
-        /// <summary>   Gets or sets the identifier that owns this item. </summary>
-        ///
-        /// <value> The identifier of the owner. </value>
-        public string OwnerId { get; set; }
 
         /// <summary>   Gets or sets the level. </summary>
         ///
@@ -664,6 +660,11 @@ namespace PackIt.Models.Package
         ///
         /// <value> True if draw hands, false if not. </value>
         public bool DrawHands { get; set; }
+
+        /// <summary>   Gets or sets the results. </summary>
+        ///
+        /// <value> The results. </value>
+        public List<Limit> Limits { get; set; }
 
         /// <summary>   Gets or sets the results. </summary>
         ///

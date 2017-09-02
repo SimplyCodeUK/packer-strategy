@@ -12,9 +12,6 @@ namespace PackIt.Models.Package
     /// <summary>   A package. </summary>
     public class Package
     {
-        /// <summary>   The identifier. </summary>
-        private string id;
-
         /// <summary>
         /// Initialises a new instance of the <see cref="Package" /> class.
         /// </summary>
@@ -27,27 +24,7 @@ namespace PackIt.Models.Package
         /// <summary>   Gets or sets the identifier. </summary>
         ///
         /// <value> The identifier. </value>
-        public string Id
-        {
-            get
-            {
-                return this.id;
-            }
-
-            set
-            {
-                this.id = value;
-                foreach (Costing costing in this.Costings)
-                {
-                    costing.OwnerId = value;
-                }
-
-                foreach (Stage stage in this.Stages)
-                {
-                    stage.OwnerId = value;
-                }
-            }
-        }
+        public string Id { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
         ///

@@ -35,9 +35,9 @@ namespace PackIt.DTO
         {
             List<Plan> ret = new List<Plan>();
 
-            foreach (DtoPlan.DtoPlan plan in this.Plans)
+            foreach (DtoPlan.DtoPlan item in this.Plans)
             {
-                ret.Add(PlanMapper.Convert(plan));
+                ret.Add(PlanMapper.Convert(item));
             }
 
             return ret;
@@ -48,8 +48,8 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void AddPlan(Plan item)
         {
-            DtoPlan.DtoPlan plan = PlanMapper.Convert(item);
-            this.Plans.Add(plan);
+            DtoPlan.DtoPlan dto = PlanMapper.Convert(item);
+            this.Plans.Add(dto);
         }
 
         /// <summary>   Searches for the first plan. </summary>
@@ -59,8 +59,8 @@ namespace PackIt.DTO
         /// <returns>   The found plan. </returns>
         public Plan FindPlan(string key)
         {
-            DtoPlan.DtoPlan plan = this.Plans.Find(key);
-            Plan ret = plan == null ? null : PlanMapper.Convert(plan);
+            DtoPlan.DtoPlan dto = this.Plans.Find(key);
+            Plan ret = dto == null ? null : PlanMapper.Convert(dto);
 
             return ret;
         }
@@ -79,11 +79,11 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void UpdatePlan(Plan item)
         {
-            DtoPlan.DtoPlan entity = this.Plans.Find(item.Id);           
-            DtoPlan.DtoPlan plan = PlanMapper.Convert(item);
+            DtoPlan.DtoPlan entity = this.Plans.Find(item.Id);
+            DtoPlan.DtoPlan dto = PlanMapper.Convert(item);
             this.Plans.Remove(entity);
             this.SaveChanges();
-            this.Plans.Add(plan);
+            this.Plans.Add(dto);
         }
 
         /// <summary>
