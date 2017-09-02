@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\packer-strategy\packer-strategy.csproj" />
+    <ProjectReference Include="..\PackIt\PackIt.csproj" />
   </ItemGroup>
 
   <ItemGroup>

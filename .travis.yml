@@ -1,7 +1,7 @@
 sudo: required
 dist: trusty
 language: csharp
-solution: packer-strategy.sln
+solution: PackIt.sln
 
 mono:
   - latest
@@ -14,13 +14,13 @@ env:
   - CONFIG=Release
 
 install:
-  - nuget restore packer-strategy.sln
-  - dotnet restore packer-strategy.sln
+  - nuget restore PackIt.sln
+  - dotnet restore PackItstrategy.sln
 
 script:
-  - msbuild /p:Configuration=$CONFIG /t:rebuild packer-strategy.sln
-  - dotnet test packer-strategy-test/packer-strategy-test.csproj --configuration $CONFIG --no-build --logger:trx
-  - dotnet pack packer-strategy.sln --configuration $CONFIG
+  - msbuild /p:Configuration=$CONFIG /t:rebuild PackIt.sln
+  - dotnet test PackItTest/PackItTest.csproj --configuration $CONFIG --no-build --logger:trx
+  - dotnet pack PackIt.sln --configuration $CONFIG
 
 notifications:
   slack: simplycodeuk:FZI8WzeengkGv5LI7WQSCrJs

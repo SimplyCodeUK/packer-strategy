@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "packer-strategy", "packer-strategy\packer-strategy.csproj", "{3D341C40-1350-41BD-A2AF-463577EA71F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackIt", "PackIt\PackIt.csproj", "{3D341C40-1350-41BD-A2AF-463577EA71F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8966A5E7-72BB-48F0-A9D8-AAFB4ADF88DC}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,7 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "packer-strategy-test", "packer-strategy-test\packer-strategy-test.csproj", "{08BE10BC-8248-4847-9BA3-6672261BD67C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItTest", "PackItTest\PackItTest.csproj", "{08BE10BC-8248-4847-9BA3-6672261BD67C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D341C40-1350-41BD-A2AF-463577EA71F4} = {3D341C40-1350-41BD-A2AF-463577EA71F4}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
