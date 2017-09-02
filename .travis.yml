@@ -15,7 +15,7 @@ env:
 
 install:
   - nuget restore PackIt.sln
-  - dotnet restore PackItstrategy.sln
+  - dotnet restore PackIt.sln
 
 script:
   - msbuild /p:Configuration=$CONFIG /t:rebuild PackIt.sln
