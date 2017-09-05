@@ -16,18 +16,18 @@ namespace PackIt.Models.Package
         /// </summary>
         public Material()
         {
-            this.IdType = MaterialType.Bottle;
+            this.MaterialType = MaterialType.Bottle;
         }
 
-        /// <summary>   Gets or sets the type of the identifier. </summary>
+        /// <summary>   Gets or sets the type of the Material. </summary>
         ///
-        /// <value> The type of the identifier. </value>
-        public MaterialType IdType { get; set; }
+        /// <value> The type of the Material. </value>
+        public MaterialType MaterialType { get; set; }
 
-        /// <summary>   Gets or sets the identifier. </summary>
+        /// <summary>   Gets or sets the Material identifier. </summary>
         ///
-        /// <value> The identifier. </value>
-        public string Id { get; set; }
+        /// <value> The Material identifier. </value>
+        public string MaterialId { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
         ///
