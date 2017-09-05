@@ -210,7 +210,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -654,7 +655,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -1079,7 +1094,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 12
+                  "Count": 12,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -1372,7 +1401,69 @@
                   "LineNorthSouth": 17.744907,
                   "Line180Degrees": 96.289282,
                   "Line90Degrees": 24.492026,
-                  "Count": 11
+                  "Count": 11,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 340.2,
+                      "PosY": 435,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 217.5,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 387.6,
+                      "PosY": 217.5,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 340.2,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -1710,7 +1801,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 20,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 600,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 2
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -2019,7 +2136,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -2467,7 +2585,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -2892,7 +3024,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 12
+                  "Count": 12,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -3185,7 +3331,69 @@
                   "LineNorthSouth": 17.744907,
                   "Line180Degrees": 96.289282,
                   "Line90Degrees": 24.492026,
-                  "Count": 11
+                  "Count": 11,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 340.2,
+                      "PosY": 435,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 217.5,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 387.6,
+                      "PosY": 217.5,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 340.2,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -3523,7 +3731,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 20,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 600,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 2
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -3860,7 +4094,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 28
+                  "Count": 28,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 14,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -4125,7 +4373,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [],
@@ -4449,7 +4711,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -4802,7 +5078,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 12
+                  "Count": 12,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 2.7,
+                      "GapY": 4.7,
+                      "CountX": 4,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -5095,7 +5385,45 @@
                   "LineNorthSouth": 26.509076,
                   "Line180Degrees": 26.509076,
                   "Line90Degrees": 40.240338,
-                  "Count": 8
+                  "Count": 8,
+                  "Collations": [
+                    {
+                      "PackCode": "A1098/46",
+                      "ProductCode": "YM/Crate",
+                      "StrategyLevel": 6,
+                      "ResultIndex": 0,
+                      "ResultLayer": 0,
+                      "Index": 0,
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PackCode": "A1098/46",
+                      "ProductCode": "YM/Crate",
+                      "StrategyLevel": 6,
+                      "ResultIndex": 0,
+                      "ResultLayer": 0,
+                      "Index": 1,
+                      "PosX": 0,
+                      "PosY": 512,
+                      "GapX": 82,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -5433,7 +5761,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 20,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 600,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 2
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -5742,7 +6096,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -6006,7 +6361,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -6299,7 +6668,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 4
+                  "Count": 4,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -6592,7 +6975,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 9
+                  "Count": 9,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 9,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -6975,7 +7372,93 @@
                   "LineNorthSouth": 54.472565,
                   "Line180Degrees": 89.887257,
                   "Line90Degrees": 21.025118,
-                  "Count": 30
+                  "Count": 30,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 309.06,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 814.82,
+                      "PosY": 355.9,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 103.02,
+                      "PosY": 664.96,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 1067.7,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 711.8,
+                      "PosY": 309.06,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 618.12,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -7328,7 +7811,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -7682,7 +8166,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -8035,7 +8533,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 6
+                  "Count": 6,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -8300,7 +8812,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -8624,7 +9137,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -8977,7 +9504,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 25
+                  "Count": 25,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 34.354248,
+                      "GapY": -23.333333,
+                      "CountX": 4,
+                      "CountY": 7,
+                      "Even": 3,
+                      "Nested": 2,
+                      "AlongBreadth": 1,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -9270,7 +9811,33 @@
                   "LineNorthSouth": 30.769231,
                   "Line180Degrees": 30.769231,
                   "Line90Degrees": 44.117647,
-                  "Count": 8
+                  "Count": 8,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 600,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -9608,7 +10175,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 20,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 600,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 2
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -9917,7 +10510,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [],
@@ -10226,7 +10833,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -10563,7 +11184,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 4
+                  "Count": 4,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -10901,7 +11536,39 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 42.862593,
                   "Line90Degrees": 8.825599,
-                  "Count": 18
+                  "Count": 18,
+                  "Collations": [
+                    {
+                      "PackCode": "FP/150/Retail",
+                      "ProductCode": "Fr.Pizza 150mm",
+                      "StrategyLevel": 6,
+                      "ResultIndex": 0,
+                      "ResultLayer": 0,
+                      "Index": 0,
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 5,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 986.4,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 6.8,
+                      "CountX": 1,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -11210,7 +11877,27 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PackCode": "GenPak/2Ex",
+                      "ProductCode": "GenPak",
+                      "StrategyLevel": 0,
+                      "ResultIndex": 0,
+                      "ResultLayer": 0,
+                      "Index": 0,
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [],
@@ -11474,7 +12161,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 8
+                  "Count": 8,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -11767,7 +12468,33 @@
                   "LineNorthSouth": 30.033808,
                   "Line180Degrees": 30.033808,
                   "Line90Degrees": 43.4517,
-                  "Count": 8
+                  "Count": 8,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 15.2,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 198.6,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -12105,7 +12832,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 20,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 600,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 2
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -12414,7 +13167,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -12828,7 +13582,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -13298,7 +14066,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 12
+                  "Count": 12,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 6,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -13635,7 +14417,33 @@
                   "LineNorthSouth": 19.047619,
                   "Line180Degrees": 19.047619,
                   "Line90Degrees": 34,
-                  "Count": 16
+                  "Count": 16,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 200,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 4,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -13928,7 +14736,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 20,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 600,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 2
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -14188,7 +15022,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -14557,7 +15392,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -14999,7 +15848,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -15336,7 +16199,33 @@
                   "LineNorthSouth": 30.597387,
                   "Line180Degrees": 30.597387,
                   "Line90Degrees": 43.962163,
-                  "Count": 8
+                  "Count": 8,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 577,
+                      "GapX": 3.5,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -15674,7 +16563,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 20,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 600,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 2
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -15983,7 +16898,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -16442,7 +17358,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -16884,7 +17814,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 12
+                  "Count": 12,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -17221,7 +18165,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 10.188121,
                   "Line90Degrees": 34.015884,
-                  "Count": 5
+                  "Count": 5,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 342.02,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 87.02,
+                      "CountX": 1,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -17604,7 +18574,21 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 20,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -17952,7 +18936,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -18200,7 +19185,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -18493,7 +19492,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 4
+                  "Count": 4,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 4,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -18831,7 +19844,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 24
+                  "Count": 24,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 12,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -19213,7 +20240,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -19640,7 +20681,57 @@
                   "LineNorthSouth": 16.080305,
                   "Line180Degrees": 56.44901,
                   "Line90Degrees": 31.112319,
-                  "Count": 23
+                  "Count": 23,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 4,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 696.752,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 348.376,
+                      "PosY": 275.772,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 4,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 304.752,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 5,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -19988,7 +21079,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -20236,7 +21328,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -20529,7 +21635,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 4
+                  "Count": 4,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -20867,7 +21987,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 20
+                  "Count": 20,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 5,
+                      "CountY": 4,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -21249,7 +22383,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -21676,7 +22824,57 @@
                   "LineNorthSouth": 7.128392,
                   "Line180Degrees": 67.860381,
                   "Line90Degrees": 9.228422,
-                  "Count": 29
+                  "Count": 29,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 539.604,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 479.292,
+                      "PosY": 539.604,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 39.852,
+                      "PosY": 439.44,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -22024,7 +23222,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -22272,7 +23471,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -22565,7 +23778,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 4
+                  "Count": 4,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -22903,7 +24130,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 24
+                  "Count": 24,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 6,
+                      "CountY": 4,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -23285,7 +24526,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -23712,7 +24967,165 @@
                   "LineNorthSouth": 43.778975,
                   "Line180Degrees": 100,
                   "Line90Degrees": 15.757184,
-                  "Count": 25
+                  "Count": 25,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 174.668,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 349.336,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 524.004,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 942.824,
+                      "PosY": 256.052,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 686.772,
+                      "PosY": 430.72,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 430.72,
+                      "PosY": 605.388,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 174.668,
+                      "PosY": 780.056,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 1024.208,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 768.156,
+                      "PosY": 174.668,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 512.104,
+                      "PosY": 349.336,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 256.052,
+                      "PosY": 524.004,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 698.672,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -24060,7 +25473,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -24308,7 +25722,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -24601,7 +26029,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 4
+                  "Count": 4,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -24939,7 +26381,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 28
+                  "Count": 28,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 7,
+                      "CountY": 4,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -25321,7 +26777,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -25748,7 +27218,93 @@
                   "LineNorthSouth": 19.84212,
                   "Line180Degrees": 19.84212,
                   "Line90Degrees": 15.157265,
-                  "Count": 22
+                  "Count": 22,
+                  "Collations": [
+                    {
+                      "PosX": 1018.868,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 844.2,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 669.532,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 349.336,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 174.668,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 298.384,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 4,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -26101,7 +27657,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -26440,7 +27997,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -26838,7 +28409,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 6
+                  "Count": 6,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -27175,7 +28760,33 @@
                   "LineNorthSouth": 30.769231,
                   "Line180Degrees": 30.769231,
                   "Line90Degrees": 44.117647,
-                  "Count": 8
+                  "Count": 8,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 600,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -27558,7 +29169,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 20,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 600,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 2
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -27911,7 +29548,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -28175,7 +29813,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -28529,7 +30181,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 23
+                  "Count": 23,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 11.375,
+                      "GapY": -13.039247,
+                      "CountX": 5,
+                      "CountY": 5,
+                      "Even": 4,
+                      "Nested": 2,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -28866,7 +30532,33 @@
                   "LineNorthSouth": 8.333906,
                   "Line180Degrees": 8.334531,
                   "Line90Degrees": 30.000133,
-                  "Count": 10
+                  "Count": 10,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 400.02,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -29131,7 +30823,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [],
@@ -29455,7 +31161,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -29898,7 +31618,27 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 6
+                  "Count": 6,
+                  "Collations": [
+                    {
+                      "PackCode": "Product X",
+                      "ProductCode": "Product X",
+                      "StrategyLevel": 5,
+                      "ResultIndex": 0,
+                      "ResultLayer": 0,
+                      "Index": 0,
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -30279,7 +32019,33 @@
                   "LineNorthSouth": 2.741588,
                   "Line180Degrees": 2.741588,
                   "Line90Degrees": 24.387148,
-                  "Count": 17
+                  "Count": 17,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 12.993333,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 388.44,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -30544,7 +32310,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [],
@@ -30868,7 +32648,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -31311,7 +33105,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 5
+                  "Count": 5,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": -7.944694,
+                      "CountX": 2,
+                      "CountY": 3,
+                      "Even": 1,
+                      "Nested": 1,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -31737,7 +33545,57 @@
                   "LineNorthSouth": 14.138815,
                   "Line180Degrees": 100,
                   "Line90Degrees": 14.884306,
-                  "Count": 18
+                  "Count": 18,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 195.22,
+                      "PosY": 404.76,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 404.76,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 390.44,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 3,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -32046,7 +33904,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -32399,7 +34258,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [],
@@ -32933,7 +34806,21 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 100,
-                  "Count": 35
+                  "Count": 35,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 12.969788,
+                      "GapY": -12.5,
+                      "CountX": 7,
+                      "CountY": 5,
+                      "Even": 7,
+                      "Nested": 2,
+                      "AlongBreadth": 1,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -33312,7 +35199,21 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 75,
-                  "Count": 4
+                  "Count": 4,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -33621,7 +35522,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -33960,7 +35862,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -34358,7 +36274,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 12
+                  "Count": 12,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 52.188571,
+                      "GapY": -35.333333,
+                      "CountX": 3,
+                      "CountY": 4,
+                      "Even": 3,
+                      "Nested": 2,
+                      "AlongBreadth": 1,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -34695,7 +36625,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 45.453658,
                   "Line90Degrees": 13.33397,
-                  "Count": 6
+                  "Count": 6,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 4,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 398.971429,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -34960,7 +36916,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -35389,7 +37346,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -35742,7 +37713,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 8
+                  "Count": 8,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 4,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -36035,7 +38020,33 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 8
+                  "Count": 8,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 558.4,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -36373,7 +38384,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 20,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 600,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 2
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -36682,7 +38719,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -37111,7 +39149,27 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PackCode": "Teachers 70cl/2",
+                      "ProductCode": "Teachers/2",
+                      "StrategyLevel": 2,
+                      "ResultIndex": 0,
+                      "ResultLayer": 0,
+                      "Index": 0,
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -37464,7 +39522,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 8
+                  "Count": 8,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 43.936996,
+                      "GapY": -36.5,
+                      "CountX": 3,
+                      "CountY": 3,
+                      "Even": 2,
+                      "Nested": 2,
+                      "AlongBreadth": 1,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -37757,7 +39829,33 @@
                   "LineNorthSouth": 30.769231,
                   "Line180Degrees": 30.769231,
                   "Line90Degrees": 44.117647,
-                  "Count": 8
+                  "Count": 8,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 600,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -38095,7 +40193,33 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 20,
-                  "Count": 2
+                  "Count": 2,
+                  "Collations": [
+                    {
+                      "PosX": 600,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 2
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 1,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -38404,7 +40528,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -38606,7 +40731,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -38854,7 +40980,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 6
+                  "Count": 6,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -39147,7 +41287,33 @@
                   "LineNorthSouth": 49.125683,
                   "Line180Degrees": 2.622951,
                   "Line90Degrees": 44.424552,
-                  "Count": 12
+                  "Count": 12,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 4,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 798,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -39412,7 +41578,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [],
@@ -39736,7 +41916,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 1
+                  "Count": 1,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -40224,7 +42418,21 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 100,
                   "Line90Degrees": 100,
-                  "Count": 143
+                  "Count": 143,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0.777778,
+                      "GapY": -8.171191,
+                      "CountX": 10,
+                      "CountY": 15,
+                      "Even": 9,
+                      "Nested": 2,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -40621,7 +42829,8 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 0
+                  "Count": 0,
+                  "Collations": []
                 }
               ],
               "Materials": [],
@@ -40869,7 +43078,21 @@
                   "LineNorthSouth": 0,
                   "Line180Degrees": 0,
                   "Line90Degrees": 0,
-                  "Count": 6
+                  "Count": 6,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 2,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
@@ -41162,7 +43385,57 @@
                   "LineNorthSouth": 100,
                   "Line180Degrees": 24.4285,
                   "Line90Degrees": 25.908824,
-                  "Count": 17
+                  "Count": 17,
+                  "Collations": [
+                    {
+                      "PosX": 0,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 97,
+                      "PosY": 275,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 1,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    },
+                    {
+                      "PosX": 0,
+                      "PosY": 461,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 2,
+                      "CountY": 1,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 1
+                    },
+                    {
+                      "PosX": 372,
+                      "PosY": 0,
+                      "GapX": 0,
+                      "GapY": 0,
+                      "CountX": 3,
+                      "CountY": 4,
+                      "Even": 0,
+                      "Nested": 0,
+                      "AlongBreadth": 0,
+                      "Rotation": 0
+                    }
+                  ]
                 }
               ],
               "Materials": [
