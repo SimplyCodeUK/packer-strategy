@@ -141,20 +141,20 @@ namespace PackIt.Models.Package
         /// <value> The load capacity. </value>
         public double LoadCapacity { get; set; }
 
-        /// <summary>   Gets or sets the length of the centre of gravity. </summary>
+        /// <summary>   Gets or sets the centre of gravity x coordinate. </summary>
         ///
-        /// <value> The length of the centre of gravity. </value>
-        public double CentreOfGravityLength { get; set; }
+        /// <value> The centre of gravity x coordinate. </value>
+        public double CentreOfGravityX { get; set; }
 
-        /// <summary>   Gets or sets the centre of gravity breadth. </summary>
+        /// <summary>   Gets or sets the centre of gravity y coordinate. </summary>
         ///
-        /// <value> The centre of gravity breadth. </value>
-        public double CentreOfGravityBreadth { get; set; }
+        /// <value> The centre of gravity y coordinate. </value>
+        public double CentreOfGravityY { get; set; }
 
-        /// <summary>   Gets or sets the height of the centre of gravity. </summary>
+        /// <summary>   Gets or sets the centre of gravity z coordinate. </summary>
         ///
-        /// <value> The height of the centre of gravity. </value>
-        public double CentreOfGravityHeight { get; set; }
+        /// <value> The centre of gravity z coordinate. </value>
+        public double CentreOfGravityZ { get; set; }
 
         /// <summary>   Gets or sets the caliper. </summary>
         ///

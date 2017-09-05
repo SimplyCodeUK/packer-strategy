@@ -31,11 +31,6 @@ namespace PackIt.DTO.DtoPackage
         /// <value> The index. </value>
         public long Index { get; set; }
 
-        /// <summary>   Gets or sets the number of.  </summary>
-        ///
-        /// <value> The count. </value>
-        public long Count { get; set; }
-
         /// <summary>   Gets or sets the shape. </summary>
         ///
         /// <value> The shape. </value>

@@ -11,11 +11,6 @@ namespace PackIt.Models.Package
     /// <summary>   A section. </summary>
     public class Section
     {
-        /// <summary>   Gets or sets the number of.  </summary>
-        ///
-        /// <value> The count. </value>
-        public long Count { get; set; }
-
         /// <summary>   Gets or sets the shape. </summary>
         ///
         /// <value> The shape. </value>
