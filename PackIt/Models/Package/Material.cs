@@ -6,6 +6,7 @@
 
 namespace PackIt.Models.Package
 {
+    using System.Collections.Generic;
     using PackIt.Helpers.Enums;
 
     /// <summary>   A material. </summary>
@@ -17,6 +18,7 @@ namespace PackIt.Models.Package
         public Material()
         {
             this.MaterialType = MaterialType.Bottle;
+            this.DatabaseMaterials = new List<DatabaseMaterial>();
         }
 
         /// <summary>   Gets or sets the type of the Material. </summary>
@@ -234,9 +236,14 @@ namespace PackIt.Models.Package
         /// <value> The target compression. </value>
         public double TargetCompression { get; set; }
 
-        /// <summary>   Gets or sets the number of.  </summary>
+        /// <summary>   Gets or sets the number used. </summary>
         ///
-        /// <value> The count. </value>
+        /// <value> The number used. </value>
         public long Count { get; set;  }
+
+        /// <summary>   Gets or sets the database materials. </summary>
+        ///
+        /// <value> The database materials. </value>
+        public List<DatabaseMaterial> DatabaseMaterials { get; set; }
     }
 }

@@ -12,6 +12,14 @@ namespace PackIt.DTO.DtoPackage
     /// <summary>   A dto material. </summary>
     public class DtoMaterial
     {
+        /// <summary>
+        /// Initialises a new instance of the <see cref="DtoMaterial" /> class.
+        /// </summary>
+        public DtoMaterial()
+        {
+            this.DatabaseMaterials = new List<DtoDatabaseMaterial>();
+        }
+
         /// <summary>   Gets or sets the identifier of the Package owns this item. </summary>
         ///
         /// <value> The identifier of the Package. </value>
@@ -247,9 +255,14 @@ namespace PackIt.DTO.DtoPackage
         /// <value> The target compression. </value>
         public double TargetCompression { get; set; }
 
-        /// <summary>   Gets or sets the number of.  </summary>
+        /// <summary>   Gets or sets the number used.  </summary>
         ///
-        /// <value> The count. </value>
+        /// <value> The number used. </value>
         public long Count { get; set;  }
+
+        /// <summary>   Gets or sets the database materials. </summary>
+        ///
+        /// <value> The database materials. </value>
+        public List<DtoDatabaseMaterial> DatabaseMaterials { get; set; }
     }
 }
