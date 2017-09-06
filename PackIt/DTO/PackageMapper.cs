@@ -27,6 +27,7 @@ namespace PackIt.DTO
                 cfg.CreateMap<Layer, DtoLayer>();
                 cfg.CreateMap<Collation, DtoCollation>();
                 cfg.CreateMap<Material, DtoPackage.DtoMaterial>();
+                cfg.CreateMap<DatabaseMaterial, DtoDatabaseMaterial>();
                 cfg.CreateMap<Section, DtoSection>();
                 cfg.CreateMap<Package, DtoPackage.DtoPackage>().AfterMap(
                     (s, d) =>
@@ -77,7 +78,19 @@ namespace PackIt.DTO
                                     material.PackageId = s.Id;
                                     material.StageLevel = stage.Level;
                                     material.ResultIndex = result.Index;
-                                    material.Index = index++;
+                                    material.Index = index;
+
+                                    int databaseMaterialIndex = 0;
+                                    foreach (DtoDatabaseMaterial databaseMaterial in material.DatabaseMaterials)
+                                    {
+                                        databaseMaterial.PackageId = s.Id;
+                                        databaseMaterial.StageLevel = stage.Level;
+                                        databaseMaterial.ResultIndex = result.Index;
+                                        databaseMaterial.MaterialIndex = index;
+                                        databaseMaterial.Index = databaseMaterialIndex++;
+                                    }
+
+                                    index++;
                                 }
 
                                 index = 0;

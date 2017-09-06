@@ -123,6 +123,8 @@ namespace PackIt.DTO
                 .HasKey(c => new { c.PackageId, c.StageLevel, c.ResultIndex, c.LayerIndex, c.Index });
             modelBuilder.Entity<DtoPackage.DtoMaterial>()
                 .HasKey(c => new { c.PackageId, c.StageLevel, c.ResultIndex, c.Index });
+            modelBuilder.Entity<DtoPackage.DtoDatabaseMaterial>()
+                .HasKey(c => new { c.PackageId, c.StageLevel, c.ResultIndex, c.MaterialIndex, c.Index });
             modelBuilder.Entity<DtoPackage.DtoSection>()
                 .HasKey(c => new { c.PackageId, c.StageLevel, c.ResultIndex, c.Index });
         }
