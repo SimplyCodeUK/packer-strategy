@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Company>Simply Code UK</Company>
+    <ProjectGuid>DDC0D77C-DDA0-4523-ABB4-23062E066312</ProjectGuid>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -22,6 +23,7 @@
     <PackageReference Include="OpenCover" Version="4.6.519" />
     <PackageReference Include="OpenCoverToCoberturaConverter" Version="0.2.6" />
     <PackageReference Include="ReportGenerator" Version="2.5.11" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="6.4.0.3347" />
   </ItemGroup>
 
   <ItemGroup>
