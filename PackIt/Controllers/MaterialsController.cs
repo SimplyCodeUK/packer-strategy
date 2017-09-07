@@ -17,7 +17,8 @@ namespace PackIt.Controllers
     using PackIt.Models.Material;
 
     /// <summary>   A controller for handling materials. </summary>
-    [Route("api/[controller]")]
+    [ApiVersion("1")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class MaterialsController : Controller
     {
         /// <summary>   The repository. </summary>

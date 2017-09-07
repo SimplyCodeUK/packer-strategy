@@ -14,7 +14,8 @@ namespace PackIt.Controllers
     using PackIt.Models.Plan;
 
     /// <summary>   A controller for handling plans. </summary>
-    [Route("api/[controller]")]
+    [ApiVersion("1")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class PlansController : Controller
     {
         /// <summary>   The repository. </summary>
