@@ -124,7 +124,7 @@ namespace PackItTest
             string startNote = "Some notes";
             MaterialType type = MaterialType.Can;
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { Id = id, Type=type, Name = startName, Notes = startNote };
+            Material item = new Material { Id = id, Type = type, Name = startName, Notes = startNote };
 
             this.controller.Post(item);
 
