@@ -24,12 +24,6 @@ namespace PackIt.Controllers
         /// <summary>   The repository. </summary>
         private readonly IMaterialRepository repository;
 
-        /// <summary>   The types. </summary>
-        private readonly Dictionary<string, MaterialType> types;
-
-        /// <summary>   The type names. </summary>
-        private readonly List<string> typeNames;
-
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialsController" /> class.
         /// </summary>
@@ -38,23 +32,6 @@ namespace PackIt.Controllers
         public MaterialsController(IMaterialRepository repository)
         {
             this.repository = repository;
-            this.types = new Dictionary<string, MaterialType>();
-            this.typeNames = new List<string>();
-            for (MaterialType type = MaterialType.Min; type < MaterialType.Max; ++type)
-            {
-                string urlName = Attributes.UrlName(type);
-                this.types[urlName] = type;
-                this.typeNames.Add(urlName);
-            }
-        }
-
-        /// <summary>   (An Action that handles HTTP GET requests) gets the get. </summary>
-        ///
-        /// <returns>   An IActionResult. </returns>
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return this.Ok(this.typeNames);
         }
 
         /// <summary>
@@ -65,21 +42,10 @@ namespace PackIt.Controllers
         /// <param name="type"> The type. </param>
         ///
         /// <returns>   An enumerator that allows foreach to be used to process the matched items. </returns>
-        [HttpGet("{type}")]
-        public IActionResult Get(string type)
+        [HttpGet]
+        public IActionResult Get()
         {
-            IActionResult result;
-
-            if (this.types.ContainsKey(type))
-            {
-                result = this.Ok(this.repository.GetAll(this.types[type]));
-            }
-            else
-            {
-                result = this.BadRequest();
-            }
-
-            return result;
+            return this.Ok(this.repository.GetAll());
         }
 
         /// <summary>
@@ -87,32 +53,24 @@ namespace PackIt.Controllers
         ///     identifier.
         /// </summary>
         ///
-        /// <param name="type"> The type. </param>
         /// <param name="id">   The identifier. </param>
         ///
         /// <returns>   An IActionResult. </returns>
-        [HttpGet("{type}/{id}")]
-        [Route("{type}/{id}", Name = "GetMaterial")]
+        [HttpGet("{id}")]
+        [Route("{id}", Name = "GetMaterial")]
         [ProducesResponseType(typeof(Material), 200)]
-        public IActionResult Get(string type, string id)
+        public IActionResult Get(string id)
         {
             IActionResult result;
 
-            if (this.types.ContainsKey(type))
+            var item = this.repository.Find(id);
+            if (item == null)
             {
-                var item = this.repository.Find(this.types[type], id);
-                if (item == null)
-                {
-                    result = this.NotFound(id);
-                }
-                else
-                {
-                    result = this.Ok(item);
-                }
+                result = this.NotFound(id);
             }
             else
             {
-                result = this.BadRequest();
+                result = this.Ok(item);
             }
 
             return result;
@@ -120,33 +78,24 @@ namespace PackIt.Controllers
 
         /// <summary>   (An Action that handles HTTP POST requests) post this message. </summary>
         ///
-        /// <param name="type">     The type. </param>
         /// <param name="value">    The value. </param>
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPost("{type}")]
-        public IActionResult Post(string type, [FromBody] Material value)
+        public IActionResult Post([FromBody] Material value)
         {
             IActionResult result;
 
             if (value != null)
             {
-                if (this.types.ContainsKey(type))
+                try
                 {
-                    try
-                    {
-                        value.IdType = this.types[type];
-                        this.repository.Add(value);
-                        result = this.CreatedAtRoute("GetMaterial", new { type, value.Id }, value);
-                    }
-                    catch (Exception)
-                    {
-                        result = this.StatusCode((int)HttpStatusCode.Conflict);
-                    }
+                    this.repository.Add(value);
+                    result = this.CreatedAtRoute("GetMaterial", new { value.Id }, value);
                 }
-                else
+                catch (Exception)
                 {
-                    result = this.BadRequest();
+                    result = this.StatusCode((int)HttpStatusCode.Conflict);
                 }
             }
             else
@@ -159,35 +108,27 @@ namespace PackIt.Controllers
 
         /// <summary>   Updates an existing Material. </summary>
         ///
-        /// <param name="type">     The type. </param>
         /// <param name="id">       The identifier. </param>
         /// <param name="value">    The value. </param>
         ///
         /// <returns>   An IActionResult. </returns>
-        [HttpPut("{type}/{id}")]
-        public IActionResult Put(string type, string id, [FromBody] Material value)
+        [HttpPut("{id}")]
+        public IActionResult Put(string id, [FromBody] Material value)
         {
             IActionResult result;
 
-            if (this.types.ContainsKey(type))
-            {
-                Material item = this.repository.Find(this.types[type], id);
+            Material item = this.repository.Find(id);
 
-                if (item != null)
-                {
-                    item = value;
-                    item.Id = id;
-                    this.repository.Update(item);
-                    result = this.Ok();
-                }
-                else
-                {
-                    result = this.NotFound(id);
-                }
+            if (item != null)
+            {
+                item = value;
+                item.Id = id;
+                this.repository.Update(item);
+                result = this.Ok();
             }
             else
             {
-                result = this.BadRequest();
+                result = this.NotFound(id);
             }
 
             return result;
@@ -195,30 +136,22 @@ namespace PackIt.Controllers
 
         /// <summary>   Deletes the given ID. </summary>
         ///
-        /// <param name="type"> The type. </param>
         /// <param name="id">   The identifier. </param>
         ///
         /// <returns>   An IActionResult. </returns>
-        [HttpDelete("{type}/{id}")]
-        public IActionResult Delete(string type, string id)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(string id)
         {
             IActionResult result;
 
-            if (this.types.ContainsKey(type))
+            if (this.repository.Find(id) != null)
             {
-                if (this.repository.Find(this.types[type], id) != null)
-                {
-                    this.repository.Remove(this.types[type], id);
-                    result = this.Ok();
-                }
-                else
-                {
-                    result = this.NotFound(id);
-                }
+                this.repository.Remove(id);
+                result = this.Ok();
             }
             else
             {
-                result = this.BadRequest();
+                result = this.NotFound(id);
             }
 
             return result;
@@ -226,34 +159,26 @@ namespace PackIt.Controllers
 
         /// <summary>   Patches an existing Material. </summary>
         ///
-        /// <param name="type">     The type. </param>
         /// <param name="id">       The identifier. </param>
         /// <param name="update">   The update. </param>
         ///
         /// <returns>   An IActionResult. </returns>
-        [HttpPatch("{type}/{id}")]
-        public IActionResult Patch(string type, string id, [FromBody]JsonPatchDocument<Material> update)
+        [HttpPatch("{id}")]
+        public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Material> update)
         {
             IActionResult result;
 
-            if (this.types.ContainsKey(type))
-            {
-                var item = this.repository.Find(this.types[type], id);
+            var item = this.repository.Find(id);
 
-                if (item != null)
-                {
-                    update.ApplyTo(item);
-                    this.repository.Update(item);
-                    result = this.Ok(item);
-                }
-                else
-                {
-                    result = this.NotFound(id);
-                }
+            if (item != null)
+            {
+                update.ApplyTo(item);
+                this.repository.Update(item);
+                result = this.Ok(item);
             }
             else
             {
-                result = this.BadRequest();
+                result = this.NotFound(id);
             }
 
             return result;

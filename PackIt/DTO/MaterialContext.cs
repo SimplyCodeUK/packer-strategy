@@ -55,13 +55,12 @@ namespace PackIt.DTO
 
         /// <summary>   Searches for the first material. </summary>
         ///
-        /// <param name="type"> The type. </param>
         /// <param name="key">  The key. </param>
         ///
         /// <returns>   The found material. </returns>
-        public Material FindMaterial(MaterialType type, string key)
+        public Material FindMaterial(string key)
         {
-            DtoMaterial.DtoMaterial dto = this.Materials.Find(type, key);
+            DtoMaterial.DtoMaterial dto = this.Materials.Find(key);
             Material ret = dto == null ? null : MaterialMapper.Convert(dto);
 
             return ret;
@@ -69,11 +68,10 @@ namespace PackIt.DTO
 
         /// <summary>   Removes the material. </summary>
         ///
-        /// <param name="type"> The type. </param>
         /// <param name="key">  The key. </param>
-        public void RemoveMaterial(MaterialType type, string key)
+        public void RemoveMaterial(string key)
         {
-            DtoMaterial.DtoMaterial entity = this.Materials.Find(type, key);
+            DtoMaterial.DtoMaterial entity = this.Materials.Find(key);
             this.Materials.Remove(entity);
         }
 
@@ -82,7 +80,7 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void UpdateMaterial(Material item)
         {
-            DtoMaterial.DtoMaterial entity = this.Materials.Find(item.IdType, item.Id);
+            DtoMaterial.DtoMaterial entity = this.Materials.Find(item.Id);
             DtoMaterial.DtoMaterial dto = MaterialMapper.Convert(item);
             this.Materials.Remove(entity);
             this.SaveChanges();
@@ -111,13 +109,13 @@ namespace PackIt.DTO
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DtoMaterial.DtoMaterial>()
-                .HasKey(c => new { c.IdType, c.Id });
+                .HasKey(c => new { c.Id });
             modelBuilder.Entity<DtoMaterial.DtoCosting>()
-                .HasKey(c => new { c.MaterialType, c.MaterialId, c.Quantity });
+                .HasKey(c => new { c.MaterialId, c.Quantity });
             modelBuilder.Entity<DtoMaterial.DtoLayer>()
-                .HasKey(c => new { c.MaterialType, c.MaterialId, c.Index });
+                .HasKey(c => new { c.MaterialId, c.Index });
             modelBuilder.Entity<DtoMaterial.DtoCollation>()
-                .HasKey(c => new { c.MaterialType, c.MaterialId, c.LayerIndex, c.Index });
+                .HasKey(c => new { c.MaterialId, c.LayerIndex, c.Index });
         }
     }
 }

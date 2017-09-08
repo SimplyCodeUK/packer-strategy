@@ -28,17 +28,14 @@ namespace PackIt.DTO
                     {
                         foreach (DtoCosting costing in d.Costings)
                         {
-                            costing.MaterialType = s.IdType;
                             costing.MaterialId = s.Id;
                         }
 
                         foreach (DtoLayer layer in d.Layers)
                         {
-                            layer.MaterialType = s.IdType;
                             layer.MaterialId = s.Id;
                             foreach (DtoCollation collation in layer.Collations)
                             {
-                                collation.MaterialType = s.IdType;
                                 collation.MaterialId = s.Id;
                                 collation.LayerIndex = layer.Index;
                             }
