@@ -37,11 +37,6 @@ namespace PackIt.DTO.DtoPackage
         /// <value> The index. </value>
         public long Index { get; set; }
 
-        /// <summary>   Gets or sets the type of the Material. </summary>
-        ///
-        /// <value> The type of the Material. </value>
-        public MaterialType MaterialType { get; set; }
-
         /// <summary>   Gets or sets the Material identifier. </summary>
         ///
         /// <value> The Material identifier. </value>

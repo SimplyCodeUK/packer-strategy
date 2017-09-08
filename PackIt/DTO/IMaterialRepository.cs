@@ -20,26 +20,22 @@ namespace PackIt.DTO
 
         /// <summary>   Gets all items in this collection. </summary>
         ///
-        /// <param name="type"> The type. </param>
-        ///
         /// <returns>
         ///     An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
-        IEnumerable<Material> GetAll(MaterialType type);
+        IEnumerable<Material> GetAll();
 
         /// <summary>   Searches for the first match for the given string. </summary>
         ///
-        /// <param name="type"> The type. </param>
         /// <param name="key">  The key. </param>
         ///
         /// <returns>   A Material.Material. </returns>
-        Material Find(MaterialType type, string key);
+        Material Find(string key);
 
         /// <summary>   Removes the given key. </summary>
         ///
-        /// <param name="type"> The type. </param>
         /// <param name="key">  The key. </param>
-        void Remove(MaterialType type, string key);
+        void Remove(string key);
 
         /// <summary>   Updates the given item. </summary>
         ///

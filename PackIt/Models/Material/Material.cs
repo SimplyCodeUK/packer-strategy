@@ -19,18 +19,18 @@ namespace PackIt.Models.Material
         {
             this.Costings = new List<Costing>();
             this.Layers = new List<Layer>();
-            this.IdType = MaterialType.Bottle;
+            this.Type = MaterialType.Bottle;
         }
-
-        /// <summary>   Gets or sets the type of the identifier. </summary>
-        ///
-        /// <value> The type of the identifier. </value>
-        public MaterialType IdType { get; set; }
 
         /// <summary>   Gets or sets the identifier. </summary>
         ///
         /// <value> The identifier. </value>
         public string Id { get; set; }
+
+        /// <summary>   Gets or sets the type of the Material. </summary>
+        ///
+        /// <value> The type of the Material. </value>
+        public MaterialType Type { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
         ///

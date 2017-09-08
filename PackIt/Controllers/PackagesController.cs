@@ -114,9 +114,7 @@ namespace PackIt.Controllers
             {
                 item = value;
                 item.Id = id;
-
                 this.repository.Update(item);
-
                 result = this.Ok();
             }
             else
