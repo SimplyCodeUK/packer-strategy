@@ -39,8 +39,6 @@ namespace PackIt.Controllers
         ///     meet given criteria.
         /// </summary>
         ///
-        /// <param name="type"> The type. </param>
-        ///
         /// <returns>   An enumerator that allows foreach to be used to process the matched items. </returns>
         [HttpGet]
         public IActionResult Get()
