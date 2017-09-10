@@ -40,24 +40,29 @@ namespace PackIt.DTO
                         foreach (DtoStage stage in d.Stages)
                         {
                             stage.PackageId = s.Id;
+
+                            long limitIndex = 0;
                             foreach (DtoLimit limit in stage.Limits)
                             {
                                 limit.PackageId = s.Id;
                                 limit.StageLevel = stage.Level;
+                                limit.Index = limitIndex++;
                             }
 
+                            long resultIndex = 0;
                             foreach (DtoResult result in stage.Results)
                             {
                                 result.PackageId = s.Id;
                                 result.StageLevel = stage.Level;
+                                result.Index = resultIndex++;
 
-                                int index = 0;
+                                int layerIndex = 0;
                                 foreach (DtoLayer layer in result.Layers)
                                 {
                                     layer.PackageId = s.Id;
                                     layer.StageLevel = stage.Level;
                                     layer.ResultIndex = result.Index;
-                                    layer.Index = index;
+                                    layer.Index = layerIndex++;
 
                                     int collationIndex = 0;
                                     foreach (DtoCollation collation in layer.Collations)
@@ -68,17 +73,15 @@ namespace PackIt.DTO
                                         collation.LayerIndex = layer.Index;
                                         collation.Index = collationIndex++;
                                     }
-
-                                    index++;
                                 }
 
-                                index = 0;
+                                long materialIndex = 0;
                                 foreach (DtoPackage.DtoMaterial material in result.Materials)
                                 {
                                     material.PackageId = s.Id;
                                     material.StageLevel = stage.Level;
                                     material.ResultIndex = result.Index;
-                                    material.Index = index;
+                                    material.Index = materialIndex++;
 
                                     int databaseMaterialIndex = 0;
                                     foreach (DtoDatabaseMaterial databaseMaterial in material.DatabaseMaterials)
@@ -86,20 +89,18 @@ namespace PackIt.DTO
                                         databaseMaterial.PackageId = s.Id;
                                         databaseMaterial.StageLevel = stage.Level;
                                         databaseMaterial.ResultIndex = result.Index;
-                                        databaseMaterial.MaterialIndex = index;
+                                        databaseMaterial.MaterialIndex = material.Index;
                                         databaseMaterial.Index = databaseMaterialIndex++;
                                     }
-
-                                    index++;
                                 }
 
-                                index = 0;
+                                long sectionIndex = 0;
                                 foreach (DtoSection section in result.Sections)
                                 {
                                     section.PackageId = s.Id;
                                     section.StageLevel = stage.Level;
                                     section.ResultIndex = result.Index;
-                                    section.Index = index++;
+                                    section.Index = sectionIndex++;
                                 }
                             }
                         }
@@ -135,6 +136,89 @@ namespace PackIt.DTO
         public static DtoPackage.DtoPackage Convert(Package package)
         {
             DtoPackage.DtoPackage ret = mapperModelToDto.Map<DtoPackage.DtoPackage>(package);
+
+            foreach (DtoCosting costing in ret.Costings)
+            {
+                costing.PackageId = ret.Id;
+            }
+
+            foreach (DtoStage stage in ret.Stages)
+            {
+                stage.PackageId = ret.Id;
+
+                long limitIndex = 0;
+                foreach (DtoLimit limit in stage.Limits)
+                {
+                    limit.PackageId = ret.Id;
+                    limit.StageLevel = stage.Level;
+                    limit.Index = limitIndex;
+                    ++limitIndex;
+                }
+
+                long resultIndex = 0;
+                foreach (DtoResult result in stage.Results)
+                {
+                    result.PackageId = ret.Id;
+                    result.StageLevel = stage.Level;
+                    result.Index = resultIndex;
+
+                    int layerIndex = 0;
+                    foreach (DtoLayer layer in result.Layers)
+                    {
+                        layer.PackageId = ret.Id;
+                        layer.StageLevel = stage.Level;
+                        layer.ResultIndex = result.Index;
+                        layer.Index = layerIndex;
+
+                        int collationIndex = 0;
+                        foreach (DtoCollation collation in layer.Collations)
+                        {
+                            collation.PackageId = ret.Id;
+                            collation.StageLevel = stage.Level;
+                            collation.ResultIndex = result.Index;
+                            collation.LayerIndex = layer.Index;
+                            collation.Index = collationIndex;
+                            ++collationIndex;
+                        }
+
+                        ++layerIndex;
+                    }
+
+                    long materialIndex = 0;
+                    foreach (DtoPackage.DtoMaterial material in result.Materials)
+                    {
+                        material.PackageId = ret.Id;
+                        material.StageLevel = stage.Level;
+                        material.ResultIndex = result.Index;
+                        material.Index = materialIndex;
+
+                        int databaseMaterialIndex = 0;
+                        foreach (DtoDatabaseMaterial databaseMaterial in material.DatabaseMaterials)
+                        {
+                            databaseMaterial.PackageId = ret.Id;
+                            databaseMaterial.StageLevel = stage.Level;
+                            databaseMaterial.ResultIndex = result.Index;
+                            databaseMaterial.MaterialIndex = material.Index;
+                            databaseMaterial.Index = databaseMaterialIndex;
+                            ++databaseMaterialIndex;
+                        }
+
+                        ++materialIndex;
+                    }
+
+                    long sectionIndex = 0;
+                    foreach (DtoSection section in result.Sections)
+                    {
+                        section.PackageId = ret.Id;
+                        section.StageLevel = stage.Level;
+                        section.ResultIndex = result.Index;
+                        section.Index = sectionIndex;
+                        ++sectionIndex;
+                    }
+
+                    ++resultIndex;
+                }
+            }
 
             return ret;
         }

@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItTest
+namespace PackItTest.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -15,7 +15,6 @@ namespace PackItTest
     using NUnit.Framework;
     using PackIt.Controllers;
     using PackIt.DTO;
-    using PackIt.Helpers;
     using PackIt.Helpers.Enums;
     using PackIt.Models.Material;
 
@@ -31,6 +30,7 @@ namespace PackItTest
         public void BeforeTest()
         {
             DbContextOptionsBuilder<MaterialContext> builder = new DbContextOptionsBuilder<MaterialContext>();
+            builder.EnableSensitiveDataLogging();
             builder.UseInMemoryDatabase("testmaterial");
 
             MaterialContext context = new MaterialContext(builder.Options);
