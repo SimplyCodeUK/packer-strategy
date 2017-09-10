@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItTest
+namespace PackItTest.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -29,6 +29,7 @@ namespace PackItTest
         public void BeforeTest()
         {
             DbContextOptionsBuilder<PackageContext> builder = new DbContextOptionsBuilder<PackageContext>();
+            builder.EnableSensitiveDataLogging();
             builder.UseInMemoryDatabase("testpackage");
 
             PackageContext context = new PackageContext(builder.Options);
