@@ -21,7 +21,7 @@ namespace PackItTest.DTO
         [Test]
         public void ConvertPack()
         {
-            string text = File.ReadAllText(@"DTO\TestData\pack.json");
+            string text = File.ReadAllText("DTO/TestData/pack.json");
             Package pack = JsonConvert.DeserializeObject<Package>(text);
 
             DtoPackage dto = PackageMapper.Convert(pack);
