@@ -11,11 +11,6 @@ namespace PackIt.DTO.DtoMaterial
     /// <summary>   A dto costing. </summary>
     public class DtoCosting
     {
-        /// <summary>   Gets or sets the type of the material identifier. </summary>
-        ///
-        /// <value> The type of the material identifier. </value>
-        public MaterialType MaterialType { get; set; }
-
         /// <summary>   Gets or sets the identifier of the material. </summary>
         ///
         /// <value> The identifier of the material. </value>

@@ -30,14 +30,12 @@ namespace PackIt.DTO
 
         /// <summary>   Gets all items in this collection. </summary>
         ///
-        /// <param name="type"> The type. </param>
-        ///
         /// <returns>
         ///     An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
         ///
-        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.GetAll(MaterialType)"/>
-        public IEnumerable<Material> GetAll(MaterialType type)
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.GetAll()"/>
+        public IEnumerable<Material> GetAll()
         {
             return this.context.GetMaterials();
         }
@@ -55,26 +53,24 @@ namespace PackIt.DTO
 
         /// <summary>   Searches for the first match for the given string. </summary>
         ///
-        /// <param name="type"> The type. </param>
         /// <param name="key">  The key. </param>
         ///
         /// <returns>   A Material. </returns>
         ///
-        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Find(MaterialType,string)"/>
-        public Material Find(MaterialType type, string key)
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Find(string)"/>
+        public Material Find(string key)
         {
-            return this.context.FindMaterial(type, key);
+            return this.context.FindMaterial(key);
         }
 
         /// <summary>   Removes the given key. </summary>
         ///
-        /// <param name="type"> The type. </param>
         /// <param name="key">  The key. </param>
         ///
-        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Remove(MaterialType,string)"/>
-        public void Remove(MaterialType type, string key)
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Remove(string)"/>
+        public void Remove(string key)
         {
-            this.context.RemoveMaterial(type, key);
+            this.context.RemoveMaterial(key);
             this.context.SaveChanges();
         }
 

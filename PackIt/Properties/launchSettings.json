@@ -1,9 +1,25 @@
-﻿{
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:54932/",
+      "sslPort": 0
+    }
+  },
   "profiles": {
-    "PackIt": {
-      "commandName": "PackIt",
+    "IIS Express": {
+      "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/plans",
+      "launchUrl": "api/v1/plans",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "PackIt": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "api/v1/plans",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

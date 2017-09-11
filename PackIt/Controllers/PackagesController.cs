@@ -14,7 +14,8 @@ namespace PackIt.Controllers
     using PackIt.Models.Package;
 
     /// <summary>   A controller for handling packages. </summary>
-    [Route("api/[controller]")]
+    [ApiVersion("1")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class PackagesController : Controller
     {
         /// <summary>   The repository. </summary>
@@ -113,9 +114,7 @@ namespace PackIt.Controllers
             {
                 item = value;
                 item.Id = id;
-
                 this.repository.Update(item);
-
                 result = this.Ok();
             }
             else
