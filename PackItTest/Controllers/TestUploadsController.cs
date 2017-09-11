@@ -60,12 +60,12 @@ namespace PackItTest.Controllers
             // make sure IDs are unique
             foreach (PackIt.Models.Plan.Plan item in bulk.Plans)
             {
-                item.Id = Guid.NewGuid().ToString();
+                item.PlanId = Guid.NewGuid().ToString();
             }
 
             foreach (PackIt.Models.Material.Material item in bulk.Materials)
             {
-                item.Id = Guid.NewGuid().ToString();
+                item.MaterialId = Guid.NewGuid().ToString();
             }
 
             foreach (PackIt.Models.Pack.Pack item in bulk.Packs)

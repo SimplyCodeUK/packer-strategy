@@ -21,10 +21,10 @@ namespace PackIt.DTO.DtoMaterial
         /// <value> The layer index. </value>
         public long LayerIndex { get; set; }
 
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
+        /// <summary>   Gets or sets the zero-based index of this Collation. </summary>
         ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
+        /// <value> The Collation index. </value>
+        public long CollationIndex { get; set; }
 
         /// <summary>   Gets or sets the position x coordinate. </summary>
         ///

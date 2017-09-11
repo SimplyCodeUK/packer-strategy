@@ -19,10 +19,10 @@ namespace PackIt.DTO.DtoPlan
             this.Stages = new List<DtoStage>();
         }
 
-        /// <summary>   Gets or sets the identifier. </summary>
+        /// <summary>   Gets or sets the Plan identifier. </summary>
         ///
-        /// <value> The identifier. </value>
-        public string Id { get; set; }
+        /// <value> The Plan identifier. </value>
+        public string PlanId { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
         ///

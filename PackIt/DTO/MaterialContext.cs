@@ -80,7 +80,7 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void UpdateMaterial(Material item)
         {
-            DtoMaterial.DtoMaterial entity = this.Materials.Find(item.Id);
+            DtoMaterial.DtoMaterial entity = this.Materials.Find(item.MaterialId);
             DtoMaterial.DtoMaterial dto = MaterialMapper.Convert(item);
             this.Materials.Remove(entity);
             this.SaveChanges();
@@ -122,7 +122,7 @@ namespace PackIt.DTO
         private void Configure(EntityTypeBuilder<DtoMaterial.DtoMaterial> builder)
         {
             builder.ToTable("DtoMaterial");
-            builder.HasKey(c => new { c.Id });
+            builder.HasKey(c => new { c.MaterialId });
             builder.HasMany(c => c.Costings);
             builder.HasMany(c => c.Layers);
         }
@@ -142,7 +142,7 @@ namespace PackIt.DTO
         private void Configure(EntityTypeBuilder<DtoMaterial.DtoLayer> builder)
         {
             builder.ToTable("DtoLayer");
-            builder.HasKey(c => new { c.MaterialId, c.Index });
+            builder.HasKey(c => new { c.MaterialId, c.LayerIndex });
             builder.HasMany(c => c.Collations);
         }
 
@@ -152,7 +152,7 @@ namespace PackIt.DTO
         private void Configure(EntityTypeBuilder<DtoMaterial.DtoCollation> builder)
         {
             builder.ToTable("DtoCollation");
-            builder.HasKey(c => new { c.MaterialId, c.LayerIndex, c.Index });
+            builder.HasKey(c => new { c.MaterialId, c.LayerIndex, c.CollationIndex });
         }
     }
 }

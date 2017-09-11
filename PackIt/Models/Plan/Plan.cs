@@ -7,7 +7,6 @@
 namespace PackIt.Models.Plan
 {
     using System.Collections.Generic;
-    using PackIt.Helpers.Enums;
 
     /// <summary>   A plan. </summary>
     public class Plan
@@ -20,10 +19,10 @@ namespace PackIt.Models.Plan
             this.Stages = new List<Stage>();
         }
 
-        /// <summary>   Gets or sets the identifier. </summary>
+        /// <summary>   Gets or sets the Plan identifier. </summary>
         ///
-        /// <value> The identifier. </value>
-        public string Id { get; set; }
+        /// <value> The Plan identifier. </value>
+        public string PlanId { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
         ///

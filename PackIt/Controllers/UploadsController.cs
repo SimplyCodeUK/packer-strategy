@@ -60,11 +60,11 @@ namespace PackIt.Controllers
                     try
                     {
                         this.planRepo.Add(item);
-                        pass.Add(item.Id);
+                        pass.Add(item.PlanId);
                     }
                     catch (Exception)
                     {
-                        fail.Add(item.Id);
+                        fail.Add(item.PlanId);
                     }
                 }
 
@@ -73,11 +73,11 @@ namespace PackIt.Controllers
                     try
                     {
                         this.materialRepo.Add(item);
-                        pass.Add(item.Id);
+                        pass.Add(item.MaterialId);
                     }
                     catch (Exception)
                     {
-                        fail.Add(item.Id);
+                        fail.Add(item.MaterialId);
                     }
                 }
 

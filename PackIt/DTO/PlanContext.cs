@@ -80,7 +80,7 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void UpdatePlan(Plan item)
         {
-            DtoPlan.DtoPlan entity = this.Plans.Find(item.Id);
+            DtoPlan.DtoPlan entity = this.Plans.Find(item.PlanId);
             DtoPlan.DtoPlan dto = PlanMapper.Convert(item);
             this.Plans.Remove(entity);
             this.SaveChanges();
@@ -121,7 +121,7 @@ namespace PackIt.DTO
         private void Configure(EntityTypeBuilder<DtoPlan.DtoPlan> builder)
         {
             builder.ToTable("DtoPlan");
-            builder.HasKey(c => new { c.Id });
+            builder.HasKey(c => new { c.PlanId });
             builder.HasMany(c => c.Stages);
         }
 
@@ -131,7 +131,7 @@ namespace PackIt.DTO
         private void Configure(EntityTypeBuilder<DtoPlan.DtoStage> builder)
         {
             builder.ToTable("DtoStage");
-            builder.HasKey(c => new { c.PlanId, c.Level });
+            builder.HasKey(c => new { c.PlanId, c.StageLevel });
             builder.HasMany(c => c.Limits);
         }
 
@@ -141,7 +141,7 @@ namespace PackIt.DTO
         private void Configure(EntityTypeBuilder<DtoPlan.DtoLimit> builder)
         {
             builder.ToTable("DtoLimit");
-            builder.HasKey(c => new { c.PlanId, c.StageLevel, c.Index });
+            builder.HasKey(c => new { c.PlanId, c.StageLevel, c.LimitIndex });
         }
     }
 }
