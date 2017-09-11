@@ -8,7 +8,7 @@ namespace PackIt.DTO
 {
     using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
-    using PackIt.Helpers.Enums;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PackIt.Models.Material;
 
     /// <summary>   A material context. </summary>
@@ -24,10 +24,10 @@ namespace PackIt.DTO
         {
         }
 
-        /// <summary>   Gets or sets the materials. </summary>
+        /// <summary>   Gets the materials. </summary>
         ///
         /// <value> The materials. </value>
-        public DbSet<DtoMaterial.DtoMaterial> Materials { get; set; }
+        public DbSet<DtoMaterial.DtoMaterial> Materials { get; private set; }
 
         /// <summary>   Gets the materials. </summary>
         ///
@@ -108,14 +108,51 @@ namespace PackIt.DTO
         /// </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DtoMaterial.DtoMaterial>()
-                .HasKey(c => new { c.Id });
-            modelBuilder.Entity<DtoMaterial.DtoCosting>()
-                .HasKey(c => new { c.MaterialId, c.Quantity });
-            modelBuilder.Entity<DtoMaterial.DtoLayer>()
-                .HasKey(c => new { c.MaterialId, c.Index });
-            modelBuilder.Entity<DtoMaterial.DtoCollation>()
-                .HasKey(c => new { c.MaterialId, c.LayerIndex, c.Index });
+            base.OnModelCreating(modelBuilder);
+
+            this.Configure(modelBuilder.Entity<DtoMaterial.DtoMaterial>());
+            this.Configure(modelBuilder.Entity<DtoMaterial.DtoCosting>());
+            this.Configure(modelBuilder.Entity<DtoMaterial.DtoLayer>());
+            this.Configure(modelBuilder.Entity<DtoMaterial.DtoCollation>());
+        }
+
+        /// <summary>Configures the specified builder.</summary>
+        ///
+        /// <param name="builder">The builder.</param>
+        private void Configure(EntityTypeBuilder<DtoMaterial.DtoMaterial> builder)
+        {
+            builder.ToTable("DtoMaterial");
+            builder.HasKey(c => new { c.Id });
+            builder.HasMany(c => c.Costings);
+            builder.HasMany(c => c.Layers);
+        }
+
+        /// <summary>Configures the specified builder.</summary>
+        ///
+        /// <param name="builder">The builder.</param>
+        private void Configure(EntityTypeBuilder<DtoMaterial.DtoCosting> builder)
+        {
+            builder.ToTable("DtoCosting");
+            builder.HasKey(c => new { c.MaterialId, c.Quantity });
+        }
+
+        /// <summary>Configures the specified builder.</summary>
+        ///
+        /// <param name="builder">The builder.</param>
+        private void Configure(EntityTypeBuilder<DtoMaterial.DtoLayer> builder)
+        {
+            builder.ToTable("DtoLayer");
+            builder.HasKey(c => new { c.MaterialId, c.Index });
+            builder.HasMany(c => c.Collations);
+        }
+
+        /// <summary>Configures the specified builder.</summary>
+        ///
+        /// <param name="builder">The builder.</param>
+        private void Configure(EntityTypeBuilder<DtoMaterial.DtoCollation> builder)
+        {
+            builder.ToTable("DtoCollation");
+            builder.HasKey(c => new { c.MaterialId, c.LayerIndex, c.Index });
         }
     }
 }

@@ -4,13 +4,28 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models.Package
+namespace PackIt.DTO.DtoPack
 {
     using PackIt.Helpers.Enums;
 
-    /// <summary>   A limit. </summary>
-    public class Limit
+    /// <summary>   A dto limit. </summary>
+    public class DtoLimit
     {
+        /// <summary>   Gets or sets the identifier of the Pack that owns this item. </summary>
+        ///
+        /// <value> The identifier of the Pack. </value>
+        public string PackId { get; set; }
+
+        /// <summary>   Gets or sets the stage level. </summary>
+        ///
+        /// <value> The stage level. </value>
+        public StageLevel StageLevel { get; set; }
+
+        /// <summary>   Gets or sets the zero-based index of the Limit. </summary>
+        ///
+        /// <value> The Limit index. </value>
+        public long LimitIndex { get; set; }
+
         /// <summary>   Gets or sets a value indicating whether the design. </summary>
         ///
         /// <value> True if design, false if not. </value>

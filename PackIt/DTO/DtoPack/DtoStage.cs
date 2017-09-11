@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO.DtoPackage
+namespace PackIt.DTO.DtoPack
 {
     using System.Collections.Generic;
     using PackIt.Helpers.Enums;
@@ -21,15 +21,15 @@ namespace PackIt.DTO.DtoPackage
             this.Results = new List<DtoResult>();
         }
 
-        /// <summary>   Gets or sets the identifier of the Package that owns this item. </summary>
+        /// <summary>   Gets or sets the identifier of the Pack that owns this item. </summary>
         ///
-        /// <value> The identifier of the Package. </value>
-        public string PackageId { get; set; }
+        /// <value> The identifier of the Pack. </value>
+        public string PackId { get; set; }
 
-        /// <summary>   Gets or sets the level. </summary>
+        /// <summary>   Gets or sets the stage level. </summary>
         ///
-        /// <value> The level. </value>
-        public StageLevel Level { get; set; }
+        /// <value> The stage level. </value>
+        public StageLevel StageLevel { get; set; }
 
         /// <summary>   Gets or sets the collation. </summary>
         ///

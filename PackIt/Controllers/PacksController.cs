@@ -11,22 +11,22 @@ namespace PackIt.Controllers
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
     using PackIt.DTO;
-    using PackIt.Models.Package;
+    using PackIt.Models.Pack;
 
-    /// <summary>   A controller for handling packages. </summary>
+    /// <summary>   A controller for handling Packs. </summary>
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class PackagesController : Controller
+    public class PacksController : Controller
     {
         /// <summary>   The repository. </summary>
-        private readonly IPackageRepository repository;
+        private readonly IPackRepository repository;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="PackagesController" /> class.
+        /// Initialises a new instance of the <see cref="PacksController" /> class.
         /// </summary>
         ///
         /// <param name="repository">   The repository. </param>
-        public PackagesController(IPackageRepository repository)
+        public PacksController(IPackRepository repository)
         {
             this.repository = repository;
         }
@@ -49,8 +49,8 @@ namespace PackIt.Controllers
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpGet("{id}")]
-        [Route("{id}", Name = "GetPackage")]
-        [ProducesResponseType(typeof(Package), 200)]
+        [Route("{id}", Name = "GetPack")]
+        [ProducesResponseType(typeof(Pack), 200)]
         public IActionResult Get(string id)
         {
             var item = this.repository.Find(id);
@@ -74,7 +74,7 @@ namespace PackIt.Controllers
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPost]
-        public IActionResult Post([FromBody] Package value)
+        public IActionResult Post([FromBody] Pack value)
         {
             IActionResult result;
 
@@ -83,7 +83,7 @@ namespace PackIt.Controllers
                 try
                 {
                     this.repository.Add(value);
-                    result = this.CreatedAtRoute("GetPackage", new { id = value.Id }, value);
+                    result = this.CreatedAtRoute("GetPack", new { id = value.PackId }, value);
                 }
                 catch (Exception)
                 {
@@ -98,22 +98,22 @@ namespace PackIt.Controllers
             return result;
         }
 
-        /// <summary>   Updates an existing Package. </summary>
+        /// <summary>   Updates an existing Pack. </summary>
         ///
         /// <param name="id">       The identifier. </param>
         /// <param name="value">    The value. </param>
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPut("{id}")]
-        public IActionResult Put(string id, [FromBody] Package value)
+        public IActionResult Put(string id, [FromBody] Pack value)
         {
-            Package item = this.repository.Find(id);
+            Pack item = this.repository.Find(id);
             IActionResult result;
 
             if (item != null)
             {
                 item = value;
-                item.Id = id;
+                item.PackId = id;
                 this.repository.Update(item);
                 result = this.Ok();
             }
@@ -148,14 +148,14 @@ namespace PackIt.Controllers
             return result;
         }
 
-        /// <summary>   Patches an existing Package. </summary>
+        /// <summary>   Patches an existing Pack. </summary>
         ///
         /// <param name="id">       The identifier. </param>
         /// <param name="update">   The update. </param>
         ///
         /// <returns>   An IActionResult. </returns>
         [HttpPatch("{id}")]
-        public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Package> update)
+        public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Pack> update)
         {
             var item = this.repository.Find(id);
             IActionResult result;

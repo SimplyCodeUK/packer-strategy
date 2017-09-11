@@ -4,38 +4,13 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO.DtoPackage
+namespace PackIt.Models.Pack
 {
     using PackIt.Helpers.Enums;
 
-    /// <summary>   A dto collation. </summary>
-    public class DtoCollation
+    /// <summary>   A collation. </summary>
+    public class Collation
     {
-        /// <summary>   Gets or sets the identifier of the Package owns this item. </summary>
-        ///
-        /// <value> The identifier of the Package. </value>
-        public string PackageId { get; set; }
-
-        /// <summary>   Gets or sets the level. </summary>
-        ///
-        /// <value> The level. </value>
-        public StageLevel StageLevel { get; set; }
-
-        /// <summary>   Gets or sets the zero-based index of the Result index. </summary>
-        ///
-        /// <value> The Result index. </value>
-        public long ResultIndex { get; set; }
-
-        /// <summary>   Gets or sets the zero-based index of the Layer index. </summary>
-        ///
-        /// <value> The Layer index. </value>
-        public long LayerIndex { get; set; }
-
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
-        ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
-
         /// <summary>   Gets or sets the position x coordinate. </summary>
         ///
         /// <value> The position x coordinate. </value>

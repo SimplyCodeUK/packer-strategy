@@ -4,23 +4,38 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models.Package
+namespace PackIt.DTO.DtoPack
 {
     using System.Collections.Generic;
     using PackIt.Helpers.Enums;
 
-    /// <summary>   A result. </summary>
-    public class Result
+    /// <summary>   A dto result. </summary>
+    public class DtoResult
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="Result" /> class.
+        /// Initialises a new instance of the <see cref="DtoResult" /> class.
         /// </summary>
-        public Result()
+        public DtoResult()
         {
-            this.Layers = new List<Layer>();
-            this.Materials = new List<Material>();
-            this.Sections = new List<Section>();
+            this.Layers = new List<DtoLayer>();
+            this.Materials = new List<DtoMaterial>();
+            this.Sections = new List<DtoSection>();
         }
+
+        /// <summary>   Gets or sets the identifier of the Pack owns this item. </summary>
+        ///
+        /// <value> The identifier of the Pack. </value>
+        public string PackId { get; set; }
+
+        /// <summary>   Gets or sets the level. </summary>
+        ///
+        /// <value> The level. </value>
+        public StageLevel StageLevel { get; set; }
+
+        /// <summary>   Gets or sets the zero-based index of this Result. </summary>
+        ///
+        /// <value> The Result index. </value>
+        public long ResultIndex { get; set; }
 
         /// <summary>   Gets or sets a value indicating whether the used. </summary>
         ///
@@ -240,16 +255,16 @@ namespace PackIt.Models.Package
         /// <summary>   Gets or sets the layers. </summary>
         ///
         /// <value> The layers. </value>
-        public List<Layer> Layers { get; set; }
+        public List<DtoLayer> Layers { get; set; }
 
         /// <summary>   Gets or sets the materials. </summary>
         ///
         /// <value> The materials. </value>
-        public List<Material> Materials { get; set; }
+        public List<DtoMaterial> Materials { get; set; }
 
         /// <summary>   Gets or sets the sections. </summary>
         ///
         /// <value> The sections. </value>
-        public List<Section> Sections { get; set; }
+        public List<DtoSection> Sections { get; set; }
     }
 }

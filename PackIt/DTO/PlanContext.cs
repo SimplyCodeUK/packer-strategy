@@ -8,6 +8,7 @@ namespace PackIt.DTO
 {
     using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PackIt.Models.Plan;
 
     /// <summary>   A plan context. </summary>
@@ -23,10 +24,10 @@ namespace PackIt.DTO
         {
         }
 
-        /// <summary>   Gets or sets the plans. </summary>
+        /// <summary>   Gets the plans. </summary>
         ///
         /// <value> The plans. </value>
-        public DbSet<DtoPlan.DtoPlan> Plans { get; set; }
+        public DbSet<DtoPlan.DtoPlan> Plans { get; private set; }
 
         /// <summary>   Gets the plans. </summary>
         ///
@@ -107,12 +108,40 @@ namespace PackIt.DTO
         /// </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DtoPlan.DtoPlan>()
-                .HasKey(c => c.Id);
-            modelBuilder.Entity<DtoPlan.DtoStage>()
-                .HasKey(c => new { c.PlanId, c.Level });
-            modelBuilder.Entity<DtoPlan.DtoLimit>()
-                .HasKey(c => new { c.PlanId, c.StageLevel, c.Index });
+            base.OnModelCreating(modelBuilder);
+
+            this.Configure(modelBuilder.Entity<DtoPlan.DtoPlan>());
+            this.Configure(modelBuilder.Entity<DtoPlan.DtoStage>());
+            this.Configure(modelBuilder.Entity<DtoPlan.DtoLimit>());
+        }
+
+        /// <summary>Configures the specified builder.</summary>
+        ///
+        /// <param name="builder">The builder.</param>
+        private void Configure(EntityTypeBuilder<DtoPlan.DtoPlan> builder)
+        {
+            builder.ToTable("DtoPlan");
+            builder.HasKey(c => new { c.Id });
+            builder.HasMany(c => c.Stages);
+        }
+
+        /// <summary>Configures the specified builder.</summary>
+        ///
+        /// <param name="builder">The builder.</param>
+        private void Configure(EntityTypeBuilder<DtoPlan.DtoStage> builder)
+        {
+            builder.ToTable("DtoStage");
+            builder.HasKey(c => new { c.PlanId, c.Level });
+            builder.HasMany(c => c.Limits);
+        }
+
+        /// <summary>Configures the specified builder.</summary>
+        ///
+        /// <param name="builder">The builder.</param>
+        private void Configure(EntityTypeBuilder<DtoPlan.DtoLimit> builder)
+        {
+            builder.ToTable("DtoLimit");
+            builder.HasKey(c => new { c.PlanId, c.StageLevel, c.Index });
         }
     }
 }

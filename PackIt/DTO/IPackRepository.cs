@@ -7,29 +7,29 @@
 namespace PackIt.DTO
 {
     using System.Collections.Generic;
-    using PackIt.Models.Package;
+    using PackIt.Models.Pack;
 
-    /// <summary>   Interface for package repository. </summary>
-    public interface IPackageRepository
+    /// <summary>   Interface for pack repository. </summary>
+    public interface IPackRepository
     {
         /// <summary>   Adds item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
-        void Add(Package item);
+        void Add(Pack item);
 
         /// <summary>   Gets all items in this collection. </summary>
         ///
         /// <returns>
         ///     An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
-        IEnumerable<Package> GetAll();
+        IEnumerable<Pack> GetAll();
 
         /// <summary>   Searches for the first match for the given string. </summary>
         ///
         /// <param name="key">  The key. </param>
         ///
-        /// <returns>   A Package. </returns>
-        Package Find(string key);
+        /// <returns>   A Pack. </returns>
+        Pack Find(string key);
 
         /// <summary>   Removes the given key. </summary>
         ///
@@ -39,6 +39,6 @@ namespace PackIt.DTO
         /// <summary>   Updates the given item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
-        void Update(Package item);
+        void Update(Pack item);
     }
 }

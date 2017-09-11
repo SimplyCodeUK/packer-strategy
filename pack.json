@@ -1,6 +1,6 @@
 [
   {
-    "Id": "125g Benl.",
+    "Packid": "125g Benl.",
     "Name": "Export Pack.",
     "PlanCode": "Benylin",
     "PlanName": "Pharma",
@@ -16,7 +16,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -149,7 +149,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -279,7 +279,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -593,7 +593,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -856,7 +856,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -1035,7 +1035,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -1163,7 +1163,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 1,
         "Shape": 0,
@@ -1342,7 +1342,7 @@
             "Used": 1,
             "Generator": 7,
             "SubGenerator": 5,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -1518,7 +1518,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -1742,7 +1742,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -1929,7 +1929,7 @@
     ]
   },
   {
-    "Id": "125g Benl/Cont",
+    "Packid": "125g Benl/Cont",
     "Name": "Export Cont.",
     "PlanCode": "Benylin",
     "PlanName": "Pharma",
@@ -1945,7 +1945,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -2078,7 +2078,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -2208,7 +2208,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -2522,7 +2522,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -2785,7 +2785,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -2964,7 +2964,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -3092,7 +3092,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 1,
         "Shape": 0,
@@ -3271,7 +3271,7 @@
             "Used": 1,
             "Generator": 7,
             "SubGenerator": 5,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -3447,7 +3447,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -3671,7 +3671,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -3856,7 +3856,7 @@
         ]
       },
       {
-        "Level": 8,
+        "StageLevel": 8,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -4035,7 +4035,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 8,
+            "StageLevel": 8,
             "Solution": 0,
             "ParentLevel": 7,
             "ParentSolution": 0,
@@ -4165,7 +4165,7 @@
     ]
   },
   {
-    "Id": "A1098/46",
+    "Packid": "A1098/46",
     "Name": "YM/Crate Systems",
     "PlanCode": "YM/Crate",
     "PlanName": "",
@@ -4181,7 +4181,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -4314,7 +4314,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -4427,7 +4427,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -4651,7 +4651,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -4840,7 +4840,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -5019,7 +5019,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -5147,7 +5147,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -5326,7 +5326,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -5478,7 +5478,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -5702,7 +5702,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -5889,7 +5889,7 @@
     ]
   },
   {
-    "Id": "CS x 4 Sachets",
+    "Packid": "CS x 4 Sachets",
     "Name": "9 x Tray.",
     "PlanCode": "CS x 4 Special",
     "PlanName": "9 Pack Tray",
@@ -5905,7 +5905,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -6038,7 +6038,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -6123,7 +6123,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -6302,7 +6302,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -6430,7 +6430,7 @@
         ]
       },
       {
-        "Level": 3,
+        "StageLevel": 3,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -6609,7 +6609,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 3,
+            "StageLevel": 3,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -6737,7 +6737,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -6916,7 +6916,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 3,
             "ParentSolution": 0,
@@ -7044,7 +7044,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -7313,7 +7313,7 @@
             "Used": 1,
             "Generator": 2,
             "SubGenerator": 3,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -7605,7 +7605,7 @@
     ]
   },
   {
-    "Id": "CTN 525g Glass",
+    "Packid": "CTN 525g Glass",
     "Name": "CTonight/Oriental",
     "PlanCode": "CTN 525g Contr.",
     "PlanName": "Chicken Tonight",
@@ -7621,7 +7621,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -7754,7 +7754,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -7884,7 +7884,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -8108,7 +8108,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -8297,7 +8297,7 @@
         ]
       },
       {
-        "Level": 4,
+        "StageLevel": 4,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -8476,7 +8476,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 4,
+            "StageLevel": 4,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -8606,7 +8606,7 @@
     ]
   },
   {
-    "Id": "E/Balsam",
+    "Packid": "E/Balsam",
     "Name": "400 ml Pack",
     "PlanCode": "ElsevBalsam",
     "PlanName": "Balsam 400ml",
@@ -8622,7 +8622,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -8755,7 +8755,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -8855,7 +8855,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -9079,7 +9079,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -9268,7 +9268,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -9447,7 +9447,7 @@
             "Used": 1,
             "Generator": 3,
             "SubGenerator": 2,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -9575,7 +9575,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -9754,7 +9754,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -9894,7 +9894,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -10118,7 +10118,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -10305,7 +10305,7 @@
     ]
   },
   {
-    "Id": "FP/150/Retail",
+    "Packid": "FP/150/Retail",
     "Name": "150mm Frozen Pizza Retail",
     "PlanCode": "Fr.Pizza 150mm",
     "PlanName": "ProdPack/Tp/Chep",
@@ -10321,7 +10321,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -10454,7 +10454,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -10552,7 +10552,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -10776,7 +10776,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -10949,7 +10949,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -11128,7 +11128,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -11256,7 +11256,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -11480,7 +11480,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -11673,7 +11673,7 @@
     ]
   },
   {
-    "Id": "GenPak/2Ex",
+    "Packid": "GenPak/2Ex",
     "Name": "2 x 1/2-Euro Display Pack.",
     "PlanCode": "GenPak",
     "PlanName": "200g Double Load Export.",
@@ -11689,7 +11689,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -11822,7 +11822,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -11926,7 +11926,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -12105,7 +12105,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -12233,7 +12233,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -12412,7 +12412,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -12552,7 +12552,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -12776,7 +12776,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -12963,7 +12963,7 @@
     ]
   },
   {
-    "Id": "HR/EauDC",
+    "Packid": "HR/EauDC",
     "Name": "Eau De Cologne",
     "PlanCode": "Eau De Col",
     "PlanName": "HR/Eau",
@@ -12979,7 +12979,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -13112,7 +13112,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -13212,7 +13212,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -13526,7 +13526,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -13789,7 +13789,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -14013,7 +14013,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -14186,7 +14186,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 1,
         "Shape": 0,
@@ -14365,7 +14365,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -14505,7 +14505,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -14684,7 +14684,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -14826,7 +14826,7 @@
     ]
   },
   {
-    "Id": "M/01A Dbl Pack",
+    "Packid": "M/01A Dbl Pack",
     "Name": "Margarine",
     "PlanCode": "Product M",
     "PlanName": "Double Load Cartons.",
@@ -14837,7 +14837,7 @@
     "Costings": [],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -14970,7 +14970,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -15070,7 +15070,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -15339,7 +15339,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -15573,7 +15573,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -15797,7 +15797,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -15970,7 +15970,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 1,
         "Shape": 0,
@@ -16149,7 +16149,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -16289,7 +16289,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -16513,7 +16513,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -16700,7 +16700,7 @@
     ]
   },
   {
-    "Id": "Nes/200/DL",
+    "Packid": "Nes/200/DL",
     "Name": "200g Granules",
     "PlanCode": "Nest200",
     "PlanName": "200g Granules",
@@ -16716,7 +16716,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -16849,7 +16849,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -17039,7 +17039,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -17308,7 +17308,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -17542,7 +17542,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -17766,7 +17766,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -17939,7 +17939,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -18118,7 +18118,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -18258,7 +18258,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -18527,7 +18527,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -18747,7 +18747,7 @@
     ]
   },
   {
-    "Id": "OXO/12 4x1x3",
+    "Packid": "OXO/12 4x1x3",
     "Name": "14 x 2 x 1 Trays.",
     "PlanCode": "OXO 12's 4x1x3",
     "PlanName": "14 x 2 x1 Trays.",
@@ -18758,7 +18758,7 @@
     "Costings": [],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -18891,7 +18891,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -18960,7 +18960,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -19139,7 +19139,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -19267,7 +19267,7 @@
         ]
       },
       {
-        "Level": 3,
+        "StageLevel": 3,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -19446,7 +19446,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 3,
+            "StageLevel": 3,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -19574,7 +19574,7 @@
         ]
       },
       {
-        "Level": 4,
+        "StageLevel": 4,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -19798,7 +19798,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 4,
+            "StageLevel": 4,
             "Solution": 0,
             "ParentLevel": 3,
             "ParentSolution": 0,
@@ -19971,7 +19971,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -20195,7 +20195,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 4,
             "ParentSolution": 0,
@@ -20368,7 +20368,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -20637,7 +20637,7 @@
             "Used": 1,
             "Generator": 5,
             "SubGenerator": 4,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -20893,7 +20893,7 @@
     ]
   },
   {
-    "Id": "OXO/12's",
+    "Packid": "OXO/12's",
     "Name": "3 x OXO 12's WHAT IFS.",
     "PlanCode": "OXO 12's",
     "PlanName": "WHAT IFS.",
@@ -20904,7 +20904,7 @@
     "Costings": [],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -21037,7 +21037,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -21106,7 +21106,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -21285,7 +21285,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -21413,7 +21413,7 @@
         ]
       },
       {
-        "Level": 3,
+        "StageLevel": 3,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -21592,7 +21592,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 3,
+            "StageLevel": 3,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -21720,7 +21720,7 @@
         ]
       },
       {
-        "Level": 4,
+        "StageLevel": 4,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -21944,7 +21944,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 4,
+            "StageLevel": 4,
             "Solution": 0,
             "ParentLevel": 3,
             "ParentSolution": 0,
@@ -22117,7 +22117,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -22341,7 +22341,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 4,
             "ParentSolution": 0,
@@ -22514,7 +22514,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -22783,7 +22783,7 @@
             "Used": 1,
             "Generator": 5,
             "SubGenerator": 4,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -23039,7 +23039,7 @@
     ]
   },
   {
-    "Id": "OXO/12's 3x24x12",
+    "Packid": "OXO/12's 3x24x12",
     "Name": "3 x OXO 12's (6 Gross)",
     "PlanCode": "OXO 12's",
     "PlanName": "WITH PKG.",
@@ -23050,7 +23050,7 @@
     "Costings": [],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -23183,7 +23183,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -23252,7 +23252,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -23431,7 +23431,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -23559,7 +23559,7 @@
         ]
       },
       {
-        "Level": 3,
+        "StageLevel": 3,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -23738,7 +23738,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 3,
+            "StageLevel": 3,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -23866,7 +23866,7 @@
         ]
       },
       {
-        "Level": 4,
+        "StageLevel": 4,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -24090,7 +24090,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 4,
+            "StageLevel": 4,
             "Solution": 0,
             "ParentLevel": 3,
             "ParentSolution": 0,
@@ -24263,7 +24263,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -24487,7 +24487,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 4,
             "ParentSolution": 0,
@@ -24660,7 +24660,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -24929,7 +24929,7 @@
             "Used": 1,
             "Generator": 2,
             "SubGenerator": 1,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -25293,7 +25293,7 @@
     ]
   },
   {
-    "Id": "OXO/12's 3x28x12",
+    "Packid": "OXO/12's 3x28x12",
     "Name": "3 x OXO 12's",
     "PlanCode": "OXO 12's",
     "PlanName": "WITH PKG.",
@@ -25304,7 +25304,7 @@
     "Costings": [],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -25437,7 +25437,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -25506,7 +25506,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -25685,7 +25685,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -25813,7 +25813,7 @@
         ]
       },
       {
-        "Level": 3,
+        "StageLevel": 3,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -25992,7 +25992,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 3,
+            "StageLevel": 3,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -26120,7 +26120,7 @@
         ]
       },
       {
-        "Level": 4,
+        "StageLevel": 4,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -26344,7 +26344,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 4,
+            "StageLevel": 4,
             "Solution": 0,
             "ParentLevel": 3,
             "ParentSolution": 0,
@@ -26517,7 +26517,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -26741,7 +26741,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 4,
             "ParentSolution": 0,
@@ -26914,7 +26914,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -27183,7 +27183,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -27475,7 +27475,7 @@
     ]
   },
   {
-    "Id": "PET 470g Jar",
+    "Packid": "PET 470g Jar",
     "Name": "Multi-Stack Load.",
     "PlanCode": "J/295",
     "PlanName": "Multi-Stacked Load",
@@ -27491,7 +27491,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -27624,7 +27624,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -27739,7 +27739,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -27963,7 +27963,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -28152,7 +28152,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -28376,7 +28376,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -28549,7 +28549,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -28728,7 +28728,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -28868,7 +28868,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -29137,7 +29137,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -29369,7 +29369,7 @@
     ]
   },
   {
-    "Id": "PT/400/Retail",
+    "Packid": "PT/400/Retail",
     "Name": "400g Peeled Toms. Retail",
     "PlanCode": "Product Z",
     "PlanName": "Food Cans",
@@ -29385,7 +29385,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -29518,7 +29518,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -29603,7 +29603,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -29782,7 +29782,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -29926,7 +29926,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -30150,7 +30150,7 @@
             "Used": 1,
             "Generator": 3,
             "SubGenerator": 2,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -30323,7 +30323,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -30502,7 +30502,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -30644,7 +30644,7 @@
     ]
   },
   {
-    "Id": "Product X",
+    "Packid": "Product X",
     "Name": "Multi-Stacked Trays",
     "PlanCode": "Product X",
     "PlanName": "Multi-Stacked Trays",
@@ -30660,7 +30660,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -30793,7 +30793,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -30906,7 +30906,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -31130,7 +31130,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -31319,7 +31319,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -31588,7 +31588,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -31812,7 +31812,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -31991,7 +31991,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -32133,7 +32133,7 @@
     ]
   },
   {
-    "Id": "Product X1",
+    "Packid": "Product X1",
     "Name": "Half-EuroPallet 2.5 Lit. Trays",
     "PlanCode": "Product X1",
     "PlanName": "Half-Pallet Trays",
@@ -32149,7 +32149,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -32282,7 +32282,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -32395,7 +32395,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -32619,7 +32619,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -32808,7 +32808,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -33077,7 +33077,7 @@
             "Used": 1,
             "Generator": 3,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -33295,7 +33295,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -33519,7 +33519,7 @@
             "Used": 1,
             "Generator": 2,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -33730,7 +33730,7 @@
     ]
   },
   {
-    "Id": "T/70cl Bulk",
+    "Packid": "T/70cl Bulk",
     "Name": "R Rectangular",
     "PlanCode": "Teachers",
     "PlanName": "70cl Bulk",
@@ -33746,7 +33746,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -33879,7 +33879,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -34099,7 +34099,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -34232,7 +34232,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -34465,7 +34465,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 32769,
         "DrawOffset": 1,
         "Shape": 0,
@@ -34779,7 +34779,7 @@
             "Used": 1,
             "Generator": 3,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -35042,7 +35042,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -35175,7 +35175,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -35350,7 +35350,7 @@
     ]
   },
   {
-    "Id": "TB/Y499",
+    "Packid": "TB/Y499",
     "Name": "Multi-Stacked Cartons",
     "PlanCode": "Product Y",
     "PlanName": "Multi-Stacked Cartons",
@@ -35366,7 +35366,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -35499,7 +35499,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -35614,7 +35614,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -35838,7 +35838,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -36027,7 +36027,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -36251,7 +36251,7 @@
             "Used": 1,
             "Generator": 3,
             "SubGenerator": 2,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -36424,7 +36424,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 32769,
         "DrawOffset": 1,
         "Shape": 0,
@@ -36603,7 +36603,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -36745,7 +36745,7 @@
     ]
   },
   {
-    "Id": "Teachers 70cl",
+    "Packid": "Teachers 70cl",
     "Name": "Blended Whisky",
     "PlanCode": "Teachers",
     "PlanName": "70cl Blended Whisky",
@@ -36761,7 +36761,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -36894,7 +36894,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -37099,7 +37099,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -37323,7 +37323,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -37512,7 +37512,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -37691,7 +37691,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -37819,7 +37819,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 1,
         "Shape": 0,
@@ -37998,7 +37998,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -38138,7 +38138,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -38362,7 +38362,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -38549,7 +38549,7 @@
     ]
   },
   {
-    "Id": "Teachers 70cl/2",
+    "Packid": "Teachers 70cl/2",
     "Name": "Blended Whisky",
     "PlanCode": "Teachers/2",
     "PlanName": "70cl Blended Whisky",
@@ -38565,7 +38565,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -38698,7 +38698,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -38903,7 +38903,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -39127,7 +39127,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -39322,7 +39322,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -39501,7 +39501,7 @@
             "Used": 1,
             "Generator": 3,
             "SubGenerator": 2,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -39629,7 +39629,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 1,
         "Shape": 0,
@@ -39808,7 +39808,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -39948,7 +39948,7 @@
         ]
       },
       {
-        "Level": 7,
+        "StageLevel": 7,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -40172,7 +40172,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 7,
+            "StageLevel": 7,
             "Solution": 0,
             "ParentLevel": 6,
             "ParentSolution": 0,
@@ -40359,7 +40359,7 @@
     ]
   },
   {
-    "Id": "Varppv4m",
+    "Packid": "Varppv4m",
     "Name": "",
     "PlanCode": "Varppv4m",
     "PlanName": "",
@@ -40375,7 +40375,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -40508,7 +40508,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -40577,7 +40577,7 @@
         ]
       },
       {
-        "Level": 1,
+        "StageLevel": 1,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -40710,7 +40710,7 @@
             "Used": 1,
             "Generator": 6,
             "SubGenerator": 0,
-            "Level": 1,
+            "StageLevel": 1,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -40779,7 +40779,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -40958,7 +40958,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 1,
             "ParentSolution": 0,
@@ -41086,7 +41086,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -41265,7 +41265,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,
@@ -41407,7 +41407,7 @@
     ]
   },
   {
-    "Id": "X1-Bulk",
+    "Packid": "X1-Bulk",
     "Name": "Bulk Pack Pads + Inv Tray",
     "PlanCode": "X1-Bulk",
     "PlanName": "Bulk Pack Pads + Inv Tray",
@@ -41423,7 +41423,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -41556,7 +41556,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -41669,7 +41669,7 @@
         ]
       },
       {
-        "Level": 2,
+        "StageLevel": 2,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -41893,7 +41893,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 2,
+            "StageLevel": 2,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -42082,7 +42082,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 32769,
         "DrawOffset": 0,
         "Shape": 0,
@@ -42396,7 +42396,7 @@
             "Used": 1,
             "Generator": 3,
             "SubGenerator": 2,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 2,
             "ParentSolution": 0,
@@ -42661,7 +42661,7 @@
     ]
   },
   {
-    "Id": "ppv4m",
+    "Packid": "ppv4m",
     "Name": "",
     "PlanCode": "ppv4m",
     "PlanName": "",
@@ -42677,7 +42677,7 @@
     ],
     "Stages": [
       {
-        "Level": 0,
+        "StageLevel": 0,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -42810,7 +42810,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 0,
-            "Level": 0,
+            "StageLevel": 0,
             "Solution": 0,
             "ParentLevel": -1,
             "ParentSolution": 0,
@@ -42879,7 +42879,7 @@
         ]
       },
       {
-        "Level": 5,
+        "StageLevel": 5,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -43058,7 +43058,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": 1,
-            "Level": 5,
+            "StageLevel": 5,
             "Solution": 0,
             "ParentLevel": 0,
             "ParentSolution": 0,
@@ -43186,7 +43186,7 @@
         ]
       },
       {
-        "Level": 6,
+        "StageLevel": 6,
         "Collation": 1,
         "DrawOffset": 0,
         "Shape": 0,
@@ -43365,7 +43365,7 @@
             "Used": 1,
             "Generator": 0,
             "SubGenerator": -4,
-            "Level": 6,
+            "StageLevel": 6,
             "Solution": 0,
             "ParentLevel": 5,
             "ParentSolution": 0,

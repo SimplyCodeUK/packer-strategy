@@ -4,13 +4,33 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models.Package
+namespace PackIt.DTO.DtoPack
 {
     using PackIt.Helpers.Enums;
 
-    /// <summary>   A section. </summary>
-    public class Section
+    /// <summary>   A dto section. </summary>
+    public class DtoSection
     {
+        /// <summary>   Gets or sets the identifier of the Pack owns this item. </summary>
+        ///
+        /// <value> The identifier of the Pack. </value>
+        public string PackId { get; set; }
+
+        /// <summary>   Gets or sets the level. </summary>
+        ///
+        /// <value> The level. </value>
+        public StageLevel StageLevel { get; set; }
+
+        /// <summary>   Gets or sets the zero-based index of the Result index. </summary>
+        ///
+        /// <value> The Result index. </value>
+        public long ResultIndex { get; set; }
+
+        /// <summary>   Gets or sets the zero-based index of the Section. </summary>
+        ///
+        /// <value> The Section index. </value>
+        public long SectionIndex { get; set; }
+
         /// <summary>   Gets or sets the shape. </summary>
         ///
         /// <value> The shape. </value>

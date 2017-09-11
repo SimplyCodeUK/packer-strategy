@@ -4,11 +4,16 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models.Package
+namespace PackIt.DTO.DtoPack
 {
-    /// <summary>   A costing. </summary>
-    public class Costing
+    /// <summary>   A dto costing. </summary>
+    public class DtoCosting
     {
+        /// <summary>   Gets or sets the Pack that owns this item. </summary>
+        ///
+        /// <value> The identifier of the Pack. </value>
+        public string PackId { get; set; }
+
         /// <summary>   Gets or sets the required quantity. </summary>
         ///
         /// <value> The required quantity. </value>

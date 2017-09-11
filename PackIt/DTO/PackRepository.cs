@@ -7,22 +7,22 @@
 namespace PackIt.DTO
 {
     using System.Collections.Generic;
-    using PackIt.Models.Package;
+    using PackIt.Models.Pack;
 
-    /// <summary>   A package repository. </summary>
+    /// <summary>   A pack repository. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.IPackageRepository"/>
-    public class PackageRepository : IPackageRepository
+    /// <seealso cref="T:PackIt.DTO.IPackRepository"/>
+    public class PackRepository : IPackRepository
     {
         /// <summary>   The context. </summary>
-        private readonly PackageContext context;
+        private readonly PackContext context;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="PackageRepository" /> class.
+        /// Initialises a new instance of the <see cref="PackRepository" /> class.
         /// </summary>
         ///
         /// <param name="context">  The context. </param>
-        public PackageRepository(PackageContext context)
+        public PackRepository(PackContext context)
         {
             this.context = context;
         }
@@ -33,20 +33,20 @@ namespace PackIt.DTO
         ///     An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
         ///
-        /// <seealso cref="M:PackIt.DTO.IPackageRepository.GetAll()"/>
-        public IEnumerable<Package> GetAll()
+        /// <seealso cref="M:PackIt.DTO.IPackRepository.GetAll()"/>
+        public IEnumerable<Pack> GetAll()
         {
-            return this.context.GetPackages();
+            return this.context.GetPacks();
         }
 
         /// <summary>   Adds item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
         ///
-        /// <seealso cref="M:PackIt.DTO.IPackageRepository.Add(Package)"/>
-        public void Add(Package item)
+        /// <seealso cref="M:PackIt.DTO.IPackRepository.Add(Pack)"/>
+        public void Add(Pack item)
         {
-            this.context.AddPackage(item);
+            this.context.AddPack(item);
             this.context.SaveChanges();
         }
 
@@ -54,22 +54,22 @@ namespace PackIt.DTO
         ///
         /// <param name="key">  The key. </param>
         ///
-        /// <returns>   A Package. </returns>
+        /// <returns>   A Pack. </returns>
         ///
-        /// <seealso cref="M:PackIt.DTO.IPackageRepository.Find(string)"/>
-        public Package Find(string key)
+        /// <seealso cref="M:PackIt.DTO.IPackRepository.Find(string)"/>
+        public Pack Find(string key)
         {
-            return this.context.FindPackage(key);
+            return this.context.FindPack(key);
         }
 
         /// <summary>   Removes the given key. </summary>
         ///
         /// <param name="key">  The key. </param>
         ///
-        /// <seealso cref="M:PackIt.DTO.IPackageRepository.Remove(string)"/>
+        /// <seealso cref="M:PackIt.DTO.IPackRepository.Remove(string)"/>
         public void Remove(string key)
         {
-            this.context.RemovePackage(key);
+            this.context.RemovePack(key);
             this.context.SaveChanges();
         }
 
@@ -77,10 +77,10 @@ namespace PackIt.DTO
         ///
         /// <param name="item"> The item to add. </param>
         ///
-        /// <seealso cref="M:PackIt.DTO.IPackageRepository.Update(Package)"/>
-        public void Update(Package item)
+        /// <seealso cref="M:PackIt.DTO.IPackRepository.Update(Pack)"/>
+        public void Update(Pack item)
         {
-            this.context.UpdatePackage(item);
+            this.context.UpdatePack(item);
             this.context.SaveChanges();
         }
     }

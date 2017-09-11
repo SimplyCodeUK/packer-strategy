@@ -44,7 +44,7 @@ namespace PackIt
         {
             services.AddDbContext<PlanContext>(options => options.UseInMemoryDatabase("plan"));
             services.AddDbContext<MaterialContext>(options => options.UseInMemoryDatabase("material"));
-            services.AddDbContext<PackageContext>(options => options.UseInMemoryDatabase("package"));
+            services.AddDbContext<PackContext>(options => options.UseInMemoryDatabase("pack"));
 
             // Add framework services.
             services.AddMvc();
@@ -52,7 +52,7 @@ namespace PackIt
 
             services.AddSingleton<IPlanRepository, PlanRepository>();
             services.AddSingleton<IMaterialRepository, MaterialRepository>();
-            services.AddSingleton<IPackageRepository, PackageRepository>();
+            services.AddSingleton<IPackRepository, PackRepository>();
         }
 
         /// <summary>   Configures start up. </summary>

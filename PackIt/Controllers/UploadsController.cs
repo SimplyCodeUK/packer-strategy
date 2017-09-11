@@ -23,8 +23,8 @@ namespace PackIt.Controllers
         /// <summary>   The material repository. </summary>
         private readonly IMaterialRepository materialRepo;
 
-        /// <summary>   The package repository. </summary>
-        private readonly IPackageRepository packageRepo;
+        /// <summary>   The pack repository. </summary>
+        private readonly IPackRepository packRepo;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="UploadsController" /> class.
@@ -32,12 +32,12 @@ namespace PackIt.Controllers
         ///
         /// <param name="planRepo"> The plan repository.</param>
         /// <param name="materialRepo"> The material repository.</param>
-        /// <param name="packageRepo"> The package repository.</param>
-        public UploadsController(IPlanRepository planRepo, IMaterialRepository materialRepo, IPackageRepository packageRepo)
+        /// <param name="packRepo"> The pack repository.</param>
+        public UploadsController(IPlanRepository planRepo, IMaterialRepository materialRepo, IPackRepository packRepo)
         {
             this.planRepo = planRepo;
             this.materialRepo = materialRepo;
-            this.packageRepo = packageRepo;
+            this.packRepo = packRepo;
         }
 
         /// <summary>   (An Action that handles HTTP POST requests) post this message. </summary>
@@ -81,17 +81,17 @@ namespace PackIt.Controllers
                     }
                 }
 
-                foreach (Models.Package.Package item in values.Packs)
+                foreach (Models.Pack.Pack item in values.Packs)
                 {
                     try
                     {
-                        this.packageRepo.Add(item);
-                        pass.Add(item.Id);
+                        this.packRepo.Add(item);
+                        pass.Add(item.PackId);
                     }
                     catch (Exception e)
                     {
                         Console.Out.Write(e.ToString());
-                        fail.Add(item.Id);
+                        fail.Add(item.PackId);
                     }
                 }
 
@@ -124,23 +124,23 @@ namespace PackIt.Controllers
             {
                 this.Plans = new List<Models.Plan.Plan>();
                 this.Materials = new List<Models.Material.Material>();
-                this.Packs = new List<Models.Package.Package>();
+                this.Packs = new List<Models.Pack.Pack>();
             }
 
             /// <summary>   Gets or sets the list of Plans of this object. </summary>
             ///
-            /// <value> List of plans. </value>
+            /// <value> List of Plans. </value>
             public List<Models.Plan.Plan> Plans { get; set; }
 
             /// <summary>   Gets or sets the list of Materials of this object. </summary>
             ///
-            /// <value> List of materials. </value>
+            /// <value> List of Materials. </value>
             public List<Models.Material.Material> Materials { get; set; }
 
-            /// <summary>   Gets or sets the list of Packages of this object. </summary>
+            /// <summary>   Gets or sets the list of Packs of this object. </summary>
             ///
-            /// <value> List of packages. </value>
-            public List<Models.Package.Package> Packs { get; set; }
+            /// <value> List of Packs. </value>
+            public List<Models.Pack.Pack> Packs { get; set; }
         }
     }
 }
