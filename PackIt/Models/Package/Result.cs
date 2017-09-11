@@ -17,6 +17,7 @@ namespace PackIt.Models.Package
         /// </summary>
         public Result()
         {
+            this.Layers = new List<Layer>();
             this.Materials = new List<Material>();
             this.Sections = new List<Section>();
         }
@@ -235,6 +236,11 @@ namespace PackIt.Models.Package
         ///
         /// <value> The volume utilisation. </value>
         public double VolumeUtilisation { get; set; }
+
+        /// <summary>   Gets or sets the layers. </summary>
+        ///
+        /// <value> The layers. </value>
+        public List<Layer> Layers { get; set; }
 
         /// <summary>   Gets or sets the materials. </summary>
         ///

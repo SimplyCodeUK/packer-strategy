@@ -11,11 +11,6 @@ namespace PackIt.DTO.DtoMaterial
     /// <summary>   A dto collation. </summary>
     public class DtoCollation
     {
-        /// <summary>   Gets or sets the type of the material. </summary>
-        ///
-        /// <value> The type of the material. </value>
-        public MaterialType MaterialType { get; set; }
-
         /// <summary>   Gets or sets the identifier of the material. </summary>
         ///
         /// <value> The identifier of the material. </value>

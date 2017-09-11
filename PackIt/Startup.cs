@@ -48,6 +48,7 @@ namespace PackIt
 
             // Add framework services.
             services.AddMvc();
+            services.AddApiVersioning();
 
             services.AddSingleton<IPlanRepository, PlanRepository>();
             services.AddSingleton<IMaterialRepository, MaterialRepository>();
