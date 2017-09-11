@@ -4,88 +4,87 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO.DtoPackage
+namespace PackIt.Models.Pack
 {
     using System.Collections.Generic;
     using PackIt.Helpers.Enums;
 
-    /// <summary>   A dto result. </summary>
-    public class DtoResult
+    /// <summary>   A material. </summary>
+    public class Material
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="DtoResult" /> class.
+        /// Initialises a new instance of the <see cref="Material" /> class.
         /// </summary>
-        public DtoResult()
+        public Material()
         {
-            this.Layers = new List<DtoLayer>();
-            this.Materials = new List<DtoMaterial>();
-            this.Sections = new List<DtoSection>();
+            this.MaterialType = MaterialType.Bottle;
+            this.DatabaseMaterials = new List<DatabaseMaterial>();
         }
 
-        /// <summary>   Gets or sets the identifier of the Package owns this item. </summary>
+        /// <summary>   Gets or sets the Material identifier. </summary>
         ///
-        /// <value> The identifier of the Package. </value>
-        public string PackageId { get; set; }
+        /// <value> The Material identifier. </value>
+        public string MaterialId { get; set; }
 
-        /// <summary>   Gets or sets the level. </summary>
+        /// <summary>   Gets or sets the type of the Material. </summary>
         ///
-        /// <value> The level. </value>
-        public StageLevel StageLevel { get; set; }
+        /// <value> The type of the Material. </value>
+        public MaterialType MaterialType { get; set; }
 
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
+        /// <summary>   Gets or sets the name. </summary>
         ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
+        /// <value> The name. </value>
+        public string Name { get; set; }
 
-        /// <summary>   Gets or sets a value indicating whether the used. </summary>
+        /// <summary>   Gets or sets the notes. </summary>
         ///
-        /// <value> True if used, false if not. </value>
-        public bool Used { get; set; }
+        /// <value> The notes. </value>
+        public string Notes { get; set; }
 
-        /// <summary>   Gets or sets the generator. </summary>
+        /// <summary>   Gets or sets the colour. </summary>
         ///
-        /// <value> The generator. </value>
-        public PatternGenerator Generator { get; set; }
+        /// <value> The colour. </value>
+        public string Colour { get; set; }
 
-        /// <summary>   Gets or sets the sub generator. </summary>
+        /// <summary>   Gets or sets the drawing. </summary>
         ///
-        /// <value> The sub generator. </value>
-        public long SubGenerator { get; set; }
+        /// <value> The drawing. </value>
+        public string Drawing { get; set; }
 
-        /// <summary>   Gets or sets the solution. </summary>
+        /// <summary>   Gets or sets the bar code. </summary>
         ///
-        /// <value> The solution. </value>
-        public long Solution { get; set; }
+        /// <value> The bar code. </value>
+        public string BarCode { get; set; }
 
-        /// <summary>   Gets or sets the parent level. </summary>
+        /// <summary>   Gets or sets the computer code. </summary>
         ///
-        /// <value> The parent level. </value>
-        public StageLevel ParentLevel { get; set; }
+        /// <value> The computer code. </value>
+        public string ComputerCode { get; set; }
 
-        /// <summary>   Gets or sets the parent solution. </summary>
+        /// <summary>   Gets or sets the finish. </summary>
         ///
-        /// <value> The parent solution. </value>
-        public long ParentSolution { get; set; }
+        /// <value> The finish. </value>
+        public string Finish { get; set; }
 
-        /// <summary>   Gets or sets the lift. </summary>
+        /// <summary>   Gets or sets the print. </summary>
         ///
-        /// <value> The lift. </value>
-        public long Lift { get; set; }
+        /// <value> The print. </value>
+        public string Print { get; set; }
+
+        /// <summary>   Gets or sets the type of the print. </summary>
+        ///
+        /// <value> The type of the print. </value>
+        public long PrintType { get; set; }
 
         /// <summary>   Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
         public PackForm Form { get; set; }
 
-        /// <summary>   Gets or sets the closure. </summary>
+        /// <summary>   Gets or sets the type of the closure. </summary>
         ///
-        /// <value> The closure. </value>
-        public long Closure { get; set; }
-
-        /// <summary>   Gets or sets the height of the closure. </summary>
-        ///
-        /// <value> The height of the closure. </value>
-        public double ClosureHeight { get; set; }
+        /// <value> The type of the closure. </value>
+        public long ClosureType { get; set; }
 
         /// <summary>   Gets or sets the closure weight. </summary>
         ///
@@ -237,34 +236,14 @@ namespace PackIt.DTO.DtoPackage
         /// <value> The target compression. </value>
         public double TargetCompression { get; set; }
 
-        /// <summary>   Gets or sets the safety factor. </summary>
+        /// <summary>   Gets or sets the number used. </summary>
         ///
-        /// <value> The safety factor. </value>
-        public double SafetyFactor { get; set; }
+        /// <value> The number used. </value>
+        public long Count { get; set;  }
 
-        /// <summary>   Gets or sets the area utilisation. </summary>
+        /// <summary>   Gets or sets the database materials. </summary>
         ///
-        /// <value> The area utilisation. </value>
-        public double AreaUtilisation { get; set; }
-
-        /// <summary>   Gets or sets the volume utilisation. </summary>
-        ///
-        /// <value> The volume utilisation. </value>
-        public double VolumeUtilisation { get; set; }
-
-        /// <summary>   Gets or sets the layers. </summary>
-        ///
-        /// <value> The layers. </value>
-        public List<DtoLayer> Layers { get; set; }
-
-        /// <summary>   Gets or sets the materials. </summary>
-        ///
-        /// <value> The materials. </value>
-        public List<DtoMaterial> Materials { get; set; }
-
-        /// <summary>   Gets or sets the sections. </summary>
-        ///
-        /// <value> The sections. </value>
-        public List<DtoSection> Sections { get; set; }
+        /// <value> The database materials. </value>
+        public List<DatabaseMaterial> DatabaseMaterials { get; set; }
     }
 }

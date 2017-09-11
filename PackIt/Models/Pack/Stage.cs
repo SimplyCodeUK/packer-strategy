@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models.Package
+namespace PackIt.Models.Pack
 {
     using System.Collections.Generic;
     using PackIt.Helpers.Enums;
@@ -24,7 +24,7 @@ namespace PackIt.Models.Package
         /// <summary>   Gets or sets the level. </summary>
         ///
         /// <value> The level. </value>
-        public StageLevel Level { get; set; }
+        public StageLevel StageLevel { get; set; }
 
         /// <summary>   Gets or sets the collation. </summary>
         ///

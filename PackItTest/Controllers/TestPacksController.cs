@@ -15,27 +15,27 @@ namespace PackItTest.Controllers
     using NUnit.Framework;
     using PackIt.Controllers;
     using PackIt.DTO;
-    using PackIt.Models.Package;
+    using PackIt.Models.Pack;
 
-    /// <summary>   (Unit Test Fixture) a controller for handling test packages. </summary>
+    /// <summary>   (Unit Test Fixture) a controller for handling test packs. </summary>
     [TestFixture]
-    public class TestPackagesController
+    public class TestPacksController
     {
         /// <summary>   The controller under test. </summary>
-        private PackagesController controller;
+        private PacksController controller;
 
         /// <summary>   Tests before. </summary>
         [SetUp]
         public void BeforeTest()
         {
-            DbContextOptionsBuilder<PackageContext> builder = new DbContextOptionsBuilder<PackageContext>();
+            DbContextOptionsBuilder<PackContext> builder = new DbContextOptionsBuilder<PackContext>();
             builder.EnableSensitiveDataLogging();
-            builder.UseInMemoryDatabase("testpackage");
+            builder.UseInMemoryDatabase("testpack");
 
-            PackageContext context = new PackageContext(builder.Options);
-            PackageRepository repository = new PackageRepository(context);
+            PackContext context = new PackContext(builder.Options);
+            PackRepository repository = new PackRepository(context);
 
-            this.controller = new PackagesController(repository);
+            this.controller = new PacksController(repository);
             Assert.IsNotNull(this.controller);
         }
 
@@ -43,7 +43,7 @@ namespace PackItTest.Controllers
         [Test]
         public void Post()
         {
-            Package item = new Package { Id = Guid.NewGuid().ToString() };
+            Pack item = new Pack { PackId = Guid.NewGuid().ToString() };
             var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -66,7 +66,7 @@ namespace PackItTest.Controllers
         [Test]
         public void PostAlreadyExists()
         {
-            Package item = new Package { Id = Guid.NewGuid().ToString() };
+            Pack item = new Pack { PackId = Guid.NewGuid().ToString() };
             var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -91,7 +91,7 @@ namespace PackItTest.Controllers
                 string id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
-                this.controller.Post(new Package { Id = id });
+                this.controller.Post(new Pack { PackId = id });
             }
 
             IActionResult result = this.controller.Get();
@@ -101,14 +101,14 @@ namespace PackItTest.Controllers
 
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<IEnumerable<Package>>(objectResult.Value);
+            Assert.IsInstanceOf<IEnumerable<Pack>>(objectResult.Value);
 
-            IEnumerable<Package> items = (IEnumerable<Package>)objectResult.Value;
-            foreach (Package item in items)
+            IEnumerable<Pack> items = (IEnumerable<Pack>)objectResult.Value;
+            foreach (Pack item in items)
             {
-                if (ids.Contains(item.Id))
+                if (ids.Contains(item.PackId))
                 {
-                    ids.Remove(item.Id);
+                    ids.Remove(item.PackId);
                 }
             }
 
@@ -121,7 +121,7 @@ namespace PackItTest.Controllers
         {
             string startName = "A name";
             string id = Guid.NewGuid().ToString();
-            Package item = new Package { Id = id, Name = startName };
+            Pack item = new Pack { PackId = id, Name = startName };
 
             this.controller.Post(item);
 
@@ -132,10 +132,10 @@ namespace PackItTest.Controllers
 
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Package>(objectResult.Value);
+            Assert.IsInstanceOf<Pack>(objectResult.Value);
 
-            item = (Package)objectResult.Value;
-            Assert.AreEqual(item.Id, id);
+            item = (Pack)objectResult.Value;
+            Assert.AreEqual(item.PackId, id);
             Assert.AreEqual(item.Name, startName);
         }
 
@@ -158,7 +158,7 @@ namespace PackItTest.Controllers
             string startName = "A name";
             string putName = "B name";
             string id = Guid.NewGuid().ToString();
-            Package item = new Package { Id = id, Name = startName };
+            Pack item = new Pack { PackId = id, Name = startName };
 
             this.controller.Post(item);
 
@@ -169,15 +169,15 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<OkResult>(result);
             Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
 
-            // Get the package and check the returned object has the new Name
+            // Get the pack and check the returned object has the new Name
             result = this.controller.Get(id);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Package>(objectResult.Value);
-            item = (Package)objectResult.Value;
-            Assert.AreEqual(item.Id, id);
+            Assert.IsInstanceOf<Pack>(objectResult.Value);
+            item = (Pack)objectResult.Value;
+            Assert.AreEqual(item.PackId, id);
             Assert.AreEqual(item.Name, putName);
         }
 
@@ -186,7 +186,7 @@ namespace PackItTest.Controllers
         public void PutNotFound()
         {
             string id = Guid.NewGuid().ToString();
-            Package item = new Package();
+            Pack item = new Pack();
             var result = this.controller.Put(id, item);
 
             Assert.IsNotNull(result);
@@ -199,7 +199,7 @@ namespace PackItTest.Controllers
         public void Delete()
         {
             string id = Guid.NewGuid().ToString();
-            Package item = new Package { Id = id };
+            Pack item = new Pack { PackId = id };
 
             this.controller.Post(item);
 
@@ -229,13 +229,13 @@ namespace PackItTest.Controllers
             string startName = "A name";
             string patchName = "B name";
             string id = Guid.NewGuid().ToString();
-            Package item = new Package { Id = id, Name = startName };
+            Pack item = new Pack { PackId = id, Name = startName };
 
-            // Create a new package
+            // Create a new pack
             this.controller.Post(item);
 
-            // Patch the package with a new name
-            JsonPatchDocument<Package> patch = new JsonPatchDocument<Package>();
+            // Patch the pack with a new name
+            JsonPatchDocument<Pack> patch = new JsonPatchDocument<Pack>();
             patch.Replace(e => e.Name, patchName);
 
             var result = this.controller.Patch(id, patch);
@@ -246,21 +246,21 @@ namespace PackItTest.Controllers
             // Check the returned object from the patch has the same Note but different Name
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Package>(objectResult.Value);
+            Assert.IsInstanceOf<Pack>(objectResult.Value);
 
-            item = (Package)objectResult.Value;
-            Assert.AreEqual(item.Id, id);
+            item = (Pack)objectResult.Value;
+            Assert.AreEqual(item.PackId, id);
             Assert.AreEqual(item.Name, patchName);
 
-            // Get the package and check the returned object has the same Note and new Name
+            // Get the pack and check the returned object has the same Note and new Name
             result = this.controller.Get(id);
             Assert.IsInstanceOf<OkObjectResult>(result);
             objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Package>(objectResult.Value);
+            Assert.IsInstanceOf<Pack>(objectResult.Value);
 
-            item = (Package)objectResult.Value;
-            Assert.AreEqual(item.Id, id);
+            item = (Pack)objectResult.Value;
+            Assert.AreEqual(item.PackId, id);
             Assert.AreEqual(item.Name, patchName);
         }
 
@@ -270,11 +270,11 @@ namespace PackItTest.Controllers
         {
             string startName = "A name";
             string patchName = "B name";
-            Package item = new Package { Id = Guid.NewGuid().ToString(), Name = startName };
+            Pack item = new Pack { PackId = Guid.NewGuid().ToString(), Name = startName };
 
             this.controller.Post(item);
 
-            JsonPatchDocument<Package> patch = new JsonPatchDocument<Package>();
+            JsonPatchDocument<Pack> patch = new JsonPatchDocument<Pack>();
             patch.Replace(e => e.Name, patchName);
 
             var result = this.controller.Patch(Guid.NewGuid().ToString(), patch);
@@ -292,10 +292,10 @@ namespace PackItTest.Controllers
             long quantity = 1000;
             double weight = 2000.0;
 
-            // Create a package with a stage that has a limit
+            // Create a pack with a stage that has a limit
             Costing costing = new Costing { RequiredQuantity = quantity, RequiredWeight = weight };
 
-            Package item = new Package { Id = id };
+            Pack item = new Pack { PackId = id };
             item.Costings.Add(costing);
 
             var result = this.controller.Post(item);
@@ -304,7 +304,7 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
             Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
 
-            // Get the package
+            // Get the pack
             result = this.controller.Get(id);
 
             Assert.IsNotNull(result);
@@ -312,11 +312,11 @@ namespace PackItTest.Controllers
 
             OkObjectResult objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Package>(objectResult.Value);
+            Assert.IsInstanceOf<Pack>(objectResult.Value);
 
             // Test the plan
-            item = (Package)objectResult.Value;
-            Assert.AreEqual(item.Id, id);
+            item = (Pack)objectResult.Value;
+            Assert.AreEqual(item.PackId, id);
 
             // Test for one stage
             Assert.AreEqual(item.Costings.Count, 1);

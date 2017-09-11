@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models.Package
+namespace PackIt.Models.Pack
 {
     using PackIt.Helpers.Enums;
 

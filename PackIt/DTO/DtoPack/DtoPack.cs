@@ -4,27 +4,27 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models.Package
+namespace PackIt.DTO.DtoPack
 {
     using System.Collections.Generic;
     using PackIt.Helpers.Enums;
 
-    /// <summary>   A package. </summary>
-    public class Package
+    /// <summary>   A dto pack. </summary>
+    public class DtoPack
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="Package" /> class.
+        /// Initialises a new instance of the <see cref="DtoPack" /> class.
         /// </summary>
-        public Package()
+        public DtoPack()
         {
-            this.Costings = new List<Costing>();
-            this.Stages = new List<Stage>();
+            this.Costings = new List<DtoCosting>();
+            this.Stages = new List<DtoStage>();
         }
 
-        /// <summary>   Gets or sets the identifier. </summary>
+        /// <summary>   Gets or sets the Pack identifier. </summary>
         ///
-        /// <value> The identifier. </value>
-        public string Id { get; set; }
+        /// <value> The Pack identifier. </value>
+        public string PackId { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
         ///
@@ -64,11 +64,11 @@ namespace PackIt.Models.Package
         /// <summary>   Gets or sets the costings. </summary>
         ///
         /// <value> The costings. </value>
-        public List<Costing> Costings { get; set; }
+        public List<DtoCosting> Costings { get; set; }
 
         /// <summary>   Gets or sets the stages. </summary>
         ///
         /// <value> The stages. </value>
-        public List<Stage> Stages { get; set; }
+        public List<DtoStage> Stages { get; set; }
     }
 }

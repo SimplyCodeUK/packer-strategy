@@ -4,18 +4,17 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO.DtoPackage
+namespace PackIt.DTO.DtoPack
 {
-    using System.Collections.Generic;
     using PackIt.Helpers.Enums;
 
     /// <summary>   A dto database material. </summary>
     public class DtoDatabaseMaterial
     {
-        /// <summary>   Gets or sets the identifier of the Package owns this item. </summary>
+        /// <summary>   Gets or sets the identifier of the Pack owns this item. </summary>
         ///
-        /// <value> The identifier of the Package. </value>
-        public string PackageId { get; set; }
+        /// <value> The identifier of the Pack. </value>
+        public string PackId { get; set; }
 
         /// <summary>   Gets or sets the level. </summary>
         ///
@@ -35,7 +34,7 @@ namespace PackIt.DTO.DtoPackage
         /// <summary>   Gets or sets the zero-based index of the Database Material. </summary>
         ///
         /// <value> The index. </value>
-        public long Index { get; set; }
+        public long DatabaseMaterialIndex { get; set; }
 
         /// <summary>   Gets or sets the Material identifier. </summary>
         ///

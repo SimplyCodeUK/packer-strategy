@@ -4,87 +4,73 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models.Package
+namespace PackIt.Models.Pack
 {
     using System.Collections.Generic;
     using PackIt.Helpers.Enums;
 
-    /// <summary>   A material. </summary>
-    public class Material
+    /// <summary>   A result. </summary>
+    public class Result
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="Material" /> class.
+        /// Initialises a new instance of the <see cref="Result" /> class.
         /// </summary>
-        public Material()
+        public Result()
         {
-            this.MaterialType = MaterialType.Bottle;
-            this.DatabaseMaterials = new List<DatabaseMaterial>();
+            this.Layers = new List<Layer>();
+            this.Materials = new List<Material>();
+            this.Sections = new List<Section>();
         }
 
-        /// <summary>   Gets or sets the Material identifier. </summary>
+        /// <summary>   Gets or sets a value indicating whether the used. </summary>
         ///
-        /// <value> The Material identifier. </value>
-        public string MaterialId { get; set; }
+        /// <value> True if used, false if not. </value>
+        public bool Used { get; set; }
 
-        /// <summary>   Gets or sets the type of the Material. </summary>
+        /// <summary>   Gets or sets the generator. </summary>
         ///
-        /// <value> The type of the Material. </value>
-        public MaterialType MaterialType { get; set; }
+        /// <value> The generator. </value>
+        public PatternGenerator Generator { get; set; }
 
-        /// <summary>   Gets or sets the name. </summary>
+        /// <summary>   Gets or sets the sub generator. </summary>
         ///
-        /// <value> The name. </value>
-        public string Name { get; set; }
+        /// <value> The sub generator. </value>
+        public long SubGenerator { get; set; }
 
-        /// <summary>   Gets or sets the notes. </summary>
+        /// <summary>   Gets or sets the solution. </summary>
         ///
-        /// <value> The notes. </value>
-        public string Notes { get; set; }
+        /// <value> The solution. </value>
+        public long Solution { get; set; }
 
-        /// <summary>   Gets or sets the colour. </summary>
+        /// <summary>   Gets or sets the parent level. </summary>
         ///
-        /// <value> The colour. </value>
-        public string Colour { get; set; }
+        /// <value> The parent level. </value>
+        public StageLevel ParentLevel { get; set; }
 
-        /// <summary>   Gets or sets the drawing. </summary>
+        /// <summary>   Gets or sets the parent solution. </summary>
         ///
-        /// <value> The drawing. </value>
-        public string Drawing { get; set; }
+        /// <value> The parent solution. </value>
+        public long ParentSolution { get; set; }
 
-        /// <summary>   Gets or sets the bar code. </summary>
+        /// <summary>   Gets or sets the lift. </summary>
         ///
-        /// <value> The bar code. </value>
-        public string BarCode { get; set; }
-
-        /// <summary>   Gets or sets the computer code. </summary>
-        ///
-        /// <value> The computer code. </value>
-        public string ComputerCode { get; set; }
-
-        /// <summary>   Gets or sets the finish. </summary>
-        ///
-        /// <value> The finish. </value>
-        public string Finish { get; set; }
-
-        /// <summary>   Gets or sets the print. </summary>
-        ///
-        /// <value> The print. </value>
-        public string Print { get; set; }
-
-        /// <summary>   Gets or sets the type of the print. </summary>
-        ///
-        /// <value> The type of the print. </value>
-        public long PrintType { get; set; }
+        /// <value> The lift. </value>
+        public long Lift { get; set; }
 
         /// <summary>   Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
         public PackForm Form { get; set; }
 
-        /// <summary>   Gets or sets the type of the closure. </summary>
+        /// <summary>   Gets or sets the closure. </summary>
         ///
-        /// <value> The type of the closure. </value>
-        public long ClosureType { get; set; }
+        /// <value> The closure. </value>
+        public long Closure { get; set; }
+
+        /// <summary>   Gets or sets the height of the closure. </summary>
+        ///
+        /// <value> The height of the closure. </value>
+        public double ClosureHeight { get; set; }
 
         /// <summary>   Gets or sets the closure weight. </summary>
         ///
@@ -236,14 +222,34 @@ namespace PackIt.Models.Package
         /// <value> The target compression. </value>
         public double TargetCompression { get; set; }
 
-        /// <summary>   Gets or sets the number used. </summary>
+        /// <summary>   Gets or sets the safety factor. </summary>
         ///
-        /// <value> The number used. </value>
-        public long Count { get; set;  }
+        /// <value> The safety factor. </value>
+        public double SafetyFactor { get; set; }
 
-        /// <summary>   Gets or sets the database materials. </summary>
+        /// <summary>   Gets or sets the area utilisation. </summary>
         ///
-        /// <value> The database materials. </value>
-        public List<DatabaseMaterial> DatabaseMaterials { get; set; }
+        /// <value> The area utilisation. </value>
+        public double AreaUtilisation { get; set; }
+
+        /// <summary>   Gets or sets the volume utilisation. </summary>
+        ///
+        /// <value> The volume utilisation. </value>
+        public double VolumeUtilisation { get; set; }
+
+        /// <summary>   Gets or sets the layers. </summary>
+        ///
+        /// <value> The layers. </value>
+        public List<Layer> Layers { get; set; }
+
+        /// <summary>   Gets or sets the materials. </summary>
+        ///
+        /// <value> The materials. </value>
+        public List<Material> Materials { get; set; }
+
+        /// <summary>   Gets or sets the sections. </summary>
+        ///
+        /// <value> The sections. </value>
+        public List<Section> Sections { get; set; }
     }
 }

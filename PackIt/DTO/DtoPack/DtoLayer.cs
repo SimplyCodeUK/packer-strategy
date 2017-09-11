@@ -4,21 +4,41 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models.Package
+namespace PackIt.DTO.DtoPack
 {
     using System.Collections.Generic;
     using PackIt.Helpers.Enums;
 
-    /// <summary>   A layer. </summary>
-    public class Layer
+    /// <summary>   A dto layer. </summary>
+    public class DtoLayer
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="Layer" /> class.
+        /// Initialises a new instance of the <see cref="DtoLayer" /> class.
         /// </summary>
-        public Layer()
+        public DtoLayer()
         {
-            this.Collations = new List<Collation>();
+            this.Collations = new List<DtoCollation>();
         }
+
+        /// <summary>   Gets or sets the identifier of the Pack owns this item. </summary>
+        ///
+        /// <value> The identifier of the Pack. </value>
+        public string PackId { get; set; }
+
+        /// <summary>   Gets or sets the level. </summary>
+        ///
+        /// <value> The level. </value>
+        public StageLevel StageLevel { get; set; }
+
+        /// <summary>   Gets or sets the zero-based index of the Result index. </summary>
+        ///
+        /// <value> The Result index. </value>
+        public long ResultIndex { get; set; }
+
+        /// <summary>   Gets or sets the zero-based index of the Layer. </summary>
+        ///
+        /// <value> The Layer index. </value>
+        public long LayerIndex { get; set; }
 
         /// <summary>   Gets or sets the layers. </summary>
         ///
@@ -108,6 +128,6 @@ namespace PackIt.Models.Package
         /// <summary>   Gets or sets the collations. </summary>
         ///
         /// <value> The collations. </value>
-        public List<Collation> Collations { get; set; }
+        public List<DtoCollation> Collations { get; set; }
     }
 }
