@@ -21,10 +21,10 @@ namespace PackIt.DTO.DtoPlan
         /// <value> The stage level. </value>
         public StageLevel StageLevel { get; set; }
 
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
+        /// <summary>   Gets or sets the zero-based index of this Limit. </summary>
         ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
+        /// <value> The Limit index. </value>
+        public long LimitIndex { get; set; }
 
         /// <summary>   Gets or sets a value indicating whether the design. </summary>
         ///

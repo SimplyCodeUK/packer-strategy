@@ -25,10 +25,10 @@ namespace PackIt.DTO.DtoPlan
         /// <value> The identifier of the Plan. </value>
         public string PlanId { get; set; }
 
-        /// <summary>   Gets or sets the level. </summary>
+        /// <summary>   Gets or sets the Stage level. </summary>
         ///
-        /// <value> The level. </value>
-        public StageLevel Level { get; set; }
+        /// <value> The Stage level. </value>
+        public StageLevel StageLevel { get; set; }
 
         /// <summary>   Gets or sets the collation. </summary>
         ///

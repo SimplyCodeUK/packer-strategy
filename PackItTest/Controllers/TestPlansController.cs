@@ -44,7 +44,7 @@ namespace PackItTest.Controllers
         [Test]
         public void Post()
         {
-            Plan item = new Plan { Id = Guid.NewGuid().ToString() };
+            Plan item = new Plan { PlanId = Guid.NewGuid().ToString() };
             var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -67,7 +67,7 @@ namespace PackItTest.Controllers
         [Test]
         public void PostAlreadyExists()
         {
-            Plan item = new Plan { Id = Guid.NewGuid().ToString() };
+            Plan item = new Plan { PlanId = Guid.NewGuid().ToString() };
             var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -92,7 +92,7 @@ namespace PackItTest.Controllers
                 string id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
-                this.controller.Post(new Plan { Id = id });
+                this.controller.Post(new Plan { PlanId = id });
             }
 
             IActionResult result = this.controller.Get();
@@ -107,9 +107,9 @@ namespace PackItTest.Controllers
             IEnumerable<Plan> items = (IEnumerable<Plan>)objectResult.Value;
             foreach (Plan item in items)
             {
-                if (ids.Contains(item.Id))
+                if (ids.Contains(item.PlanId))
                 {
-                    ids.Remove(item.Id);
+                    ids.Remove(item.PlanId);
                 }
             }
 
@@ -123,7 +123,7 @@ namespace PackItTest.Controllers
             string startName = "A name";
             string startNote = "Some notes";
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { Id = id, Name = startName, Notes = startNote };
+            Plan item = new Plan { PlanId = id, Name = startName, Notes = startNote };
 
             this.controller.Post(item);
 
@@ -137,7 +137,7 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<Plan>(objectResult.Value);
 
             item = (Plan)objectResult.Value;
-            Assert.AreEqual(item.Id, id);
+            Assert.AreEqual(item.PlanId, id);
             Assert.AreEqual(item.Name, startName);
             Assert.AreEqual(item.Notes, startNote);
         }
@@ -161,7 +161,7 @@ namespace PackItTest.Controllers
             string startName = "A name";
             string putName = "B name";
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { Id = id, Name = startName };
+            Plan item = new Plan { PlanId = id, Name = startName };
 
             this.controller.Post(item);
 
@@ -180,7 +180,7 @@ namespace PackItTest.Controllers
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Plan>(objectResult.Value);
             item = (Plan)objectResult.Value;
-            Assert.AreEqual(item.Id, id);
+            Assert.AreEqual(item.PlanId, id);
             Assert.AreEqual(item.Name, putName);
         }
 
@@ -202,7 +202,7 @@ namespace PackItTest.Controllers
         public void Delete()
         {
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { Id = id };
+            Plan item = new Plan { PlanId = id };
 
             this.controller.Post(item);
 
@@ -233,7 +233,7 @@ namespace PackItTest.Controllers
             string patchName = "B name";
             string startNote = "Some notes";
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { Id = id, Name = startName, Notes = startNote };
+            Plan item = new Plan { PlanId = id, Name = startName, Notes = startNote };
 
             // Create a new plan
             this.controller.Post(item);
@@ -253,7 +253,7 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<Plan>(objectResult.Value);
 
             item = (Plan)objectResult.Value;
-            Assert.AreEqual(item.Id, id);
+            Assert.AreEqual(item.PlanId, id);
             Assert.AreEqual(item.Name, patchName);
             Assert.AreEqual(item.Notes, startNote);
 
@@ -265,7 +265,7 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<Plan>(objectResult.Value);
 
             item = (Plan)objectResult.Value;
-            Assert.AreEqual(item.Id, id);
+            Assert.AreEqual(item.PlanId, id);
             Assert.AreEqual(item.Name, patchName);
             Assert.AreEqual(item.Notes, startNote);
         }
@@ -277,7 +277,7 @@ namespace PackItTest.Controllers
             string startName = "A name";
             string patchName = "B name";
             string startNote = "Some notes";
-            Plan item = new Plan { Id = Guid.NewGuid().ToString(), Name = startName, Notes = startNote };
+            Plan item = new Plan { PlanId = Guid.NewGuid().ToString(), Name = startName, Notes = startNote };
 
             this.controller.Post(item);
 
@@ -299,9 +299,9 @@ namespace PackItTest.Controllers
             StageLevel level = StageLevel.MultiPack;
 
             // Create a plan with a stage that has a limit
-            Stage stage = new Stage { Level = level };
+            Stage stage = new Stage { StageLevel = level };
             stage.Limits.Add(new Limit());
-            Plan item = new Plan { Id = id };
+            Plan item = new Plan { PlanId = id };
             item.Stages.Add(stage);
 
             var result = this.controller.Post(item);
@@ -322,11 +322,11 @@ namespace PackItTest.Controllers
 
             // Test the plan
             item = (Plan)objectResult.Value;
-            Assert.AreEqual(item.Id, id);
+            Assert.AreEqual(item.PlanId, id);
 
             // Test for one stage
             Assert.AreEqual(item.Stages.Count, 1);
-            Assert.AreEqual(item.Stages[0].Level, level);
+            Assert.AreEqual(item.Stages[0].StageLevel, level);
 
             // Test for one limit in the stage
             Assert.AreEqual(item.Stages[0].Limits.Count, 1);

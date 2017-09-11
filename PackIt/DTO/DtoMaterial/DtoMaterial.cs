@@ -21,10 +21,10 @@ namespace PackIt.DTO.DtoMaterial
             this.Layers = new List<DtoLayer>();
         }
 
-        /// <summary>   Gets or sets the identifier. </summary>
+        /// <summary>   Gets or sets the Material identifier. </summary>
         ///
-        /// <value> The identifier. </value>
-        public string Id { get; set; }
+        /// <value> The Material identifier. </value>
+        public string MaterialId { get; set; }
 
         /// <summary>   Gets or sets the type of the MaterialType. </summary>
         ///

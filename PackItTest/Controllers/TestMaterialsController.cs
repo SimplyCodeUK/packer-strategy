@@ -44,7 +44,7 @@ namespace PackItTest.Controllers
         [Test]
         public void Post()
         {
-            Material item = new Material { Id = Guid.NewGuid().ToString() };
+            Material item = new Material { MaterialId = Guid.NewGuid().ToString() };
             var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -67,7 +67,7 @@ namespace PackItTest.Controllers
         [Test]
         public void PostAlreadyExists()
         {
-            Material item = new Material { Id = Guid.NewGuid().ToString() };
+            Material item = new Material { MaterialId = Guid.NewGuid().ToString() };
             var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -92,7 +92,7 @@ namespace PackItTest.Controllers
                 string id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
-                this.controller.Post(new Material { Id = id });
+                this.controller.Post(new Material { MaterialId = id });
             }
 
             IActionResult result = this.controller.Get();
@@ -107,9 +107,9 @@ namespace PackItTest.Controllers
             IEnumerable<Material> items = (IEnumerable<Material>)objectResult.Value;
             foreach (Material item in items)
             {
-                if (ids.Contains(item.Id))
+                if (ids.Contains(item.MaterialId))
                 {
-                    ids.Remove(item.Id);
+                    ids.Remove(item.MaterialId);
                 }
             }
 
@@ -124,7 +124,7 @@ namespace PackItTest.Controllers
             string startNote = "Some notes";
             MaterialType type = MaterialType.Can;
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { Id = id, Type = type, Name = startName, Notes = startNote };
+            Material item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
 
             this.controller.Post(item);
 
@@ -138,7 +138,7 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
             item = (Material)objectResult.Value;
-            Assert.AreEqual(item.Id, id);
+            Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Type, type);
             Assert.AreEqual(item.Name, startName);
             Assert.AreEqual(item.Notes, startNote);
@@ -164,7 +164,7 @@ namespace PackItTest.Controllers
             string putName = "B name";
             MaterialType type = MaterialType.Cap;
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { Type = type,  Id = id, Name = startName };
+            Material item = new Material { Type = type, MaterialId = id, Name = startName };
 
             this.controller.Post(item);
 
@@ -184,7 +184,7 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<Material>(objectResult.Value);
             item = (Material)objectResult.Value;
             Assert.AreEqual(item.Type, type);
-            Assert.AreEqual(item.Id, id);
+            Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Name, putName);
         }
 
@@ -207,7 +207,7 @@ namespace PackItTest.Controllers
         {
             MaterialType type = MaterialType.Collar;
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { Id = id, Type = type };
+            Material item = new Material { MaterialId = id, Type = type };
 
             this.controller.Post(item);
 
@@ -239,7 +239,7 @@ namespace PackItTest.Controllers
             string startNote = "Some notes";
             MaterialType type = MaterialType.Crate;
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { Id = id, Type = type, Name = startName, Notes = startNote };
+            Material item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
 
             // Create a new material
             this.controller.Post(item);
@@ -260,7 +260,7 @@ namespace PackItTest.Controllers
 
             item = (Material)objectResult.Value;
             Assert.AreEqual(item.Type, type);
-            Assert.AreEqual(item.Id, id);
+            Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Name, patchName);
             Assert.AreEqual(item.Notes, startNote);
 
@@ -273,7 +273,7 @@ namespace PackItTest.Controllers
 
             item = (Material)objectResult.Value;
             Assert.AreEqual(item.Type, type);
-            Assert.AreEqual(item.Id, id);
+            Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Name, patchName);
             Assert.AreEqual(item.Notes, startNote);
         }
@@ -287,7 +287,7 @@ namespace PackItTest.Controllers
             string startNote = "Some notes";
             MaterialType type = MaterialType.Crate;
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { Id = id, Type = type, Name = startName, Notes = startNote };
+            Material item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
 
             this.controller.Post(item);
 
@@ -310,7 +310,7 @@ namespace PackItTest.Controllers
 
             // Create a material with a costing
             Costing costing = new Costing();
-            Material item = new Material { Id = id, Type = type };
+            Material item = new Material { MaterialId = id, Type = type };
             item.Costings.Add(costing);
 
             var result = this.controller.Post(item);
@@ -332,7 +332,7 @@ namespace PackItTest.Controllers
             // Test the material
             item = (Material)objectResult.Value;
             Assert.AreEqual(item.Type, type);
-            Assert.AreEqual(item.Id, id);
+            Assert.AreEqual(item.MaterialId, id);
         }
     }
 }

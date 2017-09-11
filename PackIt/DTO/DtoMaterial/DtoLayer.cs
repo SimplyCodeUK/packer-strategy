@@ -25,10 +25,10 @@ namespace PackIt.DTO.DtoMaterial
         /// <value> The identifier of the owner. </value>
         public string MaterialId { get; set; }
 
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
+        /// <summary>   Gets or sets the zero-based index of this Layer. </summary>
         ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
+        /// <value> The Layerindex. </value>
+        public long LayerIndex { get; set; }
 
         /// <summary>   Gets or sets the layers. </summary>
         ///

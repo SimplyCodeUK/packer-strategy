@@ -89,7 +89,7 @@ namespace PackIt.Controllers
                 try
                 {
                     this.repository.Add(value);
-                    result = this.CreatedAtRoute("GetMaterial", new { value.Id }, value);
+                    result = this.CreatedAtRoute("GetMaterial", new { value.MaterialId }, value);
                 }
                 catch (Exception)
                 {
@@ -120,7 +120,7 @@ namespace PackIt.Controllers
             if (item != null)
             {
                 item = value;
-                item.Id = id;
+                item.MaterialId = id;
                 this.repository.Update(item);
                 result = this.Ok();
             }

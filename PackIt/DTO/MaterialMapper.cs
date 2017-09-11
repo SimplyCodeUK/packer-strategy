@@ -28,16 +28,16 @@ namespace PackIt.DTO
                     {
                         foreach (DtoCosting costing in d.Costings)
                         {
-                            costing.MaterialId = s.Id;
+                            costing.MaterialId = s.MaterialId;
                         }
 
                         foreach (DtoLayer layer in d.Layers)
                         {
-                            layer.MaterialId = s.Id;
+                            layer.MaterialId = s.MaterialId;
                             foreach (DtoCollation collation in layer.Collations)
                             {
-                                collation.MaterialId = s.Id;
-                                collation.LayerIndex = layer.Index;
+                                collation.MaterialId = s.MaterialId;
+                                collation.LayerIndex = layer.LayerIndex;
                             }
                         }
                     });
