@@ -27,7 +27,7 @@ namespace PackIt.DTO.DtoMaterial
 
         /// <summary>   Gets or sets the zero-based index of this Layer. </summary>
         ///
-        /// <value> The Layerindex. </value>
+        /// <value> The Layer index. </value>
         public long LayerIndex { get; set; }
 
         /// <summary>   Gets or sets the layers. </summary>

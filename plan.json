@@ -93,7 +93,81 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 4,
+            "MaterialCode": "Benl/125ml",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Benl/125ml",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 21,
+            "MaterialCode": "Gen/125",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "05/Tc",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "125gBenl",
+            "DesignType": 1,
+            "DesignCode": "SP52",
+            "QualityType": 0,
+            "QualityCode": "Benl/125ml",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 8,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "CtFilm/JTA",
+            "QualityType": 0,
+            "QualityCode": "10micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.01,
+            "QualityDensity": 0.1,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -185,7 +259,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "125gSec.",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "125K/171C/125K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.75,
+            "QualityDensity": 0.459,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -277,7 +371,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -369,7 +483,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 9,
+            "MaterialCode": "Shr/050m",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "50micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.05,
+            "QualityDensity": 0.45,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -467,7 +619,8 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": []
       },
       {
         "StageLevel": 4,
@@ -559,7 +712,27 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 12,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "0442",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 4,
+            "PackingGapY": 4,
+            "PackingGapZ": -60
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -651,7 +824,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 1,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "200K/175B/200K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 4,
+            "QualityDensity": 0.63,
+            "PackingGapX": 4,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -743,7 +936,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -835,7 +1048,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 9,
+            "MaterialCode": "Shr/050m",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "50micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.05,
+            "QualityDensity": 0.45,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -933,7 +1184,27 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "Sachet/1/CS",
+            "DesignType": 2,
+            "DesignCode": "Sachet/1",
+            "QualityType": 0,
+            "QualityCode": "CS/Sachet",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.06,
+            "QualityDensity": 0.075,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 3,
@@ -1025,7 +1296,27 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "CS/2/Traded",
+            "DesignType": 2,
+            "DesignCode": "CS/Traded",
+            "QualityType": 0,
+            "QualityCode": "CSx4/Carton",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.3,
+            "QualityDensity": 0.225,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -1117,7 +1408,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 12,
+            "MaterialCode": "CS/3/CupaSoup",
+            "DesignType": 2,
+            "DesignCode": "0442",
+            "QualityType": 0,
+            "QualityCode": "CS/3/Tray",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.4,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -1209,7 +1520,63 @@
         "DrawDetail": 1,
         "MinBlockLength": 600,
         "MinBlockBreadth": 500,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "UKCHEP",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Chep/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 165,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 13,
+            "MaterialCode": "PA016",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "125K/175B/125K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 4,
+            "LayerStep": 6,
+            "QualityCaliper": 3.7,
+            "QualityDensity": 0.485,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 9,
+            "MaterialCode": "SH001",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "50micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.05,
+            "QualityDensity": 0.45,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -1307,7 +1674,45 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 6,
+            "MaterialCode": "CTN/525/Glass",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "CTN/525/Glass",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 2,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 22,
+            "MaterialCode": "CTN/525",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "CTN/525/Lid",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 4,
@@ -1399,7 +1804,27 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 12,
+            "MaterialCode": "CT/Oriental",
+            "DesignType": 2,
+            "DesignCode": "0442",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -1497,7 +1922,81 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 4,
+            "MaterialCode": "HR/Eau",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "FlintGlass",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 21,
+            "MaterialCode": "Gen/4443",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "ScrewTop/Met",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "EDC/HR",
+            "DesignType": 1,
+            "DesignCode": "SP52",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 8,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "CtFilm/JTA",
+            "QualityType": 0,
+            "QualityCode": "10micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.01,
+            "QualityDensity": 0.1,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -1589,7 +2088,45 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 2,
+            "QualityDensity": 0.455,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "StdPack/1",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 2,
+            "QualityDensity": 0.455,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -1681,7 +2218,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -1773,7 +2330,27 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -1871,7 +2448,45 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 4,
+            "MaterialCode": "ElsB/400",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "05/EBl.",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 21,
+            "MaterialCode": "Gen/EB/40",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "05/EBl.",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -1963,7 +2578,27 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "E/Balsam",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 2,
+            "QualityDensity": 0.455,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -2055,7 +2690,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -2147,7 +2802,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 13,
+            "MaterialCode": "Gen/1200x800",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -2245,7 +2938,45 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 13,
+            "MaterialCode": "Piz/150/Gp",
+            "DesignType": 2,
+            "DesignCode": "Gp/005/BlK.",
+            "QualityType": 0,
+            "QualityCode": "Gp/005",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.005,
+            "QualityDensity": 0.015,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "Mp155",
+            "DesignType": 1,
+            "DesignCode": "SP52",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -2337,7 +3068,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "TP/321/319",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "150K/112C/150K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.9,
+            "QualityDensity": 0.46,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -2429,7 +3180,45 @@
         "DrawDetail": 1,
         "MinBlockLength": 32,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "UKCHEP",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Chep/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 165,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 9,
+            "MaterialCode": "Shr/050m",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "50micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.05,
+            "QualityDensity": 0.45,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -2527,7 +3316,27 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "GenP/Transit",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "150K/112C/150K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.9,
+            "QualityDensity": 0.46,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -2619,7 +3428,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -2711,7 +3540,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 9,
+            "MaterialCode": "Shr050",
+            "DesignType": 2,
+            "DesignCode": "Shrink/01",
+            "QualityType": 0,
+            "QualityCode": "50micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.05,
+            "QualityDensity": 0.45,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -2809,7 +3676,45 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 6,
+            "MaterialCode": "J/295",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "J/295",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 21,
+            "MaterialCode": "J/295Twist-Top",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "J/295TT",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 2,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -2901,7 +3806,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 13,
+            "MaterialCode": "12x470g",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 2,
+            "QualityDensity": 0.455,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "12-Pack",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 2,
+            "QualityDensity": 0.455,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -2993,7 +3936,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 32,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -3085,7 +4048,63 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 13,
+            "MaterialCode": "Gen/1200x800",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 9,
+            "MaterialCode": "Shr/050m",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "50micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.05,
+            "QualityDensity": 0.45,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -3183,7 +4202,63 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 6,
+            "MaterialCode": "Nes/200/Gl",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "FGl/Nes/200/1",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 23,
+            "MaterialCode": "Sl200",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Seal/21",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.2,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 21,
+            "MaterialCode": "N/200TwistTop",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "TwisTop/PP/1",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -3275,7 +4350,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 12,
+            "MaterialCode": "Nes/12-Pack",
+            "DesignType": 0,
+            "DesignCode": "0771",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 8,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "CtFilm/JTA",
+            "QualityType": 0,
+            "QualityCode": "10micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.01,
+            "QualityDensity": 0.1,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -3367,7 +4480,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -3459,7 +4592,63 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 2,
+            "QualityDensity": 0.455,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 9,
+            "MaterialCode": "Shr050",
+            "DesignType": 2,
+            "DesignCode": "Shrink/01",
+            "QualityType": 0,
+            "QualityCode": "50micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.05,
+            "QualityDensity": 0.45,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -3557,7 +4746,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 8,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OxoFoilwrap",
+            "QualityType": 0,
+            "QualityCode": "OxoFoilwrap",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.019,
+            "QualityDensity": 0.044,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 3,
@@ -3649,7 +4858,27 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 1,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OxoCarton",
+            "QualityType": 0,
+            "QualityCode": "OxoCarton",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.35,
+            "QualityDensity": 0.215,
+            "PackingGapX": 1.6,
+            "PackingGapY": 1.7,
+            "PackingGapZ": 1.4
+          }
+        ]
       },
       {
         "StageLevel": 4,
@@ -3741,7 +4970,45 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 12,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OxoTray",
+            "QualityType": 0,
+            "QualityCode": "OxoTray",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0.295,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": -39
+          },
+          {
+            "Design": 1,
+            "MaterialType": 9,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OXO12'sShrink",
+            "QualityType": 0,
+            "QualityCode": "Oxo15micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.015,
+            "QualityDensity": 0.014,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -3833,7 +5100,45 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 12,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OxoDisplayUnit",
+            "QualityType": 0,
+            "QualityCode": "OxoTray",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0.295,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 9,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OXO12'sShrink",
+            "QualityType": 0,
+            "QualityCode": "Oxo15micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.015,
+            "QualityDensity": 0.014,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -3925,7 +5230,63 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "UKCHEP/2",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Chep/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 165,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 9,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "Shrink/01",
+            "QualityType": 0,
+            "QualityCode": "OXO30micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.03,
+            "QualityDensity": 0.029,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -4023,7 +5384,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 8,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OxoFoilwrap",
+            "QualityType": 0,
+            "QualityCode": "OxoFoilwrap",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.019,
+            "QualityDensity": 0.044,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 3,
@@ -4115,7 +5496,27 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 1,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OxoCarton",
+            "QualityType": 0,
+            "QualityCode": "OxoCarton",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.35,
+            "QualityDensity": 0.215,
+            "PackingGapX": 1.6,
+            "PackingGapY": 1.7,
+            "PackingGapZ": 1.4
+          }
+        ]
       },
       {
         "StageLevel": 4,
@@ -4207,7 +5608,45 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 12,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OxoTray",
+            "QualityType": 0,
+            "QualityCode": "OxoTray",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0.295,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": -39
+          },
+          {
+            "Design": 1,
+            "MaterialType": 9,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OXO12'sShrink",
+            "QualityType": 0,
+            "QualityCode": "Oxo15micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.015,
+            "QualityDensity": 0.014,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -4299,7 +5738,45 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 12,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OxoDisplayUnit",
+            "QualityType": 0,
+            "QualityCode": "OxoTray",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0.295,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 9,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "OXO12'sShrink",
+            "QualityType": 0,
+            "QualityCode": "Oxo15micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.015,
+            "QualityDensity": 0.014,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -4391,7 +5868,63 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "UKCHEP/2",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Chep/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 165,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 9,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "Shrink/01",
+            "QualityType": 0,
+            "QualityCode": "OXO30micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.03,
+            "QualityDensity": 0.029,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -4489,7 +6022,63 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 4,
+            "MaterialCode": "Benl/125ml",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Benl/125ml",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 21,
+            "MaterialCode": "Gen/125",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "05/Tc",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "125gBenl",
+            "DesignType": 1,
+            "DesignCode": "SP52",
+            "QualityType": 0,
+            "QualityCode": "Benl/125ml",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -4581,7 +6170,27 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "125gSec.",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "125K/171C/125K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.75,
+            "QualityDensity": 0.459,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -4673,7 +6282,27 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -4771,7 +6400,63 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 23,
+            "MaterialCode": "SlM/01A",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Seal/21",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.2,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 5,
+            "MaterialCode": "TB/01A",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Plastic",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1.1,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 22,
+            "MaterialCode": "Lid/01A",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "TB/Y499",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -4863,7 +6548,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3,
+            "QualityDensity": 0.495,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 1,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "125K/171C/125K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.75,
+            "QualityDensity": 0.459,
+            "PackingGapX": 5,
+            "PackingGapY": 5,
+            "PackingGapZ": 2
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -4955,7 +6678,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 32,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -5047,7 +6790,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 9,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "0001",
+            "QualityType": 0,
+            "QualityCode": "50micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.05,
+            "QualityDensity": 0.45,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -5145,7 +6926,8 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": []
       },
       {
         "StageLevel": 2,
@@ -5237,7 +7019,27 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "Ct/Pd0492",
+            "DesignType": 0,
+            "DesignCode": "0227",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -5329,7 +7131,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "TC/Pd0492",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "125K/171C/125K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.75,
+            "QualityDensity": 0.459,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -5421,7 +7243,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 32,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -5513,7 +7355,63 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.5,
+            "QualityDensity": 0.565,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 9,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "0001",
+            "QualityType": 0,
+            "QualityCode": "50micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.05,
+            "QualityDensity": 0.45,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -5611,7 +7509,45 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 4,
+            "MaterialCode": "PdX/4329",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "FlintL/WGlass",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 21,
+            "MaterialCode": "Gen/4253",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "ScrewTop/Met",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -5703,7 +7639,63 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 13,
+            "MaterialCode": "PdX/4655",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 12,
+            "MaterialCode": "TrX/4655",
+            "DesignType": 0,
+            "DesignCode": "0771",
+            "QualityType": 0,
+            "QualityCode": "150K/112C/150K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.9,
+            "QualityDensity": 0.46,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 9,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "0002",
+            "QualityType": 0,
+            "QualityCode": "10micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.01,
+            "QualityDensity": 0.1,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -5795,7 +7787,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 32,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -5893,7 +7905,45 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 4,
+            "MaterialCode": "PdX/4329",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "FlintL/WGlass",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 21,
+            "MaterialCode": "Gen/4253",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "ScrewTop/Met",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -5985,7 +8035,63 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "200K/200C/200K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 5,
+            "QualityDensity": 0.645,
+            "PackingGapX": 5,
+            "PackingGapY": 5,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 12,
+            "MaterialCode": "Tr/XOil",
+            "DesignType": 0,
+            "DesignCode": "0771",
+            "QualityType": 0,
+            "QualityCode": "150K/112C/150K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.9,
+            "QualityDensity": 0.46,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 9,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "0002",
+            "QualityType": 0,
+            "QualityCode": "10micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.01,
+            "QualityDensity": 0.1,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -6077,7 +8183,45 @@
         "DrawDetail": 1,
         "MinBlockLength": 32,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 2,
+            "LayerStep": 2,
+            "QualityCaliper": 2,
+            "QualityDensity": 0.455,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -6175,7 +8319,45 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 5,
+            "MaterialCode": "TB/Y499",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "TB/Y499",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 23,
+            "MaterialCode": "Sl21",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Seal/21",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.2,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -6267,7 +8449,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3,
+            "QualityDensity": 0.495,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 1,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "125K/171C/125K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.75,
+            "QualityDensity": 0.459,
+            "PackingGapX": 2,
+            "PackingGapY": 2,
+            "PackingGapZ": 5
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -6359,7 +8579,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 32,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -6457,7 +8697,27 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 3,
+            "MaterialCode": "TC/400/PT",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "05/Tc",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -6549,7 +8809,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 12,
+            "MaterialCode": "Tr/23P/PT",
+            "DesignType": 0,
+            "DesignCode": "0771",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 8,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "0002",
+            "QualityType": 0,
+            "QualityCode": "10micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.01,
+            "QualityDensity": 0.1,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -6641,7 +8939,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 32,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "UKCHEP",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Chep/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 165,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -6739,7 +9057,8 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": []
       },
       {
         "StageLevel": 6,
@@ -6831,7 +9150,81 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 2,
+            "QualityDensity": 0.455,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 2,
+            "QualityDensity": 0.455,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 12,
+            "MaterialCode": "Tr/86B",
+            "DesignType": 2,
+            "DesignCode": "0442",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Quart-EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -6923,7 +9316,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -7021,7 +9452,45 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 4,
+            "MaterialCode": "T/70",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "FlintL/WGlass",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 21,
+            "MaterialCode": "T70/McTeachers",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "T70/Mc",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -7113,7 +9582,27 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 1,
+            "MaterialCode": "T70/2/8-Pack",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "150K/112C/150K",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.9,
+            "QualityDensity": 0.46,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -7205,7 +9694,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -7297,7 +9806,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 13,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -7395,7 +9942,8 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": []
       },
       {
         "StageLevel": 5,
@@ -7487,7 +10035,27 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 1,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "C-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.75,
+            "QualityDensity": 0.566,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 1
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -7579,7 +10147,27 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -7677,7 +10265,45 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 4,
+            "MaterialCode": "PdX/4329",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "FlintL/WGlass",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 21,
+            "MaterialCode": "Gen/4253",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "ScrewTop/Met",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -7769,7 +10395,81 @@
         "DrawDetail": 2,
         "MinBlockLength": 32,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 13,
+            "MaterialCode": "X1/B",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 13,
+            "MaterialCode": "X1/B/Inter",
+            "DesignType": 0,
+            "DesignCode": "1000",
+            "QualityType": 0,
+            "QualityCode": "178B-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 2,
+            "QualityDensity": 0.455,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 12,
+            "MaterialCode": "X1/B/Top",
+            "DesignType": 2,
+            "DesignCode": "0442",
+            "QualityType": 0,
+            "QualityCode": "1mmSolid",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 1,
+            "QualityDensity": 0.675,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -7867,7 +10567,45 @@
         "DrawDetail": 1,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 4,
+            "MaterialCode": "PdX/4329",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "FlintL/WGlass",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 0,
+            "MaterialType": 21,
+            "MaterialCode": "Gen/4253",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "ScrewTop/Met",
+            "Inverted": 1,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 5,
@@ -7959,7 +10697,27 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 10,
+            "MaterialCode": "Crate/1",
+            "DesignType": 2,
+            "DesignCode": "Crate",
+            "QualityType": 0,
+            "QualityCode": "YMCr/Y499",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 5,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -8051,7 +10809,27 @@
         "DrawDetail": 1,
         "MinBlockLength": 32,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "Half-Euro",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       },
       {
         "StageLevel": 7,
@@ -8143,7 +10921,45 @@
         "DrawDetail": 2,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "Eur/Returnable",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          },
+          {
+            "Design": 1,
+            "MaterialType": 9,
+            "MaterialCode": "",
+            "DesignType": 2,
+            "DesignCode": "0001",
+            "QualityType": 0,
+            "QualityCode": "50micron",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 0.05,
+            "QualityDensity": 0.45,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -8241,7 +11057,27 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 1,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "C-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.75,
+            "QualityDensity": 0.566,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 1
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -8333,7 +11169,27 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   },
@@ -8431,7 +11287,27 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 1,
+            "MaterialType": 1,
+            "MaterialCode": "",
+            "DesignType": 0,
+            "DesignCode": "0204",
+            "QualityType": 0,
+            "QualityCode": "C-Flute",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 3.75,
+            "QualityDensity": 0.566,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 1
+          }
+        ]
       },
       {
         "StageLevel": 6,
@@ -8523,7 +11399,27 @@
         "DrawDetail": 0,
         "MinBlockLength": 0,
         "MinBlockBreadth": 0,
-        "ST_ACTIVERESULT": 0
+        "ST_ACTIVERESULT": 0,
+        "Limits": [
+          {
+            "Design": 0,
+            "MaterialType": 15,
+            "MaterialCode": "EUR",
+            "DesignType": 0,
+            "DesignCode": "",
+            "QualityType": 0,
+            "QualityCode": "",
+            "Inverted": 0,
+            "LayerCount": 1,
+            "LayerStart": 1,
+            "LayerStep": 1,
+            "QualityCaliper": 144,
+            "QualityDensity": 0,
+            "PackingGapX": 0,
+            "PackingGapY": 0,
+            "PackingGapZ": 0
+          }
+        ]
       }
     ]
   }

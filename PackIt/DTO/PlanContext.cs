@@ -110,15 +110,15 @@ namespace PackIt.DTO
         {
             base.OnModelCreating(modelBuilder);
 
-            this.Configure(modelBuilder.Entity<DtoPlan.DtoPlan>());
-            this.Configure(modelBuilder.Entity<DtoPlan.DtoStage>());
-            this.Configure(modelBuilder.Entity<DtoPlan.DtoLimit>());
+            Configure(modelBuilder.Entity<DtoPlan.DtoPlan>());
+            Configure(modelBuilder.Entity<DtoPlan.DtoStage>());
+            Configure(modelBuilder.Entity<DtoPlan.DtoLimit>());
         }
 
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPlan.DtoPlan> builder)
+        private static void Configure(EntityTypeBuilder<DtoPlan.DtoPlan> builder)
         {
             builder.ToTable("DtoPlan");
             builder.HasKey(c => new { c.PlanId });
@@ -128,7 +128,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPlan.DtoStage> builder)
+        private static void Configure(EntityTypeBuilder<DtoPlan.DtoStage> builder)
         {
             builder.ToTable("DtoStage");
             builder.HasKey(c => new { c.PlanId, c.StageLevel });
@@ -138,7 +138,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPlan.DtoLimit> builder)
+        private static void Configure(EntityTypeBuilder<DtoPlan.DtoLimit> builder)
         {
             builder.ToTable("DtoLimit");
             builder.HasKey(c => new { c.PlanId, c.StageLevel, c.LimitIndex });

@@ -28,10 +28,13 @@ namespace PackIt.DTO
                         foreach (DtoStage stage in d.Stages)
                         {
                             stage.PlanId = s.PlanId;
+
+                            int limitIndex = 0;
                             foreach (DtoLimit limit in stage.Limits)
                             {
                                 limit.PlanId = s.PlanId;
                                 limit.StageLevel = stage.StageLevel;
+                                limit.LimitIndex = limitIndex++;
                             }
                         }
                     });

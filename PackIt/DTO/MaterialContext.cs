@@ -110,16 +110,16 @@ namespace PackIt.DTO
         {
             base.OnModelCreating(modelBuilder);
 
-            this.Configure(modelBuilder.Entity<DtoMaterial.DtoMaterial>());
-            this.Configure(modelBuilder.Entity<DtoMaterial.DtoCosting>());
-            this.Configure(modelBuilder.Entity<DtoMaterial.DtoLayer>());
-            this.Configure(modelBuilder.Entity<DtoMaterial.DtoCollation>());
+            Configure(modelBuilder.Entity<DtoMaterial.DtoMaterial>());
+            Configure(modelBuilder.Entity<DtoMaterial.DtoCosting>());
+            Configure(modelBuilder.Entity<DtoMaterial.DtoLayer>());
+            Configure(modelBuilder.Entity<DtoMaterial.DtoCollation>());
         }
 
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoMaterial.DtoMaterial> builder)
+        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoMaterial> builder)
         {
             builder.ToTable("DtoMaterial");
             builder.HasKey(c => new { c.MaterialId });
@@ -130,7 +130,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoMaterial.DtoCosting> builder)
+        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoCosting> builder)
         {
             builder.ToTable("DtoCosting");
             builder.HasKey(c => new { c.MaterialId, c.Quantity });
@@ -139,7 +139,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoMaterial.DtoLayer> builder)
+        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoLayer> builder)
         {
             builder.ToTable("DtoLayer");
             builder.HasKey(c => new { c.MaterialId, c.LayerIndex });
@@ -149,7 +149,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoMaterial.DtoCollation> builder)
+        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoCollation> builder)
         {
             builder.ToTable("DtoCollation");
             builder.HasKey(c => new { c.MaterialId, c.LayerIndex, c.CollationIndex });

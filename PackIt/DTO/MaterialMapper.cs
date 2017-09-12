@@ -34,10 +34,13 @@ namespace PackIt.DTO
                         foreach (DtoLayer layer in d.Layers)
                         {
                             layer.MaterialId = s.MaterialId;
+
+                            int collationIndex = 0;
                             foreach (DtoCollation collation in layer.Collations)
                             {
                                 collation.MaterialId = s.MaterialId;
                                 collation.LayerIndex = layer.LayerIndex;
+                                collation.CollationIndex = collationIndex++;
                             }
                         }
                     });
