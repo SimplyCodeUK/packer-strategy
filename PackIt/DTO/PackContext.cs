@@ -111,22 +111,22 @@ namespace PackIt.DTO
         {
             base.OnModelCreating(modelBuilder);
 
-            this.Configure(modelBuilder.Entity<DtoPack.DtoPack>());
-            this.Configure(modelBuilder.Entity<DtoPack.DtoCosting>());
-            this.Configure(modelBuilder.Entity<DtoPack.DtoStage>());
-            this.Configure(modelBuilder.Entity<DtoPack.DtoLimit>());
-            this.Configure(modelBuilder.Entity<DtoPack.DtoResult>());
-            this.Configure(modelBuilder.Entity<DtoPack.DtoLayer>());
-            this.Configure(modelBuilder.Entity<DtoPack.DtoCollation>());
-            this.Configure(modelBuilder.Entity<DtoPack.DtoMaterial>());
-            this.Configure(modelBuilder.Entity<DtoPack.DtoDatabaseMaterial>());
-            this.Configure(modelBuilder.Entity<DtoPack.DtoSection>());
+            Configure(modelBuilder.Entity<DtoPack.DtoPack>());
+            Configure(modelBuilder.Entity<DtoPack.DtoCosting>());
+            Configure(modelBuilder.Entity<DtoPack.DtoStage>());
+            Configure(modelBuilder.Entity<DtoPack.DtoLimit>());
+            Configure(modelBuilder.Entity<DtoPack.DtoResult>());
+            Configure(modelBuilder.Entity<DtoPack.DtoLayer>());
+            Configure(modelBuilder.Entity<DtoPack.DtoCollation>());
+            Configure(modelBuilder.Entity<DtoPack.DtoMaterial>());
+            Configure(modelBuilder.Entity<DtoPack.DtoDatabaseMaterial>());
+            Configure(modelBuilder.Entity<DtoPack.DtoSection>());
         }
 
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPack.DtoPack> builder)
+        private static void Configure(EntityTypeBuilder<DtoPack.DtoPack> builder)
         {
             builder.ToTable("DtoPack");
             builder.HasKey(c => c.PackId);
@@ -137,7 +137,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPack.DtoCosting> builder)
+        private static void Configure(EntityTypeBuilder<DtoPack.DtoCosting> builder)
         {
             builder.ToTable("DtoCosting");
             builder.HasKey(c => new { c.PackId, c.RequiredQuantity });
@@ -146,7 +146,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPack.DtoStage> builder)
+        private static void Configure(EntityTypeBuilder<DtoPack.DtoStage> builder)
         {
             builder.ToTable("DtoStage");
             builder.HasKey(c => new { c.PackId, c.StageLevel });
@@ -157,7 +157,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPack.DtoLimit> builder)
+        private static void Configure(EntityTypeBuilder<DtoPack.DtoLimit> builder)
         {
             builder.ToTable("DtoLimit");
             builder.HasKey(c => new { c.PackId, c.StageLevel, c.LimitIndex });
@@ -166,7 +166,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPack.DtoResult> builder)
+        private static void Configure(EntityTypeBuilder<DtoPack.DtoResult> builder)
         {
             builder.ToTable("DtoResult");
             builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex });
@@ -178,7 +178,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPack.DtoLayer> builder)
+        private static void Configure(EntityTypeBuilder<DtoPack.DtoLayer> builder)
         {
             builder.ToTable("DtoLayer");
             builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.LayerIndex });
@@ -188,7 +188,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPack.DtoCollation> builder)
+        private static void Configure(EntityTypeBuilder<DtoPack.DtoCollation> builder)
         {
             builder.ToTable("DtoCollation");
             builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.LayerIndex, c.CollationIndex });
@@ -197,7 +197,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPack.DtoMaterial> builder)
+        private static void Configure(EntityTypeBuilder<DtoPack.DtoMaterial> builder)
         {
             builder.ToTable("DtoMaterial");
             builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.MaterialIndex });
@@ -207,7 +207,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPack.DtoDatabaseMaterial> builder)
+        private static void Configure(EntityTypeBuilder<DtoPack.DtoDatabaseMaterial> builder)
         {
             builder.ToTable("DtoDatabaseMaterial");
             builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.MaterialIndex, c.DatabaseMaterialIndex });
@@ -216,7 +216,7 @@ namespace PackIt.DTO
         /// <summary>Configures the specified builder.</summary>
         ///
         /// <param name="builder">The builder.</param>
-        private void Configure(EntityTypeBuilder<DtoPack.DtoSection> builder)
+        private static void Configure(EntityTypeBuilder<DtoPack.DtoSection> builder)
         {
             builder.ToTable("DtoSection");
             builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.SectionIndex });

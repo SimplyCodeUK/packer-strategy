@@ -13,7 +13,7 @@ namespace PackItTest.DTO
     using PackIt.DTO.DtoPack;
     using PackIt.Models.Pack;
 
-    /// <summary>   (Unit Test Fixture) a mapper for packs. </summary>
+    /// <summary>   (Unit Test Method) Convert a Pack to it's DTO. </summary>
     [TestFixture]
     public class TestPackMapper
     {
