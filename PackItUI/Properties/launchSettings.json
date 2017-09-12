@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:54932/",
+      "applicationUrl": "http://localhost:52013/",
       "sslPort": 0
     }
   },
@@ -11,19 +11,17 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/v1/plans",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PackIt": {
-      "commandName": "PackIt",
+    "PackItUI": {
+      "commandName": "PackItUI",
       "launchBrowser": true,
-      "launchUrl": "api/v1/plans",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:54933"
+      "applicationUrl": "http://localhost:52014/"
     }
   }
 }
