@@ -1,0 +1,72 @@
+﻿// <copyright company="Simply Code Ltd.">
+// Copyright (c) Simply Code Ltd. All rights reserved.
+// Licensed under the MIT License.
+// See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace PackItUI
+{
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+
+    /// <summary>   A start up. </summary>
+    public class Startup
+    {
+        /// <summary>
+        /// Initialises a new instance of the <see cref="Startup" /> class.
+        /// </summary>
+        ///
+        /// <param name="configuration">  The configuration. </param>
+        public Startup(IConfiguration configuration)
+        {
+            this.Configuration = configuration;
+        }
+
+        /// <summary> Gets the configuration. </summary>
+        /// 
+        /// <value> The configuration. </value>
+        public IConfiguration Configuration { get; }
+
+        /// <summary>
+        /// Configures the services.
+        /// This method gets called by the runtime. Use this method to add services to the container.        
+        /// </summary>
+        /// 
+        /// <param name="services">The services.</param>
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddMvc();
+        }
+
+        /// <summary>
+        /// Configures the specified application.
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.        
+        /// </summary>
+        /// 
+        /// <param name="app">The application.</param>
+        /// <param name="env">The environment.</param>
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+
+            app.UseStaticFiles();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+        }
+    }
+}
