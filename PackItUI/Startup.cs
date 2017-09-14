@@ -10,6 +10,7 @@ namespace PackItUI
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using PackItUI.Models;
 
     /// <summary>   A start up. </summary>
     public class Startup
@@ -37,6 +38,9 @@ namespace PackItUI
         /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configure using a sub-section of the appsettings.json file.
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
             services.AddMvc();
         }
 

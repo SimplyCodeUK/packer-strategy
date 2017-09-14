@@ -11,15 +11,15 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/v1/plans",
+      "launchUrl": "api/v1",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "PackIt": {
-      "commandName": "PackIt",
+      "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/v1/plans",
+      "launchUrl": "api/v1",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

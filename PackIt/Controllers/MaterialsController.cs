@@ -7,13 +7,10 @@
 namespace PackIt.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using System.Net;
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
     using PackIt.DTO;
-    using PackIt.Helpers;
-    using PackIt.Helpers.Enums;
     using PackIt.Models.Material;
 
     /// <summary>   A controller for handling materials. </summary>
