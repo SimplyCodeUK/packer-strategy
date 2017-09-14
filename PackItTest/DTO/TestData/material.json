@@ -44,8 +44,8 @@
   "Layers": [
     {
       "Layers": 3,
-      "OutputRotation": 0,
-      "ParentRotation": 0,
+      "OutputRotation": false,
+      "ParentRotation": false,
       "Rotation": 9,
       "Percent": 0,
       "Length": 557.7,
@@ -70,7 +70,7 @@
           "CountY": 2,
           "Even": 0,
           "Nested": 0,
-          "AlongBreadth": 0,
+          "AlongBreadth": false,
           "Rotation": 0
         },
         {
@@ -82,7 +82,7 @@
           "CountY": 2,
           "Even": 0,
           "Nested": 0,
-          "AlongBreadth": 0,
+          "AlongBreadth": false,
           "Rotation": 0
         },
         {
@@ -94,7 +94,7 @@
           "CountY": 1,
           "Even": 0,
           "Nested": 0,
-          "AlongBreadth": 0,
+          "AlongBreadth": false,
           "Rotation": 1
         },
         {
@@ -106,7 +106,7 @@
           "CountY": 1,
           "Even": 0,
           "Nested": 0,
-          "AlongBreadth": 0,
+          "AlongBreadth": false,
           "Rotation": 1
         },
         {
@@ -118,7 +118,7 @@
           "CountY": 2,
           "Even": 0,
           "Nested": 0,
-          "AlongBreadth": 0,
+          "AlongBreadth": false,
           "Rotation": 1
         }
       ]

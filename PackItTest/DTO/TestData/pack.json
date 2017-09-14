@@ -146,7 +146,7 @@
       "Limits": [],
       "Results": [
         {
-          "Used": 1,
+          "Used": true,
           "Generator": 0,
           "SubGenerator": 0,
           "StageLevel": 0,
@@ -193,8 +193,8 @@
           "Layers": [
             {
               "Layers": 0,
-              "OutputRotation": 0,
-              "ParentRotation": 0,
+              "OutputRotation": false,
+              "ParentRotation": false,
               "Rotation": 0,
               "Percent": 0,
               "Length": 0,
@@ -409,7 +409,7 @@
       "MinBlockBreadth": 0,
       "Limits": [
         {
-          "Design": 0,
+          "Design": false,
           "MaterialType": 4,
           "MaterialCode": "Benl/125ml",
           "MaterialCodeMin": "",
@@ -419,7 +419,7 @@
           "QualityType": 0,
           "QualityCode": "Benl/125ml",
           "QualityCodeMin": "",
-          "Inverted": 0,
+          "Inverted": false,
           "LayerCount": 1,
           "LayerStart": 1,
           "LayerStep": 1,
@@ -454,7 +454,7 @@
           "Usage": 0
         },
         {
-          "Design": 0,
+          "Design": false,
           "MaterialType": 21,
           "MaterialCode": "Gen/125",
           "MaterialCodeMin": "",
@@ -464,7 +464,7 @@
           "QualityType": 0,
           "QualityCode": "05/Tc",
           "QualityCodeMin": "",
-          "Inverted": 1,
+          "Inverted": true,
           "LayerCount": 1,
           "LayerStart": 1,
           "LayerStep": 1,
@@ -499,7 +499,7 @@
           "Usage": 3
         },
         {
-          "Design": 0,
+          "Design": false,
           "MaterialType": 1,
           "MaterialCode": "125g Benl",
           "MaterialCodeMin": "",
@@ -509,7 +509,7 @@
           "QualityType": 0,
           "QualityCode": "Benl/125ml",
           "QualityCodeMin": "",
-          "Inverted": 0,
+          "Inverted": false,
           "LayerCount": 1,
           "LayerStart": 1,
           "LayerStep": 1,
@@ -544,7 +544,7 @@
           "Usage": 0
         },
         {
-          "Design": 1,
+          "Design": true,
           "MaterialType": 8,
           "MaterialCode": "",
           "MaterialCodeMin": "",
@@ -554,7 +554,7 @@
           "QualityType": 0,
           "QualityCode": "10 micron",
           "QualityCodeMin": "",
-          "Inverted": 0,
+          "Inverted": false,
           "LayerCount": 1,
           "LayerStart": 1,
           "LayerStep": 1,
@@ -591,7 +591,7 @@
       ],
       "Results": [
         {
-          "Used": 1,
+          "Used": true,
           "Generator": 0,
           "SubGenerator": 1,
           "StageLevel": 2,
@@ -638,8 +638,8 @@
           "Layers": [
             {
               "Layers": 1,
-              "OutputRotation": 0,
-              "ParentRotation": 0,
+              "OutputRotation": false,
+              "ParentRotation": false,
               "Rotation": 9,
               "Percent": 0,
               "Length": 46,
@@ -664,7 +664,7 @@
                   "CountY": 1,
                   "Even": 0,
                   "Nested": 0,
-                  "AlongBreadth": 0,
+                  "AlongBreadth": false,
                   "Rotation": 0
                 }
               ]
@@ -987,7 +987,7 @@
       "MinBlockBreadth": 0,
       "Limits": [
         {
-          "Design": 0,
+          "Design": false,
           "MaterialType": 1,
           "MaterialCode": "125g Sec.",
           "MaterialCodeMin": "",
@@ -997,7 +997,7 @@
           "QualityType": 0,
           "QualityCode": "125K/171C/125K",
           "QualityCodeMin": "",
-          "Inverted": 0,
+          "Inverted": false,
           "LayerCount": 1,
           "LayerStart": 1,
           "LayerStep": 1,
@@ -1034,7 +1034,7 @@
       ],
       "Results": [
         {
-          "Used": 1,
+          "Used": true,
           "Generator": 0,
           "SubGenerator": 1,
           "StageLevel": 5,
@@ -1081,8 +1081,8 @@
           "Layers": [
             {
               "Layers": 2,
-              "OutputRotation": 0,
-              "ParentRotation": 0,
+              "OutputRotation": false,
+              "ParentRotation": false,
               "Rotation": 9,
               "Percent": 0,
               "Length": 208.08,
@@ -1107,7 +1107,7 @@
                   "CountY": 3,
                   "Even": 0,
                   "Nested": 0,
-                  "AlongBreadth": 0,
+                  "AlongBreadth": false,
                   "Rotation": 1
                 }
               ]
@@ -1295,7 +1295,7 @@
       "MinBlockBreadth": 0,
       "Limits": [
         {
-          "Design": 0,
+          "Design": false,
           "MaterialType": 15,
           "MaterialCode": "Half-Euro",
           "MaterialCodeMin": "",
@@ -1305,7 +1305,7 @@
           "QualityType": 0,
           "QualityCode": "Eur/Returnable",
           "QualityCodeMin": "",
-          "Inverted": 0,
+          "Inverted": false,
           "LayerCount": 1,
           "LayerStart": 1,
           "LayerStep": 1,
@@ -1342,7 +1342,7 @@
       ],
       "Results": [
         {
-          "Used": 1,
+          "Used": true,
           "Generator": 7,
           "SubGenerator": 5,
           "StageLevel": 6,
@@ -1389,8 +1389,8 @@
           "Layers": [
             {
               "Layers": 3,
-              "OutputRotation": 0,
-              "ParentRotation": 0,
+              "OutputRotation": false,
+              "ParentRotation": false,
               "Rotation": 9,
               "Percent": 0,
               "Length": 557.7,
@@ -1415,7 +1415,7 @@
                   "CountY": 2,
                   "Even": 0,
                   "Nested": 0,
-                  "AlongBreadth": 0,
+                  "AlongBreadth": false,
                   "Rotation": 0
                 },
                 {
@@ -1427,7 +1427,7 @@
                   "CountY": 2,
                   "Even": 0,
                   "Nested": 0,
-                  "AlongBreadth": 0,
+                  "AlongBreadth": false,
                   "Rotation": 0
                 },
                 {
@@ -1439,7 +1439,7 @@
                   "CountY": 1,
                   "Even": 0,
                   "Nested": 0,
-                  "AlongBreadth": 0,
+                  "AlongBreadth": false,
                   "Rotation": 1
                 },
                 {
@@ -1451,7 +1451,7 @@
                   "CountY": 1,
                   "Even": 0,
                   "Nested": 0,
-                  "AlongBreadth": 0,
+                  "AlongBreadth": false,
                   "Rotation": 1
                 },
                 {
@@ -1463,7 +1463,7 @@
                   "CountY": 2,
                   "Even": 0,
                   "Nested": 0,
-                  "AlongBreadth": 0,
+                  "AlongBreadth": false,
                   "Rotation": 1
                 }
               ]
@@ -1651,7 +1651,7 @@
       "MinBlockBreadth": 0,
       "Limits": [
         {
-          "Design": 0,
+          "Design": false,
           "MaterialType": 15,
           "MaterialCode": "EUR",
           "MaterialCodeMin": "",
@@ -1661,7 +1661,7 @@
           "QualityType": 0,
           "QualityCode": "",
           "QualityCodeMin": "",
-          "Inverted": 0,
+          "Inverted": false,
           "LayerCount": 1,
           "LayerStart": 1,
           "LayerStep": 1,
@@ -1696,7 +1696,7 @@
           "Usage": 0
         },
         {
-          "Design": 0,
+          "Design": false,
           "MaterialType": 9,
           "MaterialCode": "Shr/050m",
           "MaterialCodeMin": "",
@@ -1706,7 +1706,7 @@
           "QualityType": 0,
           "QualityCode": "50 micron",
           "QualityCodeMin": "",
-          "Inverted": 0,
+          "Inverted": false,
           "LayerCount": 1,
           "LayerStart": 1,
           "LayerStep": 1,
@@ -1743,7 +1743,7 @@
       ],
       "Results": [
         {
-          "Used": 1,
+          "Used": true,
           "Generator": 0,
           "SubGenerator": 1,
           "StageLevel": 7,
@@ -1790,8 +1790,8 @@
           "Layers": [
             {
               "Layers": 1,
-              "OutputRotation": 0,
-              "ParentRotation": 0,
+              "OutputRotation": false,
+              "ParentRotation": false,
               "Rotation": 9,
               "Percent": 0,
               "Length": 1200,
@@ -1816,7 +1816,7 @@
                   "CountY": 1,
                   "Even": 0,
                   "Nested": 0,
-                  "AlongBreadth": 0,
+                  "AlongBreadth": false,
                   "Rotation": 2
                 },
                 {
@@ -1828,7 +1828,7 @@
                   "CountY": 1,
                   "Even": 0,
                   "Nested": 0,
-                  "AlongBreadth": 0,
+                  "AlongBreadth": false,
                   "Rotation": 0
                 }
               ]
