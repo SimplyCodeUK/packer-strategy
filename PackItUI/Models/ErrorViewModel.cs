@@ -6,8 +6,6 @@
 
 namespace PackItUI.Models
 {
-    using System;
-
     /// <summary> Exception model. </summary>
     public class ErrorViewModel
     {
