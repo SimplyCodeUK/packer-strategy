@@ -13,11 +13,22 @@ namespace PackIt.Controllers
     [Route("api/v{version:apiVersion}/about")]
     public class AboutController : Controller
     {
+        /// <summary> Data about the service. </summary>
         public class AboutService
         {
+            /// <summary> Gets the version version of the service. </summary>
+            ///
+            /// <value> The version of the service. </value>
             public string Version { get; }
+
+            /// <summary> Gets information about the service. </summary>
+            ///
+            /// <value> The about information. </value>
             public string About { get; }
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="AboutService"/> class.
+            /// </summary>
             public AboutService()
             {
                 Version = "1";
