@@ -1,5 +1,6 @@
 *.suo
 
-*/bin/
-*/obj/
-*/MSTest.*
+**/bin/
+**/lib/
+**/obj/
+**/MSTest.*

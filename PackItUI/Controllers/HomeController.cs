@@ -18,6 +18,7 @@ namespace PackItUI.Controllers
     public class HomeController : Controller
     {
         private readonly AppSettings AppSettings;
+        private HttpClient HttpClient;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
@@ -27,12 +28,13 @@ namespace PackItUI.Controllers
         public HomeController(IOptions<AppSettings> appSettings)
         {
             this.AppSettings = appSettings.Value;
-        }
+            this.HttpClient = new HttpClient();
+    }
 
-        /// <summary>   Handle the Index view request. </summary>
-        ///
-        /// <returns> An IActionResult. </returns>
-        public IActionResult Index()
+    /// <summary>   Handle the Index view request. </summary>
+    ///
+    /// <returns> An IActionResult. </returns>
+    public IActionResult Index()
         {
             return this.View();
         }
@@ -42,9 +44,7 @@ namespace PackItUI.Controllers
         /// <returns> An IActionResult. </returns>
         public async Task<IActionResult> Materials()
         {
-            string url = AppSettings.ServiceUrls.Materials;
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(url+"about");
+            HttpResponseMessage response = await this.HttpClient.GetAsync(AppSettings.ServiceUrls.Materials + "about");
 
             // Throw an exception if not successful
             response.EnsureSuccessStatusCode();
@@ -59,9 +59,7 @@ namespace PackItUI.Controllers
         /// <returns> An IActionResult. </returns>
         public async Task<IActionResult> Packs()
         {
-            string url = AppSettings.ServiceUrls.Packs;
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(url + "about");
+            HttpResponseMessage response = await this.HttpClient.GetAsync(AppSettings.ServiceUrls.Packs + "about");
 
             // Throw an exception if not successful
             response.EnsureSuccessStatusCode();
@@ -76,9 +74,7 @@ namespace PackItUI.Controllers
         /// <returns> An IActionResult. </returns>
         public async Task<IActionResult> Plans()
         {
-            string url = AppSettings.ServiceUrls.Plans;
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(url + "about");
+            HttpResponseMessage response = await this.HttpClient.GetAsync(AppSettings.ServiceUrls.Plans + "about");
 
             // Throw an exception if not successful
             response.EnsureSuccessStatusCode();
@@ -91,11 +87,25 @@ namespace PackItUI.Controllers
         /// <summary>   Handle the About view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
-            this.ViewData["Message"] = "Your application description page.";
+            AboutViewModel model = new AboutViewModel();
 
-            return this.View();
+            string[] urls = new string[] { AppSettings.ServiceUrls.Materials, AppSettings.ServiceUrls.Packs, AppSettings.ServiceUrls.Plans };
+
+            foreach (string url in urls)
+            {
+                HttpResponseMessage response = await this.HttpClient.GetAsync(AppSettings.ServiceUrls.Materials + "about");
+
+                // Throw an exception if not successful
+                response.EnsureSuccessStatusCode();
+
+                string body = await response.Content.ReadAsStringAsync();
+
+                model.Services.Add(JsonConvert.DeserializeObject<ServiceViewModel>(body));
+            }
+
+            return this.View(model);
         }
 
         /// <summary>   Handle the Contact view request. </summary>
