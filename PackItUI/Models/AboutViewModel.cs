@@ -8,20 +8,20 @@ namespace PackItUI.Models
 {
     using System.Collections.Generic;
 
-    /// <summary> About model. </summary>
+    /// <summary> About view model. </summary>
     public class AboutViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AboutViewModel"/> class.
+        /// Initialises a new instance of the <see cref="AboutViewModel"/> class.
         /// </summary>
         public AboutViewModel()
         {
             this.Services = new List<ServiceViewModel>();
         }
 
-        /// <summary> Gets or sets the services. </summary>
+        /// <summary> Gets the services. </summary>
         ///
         /// <value> The services. </value>
-        public List<ServiceViewModel> Services { get; set; }
+        public List<ServiceViewModel> Services { get; }
     }
 }

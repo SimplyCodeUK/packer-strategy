@@ -7,34 +7,33 @@
 namespace PackItUI.Controllers
 {
     using System.Diagnostics;
-    using System.Net.Http;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-    using Newtonsoft.Json;
     using PackItUI.Models;
 
     /// <summary>   A controller for handling the Home Page. </summary>
     public class HomeController : Controller
     {
-        private readonly AppSettings AppSettings;
-        private HttpClient HttpClient;
-
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         ///
-        /// <param name="appOptionsAccessor">   The app optins accessor. </param>
+        /// <param name="appSettings"> The application settings. </param>
         public HomeController(IOptions<AppSettings> appSettings)
         {
             this.AppSettings = appSettings.Value;
-            this.HttpClient = new HttpClient();
-    }
+        }
 
-    /// <summary>   Handle the Index view request. </summary>
-    ///
-    /// <returns> An IActionResult. </returns>
-    public IActionResult Index()
+        /// <summary> Gets the application settings. </summary>
+        ///
+        /// <value> The application settings. </value>
+        private AppSettings AppSettings { get; }
+
+        /// <summary>   Handle the Index view request. </summary>
+        ///
+        /// <returns> An IActionResult. </returns>
+        public IActionResult Index()
         {
             return this.View();
         }
@@ -42,46 +41,25 @@ namespace PackItUI.Controllers
         /// <summary>   Handle the Materials view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
-        public async Task<IActionResult> Materials()
+        public IActionResult Materials()
         {
-            HttpResponseMessage response = await this.HttpClient.GetAsync(AppSettings.ServiceUrls.Materials + "about");
-
-            // Throw an exception if not successful
-            response.EnsureSuccessStatusCode();
-
-            string body = await response.Content.ReadAsStringAsync();
-
-            return this.View(JsonConvert.DeserializeObject<MaterialsViewModel>(body));
+            return this.View(this.AppSettings.GetMaterialsViewModel().Result);
         }
 
         /// <summary>   Handle the Packs view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
-        public async Task<IActionResult> Packs()
+        public IActionResult Packs()
         {
-            HttpResponseMessage response = await this.HttpClient.GetAsync(AppSettings.ServiceUrls.Packs + "about");
-
-            // Throw an exception if not successful
-            response.EnsureSuccessStatusCode();
-
-            string body = await response.Content.ReadAsStringAsync();
-
-            return this.View(JsonConvert.DeserializeObject<PacksViewModel>(body));
+            return this.View(this.AppSettings.GetPacksViewModel().Result);
         }
 
         /// <summary>   Handle the Plans view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
-        public async Task<IActionResult> Plans()
+        public IActionResult Plans()
         {
-            HttpResponseMessage response = await this.HttpClient.GetAsync(AppSettings.ServiceUrls.Plans + "about");
-
-            // Throw an exception if not successful
-            response.EnsureSuccessStatusCode();
-
-            string body = await response.Content.ReadAsStringAsync();
-
-            return this.View(JsonConvert.DeserializeObject<PlansViewModel>(body));
+            return this.View(this.AppSettings.GetPlansViewModel().Result);
         }
 
         /// <summary>   Handle the About view request. </summary>
@@ -89,21 +67,7 @@ namespace PackItUI.Controllers
         /// <returns> An IActionResult. </returns>
         public async Task<IActionResult> About()
         {
-            AboutViewModel model = new AboutViewModel();
-
-            string[] urls = new string[] { AppSettings.ServiceUrls.Materials, AppSettings.ServiceUrls.Packs, AppSettings.ServiceUrls.Plans };
-
-            foreach (string url in urls)
-            {
-                HttpResponseMessage response = await this.HttpClient.GetAsync(AppSettings.ServiceUrls.Materials + "about");
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-
-                string body = await response.Content.ReadAsStringAsync();
-
-                model.Services.Add(JsonConvert.DeserializeObject<ServiceViewModel>(body));
-            }
+            AboutViewModel model = await this.AppSettings.GetAboutViewModel();
 
             return this.View(model);
         }
