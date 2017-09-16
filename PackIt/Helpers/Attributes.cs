@@ -13,11 +13,11 @@ namespace PackIt.Helpers
     /// <summary>   An attributes. </summary>
     public static class Attributes
     {
-        /// <summary>   An Enum extension method that short name. </summary>
+        /// <summary> An Enum extension method that returns the short name. </summary>
         ///
-        /// <param name="value">    The value to act on. </param>
+        /// <param name="value"> The value to act on. </param>
         ///
-        /// <returns>   A string. </returns>
+        /// <returns> The short name. </returns>
         public static string ShortName(this Enum value)
         {
             // get attributes  
@@ -37,11 +37,11 @@ namespace PackIt.Helpers
             return displayAttribute?.ShortName ?? value.ToString();
         }
 
-        /// <summary>   An Enum extension method that URL name. </summary>
+        /// <summary> An Enum extension method that returns the URL name. </summary>
         ///
-        /// <param name="value">    The value to act on. </param>
+        /// <param name="value"> The value to act on. </param>
         ///
-        /// <returns>   A string. </returns>
+        /// <returns> The url name. </returns>
         public static string UrlName(this Enum value)
         {
             return ShortName(value).ToLowerInvariant();
