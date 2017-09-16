@@ -6,7 +6,7 @@
 
 namespace PackItUI.Models
 {
-    /// <summary> Materials model. </summary>
+    /// <summary> Materials view model. </summary>
     public class MaterialsViewModel : ServiceViewModel
     {
     }

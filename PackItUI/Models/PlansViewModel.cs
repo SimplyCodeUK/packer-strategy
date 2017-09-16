@@ -6,7 +6,7 @@
 
 namespace PackItUI.Models
 {
-    /// <summary> Plans model. </summary>
+    /// <summary> Plans view model. </summary>
     public class PlansViewModel : ServiceViewModel
     {
     }

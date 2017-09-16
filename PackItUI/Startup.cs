@@ -39,7 +39,7 @@ namespace PackItUI
         public void ConfigureServices(IServiceCollection services)
         {
             // Configure using a sub-section of the appsettings.json file.
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"));
 
             services.AddMvc();
         }

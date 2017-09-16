@@ -8,34 +8,11 @@ namespace PackIt.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
 
-    /// <summary>   The root contoller of the service. </summary>
+    /// <summary>   The root controller of the service. </summary>
     [ApiVersion("1")]
-    [Route("api/v{version:apiVersion}/about")]
+    [Route("api/v{version:apiVersion}", Order = 16)]
     public class AboutController : Controller
     {
-        /// <summary> Data about the service. </summary>
-        public class AboutService
-        {
-            /// <summary> Gets the version version of the service. </summary>
-            ///
-            /// <value> The version of the service. </value>
-            public string Version { get; }
-
-            /// <summary> Gets information about the service. </summary>
-            ///
-            /// <value> The about information. </value>
-            public string About { get; }
-
-            /// <summary>
-            /// Initializes a new instance of the <see cref="AboutService"/> class.
-            /// </summary>
-            public AboutService()
-            {
-                Version = "1";
-                About = "Single controller for Materials, Plans and Packs";
-            }
-        }
-
         /// <summary>
         ///     (An Action that handles HTTP GET requests) enumerates the items in this collection that
         ///     meet given criteria.
@@ -46,6 +23,29 @@ namespace PackIt.Controllers
         public IActionResult Get()
         {
             return this.Ok(new AboutService());
+        }
+
+        /// <summary> Data about the service. </summary>
+        public class AboutService
+        {
+            /// <summary>
+            /// Initialises a new instance of the <see cref="AboutService"/> class.
+            /// </summary>
+            public AboutService()
+            {
+                this.Version = "1";
+                this.About = "Single controller for Materials, Plans and Packs";
+            }
+
+            /// <summary> Gets the version version of the service. </summary>
+            ///
+            /// <value> The version of the service. </value>
+            public string Version { get; }
+
+            /// <summary> Gets information about the service. </summary>
+            ///
+            /// <value> The about information. </value>
+            public string About { get; }
         }
     }
 }
