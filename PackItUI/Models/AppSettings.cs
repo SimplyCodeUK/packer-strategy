@@ -6,6 +6,7 @@
 
 namespace PackItUI.Models
 {
+    using System;
     using System.Net.Http;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
@@ -24,12 +25,21 @@ namespace PackItUI.Models
         public async Task<MaterialsViewModel> GetMaterialsViewModel()
         {
             HttpClient httpClient = new HttpClient();
-            HttpResponseMessage response = await httpClient.GetAsync(this.ServiceEndpoints.Materials);
+            string body;
 
-            // Throw an exception if not successful
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                HttpResponseMessage response = await httpClient.GetAsync(this.ServiceEndpoints.Materials);
 
-            string body = await response.Content.ReadAsStringAsync();
+                // Throw an exception if not successful
+                response.EnsureSuccessStatusCode();
+
+                body = await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception)
+            {
+                body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
+            }
 
             return JsonConvert.DeserializeObject<MaterialsViewModel>(body);
         }
@@ -40,12 +50,21 @@ namespace PackItUI.Models
         public async Task<PacksViewModel> GetPacksViewModel()
         {
             HttpClient httpClient = new HttpClient();
-            HttpResponseMessage response = await httpClient.GetAsync(this.ServiceEndpoints.Packs);
+            string body;
 
-            // Throw an exception if not successful
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                HttpResponseMessage response = await httpClient.GetAsync(this.ServiceEndpoints.Packs);
 
-            string body = await response.Content.ReadAsStringAsync();
+                // Throw an exception if not successful
+                response.EnsureSuccessStatusCode();
+
+                body = await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception)
+            {
+                body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
+            }
 
             return JsonConvert.DeserializeObject<PacksViewModel>(body);
         }
@@ -56,12 +75,21 @@ namespace PackItUI.Models
         public async Task<PlansViewModel> GetPlansViewModel()
         {
             HttpClient httpClient = new HttpClient();
-            HttpResponseMessage response = await httpClient.GetAsync(this.ServiceEndpoints.Plans);
+            string body;
 
-            // Throw an exception if not successful
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                HttpResponseMessage response = await httpClient.GetAsync(this.ServiceEndpoints.Plans);
 
-            string body = await response.Content.ReadAsStringAsync();
+                // Throw an exception if not successful
+                response.EnsureSuccessStatusCode();
+
+                body = await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception)
+            {
+                body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
+            }
 
             return JsonConvert.DeserializeObject<PlansViewModel>(body);
         }
@@ -75,14 +103,22 @@ namespace PackItUI.Models
             AboutViewModel model = new AboutViewModel();
             string[] endpoints = new string[] { this.ServiceEndpoints.Materials, this.ServiceEndpoints.Packs, this.ServiceEndpoints.Plans };
 
+            string body;
             foreach (string endpoint in endpoints)
             {
-                HttpResponseMessage response = await httpClient.GetAsync(endpoint);
+                try
+                {
+                    HttpResponseMessage response = await httpClient.GetAsync(endpoint);
 
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
+                    // Throw an exception if not successful
+                    response.EnsureSuccessStatusCode();
 
-                string body = await response.Content.ReadAsStringAsync();
+                    body = await response.Content.ReadAsStringAsync();
+                }
+                catch (Exception)
+                {
+                    body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
+                }
 
                 model.Services.Add(JsonConvert.DeserializeObject<ServiceViewModel>(body));
             }
