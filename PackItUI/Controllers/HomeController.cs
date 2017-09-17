@@ -38,30 +38,6 @@ namespace PackItUI.Controllers
             return this.View();
         }
 
-        /// <summary>   Handle the Materials view request. </summary>
-        ///
-        /// <returns> An IActionResult. </returns>
-        public IActionResult Materials()
-        {
-            return this.View(this.AppSettings.GetMaterialsViewModel().Result);
-        }
-
-        /// <summary>   Handle the Packs view request. </summary>
-        ///
-        /// <returns> An IActionResult. </returns>
-        public IActionResult Packs()
-        {
-            return this.View(this.AppSettings.GetPacksViewModel().Result);
-        }
-
-        /// <summary>   Handle the Plans view request. </summary>
-        ///
-        /// <returns> An IActionResult. </returns>
-        public IActionResult Plans()
-        {
-            return this.View(this.AppSettings.GetPlansViewModel().Result);
-        }
-
         /// <summary>   Handle the About view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>

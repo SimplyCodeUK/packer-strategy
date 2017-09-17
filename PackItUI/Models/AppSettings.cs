@@ -22,7 +22,7 @@ namespace PackItUI.Models
         /// <summary> Gets the materials view model. </summary>
         ///
         /// <returns> The materials view model</returns>
-        public async Task<MaterialsViewModel> GetMaterialsViewModel()
+        public async Task<Material.MaterialsViewModel> GetMaterialsViewModel()
         {
             HttpClient httpClient = new HttpClient();
             string body;
@@ -41,13 +41,13 @@ namespace PackItUI.Models
                 body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
             }
 
-            return JsonConvert.DeserializeObject<MaterialsViewModel>(body);
+            return JsonConvert.DeserializeObject<Material.MaterialsViewModel>(body);
         }
 
         /// <summary> Gets the packs view model. </summary>
         ///
         /// <returns> The packs view model</returns>
-        public async Task<PacksViewModel> GetPacksViewModel()
+        public async Task<Pack.PacksViewModel> GetPacksViewModel()
         {
             HttpClient httpClient = new HttpClient();
             string body;
@@ -66,13 +66,13 @@ namespace PackItUI.Models
                 body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
             }
 
-            return JsonConvert.DeserializeObject<PacksViewModel>(body);
+            return JsonConvert.DeserializeObject<Pack.PacksViewModel>(body);
         }
 
         /// <summary> Gets the plans view model. </summary>
         ///
         /// <returns> The plans view model</returns>
-        public async Task<PlansViewModel> GetPlansViewModel()
+        public async Task<Plan.PlansViewModel> GetPlansViewModel()
         {
             HttpClient httpClient = new HttpClient();
             string body;
@@ -91,7 +91,7 @@ namespace PackItUI.Models
                 body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
             }
 
-            return JsonConvert.DeserializeObject<PlansViewModel>(body);
+            return JsonConvert.DeserializeObject<Plan.PlansViewModel>(body);
         }
 
         /// <summary> Gets the about view model. </summary>
