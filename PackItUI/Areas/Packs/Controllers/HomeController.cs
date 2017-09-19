@@ -4,22 +4,23 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Controllers
+namespace PackItUI.Areas.Packs.Controllers
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using PackItUI.Models;
 
-    /// <summary>   A controller for handling the Packs Page. </summary>
-    public class PacksController : Controller
+    /// <summary>   A controller for handling the Packs Home Page. </summary>
+    [Area("Packs")]
+    public class HomeController : Controller
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="PacksController" /> class.
+        /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         ///
         /// <param name="appSettings"> The application settings. </param>
-        public PacksController(IOptions<AppSettings> appSettings)
+        public HomeController(IOptions<AppSettings> appSettings)
         {
             this.AppSettings = appSettings.Value;
         }

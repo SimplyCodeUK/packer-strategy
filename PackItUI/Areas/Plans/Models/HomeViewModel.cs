@@ -4,10 +4,10 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Models.Plan
+namespace PackItUI.Areas.Plans.Models
 {
-    /// <summary> Plans view model. </summary>
-    public class PlansViewModel : ServiceViewModel
+    /// <summary> Plans home view model. </summary>
+    public class HomeViewModel : PackItUI.Models.ServiceViewModel
     {
     }
 }
