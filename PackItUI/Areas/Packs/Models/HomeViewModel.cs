@@ -4,10 +4,10 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Models.Material
+namespace PackItUI.Areas.Packs.Models
 {
-    /// <summary> Materials view model. </summary>
-    public class MaterialsViewModel : ServiceViewModel
+    /// <summary> Packs home view model. </summary>
+    public class HomeViewModel : PackItUI.Models.ServiceViewModel
     {
     }
 }

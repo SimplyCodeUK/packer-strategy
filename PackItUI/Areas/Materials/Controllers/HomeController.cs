@@ -4,22 +4,23 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Controllers
+namespace PackItUI.Areas.Materials.Controllers
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using PackItUI.Models;
 
-    /// <summary>   A controller for handling the Materials Page. </summary>
-    public class MaterialsController : Controller
+    /// <summary>   A controller for handling the Materials Home Page. </summary>
+    [Area("Materials")]
+    public class HomeController : Controller
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="MaterialsController" /> class.
+        /// Initialises a new instance of the <see cref="HomeController " /> class.
         /// </summary>
         ///
         /// <param name="appSettings"> The application settings. </param>
-        public MaterialsController(IOptions<AppSettings> appSettings)
+        public HomeController(IOptions<AppSettings> appSettings)
         {
             this.AppSettings = appSettings.Value;
         }

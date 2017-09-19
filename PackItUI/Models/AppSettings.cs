@@ -22,9 +22,9 @@ namespace PackItUI.Models
         /// <summary> Gets the materials view model. </summary>
         ///
         /// <returns> The materials view model</returns>
-        public async Task<Material.MaterialsViewModel> GetMaterialsViewModel()
+        public async Task<Areas.Materials.Models.HomeViewModel> GetMaterialsViewModel()
         {
-            HttpClient httpClient = new HttpClient();
+            var httpClient = new HttpClient();
             string body;
 
             try
@@ -41,15 +41,15 @@ namespace PackItUI.Models
                 body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
             }
 
-            return JsonConvert.DeserializeObject<Material.MaterialsViewModel>(body);
+            return JsonConvert.DeserializeObject<Areas.Materials.Models.HomeViewModel>(body);
         }
 
         /// <summary> Gets the packs view model. </summary>
         ///
         /// <returns> The packs view model</returns>
-        public async Task<Pack.PacksViewModel> GetPacksViewModel()
+        public async Task<Areas.Packs.Models.HomeViewModel> GetPacksViewModel()
         {
-            HttpClient httpClient = new HttpClient();
+            var httpClient = new HttpClient();
             string body;
 
             try
@@ -66,15 +66,15 @@ namespace PackItUI.Models
                 body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
             }
 
-            return JsonConvert.DeserializeObject<Pack.PacksViewModel>(body);
+            return JsonConvert.DeserializeObject<Areas.Packs.Models.HomeViewModel>(body);
         }
 
         /// <summary> Gets the plans view model. </summary>
         ///
         /// <returns> The plans view model</returns>
-        public async Task<Plan.PlansViewModel> GetPlansViewModel()
+        public async Task<Areas.Plans.Models.HomeViewModel> GetPlansViewModel()
         {
-            HttpClient httpClient = new HttpClient();
+            var httpClient = new HttpClient();
             string body;
 
             try
@@ -91,7 +91,7 @@ namespace PackItUI.Models
                 body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
             }
 
-            return JsonConvert.DeserializeObject<Plan.PlansViewModel>(body);
+            return JsonConvert.DeserializeObject<Areas.Plans.Models.HomeViewModel>(body);
         }
 
         /// <summary> Gets the about view model. </summary>
@@ -99,8 +99,8 @@ namespace PackItUI.Models
         /// <returns> The about view model</returns>
         public async Task<AboutViewModel> GetAboutViewModel()
         {
-            HttpClient httpClient = new HttpClient();
-            AboutViewModel model = new AboutViewModel();
+            var httpClient = new HttpClient();
+            var model = new AboutViewModel();
             string[] endpoints = new string[] { this.ServiceEndpoints.Materials, this.ServiceEndpoints.Packs, this.ServiceEndpoints.Plans };
 
             string body;
