@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Models
+namespace PackItUI.Areas.App.Models
 {
     using System.Collections.Generic;
 
@@ -16,12 +16,12 @@ namespace PackItUI.Models
         /// </summary>
         public AboutViewModel()
         {
-            this.Services = new List<ServiceViewModel>();
+            this.Services = new Dictionary<string, ServiceViewModel>();
         }
 
         /// <summary> Gets the services. </summary>
         ///
         /// <value> The services. </value>
-        public List<ServiceViewModel> Services { get; }
+        public Dictionary<string, ServiceViewModel> Services { get; }
     }
 }

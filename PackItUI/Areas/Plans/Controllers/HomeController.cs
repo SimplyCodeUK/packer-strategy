@@ -9,7 +9,7 @@ namespace PackItUI.Areas.Plans.Controllers
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-    using PackItUI.Models;
+    using PackItUI.Areas.App.Models;
 
     /// <summary>   A controller for handling the Plans Home Page. </summary>
     [Area("Plans")]
@@ -33,6 +33,7 @@ namespace PackItUI.Areas.Plans.Controllers
         /// <summary>   Handle the Plans view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
+        [HttpGet]
         public IActionResult Index()
         {
             return this.View(this.AppSettings.GetPlansViewModel().Result);
@@ -43,6 +44,7 @@ namespace PackItUI.Areas.Plans.Controllers
         /// <param name="id"> The plan identifier. </param>
         ///
         /// <returns> An IActionResult. </returns>
+        [HttpGet]
         public IActionResult Details(string id)
         {
             return this.View();
@@ -51,6 +53,7 @@ namespace PackItUI.Areas.Plans.Controllers
         /// <summary> Display the form to create a new plan. </summary>
         ///
         /// <returns> An IActionResult. </returns>
+        [HttpGet]
         public IActionResult Create()
         {
             return this.View();
@@ -77,11 +80,12 @@ namespace PackItUI.Areas.Plans.Controllers
             }
         }
 
-        /// <summary> Edits the specified plan. </summary>
+        /// <summary> Display a form to edit the specified plan. </summary>
         ///
         /// <param name="id"> The plan identifier. </param>
         ///
         /// <returns> An IActionResult. </returns>
+        [HttpGet]
         public IActionResult Edit(string id)
         {
             return this.View();
@@ -114,6 +118,7 @@ namespace PackItUI.Areas.Plans.Controllers
         /// <param name="id"> The plan identifier. </param>
         ///
         /// <returns> An IActionResult. </returns>
+        [HttpGet]
         public IActionResult Delete(string id)
         {
             return this.View();
