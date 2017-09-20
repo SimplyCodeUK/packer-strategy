@@ -6,6 +6,7 @@
 
 namespace PackItUI.Areas.Packs.Controllers
 {
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
@@ -23,12 +24,14 @@ namespace PackItUI.Areas.Packs.Controllers
         public HomeController(IOptions<AppSettings> appSettings)
         {
             this.AppSettings = appSettings.Value;
+            this.Endpoint = this.AppSettings.ServiceEndpoints.Packs;
         }
 
-        /// <summary> Gets the application settings. </summary>
-        ///
-        /// <value> The application settings. </value>
-        private AppSettings AppSettings { get; }
+        /// <summary> The application settings. </summary>
+        private readonly AppSettings AppSettings;
+
+        /// <summary> The endpoint. </summary>
+        private readonly string Endpoint;
 
         /// <summary>   Handle the Packs view request. </summary>
         ///
@@ -36,7 +39,9 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return this.View(this.AppSettings.GetPacksViewModel().Result);
+            Task<Models.HomeViewModel> model = Models.HomeViewModel.Prepare(this.Endpoint);
+
+            return this.View(model.Result);
         }
 
         /// <summary> Display details of the specified pack. </summary>

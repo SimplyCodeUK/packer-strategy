@@ -55,7 +55,7 @@ namespace PackIt.Controllers
 
             if (values != null)
             {
-                foreach (Models.Plan.Plan item in values.Plans)
+                foreach (Plan.Plan item in values.Plans)
                 {
                     try
                     {
@@ -68,7 +68,7 @@ namespace PackIt.Controllers
                     }
                 }
 
-                foreach (Models.Material.Material item in values.Materials)
+                foreach (Material.Material item in values.Materials)
                 {
                     try
                     {
@@ -81,7 +81,7 @@ namespace PackIt.Controllers
                     }
                 }
 
-                foreach (Models.Pack.Pack item in values.Packs)
+                foreach (Pack.Pack item in values.Packs)
                 {
                     try
                     {
@@ -122,25 +122,25 @@ namespace PackIt.Controllers
             /// </summary>
             public Bulk()
             {
-                this.Plans = new List<Models.Plan.Plan>();
-                this.Materials = new List<Models.Material.Material>();
-                this.Packs = new List<Models.Pack.Pack>();
+                this.Plans = new List<Plan.Plan>();
+                this.Materials = new List<Material.Material>();
+                this.Packs = new List<Pack.Pack>();
             }
 
             /// <summary>   Gets or sets the list of Plans of this object. </summary>
             ///
             /// <value> List of Plans. </value>
-            public List<Models.Plan.Plan> Plans { get; set; }
+            public List<Plan.Plan> Plans { get; set; }
 
             /// <summary>   Gets or sets the list of Materials of this object. </summary>
             ///
             /// <value> List of Materials. </value>
-            public List<Models.Material.Material> Materials { get; set; }
+            public List<Material.Material> Materials { get; set; }
 
             /// <summary>   Gets or sets the list of Packs of this object. </summary>
             ///
             /// <value> List of Packs. </value>
-            public List<Models.Pack.Pack> Packs { get; set; }
+            public List<Pack.Pack> Packs { get; set; }
         }
     }
 }

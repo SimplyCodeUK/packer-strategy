@@ -10,7 +10,7 @@ namespace PackIt.DTO
     using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using PackIt.Models.Pack;
+    using PackIt.Pack;
 
     /// <summary>   A pack context. </summary>
     public class PackContext : DbContext

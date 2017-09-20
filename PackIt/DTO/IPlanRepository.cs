@@ -7,7 +7,7 @@
 namespace PackIt.DTO
 {
     using System.Collections.Generic;
-    using PackIt.Models.Plan;
+    using PackIt.Plan;
 
     /// <summary>   Interface for plan repository. </summary>
     public interface IPlanRepository

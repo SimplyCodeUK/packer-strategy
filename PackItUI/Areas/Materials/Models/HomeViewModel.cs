@@ -6,8 +6,37 @@
 
 namespace PackItUI.Areas.Materials.Models
 {
+    using System;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+
     /// <summary> Materials home view model. </summary>
     public class HomeViewModel : App.Models.ServiceViewModel
     {
+        /// <summary> Prepares the model with data from the endpoint. </summary>
+        ///
+        /// <param name="endpoint"> The materials service endpoint. </param>
+        public static async Task<HomeViewModel> Prepare(string endpoint)
+        {
+            var httpClient = new HttpClient();
+            string body;
+
+            try
+            {
+                HttpResponseMessage response = await httpClient.GetAsync(endpoint);
+
+                // Throw an exception if not successful
+                response.EnsureSuccessStatusCode();
+
+                body = await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception)
+            {
+                body = NotFoundService;
+            }
+
+            return JsonConvert.DeserializeObject<HomeViewModel>(body);
+        }
     }
 }

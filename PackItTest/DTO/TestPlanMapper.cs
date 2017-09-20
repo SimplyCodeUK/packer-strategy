@@ -11,7 +11,7 @@ namespace PackItTest.DTO
     using NUnit.Framework;
     using PackIt.DTO;
     using PackIt.DTO.DtoPlan;
-    using PackIt.Models.Plan;
+    using PackIt.Plan;
 
     /// <summary>   (Unit Test Fixture) a mapper for plans. </summary>
     [TestFixture]

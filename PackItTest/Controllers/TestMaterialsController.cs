@@ -16,7 +16,7 @@ namespace PackItTest.Controllers
     using PackIt.Controllers;
     using PackIt.DTO;
     using PackIt.Helpers.Enums;
-    using PackIt.Models.Material;
+    using PackIt.Material;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test materials. </summary>
     [TestFixture]

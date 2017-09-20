@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models.Pack
+namespace PackIt.Pack
 {
     /// <summary>   A costing. </summary>
     public class Costing

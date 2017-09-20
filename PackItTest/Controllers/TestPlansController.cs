@@ -16,7 +16,7 @@ namespace PackItTest.Controllers
     using PackIt.Controllers;
     using PackIt.DTO;
     using PackIt.Helpers.Enums;
-    using PackIt.Models.Plan;
+    using PackIt.Plan;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test plans. </summary>
     [TestFixture]

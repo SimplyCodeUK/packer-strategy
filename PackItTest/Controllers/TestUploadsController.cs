@@ -58,17 +58,17 @@ namespace PackItTest.Controllers
             UploadsController.Bulk bulk = JsonConvert.DeserializeObject<UploadsController.Bulk>(text);
 
             // make sure IDs are unique
-            foreach (PackIt.Models.Plan.Plan item in bulk.Plans)
+            foreach (PackIt.Plan.Plan item in bulk.Plans)
             {
                 item.PlanId = Guid.NewGuid().ToString();
             }
 
-            foreach (PackIt.Models.Material.Material item in bulk.Materials)
+            foreach (PackIt.Material.Material item in bulk.Materials)
             {
                 item.MaterialId = Guid.NewGuid().ToString();
             }
 
-            foreach (PackIt.Models.Pack.Pack item in bulk.Packs)
+            foreach (PackIt.Pack.Pack item in bulk.Packs)
             {
                 item.PackId = Guid.NewGuid().ToString();
             }

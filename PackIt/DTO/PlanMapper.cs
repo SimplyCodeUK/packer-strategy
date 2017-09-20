@@ -8,7 +8,7 @@ namespace PackIt.DTO
 {
     using AutoMapper;
     using PackIt.DTO.DtoPlan;
-    using PackIt.Models.Plan;
+    using PackIt.Plan;
 
     /// <summary>
     /// Maps from and to DtoPlan
