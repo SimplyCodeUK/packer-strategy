@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Models
+namespace PackItUI.Areas.App.Models
 {
     /// <summary> Service endpoint settings. </summary>
     public class ServiceEndpoints

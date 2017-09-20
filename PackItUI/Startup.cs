@@ -10,7 +10,7 @@ namespace PackItUI
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using PackItUI.Models;
+    using PackItUI.Areas.App.Models;
 
     /// <summary>   A start up. </summary>
     public class Startup
@@ -72,7 +72,7 @@ namespace PackItUI
                     template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{area=App}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

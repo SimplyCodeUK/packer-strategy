@@ -9,7 +9,7 @@ namespace PackItUI.Areas.Materials.Controllers
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-    using PackItUI.Models;
+    using PackItUI.Areas.App.Models;
 
     /// <summary>   A controller for handling the Materials Home Page. </summary>
     [Area("Materials")]
@@ -33,6 +33,7 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <summary>   Handle the Materials view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
+        [HttpGet]
         public IActionResult Index()
         {
             return this.View(this.AppSettings.GetMaterialsViewModel().Result);
@@ -43,6 +44,7 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <param name="id"> The material identifier. </param>
         ///
         /// <returns> An IActionResult. </returns>
+        [HttpGet]
         public IActionResult Details(string id)
         {
             return this.View();
@@ -51,6 +53,7 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <summary> Display the form to create a new material. </summary>
         ///
         /// <returns> An IActionResult. </returns>
+        [HttpGet]
         public IActionResult Create()
         {
             return this.View();
@@ -77,11 +80,12 @@ namespace PackItUI.Areas.Materials.Controllers
             }
         }
 
-        /// <summary> Edits the specified material. </summary>
+        /// <summary> Display a form to edit the specified material. </summary>
         ///
         /// <param name="id"> The material identifier. </param>
         ///
         /// <returns> An IActionResult. </returns>
+        [HttpGet]
         public IActionResult Edit(string id)
         {
             return this.View();
@@ -114,6 +118,7 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <param name="id"> The plan identifier. </param>
         /// 
         /// <returns> An IActionResult. </returns>
+        [HttpGet]
         public IActionResult Delete(string id)
         {
             return this.View();

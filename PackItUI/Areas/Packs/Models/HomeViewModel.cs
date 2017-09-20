@@ -7,7 +7,7 @@
 namespace PackItUI.Areas.Packs.Models
 {
     /// <summary> Packs home view model. </summary>
-    public class HomeViewModel : PackItUI.Models.ServiceViewModel
+    public class HomeViewModel : App.Models.ServiceViewModel
     {
     }
 }

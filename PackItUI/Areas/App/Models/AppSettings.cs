@@ -4,9 +4,10 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Models
+namespace PackItUI.Areas.App.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
@@ -101,14 +102,19 @@ namespace PackItUI.Models
         {
             var httpClient = new HttpClient();
             var model = new AboutViewModel();
-            string[] endpoints = new string[] { this.ServiceEndpoints.Materials, this.ServiceEndpoints.Packs, this.ServiceEndpoints.Plans };
+            var endpoints = new Dictionary<string, string>()
+            {
+                { "Materials", this.ServiceEndpoints.Materials },
+                { "Packs", this.ServiceEndpoints.Packs },
+                { "Plans", this.ServiceEndpoints.Plans }
+            };
 
             string body;
-            foreach (string endpoint in endpoints)
+            foreach (KeyValuePair<string, string> endpoint in endpoints)
             {
                 try
                 {
-                    HttpResponseMessage response = await httpClient.GetAsync(endpoint);
+                    HttpResponseMessage response = await httpClient.GetAsync(endpoint.Value);
 
                     // Throw an exception if not successful
                     response.EnsureSuccessStatusCode();
@@ -120,7 +126,7 @@ namespace PackItUI.Models
                     body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
                 }
 
-                model.Services.Add(JsonConvert.DeserializeObject<ServiceViewModel>(body));
+                model.Services[endpoint.Key] = JsonConvert.DeserializeObject<ServiceViewModel>(body);
             }
 
             return model;
