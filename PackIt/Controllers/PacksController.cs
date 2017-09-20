@@ -11,7 +11,7 @@ namespace PackIt.Controllers
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
     using PackIt.DTO;
-    using PackIt.Models.Pack;
+    using PackIt.Pack;
 
     /// <summary>   A controller for handling Packs. </summary>
     [ApiVersion("1")]

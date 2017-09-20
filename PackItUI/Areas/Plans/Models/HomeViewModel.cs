@@ -6,8 +6,37 @@
 
 namespace PackItUI.Areas.Plans.Models
 {
-    /// <summary> Plans home view model. </summary>
+    using System;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+
+    /// <summary> Packs home view model. </summary>
     public class HomeViewModel : App.Models.ServiceViewModel
     {
+        /// <summary> Prepares the model with data from the endpoint. </summary>
+        ///
+        /// <param name="endpoint"> The plans service endpoint. </param>
+        public static async Task<HomeViewModel> Prepare(string endpoint)
+        {
+            var httpClient = new HttpClient();
+            string body;
+
+            try
+            {
+                HttpResponseMessage response = await httpClient.GetAsync(endpoint);
+
+                // Throw an exception if not successful
+                response.EnsureSuccessStatusCode();
+
+                body = await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception)
+            {
+                body = NotFoundService;
+            }
+
+            return JsonConvert.DeserializeObject<HomeViewModel>(body);
+        }
     }
 }

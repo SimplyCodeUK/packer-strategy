@@ -18,5 +18,8 @@ namespace PackItUI.Areas.App.Models
         /// 
         /// <returns> About the service. </returns>
         public string About { get; set; }
+
+        /// <summary> The not found service response. </summary>
+        protected const string NotFoundService = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
     }
 }

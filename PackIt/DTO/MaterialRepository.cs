@@ -7,8 +7,7 @@
 namespace PackIt.DTO
 {
     using System.Collections.Generic;
-    using PackIt.Helpers.Enums;
-    using PackIt.Models.Material;
+    using PackIt.Material;
 
     /// <summary>   A material repository. </summary>
     ///

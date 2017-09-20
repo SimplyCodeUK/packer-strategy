@@ -15,7 +15,7 @@ namespace PackItTest.Controllers
     using NUnit.Framework;
     using PackIt.Controllers;
     using PackIt.DTO;
-    using PackIt.Models.Pack;
+    using PackIt.Pack;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test packs. </summary>
     [TestFixture]

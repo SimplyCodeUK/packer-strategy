@@ -11,7 +11,7 @@ namespace PackItTest.DTO
     using NUnit.Framework;
     using PackIt.DTO;
     using PackIt.DTO.DtoMaterial;
-    using PackIt.Models.Material;
+    using PackIt.Material;
 
     /// <summary>   (Unit Test Method) Convert a Material to it's DTO. </summary>
     [TestFixture]

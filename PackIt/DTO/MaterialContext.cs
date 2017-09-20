@@ -9,7 +9,7 @@ namespace PackIt.DTO
     using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using PackIt.Models.Material;
+    using PackIt.Material;
 
     /// <summary>   A material context. </summary>
     public class MaterialContext : DbContext

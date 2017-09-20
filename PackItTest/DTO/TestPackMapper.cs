@@ -11,7 +11,7 @@ namespace PackItTest.DTO
     using NUnit.Framework;
     using PackIt.DTO;
     using PackIt.DTO.DtoPack;
-    using PackIt.Models.Pack;
+    using PackIt.Pack;
 
     /// <summary>   (Unit Test Method) Convert a Pack to it's DTO. </summary>
     [TestFixture]

@@ -11,7 +11,7 @@ namespace PackIt.Controllers
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
     using PackIt.DTO;
-    using PackIt.Models.Material;
+    using PackIt.Material;
 
     /// <summary>   A controller for handling materials. </summary>
     [ApiVersion("1")]

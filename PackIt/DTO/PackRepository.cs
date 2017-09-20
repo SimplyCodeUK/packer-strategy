@@ -7,7 +7,7 @@
 namespace PackIt.DTO
 {
     using System.Collections.Generic;
-    using PackIt.Models.Pack;
+    using PackIt.Pack;
 
     /// <summary>   A pack repository. </summary>
     ///

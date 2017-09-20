@@ -9,7 +9,7 @@ namespace PackIt.DTO
     using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using PackIt.Models.Plan;
+    using PackIt.Plan;
 
     /// <summary>   A plan context. </summary>
     public class PlanContext : DbContext
