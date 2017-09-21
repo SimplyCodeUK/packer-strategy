@@ -8,16 +8,26 @@ namespace PackItUI.Areas.Materials.Models
 {
     using System;
     using System.Net.Http;
+    using System.Text;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
 
     /// <summary> Materials home view model. </summary>
     public class HomeViewModel : App.Models.ServiceViewModel
     {
-        /// <summary> Prepares the model with data from the endpoint. </summary>
+        /// <summary>
+        /// Prevents a default instance of the <see cref="HomeViewModel"/> class from being created.
+        /// </summary>
+        private HomeViewModel()
+        {
+        }
+
+        /// <summary> Create the model with data from the endpoint. </summary>
         ///
         /// <param name="endpoint"> The materials service endpoint. </param>
-        public static async Task<HomeViewModel> Prepare(string endpoint)
+        /// 
+        /// <returns> The model. </returns>
+        public static async Task<HomeViewModel> Create(string endpoint)
         {
             var httpClient = new HttpClient();
             string body;
@@ -37,6 +47,23 @@ namespace PackItUI.Areas.Materials.Models
             }
 
             return JsonConvert.DeserializeObject<HomeViewModel>(body);
+        }
+
+        /// <summary> Stores the material.</summary>
+        ///
+        /// <param name="endpoint"> The plan endpoint. </param>
+        /// <param name="data"> The data to store. </param>
+        public static async Task Create(string endpoint, PackIt.Material.Material data)
+        {
+            var httpClient = new HttpClient();
+            var json = JsonConvert.SerializeObject(data);
+            var content = new StringContent(json,
+                        Encoding.UTF8,
+                        "application/json");
+            HttpResponseMessage response = await httpClient.PostAsync(endpoint+"Materials/"+ data.MaterialId, content);
+
+            // Throw an exception if not successful
+            response.EnsureSuccessStatusCode();
         }
     }
 }

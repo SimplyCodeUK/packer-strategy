@@ -6,17 +6,59 @@
 
 namespace PackItUI.Areas.App.Models
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+
 
     /// <summary> About view model. </summary>
     public class AboutViewModel
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="AboutViewModel"/> class.
+        /// Prevents a default instance of the <see cref="AboutViewModel"/> class from being created.
         /// </summary>
-        public AboutViewModel()
+        private AboutViewModel()
         {
             this.Services = new Dictionary<string, ServiceViewModel>();
+        }
+
+        /// <summary> Create the model with data from the endpoint. </summary>
+        ///
+        /// <param name="endpoint"> The plans service endpoint. </param>
+        public static async Task<AboutViewModel> Create(ServiceEndpoints endpoints)
+        {
+            var httpClient = new HttpClient();
+            var model = new AboutViewModel();
+            var endpointMap = new Dictionary<string, string>
+            {
+                { "Materials", endpoints.Materials },
+                { "Packs", endpoints.Packs },
+                { "Plans", endpoints.Plans }
+            };
+
+            string body;
+            foreach (KeyValuePair<string, string> endpoint in endpointMap)
+            {
+                try
+                {
+                    HttpResponseMessage response = await httpClient.GetAsync(endpoint.Value);
+
+                    // Throw an exception if not successful
+                    response.EnsureSuccessStatusCode();
+
+                    body = await response.Content.ReadAsStringAsync();
+                }
+                catch (Exception)
+                {
+                    body = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
+                }
+
+                model.Services[endpoint.Key] = JsonConvert.DeserializeObject<ServiceViewModel>(body);
+            }
+
+            return model;
         }
 
         /// <summary> Gets the services. </summary>

@@ -23,12 +23,8 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <param name="appSettings"> The application settings. </param>
         public HomeController(IOptions<AppSettings> appSettings)
         {
-            this.AppSettings = appSettings.Value;
-            this.Endpoint = this.AppSettings.ServiceEndpoints.Materials;
+            this.Endpoint = appSettings.Value.ServiceEndpoints.Materials;
         }
-
-        /// <summary> The application settings. </summary>
-        private readonly AppSettings AppSettings;
 
         /// <summary> The endpoint. </summary>
         private readonly string Endpoint;
@@ -39,8 +35,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            Task<Models.HomeViewModel> model = Models.HomeViewModel.Prepare(this.Endpoint);
-
+            Task<Models.HomeViewModel> model = Models.HomeViewModel.Create(this.Endpoint);
             return this.View(model.Result);
         }
 
@@ -64,22 +59,22 @@ namespace PackItUI.Areas.Materials.Controllers
             return this.View();
         }
 
-        /// <summary> Creates a material from the form collection. </summary>
+        /// <summary> Strores the material from the form. </summary>
         ///
-        /// <param name="collection"> The form collection. </param>
+        /// <param name="data"> The material to save. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(PackIt.Material.Material data)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                await Models.HomeViewModel.Create(this.Endpoint, data).ConfigureAwait(false);
 
                 return this.RedirectToAction(nameof(Index));
             }
-            catch
+            else
             {
                 return this.View();
             }
@@ -121,7 +116,7 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <summary> Display a delete form for the specified material. </summary>
         /// 
         /// <param name="id"> The plan identifier. </param>
-        /// 
+        ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
         public IActionResult Delete(string id)

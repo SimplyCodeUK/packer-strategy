@@ -23,12 +23,8 @@ namespace PackItUI.Areas.Plans.Controllers
         /// <param name="appSettings"> The application settings. </param>
         public HomeController(IOptions<AppSettings> appSettings)
         {
-            this.AppSettings = appSettings.Value;
-            this.Endpoint = this.AppSettings.ServiceEndpoints.Plans;
+            this.Endpoint = appSettings.Value.ServiceEndpoints.Plans;
         }
-
-        /// <summary> The application settings. </summary>
-        private readonly AppSettings AppSettings;
 
         /// <summary> The endpoint. </summary>
         private readonly string Endpoint;
@@ -39,8 +35,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            Task<Models.HomeViewModel> model = Models.HomeViewModel.Prepare(this.Endpoint);
-
+            Task<Models.HomeViewModel> model = Models.HomeViewModel.Create(this.Endpoint);
             return this.View(model.Result);
         }
 
@@ -64,22 +59,22 @@ namespace PackItUI.Areas.Plans.Controllers
             return this.View();
         }
 
-        /// <summary> Creates a plan from the form collection. </summary>
+        /// <summary> Strores the plan from the form. </summary>
         ///
-        /// <param name="collection"> The form collection. </param>
+        /// <param name="data"> The plan to save. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(PackIt.Plan.Plan data)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                await Models.HomeViewModel.Create(this.Endpoint, data).ConfigureAwait(false);
 
                 return this.RedirectToAction(nameof(Index));
             }
-            catch
+            else
             {
                 return this.View();
             }

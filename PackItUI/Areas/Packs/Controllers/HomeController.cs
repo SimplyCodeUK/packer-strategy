@@ -23,12 +23,8 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <param name="appSettings"> The application settings. </param>
         public HomeController(IOptions<AppSettings> appSettings)
         {
-            this.AppSettings = appSettings.Value;
-            this.Endpoint = this.AppSettings.ServiceEndpoints.Packs;
+            this.Endpoint = appSettings.Value.ServiceEndpoints.Packs;
         }
-
-        /// <summary> The application settings. </summary>
-        private readonly AppSettings AppSettings;
 
         /// <summary> The endpoint. </summary>
         private readonly string Endpoint;
@@ -39,8 +35,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            Task<Models.HomeViewModel> model = Models.HomeViewModel.Prepare(this.Endpoint);
-
+            Task<Models.HomeViewModel> model = Models.HomeViewModel.Create(this.Endpoint);
             return this.View(model.Result);
         }
 
@@ -66,20 +61,20 @@ namespace PackItUI.Areas.Packs.Controllers
 
         /// <summary> Creates a pack from the form collection. </summary>
         ///
-        /// <param name="collection"> The form collection. </param>
+        /// <param name="data"> The pack to save. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(PackIt.Pack.Pack data)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                await Models.HomeViewModel.Create(this.Endpoint, data).ConfigureAwait(false);
 
                 return this.RedirectToAction(nameof(Index));
             }
-            catch
+            else
             {
                 return this.View();
             }
@@ -119,9 +114,9 @@ namespace PackItUI.Areas.Packs.Controllers
         }
 
         /// <summary> Display a delete form for the specified pack. </summary>
-        /// 
+        ///
         /// <param name="id"> The pack identifier. </param>
-        /// 
+        ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
         public IActionResult Delete(string id)
