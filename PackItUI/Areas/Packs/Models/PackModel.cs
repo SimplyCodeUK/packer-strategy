@@ -15,17 +15,36 @@ namespace PackItUI.Areas.Packs.Models
     public class PackModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PackModel"/> class.
+        /// Initialises a new instance of the <see cref="PackModel"/> class.
         /// </summary>
         public PackModel()
         {
-            Data = new PackIt.Pack.Pack();
+            this.Data = new PackIt.Pack.Pack();
         }
+
+        /// <summary> Gets or sets the pack data. </summary>
+        ///
+        /// <value> The pack data. </value>
+        public PackIt.Pack.Pack Data { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="PackModel"/> is editable.
+        /// </summary>
+        ///
+        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
+        public bool Editable { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="PackModel"/> is to be deleted.
+        /// </summary>
+        ///
+        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
+        public bool Deletable { get; set; }
 
         /// <summary> Reads asynchronously the model for a pack. </summary>
         ///
         /// <param name="endpoint"> The packs service endpoint. </param>
-        /// <param name="id"> The identifier ot the pack. </param>
+        /// <param name="id"> The identifier of the pack. </param>
         ///
         /// <returns> The model. </returns>
         public static async Task<PackModel> ReadAsync(string endpoint, string id)
@@ -35,14 +54,16 @@ namespace PackItUI.Areas.Packs.Models
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(endpoint+"Packs/"+id);
+                HttpResponseMessage response = await httpClient.GetAsync(endpoint + "Packs/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
                 body = await response.Content.ReadAsStringAsync();
 
-                var ret = new PackModel();
-                ret.Data = JsonConvert.DeserializeObject<PackIt.Pack.Pack>(body);
+                var ret = new PackModel
+                {
+                    Data = JsonConvert.DeserializeObject<PackIt.Pack.Pack>(body)
+                };
 
                 return ret;
             }
@@ -51,17 +72,5 @@ namespace PackItUI.Areas.Packs.Models
                 return null;
             }
         }
-
-        /// <summary>Gets or sets the data.</summary>
-        ///
-        /// <value>The data.</value>
-        public PackIt.Pack.Pack Data { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="PackModel"/> is editable.
-        /// </summary>
-        ///
-        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
-        public bool Editable { get; set; }
     }
 }

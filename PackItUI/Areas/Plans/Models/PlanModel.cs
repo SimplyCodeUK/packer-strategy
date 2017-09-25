@@ -15,17 +15,38 @@ namespace PackItUI.Areas.Plans.Models
     public class PlanModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PlanModel"/> class.
+        /// Initialises a new instance of the <see cref="PlanModel"/> class.
         /// </summary>
         public PlanModel()
         {
-            Data = new PackIt.Plan.Plan();
+            this.Data = new PackIt.Plan.Plan();
+            this.Editable = false;
+            this.Deletable = false;
         }
+
+        /// <summary> Gets or sets the plan data. </summary>
+        ///
+        /// <value> The plan data. </value>
+        public PackIt.Plan.Plan Data { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="PlanModel"/> is editable.
+        /// </summary>
+        ///
+        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
+        public bool Editable { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="PlanModel"/> is to be deleted.
+        /// </summary>
+        ///
+        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
+        public bool Deletable { get; set; }
 
         /// <summary> Reads asynchronously the model for a plan. </summary>
         ///
         /// <param name="endpoint"> The plans service endpoint. </param>
-        /// <param name="id"> The identifier ot the plan. </param>
+        /// <param name="id"> The identifier of the plan. </param>
         ///
         /// <returns> The model. </returns>
         public static async Task<PlanModel> ReadAsync(string endpoint, string id)
@@ -35,14 +56,16 @@ namespace PackItUI.Areas.Plans.Models
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(endpoint+"Plans/"+id);
+                HttpResponseMessage response = await httpClient.GetAsync(endpoint + "Plans/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
                 body = await response.Content.ReadAsStringAsync();
 
-                var ret = new PlanModel();
-                ret.Data = JsonConvert.DeserializeObject<PackIt.Plan.Plan>(body);
+                var ret = new PlanModel
+                {
+                    Data = JsonConvert.DeserializeObject<PackIt.Plan.Plan>(body)
+                };
 
                 return ret;
             }
@@ -51,17 +74,5 @@ namespace PackItUI.Areas.Plans.Models
                 return null;
             }
         }
-
-        /// <summary>Gets or sets the data.</summary>
-        ///
-        /// <value>The data.</value>
-        public PackIt.Plan.Plan Data { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="PlanModel"/> is editable.
-        /// </summary>
-        ///
-        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
-        public bool Editable { get; set; }
     }
 }

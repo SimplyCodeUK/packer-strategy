@@ -6,64 +6,24 @@
 
 namespace PackItUI.Areas.Plans.Models
 {
-    using System;
-    using System.Net.Http;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Newtonsoft.Json;
+    using PackItUI.Services;
 
-    /// <summary> Packs home view model. </summary>
-    public class HomeViewModel : App.Models.ServiceViewModel
+    /// <summary> Plans home view model. </summary>
+    public class HomeViewModel
     {
         /// <summary>
-        /// Prevents a default instance of the <see cref="HomeViewModel"/> class from being created.
+        /// Initialises a new instance of the <see cref="HomeViewModel"/> class.
         /// </summary>
-        private HomeViewModel()
-        {
-        }
-
-        /// <summary> Create the model with data from the endpoint. </summary>
         ///
-        /// <param name="endpoint"> The plans service endpoint. </param>
-        /// 
-        /// <returns> The model. </returns>
-        public static async Task<HomeViewModel> Create(string endpoint)
+        /// <param name="information"> The service information. </param>
+        public HomeViewModel(ServiceInfo information)
         {
-            var httpClient = new HttpClient();
-            string body;
-
-            try
-            {
-                HttpResponseMessage response = await httpClient.GetAsync(endpoint);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-
-                body = await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception)
-            {
-                body = NotFoundService;
-            }
-
-            return JsonConvert.DeserializeObject<HomeViewModel>(body);
+            this.Information = information;
         }
 
-        /// <summary> Stores the plan.</summary>
+        /// <summary> Gets the service information. </summary>
         ///
-        /// <param name="endpoint"> The plan endpoint. </param>
-        /// <param name="data"> The data to store. </param>
-        public static async Task Create(string endpoint, PackIt.Plan.Plan data)
-        {
-            var httpClient = new HttpClient();
-            var json = JsonConvert.SerializeObject(data);
-            var content = new StringContent(json,
-                        Encoding.UTF8,
-                        "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync(endpoint+"Plans/"+ data.PlanId, content);
-
-            // Throw an exception if not successful
-            response.EnsureSuccessStatusCode();
-        }
+        /// <value> The service information. </value>
+        public ServiceInfo Information { get; }
     }
 }

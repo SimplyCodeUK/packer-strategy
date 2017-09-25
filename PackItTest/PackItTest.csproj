@@ -17,13 +17,14 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="NUnit" Version="3.8.1" />
     <PackageReference Include="NUnit.ConsoleRunner" Version="3.7.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.8.0" />
     <PackageReference Include="OpenCover" Version="4.6.519" />
     <PackageReference Include="OpenCoverToCoberturaConverter" Version="0.2.6" />
     <PackageReference Include="ReportGenerator" Version="3.0.0" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="6.4.0.3347" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="6.4.1.3596" />
   </ItemGroup>
 
   <ItemGroup>

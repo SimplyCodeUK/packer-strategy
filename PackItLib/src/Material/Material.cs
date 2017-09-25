@@ -7,6 +7,7 @@
 namespace PackIt.Material
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using PackIt.Helpers.Enums;
 
     /// <summary>   A material. </summary>
@@ -25,11 +26,13 @@ namespace PackIt.Material
         /// <summary>   Gets or sets the Material identifier. </summary>
         ///
         /// <value> The Material identifier. </value>
+        [Required]
         public string MaterialId { get; set; }
 
         /// <summary>   Gets or sets the type of the Material. </summary>
         ///
         /// <value> The type of the Material. </value>
+        [Required]
         public MaterialType Type { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>

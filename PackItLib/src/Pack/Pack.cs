@@ -7,6 +7,7 @@
 namespace PackIt.Pack
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using PackIt.Helpers.Enums;
 
     /// <summary>   A pack. </summary>
@@ -24,12 +25,18 @@ namespace PackIt.Pack
         /// <summary>   Gets or sets the identifier of the Pack. </summary>
         ///
         /// <value> The identifier of the Pack. </value>
+        [Required]
         public string PackId { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
         ///
         /// <value> The name. </value>
         public string Name { get; set; }
+
+        /// <summary>   Gets or sets the notes. </summary>
+        ///
+        /// <value> The notes. </value>
+        public string Notes { get; set; }
 
         /// <summary>   Gets or sets the plan code. </summary>
         ///

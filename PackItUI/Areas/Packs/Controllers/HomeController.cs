@@ -16,6 +16,9 @@ namespace PackItUI.Areas.Packs.Controllers
     [Area("Packs")]
     public class HomeController : Controller
     {
+        /// <summary> The packs service. </summary>
+        private readonly Services.Packs service;
+
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
@@ -23,20 +26,17 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <param name="appSettings"> The application settings. </param>
         public HomeController(IOptions<AppSettings> appSettings)
         {
-            this.Endpoint = appSettings.Value.ServiceEndpoints.Packs;
+            this.service = new Services.Packs(appSettings.Value.ServiceEndpoints.Packs);
         }
-
-        /// <summary> The endpoint. </summary>
-        private readonly string Endpoint;
 
         /// <summary>   Handle the Packs view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            Task<Models.HomeViewModel> model = Models.HomeViewModel.Create(this.Endpoint);
-            return this.View(model.Result);
+            Models.HomeViewModel model = new Models.HomeViewModel(await this.service.InformationAsync());
+            return this.View(model);
         }
 
         /// <summary> Display details of the specified pack. </summary>
@@ -45,9 +45,14 @@ namespace PackItUI.Areas.Packs.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public IActionResult Details(string id)
+        public async Task<IActionResult> Details(string id)
         {
-            return this.View();
+            Models.PackModel model = new Models.PackModel
+            {
+                Data = await this.service.ReadAsync(id)
+            };
+
+            return this.View(model);
         }
 
         /// <summary> Display the form to create a new pack. </summary>
@@ -56,27 +61,26 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return this.View();
+            Models.PackModel model = new Models.PackModel();
+            return this.View(model);
         }
 
-        /// <summary> Creates a pack from the form collection. </summary>
+        /// <summary> Stores a pack from the form. </summary>
         ///
-        /// <param name="data"> The pack to save. </param>
+        /// <param name="model"> The pack to save. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(PackIt.Pack.Pack data)
+        public async Task<IActionResult> Create(Models.PackModel model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && await this.service.CreateAsync(model.Data))
             {
-                await Models.HomeViewModel.Create(this.Endpoint, data).ConfigureAwait(false);
-
-                return this.RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(this.Index));
             }
             else
             {
-                return this.View();
+                return this.View(model);
             }
         }
 
@@ -86,30 +90,34 @@ namespace PackItUI.Areas.Packs.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public IActionResult Edit(string id)
+        public async Task<IActionResult> Edit(string id)
         {
-            return this.View();
+            Models.PackModel model = new Models.PackModel
+            {
+                Data = await this.service.ReadAsync(id),
+                Editable = true
+            };
+
+            return this.View(model);
         }
 
-        /// <summary> Save the edited pack. </summary>
+        /// <summary> Save the edited pack asynchronously. </summary>
         ///
         /// <param name="id"> The pack identifier. </param>
-        /// <param name="collection"> The form collection. </param>
+        /// <param name="model"> The pack to update. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(string id, IFormCollection collection)
+        public async Task<IActionResult> Edit(string id, Models.PackModel model)
         {
-            try
+            if (await this.service.UpdateAsync(id, model.Data))
             {
-                // TODO: Add update logic here
-
-                return this.RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(this.Index));
             }
-            catch
+            else
             {
-                return this.View();
+                return this.View(model);
             }
         }
 
@@ -119,30 +127,34 @@ namespace PackItUI.Areas.Packs.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public IActionResult Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
-            return this.View();
+            Models.PackModel model = new Models.PackModel
+            {
+                Data = await this.service.ReadAsync(id),
+                Deletable = true
+            };
+
+            return this.View(model);
         }
 
         /// <summary> Deletes the specified pack. </summary>
         ///
-        /// <param name="id"> The plan identifier. </param>
-        /// <param name="collection"> The form collection. </param>
+        /// <param name="id"> The pack identifier. </param>
+        /// <param name="model"> The pack to delete. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(string id, IFormCollection collection)
+        public async Task<IActionResult> Delete(string id, Models.PackModel model)
         {
-            try
+            if (await this.service.DeleteAsync(id))
             {
-                // TODO: Add delete logic here
-
-                return this.RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(this.Index));
             }
-            catch
+            else
             {
-                return this.View();
+                return this.View(model);
             }
         }
     }

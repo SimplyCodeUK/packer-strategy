@@ -7,6 +7,7 @@
 namespace PackIt.Plan
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     /// <summary>   A plan. </summary>
     public class Plan
@@ -22,6 +23,7 @@ namespace PackIt.Plan
         /// <summary>   Gets or sets the Plan identifier. </summary>
         ///
         /// <value> The Plan identifier. </value>
+        [Required]
         public string PlanId { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
