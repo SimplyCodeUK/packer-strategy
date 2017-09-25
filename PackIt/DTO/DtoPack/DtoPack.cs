@@ -31,6 +31,11 @@ namespace PackIt.DTO.DtoPack
         /// <value> The name. </value>
         public string Name { get; set; }
 
+        /// <summary>   Gets or sets the notes. </summary>
+        ///
+        /// <value> The notes. </value>
+        public string Notes { get; set; }
+
         /// <summary>   Gets or sets the plan code. </summary>
         ///
         /// <value> The plan code. </value>

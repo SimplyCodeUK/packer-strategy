@@ -4,11 +4,20 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Areas.App.Models
+namespace PackItUI.Services
 {
-    /// <summary> A generic service model. </summary>
-    public class ServiceViewModel
+    /// <summary> Service information. </summary>
+    public class ServiceInfo
     {
+        /// <summary>
+        /// Initialises a new instance of the <see cref="ServiceInfo" /> class.
+        /// </summary>
+        public ServiceInfo()
+        {
+            this.Version = "Unknown";
+            this.About = "Service down!";
+        }
+
         /// <summary>   Gets or sets the version of the service. </summary>
         ///
         /// <value> The version of the service. </value>
@@ -18,8 +27,5 @@ namespace PackItUI.Areas.App.Models
         /// 
         /// <returns> About the service. </returns>
         public string About { get; set; }
-
-        /// <summary> The not found service response. </summary>
-        protected const string NotFoundService = "{ \"Version\": \"Unknown\", \"About\": \"Service not responding\" }";
     }
 }

@@ -16,27 +16,27 @@ namespace PackItUI.Areas.Materials.Controllers
     [Area("Materials")]
     public class HomeController : Controller
     {
+        /// <summary> The materials service. </summary>
+        private readonly Services.Materials service;
+
         /// <summary>
-        /// Initialises a new instance of the <see cref="HomeController " /> class.
+        /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         ///
         /// <param name="appSettings"> The application settings. </param>
         public HomeController(IOptions<AppSettings> appSettings)
         {
-            this.Endpoint = appSettings.Value.ServiceEndpoints.Materials;
+            this.service = new Services.Materials(appSettings.Value.ServiceEndpoints.Materials);
         }
-
-        /// <summary> The endpoint. </summary>
-        private readonly string Endpoint;
 
         /// <summary>   Handle the Materials view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            Task<Models.HomeViewModel> model = Models.HomeViewModel.Create(this.Endpoint);
-            return this.View(model.Result);
+            Models.HomeViewModel model = new Models.HomeViewModel(await this.service.InformationAsync());
+            return this.View(model);
         }
 
         /// <summary> Display details of the specified material. </summary>
@@ -45,9 +45,14 @@ namespace PackItUI.Areas.Materials.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public IActionResult Details(string id)
+        public async Task<IActionResult> Details(string id)
         {
-            return this.View();
+            Models.MaterialModel model = new Models.MaterialModel
+            {
+                Data = await this.service.ReadAsync(id)
+            };
+
+            return this.View(model);
         }
 
         /// <summary> Display the form to create a new material. </summary>
@@ -56,27 +61,26 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return this.View();
+            Models.MaterialModel model = new Models.MaterialModel();
+            return this.View(model);
         }
 
-        /// <summary> Strores the material from the form. </summary>
+        /// <summary> Stores the material from the form. </summary>
         ///
-        /// <param name="data"> The material to save. </param>
+        /// <param name="model"> The material to save. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(PackIt.Material.Material data)
+        public async Task<IActionResult> Create(Models.MaterialModel model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && await this.service.CreateAsync(model.Data))
             {
-                await Models.HomeViewModel.Create(this.Endpoint, data).ConfigureAwait(false);
-
-                return this.RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(this.Index));
             }
             else
             {
-                return this.View();
+                return this.View(model);
             }
         }
 
@@ -86,63 +90,71 @@ namespace PackItUI.Areas.Materials.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public IActionResult Edit(string id)
+        public async Task<IActionResult> Edit(string id)
         {
-            return this.View();
+            Models.MaterialModel model = new Models.MaterialModel
+            {
+                Data = await this.service.ReadAsync(id),
+                Editable = true
+            };
+
+            return this.View(model);
         }
 
-        /// <summary> Save the edited material. </summary>
+        /// <summary> Save the edited material asynchronously. </summary>
         ///
         /// <param name="id"> The material identifier. </param>
-        /// <param name="collection"> The form collection. </param>
+        /// <param name="model"> The material to update. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(string id, IFormCollection collection)
+        public async Task<IActionResult> Edit(string id, Models.MaterialModel model)
         {
-            try
+            if (await this.service.UpdateAsync(id, model.Data))
             {
-                // TODO: Add update logic here
-
-                return this.RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(this.Index));
             }
-            catch
+            else
             {
-                return this.View();
+                return this.View(model);
             }
         }
 
         /// <summary> Display a delete form for the specified material. </summary>
-        /// 
-        /// <param name="id"> The plan identifier. </param>
+        ///
+        /// <param name="id"> The material identifier. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public IActionResult Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
-            return this.View();
+            Models.MaterialModel model = new Models.MaterialModel
+            {
+                Data = await this.service.ReadAsync(id),
+                Deletable = true
+            };
+
+            return this.View(model);
         }
 
         /// <summary> Deletes the specified material. </summary>
         ///
         /// <param name="id"> The material identifier. </param>
-        /// <param name="collection"> The form collection. </param>
+        /// <param name="model"> The material to delete. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(string id, IFormCollection collection)
+        public async Task<IActionResult> Delete(string id, Models.MaterialModel model)
         {
-            try
+            if (await this.service.DeleteAsync(id))
             {
-                // TODO: Add delete logic here
-
-                return this.RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(this.Index));
             }
-            catch
+            else
             {
-                return this.View();
+                return this.View(model);
             }
         }
     }

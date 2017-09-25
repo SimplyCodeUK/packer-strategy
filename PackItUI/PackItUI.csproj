@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="6.4.1.3596" />
   </ItemGroup>
 
   <ItemGroup>

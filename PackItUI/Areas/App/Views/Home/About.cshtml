@@ -11,7 +11,7 @@
         <th>Version</th>
         <th>About</th>
     </tr>
-    @foreach (KeyValuePair<string, PackItUI.Areas.App.Models.ServiceViewModel> x in Model.Services)
+    @foreach (KeyValuePair<string, PackItUI.Services.ServiceInfo> x in Model.Services)
     {
         <tr>
             <td>@x.Key</td>
