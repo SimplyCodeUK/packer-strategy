@@ -22,9 +22,8 @@ namespace PackItTest.DTO
         public void ConvertPlan()
         {
             string text = File.ReadAllText("DTO/TestData/plan.json");
-            Plan plan = JsonConvert.DeserializeObject<Plan>(text);
-
-            DtoPlan dto = PlanMapper.Convert(plan);
+            var plan = JsonConvert.DeserializeObject<Plan>(text);
+            var dto = PlanMapper.Convert(plan);
 
             Assert.AreEqual(dto.PlanId, plan.PlanId);
             int minLevel = -1;

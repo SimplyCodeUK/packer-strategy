@@ -22,9 +22,8 @@ namespace PackItTest.DTO
         public void ConvertPack()
         {
             string text = File.ReadAllText("DTO/TestData/pack.json");
-            Pack pack = JsonConvert.DeserializeObject<Pack>(text);
-
-            DtoPack dto = PackMapper.Convert(pack);
+            var pack = JsonConvert.DeserializeObject<Pack>(text);
+            var dto = PackMapper.Convert(pack);
 
             Assert.AreEqual(dto.PackId, pack.PackId);
 

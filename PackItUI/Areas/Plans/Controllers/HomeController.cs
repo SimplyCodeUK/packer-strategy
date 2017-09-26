@@ -7,7 +7,6 @@
 namespace PackItUI.Areas.Plans.Controllers
 {
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using PackItUI.Areas.App.Models;
@@ -35,7 +34,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            Models.HomeViewModel model = new Models.HomeViewModel(await this.service.InformationAsync());
+            var model = new Models.HomeViewModel(await this.service.InformationAsync());
             return this.View(model);
         }
 
@@ -47,7 +46,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
-            Models.PlanModel model = new Models.PlanModel
+            var model = new Models.PlanModel
             {
                 Data = await this.service.ReadAsync(id)
             };
@@ -61,7 +60,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            Models.PlanModel model = new Models.PlanModel();
+            var model = new Models.PlanModel();
             return this.View(model);
         }
 
@@ -92,7 +91,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(string id)
         {
-            Models.PlanModel model = new Models.PlanModel
+            var model = new Models.PlanModel
             {
                 Data = await this.service.ReadAsync(id),
                 Editable = true
@@ -129,7 +128,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            Models.PlanModel model = new Models.PlanModel
+            var model = new Models.PlanModel
             {
                 Data = await this.service.ReadAsync(id),
                 Deletable = true

@@ -27,24 +27,24 @@ namespace PackItTest.Controllers
         [SetUp]
         public void BeforeTest()
         {
-            DbContextOptionsBuilder<PlanContext> planBuilder = new DbContextOptionsBuilder<PlanContext>();
+            var planBuilder = new DbContextOptionsBuilder<PlanContext>();
             planBuilder.EnableSensitiveDataLogging();
             planBuilder.UseInMemoryDatabase("testplan");
 
-            DbContextOptionsBuilder<MaterialContext> materialBuilder = new DbContextOptionsBuilder<MaterialContext>();
+            var materialBuilder = new DbContextOptionsBuilder<MaterialContext>();
             materialBuilder.EnableSensitiveDataLogging();
             materialBuilder.UseInMemoryDatabase("testmaterial");
 
-            DbContextOptionsBuilder<PackContext> packBuilder = new DbContextOptionsBuilder<PackContext>();
+            var packBuilder = new DbContextOptionsBuilder<PackContext>();
             packBuilder.EnableSensitiveDataLogging();
             packBuilder.UseInMemoryDatabase("testpack");
 
-            PlanContext planContext = new PlanContext(planBuilder.Options);
-            PlanRepository planRepo = new PlanRepository(planContext);
-            MaterialContext materialContext = new MaterialContext(materialBuilder.Options);
-            MaterialRepository materialRepo = new MaterialRepository(materialContext);
-            PackContext packContext = new PackContext(packBuilder.Options);
-            PackRepository packRepo = new PackRepository(packContext);
+            var planContext = new PlanContext(planBuilder.Options);
+            var planRepo = new PlanRepository(planContext);
+            var materialContext = new MaterialContext(materialBuilder.Options);
+            var materialRepo = new MaterialRepository(materialContext);
+            var packContext = new PackContext(packBuilder.Options);
+            var packRepo = new PackRepository(packContext);
 
             this.controller = new UploadsController(planRepo, materialRepo, packRepo);
             Assert.IsNotNull(this.controller);

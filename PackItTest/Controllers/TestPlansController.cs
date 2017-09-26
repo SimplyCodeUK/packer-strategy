@@ -29,12 +29,12 @@ namespace PackItTest.Controllers
         [SetUp]
         public void BeforeTest()
         {
-            DbContextOptionsBuilder<PlanContext> builder = new DbContextOptionsBuilder<PlanContext>();
+            var builder = new DbContextOptionsBuilder<PlanContext>();
             builder.EnableSensitiveDataLogging();
             builder.UseInMemoryDatabase("testplan");
 
-            PlanContext context = new PlanContext(builder.Options);
-            PlanRepository repository = new PlanRepository(context);
+            var context = new PlanContext(builder.Options);
+            var repository = new PlanRepository(context);
 
             this.controller = new PlansController(repository);
             Assert.IsNotNull(this.controller);
@@ -44,7 +44,7 @@ namespace PackItTest.Controllers
         [Test]
         public void Post()
         {
-            Plan item = new Plan { PlanId = Guid.NewGuid().ToString() };
+            var item = new Plan { PlanId = Guid.NewGuid().ToString() };
             var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -67,7 +67,7 @@ namespace PackItTest.Controllers
         [Test]
         public void PostAlreadyExists()
         {
-            Plan item = new Plan { PlanId = Guid.NewGuid().ToString() };
+            var item = new Plan { PlanId = Guid.NewGuid().ToString() };
             var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -84,8 +84,8 @@ namespace PackItTest.Controllers
         [Test]
         public void GetAll()
         {
-            int itemsToAdd = 10;
-            List<string> ids = new List<string>();
+            const int itemsToAdd = 10;
+            var ids = new List<string>();
 
             for (int item = 0; item < itemsToAdd; ++item)
             {
@@ -100,12 +100,11 @@ namespace PackItTest.Controllers
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            OkObjectResult objectResult = (OkObjectResult)result;
+            var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<IEnumerable<Plan>>(objectResult.Value);
 
-            IEnumerable<Plan> items = (IEnumerable<Plan>)objectResult.Value;
-            foreach (Plan item in items)
+            foreach (Plan item in (IEnumerable<Plan>)objectResult.Value)
             {
                 if (ids.Contains(item.PlanId))
                 {
@@ -120,10 +119,10 @@ namespace PackItTest.Controllers
         [Test]
         public void Get()
         {
-            string startName = "A name";
-            string startNote = "Some notes";
+            const string startName = "A name";
+            const string startNote = "Some notes";
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { PlanId = id, Name = startName, Notes = startNote };
+            var item = new Plan { PlanId = id, Name = startName, Notes = startNote };
 
             this.controller.Post(item);
 
@@ -132,7 +131,7 @@ namespace PackItTest.Controllers
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            OkObjectResult objectResult = (OkObjectResult)result;
+            var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Plan>(objectResult.Value);
 
@@ -158,10 +157,10 @@ namespace PackItTest.Controllers
         [Test]
         public void Put()
         {
-            string startName = "A name";
-            string putName = "B name";
+            const string startName = "A name";
+            const string putName = "B name";
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { PlanId = id, Name = startName };
+            var item = new Plan { PlanId = id, Name = startName };
 
             this.controller.Post(item);
 
@@ -176,7 +175,7 @@ namespace PackItTest.Controllers
             result = this.controller.Get(id);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            OkObjectResult objectResult = (OkObjectResult)result;
+            var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Plan>(objectResult.Value);
             item = (Plan)objectResult.Value;
@@ -189,7 +188,7 @@ namespace PackItTest.Controllers
         public void PutNotFound()
         {
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan();
+            var item = new Plan();
             var result = this.controller.Put(id, item);
 
             Assert.IsNotNull(result);
@@ -202,7 +201,7 @@ namespace PackItTest.Controllers
         public void Delete()
         {
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { PlanId = id };
+            var item = new Plan { PlanId = id };
 
             this.controller.Post(item);
 
@@ -229,17 +228,17 @@ namespace PackItTest.Controllers
         [Test]
         public void Patch()
         {
-            string startName = "A name";
-            string patchName = "B name";
-            string startNote = "Some notes";
+            const string startName = "A name";
+            const string patchName = "B name";
+            const string startNote = "Some notes";
             string id = Guid.NewGuid().ToString();
-            Plan item = new Plan { PlanId = id, Name = startName, Notes = startNote };
+            var item = new Plan { PlanId = id, Name = startName, Notes = startNote };
 
             // Create a new plan
             this.controller.Post(item);
 
             // Patch the plan with a new name
-            JsonPatchDocument<Plan> patch = new JsonPatchDocument<Plan>();
+            var patch = new JsonPatchDocument<Plan>();
             patch.Replace(e => e.Name, patchName);
 
             var result = this.controller.Patch(id, patch);
@@ -248,7 +247,7 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<OkObjectResult>(result);
 
             // Check the returned object from the patch has the same Note but different Name
-            OkObjectResult objectResult = (OkObjectResult)result;
+            var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Plan>(objectResult.Value);
 
@@ -274,14 +273,14 @@ namespace PackItTest.Controllers
         [Test]
         public void PatchNotFound()
         {
-            string startName = "A name";
-            string patchName = "B name";
-            string startNote = "Some notes";
-            Plan item = new Plan { PlanId = Guid.NewGuid().ToString(), Name = startName, Notes = startNote };
+            const string startName = "A name";
+            const string patchName = "B name";
+            const string startNote = "Some notes";
+            var item = new Plan { PlanId = Guid.NewGuid().ToString(), Name = startName, Notes = startNote };
 
             this.controller.Post(item);
 
-            JsonPatchDocument<Plan> patch = new JsonPatchDocument<Plan>();
+            var patch = new JsonPatchDocument<Plan>();
             patch.Replace(e => e.Name, patchName);
 
             var result = this.controller.Patch(Guid.NewGuid().ToString(), patch);
@@ -296,12 +295,12 @@ namespace PackItTest.Controllers
         public void PostComplexPlan()
         {
             string id = Guid.NewGuid().ToString();
-            StageLevel level = StageLevel.MultiPack;
+            const StageLevel level = StageLevel.MultiPack;
 
             // Create a plan with a stage that has a limit
-            Stage stage = new Stage { StageLevel = level };
+            var stage = new Stage { StageLevel = level };
             stage.Limits.Add(new Limit());
-            Plan item = new Plan { PlanId = id };
+            var item = new Plan { PlanId = id };
             item.Stages.Add(stage);
 
             var result = this.controller.Post(item);
@@ -316,7 +315,7 @@ namespace PackItTest.Controllers
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            OkObjectResult objectResult = (OkObjectResult)result;
+            var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Plan>(objectResult.Value);
 

@@ -35,11 +35,11 @@ namespace PackItTest.Controllers
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            OkObjectResult objectResult = (OkObjectResult)result;
+            var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<AboutController.AboutService>(objectResult.Value);
 
-            AboutController.AboutService item = (AboutController.AboutService)objectResult.Value;
+            var item = (AboutController.AboutService)objectResult.Value;
             Assert.IsNotEmpty(item.Version);
             Assert.IsNotEmpty(item.About);
         }
