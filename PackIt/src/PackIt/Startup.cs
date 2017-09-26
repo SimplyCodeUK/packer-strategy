@@ -79,7 +79,7 @@ namespace PackIt
         /// <summary> Seeds the specified application. </summary>
         ///
         /// <param name="app"> The application. </param>
-        private void Seed(IApplicationBuilder app)
+        private static void Seed(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
                             .CreateScope())

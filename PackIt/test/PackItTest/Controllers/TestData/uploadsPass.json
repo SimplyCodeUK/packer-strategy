@@ -7725,12 +7725,6 @@
                   "Count": 8,
                   "Collations": [
                     {
-                      "PackCode": "A1098/46",
-                      "ProductCode": "YM/Crate",
-                      "StrategyLevel": 6,
-                      "ResultIndex": 0,
-                      "ResultLayer": 0,
-                      "Index": 0,
                       "PosX": 0,
                       "PosY": 0,
                       "GapX": 0,
@@ -7743,12 +7737,6 @@
                       "Rotation": 1
                     },
                     {
-                      "PackCode": "A1098/46",
-                      "ProductCode": "YM/Crate",
-                      "StrategyLevel": 6,
-                      "ResultIndex": 0,
-                      "ResultLayer": 0,
-                      "Index": 1,
                       "PosX": 0,
                       "PosY": 512,
                       "GapX": 82,

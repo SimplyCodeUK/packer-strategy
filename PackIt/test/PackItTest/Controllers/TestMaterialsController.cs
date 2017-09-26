@@ -84,10 +84,10 @@ namespace PackItTest.Controllers
         [Test]
         public void GetAll()
         {
-            const int itemsToAdd = 10;
+            const int ItemsToAdd = 10;
             var ids = new List<string>();
 
-            for (int item = 0; item < itemsToAdd; ++item)
+            for (int item = 0; item < ItemsToAdd; ++item)
             {
                 string id = Guid.NewGuid().ToString();
 
@@ -119,11 +119,11 @@ namespace PackItTest.Controllers
         [Test]
         public void Get()
         {
-            const string startName = "A name";
-            const string startNote = "Some notes";
-            const MaterialType type = MaterialType.Can;
+            const string StartName = "A name";
+            const string StartNote = "Some notes";
+            const MaterialType Type = MaterialType.Can;
             string id = Guid.NewGuid().ToString();
-            var item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
+            var item = new Material { MaterialId = id, Type = Type, Name = StartName, Notes = StartNote };
 
             this.controller.Post(item);
 
@@ -138,9 +138,9 @@ namespace PackItTest.Controllers
 
             item = (Material)objectResult.Value;
             Assert.AreEqual(item.MaterialId, id);
-            Assert.AreEqual(item.Type, type);
-            Assert.AreEqual(item.Name, startName);
-            Assert.AreEqual(item.Notes, startNote);
+            Assert.AreEqual(item.Type, Type);
+            Assert.AreEqual(item.Name, StartName);
+            Assert.AreEqual(item.Notes, StartNote);
         }
 
         /// <summary>   (Unit Test Method) gets not found. </summary>
@@ -159,15 +159,15 @@ namespace PackItTest.Controllers
         [Test]
         public void Put()
         {
-            const string startName = "A name";
-            const string putName = "B name";
-            const MaterialType type = MaterialType.Cap;
+            const string StartName = "A name";
+            const string PutName = "B name";
+            const MaterialType Type = MaterialType.Cap;
             string id = Guid.NewGuid().ToString();
-            var item = new Material { Type = type, MaterialId = id, Name = startName };
+            var item = new Material { Type = Type, MaterialId = id, Name = StartName };
 
             this.controller.Post(item);
 
-            item.Name = putName;
+            item.Name = PutName;
             var result = this.controller.Put(id, item);
 
             Assert.IsNotNull(result);
@@ -182,9 +182,9 @@ namespace PackItTest.Controllers
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Material>(objectResult.Value);
             item = (Material)objectResult.Value;
-            Assert.AreEqual(item.Type, type);
+            Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.MaterialId, id);
-            Assert.AreEqual(item.Name, putName);
+            Assert.AreEqual(item.Name, PutName);
         }
 
         /// <summary>   (Unit Test Method) puts not found. </summary>
@@ -204,9 +204,9 @@ namespace PackItTest.Controllers
         [Test]
         public void Delete()
         {
-            const MaterialType type = MaterialType.Collar;
+            const MaterialType Type = MaterialType.Collar;
             string id = Guid.NewGuid().ToString();
-            var item = new Material { MaterialId = id, Type = type };
+            var item = new Material { MaterialId = id, Type = Type };
 
             this.controller.Post(item);
 
@@ -233,19 +233,19 @@ namespace PackItTest.Controllers
         [Test]
         public void Patch()
         {
-            const string startName = "A name";
-            const string patchName = "B name";
-            const string startNote = "Some notes";
-            const MaterialType type = MaterialType.Crate;
+            const string StartName = "A name";
+            const string PatchName = "B name";
+            const string StartNote = "Some notes";
+            const MaterialType Type = MaterialType.Crate;
             string id = Guid.NewGuid().ToString();
-            var item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
+            var item = new Material { MaterialId = id, Type = Type, Name = StartName, Notes = StartNote };
 
             // Create a new material
             this.controller.Post(item);
 
             // Patch the material with a new name
             JsonPatchDocument<Material> patch = new JsonPatchDocument<Material>();
-            patch.Replace(e => e.Name, patchName);
+            patch.Replace(e => e.Name, PatchName);
 
             var result = this.controller.Patch(id, patch);
 
@@ -258,10 +258,10 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
             item = (Material)objectResult.Value;
-            Assert.AreEqual(item.Type, type);
+            Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.MaterialId, id);
-            Assert.AreEqual(item.Name, patchName);
-            Assert.AreEqual(item.Notes, startNote);
+            Assert.AreEqual(item.Name, PatchName);
+            Assert.AreEqual(item.Notes, StartNote);
 
             // Get the material and check the returned object has the same Note and new Name
             result = this.controller.Get(id);
@@ -271,27 +271,27 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
             item = (Material)objectResult.Value;
-            Assert.AreEqual(item.Type, type);
+            Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.MaterialId, id);
-            Assert.AreEqual(item.Name, patchName);
-            Assert.AreEqual(item.Notes, startNote);
+            Assert.AreEqual(item.Name, PatchName);
+            Assert.AreEqual(item.Notes, StartNote);
         }
 
         /// <summary>   (Unit Test Method) patch not found. </summary>
         [Test]
         public void PatchNotFound()
         {
-            const string startName = "A name";
-            const string patchName = "B name";
-            const string startNote = "Some notes";
-            const MaterialType type = MaterialType.Crate;
+            const string StartName = "A name";
+            const string PatchName = "B name";
+            const string StartNote = "Some notes";
+            const MaterialType Type = MaterialType.Crate;
             string id = Guid.NewGuid().ToString();
-            var item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
+            var item = new Material { MaterialId = id, Type = Type, Name = StartName, Notes = StartNote };
 
             this.controller.Post(item);
 
             var patch = new JsonPatchDocument<Material>();
-            patch.Replace(e => e.Name, patchName);
+            patch.Replace(e => e.Name, PatchName);
 
             var result = this.controller.Patch(Guid.NewGuid().ToString(), patch);
 
@@ -304,12 +304,12 @@ namespace PackItTest.Controllers
         [Test]
         public void PostComplexPan()
         {
-            const MaterialType type = MaterialType.Crate;
+            const MaterialType Type = MaterialType.Crate;
             string id = Guid.NewGuid().ToString();
 
             // Create a material with a costing
             var costing = new Costing();
-            var item = new Material { MaterialId = id, Type = type };
+            var item = new Material { MaterialId = id, Type = Type };
             item.Costings.Add(costing);
 
             var result = this.controller.Post(item);
@@ -330,7 +330,7 @@ namespace PackItTest.Controllers
 
             // Test the material
             item = (Material)objectResult.Value;
-            Assert.AreEqual(item.Type, type);
+            Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.MaterialId, id);
         }
     }
