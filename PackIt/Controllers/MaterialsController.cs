@@ -44,8 +44,8 @@ namespace PackIt.Controllers
         }
 
         /// <summary>
-        ///     (An Action that handles HTTP GET requests) gets an i action result using the given
-        ///     identifier.
+        ///     (An Action that handles HTTP GET requests) gets an IActionResult using the given
+        ///     identifier containing a material.
         /// </summary>
         ///
         /// <param name="id">   The identifier. </param>
@@ -56,19 +56,14 @@ namespace PackIt.Controllers
         [ProducesResponseType(typeof(Material), 200)]
         public IActionResult Get(string id)
         {
-            IActionResult result;
-
             var item = this.repository.Find(id);
+
             if (item == null)
             {
-                result = this.NotFound(id);
-            }
-            else
-            {
-                result = this.Ok(item);
+                return this.NotFound(id);
             }
 
-            return result;
+            return this.Ok(item);
         }
 
         /// <summary>   (An Action that handles HTTP POST requests) post this message. </summary>
@@ -76,7 +71,7 @@ namespace PackIt.Controllers
         /// <param name="value">    The value. </param>
         ///
         /// <returns>   An IActionResult. </returns>
-        [HttpPost("{type}")]
+        [HttpPost]
         public IActionResult Post([FromBody] Material value)
         {
             IActionResult result;
@@ -110,23 +105,17 @@ namespace PackIt.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] Material value)
         {
-            IActionResult result;
-
             Material item = this.repository.Find(id);
 
-            if (item != null)
+            if (item == null)
             {
-                item = value;
-                item.MaterialId = id;
-                this.repository.Update(item);
-                result = this.Ok();
-            }
-            else
-            {
-                result = this.NotFound(id);
+                return this.NotFound(id);
             }
 
-            return result;
+            item = value;
+            item.MaterialId = id;
+            this.repository.Update(item);
+            return this.Ok();
         }
 
         /// <summary>   Deletes the given ID. </summary>
@@ -137,19 +126,13 @@ namespace PackIt.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            IActionResult result;
-
-            if (this.repository.Find(id) != null)
+            if (this.repository.Find(id) == null)
             {
-                this.repository.Remove(id);
-                result = this.Ok();
-            }
-            else
-            {
-                result = this.NotFound(id);
+                return this.NotFound(id);
             }
 
-            return result;
+            this.repository.Remove(id);
+            return this.Ok();
         }
 
         /// <summary>   Patches an existing Material. </summary>
@@ -161,22 +144,16 @@ namespace PackIt.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Material> update)
         {
-            IActionResult result;
-
             var item = this.repository.Find(id);
 
-            if (item != null)
+            if (item == null)
             {
-                update.ApplyTo(item);
-                this.repository.Update(item);
-                result = this.Ok(item);
-            }
-            else
-            {
-                result = this.NotFound(id);
+                return this.NotFound(id);
             }
 
-            return result;
+            update.ApplyTo(item);
+            this.repository.Update(item);
+            return this.Ok(item);
         }
     }
 }

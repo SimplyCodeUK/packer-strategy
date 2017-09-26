@@ -29,12 +29,12 @@ namespace PackItTest.Controllers
         [SetUp]
         public void BeforeTest()
         {
-            DbContextOptionsBuilder<MaterialContext> builder = new DbContextOptionsBuilder<MaterialContext>();
+            var builder = new DbContextOptionsBuilder<MaterialContext>();
             builder.EnableSensitiveDataLogging();
             builder.UseInMemoryDatabase("testmaterial");
 
-            MaterialContext context = new MaterialContext(builder.Options);
-            MaterialRepository repository = new MaterialRepository(context);
+            var context = new MaterialContext(builder.Options);
+            var repository = new MaterialRepository(context);
 
             this.controller = new MaterialsController(repository);
             Assert.IsNotNull(this.controller);
@@ -44,7 +44,7 @@ namespace PackItTest.Controllers
         [Test]
         public void Post()
         {
-            Material item = new Material { MaterialId = Guid.NewGuid().ToString() };
+            var item = new Material { MaterialId = Guid.NewGuid().ToString() };
             var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -67,7 +67,7 @@ namespace PackItTest.Controllers
         [Test]
         public void PostAlreadyExists()
         {
-            Material item = new Material { MaterialId = Guid.NewGuid().ToString() };
+            var item = new Material { MaterialId = Guid.NewGuid().ToString() };
             var result = this.controller.Post(item);
 
             Assert.IsNotNull(result);
@@ -84,8 +84,8 @@ namespace PackItTest.Controllers
         [Test]
         public void GetAll()
         {
-            int itemsToAdd = 10;
-            List<string> ids = new List<string>();
+            const int itemsToAdd = 10;
+            var ids = new List<string>();
 
             for (int item = 0; item < itemsToAdd; ++item)
             {
@@ -100,12 +100,11 @@ namespace PackItTest.Controllers
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            OkObjectResult objectResult = (OkObjectResult)result;
+            var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<IEnumerable<Material>>(objectResult.Value);
 
-            IEnumerable<Material> items = (IEnumerable<Material>)objectResult.Value;
-            foreach (Material item in items)
+            foreach (Material item in (IEnumerable<Material>)objectResult.Value)
             {
                 if (ids.Contains(item.MaterialId))
                 {
@@ -120,11 +119,11 @@ namespace PackItTest.Controllers
         [Test]
         public void Get()
         {
-            string startName = "A name";
-            string startNote = "Some notes";
-            MaterialType type = MaterialType.Can;
+            const string startName = "A name";
+            const string startNote = "Some notes";
+            const MaterialType type = MaterialType.Can;
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
+            var item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
 
             this.controller.Post(item);
 
@@ -133,7 +132,7 @@ namespace PackItTest.Controllers
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            OkObjectResult objectResult = (OkObjectResult)result;
+            var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
@@ -160,11 +159,11 @@ namespace PackItTest.Controllers
         [Test]
         public void Put()
         {
-            string startName = "A name";
-            string putName = "B name";
-            MaterialType type = MaterialType.Cap;
+            const string startName = "A name";
+            const string putName = "B name";
+            const MaterialType type = MaterialType.Cap;
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { Type = type, MaterialId = id, Name = startName };
+            var item = new Material { Type = type, MaterialId = id, Name = startName };
 
             this.controller.Post(item);
 
@@ -179,7 +178,7 @@ namespace PackItTest.Controllers
             result = this.controller.Get(id);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            OkObjectResult objectResult = (OkObjectResult)result;
+            var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Material>(objectResult.Value);
             item = (Material)objectResult.Value;
@@ -193,7 +192,7 @@ namespace PackItTest.Controllers
         public void PutNotFound()
         {
             string id = Guid.NewGuid().ToString();
-            Material item = new Material();
+            var item = new Material();
             var result = this.controller.Put(id, item);
 
             Assert.IsNotNull(result);
@@ -205,9 +204,9 @@ namespace PackItTest.Controllers
         [Test]
         public void Delete()
         {
-            MaterialType type = MaterialType.Collar;
+            const MaterialType type = MaterialType.Collar;
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { MaterialId = id, Type = type };
+            var item = new Material { MaterialId = id, Type = type };
 
             this.controller.Post(item);
 
@@ -234,12 +233,12 @@ namespace PackItTest.Controllers
         [Test]
         public void Patch()
         {
-            string startName = "A name";
-            string patchName = "B name";
-            string startNote = "Some notes";
-            MaterialType type = MaterialType.Crate;
+            const string startName = "A name";
+            const string patchName = "B name";
+            const string startNote = "Some notes";
+            const MaterialType type = MaterialType.Crate;
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
+            var item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
 
             // Create a new material
             this.controller.Post(item);
@@ -254,7 +253,7 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<OkObjectResult>(result);
 
             // Check the returned object from the patch has the same Note but different Name
-            OkObjectResult objectResult = (OkObjectResult)result;
+            var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
@@ -282,16 +281,16 @@ namespace PackItTest.Controllers
         [Test]
         public void PatchNotFound()
         {
-            string startName = "A name";
-            string patchName = "B name";
-            string startNote = "Some notes";
-            MaterialType type = MaterialType.Crate;
+            const string startName = "A name";
+            const string patchName = "B name";
+            const string startNote = "Some notes";
+            const MaterialType type = MaterialType.Crate;
             string id = Guid.NewGuid().ToString();
-            Material item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
+            var item = new Material { MaterialId = id, Type = type, Name = startName, Notes = startNote };
 
             this.controller.Post(item);
 
-            JsonPatchDocument<Material> patch = new JsonPatchDocument<Material>();
+            var patch = new JsonPatchDocument<Material>();
             patch.Replace(e => e.Name, patchName);
 
             var result = this.controller.Patch(Guid.NewGuid().ToString(), patch);
@@ -305,12 +304,12 @@ namespace PackItTest.Controllers
         [Test]
         public void PostComplexPan()
         {
-            MaterialType type = MaterialType.Crate;
+            const MaterialType type = MaterialType.Crate;
             string id = Guid.NewGuid().ToString();
 
             // Create a material with a costing
-            Costing costing = new Costing();
-            Material item = new Material { MaterialId = id, Type = type };
+            var costing = new Costing();
+            var item = new Material { MaterialId = id, Type = type };
             item.Costings.Add(costing);
 
             var result = this.controller.Post(item);
@@ -325,7 +324,7 @@ namespace PackItTest.Controllers
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            OkObjectResult objectResult = (OkObjectResult)result;
+            var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Material>(objectResult.Value);
 

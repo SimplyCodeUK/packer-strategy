@@ -22,9 +22,8 @@ namespace PackItTest.DTO
         public void ConvertMaterial()
         {
             string text = File.ReadAllText("DTO/TestData/material.json");
-            Material material = JsonConvert.DeserializeObject<Material>(text);
-
-            DtoMaterial dto = MaterialMapper.Convert(material);
+            var material = JsonConvert.DeserializeObject<Material>(text);
+            var dto = MaterialMapper.Convert(material);
 
             Assert.AreEqual(dto.MaterialId, material.MaterialId);
 

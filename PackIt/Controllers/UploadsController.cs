@@ -48,68 +48,60 @@ namespace PackIt.Controllers
         [HttpPost("{type}")]
         public IActionResult Post([FromBody] Bulk values)
         {
-            IActionResult result;
+            var pass = new List<string>();
+            var fail = new List<string>();
 
-            List<string> pass = new List<string>();
-            List<string> fail = new List<string>();
-
-            if (values != null)
+            if (values == null)
             {
-                foreach (Plan.Plan item in values.Plans)
-                {
-                    try
-                    {
-                        this.planRepo.Add(item);
-                        pass.Add(item.PlanId);
-                    }
-                    catch (Exception)
-                    {
-                        fail.Add(item.PlanId);
-                    }
-                }
-
-                foreach (Material.Material item in values.Materials)
-                {
-                    try
-                    {
-                        this.materialRepo.Add(item);
-                        pass.Add(item.MaterialId);
-                    }
-                    catch (Exception)
-                    {
-                        fail.Add(item.MaterialId);
-                    }
-                }
-
-                foreach (Pack.Pack item in values.Packs)
-                {
-                    try
-                    {
-                        this.packRepo.Add(item);
-                        pass.Add(item.PackId);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.Out.Write(e.ToString());
-                        fail.Add(item.PackId);
-                    }
-                }
-
-                if (fail.Count == 0)
-                {
-                    result = this.StatusCode((int)HttpStatusCode.Created, pass);
-                }
-                else
-                {
-                    result = this.StatusCode((int)HttpStatusCode.Conflict, fail);
-                }
-            }
-            else
-            {
-                result = this.BadRequest();
+                return this.BadRequest();
             }
 
-            return result;
+            foreach (Plan.Plan item in values.Plans)
+            {
+                try
+                {
+                    this.planRepo.Add(item);
+                    pass.Add(item.PlanId);
+                }
+                catch (Exception)
+                {
+                    fail.Add(item.PlanId);
+                }
+            }
+
+            foreach (Material.Material item in values.Materials)
+            {
+                try
+                {
+                    this.materialRepo.Add(item);
+                    pass.Add(item.MaterialId);
+                }
+                catch (Exception)
+                {
+                    fail.Add(item.MaterialId);
+                }
+            }
+
+            foreach (Pack.Pack item in values.Packs)
+            {
+                try
+                {
+                    this.packRepo.Add(item);
+                    pass.Add(item.PackId);
+                }
+                catch (Exception e)
+                {
+                    Console.Out.Write(e.ToString());
+                    fail.Add(item.PackId);
+                }
+            }
+
+            if (fail.Count != 0)
+            {
+                return this.StatusCode((int)HttpStatusCode.Conflict, fail);
+            }
+
+            return this.StatusCode((int)HttpStatusCode.Created, pass);
         }
 
         /// <summary>

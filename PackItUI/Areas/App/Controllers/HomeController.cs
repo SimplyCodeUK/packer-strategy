@@ -46,7 +46,7 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public IActionResult About()
         {
-            Task<AboutViewModel> model = AboutViewModel.Create(this.AppSettings.ServiceEndpoints);
+            var model = AboutViewModel.Create(this.AppSettings.ServiceEndpoints);
             return this.View(model.Result);
         }
 

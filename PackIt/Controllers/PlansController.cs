@@ -31,9 +31,12 @@ namespace PackIt.Controllers
             this.repository = repository;
         }
 
-        /// <summary>   (An Action that handles HTTP GET requests) gets the get. </summary>
+        /// <summary>
+        ///     (An Action that handles HTTP GET requests) enumerates the items in this collection that
+        ///     meet given criteria.
+        /// </summary>
         ///
-        /// <returns>   An IActionResult. </returns>
+        /// <returns>   An enumerator that allows foreach to be used to process the matched items. </returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -41,8 +44,8 @@ namespace PackIt.Controllers
         }
 
         /// <summary>
-        ///     (An Action that handles HTTP GET requests) gets an i action result using the given
-        ///     identifier.
+        ///     (An Action that handles HTTP GET requests) gets an IActionResult using the given
+        ///     identifier containing a plan.
         /// </summary>
         ///
         /// <param name="id">   The identifier. </param>
@@ -54,18 +57,13 @@ namespace PackIt.Controllers
         public IActionResult Get(string id)
         {
             var item = this.repository.Find(id);
-            IActionResult result;
 
             if (item == null)
             {
-                result = this.NotFound(id);
-            }
-            else
-            {
-                result = this.Ok(item);
+                return this.NotFound(id);
             }
 
-            return result;
+            return this.Ok(item);
         }
 
         /// <summary>   (An Action that handles HTTP POST requests) post this message. </summary>
@@ -108,21 +106,16 @@ namespace PackIt.Controllers
         public IActionResult Put(string id, [FromBody] Plan value)
         {
             Plan item = this.repository.Find(id);
-            IActionResult result;
 
-            if (item != null)
+            if (item == null)
             {
-                item = value;
-                item.PlanId = id;
-                this.repository.Update(item);
-                result = this.Ok();
-            }
-            else
-            {
-                result = this.NotFound(id);
+                return this.NotFound(id);
             }
 
-            return result;
+            item = value;
+            item.PlanId = id;
+            this.repository.Update(item);
+            return this.Ok();
         }
 
         /// <summary>   Deletes the given ID. </summary>
@@ -133,19 +126,13 @@ namespace PackIt.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            IActionResult result;
-
-            if (this.repository.Find(id) != null)
+            if (this.repository.Find(id) == null)
             {
-                this.repository.Remove(id);
-                result = this.Ok();
-            }
-            else
-            {
-                result = this.NotFound(id);
+                return this.NotFound(id);
             }
 
-            return result;
+            this.repository.Remove(id);
+            return this.Ok();
         }
 
         /// <summary>   Patches an existing Plan. </summary>
@@ -158,20 +145,15 @@ namespace PackIt.Controllers
         public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> update)
         {
             var item = this.repository.Find(id);
-            IActionResult result;
 
-            if (item != null)
+            if (item == null)
             {
-                update.ApplyTo(item);
-                this.repository.Update(item);
-                result = this.Ok(item);
-            }
-            else
-            {
-                result = this.NotFound(id);
+                return this.NotFound(id);
             }
 
-            return result;
+            update.ApplyTo(item);
+            this.repository.Update(item);
+            return this.Ok(item);
         }
     }
 }
