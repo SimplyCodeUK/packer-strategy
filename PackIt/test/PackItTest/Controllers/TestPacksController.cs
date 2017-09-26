@@ -83,10 +83,10 @@ namespace PackItTest.Controllers
         [Test]
         public void GetAll()
         {
-            const int itemsToAdd = 10;
+            const int ItemsToAdd = 10;
             var ids = new List<string>();
 
-            for (int item = 0; item < itemsToAdd; ++item)
+            for (int item = 0; item < ItemsToAdd; ++item)
             {
                 string id = Guid.NewGuid().ToString();
 
@@ -118,9 +118,9 @@ namespace PackItTest.Controllers
         [Test]
         public void Get()
         {
-            const string startName = "A name";
+            const string StartName = "A name";
             string id = Guid.NewGuid().ToString();
-            var item = new Pack { PackId = id, Name = startName };
+            var item = new Pack { PackId = id, Name = StartName };
 
             this.controller.Post(item);
 
@@ -135,7 +135,7 @@ namespace PackItTest.Controllers
 
             item = (Pack)objectResult.Value;
             Assert.AreEqual(item.PackId, id);
-            Assert.AreEqual(item.Name, startName);
+            Assert.AreEqual(item.Name, StartName);
         }
 
         /// <summary>   (Unit Test Method) gets not found. </summary>
@@ -154,14 +154,14 @@ namespace PackItTest.Controllers
         [Test]
         public void Put()
         {
-            const string startName = "A name";
-            const string putName = "B name";
+            const string StartName = "A name";
+            const string PutName = "B name";
             string id = Guid.NewGuid().ToString();
-            var item = new Pack { PackId = id, Name = startName };
+            var item = new Pack { PackId = id, Name = StartName };
 
             this.controller.Post(item);
 
-            item.Name = putName;
+            item.Name = PutName;
             var result = this.controller.Put(id, item);
 
             Assert.IsNotNull(result);
@@ -177,7 +177,7 @@ namespace PackItTest.Controllers
             Assert.IsInstanceOf<Pack>(objectResult.Value);
             item = (Pack)objectResult.Value;
             Assert.AreEqual(item.PackId, id);
-            Assert.AreEqual(item.Name, putName);
+            Assert.AreEqual(item.Name, PutName);
         }
 
         /// <summary>   (Unit Test Method) puts not found. </summary>
@@ -225,17 +225,17 @@ namespace PackItTest.Controllers
         [Test]
         public void Patch()
         {
-            const string startName = "A name";
-            const string patchName = "B name";
+            const string StartName = "A name";
+            const string PatchName = "B name";
             string id = Guid.NewGuid().ToString();
-            var item = new Pack { PackId = id, Name = startName };
+            var item = new Pack { PackId = id, Name = StartName };
 
             // Create a new pack
             this.controller.Post(item);
 
             // Patch the pack with a new name
             var patch = new JsonPatchDocument<Pack>();
-            patch.Replace(e => e.Name, patchName);
+            patch.Replace(e => e.Name, PatchName);
 
             var result = this.controller.Patch(id, patch);
 
@@ -249,7 +249,7 @@ namespace PackItTest.Controllers
 
             item = (Pack)objectResult.Value;
             Assert.AreEqual(item.PackId, id);
-            Assert.AreEqual(item.Name, patchName);
+            Assert.AreEqual(item.Name, PatchName);
 
             // Get the pack and check the returned object has the same Note and new Name
             result = this.controller.Get(id);
@@ -260,21 +260,21 @@ namespace PackItTest.Controllers
 
             item = (Pack)objectResult.Value;
             Assert.AreEqual(item.PackId, id);
-            Assert.AreEqual(item.Name, patchName);
+            Assert.AreEqual(item.Name, PatchName);
         }
 
         /// <summary>   (Unit Test Method) patch not found. </summary>
         [Test]
         public void PatchNotFound()
         {
-            const string startName = "A name";
-            const string patchName = "B name";
-            var item = new Pack { PackId = Guid.NewGuid().ToString(), Name = startName };
+            const string StartName = "A name";
+            const string PatchName = "B name";
+            var item = new Pack { PackId = Guid.NewGuid().ToString(), Name = StartName };
 
             this.controller.Post(item);
 
             var patch = new JsonPatchDocument<Pack>();
-            patch.Replace(e => e.Name, patchName);
+            patch.Replace(e => e.Name, PatchName);
 
             var result = this.controller.Patch(Guid.NewGuid().ToString(), patch);
 
@@ -288,11 +288,11 @@ namespace PackItTest.Controllers
         public void PostComplexPan()
         {
             string id = Guid.NewGuid().ToString();
-            const long quantity = 1000;
-            const double weight = 2000.0;
+            const long Quantity = 1000;
+            const double Weight = 2000.0;
 
             // Create a pack with a stage that has a limit
-            var costing = new Costing { RequiredQuantity = quantity, RequiredWeight = weight };
+            var costing = new Costing { RequiredQuantity = Quantity, RequiredWeight = Weight };
 
             var item = new Pack { PackId = id };
             item.Costings.Add(costing);
@@ -319,8 +319,8 @@ namespace PackItTest.Controllers
 
             // Test for one stage
             Assert.AreEqual(item.Costings.Count, 1);
-            Assert.AreEqual(item.Costings[0].RequiredQuantity, quantity);
-            Assert.AreEqual(item.Costings[0].RequiredWeight, weight);
+            Assert.AreEqual(item.Costings[0].RequiredQuantity, Quantity);
+            Assert.AreEqual(item.Costings[0].RequiredWeight, Weight);
         }
     }
 }
