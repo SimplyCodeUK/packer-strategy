@@ -7,6 +7,7 @@
 namespace PackItUI.Services
 {
     using System;
+    using System.Collections.Generic;
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
@@ -49,6 +50,30 @@ namespace PackItUI.Services
             }
 
             return true;
+        }
+
+        /// <summary> Reads asynchronously all packs. </summary>
+        ///
+        /// <returns> The packs. </returns>
+        public async Task<List<PackIt.Pack.Pack>> ReadAsync()
+        {
+            try
+            {
+                HttpResponseMessage response = await this.HttpClient.GetAsync(this.Endpoint + "Packs");
+
+                // Throw an exception if not successful
+                response.EnsureSuccessStatusCode();
+
+                // Get the content
+                string content = await response.Content.ReadAsStringAsync();
+
+                // Create a pack from the content
+                return JsonConvert.DeserializeObject<List<PackIt.Pack.Pack>>(content);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /// <summary> Reads asynchronously a pack. </summary>

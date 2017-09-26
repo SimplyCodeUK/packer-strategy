@@ -61,9 +61,7 @@ namespace PackIt.DTO
         public Plan FindPlan(string key)
         {
             DtoPlan.DtoPlan dto = this.Plans.Find(key);
-            Plan ret = dto == null ? null : PlanMapper.Convert(dto);
-
-            return ret;
+            return dto == null ? null : PlanMapper.Convert(dto);
         }
 
         /// <summary>   Removes the plan described by key. </summary>

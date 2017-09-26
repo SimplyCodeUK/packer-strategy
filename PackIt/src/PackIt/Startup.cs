@@ -6,12 +6,15 @@
 
 namespace PackIt
 {
+    using System.Collections.Generic;
+    using System.IO;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+    using Newtonsoft.Json;
     using PackIt.DTO;
 
     /// <summary>   A start up. </summary>
@@ -66,6 +69,69 @@ namespace PackIt
             loggerFactory.AddDebug();
 
             app.UseMvc();
+
+            if (env.IsDevelopment())
+            {
+                Seed(app);
+            }
+        }
+
+        /// <summary> Seeds the specified application. </summary>
+        ///
+        /// <param name="app"> The application. </param>
+        private void Seed(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                            .CreateScope())
+            {
+                // Seed Pack database
+                var packContext = serviceScope.ServiceProvider.GetService<PackContext>();
+
+                var asyncTask = packContext.Packs.AnyAsync();
+                asyncTask.Wait();
+                if (!asyncTask.Result)
+                {
+                    string text = File.ReadAllText("Seeds/pack.json");
+                    foreach (var item in JsonConvert.DeserializeObject<List<Pack.Pack>>(text))
+                    {
+                        packContext.AddPack(item);
+                    }
+                }
+
+                packContext.SaveChanges();
+
+                // Seed Plan database
+                var planContext = serviceScope.ServiceProvider.GetService<PlanContext>();
+
+                asyncTask = planContext.Plans.AnyAsync();
+                asyncTask.Wait();
+                if (!asyncTask.Result)
+                {
+                    string text = File.ReadAllText("Seeds/plan.json");
+                    foreach (var item in JsonConvert.DeserializeObject<List<Plan.Plan>>(text))
+                    {
+                        planContext.AddPlan(item);
+                    }
+                }
+
+                planContext.SaveChanges();
+
+                // Seed Material database
+                var materialContext = serviceScope.ServiceProvider.GetService<MaterialContext>();
+
+                asyncTask = materialContext.Materials.AnyAsync();
+                asyncTask.Wait();
+                if (!asyncTask.Result)
+                {
+                    string text = File.ReadAllText("Seeds/material.json");
+                    foreach (var item in JsonConvert.DeserializeObject<List<Material.Material>>(text))
+                    {
+                        materialContext.AddMaterial(item);
+                    }
+                }
+
+                materialContext.SaveChanges();
+            }
         }
     }
 }

@@ -61,9 +61,7 @@ namespace PackIt.DTO
         public Material FindMaterial(string key)
         {
             DtoMaterial.DtoMaterial dto = this.Materials.Find(key);
-            Material ret = dto == null ? null : MaterialMapper.Convert(dto);
-
-            return ret;
+            return dto == null ? null : MaterialMapper.Convert(dto);
         }
 
         /// <summary>   Removes the material. </summary>
