@@ -20,6 +20,8 @@ namespace PackItUI.Areas.Packs.Models
         public PackModel()
         {
             this.Data = new PackIt.Pack.Pack();
+            this.Editable = false;
+            this.Deletable = false;
         }
 
         /// <summary> Gets or sets the pack data. </summary>

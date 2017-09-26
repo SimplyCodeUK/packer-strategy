@@ -6,7 +6,6 @@
 
 namespace PackIt.DTO
 {
-    using System;
     using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -62,9 +61,7 @@ namespace PackIt.DTO
         public Pack FindPack(string key)
         {
             DtoPack.DtoPack dto = this.Packs.Find(key);
-            Pack ret = dto == null ? null : PackMapper.Convert(dto);
-
-            return ret;
+            return dto == null ? null : PackMapper.Convert(dto);
         }
 
         /// <summary>   Removes the pack described by key. </summary>

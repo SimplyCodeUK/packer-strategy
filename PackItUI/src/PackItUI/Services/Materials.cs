@@ -7,6 +7,7 @@
 namespace PackItUI.Services
 {
     using System;
+    using System.Collections.Generic;
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
@@ -49,6 +50,30 @@ namespace PackItUI.Services
             }
 
             return true;
+        }
+
+        /// <summary> Reads asynchronously all materials. </summary>
+        ///
+        /// <returns> The materials. </returns>
+        public async Task<List<PackIt.Material.Material>> ReadAsync()
+        {
+            try
+            {
+                HttpResponseMessage response = await this.HttpClient.GetAsync(this.Endpoint + "Materials");
+
+                // Throw an exception if not successful
+                response.EnsureSuccessStatusCode();
+
+                // Get the content
+                string content = await response.Content.ReadAsStringAsync();
+
+                // Create a material from the content
+                return JsonConvert.DeserializeObject<List<PackIt.Material.Material>>(content);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /// <summary> Reads asynchronously a material. </summary>

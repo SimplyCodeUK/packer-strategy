@@ -20,6 +20,8 @@ namespace PackItUI.Areas.Materials.Models
         public MaterialModel()
         {
             this.Data = new PackIt.Material.Material();
+            this.Editable = false;
+            this.Deletable = false;
         }
 
         /// <summary> Gets or sets the material data. </summary>

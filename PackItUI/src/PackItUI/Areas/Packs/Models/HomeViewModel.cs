@@ -6,6 +6,7 @@
 
 namespace PackItUI.Areas.Packs.Models
 {
+    using System.Collections.Generic;
     using PackItUI.Services;
 
     /// <summary> Packs home view model. </summary>
@@ -16,14 +17,21 @@ namespace PackItUI.Areas.Packs.Models
         /// </summary>
         ///
         /// <param name="information"> The service information. </param>
-        public HomeViewModel(ServiceInfo information)
+        /// <param name="items"> The items. </param>
+        public HomeViewModel(ServiceInfo information, List<PackIt.Pack.Pack> items)
         {
             this.Information = information;
+            this.Items = items;
         }
 
         /// <summary> Gets the service information. </summary>
         ///
         /// <value> The service information. </value>
         public ServiceInfo Information { get; }
+
+        /// <summary> Gets the items. </summary>
+        ///
+        /// <value> The items. </value>
+        public List<PackIt.Pack.Pack> Items { get; }
     }
 }

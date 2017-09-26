@@ -7,11 +7,50 @@
 
 <table class="table">
     <tr>
-        <th>Version</th>
-        <th>About</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Information.Version)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Information.About)
+        </th>
     </tr>
     <tr>
-        <td>@Model.Information.Version</td>
-        <td>@Model.Information.About</td>
+        <th>
+            @Html.DisplayFor(model => model.Information.Version)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.Information.About)
+        </th>
     </tr>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Notes</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.MaterialId)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Notes)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaterialId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaterialId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaterialId }) |
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

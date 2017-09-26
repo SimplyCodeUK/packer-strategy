@@ -34,7 +34,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var model = new Models.HomeViewModel(await this.service.InformationAsync());
+            var model = new Models.HomeViewModel(await this.service.InformationAsync(), await this.service.ReadAsync());
             return this.View(model);
         }
 
