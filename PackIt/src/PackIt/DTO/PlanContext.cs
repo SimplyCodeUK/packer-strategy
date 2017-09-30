@@ -32,11 +32,14 @@ namespace PackIt.DTO
         /// <summary>   Gets the plans. </summary>
         ///
         /// <returns>   The plans. </returns>
-        public List<Plan> GetPlans()
+        public IList<Plan> GetPlans()
         {
-            List<Plan> ret = new List<Plan>();
+            var ret = new List<Plan>();
+            var query = this.Plans
+                .Include(p => p.Stages)
+                .Include(p => p.Stages).ThenInclude(s => s.Limits);
 
-            foreach (DtoPlan.DtoPlan item in this.Plans)
+            foreach (DtoPlan.DtoPlan item in query)
             {
                 ret.Add(PlanMapper.Convert(item));
             }
@@ -119,8 +122,11 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoPlan.DtoPlan> builder)
         {
             builder.ToTable("DtoPlan");
-            builder.HasKey(c => new { c.PlanId });
-            builder.HasMany(c => c.Stages);
+            builder.HasKey(p => new { p.PlanId });
+            builder
+                .HasMany(p => p.Stages)
+                .WithOne()
+                .HasForeignKey(s => new { s.PlanId });
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -129,8 +135,11 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoPlan.DtoStage> builder)
         {
             builder.ToTable("DtoStage");
-            builder.HasKey(c => new { c.PlanId, c.StageLevel });
-            builder.HasMany(c => c.Limits);
+            builder.HasKey(s => new { s.PlanId, s.StageLevel });
+            builder
+                .HasMany(s => s.Limits)
+                .WithOne()
+                .HasForeignKey(l => new { l.PlanId, l.StageLevel });
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -139,7 +148,7 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoPlan.DtoLimit> builder)
         {
             builder.ToTable("DtoLimit");
-            builder.HasKey(c => new { c.PlanId, c.StageLevel, c.LimitIndex });
+            builder.HasKey(l => new { l.PlanId, l.StageLevel, l.LimitIndex });
         }
     }
 }

@@ -237,19 +237,19 @@ namespace PackIt.Pack
         /// <value> The volume utilisation. </value>
         public double VolumeUtilisation { get; set; }
 
-        /// <summary>   Gets or sets the layers. </summary>
+        /// <summary>   Gets or sets the collection of layers. </summary>
         ///
-        /// <value> The layers. </value>
-        public List<Layer> Layers { get; set; }
+        /// <value> Collection of layers. </value>
+        public IList<Layer> Layers { get; set; }
 
-        /// <summary>   Gets or sets the materials. </summary>
+        /// <summary>   Gets or sets the collection of materials. </summary>
         ///
-        /// <value> The materials. </value>
-        public List<Material> Materials { get; set; }
+        /// <value> Collection of materials. </value>
+        public IList<Material> Materials { get; set; }
 
-        /// <summary>   Gets or sets the sections. </summary>
+        /// <summary>   Gets or sets the collection of sections. </summary>
         ///
-        /// <value> The sections. </value>
-        public List<Section> Sections { get; set; }
+        /// <value> Collection of sections. </value>
+        public IList<Section> Sections { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace PackIt.DTO
         /// <returns>
         ///     An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
-        IEnumerable<Plan> GetAll();
+        IList<Plan> GetAll();
 
         /// <summary>   Searches for the first match for the given string. </summary>
         ///

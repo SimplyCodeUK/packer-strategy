@@ -55,7 +55,7 @@ namespace PackItUI.Services
         /// <summary> Reads asynchronously all plans. </summary>
         ///
         /// <returns> The plans. </returns>
-        public async Task<List<PackIt.Plan.Plan>> ReadAsync()
+        public async Task<IList<PackIt.Plan.Plan>> ReadAsync()
         {
             try
             {

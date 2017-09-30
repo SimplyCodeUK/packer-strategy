@@ -666,14 +666,14 @@ namespace PackIt.DTO.DtoPack
         /// <value> True if draw hands, false if not. </value>
         public bool DrawHands { get; set; }
 
-        /// <summary>   Gets or sets the limits. </summary>
+        /// <summary>   Gets or sets the collection of limits. </summary>
         ///
-        /// <value> The limits. </value>
-        public List<DtoLimit> Limits { get; set; }
+        /// <value> Collection of limits. </value>
+        public IList<DtoLimit> Limits { get; set; }
 
-        /// <summary>   Gets or sets the results. </summary>
+        /// <summary>   Gets or sets the collection of results. </summary>
         ///
-        /// <value> The results. </value>
-        public List<DtoResult> Results { get; set; }
+        /// <value> Collection of results. </value>
+        public IList<DtoResult> Results { get; set; }
     }
 }

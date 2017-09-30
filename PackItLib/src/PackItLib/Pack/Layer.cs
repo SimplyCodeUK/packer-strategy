@@ -105,9 +105,9 @@ namespace PackIt.Pack
         /// <value> The count. </value>
         public long Count { get; set; }
 
-        /// <summary>   Gets or sets the collations. </summary>
+        /// <summary>   Gets or sets the collection of collations. </summary>
         ///
-        /// <value> The collations. </value>
-        public List<Collation> Collations { get; set; }
+        /// <value> Collection of collations. </value>
+        public IList<Collation> Collations { get; set; }
     }
 }

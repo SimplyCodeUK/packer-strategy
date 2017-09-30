@@ -661,14 +661,14 @@ namespace PackIt.Pack
         /// <value> True if draw hands, false if not. </value>
         public bool DrawHands { get; set; }
 
-        /// <summary>   Gets or sets the results. </summary>
+        /// <summary>   Gets or sets the collection of limits. </summary>
         ///
-        /// <value> The results. </value>
-        public List<Limit> Limits { get; set; }
+        /// <value> Collection of limits. </value>
+        public IList<Limit> Limits { get; set; }
 
-        /// <summary>   Gets or sets the results. </summary>
+        /// <summary>   Gets or sets the collection of results. </summary>
         ///
-        /// <value> The results. </value>
-        public List<Result> Results { get; set; }
+        /// <value> Collection of  results. </value>
+        public IList<Result> Results { get; set; }
     }
 }

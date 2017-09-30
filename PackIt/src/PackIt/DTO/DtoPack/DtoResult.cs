@@ -252,19 +252,19 @@ namespace PackIt.DTO.DtoPack
         /// <value> The volume utilisation. </value>
         public double VolumeUtilisation { get; set; }
 
-        /// <summary>   Gets or sets the layers. </summary>
+        /// <summary>   Gets or sets the collection of layers. </summary>
         ///
-        /// <value> The layers. </value>
-        public List<DtoLayer> Layers { get; set; }
+        /// <value> Collection of layers. </value>
+        public IList<DtoLayer> Layers { get; set; }
 
-        /// <summary>   Gets or sets the materials. </summary>
+        /// <summary>   Gets or sets the collection of materials. </summary>
         ///
-        /// <value> The materials. </value>
-        public List<DtoMaterial> Materials { get; set; }
+        /// <value> Collection of materials. </value>
+        public IList<DtoMaterial> Materials { get; set; }
 
-        /// <summary>   Gets or sets the sections. </summary>
+        /// <summary>   Gets or sets the collection of sections. </summary>
         ///
-        /// <value> The sections. </value>
-        public List<DtoSection> Sections { get; set; }
+        /// <value> Collection of sections. </value>
+        public IList<DtoSection> Sections { get; set; }
     }
 }

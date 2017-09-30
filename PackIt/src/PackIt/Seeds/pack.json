@@ -1,6 +1,6 @@
 [
   {
-    "PackId": "125g Benl.",
+    "PackId": "125g.Benl.",
     "Name": "Export Pack.",
     "PlanCode": "Benylin",
     "PlanName": "Pharma",
@@ -410,13 +410,13 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "Benl/125ml",
+            "MaterialCode": "Benl.125ml",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
             "DesignCodeMin": null,
             "QualityType": 0,
-            "QualityCode": "Benl/125ml",
+            "QualityCode": "Benl.125ml",
             "QualityCodeMin": "",
             "Inverted": false,
             "LayerCount": 1,
@@ -455,7 +455,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/125",
+            "MaterialCode": "Gen.125",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -500,13 +500,13 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "125g Benl",
+            "MaterialCode": "125g.Benl",
             "MaterialCodeMin": "",
             "DesignType": 1,
             "DesignCode": "SP52",
             "DesignCodeMin": null,
             "QualityType": 0,
-            "QualityCode": "Benl/125ml",
+            "QualityCode": "Benl.125ml",
             "QualityCodeMin": "",
             "Inverted": false,
             "LayerCount": 1,
@@ -672,7 +672,7 @@
             "Materials": [
               {
                 "MaterialType": 4,
-                "MaterialId": "Benl/125ml",
+                "MaterialId": "Benl.125ml",
                 "Name": "125ml Brown Gl.Bottle",
                 "Colour": "",
                 "Drawing": "",
@@ -717,7 +717,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "Gen/125",
+                "MaterialId": "Gen.125",
                 "Name": "Twist-Top",
                 "Colour": "",
                 "Drawing": "",
@@ -762,7 +762,7 @@
               },
               {
                 "MaterialType": 1,
-                "MaterialId": "125g Benl",
+                "MaterialId": "125g.Benl",
                 "Name": "Primary Carton",
                 "Colour": "",
                 "Drawing": "",
@@ -987,7 +987,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "125g Sec.",
+            "MaterialCode": "125g.Sec.",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0204",
@@ -1114,7 +1114,7 @@
             "Materials": [
               {
                 "MaterialType": 1,
-                "MaterialId": "125g Sec.",
+                "MaterialId": "125g.Sec.",
                 "Name": "Secondary Ct.",
                 "Colour": "",
                 "Drawing": "",
@@ -1694,7 +1694,7 @@
           {
             "Design": false,
             "MaterialType": 9,
-            "MaterialCode": "Shr/050m",
+            "MaterialCode": "Shr.050m",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -1878,7 +1878,7 @@
               },
               {
                 "MaterialType": 9,
-                "MaterialId": "Shr/050m",
+                "MaterialId": "Shr.050m",
                 "Name": "Pallet Shrink Bag",
                 "Colour": "",
                 "Drawing": "",
@@ -1929,7 +1929,7 @@
     ]
   },
   {
-    "PackId": "125g Benl/Cont",
+    "PackId": "125g.Benl.Cont",
     "Name": "Export Cont.",
     "PlanCode": "Benylin",
     "PlanName": "Pharma",
@@ -2339,13 +2339,13 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "Benl/125ml",
+            "MaterialCode": "Benl.125ml",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
             "DesignCodeMin": null,
             "QualityType": 0,
-            "QualityCode": "Benl/125ml",
+            "QualityCode": "Benl.125ml",
             "QualityCodeMin": "",
             "Inverted": false,
             "LayerCount": 1,
@@ -2384,7 +2384,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/125",
+            "MaterialCode": "Gen.125",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -2429,13 +2429,13 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "125g Benl",
+            "MaterialCode": "125g.Benl",
             "MaterialCodeMin": "",
             "DesignType": 1,
             "DesignCode": "SP52",
             "DesignCodeMin": null,
             "QualityType": 0,
-            "QualityCode": "Benl/125ml",
+            "QualityCode": "Benl.125ml",
             "QualityCodeMin": "",
             "Inverted": false,
             "LayerCount": 1,
@@ -2601,7 +2601,7 @@
             "Materials": [
               {
                 "MaterialType": 4,
-                "MaterialId": "Benl/125ml",
+                "MaterialId": "Benl.125ml",
                 "Name": "125ml Brown Gl.Bottle",
                 "Colour": "",
                 "Drawing": "",
@@ -2646,7 +2646,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "Gen/125",
+                "MaterialId": "Gen.125",
                 "Name": "Twist-Top",
                 "Colour": "",
                 "Drawing": "",
@@ -2691,7 +2691,7 @@
               },
               {
                 "MaterialType": 1,
-                "MaterialId": "125g Benl",
+                "MaterialId": "125g.Benl",
                 "Name": "Primary Carton",
                 "Colour": "",
                 "Drawing": "",
@@ -2916,7 +2916,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "125g Sec.",
+            "MaterialCode": "125g.Sec.",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0204",
@@ -3043,7 +3043,7 @@
             "Materials": [
               {
                 "MaterialType": 1,
-                "MaterialId": "125g Sec.",
+                "MaterialId": "125g.Sec.",
                 "Name": "Secondary Ct.",
                 "Colour": "",
                 "Drawing": "",
@@ -3623,7 +3623,7 @@
           {
             "Design": false,
             "MaterialType": 9,
-            "MaterialCode": "Shr/050m",
+            "MaterialCode": "Shr.050m",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -3807,7 +3807,7 @@
               },
               {
                 "MaterialType": 9,
-                "MaterialId": "Shr/050m",
+                "MaterialId": "Shr.050m",
                 "Name": "Pallet Shrink Bag",
                 "Colour": "",
                 "Drawing": "",
@@ -3987,7 +3987,7 @@
           {
             "Design": false,
             "MaterialType": 11,
-            "MaterialCode": "Con/1",
+            "MaterialCode": "Con.1",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -4114,7 +4114,7 @@
             "Materials": [
               {
                 "MaterialType": 11,
-                "MaterialId": "Con/1",
+                "MaterialId": "Con.1",
                 "Name": "Export",
                 "Colour": "",
                 "Drawing": "",
@@ -4165,12 +4165,12 @@
     ]
   },
   {
-    "PackId": "A1098/46",
+    "PackId": "A1098.46",
     "Name": "YM/Crate Systems",
-    "PlanCode": "YM/Crate",
+    "PlanCode": "YM.Crate",
     "PlanName": "",
     "MaterialType": "0",
-    "MaterialCode": "Pdx/4329",
+    "MaterialCode": "Pdx.4329",
     "MaterialName": "Trial Container",
     "CostingPremium": 0.0,
     "Costings": [
@@ -4558,7 +4558,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "PdX/4329",
+            "MaterialCode": "PdX.4329",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -4603,7 +4603,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/4253",
+            "MaterialCode": "Gen.4253",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -4730,7 +4730,7 @@
             "Materials": [
               {
                 "MaterialType": 4,
-                "MaterialId": "PdX/4329",
+                "MaterialId": "PdX.4329",
                 "Name": "Trial Container",
                 "Colour": "",
                 "Drawing": "",
@@ -4775,7 +4775,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "Gen/4253",
+                "MaterialId": "Gen.4253",
                 "Name": "General Closures",
                 "Colour": "",
                 "Drawing": "",
@@ -4971,7 +4971,7 @@
           {
             "Design": false,
             "MaterialType": 10,
-            "MaterialCode": "Crate/1",
+            "MaterialCode": "Crate.1",
             "MaterialCodeMin": "",
             "DesignType": 2,
             "DesignCode": "Crate",
@@ -5098,7 +5098,7 @@
             "Materials": [
               {
                 "MaterialType": 10,
-                "MaterialId": "Crate/1",
+                "MaterialId": "Crate.1",
                 "Name": "Open Crate",
                 "Colour": "",
                 "Drawing": "",
@@ -5877,12 +5877,12 @@
     ]
   },
   {
-    "PackId": "CS x 4 Sachets",
+    "PackId": "CSx4.Sachets",
     "Name": "9 x Tray.",
     "PlanCode": "CS x 4 Special",
     "PlanName": "9 Pack Tray",
     "MaterialType": "0",
-    "MaterialCode": "Cup a Soup",
+    "MaterialCode": "Cup.a.Soup",
     "MaterialName": "Cup a Soup Single Serving",
     "CostingPremium": 0.0,
     "Costings": [
@@ -6242,7 +6242,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "Sachet/1/CS",
+            "MaterialCode": "Sachet.1.CS",
             "MaterialCodeMin": "",
             "DesignType": 2,
             "DesignCode": "Sachet/1",
@@ -6369,7 +6369,7 @@
             "Materials": [
               {
                 "MaterialType": 1,
-                "MaterialId": "Sachet/1/CS",
+                "MaterialId": "Sachet.1.CS",
                 "Name": "Cup a Soup Special",
                 "Colour": "",
                 "Drawing": "125/2/1A",
@@ -6549,7 +6549,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "CS/2/Traded",
+            "MaterialCode": "CS.2.Traded",
             "MaterialCodeMin": "",
             "DesignType": 2,
             "DesignCode": "CS/Traded",
@@ -6676,7 +6676,7 @@
             "Materials": [
               {
                 "MaterialType": 1,
-                "MaterialId": "CS/2/Traded",
+                "MaterialId": "CS.2.Traded",
                 "Name": "Cup a Soup x 4 Carton",
                 "Colour": "",
                 "Drawing": "987/3S/2",
@@ -6856,7 +6856,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "CS/3/CupaSoup",
+            "MaterialCode": "CS.3.CupaSoup",
             "MaterialCodeMin": "",
             "DesignType": 2,
             "DesignCode": "0442",
@@ -6983,7 +6983,7 @@
             "Materials": [
               {
                 "MaterialType": 12,
-                "MaterialId": "CS/3/CupaSoup",
+                "MaterialId": "CS.3.CupaSoup",
                 "Name": "9-Pack tray.",
                 "Colour": "",
                 "Drawing": "",
@@ -7163,7 +7163,7 @@
           {
             "Design": false,
             "MaterialType": 15,
-            "MaterialCode": "UK CHEP",
+            "MaterialCode": "UK.CHEP",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -7452,7 +7452,7 @@
             "Materials": [
               {
                 "MaterialType": 15,
-                "MaterialId": "UK CHEP",
+                "MaterialId": "UK.CHEP",
                 "Name": "CHEP 1200 x 1000",
                 "Colour": "",
                 "Drawing": "",
@@ -7593,12 +7593,12 @@
     ]
   },
   {
-    "PackId": "CTN 525g Glass",
+    "PackId": "CTN.525g.Glass",
     "Name": "CTonight/Oriental",
     "PlanCode": "CTN 525g Contr.",
     "PlanName": "Chicken Tonight",
     "MaterialType": "0",
-    "MaterialCode": "CTN Nett Product",
+    "MaterialCode": "CTN.Nett.Product",
     "MaterialName": "Chicken Tonight",
     "CostingPremium": 0.0,
     "Costings": [
@@ -8003,13 +8003,13 @@
           {
             "Design": false,
             "MaterialType": 6,
-            "MaterialCode": "CTN/525/Glass",
+            "MaterialCode": "CTN.525.Glass",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
             "DesignCodeMin": null,
             "QualityType": 0,
-            "QualityCode": "CTN/525/Glass",
+            "QualityCode": "CTN.525.Glass",
             "QualityCodeMin": "",
             "Inverted": false,
             "LayerCount": 1,
@@ -8048,13 +8048,13 @@
           {
             "Design": false,
             "MaterialType": 22,
-            "MaterialCode": "CTN/525",
+            "MaterialCode": "CTN.525",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
             "DesignCodeMin": null,
             "QualityType": 0,
-            "QualityCode": "CTN/525/Lid",
+            "QualityCode": "CTN.525/Lid",
             "QualityCodeMin": "",
             "Inverted": true,
             "LayerCount": 1,
@@ -8175,7 +8175,7 @@
             "Materials": [
               {
                 "MaterialType": 6,
-                "MaterialId": "CTN/525/Glass",
+                "MaterialId": "CTN.525.Glass",
                 "Name": "Chicken TN/Oriental",
                 "Colour": "",
                 "Drawing": "",
@@ -8220,7 +8220,7 @@
               },
               {
                 "MaterialType": 22,
-                "MaterialId": "CTN/525",
+                "MaterialId": "CTN.525",
                 "Name": "1.5 mm ScrewTop",
                 "Colour": "",
                 "Drawing": "",
@@ -8416,7 +8416,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "CT/Oriental",
+            "MaterialCode": "CT.Oriental",
             "MaterialCodeMin": "",
             "DesignType": 2,
             "DesignCode": "0442",
@@ -8543,7 +8543,7 @@
             "Materials": [
               {
                 "MaterialType": 12,
-                "MaterialId": "CT/Oriental",
+                "MaterialId": "CT.Oriental",
                 "Name": "6 Pack",
                 "Colour": "",
                 "Drawing": "",
@@ -8594,12 +8594,12 @@
     ]
   },
   {
-    "PackId": "E/Balsam",
+    "PackId": "E.Balsam",
     "Name": "400 ml Pack",
     "PlanCode": "ElsevBalsam",
     "PlanName": "Balsam 400ml",
     "MaterialType": "0",
-    "MaterialCode": "E/Bls/400",
+    "MaterialCode": "E.Bls.400",
     "MaterialName": "400 ml Balsam",
     "CostingPremium": 0.0,
     "Costings": [
@@ -8974,7 +8974,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "ElsB/400",
+            "MaterialCode": "ElsB.400",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -9019,7 +9019,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/EB/40",
+            "MaterialCode": "Gen.EB.40",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -9146,7 +9146,7 @@
             "Materials": [
               {
                 "MaterialType": 4,
-                "MaterialId": "ElsB/400",
+                "MaterialId": "ElsB.400",
                 "Name": "400 ml Balsam",
                 "Colour": "",
                 "Drawing": "",
@@ -9191,7 +9191,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "Gen/EB/40",
+                "MaterialId": "Gen.EB.40",
                 "Name": "18mm Twist",
                 "Colour": "",
                 "Drawing": "",
@@ -9387,7 +9387,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "E/Balsam",
+            "MaterialCode": "E.Balsam",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0204",
@@ -9514,7 +9514,7 @@
             "Materials": [
               {
                 "MaterialType": 1,
-                "MaterialId": "E/Balsam",
+                "MaterialId": "E.Balsam",
                 "Name": "25x400ml Pack",
                 "Colour": "",
                 "Drawing": "",
@@ -10013,7 +10013,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "Gen/1200x800",
+            "MaterialCode": "Gen.1200x800",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "1000",
@@ -10197,7 +10197,7 @@
             "Materials": [
               {
                 "MaterialType": 13,
-                "MaterialId": "Gen/1200x800",
+                "MaterialId": "Gen.1200x800",
                 "Name": "Standard",
                 "Colour": "",
                 "Drawing": "",
@@ -10293,12 +10293,12 @@
     ]
   },
   {
-    "PackId": "FP/150/Retail",
+    "PackId": "FP.150.Retail",
     "Name": "150mm Frozen Pizza Retail",
     "PlanCode": "Fr.Pizza 150mm",
     "PlanName": "ProdPack/Tp/Chep",
     "MaterialType": "0",
-    "MaterialCode": "Pd.P./150",
+    "MaterialCode": "Pd.P.150",
     "MaterialName": "150mm Frozen Pizza",
     "CostingPremium": 0.0,
     "Costings": [
@@ -10671,7 +10671,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "Piz/150/Gp",
+            "MaterialCode": "Piz.150.Gp",
             "MaterialCodeMin": "",
             "DesignType": 2,
             "DesignCode": "Gp/005/BlK.",
@@ -10843,7 +10843,7 @@
             "Materials": [
               {
                 "MaterialType": 13,
-                "MaterialId": "Piz/150/Gp",
+                "MaterialId": "Piz.150.Gp",
                 "Name": "005 Round Lamn.",
                 "Colour": "",
                 "Drawing": "",
@@ -11068,7 +11068,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "TP/321/319",
+            "MaterialCode": "TP.321.319",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0204",
@@ -11195,7 +11195,7 @@
             "Materials": [
               {
                 "MaterialType": 1,
-                "MaterialId": "TP/321/319",
+                "MaterialId": "TP.321.319",
                 "Name": "150mm Retail N.",
                 "Colour": "",
                 "Drawing": "",
@@ -11375,7 +11375,7 @@
           {
             "Design": false,
             "MaterialType": 15,
-            "MaterialCode": "UK CHEP",
+            "MaterialCode": "UK.CHEP",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -11420,7 +11420,7 @@
           {
             "Design": false,
             "MaterialType": 9,
-            "MaterialCode": "Shr/050m",
+            "MaterialCode": "Shr.050m",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -11559,7 +11559,7 @@
             "Materials": [
               {
                 "MaterialType": 15,
-                "MaterialId": "UK CHEP",
+                "MaterialId": "UK.CHEP",
                 "Name": "CHEP 1200 x 1000",
                 "Colour": "",
                 "Drawing": "",
@@ -11604,7 +11604,7 @@
               },
               {
                 "MaterialType": 9,
-                "MaterialId": "Shr/050m",
+                "MaterialId": "Shr.050m",
                 "Name": "Pallet Shrink Bag",
                 "Colour": "",
                 "Drawing": "",
@@ -11655,7 +11655,7 @@
     ]
   },
   {
-    "PackId": "GenPak/2Ex",
+    "PackId": "GenPak.2Ex",
     "Name": "2 x 1/2-Euro Display Pack.",
     "PlanCode": "GenPak",
     "PlanName": "200g Double Load Export.",
@@ -12033,7 +12033,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "GenP/Transit",
+            "MaterialCode": "GenP.Transit",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0204",
@@ -12160,7 +12160,7 @@
             "Materials": [
               {
                 "MaterialType": 1,
-                "MaterialId": "GenP/Transit",
+                "MaterialId": "GenP.Transit",
                 "Name": "24 x ProdPack.",
                 "Colour": "",
                 "Drawing": "",
@@ -12939,12 +12939,12 @@
     ]
   },
   {
-    "PackId": "HR/EauDC",
+    "PackId": "HR.EauDC",
     "Name": "Eau De Cologne",
     "PlanCode": "Eau De Col",
-    "PlanName": "HR/Eau",
+    "PlanName": "HR.Eau",
     "MaterialType": "0",
-    "MaterialCode": "HR/Eau",
+    "MaterialCode": "HR.Eau",
     "MaterialName": "Eau De Cologne",
     "CostingPremium": 0.0,
     "Costings": [
@@ -13319,7 +13319,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "HR/Eau",
+            "MaterialCode": "HR..Eau",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -13364,7 +13364,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/4443",
+            "MaterialCode": "Gen.4443",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -13409,7 +13409,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "EDC/HR",
+            "MaterialCode": "EDC.HR",
             "MaterialCodeMin": "",
             "DesignType": 1,
             "DesignCode": "SP52",
@@ -13581,7 +13581,7 @@
             "Materials": [
               {
                 "MaterialType": 4,
-                "MaterialId": "HR/Eau",
+                "MaterialId": "HR..Eau",
                 "Name": "Eau De Cologne",
                 "Colour": "",
                 "Drawing": "",
@@ -13626,7 +13626,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "Gen/4443",
+                "MaterialId": "Gen.4443",
                 "Name": "General Closures",
                 "Colour": "",
                 "Drawing": "",
@@ -13671,7 +13671,7 @@
               },
               {
                 "MaterialType": 1,
-                "MaterialId": "EDC/HR",
+                "MaterialId": "EDC.HR",
                 "Name": "Guerl",
                 "Colour": "",
                 "Drawing": "",
@@ -13941,7 +13941,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "Std Pack/1",
+            "MaterialCode": "Std.Pack.1",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0204",
@@ -14113,7 +14113,7 @@
               },
               {
                 "MaterialType": 1,
-                "MaterialId": "Std Pack/1",
+                "MaterialId": "Std.Pack.1",
                 "Name": "Export",
                 "Colour": "",
                 "Drawing": "",
@@ -14802,7 +14802,7 @@
     ]
   },
   {
-    "PackId": "M/01A Dbl Pack",
+    "PackId": "M.01A.Dbl.Pack",
     "Name": "Margarine",
     "PlanCode": "Product M",
     "PlanName": "Double Load Cartons.",
@@ -15177,7 +15177,7 @@
           {
             "Design": false,
             "MaterialType": 23,
-            "MaterialCode": "Sl M/01A",
+            "MaterialCode": "Sl.M.01A",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -15222,7 +15222,7 @@
           {
             "Design": false,
             "MaterialType": 5,
-            "MaterialCode": "TB/01A",
+            "MaterialCode": "TB.01A",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -15267,13 +15267,13 @@
           {
             "Design": false,
             "MaterialType": 22,
-            "MaterialCode": "Lid/01A",
+            "MaterialCode": "Lid.01A",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
             "DesignCodeMin": null,
             "QualityType": 0,
-            "QualityCode": "TB/Y499",
+            "QualityCode": "TB.Y499",
             "QualityCodeMin": "",
             "Inverted": true,
             "LayerCount": 1,
@@ -15394,7 +15394,7 @@
             "Materials": [
               {
                 "MaterialType": 23,
-                "MaterialId": "Sl M/01A",
+                "MaterialId": "Sl.M.01A",
                 "Name": "Seal 1Kg Margarine",
                 "Colour": "",
                 "Drawing": "",
@@ -15439,7 +15439,7 @@
               },
               {
                 "MaterialType": 5,
-                "MaterialId": "TB/01A",
+                "MaterialId": "TB.01A",
                 "Name": "1Kg Margarine",
                 "Colour": "",
                 "Drawing": "",
@@ -15484,7 +15484,7 @@
               },
               {
                 "MaterialType": 22,
-                "MaterialId": "Lid/01A",
+                "MaterialId": "Lid.01A",
                 "Name": "1Kg Margarine",
                 "Colour": "",
                 "Drawing": "",
@@ -16676,12 +16676,12 @@
     ]
   },
   {
-    "PackId": "Nes/200/DL",
+    "PackId": "Nes.200.DL",
     "Name": "200g Granules",
     "PlanCode": "Nest200",
     "PlanName": "200g Granules",
     "MaterialType": "0",
-    "MaterialCode": "Nes/200g/Gr",
+    "MaterialCode": "Nes.200g.Gr",
     "MaterialName": "200g Granules",
     "CostingPremium": 0.0,
     "Costings": [
@@ -17146,7 +17146,7 @@
           {
             "Design": false,
             "MaterialType": 6,
-            "MaterialCode": "Nes/200/Gl",
+            "MaterialCode": "Nes.200.Gl",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -17236,7 +17236,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "N/200 TwistTop",
+            "MaterialCode": "N.200.TwistTop",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -17363,7 +17363,7 @@
             "Materials": [
               {
                 "MaterialType": 6,
-                "MaterialId": "Nes/200/Gl",
+                "MaterialId": "Nes.200.Gl",
                 "Name": "200g Instant",
                 "Colour": "",
                 "Drawing": "",
@@ -17453,7 +17453,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "N/200 TwistTop",
+                "MaterialId": "N.200.TwistTop",
                 "Name": "1mm N/200 Closure",
                 "Colour": "",
                 "Drawing": "",
@@ -17649,7 +17649,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "Nes/12-Pack",
+            "MaterialCode": "Nes.12-Pack",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0771",
@@ -17821,7 +17821,7 @@
             "Materials": [
               {
                 "MaterialType": 12,
-                "MaterialId": "Nes/12-Pack",
+                "MaterialId": "Nes.12-Pack",
                 "Name": "4x3 Solid Board",
                 "Colour": "",
                 "Drawing": "",
@@ -18723,12 +18723,12 @@
     ]
   },
   {
-    "PackId": "OXO/12 4x1x3",
+    "PackId": "OXO.12.4x1x3",
     "Name": "14 x 2 x 1 Trays.",
     "PlanCode": "OXO 12's 4x1x3",
     "PlanName": "14 x 2 x1 Trays.",
     "MaterialType": "0",
-    "MaterialCode": "Oxo Cube",
+    "MaterialCode": "Oxo.Cube",
     "MaterialName": "Van den Bergh Foods",
     "CostingPremium": 0.0,
     "Costings": [],
@@ -20520,7 +20520,7 @@
           {
             "Design": false,
             "MaterialType": 15,
-            "MaterialCode": "UK CHEP/2",
+            "MaterialCode": "UK.CHEP.2",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -20773,7 +20773,7 @@
               },
               {
                 "MaterialType": 15,
-                "MaterialId": "UK CHEP/2",
+                "MaterialId": "UK.CHEP.2",
                 "Name": "CHEP 1200 x 1000",
                 "Colour": "",
                 "Drawing": "",
@@ -20869,12 +20869,12 @@
     ]
   },
   {
-    "PackId": "OXO/12's",
+    "PackId": "OXO.12's",
     "Name": "3 x OXO 12's WHAT IFS.",
     "PlanCode": "OXO 12's",
     "PlanName": "WHAT IFS.",
     "MaterialType": "0",
-    "MaterialCode": "Oxo Cube",
+    "MaterialCode": "Oxo.Cube",
     "MaterialName": "Van den Bergh Foods",
     "CostingPremium": 0.0,
     "Costings": [],
@@ -22666,7 +22666,7 @@
           {
             "Design": false,
             "MaterialType": 15,
-            "MaterialCode": "UK CHEP/2",
+            "MaterialCode": "UK.CHEP.2",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -22919,7 +22919,7 @@
               },
               {
                 "MaterialType": 15,
-                "MaterialId": "UK CHEP/2",
+                "MaterialId": "UK.CHEP.2",
                 "Name": "CHEP 1200 x 1000",
                 "Colour": "",
                 "Drawing": "",
@@ -23015,12 +23015,12 @@
     ]
   },
   {
-    "PackId": "OXO/12's 3x24x12",
+    "PackId": "OXO.12's.3x24x12",
     "Name": "3 x OXO 12's (6 Gross)",
     "PlanCode": "OXO 12's",
     "PlanName": "WITH PKG.",
     "MaterialType": "0",
-    "MaterialCode": "Oxo Cube",
+    "MaterialCode": "Oxo.Cube",
     "MaterialName": "Van den Bergh Foods",
     "CostingPremium": 0.0,
     "Costings": [],
@@ -24812,7 +24812,7 @@
           {
             "Design": false,
             "MaterialType": 15,
-            "MaterialCode": "UK CHEP/2",
+            "MaterialCode": "UK.CHEP.2",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -25173,7 +25173,7 @@
               },
               {
                 "MaterialType": 15,
-                "MaterialId": "UK CHEP/2",
+                "MaterialId": "UK.CHEP.2",
                 "Name": "CHEP 1200 x 1000",
                 "Colour": "",
                 "Drawing": "",
@@ -25269,12 +25269,12 @@
     ]
   },
   {
-    "PackId": "OXO/12's 3x28x12",
+    "PackId": "OXO.12's.3x28x12",
     "Name": "3 x OXO 12's",
     "PlanCode": "OXO 12's",
     "PlanName": "WITH PKG.",
     "MaterialType": "0",
-    "MaterialCode": "Oxo Cube",
+    "MaterialCode": "Oxo.Cube",
     "MaterialName": "Van den Bergh Foods",
     "CostingPremium": 0.0,
     "Costings": [],
@@ -27066,7 +27066,7 @@
           {
             "Design": false,
             "MaterialType": 15,
-            "MaterialCode": "UK CHEP/2",
+            "MaterialCode": "UK.CHEP.2",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -27355,7 +27355,7 @@
               },
               {
                 "MaterialType": 15,
-                "MaterialId": "UK CHEP/2",
+                "MaterialId": "UK.CHEP.2",
                 "Name": "CHEP 1200 x 1000",
                 "Colour": "",
                 "Drawing": "",
@@ -27451,12 +27451,12 @@
     ]
   },
   {
-    "PackId": "PET 470g Jar",
+    "PackId": "PET.470g.Jar",
     "Name": "Multi-Stack Load.",
-    "PlanCode": "J/295",
+    "PlanCode": "J.295",
     "PlanName": "Multi-Stacked Load",
     "MaterialType": "0",
-    "MaterialCode": "J/295 470g",
+    "MaterialCode": "J.295.470g",
     "MaterialName": "Product J",
     "CostingPremium": 0.0,
     "Costings": [
@@ -27846,13 +27846,13 @@
           {
             "Design": false,
             "MaterialType": 6,
-            "MaterialCode": "J/295",
+            "MaterialCode": "J.295",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
             "DesignCodeMin": null,
             "QualityType": 0,
-            "QualityCode": "J/295",
+            "QualityCode": "J.295",
             "QualityCodeMin": "",
             "Inverted": false,
             "LayerCount": 1,
@@ -27891,13 +27891,13 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "J/295 Twist-Top",
+            "MaterialCode": "J.295.Twist-Top",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
             "DesignCodeMin": null,
             "QualityType": 0,
-            "QualityCode": "J/295 TT",
+            "QualityCode": "J.295.TT",
             "QualityCodeMin": "",
             "Inverted": true,
             "LayerCount": 1,
@@ -28018,7 +28018,7 @@
             "Materials": [
               {
                 "MaterialType": 6,
-                "MaterialId": "J/295",
+                "MaterialId": "J.295",
                 "Name": "470 g Jar",
                 "Colour": "",
                 "Drawing": "",
@@ -28063,7 +28063,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "J/295 Twist-Top",
+                "MaterialId": "J.295.Twist-Top",
                 "Name": "PVC 2mm Closure",
                 "Colour": "",
                 "Drawing": "",
@@ -28975,7 +28975,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "Gen/1200x800",
+            "MaterialCode": "Gen.1200x800",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "1000",
@@ -29065,7 +29065,7 @@
           {
             "Design": false,
             "MaterialType": 9,
-            "MaterialCode": "Shr/050m",
+            "MaterialCode": "Shr.050m",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -29204,7 +29204,7 @@
             "Materials": [
               {
                 "MaterialType": 13,
-                "MaterialId": "Gen/1200x800",
+                "MaterialId": "Gen.1200x800",
                 "Name": "Standard",
                 "Colour": "",
                 "Drawing": "",
@@ -29294,7 +29294,7 @@
               },
               {
                 "MaterialType": 9,
-                "MaterialId": "Shr/050m",
+                "MaterialId": "Shr.050m",
                 "Name": "Pallet Shrink Bag",
                 "Colour": "",
                 "Drawing": "",
@@ -29345,12 +29345,12 @@
     ]
   },
   {
-    "PackId": "PT/400/Retail",
+    "PackId": "PT.400.Retail",
     "Name": "400g Peeled Toms. Retail",
-    "PlanCode": "Product Z",
+    "PlanCode": "ProductZ",
     "PlanName": "Food Cans",
     "MaterialType": "0",
-    "MaterialCode": "PmT/400g",
+    "MaterialCode": "PmT.400g",
     "MaterialName": "400g Peeled Plum Toms.",
     "CostingPremium": 0.0,
     "Costings": [
@@ -29710,7 +29710,7 @@
           {
             "Design": false,
             "MaterialType": 3,
-            "MaterialCode": "TC/400/PT",
+            "MaterialCode": "TC.400.PT",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -29837,7 +29837,7 @@
             "Materials": [
               {
                 "MaterialType": 3,
-                "MaterialId": "TC/400/PT",
+                "MaterialId": "TC.400.PT",
                 "Name": "400g Peeled TC.",
                 "Colour": "",
                 "Drawing": "",
@@ -30033,7 +30033,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "Tr/23P/PT",
+            "MaterialCode": "Tr.23P.PT",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0771",
@@ -30205,7 +30205,7 @@
             "Materials": [
               {
                 "MaterialType": 12,
-                "MaterialId": "Tr/23P/PT",
+                "MaterialId": "Tr.23P.PT",
                 "Name": "23 x 400g Nested.",
                 "Colour": "",
                 "Drawing": "",
@@ -30430,7 +30430,7 @@
           {
             "Design": false,
             "MaterialType": 15,
-            "MaterialCode": "UK CHEP",
+            "MaterialCode": "UK.CHEP",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -30569,7 +30569,7 @@
             "Materials": [
               {
                 "MaterialType": 15,
-                "MaterialId": "UK CHEP",
+                "MaterialId": "UK.CHEP",
                 "Name": "CHEP 1200 x 1000",
                 "Colour": "",
                 "Drawing": "",
@@ -30620,12 +30620,12 @@
     ]
   },
   {
-    "PackId": "Product X",
+    "PackId": "ProductX",
     "Name": "Multi-Stacked Trays",
-    "PlanCode": "Product X",
+    "PlanCode": "ProductX",
     "PlanName": "Multi-Stacked Trays",
     "MaterialType": "0",
-    "MaterialCode": "Pdx/4329",
+    "MaterialCode": "Pdx.4329",
     "MaterialName": "Trial Container",
     "CostingPremium": 0.0,
     "Costings": [
@@ -31013,7 +31013,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "PdX/4329",
+            "MaterialCode": "PdX.4329",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -31058,7 +31058,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/4253",
+            "MaterialCode": "Gen.4253",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -31185,7 +31185,7 @@
             "Materials": [
               {
                 "MaterialType": 4,
-                "MaterialId": "PdX/4329",
+                "MaterialId": "PdX.4329",
                 "Name": "Trial Container",
                 "Colour": "",
                 "Drawing": "",
@@ -31230,7 +31230,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "Gen/4253",
+                "MaterialId": "Gen.4253",
                 "Name": "General Closures",
                 "Colour": "",
                 "Drawing": "",
@@ -31426,7 +31426,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "PdX/4655",
+            "MaterialCode": "PdX.4655",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "1000",
@@ -31471,7 +31471,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "TrX/4655",
+            "MaterialCode": "TrX.4655",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0771",
@@ -31643,7 +31643,7 @@
             "Materials": [
               {
                 "MaterialType": 13,
-                "MaterialId": "PdX/4655",
+                "MaterialId": "PdX.4655",
                 "Name": "Tray Pad/X",
                 "Colour": "",
                 "Drawing": "",
@@ -31688,7 +31688,7 @@
               },
               {
                 "MaterialType": 12,
-                "MaterialId": "TrX/4655",
+                "MaterialId": "TrX.4655",
                 "Name": "Tray/X",
                 "Colour": "",
                 "Drawing": "",
@@ -32103,12 +32103,12 @@
     ]
   },
   {
-    "PackId": "Product X1",
+    "PackId": "ProductX1",
     "Name": "Half-EuroPallet 2.5 Lit. Trays",
-    "PlanCode": "Product X1",
+    "PlanCode": "ProductX1",
     "PlanName": "Half-Pallet Trays",
     "MaterialType": "0",
-    "MaterialCode": "Pdx/4329",
+    "MaterialCode": "Pdx.4329",
     "MaterialName": "Trial Container",
     "CostingPremium": 0.0,
     "Costings": [
@@ -32496,7 +32496,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "PdX/4329",
+            "MaterialCode": "PdX.4329",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -32541,7 +32541,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/4253",
+            "MaterialCode": "Gen.4253",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -32668,7 +32668,7 @@
             "Materials": [
               {
                 "MaterialType": 4,
-                "MaterialId": "PdX/4329",
+                "MaterialId": "PdX.4329",
                 "Name": "Trial Container",
                 "Colour": "",
                 "Drawing": "",
@@ -32713,7 +32713,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "Gen/4253",
+                "MaterialId": "Gen.4253",
                 "Name": "General Closures",
                 "Colour": "",
                 "Drawing": "",
@@ -32954,7 +32954,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "Tr/XOil",
+            "MaterialCode": "Tr.XOil",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0771",
@@ -33171,7 +33171,7 @@
               },
               {
                 "MaterialType": 12,
-                "MaterialId": "Tr/XOil",
+                "MaterialId": "Tr.XOil",
                 "Name": "C-Flute Corrg.",
                 "Colour": "",
                 "Drawing": "",
@@ -33700,7 +33700,7 @@
     ]
   },
   {
-    "PackId": "T/70cl Bulk",
+    "PackId": "T.70cl.Bulk",
     "Name": "R Rectangular",
     "PlanCode": "Teachers",
     "PlanName": "70cl Bulk",
@@ -34656,7 +34656,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "Tr/86B",
+            "MaterialCode": "Tr.86B",
             "MaterialCodeMin": "",
             "DesignType": 2,
             "DesignCode": "0442",
@@ -34918,7 +34918,7 @@
               },
               {
                 "MaterialType": 12,
-                "MaterialId": "Tr/86B",
+                "MaterialId": "Tr.86B",
                 "Name": "Bulk Inverted Tray",
                 "Colour": "",
                 "Drawing": "",
@@ -35320,12 +35320,12 @@
     ]
   },
   {
-    "PackId": "TB/Y499",
+    "PackId": "TB.Y499",
     "Name": "Multi-Stacked Cartons",
-    "PlanCode": "Product Y",
+    "PlanCode": "ProductY",
     "PlanName": "Multi-Stacked Cartons",
     "MaterialType": "0",
-    "MaterialCode": "Product Y",
+    "MaterialCode": "ProductY",
     "MaterialName": "Strawberry",
     "CostingPremium": 0.0,
     "Costings": [
@@ -35715,13 +35715,13 @@
           {
             "Design": false,
             "MaterialType": 5,
-            "MaterialCode": "TB/Y499",
+            "MaterialCode": "TB.Y499",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
             "DesignCodeMin": null,
             "QualityType": 0,
-            "QualityCode": "TB/Y499",
+            "QualityCode": "TB.Y499",
             "QualityCodeMin": "",
             "Inverted": false,
             "LayerCount": 1,
@@ -35887,7 +35887,7 @@
             "Materials": [
               {
                 "MaterialType": 5,
-                "MaterialId": "TB/Y499",
+                "MaterialId": "TB.Y499",
                 "Name": "Product Y",
                 "Colour": "",
                 "Drawing": "",
@@ -36715,12 +36715,12 @@
     ]
   },
   {
-    "PackId": "Teachers 70cl",
+    "PackId": "Teachers.70cl",
     "Name": "Blended Whisky",
     "PlanCode": "Teachers",
     "PlanName": "70cl Blended Whisky",
     "MaterialType": "0",
-    "MaterialCode": "Teachers Blended",
+    "MaterialCode": "TeachersBlended",
     "MaterialName": "70cl Blend",
     "CostingPremium": 0.0,
     "Costings": [
@@ -37200,7 +37200,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "T/70",
+            "MaterialCode": "T.70",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -37245,7 +37245,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "T70/Mc Teachers",
+            "MaterialCode": "T70.Mc.Teachers",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -37372,7 +37372,7 @@
             "Materials": [
               {
                 "MaterialType": 4,
-                "MaterialId": "T/70",
+                "MaterialId": "T.70",
                 "Name": "70cl Teachers Whisky",
                 "Colour": "",
                 "Drawing": "",
@@ -37417,7 +37417,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "T70/Mc Teachers",
+                "MaterialId": "T70.Mc.Teachers",
                 "Name": "Al. alloy 27.1",
                 "Colour": "",
                 "Drawing": "",
@@ -37613,7 +37613,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "T70/8-Pack",
+            "MaterialCode": "T70.8-Pack",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0204",
@@ -37740,7 +37740,7 @@
             "Materials": [
               {
                 "MaterialType": 1,
-                "MaterialId": "T70/8-Pack",
+                "MaterialId": "T70.8-Pack",
                 "Name": "Teachers 8-Pack",
                 "Colour": "",
                 "Drawing": "",
@@ -38519,12 +38519,12 @@
     ]
   },
   {
-    "PackId": "Teachers 70cl/2",
+    "PackId": "Teachers.70cl.2",
     "Name": "Blended Whisky",
-    "PlanCode": "Teachers/2",
+    "PlanCode": "Teachers.2",
     "PlanName": "70cl Blended Whisky",
     "MaterialType": "0",
-    "MaterialCode": "Teachers Blended",
+    "MaterialCode": "TeachersBlended",
     "MaterialName": "70cl Blend",
     "CostingPremium": 0.0,
     "Costings": [
@@ -39004,7 +39004,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "T/70",
+            "MaterialCode": "T.70",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -39049,7 +39049,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "T70/Mc Teachers",
+            "MaterialCode": "T70.Mc.Teachers",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -39176,7 +39176,7 @@
             "Materials": [
               {
                 "MaterialType": 4,
-                "MaterialId": "T/70",
+                "MaterialId": "T.70",
                 "Name": "70cl Teachers Whisky",
                 "Colour": "",
                 "Drawing": "",
@@ -39221,7 +39221,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "T70/Mc Teachers",
+                "MaterialId": "T70.Mc.Teachers",
                 "Name": "Al. alloy 27.1",
                 "Colour": "",
                 "Drawing": "",
@@ -39417,7 +39417,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "T70/2/8-Pack",
+            "MaterialCode": "T70.2.8-Pack",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "0204",
@@ -39544,8 +39544,8 @@
             "Materials": [
               {
                 "MaterialType": 1,
-                "MaterialId": "T70/2/8-Pack",
-                "Name": "Teachers/2/8-Pack",
+                "MaterialId": "T70.2.8-Pack",
+                "Name": "Teachers.2.8-Pack",
                 "Colour": "",
                 "Drawing": "",
                 "BarCode": "",
@@ -41376,7 +41376,7 @@
     "PlanCode": "X1-Bulk",
     "PlanName": "Bulk Pack Pads + Inv Tray",
     "MaterialType": "0",
-    "MaterialCode": "Pdx/4329",
+    "MaterialCode": "Pdx.4329",
     "MaterialName": "Trial Container",
     "CostingPremium": 0.0,
     "Costings": [
@@ -41764,7 +41764,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "PdX/4329",
+            "MaterialCode": "PdX.4329",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -41809,7 +41809,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/4253",
+            "MaterialCode": "Gen.4253",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "",
@@ -41936,7 +41936,7 @@
             "Materials": [
               {
                 "MaterialType": 4,
-                "MaterialId": "PdX/4329",
+                "MaterialId": "PdX.4329",
                 "Name": "Trial Container",
                 "Colour": "",
                 "Drawing": "",
@@ -41981,7 +41981,7 @@
               },
               {
                 "MaterialType": 21,
-                "MaterialId": "Gen/4253",
+                "MaterialId": "Gen.4253",
                 "Name": "General Closures",
                 "Colour": "",
                 "Drawing": "",
@@ -42177,7 +42177,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "X1/B",
+            "MaterialCode": "X1.B",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "1000",
@@ -42222,7 +42222,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "X1/B/Inter",
+            "MaterialCode": "X1.B.Inter",
             "MaterialCodeMin": "",
             "DesignType": 0,
             "DesignCode": "1000",
@@ -42267,7 +42267,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "X1/B/Top",
+            "MaterialCode": "X1.B.Top",
             "MaterialCodeMin": "",
             "DesignType": 2,
             "DesignCode": "0442",
@@ -42439,7 +42439,7 @@
             "Materials": [
               {
                 "MaterialType": 13,
-                "MaterialId": "X1/B",
+                "MaterialId": "X1.B",
                 "Name": "1/2 Euro Bulk",
                 "Colour": "",
                 "Drawing": "",
@@ -42484,7 +42484,7 @@
               },
               {
                 "MaterialType": 13,
-                "MaterialId": "X1/B/Inter",
+                "MaterialId": "X1.B.Inter",
                 "Name": "1/2 Euro Bulk",
                 "Colour": "",
                 "Drawing": "",
@@ -42529,7 +42529,7 @@
               },
               {
                 "MaterialType": 12,
-                "MaterialId": "X1/B/Top",
+                "MaterialId": "X1.B.Top",
                 "Name": "1/2 Euro Bulk",
                 "Colour": "",
                 "Drawing": "",

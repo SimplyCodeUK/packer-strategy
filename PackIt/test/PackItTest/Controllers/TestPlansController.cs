@@ -102,9 +102,9 @@ namespace PackItTest.Controllers
 
             var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<IEnumerable<Plan>>(objectResult.Value);
+            Assert.IsInstanceOf<IList<Plan>>(objectResult.Value);
 
-            foreach (Plan item in (IEnumerable<Plan>)objectResult.Value)
+            foreach (Plan item in (IList<Plan>)objectResult.Value)
             {
                 if (ids.Contains(item.PlanId))
                 {

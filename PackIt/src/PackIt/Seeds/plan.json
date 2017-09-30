@@ -98,11 +98,11 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "Benl/125ml",
+            "MaterialCode": "Benl.125ml",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
-            "QualityCode": "Benl/125ml",
+            "QualityCode": "Benl.125ml",
             "Inverted": false,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -116,7 +116,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/125",
+            "MaterialCode": "Gen.125",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -138,7 +138,7 @@
             "DesignType": 1,
             "DesignCode": "SP52",
             "QualityType": 0,
-            "QualityCode": "Benl/125ml",
+            "QualityCode": "Benl.125ml",
             "Inverted": false,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -506,7 +506,7 @@
           {
             "Design": false,
             "MaterialType": 9,
-            "MaterialCode": "Shr/050m",
+            "MaterialCode": "Shr.050m",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -526,7 +526,7 @@
     ]
   },
   {
-    "PlanId": "Benylin/Mod",
+    "PlanId": "Benylin.Mod",
     "Name": "Pharma",
     "Stages": [
       {
@@ -1071,7 +1071,7 @@
           {
             "Design": false,
             "MaterialType": 9,
-            "MaterialCode": "Shr/050m",
+            "MaterialCode": "Shr.050m",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -1189,7 +1189,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "Sachet/1/CS",
+            "MaterialCode": "Sachet.1.CS",
             "DesignType": 2,
             "DesignCode": "Sachet/1",
             "QualityType": 0,
@@ -1301,7 +1301,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "CS/2/Traded",
+            "MaterialCode": "CS.2.Traded",
             "DesignType": 2,
             "DesignCode": "CS/Traded",
             "QualityType": 0,
@@ -1413,7 +1413,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "CS/3/CupaSoup",
+            "MaterialCode": "CS.3.CupaSoup",
             "DesignType": 2,
             "DesignCode": "0442",
             "QualityType": 0,
@@ -1679,11 +1679,11 @@
           {
             "Design": false,
             "MaterialType": 6,
-            "MaterialCode": "CTN/525/Glass",
+            "MaterialCode": "CTN.525.Glass",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
-            "QualityCode": "CTN/525/Glass",
+            "QualityCode": "CTN.525.Glass",
             "Inverted": false,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -1697,11 +1697,11 @@
           {
             "Design": false,
             "MaterialType": 22,
-            "MaterialCode": "CTN/525",
+            "MaterialCode": "CTN.525",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
-            "QualityCode": "CTN/525/Lid",
+            "QualityCode": "CTN.525/Lid",
             "Inverted": true,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -1809,7 +1809,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "CT/Oriental",
+            "MaterialCode": "CT.Oriental",
             "DesignType": 2,
             "DesignCode": "0442",
             "QualityType": 0,
@@ -1927,7 +1927,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "HR/Eau",
+            "MaterialCode": "HR..Eau",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -1945,7 +1945,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/4443",
+            "MaterialCode": "Gen.4443",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -1963,7 +1963,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "EDC/HR",
+            "MaterialCode": "EDC.HR",
             "DesignType": 1,
             "DesignCode": "SP52",
             "QualityType": 0,
@@ -2453,7 +2453,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "ElsB/400",
+            "MaterialCode": "ElsB.400",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -2471,7 +2471,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/EB/40",
+            "MaterialCode": "Gen.EB.40",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -2583,7 +2583,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "E/Balsam",
+            "MaterialCode": "E.Balsam",
             "DesignType": 0,
             "DesignCode": "0204",
             "QualityType": 0,
@@ -2807,7 +2807,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "Gen/1200x800",
+            "MaterialCode": "Gen.1200x800",
             "DesignType": 0,
             "DesignCode": "1000",
             "QualityType": 0,
@@ -2943,7 +2943,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "Piz/150/Gp",
+            "MaterialCode": "Piz.150.Gp",
             "DesignType": 2,
             "DesignCode": "Gp/005/BlK.",
             "QualityType": 0,
@@ -3073,7 +3073,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "TP/321/319",
+            "MaterialCode": "TP.321.319",
             "DesignType": 0,
             "DesignCode": "0204",
             "QualityType": 0,
@@ -3203,7 +3203,7 @@
           {
             "Design": false,
             "MaterialType": 9,
-            "MaterialCode": "Shr/050m",
+            "MaterialCode": "Shr.050m",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -3321,7 +3321,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "GenP/Transit",
+            "MaterialCode": "GenP.Transit",
             "DesignType": 0,
             "DesignCode": "0204",
             "QualityType": 0,
@@ -3583,7 +3583,7 @@
     ]
   },
   {
-    "PlanId": "J/295",
+    "PlanId": "J.295",
     "Name": "Multi-StackedLoad",
     "Stages": [
       {
@@ -3681,11 +3681,11 @@
           {
             "Design": false,
             "MaterialType": 6,
-            "MaterialCode": "J/295",
+            "MaterialCode": "J.295",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
-            "QualityCode": "J/295",
+            "QualityCode": "J.295",
             "Inverted": false,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -3699,11 +3699,11 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "J/295Twist-Top",
+            "MaterialCode": "J.295Twist-Top",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
-            "QualityCode": "J/295TT",
+            "QualityCode": "J.295TT",
             "Inverted": true,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -4053,7 +4053,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "Gen/1200x800",
+            "MaterialCode": "Gen.1200x800",
             "DesignType": 0,
             "DesignCode": "1000",
             "QualityType": 0,
@@ -4089,7 +4089,7 @@
           {
             "Design": false,
             "MaterialType": 9,
-            "MaterialCode": "Shr/050m",
+            "MaterialCode": "Shr.050m",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -4207,7 +4207,7 @@
           {
             "Design": false,
             "MaterialType": 6,
-            "MaterialCode": "Nes/200/Gl",
+            "MaterialCode": "Nes.200.Gl",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -4355,7 +4355,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "Nes/12-Pack",
+            "MaterialCode": "Nes.12-Pack",
             "DesignType": 0,
             "DesignCode": "0771",
             "QualityType": 0,
@@ -6027,11 +6027,11 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "Benl/125ml",
+            "MaterialCode": "Benl.125ml",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
-            "QualityCode": "Benl/125ml",
+            "QualityCode": "Benl.125ml",
             "Inverted": false,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -6045,7 +6045,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/125",
+            "MaterialCode": "Gen.125",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -6067,7 +6067,7 @@
             "DesignType": 1,
             "DesignCode": "SP52",
             "QualityType": 0,
-            "QualityCode": "Benl/125ml",
+            "QualityCode": "Benl.125ml",
             "Inverted": false,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -6423,7 +6423,7 @@
           {
             "Design": false,
             "MaterialType": 5,
-            "MaterialCode": "TB/01A",
+            "MaterialCode": "TB.01A",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -6441,11 +6441,11 @@
           {
             "Design": false,
             "MaterialType": 22,
-            "MaterialCode": "Lid/01A",
+            "MaterialCode": "Lid.01A",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
-            "QualityCode": "TB/Y499",
+            "QualityCode": "TB.Y499",
             "Inverted": true,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -7024,7 +7024,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "Ct/Pd0492",
+            "MaterialCode": "Ct.Pd0492",
             "DesignType": 0,
             "DesignCode": "0227",
             "QualityType": 0,
@@ -7136,7 +7136,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "TC/Pd0492",
+            "MaterialCode": "TC.Pd0492",
             "DesignType": 0,
             "DesignCode": "0204",
             "QualityType": 0,
@@ -7514,7 +7514,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "PdX/4329",
+            "MaterialCode": "PdX.4329",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -7532,7 +7532,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/4253",
+            "MaterialCode": "Gen.4253",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -7644,7 +7644,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "PdX/4655",
+            "MaterialCode": "PdX.4655",
             "DesignType": 0,
             "DesignCode": "1000",
             "QualityType": 0,
@@ -7662,7 +7662,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "TrX/4655",
+            "MaterialCode": "TrX.4655",
             "DesignType": 0,
             "DesignCode": "0771",
             "QualityType": 0,
@@ -7910,7 +7910,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "PdX/4329",
+            "MaterialCode": "PdX.4329",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -7928,7 +7928,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/4253",
+            "MaterialCode": "Gen.4253",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -8058,7 +8058,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "Tr/XOil",
+            "MaterialCode": "Tr.XOil",
             "DesignType": 0,
             "DesignCode": "0771",
             "QualityType": 0,
@@ -8324,11 +8324,11 @@
           {
             "Design": false,
             "MaterialType": 5,
-            "MaterialCode": "TB/Y499",
+            "MaterialCode": "TB.Y499",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
-            "QualityCode": "TB/Y499",
+            "QualityCode": "TB.Y499",
             "Inverted": false,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -8702,7 +8702,7 @@
           {
             "Design": false,
             "MaterialType": 3,
-            "MaterialCode": "TC/400/PT",
+            "MaterialCode": "TC.400.PT",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -8814,7 +8814,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "Tr/23P/PT",
+            "MaterialCode": "Tr.23P.PT",
             "DesignType": 0,
             "DesignCode": "0771",
             "QualityType": 0,
@@ -9191,7 +9191,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "Tr/86B",
+            "MaterialCode": "Tr.86B",
             "DesignType": 2,
             "DesignCode": "0442",
             "QualityType": 0,
@@ -9359,7 +9359,7 @@
     ]
   },
   {
-    "PlanId": "Teachers/2",
+    "PlanId": "Teachers.2",
     "Name": "70clBlendedWhisky",
     "Stages": [
       {
@@ -9457,7 +9457,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "T/70",
+            "MaterialCode": "T.70",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -9587,7 +9587,7 @@
           {
             "Design": false,
             "MaterialType": 1,
-            "MaterialCode": "T70/2/8-Pack",
+            "MaterialCode": "T70.2.8-Pack",
             "DesignType": 0,
             "DesignCode": "0204",
             "QualityType": 0,
@@ -10270,7 +10270,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "PdX/4329",
+            "MaterialCode": "PdX.4329",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -10288,7 +10288,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/4253",
+            "MaterialCode": "Gen.4253",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -10400,7 +10400,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "X1/B",
+            "MaterialCode": "X1.B",
             "DesignType": 0,
             "DesignCode": "1000",
             "QualityType": 0,
@@ -10418,7 +10418,7 @@
           {
             "Design": false,
             "MaterialType": 13,
-            "MaterialCode": "X1/B/Inter",
+            "MaterialCode": "X1.B.Inter",
             "DesignType": 0,
             "DesignCode": "1000",
             "QualityType": 0,
@@ -10436,7 +10436,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "X1/B/Top",
+            "MaterialCode": "X1.B.Top",
             "DesignType": 2,
             "DesignCode": "0442",
             "QualityType": 0,
@@ -10474,7 +10474,7 @@
     ]
   },
   {
-    "PlanId": "YM/Crate",
+    "PlanId": "YM.Crate",
     "Name": "",
     "Stages": [
       {
@@ -10572,7 +10572,7 @@
           {
             "Design": false,
             "MaterialType": 4,
-            "MaterialCode": "PdX/4329",
+            "MaterialCode": "PdX.4329",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -10590,7 +10590,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "Gen/4253",
+            "MaterialCode": "Gen.4253",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,
@@ -10702,7 +10702,7 @@
           {
             "Design": false,
             "MaterialType": 10,
-            "MaterialCode": "Crate/1",
+            "MaterialCode": "Crate.1",
             "DesignType": 2,
             "DesignCode": "Crate",
             "QualityType": 0,

@@ -11,11 +11,6 @@ namespace PackIt.Plan
     /// <summary>   A limit. </summary>
     public class Limit
     {
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
-        ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
-
         /// <summary>   Gets or sets a value indicating whether the design. </summary>
         ///
         /// <value> True if design, false if not. </value>

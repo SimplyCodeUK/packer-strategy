@@ -660,9 +660,9 @@ namespace PackIt.Plan
         /// <value> True if draw hands, false if not. </value>
         public bool DrawHands { get; set; }
 
-        /// <summary>   Gets or sets the limits. </summary>
+        /// <summary>   Gets or sets the collection of limits. </summary>
         ///
-        /// <value> The limits. </value>
-        public List<Limit> Limits { get; set; }
+        /// <value> Collection of limits. </value>
+        public IList<Limit> Limits { get; set; }
     }
 }

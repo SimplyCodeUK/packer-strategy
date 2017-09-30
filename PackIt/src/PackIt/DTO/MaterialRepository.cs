@@ -34,7 +34,7 @@ namespace PackIt.DTO
         /// </returns>
         ///
         /// <seealso cref="M:PackIt.DTO.IMaterialRepository.GetAll()"/>
-        public IEnumerable<Material> GetAll()
+        public IList<Material> GetAll()
         {
             return this.context.GetMaterials();
         }

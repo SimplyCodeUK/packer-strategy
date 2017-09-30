@@ -241,9 +241,9 @@ namespace PackIt.Pack
         /// <value> The number used. </value>
         public long Count { get; set;  }
 
-        /// <summary>   Gets or sets the database materials. </summary>
+        /// <summary>   Gets or sets the database collection of materials. </summary>
         ///
-        /// <value> The database materials. </value>
-        public List<DatabaseMaterial> DatabaseMaterials { get; set; }
+        /// <value> Collection of database materials. </value>
+        public IList<DatabaseMaterial> DatabaseMaterials { get; set; }
     }
 }

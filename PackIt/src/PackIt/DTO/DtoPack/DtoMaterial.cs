@@ -260,9 +260,9 @@ namespace PackIt.DTO.DtoPack
         /// <value> The number used. </value>
         public long Count { get; set;  }
 
-        /// <summary>   Gets or sets the database materials. </summary>
+        /// <summary>   Gets or sets the collection of database materials. </summary>
         ///
-        /// <value> The database materials. </value>
-        public List<DtoDatabaseMaterial> DatabaseMaterials { get; set; }
+        /// <value> Collection of database materials. </value>
+        public IList<DtoDatabaseMaterial> DatabaseMaterials { get; set; }
     }
 }

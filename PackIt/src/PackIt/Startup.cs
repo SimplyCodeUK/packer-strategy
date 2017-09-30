@@ -86,6 +86,8 @@ namespace PackIt
             {
                 // Seed Pack database
                 var packContext = serviceScope.ServiceProvider.GetService<PackContext>();
+                packContext.Database.EnsureDeleted();
+                packContext.Database.EnsureCreated();
 
                 var asyncTask = packContext.Packs.AnyAsync();
                 asyncTask.Wait();
@@ -102,6 +104,8 @@ namespace PackIt
 
                 // Seed Plan database
                 var planContext = serviceScope.ServiceProvider.GetService<PlanContext>();
+                planContext.Database.EnsureDeleted();
+                planContext.Database.EnsureCreated();
 
                 asyncTask = planContext.Plans.AnyAsync();
                 asyncTask.Wait();
@@ -118,6 +122,8 @@ namespace PackIt
 
                 // Seed Material database
                 var materialContext = serviceScope.ServiceProvider.GetService<MaterialContext>();
+                materialContext.Database.EnsureDeleted();
+                materialContext.Database.EnsureCreated();
 
                 asyncTask = materialContext.Materials.AnyAsync();
                 asyncTask.Wait();

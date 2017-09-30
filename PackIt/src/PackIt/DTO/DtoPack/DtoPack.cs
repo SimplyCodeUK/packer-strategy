@@ -66,14 +66,14 @@ namespace PackIt.DTO.DtoPack
         /// <value> The costing premium. </value>
         public double CostingPremium { get; set; }
 
-        /// <summary>   Gets or sets the costings. </summary>
+        /// <summary>   Gets or sets the collection of costings. </summary>
         ///
-        /// <value> The costings. </value>
-        public List<DtoCosting> Costings { get; set; }
+        /// <value> Collection of costings. </value>
+        public IList<DtoCosting> Costings { get; set; }
 
-        /// <summary>   Gets or sets the stages. </summary>
+        /// <summary>   Gets or sets the collection of stages. </summary>
         ///
-        /// <value> The stages. </value>
-        public List<DtoStage> Stages { get; set; }
+        /// <value> Collection of stages. </value>
+        public IList<DtoStage> Stages { get; set; }
     }
 }

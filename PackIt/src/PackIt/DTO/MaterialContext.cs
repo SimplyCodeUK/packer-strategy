@@ -21,6 +21,7 @@ namespace PackIt.DTO
         /// <param name="options">  Options for controlling the operation. </param>
         public MaterialContext(DbContextOptions<MaterialContext> options)
             : base(options)
+
         {
         }
 
@@ -32,11 +33,18 @@ namespace PackIt.DTO
         /// <summary>   Gets the materials. </summary>
         ///
         /// <returns>   The materials. </returns>
-        public List<Material> GetMaterials()
+        public IList<Material> GetMaterials()
         {
-            List<Material> ret = new List<Material>();
+            var ret = new List<Material>();
+            var query = this.Materials
+                .Include(m => m.Costings)
+                .Include(m => m.Layers)
+                .Include(m => m.Layers).ThenInclude(l => l.Collations)
+                .Include(m => m.PalletDecks)
+                .Include(m => m.PalletDecks).ThenInclude(p => p.Planks)
+                .Include(m => m.Sections);
 
-            foreach (DtoMaterial.DtoMaterial item in this.Materials)
+            foreach (DtoMaterial.DtoMaterial item in query)
             {
                 ret.Add(MaterialMapper.Convert(item));
             }
@@ -111,7 +119,10 @@ namespace PackIt.DTO
             Configure(modelBuilder.Entity<DtoMaterial.DtoMaterial>());
             Configure(modelBuilder.Entity<DtoMaterial.DtoCosting>());
             Configure(modelBuilder.Entity<DtoMaterial.DtoLayer>());
+            Configure(modelBuilder.Entity<DtoMaterial.DtoSection>());
             Configure(modelBuilder.Entity<DtoMaterial.DtoCollation>());
+            Configure(modelBuilder.Entity<DtoMaterial.DtoPalletDeck>());
+            Configure(modelBuilder.Entity<DtoMaterial.DtoPlank>());
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -120,9 +131,23 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoMaterial.DtoMaterial> builder)
         {
             builder.ToTable("DtoMaterial");
-            builder.HasKey(c => new { c.MaterialId });
-            builder.HasMany(c => c.Costings);
-            builder.HasMany(c => c.Layers);
+            builder.HasKey(m => new { m.MaterialId });
+            builder
+                .HasMany(m => m.Costings)
+                .WithOne()
+                .HasForeignKey(c => new { c.MaterialId });
+            builder
+                .HasMany(m => m.Layers)
+                .WithOne()
+                .HasForeignKey(l => new { l.MaterialId });
+            builder
+                .HasMany(m => m.PalletDecks)
+                .WithOne()
+                .HasForeignKey(p => new { p.MaterialId });
+            builder
+                .HasMany(m => m.Sections)
+                .WithOne()
+                .HasForeignKey(s => new { s.MaterialId });
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -140,8 +165,20 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoMaterial.DtoLayer> builder)
         {
             builder.ToTable("DtoLayer");
-            builder.HasKey(c => new { c.MaterialId, c.LayerIndex });
-            builder.HasMany(c => c.Collations);
+            builder.HasKey(l => new { l.MaterialId, l.LayerIndex });
+            builder
+                .HasMany(m => m.Collations)
+                .WithOne()
+                .HasForeignKey(c => new { c.MaterialId, c.LayerIndex });
+        }
+
+        /// <summary>Configures the specified builder.</summary>
+        ///
+        /// <param name="builder">The builder.</param>
+        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoSection> builder)
+        {
+            builder.ToTable("DtoSection");
+            builder.HasKey(s => new { s.MaterialId, s.SectionIndex });
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -151,6 +188,28 @@ namespace PackIt.DTO
         {
             builder.ToTable("DtoCollation");
             builder.HasKey(c => new { c.MaterialId, c.LayerIndex, c.CollationIndex });
+        }
+
+        /// <summary>Configures the specified builder.</summary>
+        ///
+        /// <param name="builder">The builder.</param>
+        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoPalletDeck> builder)
+        {
+            builder.ToTable("DtoPalletDeck");
+            builder.HasKey(p => new { p.MaterialId, p.PalletDeckIndex });
+            builder
+                .HasMany(p => p.Planks)
+                .WithOne()
+                .HasForeignKey(p => new { p.MaterialId, p.PalletDeckIndex });
+        }
+
+        /// <summary>Configures the specified builder.</summary>
+        ///
+        /// <param name="builder">The builder.</param>
+        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoPlank> builder)
+        {
+            builder.ToTable("DtoPlank");
+            builder.HasKey(p => new { p.MaterialId, p.PalletDeckIndex, p.PlankIndex });
         }
     }
 }

@@ -32,11 +32,21 @@ namespace PackIt.DTO
         /// <summary>   Gets the packs. </summary>
         ///
         /// <returns>   The packs. </returns>
-        public List<Pack> GetPacks()
+        public IList<Pack> GetPacks()
         {
-            List<Pack> ret = new List<Pack>();
+            var ret = new List<Pack>();
+            var query = this.Packs
+                .Include(p => p.Costings)
+                .Include(p => p.Stages)
+                .Include(p => p.Stages).ThenInclude(s => s.Limits)
+                .Include(p => p.Stages).ThenInclude(s => s.Results)
+                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers)
+                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers).ThenInclude(l => l.Collations)
+                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials)
+                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials).ThenInclude(m => m.DatabaseMaterials)
+                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Sections);
 
-            foreach (DtoPack.DtoPack item in this.Packs)
+            foreach (DtoPack.DtoPack item in query)
             {
                 ret.Add(PackMapper.Convert(item));
             }
@@ -126,9 +136,15 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoPack.DtoPack> builder)
         {
             builder.ToTable("DtoPack");
-            builder.HasKey(c => c.PackId);
-            builder.HasMany(c => c.Costings);
-            builder.HasMany(c => c.Stages);
+            builder.HasKey(p => p.PackId);
+            builder
+                .HasMany(p => p.Costings)
+                .WithOne()
+                .HasForeignKey(c => new { c.PackId });
+            builder
+                .HasMany(p => p.Stages)
+                .WithOne()
+                .HasForeignKey(s => new { s.PackId });
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -146,9 +162,15 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoPack.DtoStage> builder)
         {
             builder.ToTable("DtoStage");
-            builder.HasKey(c => new { c.PackId, c.StageLevel });
-            builder.HasMany(c => c.Limits);
-            builder.HasMany(c => c.Results);
+            builder.HasKey(s => new { s.PackId, s.StageLevel });
+            builder
+                .HasMany(s => s.Limits)
+                .WithOne()
+                .HasForeignKey(l => new { l.PackId, l.StageLevel });
+            builder
+                .HasMany(s => s.Results)
+                .WithOne()
+                .HasForeignKey(r => new { r.PackId, r.StageLevel });
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -157,7 +179,7 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoPack.DtoLimit> builder)
         {
             builder.ToTable("DtoLimit");
-            builder.HasKey(c => new { c.PackId, c.StageLevel, c.LimitIndex });
+            builder.HasKey(l => new { l.PackId, l.StageLevel, l.LimitIndex });
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -166,10 +188,19 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoPack.DtoResult> builder)
         {
             builder.ToTable("DtoResult");
-            builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex });
-            builder.HasMany(c => c.Layers);
-            builder.HasMany(c => c.Materials);
-            builder.HasMany(c => c.Sections);
+            builder.HasKey(r => new { r.PackId, r.StageLevel, r.ResultIndex });
+            builder
+                .HasMany(r => r.Layers)
+                .WithOne()
+                .HasForeignKey(l => new { l.PackId, l.StageLevel, l.ResultIndex });
+            builder
+                .HasMany(r => r.Materials)
+                .WithOne()
+                .HasForeignKey(m => new { m.PackId, m.StageLevel, m.ResultIndex });
+            builder
+                .HasMany(r => r.Sections)
+                .WithOne()
+                .HasForeignKey(s => new { s.PackId, s.StageLevel, s.ResultIndex });
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -178,8 +209,11 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoPack.DtoLayer> builder)
         {
             builder.ToTable("DtoLayer");
-            builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.LayerIndex });
-            builder.HasMany(c => c.Collations);
+            builder.HasKey(l => new { l.PackId, l.StageLevel, l.ResultIndex, l.LayerIndex });
+            builder
+                .HasMany(l => l.Collations)
+                .WithOne()
+                .HasForeignKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.LayerIndex });
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -197,8 +231,11 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoPack.DtoMaterial> builder)
         {
             builder.ToTable("DtoMaterial");
-            builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.MaterialIndex });
-            builder.HasMany(c => c.DatabaseMaterials);
+            builder.HasKey(m => new { m.PackId, m.StageLevel, m.ResultIndex, m.MaterialIndex });
+            builder
+                .HasMany(m => m.DatabaseMaterials)
+                .WithOne()
+                .HasForeignKey(d => new { d.PackId, d.StageLevel, d.ResultIndex, d.MaterialIndex });
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -207,7 +244,7 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoPack.DtoDatabaseMaterial> builder)
         {
             builder.ToTable("DtoDatabaseMaterial");
-            builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.MaterialIndex, c.DatabaseMaterialIndex });
+            builder.HasKey(d => new { d.PackId, d.StageLevel, d.ResultIndex, d.MaterialIndex, d.DatabaseMaterialIndex });
         }
 
         /// <summary>Configures the specified builder.</summary>
@@ -216,7 +253,7 @@ namespace PackIt.DTO
         private static void Configure(EntityTypeBuilder<DtoPack.DtoSection> builder)
         {
             builder.ToTable("DtoSection");
-            builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.SectionIndex });
+            builder.HasKey(s => new { s.PackId, s.StageLevel, s.ResultIndex, s.SectionIndex });
         }
     }
 }

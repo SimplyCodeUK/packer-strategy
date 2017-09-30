@@ -18,7 +18,7 @@ namespace PackItUI.Areas.Plans.Models
         ///
         /// <param name="information"> The service information. </param>
         /// <param name="items"> The items. </param>
-        public HomeViewModel(ServiceInfo information, List<PackIt.Plan.Plan> items)
+        public HomeViewModel(ServiceInfo information, IList<PackIt.Plan.Plan> items)
         {
             this.Information = information;
             this.Items = items;
@@ -32,6 +32,6 @@ namespace PackItUI.Areas.Plans.Models
         /// <summary> Gets the items. </summary>
         ///
         /// <value> The items. </value>
-        public List<PackIt.Plan.Plan> Items { get; }
+        public IList<PackIt.Plan.Plan> Items { get; }
     }
 }
