@@ -55,7 +55,7 @@ namespace PackItUI.Services
         /// <summary> Reads asynchronously all materials. </summary>
         ///
         /// <returns> The materials. </returns>
-        public async Task<List<PackIt.Material.Material>> ReadAsync()
+        public async Task<IList<PackIt.Material.Material>> ReadAsync()
         {
             try
             {

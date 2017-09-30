@@ -20,11 +20,6 @@ namespace PackIt.Material
             this.Collations = new List<Collation>();
         }
 
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
-        ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
-
         /// <summary>   Gets or sets the layers. </summary>
         ///
         /// <value> The layers. </value>
@@ -110,9 +105,9 @@ namespace PackIt.Material
         /// <value> The count. </value>
         public long Count { get; set; }
 
-        /// <summary>   Gets or sets the collations. </summary>
+        /// <summary>   Gets or sets the collection of collations. </summary>
         ///
-        /// <value> The collations. </value>
-        public List<Collation> Collations { get; set; }
+        /// <value> Collection of collations. </value>
+        public IList<Collation> Collations { get; set; }
     }
 }

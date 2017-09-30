@@ -70,14 +70,14 @@ namespace PackIt.Pack
         /// <value> The costing premium. </value>
         public double CostingPremium { get; set; }
 
-        /// <summary>   Gets or sets the costings. </summary>
+        /// <summary>   Gets or sets the collection of costings. </summary>
         ///
-        /// <value> The costings. </value>
-        public List<Costing> Costings { get; set; }
+        /// <value> Collection of costings. </value>
+        public IList<Costing> Costings { get; set; }
 
-        /// <summary>   Gets or sets the stages. </summary>
+        /// <summary>   Gets or sets the collection of stages. </summary>
         ///
-        /// <value> The stages. </value>
-        public List<Stage> Stages { get; set; }
+        /// <value> Collection of stages. </value>
+        public IList<Stage> Stages { get; set; }
     }
 }

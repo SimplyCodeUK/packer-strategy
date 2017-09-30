@@ -11,11 +11,6 @@ namespace PackIt.Material
     /// <summary>   A collation. </summary>
     public class Collation
     {
-        /// <summary>   Gets or sets the zero-based index of this object. </summary>
-        ///
-        /// <value> The index. </value>
-        public long Index { get; set; }
-
         /// <summary>   Gets or sets the position x coordinate. </summary>
         ///
         /// <value> The position x coordinate. </value>

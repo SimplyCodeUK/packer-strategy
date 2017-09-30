@@ -38,9 +38,9 @@ namespace PackIt.Plan
         /// <value> The notes. </value>
         public string Notes { get; set; }
 
-        /// <summary>   Gets or sets the stages. </summary>
+        /// <summary>   Gets or sets the collection of stages. </summary>
         ///
-        /// <value> The stages. </value>
-        public List<Stage> Stages { get; set; }
+        /// <value> Collection of stages. </value>
+        public IList<Stage> Stages { get; set; }
     }
 }

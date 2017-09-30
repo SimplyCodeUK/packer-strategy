@@ -102,9 +102,9 @@ namespace PackItTest.Controllers
 
             var objectResult = (OkObjectResult)result;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<IEnumerable<Material>>(objectResult.Value);
+            Assert.IsInstanceOf<IList<Material>>(objectResult.Value);
 
-            foreach (Material item in (IEnumerable<Material>)objectResult.Value)
+            foreach (Material item in (IList<Material>)objectResult.Value)
             {
                 if (ids.Contains(item.MaterialId))
                 {
@@ -332,6 +332,7 @@ namespace PackItTest.Controllers
             item = (Material)objectResult.Value;
             Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.MaterialId, id);
+            Assert.AreEqual(item.Costings.Count, 1);
         }
     }
 }

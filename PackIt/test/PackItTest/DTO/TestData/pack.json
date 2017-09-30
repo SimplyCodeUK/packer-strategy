@@ -1,5 +1,5 @@
 {
-  "PackId": "125g Benl.",
+  "PackId": "125g.Benl.",
   "Name": "Export Pack.",
   "PlanCode": "Benylin",
   "PlanName": "Pharma",
@@ -411,13 +411,13 @@
         {
           "Design": false,
           "MaterialType": 4,
-          "MaterialCode": "Benl/125ml",
+          "MaterialCode": "Benl.125ml",
           "MaterialCodeMin": "",
           "DesignType": 0,
           "DesignCode": "",
           "DesignCodeMin": null,
           "QualityType": 0,
-          "QualityCode": "Benl/125ml",
+          "QualityCode": "Benl.125ml",
           "QualityCodeMin": "",
           "Inverted": false,
           "LayerCount": 1,
@@ -456,7 +456,7 @@
         {
           "Design": false,
           "MaterialType": 21,
-          "MaterialCode": "Gen/125",
+          "MaterialCode": "Gen.125",
           "MaterialCodeMin": "",
           "DesignType": 0,
           "DesignCode": "",
@@ -501,13 +501,13 @@
         {
           "Design": false,
           "MaterialType": 1,
-          "MaterialCode": "125g Benl",
+          "MaterialCode": "125g.Benl",
           "MaterialCodeMin": "",
           "DesignType": 1,
           "DesignCode": "SP52",
           "DesignCodeMin": null,
           "QualityType": 0,
-          "QualityCode": "Benl/125ml",
+          "QualityCode": "Benl.125ml",
           "QualityCodeMin": "",
           "Inverted": false,
           "LayerCount": 1,
@@ -673,7 +673,7 @@
           "Materials": [
             {
               "MaterialType": 4,
-              "MaterialId": "Benl/125ml",
+              "MaterialId": "Benl.125ml",
               "Name": "125ml Brown Gl.Bottle",
               "Colour": "",
               "Drawing": "",
@@ -718,7 +718,7 @@
             },
             {
               "MaterialType": 21,
-              "MaterialId": "Gen/125",
+              "MaterialId": "Gen.125",
               "Name": "Twist-Top",
               "Colour": "",
               "Drawing": "",
@@ -763,7 +763,7 @@
             },
             {
               "MaterialType": 1,
-              "MaterialId": "125g Benl",
+              "MaterialId": "125g.Benl",
               "Name": "Primary Carton",
               "Colour": "",
               "Drawing": "",
@@ -989,7 +989,7 @@
         {
           "Design": false,
           "MaterialType": 1,
-          "MaterialCode": "125g Sec.",
+          "MaterialCode": "125g.Sec.",
           "MaterialCodeMin": "",
           "DesignType": 0,
           "DesignCode": "0204",
@@ -1116,7 +1116,7 @@
           "Materials": [
             {
               "MaterialType": 1,
-              "MaterialId": "125g Sec.",
+              "MaterialId": "125g.Sec.",
               "Name": "Secondary Ct.",
               "Colour": "",
               "Drawing": "",
@@ -1698,7 +1698,7 @@
         {
           "Design": false,
           "MaterialType": 9,
-          "MaterialCode": "Shr/050m",
+          "MaterialCode": "Shr.050m",
           "MaterialCodeMin": "",
           "DesignType": 0,
           "DesignCode": "",
@@ -1882,7 +1882,7 @@
             },
             {
               "MaterialType": 9,
-              "MaterialId": "Shr/050m",
+              "MaterialId": "Shr.050m",
               "Name": "Pallet Shrink Bag",
               "Colour": "",
               "Drawing": "",

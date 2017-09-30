@@ -1,7 +1,7 @@
 {
   "Plans": [
     {
-      "PlanId": "Benylin/Mod",
+      "PlanId": "Benylin.Mod",
       "PlanName": "Pharma",
       "Stages": [
         {
@@ -546,7 +546,7 @@
             {
               "Design": false,
               "MaterialType": 9,
-              "MaterialCode": "Shr/050m",
+              "MaterialCode": "Shr.050m",
               "DesignType": 0,
               "DesignCode": "",
               "QualityType": 0,
@@ -664,7 +664,7 @@
             {
               "Design": false,
               "MaterialType": 1,
-              "MaterialCode": "Sachet/1/CS",
+              "MaterialCode": "Sachet.1.CS",
               "DesignType": 2,
               "DesignCode": "Sachet/1",
               "QualityType": 0,
@@ -776,7 +776,7 @@
             {
               "Design": false,
               "MaterialType": 1,
-              "MaterialCode": "CS/2/Traded",
+              "MaterialCode": "CS.2.Traded",
               "DesignType": 2,
               "DesignCode": "CS/Traded",
               "QualityType": 0,
@@ -888,7 +888,7 @@
             {
               "Design": false,
               "MaterialType": 12,
-              "MaterialCode": "CS/3/CupaSoup",
+              "MaterialCode": "CS.3.CupaSoup",
               "DesignType": 2,
               "DesignCode": "0442",
               "QualityType": 0,
@@ -1154,11 +1154,11 @@
             {
               "Design": false,
               "MaterialType": 6,
-              "MaterialCode": "CTN/525/Glass",
+              "MaterialCode": "CTN.525.Glass",
               "DesignType": 0,
               "DesignCode": "",
               "QualityType": 0,
-              "QualityCode": "CTN/525/Glass",
+              "QualityCode": "CTN.525.Glass",
               "Inverted": false,
               "LayerCount": 1,
               "LayerStart": 1,
@@ -1172,11 +1172,11 @@
             {
               "Design": false,
               "MaterialType": 22,
-              "MaterialCode": "CTN/525",
+              "MaterialCode": "CTN.525",
               "DesignType": 0,
               "DesignCode": "",
               "QualityType": 0,
-              "QualityCode": "CTN/525/Lid",
+              "QualityCode": "CTN.525/Lid",
               "Inverted": true,
               "LayerCount": 1,
               "LayerStart": 1,
@@ -1284,7 +1284,7 @@
             {
               "Design": false,
               "MaterialType": 12,
-              "MaterialCode": "CT/Oriental",
+              "MaterialCode": "CT.Oriental",
               "DesignType": 2,
               "DesignCode": "0442",
               "QualityType": 0,
@@ -1402,7 +1402,7 @@
             {
               "Design": false,
               "MaterialType": 4,
-              "MaterialCode": "HR/Eau",
+              "MaterialCode": "HR..Eau",
               "DesignType": 0,
               "DesignCode": "",
               "QualityType": 0,
@@ -1420,7 +1420,7 @@
             {
               "Design": false,
               "MaterialType": 21,
-              "MaterialCode": "Gen/4443",
+              "MaterialCode": "Gen.4443",
               "DesignType": 0,
               "DesignCode": "",
               "QualityType": 0,
@@ -1438,7 +1438,7 @@
             {
               "Design": false,
               "MaterialType": 1,
-              "MaterialCode": "EDC/HR",
+              "MaterialCode": "EDC.HR",
               "DesignType": 1,
               "DesignCode": "SP52",
               "QualityType": 0,
@@ -1928,7 +1928,7 @@
             {
               "Design": false,
               "MaterialType": 4,
-              "MaterialCode": "ElsB/400",
+              "MaterialCode": "ElsB.400",
               "DesignType": 0,
               "DesignCode": "",
               "QualityType": 0,
@@ -1946,7 +1946,7 @@
             {
               "Design": false,
               "MaterialType": 21,
-              "MaterialCode": "Gen/EB/40",
+              "MaterialCode": "Gen.EB.40",
               "DesignType": 0,
               "DesignCode": "",
               "QualityType": 0,
@@ -2058,7 +2058,7 @@
             {
               "Design": false,
               "MaterialType": 1,
-              "MaterialCode": "E/Balsam",
+              "MaterialCode": "E.Balsam",
               "DesignType": 0,
               "DesignCode": "0204",
               "QualityType": 0,
@@ -2282,7 +2282,7 @@
             {
               "Design": false,
               "MaterialType": 13,
-              "MaterialCode": "Gen/1200x800",
+              "MaterialCode": "Gen.1200x800",
               "DesignType": 0,
               "DesignCode": "1000",
               "QualityType": 0,
@@ -2322,7 +2322,7 @@
   ],
   "Packs": [
     {
-      "PackId": "125g Benl.",
+      "PackId": "125g.Benl.",
       "Name": "Export Pack.",
       "PlanCode": "Benylin",
       "PlanName": "Pharma",
@@ -2734,13 +2734,13 @@
             {
               "Design": false,
               "MaterialType": 4,
-              "MaterialCode": "Benl/125ml",
+              "MaterialCode": "Benl.125ml",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
               "DesignCodeMin": null,
               "QualityType": 0,
-              "QualityCode": "Benl/125ml",
+              "QualityCode": "Benl.125ml",
               "QualityCodeMin": "",
               "Inverted": false,
               "LayerCount": 1,
@@ -2779,7 +2779,7 @@
             {
               "Design": false,
               "MaterialType": 21,
-              "MaterialCode": "Gen/125",
+              "MaterialCode": "Gen.125",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
@@ -2824,13 +2824,13 @@
             {
               "Design": false,
               "MaterialType": 1,
-              "MaterialCode": "125g Benl",
+              "MaterialCode": "125g.Benl",
               "MaterialCodeMin": "",
               "DesignType": 1,
               "DesignCode": "SP52",
               "DesignCodeMin": null,
               "QualityType": 0,
-              "QualityCode": "Benl/125ml",
+              "QualityCode": "Benl.125ml",
               "QualityCodeMin": "",
               "Inverted": false,
               "LayerCount": 1,
@@ -2996,7 +2996,7 @@
               "Materials": [
                 {
                   "MaterialType": 4,
-                  "MaterialId": "Benl/125ml",
+                  "MaterialId": "Benl.125ml",
                   "Name": "125ml Brown Gl.Bottle",
                   "Colour": "",
                   "Drawing": "",
@@ -3041,7 +3041,7 @@
                 },
                 {
                   "MaterialType": 21,
-                  "MaterialId": "Gen/125",
+                  "MaterialId": "Gen.125",
                   "Name": "Twist-Top",
                   "Colour": "",
                   "Drawing": "",
@@ -3086,7 +3086,7 @@
                 },
                 {
                   "MaterialType": 1,
-                  "MaterialId": "125g Benl",
+                  "MaterialId": "125g.Benl",
                   "Name": "Primary Carton",
                   "Colour": "",
                   "Drawing": "",
@@ -3312,7 +3312,7 @@
             {
               "Design": false,
               "MaterialType": 1,
-              "MaterialCode": "125g Sec.",
+              "MaterialCode": "125g.Sec.",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "0204",
@@ -3439,7 +3439,7 @@
               "Materials": [
                 {
                   "MaterialType": 1,
-                  "MaterialId": "125g Sec.",
+                  "MaterialId": "125g.Sec.",
                   "Name": "Secondary Ct.",
                   "Colour": "",
                   "Drawing": "",
@@ -4021,7 +4021,7 @@
             {
               "Design": false,
               "MaterialType": 9,
-              "MaterialCode": "Shr/050m",
+              "MaterialCode": "Shr.050m",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
@@ -4205,7 +4205,7 @@
                 },
                 {
                   "MaterialType": 9,
-                  "MaterialId": "Shr/050m",
+                  "MaterialId": "Shr.050m",
                   "Name": "Pallet Shrink Bag",
                   "Colour": "",
                   "Drawing": "",
@@ -4256,7 +4256,7 @@
       ]
     },
     {
-      "PackId": "125g Benl/Cont",
+      "PackId": "125g.Benl.Cont",
       "Name": "Export Cont.",
       "PlanCode": "Benylin",
       "PlanName": "Pharma",
@@ -4668,13 +4668,13 @@
             {
               "Design": false,
               "MaterialType": 4,
-              "MaterialCode": "Benl/125ml",
+              "MaterialCode": "Benl.125ml",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
               "DesignCodeMin": null,
               "QualityType": 0,
-              "QualityCode": "Benl/125ml",
+              "QualityCode": "Benl.125ml",
               "QualityCodeMin": "",
               "Inverted": false,
               "LayerCount": 1,
@@ -4713,7 +4713,7 @@
             {
               "Design": false,
               "MaterialType": 21,
-              "MaterialCode": "Gen/125",
+              "MaterialCode": "Gen.125",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
@@ -4758,13 +4758,13 @@
             {
               "Design": false,
               "MaterialType": 1,
-              "MaterialCode": "125g Benl",
+              "MaterialCode": "125g.Benl",
               "MaterialCodeMin": "",
               "DesignType": 1,
               "DesignCode": "SP52",
               "DesignCodeMin": null,
               "QualityType": 0,
-              "QualityCode": "Benl/125ml",
+              "QualityCode": "Benl.125ml",
               "QualityCodeMin": "",
               "Inverted": false,
               "LayerCount": 1,
@@ -4930,7 +4930,7 @@
               "Materials": [
                 {
                   "MaterialType": 4,
-                  "MaterialId": "Benl/125ml",
+                  "MaterialId": "Benl.125ml",
                   "Name": "125ml Brown Gl.Bottle",
                   "Colour": "",
                   "Drawing": "",
@@ -4975,7 +4975,7 @@
                 },
                 {
                   "MaterialType": 21,
-                  "MaterialId": "Gen/125",
+                  "MaterialId": "Gen.125",
                   "Name": "Twist-Top",
                   "Colour": "",
                   "Drawing": "",
@@ -5020,7 +5020,7 @@
                 },
                 {
                   "MaterialType": 1,
-                  "MaterialId": "125g Benl",
+                  "MaterialId": "125g.Benl",
                   "Name": "Primary Carton",
                   "Colour": "",
                   "Drawing": "",
@@ -5246,7 +5246,7 @@
             {
               "Design": false,
               "MaterialType": 1,
-              "MaterialCode": "125g Sec.",
+              "MaterialCode": "125g.Sec.",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "0204",
@@ -5373,7 +5373,7 @@
               "Materials": [
                 {
                   "MaterialType": 1,
-                  "MaterialId": "125g Sec.",
+                  "MaterialId": "125g.Sec.",
                   "Name": "Secondary Ct.",
                   "Colour": "",
                   "Drawing": "",
@@ -5955,7 +5955,7 @@
             {
               "Design": false,
               "MaterialType": 9,
-              "MaterialCode": "Shr/050m",
+              "MaterialCode": "Shr.050m",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
@@ -6139,7 +6139,7 @@
                 },
                 {
                   "MaterialType": 9,
-                  "MaterialId": "Shr/050m",
+                  "MaterialId": "Shr.050m",
                   "Name": "Pallet Shrink Bag",
                   "Colour": "",
                   "Drawing": "",
@@ -6320,7 +6320,7 @@
             {
               "Design": false,
               "MaterialType": 11,
-              "MaterialCode": "Con/1",
+              "MaterialCode": "Con.1",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
@@ -6447,7 +6447,7 @@
               "Materials": [
                 {
                   "MaterialType": 11,
-                  "MaterialId": "Con/1",
+                  "MaterialId": "Con.1",
                   "Name": "Export",
                   "Colour": "",
                   "Drawing": "",
@@ -6498,12 +6498,12 @@
       ]
     },
     {
-      "PackId": "A1098/46",
+      "PackId": "A1098.46",
       "Name": "YM/Crate Systems",
-      "PlanCode": "YM/Crate",
+      "PlanCode": "YM.Crate",
       "PlanName": "",
       "MaterialType": "0",
-      "MaterialCode": "Pdx/4329",
+      "MaterialCode": "Pdx.4329",
       "MaterialName": "Trial Container",
       "CostingPremium": 0.0,
       "Costings": [
@@ -6514,7 +6514,7 @@
       ],
       "Stages": [
         {
-          "ProductCode": "YM/Crate",
+          "ProductCode": "YM.Crate",
           "StageLevel": 0,
           "Collation": 1,
           "DrawOffset": 0,
@@ -6761,7 +6761,7 @@
           ]
         },
         {
-          "ProductCode": "YM/Crate",
+          "ProductCode": "YM.Crate",
           "StageLevel": 2,
           "Collation": 1,
           "DrawOffset": 0,
@@ -6893,7 +6893,7 @@
             {
               "Design": false,
               "MaterialType": 4,
-              "MaterialCode": "PdX/4329",
+              "MaterialCode": "PdX.4329",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
@@ -6938,7 +6938,7 @@
             {
               "Design": false,
               "MaterialType": 21,
-              "MaterialCode": "Gen/4253",
+              "MaterialCode": "Gen.4253",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
@@ -7065,7 +7065,7 @@
               "Materials": [
                 {
                   "MaterialType": 4,
-                  "MaterialId": "PdX/4329",
+                  "MaterialId": "PdX.4329",
                   "Name": "Trial Container",
                   "Colour": "",
                   "Drawing": "",
@@ -7110,7 +7110,7 @@
                 },
                 {
                   "MaterialType": 21,
-                  "MaterialId": "Gen/4253",
+                  "MaterialId": "Gen.4253",
                   "Name": "General Closures",
                   "Colour": "",
                   "Drawing": "",
@@ -7175,7 +7175,7 @@
           ]
         },
         {
-          "ProductCode": "YM/Crate",
+          "ProductCode": "YM.Crate",
           "StageLevel": 5,
           "Collation": 1,
           "DrawOffset": 0,
@@ -7307,7 +7307,7 @@
             {
               "Design": false,
               "MaterialType": 10,
-              "MaterialCode": "Crate/1",
+              "MaterialCode": "Crate.1",
               "MaterialCodeMin": "",
               "DesignType": 2,
               "DesignCode": "Crate",
@@ -7434,7 +7434,7 @@
               "Materials": [
                 {
                   "MaterialType": 10,
-                  "MaterialId": "Crate/1",
+                  "MaterialId": "Crate.1",
                   "Name": "Open Crate",
                   "Colour": "",
                   "Drawing": "",
@@ -7483,7 +7483,7 @@
           ]
         },
         {
-          "ProductCode": "YM/Crate",
+          "ProductCode": "YM.Crate",
           "StageLevel": 6,
           "Collation": 1,
           "DrawOffset": 0,
@@ -7803,7 +7803,7 @@
           ]
         },
         {
-          "ProductCode": "YM/Crate",
+          "ProductCode": "YM.Crate",
           "StageLevel": 7,
           "Collation": 1,
           "DrawOffset": 0,
@@ -8215,12 +8215,12 @@
       ]
     },
     {
-      "PackId": "CS x 4 Sachets",
+      "PackId": "CSx4.Sachets",
       "Name": "9 x Tray.",
       "PlanCode": "CS x 4 Special",
       "PlanName": "9 Pack Tray",
       "MaterialType": "0",
-      "MaterialCode": "Cup a Soup",
+      "MaterialCode": "Cup.a.Soup",
       "MaterialName": "Cup a Soup Single Serving",
       "CostingPremium": 0.0,
       "Costings": [
@@ -8582,7 +8582,7 @@
             {
               "Design": false,
               "MaterialType": 1,
-              "MaterialCode": "Sachet/1/CS",
+              "MaterialCode": "Sachet.1.CS",
               "MaterialCodeMin": "",
               "DesignType": 2,
               "DesignCode": "Sachet/1",
@@ -8709,7 +8709,7 @@
               "Materials": [
                 {
                   "MaterialType": 1,
-                  "MaterialId": "Sachet/1/CS",
+                  "MaterialId": "Sachet.1.CS",
                   "Name": "Cup a Soup Special",
                   "Colour": "",
                   "Drawing": "125/2/1A",
@@ -8890,7 +8890,7 @@
             {
               "Design": false,
               "MaterialType": 1,
-              "MaterialCode": "CS/2/Traded",
+              "MaterialCode": "CS.2.Traded",
               "MaterialCodeMin": "",
               "DesignType": 2,
               "DesignCode": "CS/Traded",
@@ -9017,7 +9017,7 @@
               "Materials": [
                 {
                   "MaterialType": 1,
-                  "MaterialId": "CS/2/Traded",
+                  "MaterialId": "CS.2.Traded",
                   "Name": "Cup a Soup x 4 Carton",
                   "Colour": "",
                   "Drawing": "987/3S/2",
@@ -9198,7 +9198,7 @@
             {
               "Design": false,
               "MaterialType": 12,
-              "MaterialCode": "CS/3/CupaSoup",
+              "MaterialCode": "CS.3.CupaSoup",
               "MaterialCodeMin": "",
               "DesignType": 2,
               "DesignCode": "0442",
@@ -9325,7 +9325,7 @@
               "Materials": [
                 {
                   "MaterialType": 12,
-                  "MaterialId": "CS/3/CupaSoup",
+                  "MaterialId": "CS.3.CupaSoup",
                   "Name": "9-Pack tray.",
                   "Colour": "",
                   "Drawing": "",
@@ -9506,7 +9506,7 @@
             {
               "Design": false,
               "MaterialType": 15,
-              "MaterialCode": "UK CHEP",
+              "MaterialCode": "UK.CHEP",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
@@ -9795,7 +9795,7 @@
               "Materials": [
                 {
                   "MaterialType": 15,
-                  "MaterialId": "UK CHEP",
+                  "MaterialId": "UK.CHEP",
                   "Name": "CHEP 1200 x 1000",
                   "Colour": "",
                   "Drawing": "",
@@ -9936,12 +9936,12 @@
       ]
     },
     {
-      "PackId": "CTN 525g Glass",
+      "PackId": "CTN.525g.Glass",
       "Name": "CTonight/Oriental",
       "PlanCode": "CTN 525g Contr.",
       "PlanName": "Chicken Tonight",
       "MaterialType": "0",
-      "MaterialCode": "CTN Nett Product",
+      "MaterialCode": "CTN.Nett.Product",
       "MaterialName": "Chicken Tonight",
       "CostingPremium": 0.0,
       "Costings": [
@@ -10348,13 +10348,13 @@
             {
               "Design": false,
               "MaterialType": 6,
-              "MaterialCode": "CTN/525/Glass",
+              "MaterialCode": "CTN.525.Glass",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
               "DesignCodeMin": null,
               "QualityType": 0,
-              "QualityCode": "CTN/525/Glass",
+              "QualityCode": "CTN.525.Glass",
               "QualityCodeMin": "",
               "Inverted": false,
               "LayerCount": 1,
@@ -10393,13 +10393,13 @@
             {
               "Design": false,
               "MaterialType": 22,
-              "MaterialCode": "CTN/525",
+              "MaterialCode": "CTN.525",
               "MaterialCodeMin": "",
               "DesignType": 0,
               "DesignCode": "",
               "DesignCodeMin": null,
               "QualityType": 0,
-              "QualityCode": "CTN/525/Lid",
+              "QualityCode": "CTN.525/Lid",
               "QualityCodeMin": "",
               "Inverted": true,
               "LayerCount": 1,
@@ -10520,7 +10520,7 @@
               "Materials": [
                 {
                   "MaterialType": 6,
-                  "MaterialId": "CTN/525/Glass",
+                  "MaterialId": "CTN.525.Glass",
                   "Name": "Chicken TN/Oriental",
                   "Colour": "",
                   "Drawing": "",
@@ -10565,7 +10565,7 @@
                 },
                 {
                   "MaterialType": 22,
-                  "MaterialId": "CTN/525",
+                  "MaterialId": "CTN.525",
                   "Name": "1.5 mm ScrewTop",
                   "Colour": "",
                   "Drawing": "",
@@ -10762,7 +10762,7 @@
             {
               "Design": false,
               "MaterialType": 12,
-              "MaterialCode": "CT/Oriental",
+              "MaterialCode": "CT.Oriental",
               "MaterialCodeMin": "",
               "DesignType": 2,
               "DesignCode": "0442",
@@ -10889,7 +10889,7 @@
               "Materials": [
                 {
                   "MaterialType": 12,
-                  "MaterialId": "CT/Oriental",
+                  "MaterialId": "CT.Oriental",
                   "Name": "6 Pack",
                   "Colour": "",
                   "Drawing": "",
@@ -10938,6 +10938,335 @@
           ]
         }
       ]
+    }
+  ],
+  "Materials": [
+    {
+      "MaterialId": "UK.CHEP",
+      "Type": 15,
+      "Name": "CHEP 1200 x 1000",
+      "Colour": "",
+      "Drawing": "",
+      "BarCode": "",
+      "ComputerCode": "",
+      "Finish": "",
+      "Print": "",
+      "PrintType": 0,
+      "Form": 1,
+      "ClosureType": 0,
+      "ClosureWeight": 0,
+      "StackStep": 0,
+      "Flap": 0,
+      "InternalLength": 1200,
+      "InternalBreadth": 1000,
+      "InternalHeight": 162,
+      "InternalVolume": 194400,
+      "NettWeight": 31,
+      "ExternalLength": 1200,
+      "ExternalBreadth": 1000,
+      "ExternalHeight": 162,
+      "ExternalVolume": 194400,
+      "GrossWeight": 31,
+      "LoadCapacity": 1031,
+      "CentreOfGravityX": 0,
+      "CentreOfGravityY": 0,
+      "CentreOfGravityZ": 0,
+      "Caliper": 162,
+      "CellLength": 0,
+      "CellBreadth": 0,
+      "CellHeight": 0,
+      "BlankArea": 1.2,
+      "BodyTolerance": 0,
+      "HeightTolerance": 0,
+      "Density": 0,
+      "ShoulderToTop": 0,
+      "FinishX": 0,
+      "FinishY": 0,
+      "BoardStrength": 0,
+      "TargetCompression": 0,
+      "Costings": [
+        {
+          "Quantity": 100,
+          "QuantityCost": 1000,
+          "VolumeCost": 0,
+          "AreaCost": 0,
+          "LengthCost": 0
+        },
+        {
+          "Quantity": 200,
+          "QuantityCost": 1800,
+          "VolumeCost": 0,
+          "AreaCost": 0,
+          "LengthCost": 0
+        },
+        {
+          "Quantity": 300,
+          "QuantityCost": 2200,
+          "VolumeCost": 0,
+          "AreaCost": 0,
+          "LengthCost": 0
+        },
+        {
+          "Quantity": 500,
+          "QuantityCost": 2750,
+          "VolumeCost": 0,
+          "AreaCost": 0,
+          "LengthCost": 0
+        }
+      ],
+      "Layers": [
+        {
+          "Layers": 0,
+          "OutputRotation": 0,
+          "ParentRotation": 0,
+          "Rotation": 0,
+          "Percent": 0,
+          "Length": 0,
+          "Breadth": 0,
+          "BondRotation": 0,
+          "BondEastWest": 0,
+          "BondNorthSouth": 0,
+          "Bond180Degrees": 0,
+          "Bond90Degrees": 0,
+          "LineEastWest": 0,
+          "LineNorthSouth": 0,
+          "Line180Degrees": 0,
+          "Line90Degrees": 0,
+          "Count": 0
+        }
+      ],
+      "PalletDecks": [
+        {
+          "Caliper": 17,
+          "Planks": [
+            {
+              "NoX": 1,
+              "NoY": 1,
+              "Shape": 0,
+              "PosX": 0,
+              "PosY": 0,
+              "GapX": 0,
+              "GapY": 0,
+              "Length": 136,
+              "Breadth": 1000
+            },
+            {
+              "NoX": 7,
+              "NoY": 1,
+              "Shape": 0,
+              "PosX": 136,
+              "PosY": 0,
+              "GapX": 24,
+              "GapY": 0,
+              "Length": 112,
+              "Breadth": 1000
+            },
+            {
+              "NoX": 1,
+              "NoY": 1,
+              "Shape": 0,
+              "PosX": 1064,
+              "PosY": 0,
+              "GapX": 0,
+              "GapY": 0,
+              "Length": 136,
+              "Breadth": 1000
+            }
+          ]
+        },
+        {
+          "Caliper": 25,
+          "Planks": [
+            {
+              "NoX": 1,
+              "NoY": 3,
+              "Shape": 0,
+              "PosX": 0,
+              "PosY": 0,
+              "GapX": 0,
+              "GapY": 350,
+              "Length": 1200,
+              "Breadth": 100
+            }
+          ]
+        },
+        {
+          "Caliper": 95,
+          "Planks": [
+            {
+              "NoX": 1,
+              "NoY": 3,
+              "Shape": 0,
+              "PosX": 0,
+              "PosY": 0,
+              "GapX": 0,
+              "GapY": 357.5,
+              "Length": 160,
+              "Breadth": 95
+            },
+            {
+              "NoX": 1,
+              "NoY": 3,
+              "Shape": 0,
+              "PosX": 527.5,
+              "PosY": 0,
+              "GapX": 0,
+              "GapY": 357.5,
+              "Length": 145,
+              "Breadth": 95
+            },
+            {
+              "NoX": 1,
+              "NoY": 3,
+              "Shape": 0,
+              "PosX": 1040,
+              "PosY": 0,
+              "GapX": 0,
+              "GapY": 357.5,
+              "Length": 160,
+              "Breadth": 95
+            }
+          ]
+        },
+        {
+          "Caliper": 25,
+          "Planks": [
+            {
+              "NoX": 2,
+              "NoY": 1,
+              "Shape": 0,
+              "PosX": 0,
+              "PosY": 0,
+              "GapX": 1000,
+              "GapY": 0,
+              "Length": 100,
+              "Breadth": 1000
+            },
+            {
+              "NoX": 1,
+              "NoY": 3,
+              "Shape": 0,
+              "PosX": 100,
+              "PosY": 0,
+              "GapX": 0,
+              "GapY": 350,
+              "Length": 1000,
+              "Breadth": 100
+            }
+          ]
+        }
+      ],
+      "Sections": []
+    },
+    {
+      "MaterialId": "Crate.1",
+      "Type": 10,
+      "Name": "Open Crate",
+      "Colour": "",
+      "Drawing": "",
+      "BarCode": "",
+      "ComputerCode": "",
+      "Finish": "",
+      "Print": "",
+      "PrintType": 0,
+      "Form": 1,
+      "ClosureType": 0,
+      "ClosureWeight": 0,
+      "StackStep": 0,
+      "Flap": 0,
+      "InternalLength": 246,
+      "InternalBreadth": 188,
+      "InternalHeight": 230,
+      "InternalVolume": 10637.04,
+      "NettWeight": 0.766,
+      "ExternalLength": 256,
+      "ExternalBreadth": 198,
+      "ExternalHeight": 235,
+      "ExternalVolume": 11911.68,
+      "GrossWeight": 0.268,
+      "LoadCapacity": 10,
+      "CentreOfGravityX": 0,
+      "CentreOfGravityY": 0,
+      "CentreOfGravityZ": 0,
+      "Caliper": 5,
+      "CellLength": 60,
+      "CellBreadth": 60,
+      "CellHeight": 110,
+      "BlankArea": 0.599238,
+      "BodyTolerance": 0,
+      "HeightTolerance": 0,
+      "Density": 0,
+      "ShoulderToTop": 0,
+      "FinishX": 0,
+      "FinishY": 0,
+      "BoardStrength": 0,
+      "TargetCompression": 0,
+      "Costings": [
+        {
+          "Quantity": 100,
+          "QuantityCost": 500,
+          "VolumeCost": 0,
+          "AreaCost": 0,
+          "LengthCost": 0
+        },
+        {
+          "Quantity": 500,
+          "QuantityCost": 2000,
+          "VolumeCost": 0,
+          "AreaCost": 0,
+          "LengthCost": 0
+        },
+        {
+          "Quantity": 1000,
+          "QuantityCost": 4000,
+          "VolumeCost": 0,
+          "AreaCost": 0,
+          "LengthCost": 0
+        },
+        {
+          "Quantity": 5000,
+          "QuantityCost": 7000,
+          "VolumeCost": 0,
+          "AreaCost": 0,
+          "LengthCost": 0
+        }
+      ],
+      "Layers": [
+        {
+          "Layers": 1,
+          "OutputRotation": 0,
+          "ParentRotation": 0,
+          "Rotation": 0,
+          "Percent": 0,
+          "Length": 0,
+          "Breadth": 0,
+          "BondRotation": 0,
+          "BondEastWest": 0,
+          "BondNorthSouth": 0,
+          "Bond180Degrees": 0,
+          "Bond90Degrees": 0,
+          "LineEastWest": 0,
+          "LineNorthSouth": 0,
+          "Line180Degrees": 0,
+          "Line90Degrees": 0,
+          "Count": 12,
+          "Collations": [
+            {
+              "PosX": 0,
+              "PosY": 0,
+              "GapX": 4,
+              "GapY": 2,
+              "CountX": 4,
+              "CountY": 3,
+              "Even": 0,
+              "Nested": 0,
+              "AlongBreadth": 0,
+              "Rotation": 0
+            }
+          ]
+        }
+      ],
+      "Sections": []
     }
   ]
 }

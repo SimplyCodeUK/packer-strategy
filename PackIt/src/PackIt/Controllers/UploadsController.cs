@@ -119,20 +119,20 @@ namespace PackIt.Controllers
                 this.Packs = new List<Pack.Pack>();
             }
 
-            /// <summary>   Gets or sets the list of Plans of this object. </summary>
+            /// <summary>   Gets or sets the collection of Plans of this object. </summary>
             ///
-            /// <value> List of Plans. </value>
-            public List<Plan.Plan> Plans { get; set; }
+            /// <value> Collection of Plans. </value>
+            public IList<Plan.Plan> Plans { get; set; }
 
-            /// <summary>   Gets or sets the list of Materials of this object. </summary>
+            /// <summary>   Gets or sets the collection of Materials of this object. </summary>
             ///
-            /// <value> List of Materials. </value>
-            public List<Material.Material> Materials { get; set; }
+            /// <value> Collection of Materials. </value>
+            public IList<Material.Material> Materials { get; set; }
 
-            /// <summary>   Gets or sets the list of Packs of this object. </summary>
+            /// <summary>   Gets or sets the collection of Packs of this object. </summary>
             ///
-            /// <value> List of Packs. </value>
-            public List<Pack.Pack> Packs { get; set; }
+            /// <value> Collection of Packs. </value>
+            public IList<Pack.Pack> Packs { get; set; }
         }
     }
 }

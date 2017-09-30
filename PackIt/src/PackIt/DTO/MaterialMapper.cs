@@ -22,7 +22,10 @@ namespace PackIt.DTO
                 cfg.CreateMap<Material, DtoMaterial.DtoMaterial>();
                 cfg.CreateMap<Costing, DtoCosting>();
                 cfg.CreateMap<Layer, DtoLayer>();
+                cfg.CreateMap<PalletDeck, DtoPalletDeck>();
+                cfg.CreateMap<Section, DtoSection>();
                 cfg.CreateMap<Collation, DtoCollation>();
+                cfg.CreateMap<Plank, DtoPlank>();
                 cfg.CreateMap<Material, DtoMaterial.DtoMaterial>().AfterMap(
                     (s, d) =>
                     {
@@ -31,9 +34,11 @@ namespace PackIt.DTO
                             costing.MaterialId = s.MaterialId;
                         }
 
+                        int layerIndex = 0;
                         foreach (DtoLayer layer in d.Layers)
                         {
                             layer.MaterialId = s.MaterialId;
+                            layer.LayerIndex = layerIndex++;
 
                             int collationIndex = 0;
                             foreach (DtoCollation collation in layer.Collations)
@@ -42,6 +47,28 @@ namespace PackIt.DTO
                                 collation.LayerIndex = layer.LayerIndex;
                                 collation.CollationIndex = collationIndex++;
                             }
+                        }
+
+                        int palletDeckIndex = 0;
+                        foreach (DtoPalletDeck palletDeck in d.PalletDecks)
+                        {
+                            palletDeck.MaterialId = s.MaterialId;
+                            palletDeck.PalletDeckIndex = palletDeckIndex++;
+
+                            int plankIndex = 0;
+                            foreach (DtoPlank plank in palletDeck.Planks)
+                            {
+                                plank.MaterialId = s.MaterialId;
+                                plank.PalletDeckIndex = palletDeck.PalletDeckIndex;
+                                plank.PlankIndex = plankIndex++;
+                            }
+                        }
+
+                        int sectionIndex = 0;
+                        foreach (DtoSection section in d.Sections)
+                        {
+                            section.MaterialId = s.MaterialId;
+                            section.SectionIndex = sectionIndex++;
                         }
                     });
             });
@@ -53,7 +80,10 @@ namespace PackIt.DTO
                 cfg.CreateMap<DtoMaterial.DtoMaterial, Material>();
                 cfg.CreateMap<DtoCosting, Costing>();
                 cfg.CreateMap<DtoLayer, Layer>();
+                cfg.CreateMap<DtoPalletDeck, PalletDeck>();
+                cfg.CreateMap<DtoSection, Section>();
                 cfg.CreateMap<DtoCollation, Collation>();
+                cfg.CreateMap<DtoPlank, Plank>();
             });
 
         /// <summary> The mapper from Model to Dto.</summary>

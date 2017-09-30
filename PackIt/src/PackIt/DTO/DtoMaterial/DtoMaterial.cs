@@ -19,6 +19,8 @@ namespace PackIt.DTO.DtoMaterial
         {
             this.Costings = new List<DtoCosting>();
             this.Layers = new List<DtoLayer>();
+            this.PalletDecks = new List<DtoPalletDeck>();
+            this.Sections = new List<DtoSection>();
         }
 
         /// <summary>   Gets or sets the Material identifier. </summary>
@@ -236,14 +238,24 @@ namespace PackIt.DTO.DtoMaterial
         /// <value> The target compression. </value>
         public double TargetCompression { get; set; }
 
-        /// <summary>   Gets or sets the costings. </summary>
+        /// <summary>   Gets or sets the collection of costings. </summary>
         ///
-        /// <value> The costings. </value>
-        public List<DtoCosting> Costings { get; set; }
+        /// <value> Collection of costings. </value>
+        public IList<DtoCosting> Costings { get; set; }
 
-        /// <summary>   Gets or sets the costings. </summary>
+        /// <summary>   Gets or sets the collection of layers. </summary>
         ///
-        /// <value> The costings. </value>
-        public List<DtoLayer> Layers { get; set; }
+        /// <value> Collection of layers. </value>
+        public IList<DtoLayer> Layers { get; set; }
+
+        /// <summary>   Gets or sets the collection of pallet decks. </summary>
+        ///
+        /// <value> Collection of pallet decks. </value>
+        public IList<DtoPalletDeck> PalletDecks { get; set; }
+
+        /// <summary>   Gets or sets the collection of sections. </summary>
+        ///
+        /// <value> Collection of sections. </value>
+        public IList<DtoSection> Sections { get; set; }
     }
 }

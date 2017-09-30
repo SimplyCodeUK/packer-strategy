@@ -21,6 +21,8 @@ namespace PackIt.Material
         {
             this.Costings = new List<Costing>();
             this.Layers = new List<Layer>();
+            this.PalletDecks = new List<PalletDeck>();
+            this.Sections = new List<Section>();
             this.Type = MaterialType.Bottle;
         }
 
@@ -243,14 +245,24 @@ namespace PackIt.Material
         /// <value> The target compression. </value>
         public double TargetCompression { get; set; }
 
-        /// <summary>   Gets or sets the costings. </summary>
+        /// <summary>   Gets or sets the collection of costings. </summary>
         ///
-        /// <value> The costings. </value>
-        public List<Costing> Costings { get; set; }
+        /// <value> Collection of costings. </value>
+        public IList<Costing> Costings { get; set; }
 
-        /// <summary>   Gets or sets the layers. </summary>
+        /// <summary>   Gets or sets the collection of layers. </summary>
         ///
-        /// <value> The layers. </value>
-        public List<Layer> Layers { get; set; }
+        /// <value> Collection of layers. </value>
+        public IList<Layer> Layers { get; set; }
+
+        /// <summary>   Gets or sets the collection of layers. </summary>
+        ///
+        /// <value> Collection of layers. </value>
+        public IList<PalletDeck> PalletDecks { get; set; }
+
+        /// <summary>   Gets or sets the collection of sections. </summary>
+        ///
+        /// <value> Collection of sections. </value>
+        public IList<Section> Sections { get; set; }
     }
 }

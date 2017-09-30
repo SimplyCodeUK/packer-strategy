@@ -34,7 +34,7 @@ namespace PackIt.DTO
         /// </returns>
         ///
         /// <seealso cref="M:PackIt.DTO.IPackRepository.GetAll()"/>
-        public IEnumerable<Pack> GetAll()
+        public IList<Pack> GetAll()
         {
             return this.context.GetPacks();
         }

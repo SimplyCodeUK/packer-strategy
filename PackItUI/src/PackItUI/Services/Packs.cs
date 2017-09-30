@@ -55,7 +55,7 @@ namespace PackItUI.Services
         /// <summary> Reads asynchronously all packs. </summary>
         ///
         /// <returns> The packs. </returns>
-        public async Task<List<PackIt.Pack.Pack>> ReadAsync()
+        public async Task<IList<PackIt.Pack.Pack>> ReadAsync()
         {
             try
             {

@@ -34,7 +34,7 @@ namespace PackIt.DTO
         /// </returns>
         ///
         /// <seealso cref="M:PackIt.DTO.IPlanRepository.GetAll()"/>
-        public IEnumerable<Plan> GetAll()
+        public IList<Plan> GetAll()
         {
             return this.context.GetPlans();
         }
