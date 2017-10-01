@@ -6,6 +6,7 @@
 
 namespace PackIt.DTO
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -63,8 +64,20 @@ namespace PackIt.DTO
         /// <returns>   The found plan. </returns>
         public Plan FindPlan(string key)
         {
-            DtoPlan.DtoPlan dto = this.Plans.Find(key);
-            return dto == null ? null : PlanMapper.Convert(dto);
+            try
+            {
+                var query = this.Plans
+                    .Include(p => p.Stages)
+                    .Include(p => p.Stages).ThenInclude(s => s.Limits)
+                    .SingleAsync(p => p.PlanId == key);
+
+                query.Wait();
+                return PlanMapper.Convert(query.Result);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /// <summary>   Removes the plan described by key. </summary>

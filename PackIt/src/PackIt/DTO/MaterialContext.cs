@@ -6,6 +6,7 @@
 
 namespace PackIt.DTO
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -68,8 +69,24 @@ namespace PackIt.DTO
         /// <returns>   The found material. </returns>
         public Material FindMaterial(string key)
         {
-            DtoMaterial.DtoMaterial dto = this.Materials.Find(key);
-            return dto == null ? null : MaterialMapper.Convert(dto);
+            try
+            {
+                var query = this.Materials
+                    .Include(m => m.Costings)
+                    .Include(m => m.Layers)
+                    .Include(m => m.Layers).ThenInclude(l => l.Collations)
+                    .Include(m => m.PalletDecks)
+                    .Include(m => m.PalletDecks).ThenInclude(p => p.Planks)
+                    .Include(m => m.Sections)
+                    .SingleAsync(p => p.MaterialId == key);
+
+                query.Wait();
+                return MaterialMapper.Convert(query.Result);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /// <summary>   Removes the material. </summary>
