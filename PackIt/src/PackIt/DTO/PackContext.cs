@@ -6,6 +6,7 @@
 
 namespace PackIt.DTO
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -70,8 +71,27 @@ namespace PackIt.DTO
         /// <returns>   The found pack. </returns>
         public Pack FindPack(string key)
         {
-            DtoPack.DtoPack dto = this.Packs.Find(key);
-            return dto == null ? null : PackMapper.Convert(dto);
+            try
+            {
+                var query = this.Packs
+                    .Include(p => p.Costings)
+                    .Include(p => p.Stages)
+                    .Include(p => p.Stages).ThenInclude(s => s.Limits)
+                    .Include(p => p.Stages).ThenInclude(s => s.Results)
+                    .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers)
+                    .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers).ThenInclude(l => l.Collations)
+                    .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials)
+                    .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials).ThenInclude(m => m.DatabaseMaterials)
+                    .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Sections)
+                    .SingleAsync(p => p.PackId == key);
+
+                query.Wait();
+                return PackMapper.Convert(query.Result);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /// <summary>   Removes the pack described by key. </summary>
