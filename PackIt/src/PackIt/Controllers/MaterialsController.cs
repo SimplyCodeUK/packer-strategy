@@ -81,7 +81,7 @@ namespace PackIt.Controllers
                 try
                 {
                     this.repository.Add(value);
-                    result = this.CreatedAtRoute("GetMaterial", new { value.MaterialId }, value);
+                    result = this.CreatedAtRoute("GetMaterial", new { id = value.MaterialId }, value);
                 }
                 catch (Exception)
                 {
