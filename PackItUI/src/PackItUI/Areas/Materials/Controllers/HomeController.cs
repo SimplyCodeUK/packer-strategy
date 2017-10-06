@@ -38,22 +38,6 @@ namespace PackItUI.Areas.Materials.Controllers
             return this.View(model);
         }
 
-        /// <summary> Display details of the specified material. </summary>
-        ///
-        /// <param name="id"> The material identifier. </param>
-        ///
-        /// <returns> An IActionResult. </returns>
-        [HttpGet]
-        public async Task<IActionResult> Details(string id)
-        {
-            var model = new Models.MaterialModel
-            {
-                Data = await this.service.ReadAsync(id)
-            };
-
-            return this.View(model);
-        }
-
         /// <summary> Display the form to create a new material. </summary>
         ///
         /// <returns> An IActionResult. </returns>
@@ -83,13 +67,13 @@ namespace PackItUI.Areas.Materials.Controllers
             }
         }
 
-        /// <summary> Display a form to edit the specified material. </summary>
+        /// <summary> Display a form to update the specified material. </summary>
         ///
         /// <param name="id"> The material identifier. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Update(string id)
         {
             var model = new Models.MaterialModel
             {
@@ -100,7 +84,7 @@ namespace PackItUI.Areas.Materials.Controllers
             return this.View(model);
         }
 
-        /// <summary> Save the edited material asynchronously. </summary>
+        /// <summary> Save the updated material asynchronously. </summary>
         ///
         /// <param name="id"> The material identifier. </param>
         /// <param name="model"> The material to update. </param>
@@ -108,7 +92,7 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, Models.MaterialModel model)
+        public async Task<IActionResult> Update(string id, Models.MaterialModel model)
         {
             if (await this.service.UpdateAsync(id, model.Data))
             {
@@ -140,21 +124,15 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <summary> Deletes the specified material. </summary>
         ///
         /// <param name="id"> The material identifier. </param>
-        /// <param name="model"> The material to delete. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(string id, Models.MaterialModel model)
+        [ActionName("Delete")]
+        public async Task<IActionResult> DoDelete(string id)
         {
-            if (await this.service.DeleteAsync(id))
-            {
-                return this.RedirectToAction(nameof(this.Index));
-            }
-            else
-            {
-                return this.View(model);
-            }
+            await this.service.DeleteAsync(id);
+            return this.RedirectToAction(nameof(this.Index));
         }
     }
 }

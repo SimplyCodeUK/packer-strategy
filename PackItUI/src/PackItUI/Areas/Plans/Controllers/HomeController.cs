@@ -38,22 +38,6 @@ namespace PackItUI.Areas.Plans.Controllers
             return this.View(model);
         }
 
-        /// <summary> Display details of the specified plan. </summary>
-        ///
-        /// <param name="id"> The plan identifier. </param>
-        ///
-        /// <returns> An IActionResult. </returns>
-        [HttpGet]
-        public async Task<IActionResult> Details(string id)
-        {
-            var model = new Models.PlanModel
-            {
-                Data = await this.service.ReadAsync(id)
-            };
-
-            return this.View(model);
-        }
-
         /// <summary> Display the form to create a new plan. </summary>
         ///
         /// <returns> An IActionResult. </returns>
@@ -83,13 +67,13 @@ namespace PackItUI.Areas.Plans.Controllers
             }
         }
 
-        /// <summary> Display a form to edit the specified plan. </summary>
+        /// <summary> Display a form to update the specified plan. </summary>
         ///
         /// <param name="id"> The plan identifier. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Update(string id)
         {
             var model = new Models.PlanModel
             {
@@ -100,7 +84,7 @@ namespace PackItUI.Areas.Plans.Controllers
             return this.View(model);
         }
 
-        /// <summary> Save the edited plan asynchronously. </summary>
+        /// <summary> Save the updated plan asynchronously. </summary>
         ///
         /// <param name="id"> The plan identifier. </param>
         /// <param name="model"> The plan to update. </param>
@@ -108,7 +92,7 @@ namespace PackItUI.Areas.Plans.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, Models.PlanModel model)
+        public async Task<IActionResult> Update(string id, Models.PlanModel model)
         {
             if (await this.service.UpdateAsync(id, model.Data))
             {
@@ -140,21 +124,15 @@ namespace PackItUI.Areas.Plans.Controllers
         /// <summary> Deletes the specified plan. </summary>
         ///
         /// <param name="id"> The plan identifier. </param>
-        /// <param name="model"> The plan to delete. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(string id, Models.PlanModel model)
+        [ActionName("Delete")]
+        public async Task<IActionResult> DoDelete(string id)
         {
-            if (await this.service.DeleteAsync(id))
-            {
-                return this.RedirectToAction(nameof(this.Index));
-            }
-            else
-            {
-                return this.View(model);
-            }
+            await this.service.DeleteAsync(id);
+            return this.RedirectToAction(nameof(this.Index));
         }
     }
 }

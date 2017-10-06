@@ -38,22 +38,6 @@ namespace PackItUI.Areas.Packs.Controllers
             return this.View(model);
         }
 
-        /// <summary> Display details of the specified pack. </summary>
-        ///
-        /// <param name="id"> The pack identifier. </param>
-        ///
-        /// <returns> An IActionResult. </returns>
-        [HttpGet]
-        public async Task<IActionResult> Details(string id)
-        {
-            var model = new Models.PackModel
-            {
-                Data = await this.service.ReadAsync(id)
-            };
-
-            return this.View(model);
-        }
-
         /// <summary> Display the form to create a new pack. </summary>
         ///
         /// <returns> An IActionResult. </returns>
@@ -64,7 +48,7 @@ namespace PackItUI.Areas.Packs.Controllers
             return this.View(model);
         }
 
-        /// <summary> Stores a pack from the form. </summary>
+        /// <summary> Stores the pack from the form. </summary>
         ///
         /// <param name="model"> The pack to save. </param>
         ///
@@ -83,13 +67,13 @@ namespace PackItUI.Areas.Packs.Controllers
             }
         }
 
-        /// <summary> Display a form to edit the specified pack. </summary>
+        /// <summary> Display a form to update the specified pack. </summary>
         ///
         /// <param name="id"> The pack identifier. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Update(string id)
         {
             var model = new Models.PackModel
             {
@@ -100,7 +84,7 @@ namespace PackItUI.Areas.Packs.Controllers
             return this.View(model);
         }
 
-        /// <summary> Save the edited pack asynchronously. </summary>
+        /// <summary> Save the updated pack asynchronously. </summary>
         ///
         /// <param name="id"> The pack identifier. </param>
         /// <param name="model"> The pack to update. </param>
@@ -108,7 +92,7 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, Models.PackModel model)
+        public async Task<IActionResult> Update(string id, Models.PackModel model)
         {
             if (await this.service.UpdateAsync(id, model.Data))
             {
@@ -140,21 +124,15 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <summary> Deletes the specified pack. </summary>
         ///
         /// <param name="id"> The pack identifier. </param>
-        /// <param name="model"> The pack to delete. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(string id, Models.PackModel model)
+        [ActionName("Delete")]
+        public async Task<IActionResult> DoDelete(string id)
         {
-            if (await this.service.DeleteAsync(id))
-            {
-                return this.RedirectToAction(nameof(this.Index));
-            }
-            else
-            {
-                return this.View(model);
-            }
+            await this.service.DeleteAsync(id);
+            return this.RedirectToAction(nameof(this.Index));
         }
     }
 }
