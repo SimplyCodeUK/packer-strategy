@@ -7,7 +7,8 @@
 }
 <h2>@ViewData["Title"]</h2>
 
-<form asp-action="Create" method="POST">
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
         <hr />
@@ -38,4 +39,4 @@
             </div>
         </div>
     </div>
-</form>
+}
