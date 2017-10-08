@@ -1,4 +1,4 @@
-﻿@model PackItUI.Areas.Materials.Models.MaterialModel
+﻿@model PackItUI.Areas.Materials.Models.MaterialUpdateViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -10,6 +10,47 @@
 @using (Html.BeginForm("Update", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => Model.Data.Type)
+    @Html.HiddenFor(m => Model.Data.Colour)
+    @Html.HiddenFor(m => Model.Data.Colour)
+    @Html.HiddenFor(m => Model.Data.Drawing)
+    @Html.HiddenFor(m => Model.Data.BarCode)
+    @Html.HiddenFor(m => Model.Data.ComputerCode)
+    @Html.HiddenFor(m => Model.Data.Finish)
+    @Html.HiddenFor(m => Model.Data.Print)
+    @Html.HiddenFor(m => Model.Data.PrintType)
+    @Html.HiddenFor(m => Model.Data.Form)
+    @Html.HiddenFor(m => Model.Data.ClosureType)
+    @Html.HiddenFor(m => Model.Data.ClosureWeight)
+    @Html.HiddenFor(m => Model.Data.StackStep)
+    @Html.HiddenFor(m => Model.Data.Flap)
+    @Html.HiddenFor(m => Model.Data.InternalLength)
+    @Html.HiddenFor(m => Model.Data.InternalBreadth)
+    @Html.HiddenFor(m => Model.Data.InternalHeight)
+    @Html.HiddenFor(m => Model.Data.InternalVolume)
+    @Html.HiddenFor(m => Model.Data.NettWeight)
+    @Html.HiddenFor(m => Model.Data.ExternalLength)
+    @Html.HiddenFor(m => Model.Data.ExternalBreadth)
+    @Html.HiddenFor(m => Model.Data.ExternalHeight)
+    @Html.HiddenFor(m => Model.Data.ExternalVolume)
+    @Html.HiddenFor(m => Model.Data.GrossWeight)
+    @Html.HiddenFor(m => Model.Data.LoadCapacity)
+    @Html.HiddenFor(m => Model.Data.CentreOfGravityX)
+    @Html.HiddenFor(m => Model.Data.CentreOfGravityY)
+    @Html.HiddenFor(m => Model.Data.CentreOfGravityZ)
+    @Html.HiddenFor(m => Model.Data.Caliper)
+    @Html.HiddenFor(m => Model.Data.CellLength)
+    @Html.HiddenFor(m => Model.Data.CellBreadth)
+    @Html.HiddenFor(m => Model.Data.CellHeight)
+    @Html.HiddenFor(m => Model.Data.BlankArea)
+    @Html.HiddenFor(m => Model.Data.BodyTolerance)
+    @Html.HiddenFor(m => Model.Data.HeightTolerance)
+    @Html.HiddenFor(m => Model.Data.Density)
+    @Html.HiddenFor(m => Model.Data.ShoulderToTop)
+    @Html.HiddenFor(m => Model.Data.FinishX)
+    @Html.HiddenFor(m => Model.Data.FinishY)
+    @Html.HiddenFor(m => Model.Data.BoardStrength)
+    @Html.HiddenFor(m => Model.Data.TargetCompression)
     <div class="form-horizontal">
         <hr />
         <div class="form-group">

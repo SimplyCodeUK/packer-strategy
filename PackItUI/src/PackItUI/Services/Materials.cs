@@ -117,7 +117,7 @@ namespace PackItUI.Services
                     json,
                     Encoding.UTF8,
                     "application/json");
-                HttpResponseMessage response = await this.HttpClient.PutAsync(this.Endpoint + "Materials/" + id, content);
+                var response = await this.HttpClient.PutAsync(this.Endpoint + "Materials/" + id, content);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();

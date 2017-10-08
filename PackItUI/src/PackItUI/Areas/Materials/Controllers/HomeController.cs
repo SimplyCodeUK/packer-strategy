@@ -7,9 +7,11 @@
 namespace PackItUI.Areas.Materials.Controllers
 {
     using System.Threading.Tasks;
+    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using PackItUI.Areas.App.Models;
+    using PackItUI.Areas.Materials.Models;
 
     /// <summary>   A controller for handling the Materials Home Page. </summary>
     [Area("Materials")]
@@ -17,6 +19,14 @@ namespace PackItUI.Areas.Materials.Controllers
     {
         /// <summary> The materials service. </summary>
         private readonly Services.Materials service;
+
+        /// <summary> The mapper to view model. </summary>
+        private readonly IMapper mapper = new MapperConfiguration(
+            cfg =>
+            {
+                cfg.CreateMap<PackIt.Material.Material, MaterialUpdateViewModel.Material>();
+                cfg.CreateMap<MaterialUpdateViewModel.Material, PackIt.Material.Material>();
+            }).CreateMapper();
 
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
@@ -34,7 +44,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var model = new Models.HomeViewModel(await this.service.InformationAsync(), await this.service.ReadAsync());
+            var model = new HomeViewModel(await this.service.InformationAsync(), await this.service.ReadAsync());
             return this.View(model);
         }
 
@@ -44,7 +54,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var model = new Models.MaterialModel();
+            var model = new MaterialViewModel();
             return this.View(model);
         }
 
@@ -55,7 +65,7 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Models.MaterialModel model)
+        public async Task<IActionResult> Create(MaterialViewModel model)
         {
             if (ModelState.IsValid && await this.service.CreateAsync(model.Data))
             {
@@ -75,10 +85,9 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var model = new Models.MaterialModel
+            var model = new MaterialUpdateViewModel
             {
-                Data = await this.service.ReadAsync(id),
-                Editable = true
+                Data = this.mapper.Map<MaterialUpdateViewModel.Material>(await this.service.ReadAsync(id))
             };
 
             return this.View(model);
@@ -87,14 +96,17 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <summary> Save the updated material asynchronously. </summary>
         ///
         /// <param name="id"> The material identifier. </param>
-        /// <param name="model"> The material to update. </param>
+        /// <param name="model"> The material data to update. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(string id, Models.MaterialModel model)
+        public async Task<IActionResult> Update(string id, MaterialUpdateViewModel model)
         {
-            if (await this.service.UpdateAsync(id, model.Data))
+            PackIt.Material.Material data = await this.service.ReadAsync(id);
+
+            data = this.mapper.Map(model.Data, data);
+            if (await this.service.UpdateAsync(id, data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }
@@ -112,10 +124,9 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            var model = new Models.MaterialModel
+            var model = new MaterialViewModel
             {
-                Data = await this.service.ReadAsync(id),
-                Deletable = true
+                Data = await this.service.ReadAsync(id)
             };
 
             return this.View(model);

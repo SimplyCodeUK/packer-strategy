@@ -6,8 +6,6 @@
 
 namespace PackIt.Pack
 {
-    using PackIt.Helpers.Enums;
-
     /// <summary>   A collation. </summary>
     public class Collation
     {
