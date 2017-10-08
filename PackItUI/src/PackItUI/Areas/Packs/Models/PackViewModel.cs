@@ -12,16 +12,14 @@ namespace PackItUI.Areas.Packs.Models
     using Newtonsoft.Json;
 
     /// <summary> Pack home view model. </summary>
-    public class PackModel
+    public class PackViewModel
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="PackModel"/> class.
+        /// Initialises a new instance of the <see cref="PackViewModel"/> class.
         /// </summary>
-        public PackModel()
+        public PackViewModel()
         {
             this.Data = new PackIt.Pack.Pack();
-            this.Editable = false;
-            this.Deletable = false;
         }
 
         /// <summary> Gets or sets the pack data. </summary>
@@ -29,27 +27,13 @@ namespace PackItUI.Areas.Packs.Models
         /// <value> The pack data. </value>
         public PackIt.Pack.Pack Data { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="PackModel"/> is editable.
-        /// </summary>
-        ///
-        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
-        public bool Editable { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="PackModel"/> is to be deleted.
-        /// </summary>
-        ///
-        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
-        public bool Deletable { get; set; }
-
-        /// <summary> Reads asynchronously the model for a pack. </summary>
+        /// <summary> Reads asynchronously the model for a material. </summary>
         ///
         /// <param name="endpoint"> The packs service endpoint. </param>
         /// <param name="id"> The identifier of the pack. </param>
         ///
         /// <returns> The model. </returns>
-        public static async Task<PackModel> ReadAsync(string endpoint, string id)
+        public static async Task<PackViewModel> ReadAsync(string endpoint, string id)
         {
             var httpClient = new HttpClient();
             string body;
@@ -62,7 +46,7 @@ namespace PackItUI.Areas.Packs.Models
                 response.EnsureSuccessStatusCode();
                 body = await response.Content.ReadAsStringAsync();
 
-                var ret = new PackModel
+                var ret = new PackViewModel
                 {
                     Data = JsonConvert.DeserializeObject<PackIt.Pack.Pack>(body)
                 };

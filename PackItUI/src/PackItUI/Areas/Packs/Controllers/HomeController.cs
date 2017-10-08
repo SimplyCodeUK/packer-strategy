@@ -7,9 +7,11 @@
 namespace PackItUI.Areas.Packs.Controllers
 {
     using System.Threading.Tasks;
+    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using PackItUI.Areas.App.Models;
+    using PackItUI.Areas.Packs.Models;
 
     /// <summary>   A controller for handling the Packs Home Page. </summary>
     [Area("Packs")]
@@ -17,6 +19,14 @@ namespace PackItUI.Areas.Packs.Controllers
     {
         /// <summary> The packs service. </summary>
         private readonly Services.Packs service;
+
+        /// <summary> The mapper to view model. </summary>
+        private readonly IMapper mapper = new MapperConfiguration(
+            cfg =>
+            {
+                cfg.CreateMap<PackIt.Pack.Pack, PackUpdateViewModel.Pack>();
+                cfg.CreateMap<PackUpdateViewModel.Pack, PackIt.Pack.Pack>();
+            }).CreateMapper();
 
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
@@ -34,7 +44,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var model = new Models.HomeViewModel(await this.service.InformationAsync(), await this.service.ReadAsync());
+            var model = new HomeViewModel(await this.service.InformationAsync(), await this.service.ReadAsync());
             return this.View(model);
         }
 
@@ -44,7 +54,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var model = new Models.PackModel();
+            var model = new PackViewModel();
             return this.View(model);
         }
 
@@ -55,7 +65,7 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Models.PackModel model)
+        public async Task<IActionResult> Create(PackViewModel model)
         {
             if (ModelState.IsValid && await this.service.CreateAsync(model.Data))
             {
@@ -75,10 +85,9 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var model = new Models.PackModel
+            var model = new PackUpdateViewModel
             {
-                Data = await this.service.ReadAsync(id),
-                Editable = true
+                Data = this.mapper.Map<PackUpdateViewModel.Pack>(await this.service.ReadAsync(id))
             };
 
             return this.View(model);
@@ -87,14 +96,17 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <summary> Save the updated pack asynchronously. </summary>
         ///
         /// <param name="id"> The pack identifier. </param>
-        /// <param name="model"> The pack to update. </param>
+        /// <param name="model"> The pack data to update. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(string id, Models.PackModel model)
+        public async Task<IActionResult> Update(string id, PackUpdateViewModel model)
         {
-            if (await this.service.UpdateAsync(id, model.Data))
+            PackIt.Pack.Pack data = await this.service.ReadAsync(id);
+
+            data = this.mapper.Map(model.Data, data);
+            if (await this.service.UpdateAsync(id, data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }
@@ -112,10 +124,9 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            var model = new Models.PackModel
+            var model = new PackViewModel
             {
-                Data = await this.service.ReadAsync(id),
-                Deletable = true
+                Data = await this.service.ReadAsync(id)
             };
 
             return this.View(model);

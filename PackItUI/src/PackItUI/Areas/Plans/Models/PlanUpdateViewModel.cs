@@ -7,41 +7,27 @@
 namespace PackItUI.Areas.Plans.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
     using System.Net.Http;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
+    using PackIt.Helpers.Enums;
 
     /// <summary> Plan home view model. </summary>
-    public class PlanModel
+    public class PlanUpdateViewModel
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="PlanModel"/> class.
+        /// Initialises a new instance of the <see cref="PlanUpdateViewModel"/> class.
         /// </summary>
-        public PlanModel()
+        public PlanUpdateViewModel()
         {
-            this.Data = new PackIt.Plan.Plan();
-            this.Editable = false;
-            this.Deletable = false;
+            this.Data = new Plan();
         }
 
         /// <summary> Gets or sets the plan data. </summary>
         ///
         /// <value> The plan data. </value>
-        public PackIt.Plan.Plan Data { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="PlanModel"/> is editable.
-        /// </summary>
-        ///
-        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
-        public bool Editable { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="PlanModel"/> is to be deleted.
-        /// </summary>
-        ///
-        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
-        public bool Deletable { get; set; }
+        public Plan Data { get; set; }
 
         /// <summary> Reads asynchronously the model for a plan. </summary>
         ///
@@ -49,7 +35,7 @@ namespace PackItUI.Areas.Plans.Models
         /// <param name="id"> The identifier of the plan. </param>
         ///
         /// <returns> The model. </returns>
-        public static async Task<PlanModel> ReadAsync(string endpoint, string id)
+        public static async Task<PlanUpdateViewModel> ReadAsync(string endpoint, string id)
         {
             var httpClient = new HttpClient();
             string body;
@@ -62,9 +48,9 @@ namespace PackItUI.Areas.Plans.Models
                 response.EnsureSuccessStatusCode();
                 body = await response.Content.ReadAsStringAsync();
 
-                var ret = new PlanModel
+                var ret = new PlanUpdateViewModel
                 {
-                    Data = JsonConvert.DeserializeObject<PackIt.Plan.Plan>(body)
+                    Data = JsonConvert.DeserializeObject<Plan>(body)
                 };
 
                 return ret;
@@ -73,6 +59,30 @@ namespace PackItUI.Areas.Plans.Models
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Data for plan view model
+        /// </summary>
+        public class Plan
+        {
+            /// <summary> Gets or sets the Plan identifier. </summary>
+            ///
+            /// <value> The Plan identifier. </value>
+            [Display(Name = "ID", Prompt = "Enter Plan ID")]
+            public string PlanId { get; set; }
+
+            /// <summary> Gets or sets the name. </summary>
+            ///
+            /// <value> The name. </value>
+            [Display(Prompt = "Enter Material Name")]
+            public string Name { get; set; }
+
+            /// <summary> Gets or sets the notes. </summary>
+            ///
+            /// <value> The notes. </value>
+            [Display(Prompt = "Enter Material Notes")]
+            public string Notes { get; set; }
         }
     }
 }

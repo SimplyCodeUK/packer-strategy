@@ -6,8 +6,6 @@
 
 namespace PackIt.DTO.DtoMaterial
 {
-    using PackIt.Helpers.Enums;
-
     /// <summary>   A dto costing. </summary>
     public class DtoCosting
     {

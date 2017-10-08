@@ -11,17 +11,15 @@ namespace PackItUI.Areas.Materials.Models
     using System.Threading.Tasks;
     using Newtonsoft.Json;
 
-    /// <summary> Materials home view model. </summary>
-    public class MaterialModel
+    /// <summary> Material home view model. </summary>
+    public class MaterialViewModel
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="MaterialModel"/> class.
+        /// Initialises a new instance of the <see cref="MaterialViewModel"/> class.
         /// </summary>
-        public MaterialModel()
+        public MaterialViewModel()
         {
             this.Data = new PackIt.Material.Material();
-            this.Editable = false;
-            this.Deletable = false;
         }
 
         /// <summary> Gets or sets the material data. </summary>
@@ -29,27 +27,13 @@ namespace PackItUI.Areas.Materials.Models
         /// <value> The material data. </value>
         public PackIt.Material.Material Data { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="MaterialModel"/> is editable.
-        /// </summary>
-        ///
-        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
-        public bool Editable { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="MaterialModel"/> is to be deleted.
-        /// </summary>
-        ///
-        /// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
-        public bool Deletable { get; set; }
-
         /// <summary> Reads asynchronously the model for a material. </summary>
         ///
         /// <param name="endpoint"> The materials service endpoint. </param>
         /// <param name="id"> The identifier of the material. </param>
         ///
         /// <returns> The model. </returns>
-        public static async Task<MaterialModel> ReadAsync(string endpoint, string id)
+        public static async Task<MaterialViewModel> ReadAsync(string endpoint, string id)
         {
             var httpClient = new HttpClient();
             string body;
@@ -62,7 +46,7 @@ namespace PackItUI.Areas.Materials.Models
                 response.EnsureSuccessStatusCode();
                 body = await response.Content.ReadAsStringAsync();
 
-                var ret = new MaterialModel
+                var ret = new MaterialViewModel
                 {
                     Data = JsonConvert.DeserializeObject<PackIt.Material.Material>(body)
                 };

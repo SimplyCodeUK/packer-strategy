@@ -6,8 +6,6 @@
 
 namespace PackIt.DTO.DtoMaterial
 {
-    using PackIt.Helpers.Enums;
-
     /// <summary>   A dto collation. </summary>
     public class DtoCollation
     {

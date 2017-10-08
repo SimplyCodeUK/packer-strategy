@@ -6,8 +6,6 @@
 
 namespace PackIt.Material
 {
-    using PackIt.Helpers.Enums;
-
     /// <summary>   A costing. </summary>
     public class Costing
     {
