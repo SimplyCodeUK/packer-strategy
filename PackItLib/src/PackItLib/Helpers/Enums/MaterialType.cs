@@ -11,20 +11,16 @@ namespace PackIt.Helpers.Enums
     /// <summary>   Values that represent material types. </summary>
     public enum MaterialType
     {
-        /// <summary>   An enum constant representing the Minimum option. </summary>
-        [Display(ShortName = "Product")]
-        Min,
-
         /// <summary>   An enum constant representing the product option. </summary>
         [Display(ShortName = "Product")]
-        Product = Min,
+        Product,
 
         /// <summary>   An enum constant representing the carton option. </summary>
         [Display(ShortName = "Carton")]
         Carton,
 
         /// <summary>   An enum constant representing the board option. </summary>
-        [Display(ShortName = "UBoard")]
+        [Display(Name = "U Board", ShortName = "UBoard")]
         UBoard,
 
         /// <summary>   An enum constant representing the can option. </summary>
@@ -109,9 +105,6 @@ namespace PackIt.Helpers.Enums
 
         /// <summary>   An enum constant representing the seal option. </summary>
         [Display(ShortName = "Seal")]
-        Seal,
-
-        /// <summary>   An enum constant representing the Maximum option. </summary>
-        Max
+        Seal
     }
 }

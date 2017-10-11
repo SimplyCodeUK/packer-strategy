@@ -9,11 +9,8 @@ namespace PackIt.Helpers.Enums
     /// <summary>   Values that represent types. </summary>
     public enum UsageType
     {
-        /// <summary>   An enum constant representing the Minimum option. </summary>
-        Min,
-
         /// <summary>   An enum constant representing the outer option. </summary>
-        Outer = Min,
+        Outer,
 
         /// <summary>   An enum constant representing the base layer option. </summary>
         BaseLayer,
@@ -28,9 +25,6 @@ namespace PackIt.Helpers.Enums
         OtherInserts,
 
         /// <summary>   An enum constant representing the trimmings option. </summary>
-        Trimmings,
-
-        /// <summary>   An enum constant representing the Maximum option. </summary>
-        Max
+        Trimmings
     }
 }

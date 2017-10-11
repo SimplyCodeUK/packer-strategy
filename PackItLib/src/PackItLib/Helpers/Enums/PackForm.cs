@@ -9,11 +9,8 @@ namespace PackIt.Helpers.Enums
     /// <summary>   Values that represent pack forms. </summary>
     public enum PackForm
     {
-        /// <summary>   An enum constant representing the Minimum option. </summary>
-        Min,
-
         /// <summary>   An enum constant representing the none option. </summary>
-        None = Min,
+        None,
 
         /// <summary>   An enum constant representing the box option. </summary>
         Box,
@@ -28,9 +25,6 @@ namespace PackIt.Helpers.Enums
         Cone,
 
         /// <summary>   An enum constant representing the bottle option. </summary>
-        Bottle,
-
-        /// <summary>   An enum constant representing the Maximum option. </summary>
-        Max
+        Bottle
     }
 }

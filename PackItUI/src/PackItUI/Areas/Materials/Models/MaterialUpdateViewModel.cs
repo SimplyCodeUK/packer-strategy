@@ -69,7 +69,8 @@ namespace PackItUI.Areas.Materials.Models
             /// <summary> Gets or sets the Material identifier. </summary>
             ///
             /// <value> The Material identifier. </value>
-            [Display(Name = "ID", Prompt = "Enter Material ID")]
+            [Required]
+            [Display(Name = "ID", Prompt = "Enter Material Id")]
             public string MaterialId { get; set; }
 
             /// <summary> Gets or sets the type of the Material. </summary>

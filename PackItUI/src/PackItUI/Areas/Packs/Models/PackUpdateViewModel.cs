@@ -69,7 +69,8 @@ namespace PackItUI.Areas.Packs.Models
             /// <summary> Gets or sets the Pack identifier. </summary>
             ///
             /// <value> The Pack identifier. </value>
-            [Display(Name = "ID", Prompt = "Enter Pack ID")]
+            [Required]
+            [Display(Name = "ID", Prompt = "Enter Pack Id")]
             public string PackId { get; set; }
 
             /// <summary> Gets or sets the name. </summary>

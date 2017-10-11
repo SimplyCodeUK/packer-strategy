@@ -69,7 +69,8 @@ namespace PackItUI.Areas.Plans.Models
             /// <summary> Gets or sets the Plan identifier. </summary>
             ///
             /// <value> The Plan identifier. </value>
-            [Display(Name = "ID", Prompt = "Enter Plan ID")]
+            [Required]
+            [Display(Name = "ID", Prompt = "Enter Plan Id")]
             public string PlanId { get; set; }
 
             /// <summary> Gets or sets the name. </summary>
