@@ -9,11 +9,8 @@ namespace PackIt.Helpers.Enums
     /// <summary>   Values that represent pattern generators. </summary>
     public enum PatternGenerator
     {
-        /// <summary>   An enum constant representing the Minimum option. </summary>
-        Min,
-
         /// <summary>   An enum constant representing the split option. </summary>
-        Split = Min,
+        Split,
 
         /// <summary>   An enum constant representing the split 2 option. </summary>
         Split2,
@@ -34,9 +31,6 @@ namespace PackIt.Helpers.Enums
         Variable,
 
         /// <summary>   An enum constant representing the two step option. </summary>
-        TwoStep,
-
-        /// <summary>   An enum constant representing the Maximum option. </summary>
-        Max
+        TwoStep
     }
 }

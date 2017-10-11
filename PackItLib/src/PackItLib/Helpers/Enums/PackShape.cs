@@ -9,11 +9,8 @@ namespace PackIt.Helpers.Enums
     /// <summary>   Values that represent pack shapes. </summary>
     public enum PackShape
     {
-        /// <summary>   An enum constant representing the Minimum option. </summary>
-        Min,
-
         /// <summary>   An enum constant representing the rectangle option. </summary>
-        Rectangle = Min,
+        Rectangle,
 
         /// <summary>   An enum constant representing the circle option. </summary>
         Circle,
@@ -22,9 +19,6 @@ namespace PackIt.Helpers.Enums
         Oval,
 
         /// <summary>   An enum constant representing the round rectangle option. </summary>
-        RoundRectangle,
-
-        /// <summary>   An enum constant representing the Maximum option. </summary>
-        Max
+        RoundRectangle
     }
 }

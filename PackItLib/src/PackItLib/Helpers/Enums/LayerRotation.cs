@@ -12,11 +12,8 @@ namespace PackIt.Helpers.Enums
         /// <summary>   An enum constant representing the unknown option. </summary>
         Unknown,
 
-        /// <summary>   An enum constant representing the Minimum option. </summary>
-        Min = 1,
-
         /// <summary>   An enum constant representing the east west option. </summary>
-        EastWest = Min,
+        EastWest,
 
         /// <summary>   An enum constant representing the north south option. </summary>
         NorthSouth,
@@ -28,9 +25,6 @@ namespace PackIt.Helpers.Enums
         Degrees90,
 
         /// <summary>   An enum constant representing the none option. </summary>
-        None,
-
-        /// <summary>   An enum constant representing the Maximum option. </summary>
-        Max
+        None
     }
 }
