@@ -4,7 +4,11 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Delete Plan";
+
+    var LabelAttributes = new { @class = "control-label col-sm-2" };
+    var DisabledAttributes = new { @class = "form-control", disabled = "disabled" };
 }
+
 <h2>@ViewData["Title"]</h2>
 
 @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
@@ -13,24 +17,21 @@
     <div class="form-horizontal">
         <hr />
         <div class="form-group">
-            <label class="control-label col-sm-2" asp-for="Data.PlanId"></label>
+            @Html.LabelFor(m => m.Data.PlanId, LabelAttributes)
             <div class="col-sm-10">
-                <input class="form-control" asp-for="Data.PlanId" disabled="disabled" />
-                <span asp-validation-for="Data.PlanId"></span>
+                @Html.TextBoxFor(m => m.Data.PlanId, DisabledAttributes)
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" asp-for="Data.Name"></label>
+            @Html.LabelFor(m => m.Data.Name, LabelAttributes)
             <div class="col-sm-10">
-                <input class="form-control" asp-for="Data.Name" disabled="disabled" />
-                <span asp-validation-for="Data.Name"></span>
+                @Html.TextBoxFor(m => m.Data.Name, DisabledAttributes)
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" asp-for="Data.Notes"></label>
+            @Html.LabelFor(m => m.Data.Notes, LabelAttributes)
             <div class="col-sm-10">
-                <input class="form-control" asp-for="Data.Notes" disabled="disabled" />
-                <span asp-validation-for="Data.Notes"></span>
+                @Html.TextBoxFor(m => m.Data.Notes, DisabledAttributes)
             </div>
         </div>
         <div class="form-group">

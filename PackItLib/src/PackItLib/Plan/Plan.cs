@@ -25,17 +25,19 @@ namespace PackIt.Plan
         ///
         /// <value> The Plan identifier. </value>
         [Required]
-        [DisplayName("ID")]
+        [Display(Name = "ID", Prompt = "Enter Plan Id")]
         public string PlanId { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
         ///
         /// <value> The name. </value>
+        [Display(Prompt = "Enter Plan Name")]
         public string Name { get; set; }
 
         /// <summary>   Gets or sets the notes. </summary>
         ///
         /// <value> The notes. </value>
+        [Display(Prompt = "Enter Plan Notes")]
         public string Notes { get; set; }
 
         /// <summary>   Gets or sets the collection of stages. </summary>
