@@ -30,59 +30,67 @@ namespace PackIt.Material
         ///
         /// <value> The Material identifier. </value>
         [Required]
-        [DisplayName("ID")]
+        [Display(Name = "ID", Prompt = "Enter Material ID")]
         public string MaterialId { get; set; }
 
         /// <summary>   Gets or sets the type of the Material. </summary>
         ///
         /// <value> The type of the Material. </value>
         [Required]
-        [DisplayName("Type")]
         public MaterialType Type { get; set; }
 
         /// <summary>   Gets or sets the name. </summary>
         ///
         /// <value> The name. </value>
+        [Display(Prompt = "Enter Material Name")]
         public string Name { get; set; }
 
         /// <summary>   Gets or sets the notes. </summary>
         ///
         /// <value> The notes. </value>
+        [Display(Prompt = "Enter Material Notes")]
         public string Notes { get; set; }
 
         /// <summary>   Gets or sets the colour. </summary>
         ///
         /// <value> The colour. </value>
+        [Display(Prompt = "Enter Material Colour")]
         public string Colour { get; set; }
 
         /// <summary>   Gets or sets the drawing. </summary>
         ///
         /// <value> The drawing. </value>
+        [Display(Prompt = "Enter Drawing ID")]
         public string Drawing { get; set; }
 
         /// <summary>   Gets or sets the bar code. </summary>
         ///
         /// <value> The bar code. </value>
+        [Display(Prompt = "Enter Bar Code")]
         public string BarCode { get; set; }
 
         /// <summary>   Gets or sets the computer code. </summary>
         ///
         /// <value> The computer code. </value>
+        [Display(Prompt = "Enter Computer Code")]
         public string ComputerCode { get; set; }
 
         /// <summary>   Gets or sets the finish. </summary>
         ///
         /// <value> The finish. </value>
+        [Display(Prompt = "Enter Material Finish")]
         public string Finish { get; set; }
 
         /// <summary>   Gets or sets the print. </summary>
         ///
         /// <value> The print. </value>
+        [Display(Prompt = "Enter Print")]
         public string Print { get; set; }
 
         /// <summary>   Gets or sets the type of the print. </summary>
         ///
         /// <value> The type of the print. </value>
+        [Display(Prompt = "Enter Print Type")]
         public long PrintType { get; set; }
 
         /// <summary>   Gets or sets the form. </summary>
@@ -113,51 +121,61 @@ namespace PackIt.Material
         /// <summary>   Gets or sets the length of the internal. </summary>
         ///
         /// <value> The length of the internal. </value>
+        [Display(Prompt = "Enter Internal Length")]
         public double InternalLength { get; set; }
 
         /// <summary>   Gets or sets the internal breadth. </summary>
         ///
         /// <value> The internal breadth. </value>
+        [Display(Prompt = "Enter Internal Breadth")]
         public double InternalBreadth { get; set; }
 
         /// <summary>   Gets or sets the height of the internal. </summary>
         ///
         /// <value> The height of the internal. </value>
+        [Display(Prompt = "Enter Internal Height")]
         public double InternalHeight { get; set; }
 
         /// <summary>   Gets or sets the internal volume. </summary>
         ///
         /// <value> The internal volume. </value>
+        [Display(Prompt = "Enter Internal Volume")]
         public double InternalVolume { get; set; }
 
         /// <summary>   Gets or sets the nett weight. </summary>
         ///
         /// <value> The nett weight. </value>
+        [Display(Prompt = "Enter Nett Weight")]
         public double NettWeight { get; set; }
 
         /// <summary>   Gets or sets the length of the external. </summary>
         ///
         /// <value> The length of the external. </value>
+        [Display(Prompt = "Enter External Length")]
         public double ExternalLength { get; set; }
 
         /// <summary>   Gets or sets the external breadth. </summary>
         ///
         /// <value> The external breadth. </value>
+        [Display(Prompt = "Enter External Breadth")]
         public double ExternalBreadth { get; set; }
 
         /// <summary>   Gets or sets the height of the external. </summary>
         ///
         /// <value> The height of the external. </value>
+        [Display(Prompt = "Enter External Height")]
         public double ExternalHeight { get; set; }
 
         /// <summary>   Gets or sets the external volume. </summary>
         ///
         /// <value> The external volume. </value>
+        [Display(Prompt = "Enter External Volume")]
         public double ExternalVolume { get; set; }
 
         /// <summary>   Gets or sets the gross weight. </summary>
         ///
         /// <value> The gross weight. </value>
+        [Display(Prompt = "Enter Gross Weight")]
         public double GrossWeight { get; set; }
 
         /// <summary>   Gets or sets the load capacity. </summary>
@@ -168,16 +186,19 @@ namespace PackIt.Material
         /// <summary>   Gets or sets the centre of gravity x coordinate. </summary>
         ///
         /// <value> The centre of gravity x coordinate. </value>
+        [Display(Prompt = "Enter Center Of Gravity Along The Length")]
         public double CentreOfGravityX { get; set; }
 
         /// <summary>   Gets or sets the centre of gravity y coordinate. </summary>
         ///
         /// <value> The centre of gravity y coordinate. </value>
+        [Display(Prompt = "Enter Center Of Gravity Along The Breadth")]
         public double CentreOfGravityY { get; set; }
 
         /// <summary>   Gets or sets the centre of gravity z coordinate. </summary>
         ///
         /// <value> The centre of gravity z coordinate. </value>
+        [Display(Prompt = "Enter Center Of Gravity Along The Height")]
         public double CentreOfGravityZ { get; set; }
 
         /// <summary>   Gets or sets the caliper. </summary>
@@ -188,16 +209,19 @@ namespace PackIt.Material
         /// <summary>   Gets or sets the length of the cell. </summary>
         ///
         /// <value> The length of the cell. </value>
+        [Display(Prompt = "Enter Cell Length")]
         public double CellLength { get; set; }
 
         /// <summary>   Gets or sets the cell breadth. </summary>
         ///
         /// <value> The cell breadth. </value>
+        [Display(Prompt = "Enter Cell Breadth")]
         public double CellBreadth { get; set; }
 
         /// <summary>   Gets or sets the height of the cell. </summary>
         ///
         /// <value> The height of the cell. </value>
+        [Display(Prompt = "Enter Cell Height")]
         public double CellHeight { get; set; }
 
         /// <summary>   Gets or sets the blank area. </summary>
