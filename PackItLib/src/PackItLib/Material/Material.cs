@@ -41,7 +41,7 @@ namespace PackIt.Material
 
         /// <summary>   Gets or sets the name. </summary>
         ///
-        /// <value> The name. </value>
+        /// <value> The material name. </value>
         [Display(Prompt = "Enter Material Name")]
         public string Name { get; set; }
 
@@ -49,6 +49,7 @@ namespace PackIt.Material
         ///
         /// <value> The notes. </value>
         [Display(Prompt = "Enter Material Notes")]
+        [DataType(DataType.MultilineText)]
         public string Notes { get; set; }
 
         /// <summary>   Gets or sets the colour. </summary>
@@ -66,13 +67,13 @@ namespace PackIt.Material
         /// <summary>   Gets or sets the bar code. </summary>
         ///
         /// <value> The bar code. </value>
-        [Display(Prompt = "Enter Bar Code")]
+        [Display(Name = "Bar Code", Prompt = "Enter Bar Code")]
         public string BarCode { get; set; }
 
         /// <summary>   Gets or sets the computer code. </summary>
         ///
         /// <value> The computer code. </value>
-        [Display(Prompt = "Enter Computer Code")]
+        [Display(Name = "Computer Code", Prompt = "Enter Computer Code")]
         public string ComputerCode { get; set; }
 
         /// <summary>   Gets or sets the finish. </summary>
@@ -90,7 +91,7 @@ namespace PackIt.Material
         /// <summary>   Gets or sets the type of the print. </summary>
         ///
         /// <value> The type of the print. </value>
-        [Display(Prompt = "Enter Print Type")]
+        [Display(Name = "Print Type", Prompt = "Enter Print Type")]
         public long PrintType { get; set; }
 
         /// <summary>   Gets or sets the form. </summary>
@@ -106,167 +107,181 @@ namespace PackIt.Material
         /// <summary>   Gets or sets the closure weight. </summary>
         ///
         /// <value> The closure weight. </value>
+        [Display(Name = "Closure Weight", Prompt = "Enter Closure Weight")]
         public double ClosureWeight { get; set; }
 
         /// <summary>   Gets or sets the stack step. </summary>
         ///
         /// <value> The stack step. </value>
+        [Display(Name = "Stack Step", Prompt = "Enter Stack Step")]
         public double StackStep { get; set; }
 
         /// <summary>   Gets or sets the flap. </summary>
         ///
         /// <value> The flap. </value>
+        [Display(Prompt = "Enter Flap Size")]
         public double Flap { get; set; }
 
         /// <summary>   Gets or sets the length of the internal. </summary>
         ///
         /// <value> The length of the internal. </value>
-        [Display(Prompt = "Enter Internal Length")]
+        [Display(Name = "Internal Length", Prompt = "Enter Internal Length")]
         public double InternalLength { get; set; }
 
         /// <summary>   Gets or sets the internal breadth. </summary>
         ///
         /// <value> The internal breadth. </value>
-        [Display(Prompt = "Enter Internal Breadth")]
+        [Display(Name = "Internal Breadth", Prompt = "Enter Internal Breadth")]
         public double InternalBreadth { get; set; }
 
         /// <summary>   Gets or sets the height of the internal. </summary>
         ///
         /// <value> The height of the internal. </value>
-        [Display(Prompt = "Enter Internal Height")]
+        [Display(Name = "Internal Height", Prompt = "Enter Internal Height")]
         public double InternalHeight { get; set; }
 
         /// <summary>   Gets or sets the internal volume. </summary>
         ///
         /// <value> The internal volume. </value>
-        [Display(Prompt = "Enter Internal Volume")]
+        [Display(Name = "Internal Colume", Prompt = "Enter Internal Volume")]
         public double InternalVolume { get; set; }
 
         /// <summary>   Gets or sets the nett weight. </summary>
         ///
         /// <value> The nett weight. </value>
-        [Display(Prompt = "Enter Nett Weight")]
+        [Display(Name = "Nett Weight", Prompt = "Enter Nett Weight")]
         public double NettWeight { get; set; }
 
         /// <summary>   Gets or sets the length of the external. </summary>
         ///
         /// <value> The length of the external. </value>
-        [Display(Prompt = "Enter External Length")]
+        [Display(Name = "External Length", Prompt = "Enter External Length")]
         public double ExternalLength { get; set; }
 
         /// <summary>   Gets or sets the external breadth. </summary>
         ///
         /// <value> The external breadth. </value>
-        [Display(Prompt = "Enter External Breadth")]
+        [Display(Name = "External Breadth", Prompt = "Enter External Breadth")]
         public double ExternalBreadth { get; set; }
 
         /// <summary>   Gets or sets the height of the external. </summary>
         ///
         /// <value> The height of the external. </value>
-        [Display(Prompt = "Enter External Height")]
+        [Display(Name = "External Height", Prompt = "Enter External Height")]
         public double ExternalHeight { get; set; }
 
         /// <summary>   Gets or sets the external volume. </summary>
         ///
         /// <value> The external volume. </value>
-        [Display(Prompt = "Enter External Volume")]
+        [Display(Name = "External Volume", Prompt = "Enter External Volume")]
         public double ExternalVolume { get; set; }
 
         /// <summary>   Gets or sets the gross weight. </summary>
         ///
         /// <value> The gross weight. </value>
-        [Display(Prompt = "Enter Gross Weight")]
+        [Display(Name = "Gross Weight", Prompt = "Enter Gross Weight")]
         public double GrossWeight { get; set; }
 
         /// <summary>   Gets or sets the load capacity. </summary>
         ///
         /// <value> The load capacity. </value>
+        [Display(Name = "Load Capacity", Prompt = "Enter Load Capacity")]
         public double LoadCapacity { get; set; }
 
         /// <summary>   Gets or sets the centre of gravity x coordinate. </summary>
         ///
         /// <value> The centre of gravity x coordinate. </value>
-        [Display(Prompt = "Enter Center Of Gravity Along The Length")]
+        [Display(Name = "Length Center Of Gravity", Prompt = "Enter Center Of Gravity On The Length")]
         public double CentreOfGravityX { get; set; }
 
         /// <summary>   Gets or sets the centre of gravity y coordinate. </summary>
         ///
         /// <value> The centre of gravity y coordinate. </value>
-        [Display(Prompt = "Enter Center Of Gravity Along The Breadth")]
+        [Display(Name = "Breadth Center Of Gravity", Prompt = "Enter Center Of Gravity On The Breadth")]
         public double CentreOfGravityY { get; set; }
 
         /// <summary>   Gets or sets the centre of gravity z coordinate. </summary>
         ///
         /// <value> The centre of gravity z coordinate. </value>
-        [Display(Prompt = "Enter Center Of Gravity Along The Height")]
+        [Display(Name = "Height Center Of Gravity", Prompt = "Enter Center Of Gravity On The Height")]
         public double CentreOfGravityZ { get; set; }
 
         /// <summary>   Gets or sets the caliper. </summary>
         ///
         /// <value> The caliper. </value>
+        [Display(Prompt = "Enter Material Caliper")]
         public double Caliper { get; set; }
 
         /// <summary>   Gets or sets the length of the cell. </summary>
         ///
         /// <value> The length of the cell. </value>
-        [Display(Prompt = "Enter Cell Length")]
+        [Display(Name = "Cell Length", Prompt = "Enter Cell Length")]
         public double CellLength { get; set; }
 
         /// <summary>   Gets or sets the cell breadth. </summary>
         ///
         /// <value> The cell breadth. </value>
-        [Display(Prompt = "Enter Cell Breadth")]
+        [Display(Name = "Cell Breadth", Prompt = "Enter Cell Breadth")]
         public double CellBreadth { get; set; }
 
         /// <summary>   Gets or sets the height of the cell. </summary>
         ///
         /// <value> The height of the cell. </value>
-        [Display(Prompt = "Enter Cell Height")]
+        [Display(Name = "Cell Height", Prompt = "Enter Cell Height")]
         public double CellHeight { get; set; }
 
         /// <summary>   Gets or sets the blank area. </summary>
         ///
         /// <value> The blank area. </value>
+        [Display(Name = "Blank Area", Prompt = "Enter Blank Area")]
         public double BlankArea { get; set; }
 
         /// <summary>   Gets or sets the body tolerance. </summary>
         ///
         /// <value> The body tolerance. </value>
+        [Display(Name = "Body Tolerance", Prompt = "Enter Body Tolerance")]
         public double BodyTolerance { get; set; }
 
         /// <summary>   Gets or sets the height tolerance. </summary>
         ///
         /// <value> The height tolerance. </value>
+        [Display(Name = "Height Tolerance", Prompt = "Enter Height Tolerance")]
         public double HeightTolerance { get; set; }
 
         /// <summary>   Gets or sets the density. </summary>
         ///
         /// <value> The density. </value>
+        [Display(Prompt = "Enter Material Density")]
         public double Density { get; set; }
 
         /// <summary>   Gets or sets the shoulder to top. </summary>
         ///
         /// <value> The shoulder to top. </value>
+        [Display(Name = "Shoulder To Top", Prompt = "Enter Shoulder To Top Measurement")]
         public double ShoulderToTop { get; set; }
 
         /// <summary>   Gets or sets the finish x coordinate. </summary>
         ///
         /// <value> The finish x coordinate. </value>
+        [Display(Name = "Length Finish", Prompt = "Enter Length Finish")]
         public double FinishX { get; set; }
 
         /// <summary>   Gets or sets the finish y coordinate. </summary>
         ///
         /// <value> The finish y coordinate. </value>
+        [Display(Name = "Breadth Finish", Prompt = "Enter Breadth Finish")]
         public double FinishY { get; set; }
 
         /// <summary>   Gets or sets the board strength. </summary>
         ///
         /// <value> The board strength. </value>
+        [Display(Name = "Board Strength", Prompt = "Enter Board Strength")]
         public double BoardStrength { get; set; }
 
         /// <summary>   Gets or sets target compression. </summary>
         ///
         /// <value> The target compression. </value>
+        [Display(Name = "Target Compression", Prompt = "Enter Target Compression")]
         public double TargetCompression { get; set; }
 
         /// <summary>   Gets or sets the collection of costings. </summary>
