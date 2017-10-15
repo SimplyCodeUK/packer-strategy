@@ -32,7 +32,7 @@ namespace PackIt.Pack
 
         /// <summary>   Gets or sets the name. </summary>
         ///
-        /// <value> The name. </value>
+        /// <value> The pack name. </value>
         [Display(Prompt = "Enter Pack Name")]
         public string Name { get; set; }
 
@@ -40,16 +40,19 @@ namespace PackIt.Pack
         ///
         /// <value> The notes. </value>
         [Display(Prompt = "Enter Pack Notes")]
+        [DataType(DataType.MultilineText)]
         public string Notes { get; set; }
 
         /// <summary>   Gets or sets the plan code. </summary>
         ///
         /// <value> The plan code. </value>
+        [Display(Prompt = "Enter Plan Code")]
         public string PlanCode { get; set; }
 
         /// <summary>   Gets or sets the name of the plan. </summary>
         ///
         /// <value> The name of the plan. </value>
+        [Display(Prompt = "Enter Plan Name")]
         public string PlanName { get; set; }
 
         /// <summary>   Gets or sets the type of the material. </summary>
@@ -60,16 +63,19 @@ namespace PackIt.Pack
         /// <summary>   Gets or sets the material code. </summary>
         ///
         /// <value> The material code. </value>
+        [Display(Prompt = "Enter Material Code")]
         public string MaterialCode { get; set; }
 
         /// <summary>   Gets or sets the name of the material. </summary>
         ///
         /// <value> The name of the material. </value>
+        [Display(Prompt = "Enter Material Name")]
         public string MaterialName { get; set; }
 
         /// <summary>   Gets or sets the costing premium. </summary>
         ///
         /// <value> The costing premium. </value>
+        [Display(Prompt = "Enter Costing Premium")]
         public double CostingPremium { get; set; }
 
         /// <summary>   Gets or sets the collection of costings. </summary>

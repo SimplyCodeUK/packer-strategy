@@ -30,7 +30,7 @@ namespace PackIt.Plan
 
         /// <summary>   Gets or sets the name. </summary>
         ///
-        /// <value> The name. </value>
+        /// <value> The plan name. </value>
         [Display(Prompt = "Enter Plan Name")]
         public string Name { get; set; }
 
@@ -38,6 +38,7 @@ namespace PackIt.Plan
         ///
         /// <value> The notes. </value>
         [Display(Prompt = "Enter Plan Notes")]
+        [DataType(DataType.MultilineText)]
         public string Notes { get; set; }
 
         /// <summary>   Gets or sets the collection of stages. </summary>
