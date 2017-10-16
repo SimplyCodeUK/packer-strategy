@@ -27,13 +27,13 @@
     <thead>
         <tr>
             <th>
-                @Html.Label("ID")
+                @Html.LabelFor(model => model.Items.FirstOrDefault().MaterialId)
             </th>
             <th>
-                @Html.Label("Name")
+                @Html.LabelFor(model => model.Items.FirstOrDefault().Name)
             </th>
             <th>
-                @Html.Label("Notes")
+                @Html.LabelFor(model => model.Items.FirstOrDefault().Notes)
             </th>
             <th></th>
         </tr>
