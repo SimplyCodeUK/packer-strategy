@@ -5,19 +5,15 @@ environment:
   - CONFIG: Debug
   - CONFIG: Release
 build_script:
-- cmd: >-
-    msbuild /t:restore PackIt.sln
-    dotnet restore PackIt.sln
-    dotnet build PackIt.sln --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
-    7z a codedocs.zip codedoc.xml -r
+- msbuild /t:restore /m PackIt.sln
+- dotnet restore PackIt.sln
+- dotnet build PackIt.sln --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- 7z a codedocs.zip codedoc.xml -r
 test_script:
-- cmd: >-
-    opencover.console -register:user -output:coverage.xml              -target:dotnet.exe -targetargs:"test PackIt\test\PackIt.Test\PackIt.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle
-    opencover.console -register:user -output:coverage.xml -mergeoutput -target:dotnet.exe -targetargs:"test PackItLib\test\PackItLib.Test\PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle
-
-    C:\Users\appveyor\.nuget\packages\reportgenerator\3.0.2\tools\ReportGenerator.exe "-reports:coverage.xml" "-targetdir:.\coverage"
-
-    7z a coverage.zip coverage\*.*
+- C:\Users\appveyor\.nuget\packages\opencover\4.6.519\tools\opencover.console -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt\test\PackIt.Test\PackIt.Test.csproj          --configuration %CONFIG% --no-build --logger:trx" -oldstyle
+- C:\Users\appveyor\.nuget\packages\opencover\4.6.519\tools\opencover.console -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib\test\PackItLib.Test\PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput
+- C:\Users\appveyor\.nuget\packages\reportgenerator\3.0.2\tools\ReportGenerator.exe "-reports:coverage.xml" "-targetdir:.\coverage"
+- 7z a coverage.zip coverage\*.*
 artifacts:
 - path: coverage.zip
   name: Coverage
