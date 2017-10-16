@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Company>Simply Code Ltd.</Company>
+    <Product>PackIt</Product>
+    <Authors>Louis Henry Nayegon</Authors>
+    <RepositoryUrl>https://github.com/SimplyCodeUK/packer-strategy</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
