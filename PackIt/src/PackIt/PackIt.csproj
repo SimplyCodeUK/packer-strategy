@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Company>Simply Code UK</Company>
+    <Company>Simply Code Ltd.</Company>
     <ProjectGuid>61C44C0B-1705-49A7-B88D-ACB260D2B59E</ProjectGuid>
+    <Authors>Louis Henry Nayegon</Authors>
+    <RepositoryUrl>https://github.com/SimplyCodeUK/packer-strategy</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
