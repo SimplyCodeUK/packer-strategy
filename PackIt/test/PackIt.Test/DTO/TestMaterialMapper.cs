@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItTest.DTO
+namespace PackIt.Test.DTO
 {
     using System.IO;
     using Newtonsoft.Json;

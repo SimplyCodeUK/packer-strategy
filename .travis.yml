@@ -19,11 +19,9 @@ install:
 
 script:
   - msbuild /p:Configuration=$CONFIG /t:rebuild PackIt.sln
-  - dotnet test PackIt/test/PackItTest/PackItTest.csproj --configuration $CONFIG --logger:trx
-  - dotnet pack PackIt/src/PackIt/PackIt.csproj --configuration $CONFIG
-  - dotnet pack PackIt/test/PackItTest/PackItTest.csproj --configuration $CONFIG
-  - dotnet pack PackItLib/src/PackItLib/PackItLib.csproj --configuration $CONFIG
-  - dotnet pack PackItUI/src/PackItUI/PackItUI.csproj --configuration $CONFIG
+  - dotnet pack PackIt.sln --configuration $CONFIG
+  - dotnet test PackIt/test/PackIt.Test/PackIt.Test.csproj --configuration $CONFIG --logger:trx
+  - dotnet test PackItLib/test/PackItLib.Test/PackItLib.Test.csproj --configuration $CONFIG --logger:trx
 
 notifications:
   slack: simplycodeuk:FZI8WzeengkGv5LI7WQSCrJs
