@@ -19,7 +19,7 @@ install:
 
 script:
   - msbuild /p:Configuration=$CONFIG /t:rebuild PackIt.sln
-  - dotnet pack PackIt.sln --configuration $CONFIG
+  - dotnet pack PackItLib/src/PackItLib/PackItLib.csproj --configuration $CONFIG
   - dotnet test PackIt/test/PackIt.Test/PackIt.Test.csproj --configuration $CONFIG --logger:trx
   - dotnet test PackItLib/test/PackItLib.Test/PackItLib.Test.csproj --configuration $CONFIG --logger:trx
 
