@@ -14,126 +14,135 @@
 @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <hr />
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.MaterialId, LabelAttributes)
-            <div class="col-sm-4">
-                @Html.TextBoxFor(m => m.Data.MaterialId, DisabledAttributes)
-            </div>
-            @Html.LabelFor(m => m.Data.Type, LabelAttributes)
-            <div class="col-sm-4">
-                @Html.DropDownListFor(m => m.Data.Type, Html.GetEnumSelectList<PackIt.Helpers.Enums.MaterialType>(), DisabledAttributes)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.Name, LabelAttributes)
-            <div class="col-sm-9">
-                @Html.TextBoxFor(m => m.Data.Name, DisabledAttributes)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.Notes, LabelAttributes)
-            <div class="col-sm-9">
-                @Html.TextBoxFor(m => m.Data.Notes, DisabledAttributes)
-            </div>
-        </div>
-        <div class="form-group">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>
-                            @Html.Label("Length")
-                        </th>
-                        <th>
-                            @Html.Label("Breadth")
-                        </th>
-                        <th>
-                            @Html.Label("Height")
-                        </th>
-                        <th>
-                            @Html.Label("Volume")
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>Internal</th>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.InternalLength, DisabledAttributes)
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.InternalBreadth, DisabledAttributes)
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.InternalHeight, DisabledAttributes)
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.InternalVolume, DisabledAttributes)
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>External</th>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.ExternalLength, DisabledAttributes)
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.ExternalBreadth, DisabledAttributes)
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.ExternalHeight, DisabledAttributes)
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.ExternalVolume, DisabledAttributes)
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Cell</th>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CellLength, DisabledAttributes)
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CellBreadth, DisabledAttributes)
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CellHeight, DisabledAttributes)
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Center Of Gravity</th>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CentreOfGravityX, DisabledAttributes)
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CentreOfGravityY, DisabledAttributes)
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CentreOfGravityZ, DisabledAttributes)
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.NettWeight, LabelAttributes)
-            <div class="col-sm-4">
-                @Html.TextBoxFor(m => m.Data.NettWeight, DisabledAttributes)
-            </div>
-            @Html.LabelFor(m => m.Data.GrossWeight, LabelAttributes)
-            <div class="col-sm-4">
-                @Html.TextBoxFor(m => m.Data.GrossWeight, DisabledAttributes)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.Caliper, LabelAttributes)
-            <div class="col-sm-4">
-                @Html.TextBoxFor(m => m.Data.Caliper, DisabledAttributes)
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-10">
-                <input type="submit" value="Delete" class="btn btn-default" />
+    <div id="Tabs" role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active">
+                <a href="#material" aria-controls="material" role="tab" data-toggle="tab">Material</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane form-horizontal active" id="material">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.MaterialId, LabelAttributes)
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Data.MaterialId, DisabledAttributes)
+                    </div>
+                    @Html.LabelFor(m => m.Data.Type, LabelAttributes)
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.Data.Type, Html.GetEnumSelectList<PackIt.Helpers.Enums.MaterialType>(), DisabledAttributes)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.Name, LabelAttributes)
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.Data.Name, DisabledAttributes)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.Notes, LabelAttributes)
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.Data.Notes, DisabledAttributes)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    @Html.Label("Length")
+                                </th>
+                                <th>
+                                    @Html.Label("Breadth")
+                                </th>
+                                <th>
+                                    @Html.Label("Height")
+                                </th>
+                                <th>
+                                    @Html.Label("Volume")
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Internal</th>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.InternalLength, DisabledAttributes)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.InternalBreadth, DisabledAttributes)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.InternalHeight, DisabledAttributes)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.InternalVolume, DisabledAttributes)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>External</th>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.ExternalLength, DisabledAttributes)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.ExternalBreadth, DisabledAttributes)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.ExternalHeight, DisabledAttributes)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.ExternalVolume, DisabledAttributes)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Cell</th>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CellLength, DisabledAttributes)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CellBreadth, DisabledAttributes)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CellHeight, DisabledAttributes)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Center Of Gravity</th>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CentreOfGravityX, DisabledAttributes)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CentreOfGravityY, DisabledAttributes)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CentreOfGravityZ, DisabledAttributes)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.NettWeight, LabelAttributes)
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Data.NettWeight, DisabledAttributes)
+                    </div>
+                    @Html.LabelFor(m => m.Data.GrossWeight, LabelAttributes)
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Data.GrossWeight, DisabledAttributes)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.Caliper, LabelAttributes)
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Data.Caliper, DisabledAttributes)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-1 col-md-10">
+                        <input type="submit" value="Delete" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>

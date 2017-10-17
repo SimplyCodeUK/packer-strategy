@@ -15,31 +15,40 @@
 @using (Html.BeginForm("Update", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <hr />
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.PlanId, LabelAttributes)
-            <div class="col-sm-10">
-                @Html.TextBoxFor(m => m.Data.PlanId, DisabledAttributes)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.Name, LabelAttributes)
-            <div class="col-sm-10">
-                @Html.TextBoxFor(m => m.Data.Name, InputAttributes)
-                <span asp-validation-for="Data.Name"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.Notes, LabelAttributes)
-            <div class="col-sm-10">
-                @Html.TextBoxFor(m => m.Data.Notes, InputAttributes)
-                <span asp-validation-for="Data.Notes"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-10">
-                <input type="submit" value="Update" class="btn btn-default" />
+    <div id="Tabs" role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active">
+                <a href="#plan" aria-controls="plan" role="tab" data-toggle="tab">Plan</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane form-horizontal active" id="plan">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.PlanId, LabelAttributes)
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Data.PlanId, DisabledAttributes)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.Name, LabelAttributes)
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Data.Name, InputAttributes)
+                        <span asp-validation-for="Data.Name"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.Notes, LabelAttributes)
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Data.Notes, InputAttributes)
+                        <span asp-validation-for="Data.Notes"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-1 col-md-10">
+                        <input type="submit" value="Update" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
