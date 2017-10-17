@@ -40,145 +40,154 @@
     @Html.HiddenFor(m => Model.Data.FinishY)
     @Html.HiddenFor(m => Model.Data.BoardStrength)
     @Html.HiddenFor(m => Model.Data.TargetCompression)
-    <div class="form-horizontal">
-        <hr />
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.MaterialId, LabelAttributes)
-            <div class="col-sm-4">
-                @Html.TextBoxFor(m => m.Data.MaterialId, DisabledAttributes)
-            </div>
-            @Html.LabelFor(m => m.Data.Type, LabelAttributes)
-            <div class="col-sm-4">
-                @Html.DropDownListFor(m => m.Data.Type, Html.GetEnumSelectList<PackIt.Helpers.Enums.MaterialType>(), InputAttributes)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.Name, LabelAttributes)
-            <div class="col-sm-9">
-                @Html.TextBoxFor(m => m.Data.Name, InputAttributes)
-                <span asp-validation-for="Data.Name"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.Notes, LabelAttributes)
-            <div class="col-sm-9">
-                @Html.TextBoxFor(m => m.Data.Notes, InputAttributes)
-                <span asp-validation-for="Data.Notes"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>
-                            @Html.Label("Length")
-                        </th>
-                        <th>
-                            @Html.Label("Breadth")
-                        </th>
-                        <th>
-                            @Html.Label("Height")
-                        </th>
-                        <th>
-                            @Html.Label("Volume")
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>Internal</th>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.InternalLength, InputAttributes)
-                            <span asp-validation-for="Data.InternalLength"></span>
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.InternalBreadth, InputAttributes)
-                            <span asp-validation-for="Data.InternalBreadth"></span>
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.InternalHeight, InputAttributes)
-                            <span asp-validation-for="Data.InternalHeight"></span>
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.InternalVolume, InputAttributes)
-                            <span asp-validation-for="Data.InternalVolume"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>External</th>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.ExternalLength, InputAttributes)
-                            <span asp-validation-for="Data.ExternalLength"></span>
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.ExternalBreadth, InputAttributes)
-                            <span asp-validation-for="Data.ExternalBreadth"></span>
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.ExternalHeight, InputAttributes)
-                            <span asp-validation-for="Data.ExternalHeight"></span>
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.ExternalVolume, InputAttributes)
-                            <span asp-validation-for="Data.ExternalVolume"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Cell</th>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CellLength, InputAttributes)
-                            <span asp-validation-for="Data.CellLength"></span>
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CellBreadth, InputAttributes)
-                            <span asp-validation-for="Data.CellBreadth"></span>
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CellHeight, InputAttributes)
-                            <span asp-validation-for="Data.CellHeight"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Center Of Gravity</th>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CentreOfGravityX, InputAttributes)
-                            <span asp-validation-for="Data.CentreOfGravityX"></span>
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CentreOfGravityY, InputAttributes)
-                            <span asp-validation-for="Data.CentreOfGravityY"></span>
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => m.Data.CentreOfGravityZ, InputAttributes)
-                            <span asp-validation-for="Data.CentreOfGravityZ"></span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.NettWeight, LabelAttributes)
-            <div class="col-sm-4">
-                @Html.TextBoxFor(m => m.Data.NettWeight, InputAttributes)
-                <span asp-validation-for="Data.NettWeight"></span>
-            </div>
-            @Html.LabelFor(m => m.Data.GrossWeight, LabelAttributes)
-            <div class="col-sm-4">
-                @Html.TextBoxFor(m => m.Data.GrossWeight, InputAttributes)
-                <span asp-validation-for="Data.GrossWeight"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Data.Caliper, LabelAttributes)
-            <div class="col-sm-4">
-                @Html.TextBoxFor(m => m.Data.Caliper, InputAttributes)
-                <span asp-validation-for="Data.Caliper"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-10">
-                <input type="submit" value="Update" class="btn btn-default" />
+    <div id="Tabs" role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active">
+                <a href="#material" aria-controls="material" role="tab" data-toggle="tab">Material</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane form-horizontal active" id="material">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.MaterialId, LabelAttributes)
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Data.MaterialId, DisabledAttributes)
+                    </div>
+                    @Html.LabelFor(m => m.Data.Type, LabelAttributes)
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.Data.Type, Html.GetEnumSelectList<PackIt.Helpers.Enums.MaterialType>(), InputAttributes)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.Name, LabelAttributes)
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.Data.Name, InputAttributes)
+                        <span asp-validation-for="Data.Name"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.Notes, LabelAttributes)
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.Data.Notes, InputAttributes)
+                        <span asp-validation-for="Data.Notes"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    @Html.Label("Length")
+                                </th>
+                                <th>
+                                    @Html.Label("Breadth")
+                                </th>
+                                <th>
+                                    @Html.Label("Height")
+                                </th>
+                                <th>
+                                    @Html.Label("Volume")
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Internal</th>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.InternalLength, InputAttributes)
+                                    <span asp-validation-for="Data.InternalLength"></span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.InternalBreadth, InputAttributes)
+                                    <span asp-validation-for="Data.InternalBreadth"></span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.InternalHeight, InputAttributes)
+                                    <span asp-validation-for="Data.InternalHeight"></span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.InternalVolume, InputAttributes)
+                                    <span asp-validation-for="Data.InternalVolume"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>External</th>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.ExternalLength, InputAttributes)
+                                    <span asp-validation-for="Data.ExternalLength"></span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.ExternalBreadth, InputAttributes)
+                                    <span asp-validation-for="Data.ExternalBreadth"></span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.ExternalHeight, InputAttributes)
+                                    <span asp-validation-for="Data.ExternalHeight"></span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.ExternalVolume, InputAttributes)
+                                    <span asp-validation-for="Data.ExternalVolume"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Cell</th>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CellLength, InputAttributes)
+                                    <span asp-validation-for="Data.CellLength"></span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CellBreadth, InputAttributes)
+                                    <span asp-validation-for="Data.CellBreadth"></span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CellHeight, InputAttributes)
+                                    <span asp-validation-for="Data.CellHeight"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Center Of Gravity</th>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CentreOfGravityX, InputAttributes)
+                                    <span asp-validation-for="Data.CentreOfGravityX"></span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CentreOfGravityY, InputAttributes)
+                                    <span asp-validation-for="Data.CentreOfGravityY"></span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Data.CentreOfGravityZ, InputAttributes)
+                                    <span asp-validation-for="Data.CentreOfGravityZ"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.NettWeight, LabelAttributes)
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Data.NettWeight, InputAttributes)
+                        <span asp-validation-for="Data.NettWeight"></span>
+                    </div>
+                    @Html.LabelFor(m => m.Data.GrossWeight, LabelAttributes)
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Data.GrossWeight, InputAttributes)
+                        <span asp-validation-for="Data.GrossWeight"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data.Caliper, LabelAttributes)
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Data.Caliper, InputAttributes)
+                        <span asp-validation-for="Data.Caliper"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-1 col-md-10">
+                        <input type="submit" value="Update" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
