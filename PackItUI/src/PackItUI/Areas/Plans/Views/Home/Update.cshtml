@@ -15,6 +15,7 @@
 @using (Html.BeginForm("Update", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
+
     <div id="Tabs" role="tabpanel">
         <ul class="nav nav-tabs" role="tablist">
             <li class="active">
@@ -23,6 +24,7 @@
         </ul>
 
         <div class="tab-content">
+            <br />
             <div role="tabpanel" class="tab-pane form-horizontal active" id="plan">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Data.PlanId, LabelAttributes)
@@ -44,12 +46,14 @@
                         <span asp-validation-for="Data.Notes"></span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-1 col-md-10">
-                        <input type="submit" value="Update" class="btn btn-default" />
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+            <input type="submit" value="Update" class="btn btn-default" />
+        </div>
+    </div>
+    <br />
 }

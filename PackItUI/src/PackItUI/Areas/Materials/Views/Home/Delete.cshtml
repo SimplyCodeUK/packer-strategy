@@ -14,6 +14,7 @@
 @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
+
     <div id="Tabs" role="tabpanel">
         <ul class="nav nav-tabs" role="tablist">
             <li class="active">
@@ -22,6 +23,7 @@
         </ul>
 
         <div class="tab-content">
+            <br />
             <div role="tabpanel" class="tab-pane form-horizontal active" id="material">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Data.MaterialId, LabelAttributes)
@@ -50,23 +52,15 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>
-                                    @Html.Label("Length")
-                                </th>
-                                <th>
-                                    @Html.Label("Breadth")
-                                </th>
-                                <th>
-                                    @Html.Label("Height")
-                                </th>
-                                <th>
-                                    @Html.Label("Volume")
-                                </th>
+                                <th>@Html.Label("Length")</th>
+                                <th>@Html.Label("Breadth")</th>
+                                <th>@Html.Label("Height")</th>
+                                <th>@Html.Label("Volume")</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th>Internal</th>
+                                <th>@Html.Label("Internal")</th>
                                 <td>
                                     @Html.TextBoxFor(m => m.Data.InternalLength, DisabledAttributes)
                                 </td>
@@ -81,7 +75,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>External</th>
+                                <th>@Html.Label("External")</th>
                                 <td>
                                     @Html.TextBoxFor(m => m.Data.ExternalLength, DisabledAttributes)
                                 </td>
@@ -96,7 +90,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Cell</th>
+                                <th>@Html.Label("Cell")</th>
                                 <td>
                                     @Html.TextBoxFor(m => m.Data.CellLength, DisabledAttributes)
                                 </td>
@@ -108,7 +102,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Center Of Gravity</th>
+                                <th>@Html.Label("Center Of Gravity")</th>
                                 <td>
                                     @Html.TextBoxFor(m => m.Data.CentreOfGravityX, DisabledAttributes)
                                 </td>
@@ -138,12 +132,14 @@
                         @Html.TextBoxFor(m => m.Data.Caliper, DisabledAttributes)
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-1 col-md-10">
-                        <input type="submit" value="Delete" class="btn btn-default" />
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
+    </div>
+    <br />
 }

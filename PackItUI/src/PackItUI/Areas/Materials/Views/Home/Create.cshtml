@@ -14,6 +14,7 @@
 @using (Html.BeginForm("Create", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
+
     <div id="Tabs" role="tabpanel">
         <ul class="nav nav-tabs" role="tablist">
             <li class="active">
@@ -22,6 +23,7 @@
         </ul>
 
         <div class="tab-content">
+            <br />
             <div role="tabpanel" class="tab-pane form-horizontal active" id="material">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Data.MaterialId, LabelAttributes)
@@ -53,23 +55,15 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>
-                                    @Html.Label("Length")
-                                </th>
-                                <th>
-                                    @Html.Label("Breadth")
-                                </th>
-                                <th>
-                                    @Html.Label("Height")
-                                </th>
-                                <th>
-                                    @Html.Label("Volume")
-                                </th>
+                                <th>@Html.Label("Length")</th>
+                                <th>@Html.Label("Breadth")</th>
+                                <th>@Html.Label("Height")</th>
+                                <th>@Html.Label("Volume")</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th>Internal</th>
+                                <th>@Html.Label("Internal")</th>
                                 <td>
                                     @Html.TextBoxFor(m => m.Data.InternalLength, InputAttributes)
                                     <span asp-validation-for="Data.InternalLength"></span>
@@ -88,7 +82,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>External</th>
+                                <th>@Html.Label("External")</th>
                                 <td>
                                     @Html.TextBoxFor(m => m.Data.ExternalLength, InputAttributes)
                                     <span asp-validation-for="Data.ExternalLength"></span>
@@ -107,7 +101,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Cell</th>
+                                <th>@Html.Label("Cell")</th>
                                 <td>
                                     @Html.TextBoxFor(m => m.Data.CellLength, InputAttributes)
                                     <span asp-validation-for="Data.CellLength"></span>
@@ -122,7 +116,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Center Of Gravity</th>
+                                <th>@Html.Label("Center Of Gravity")</th>
                                 <td>
                                     @Html.TextBoxFor(m => m.Data.CentreOfGravityX, InputAttributes)
                                     <span asp-validation-for="Data.CentreOfGravityX"></span>
@@ -158,12 +152,14 @@
                         <span asp-validation-for="Data.Caliper"></span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-1 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+    <br />
 }
