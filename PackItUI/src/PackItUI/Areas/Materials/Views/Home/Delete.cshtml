@@ -5,46 +5,42 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Delete Material";
 
-    var LabelAttributes = new { @class = "control-label col-sm-1" };
-    var DisabledAttributes = new { @class = "form-control", disabled = "disabled" };
+    var LabelClass = "control-label col-sm-1";
+    var InputClass = "form-control";
 }
 
 <h2>@ViewData["Title"]</h2>
 
-@using (Html.BeginForm("Delete", "Home", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-
+<form asp-controller="Home" asp-action="Delete" method="post">
     <div id="Tabs" role="tabpanel">
         <ul class="nav nav-tabs" role="tablist">
             <li class="active">
                 <a href="#material" aria-controls="material" role="tab" data-toggle="tab">Material</a>
             </li>
         </ul>
-
         <div class="tab-content">
             <br />
             <div role="tabpanel" class="tab-pane form-horizontal active" id="material">
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Data.MaterialId, LabelAttributes)
+                    <label asp-for="Data.MaterialId" class="@LabelClass"></label>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(m => m.Data.MaterialId, DisabledAttributes)
+                        <input asp-for="Data.MaterialId" class="@InputClass" disabled="disabled" />
                     </div>
-                    @Html.LabelFor(m => m.Data.Type, LabelAttributes)
+                    <label asp-for="Data.Type" class="@LabelClass"></label>
                     <div class="col-sm-4">
-                        @Html.DropDownListFor(m => m.Data.Type, Html.GetEnumSelectList<PackIt.Helpers.Enums.MaterialType>(), DisabledAttributes)
+                        <select asp-for="Data.Type" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.MaterialType>()" class="@InputClass" disabled="disabled"></select>
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Data.Name, LabelAttributes)
+                    <label asp-for="Data.Name" class="@LabelClass"></label>
                     <div class="col-sm-9">
-                        @Html.TextBoxFor(m => m.Data.Name, DisabledAttributes)
+                        <input asp-for="Data.Name" class="@InputClass" disabled="disabled" />
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Data.Notes, LabelAttributes)
+                    <label asp-for="Data.Notes" class="@LabelClass"></label>
                     <div class="col-sm-9">
-                        @Html.TextBoxFor(m => m.Data.Notes, DisabledAttributes)
+                        <input asp-for="Data.Notes" class="@InputClass" disabled="disabled" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -52,84 +48,84 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>@Html.Label("Length")</th>
-                                <th>@Html.Label("Breadth")</th>
-                                <th>@Html.Label("Height")</th>
-                                <th>@Html.Label("Volume")</th>
+                                <th><label class="@LabelClass">Length</label></th>
+                                <th><label class="@LabelClass">Breadth</label></th>
+                                <th><label class="@LabelClass">Height</label></th>
+                                <th><label class="@LabelClass">Volume</label></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th>@Html.Label("Internal")</th>
+                                <th><label class="@LabelClass">Internal</label></th>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Data.InternalLength, DisabledAttributes)
+                                    <input asp-for="Data.InternalLength" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Data.InternalBreadth, DisabledAttributes)
+                                    <input asp-for="Data.InternalBreadth" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Data.InternalHeight, DisabledAttributes)
+                                    <input asp-for="Data.InternalHeight" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Data.InternalVolume, DisabledAttributes)
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>@Html.Label("External")</th>
-                                <td>
-                                    @Html.TextBoxFor(m => m.Data.ExternalLength, DisabledAttributes)
-                                </td>
-                                <td>
-                                    @Html.TextBoxFor(m => m.Data.ExternalBreadth, DisabledAttributes)
-                                </td>
-                                <td>
-                                    @Html.TextBoxFor(m => m.Data.ExternalHeight, DisabledAttributes)
-                                </td>
-                                <td>
-                                    @Html.TextBoxFor(m => m.Data.ExternalVolume, DisabledAttributes)
+                                    <input asp-for="Data.InternalVolume" class="@InputClass" disabled="disabled" />
                                 </td>
                             </tr>
                             <tr>
-                                <th>@Html.Label("Cell")</th>
+                                <th><label class="@LabelClass">External</label></th>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Data.CellLength, DisabledAttributes)
+                                    <input asp-for="Data.ExternalLength" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Data.CellBreadth, DisabledAttributes)
+                                    <input asp-for="Data.ExternalBreadth" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Data.CellHeight, DisabledAttributes)
+                                    <input asp-for="Data.ExternalHeight" class="@InputClass" disabled="disabled" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.ExternalVolume" class="@InputClass" disabled="disabled" />
                                 </td>
                             </tr>
                             <tr>
-                                <th>@Html.Label("Center Of Gravity")</th>
+                                <th><label class="@LabelClass">Cell</label></th>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Data.CentreOfGravityX, DisabledAttributes)
+                                    <input asp-for="Data.CellLength" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Data.CentreOfGravityY, DisabledAttributes)
+                                    <input asp-for="Data.CellBreadth" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Data.CentreOfGravityZ, DisabledAttributes)
+                                    <input asp-for="Data.CellHeight" class="@InputClass" disabled="disabled" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><label class="@LabelClass">Center Of Gravity</label></th>
+                                <td>
+                                    <input asp-for="Data.CentreOfGravityX" class="@InputClass" disabled="disabled" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.CentreOfGravityY" class="@InputClass" disabled="disabled" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.CentreOfGravityZ" class="@InputClass" disabled="disabled" />
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Data.NettWeight, LabelAttributes)
+                    <label asp-for="Data.NettWeight" class="@LabelClass"></label>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(m => m.Data.NettWeight, DisabledAttributes)
+                        <input asp-for="Data.NettWeight" class="@InputClass" disabled="disabled" />
                     </div>
-                    @Html.LabelFor(m => m.Data.GrossWeight, LabelAttributes)
+                    <label asp-for="Data.GrossWeight" class="@LabelClass"></label>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(m => m.Data.GrossWeight, DisabledAttributes)
+                        <input asp-for="Data.GrossWeight" class="@InputClass" disabled="disabled" />
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Data.Caliper, LabelAttributes)
+                    <label asp-for="Data.Caliper" class="@LabelClass"></label>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(m => m.Data.Caliper, DisabledAttributes)
+                        <input asp-for="Data.Caliper" class="@InputClass" disabled="disabled" />
                     </div>
                 </div>
             </div>
@@ -142,4 +138,4 @@
         </div>
     </div>
     <br />
-}
+</form>
