@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItLib.Test
+namespace PackItLib.Test.Helpers
 {
     using NUnit.Framework;
     using PackIt.Helpers;
