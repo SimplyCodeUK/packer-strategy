@@ -1,5 +1,4 @@
 ﻿@model PackItUI.Areas.Materials.Models.MaterialViewModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,6 +6,9 @@
 
     var LabelClass = "control-label col-sm-1";
     var InputClass = "form-control";
+    var VolumeFormat = "{0:N6}";
+    var WeightFormat = "{0:N4}";
+    var DimensionFormat = "{0:N2}";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -23,12 +25,16 @@
             <div role="tabpanel" class="tab-pane form-horizontal active" id="material">
                 <div class="form-group">
                     <label asp-for="Data.MaterialId" class="@LabelClass"></label>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <input asp-for="Data.MaterialId" class="@InputClass" disabled="disabled" />
                     </div>
                     <label asp-for="Data.Type" class="@LabelClass"></label>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                         <select asp-for="Data.Type" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.MaterialType>()" class="@InputClass" disabled="disabled"></select>
+                    </div>
+                    <label asp-for="Data.Form" class="@LabelClass"></label>
+                    <div class="col-sm-2">
+                        <select asp-for="Data.Form" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.PackForm>()" class="@InputClass" disabled="disabled"></select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -58,55 +64,55 @@
                             <tr>
                                 <th><label class="@LabelClass">Internal</label></th>
                                 <td>
-                                    <input asp-for="Data.InternalLength" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.InternalLength" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    <input asp-for="Data.InternalBreadth" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.InternalBreadth" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    <input asp-for="Data.InternalHeight" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.InternalHeight" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    <input asp-for="Data.InternalVolume" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.InternalVolume" asp-format="@VolumeFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                             </tr>
                             <tr>
                                 <th><label class="@LabelClass">External</label></th>
                                 <td>
-                                    <input asp-for="Data.ExternalLength" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.ExternalLength" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    <input asp-for="Data.ExternalBreadth" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.ExternalBreadth" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    <input asp-for="Data.ExternalHeight" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.ExternalHeight" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    <input asp-for="Data.ExternalVolume" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.ExternalVolume" asp-format="@VolumeFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                             </tr>
                             <tr>
                                 <th><label class="@LabelClass">Cell</label></th>
                                 <td>
-                                    <input asp-for="Data.CellLength" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.CellLength" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    <input asp-for="Data.CellBreadth" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.CellBreadth" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    <input asp-for="Data.CellHeight" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.CellHeight" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                             </tr>
                             <tr>
                                 <th><label class="@LabelClass">Center Of Gravity</label></th>
                                 <td>
-                                    <input asp-for="Data.CentreOfGravityX" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.CentreOfGravityX" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    <input asp-for="Data.CentreOfGravityY" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.CentreOfGravityY" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                                 <td>
-                                    <input asp-for="Data.CentreOfGravityZ" class="@InputClass" disabled="disabled" />
+                                    <input asp-for="Data.CentreOfGravityZ" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                                 </td>
                             </tr>
                         </tbody>
@@ -115,17 +121,17 @@
                 <div class="form-group">
                     <label asp-for="Data.NettWeight" class="@LabelClass"></label>
                     <div class="col-sm-4">
-                        <input asp-for="Data.NettWeight" class="@InputClass" disabled="disabled" />
+                        <input asp-for="Data.NettWeight" asp-format="@WeightFormat" class="@InputClass" disabled="disabled" />
                     </div>
                     <label asp-for="Data.GrossWeight" class="@LabelClass"></label>
                     <div class="col-sm-4">
-                        <input asp-for="Data.GrossWeight" class="@InputClass" disabled="disabled" />
+                        <input asp-for="Data.GrossWeight" asp-format="@WeightFormat" class="@InputClass" disabled="disabled" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label asp-for="Data.Caliper" class="@LabelClass"></label>
                     <div class="col-sm-4">
-                        <input asp-for="Data.Caliper" class="@InputClass" disabled="disabled" />
+                        <input asp-for="Data.Caliper" asp-format="@DimensionFormat" class="@InputClass" disabled="disabled" />
                     </div>
                 </div>
             </div>
