@@ -17,6 +17,8 @@ namespace PackIt.Plan
         /// </summary>
         public Stage()
         {
+            this.Shape = ShapeType.Rectangle;
+            this.Form = FormType.Box;
             this.Limits = new List<Limit>();
         }
 
@@ -38,12 +40,12 @@ namespace PackIt.Plan
         /// <summary>   Gets or sets the shape. </summary>
         ///
         /// <value> The shape. </value>
-        public PackShape Shape { get; set; }
+        public ShapeType Shape { get; set; }
 
         /// <summary>   Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
-        public PackForm Form { get; set; }
+        public FormType Form { get; set; }
 
         /// <summary>   Gets or sets the shape parameter 0. </summary>
         ///

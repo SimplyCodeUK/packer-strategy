@@ -17,6 +17,7 @@ namespace PackIt.Pack
         /// </summary>
         public Result()
         {
+            this.Form = FormType.Box;
             this.Layers = new List<Layer>();
             this.Materials = new List<Material>();
             this.Sections = new List<Section>();
@@ -60,7 +61,7 @@ namespace PackIt.Pack
         /// <summary>   Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
-        public PackForm Form { get; set; }
+        public FormType Form { get; set; }
 
         /// <summary>   Gets or sets the closure. </summary>
         ///

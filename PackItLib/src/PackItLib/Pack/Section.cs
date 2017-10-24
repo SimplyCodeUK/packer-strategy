@@ -11,10 +11,18 @@ namespace PackIt.Pack
     /// <summary>   A section. </summary>
     public class Section
     {
+        /// <summary>
+        /// Initialises a new instance of the <see cref="Section" /> class.
+        /// </summary>
+        public Section()
+        {
+            this.Shape = ShapeType.Rectangle;
+        }
+
         /// <summary>   Gets or sets the shape. </summary>
         ///
         /// <value> The shape. </value>
-        public PackShape Shape { get; set; }
+        public ShapeType Shape { get; set; }
 
         /// <summary>   Gets or sets the status. </summary>
         ///

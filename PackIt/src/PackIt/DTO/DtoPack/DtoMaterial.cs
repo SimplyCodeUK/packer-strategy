@@ -98,7 +98,7 @@ namespace PackIt.DTO.DtoPack
         /// <summary>   Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
-        public PackForm Form { get; set; }
+        public FormType Form { get; set; }
 
         /// <summary>   Gets or sets the type of the closure. </summary>
         ///

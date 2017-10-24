@@ -7,7 +7,7 @@
 namespace PackIt.Helpers.Enums
 {
     /// <summary>   Values that represent pack shapes. </summary>
-    public enum PackShape
+    public enum ShapeType
     {
         /// <summary>   An enum constant representing the rectangle option. </summary>
         Rectangle,
