@@ -39,7 +39,7 @@ namespace PackIt.DTO.DtoMaterial
         /// <summary>   Gets or sets the shape. </summary>
         ///
         /// <value> The shape. </value>
-        public PackShape Shape { get; set; }
+        public ShapeType Shape { get; set; }
 
         /// <summary>   Gets or sets the position x coordinate. </summary>
         ///

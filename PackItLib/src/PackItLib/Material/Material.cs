@@ -19,11 +19,12 @@ namespace PackIt.Material
         /// </summary>
         public Material()
         {
+            this.Type = MaterialType.Bottle;
+            this.Form = FormType.Bottle;
             this.Costings = new List<Costing>();
             this.Layers = new List<Layer>();
             this.PalletDecks = new List<PalletDeck>();
             this.Sections = new List<Section>();
-            this.Type = MaterialType.Bottle;
         }
 
         /// <summary>   Gets or sets the Material identifier. </summary>
@@ -97,7 +98,7 @@ namespace PackIt.Material
         /// <summary>   Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
-        public PackForm Form { get; set; }
+        public FormType Form { get; set; }
 
         /// <summary>   Gets or sets the type of the closure. </summary>
         ///

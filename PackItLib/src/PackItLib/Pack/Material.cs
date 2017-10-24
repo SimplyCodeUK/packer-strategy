@@ -18,6 +18,7 @@ namespace PackIt.Pack
         public Material()
         {
             this.MaterialType = MaterialType.Bottle;
+            this.Form = FormType.Bottle;
             this.DatabaseMaterials = new List<DatabaseMaterial>();
         }
 
@@ -79,7 +80,7 @@ namespace PackIt.Pack
         /// <summary>   Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
-        public PackForm Form { get; set; }
+        public FormType Form { get; set; }
 
         /// <summary>   Gets or sets the type of the closure. </summary>
         ///

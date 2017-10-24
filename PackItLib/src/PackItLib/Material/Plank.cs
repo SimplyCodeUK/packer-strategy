@@ -11,6 +11,14 @@ namespace PackIt.Material
     /// <summary>   A plank. </summary>
     public class Plank
     {
+        /// <summary>
+        /// Initialises a new instance of the <see cref="Plank" /> class.
+        /// </summary>
+        public Plank()
+        {
+            this.Shape = ShapeType.Rectangle;
+        }
+
         /// <summary>   Gets or sets the number to place along the x axis. </summary>
         ///
         /// <value> The number to place along the x axis. </value>
@@ -24,7 +32,7 @@ namespace PackIt.Material
         /// <summary>   Gets or sets the shape. </summary>
         ///
         /// <value> The shape. </value>
-        public PackShape Shape { get; set; }
+        public ShapeType Shape { get; set; }
 
         /// <summary>   Gets or sets the position x coordinate. </summary>
         ///

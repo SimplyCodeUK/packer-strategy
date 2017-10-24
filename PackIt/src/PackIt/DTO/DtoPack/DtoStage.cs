@@ -44,12 +44,12 @@ namespace PackIt.DTO.DtoPack
         /// <summary>   Gets or sets the shape. </summary>
         ///
         /// <value> The shape. </value>
-        public PackShape Shape { get; set; }
+        public ShapeType Shape { get; set; }
 
         /// <summary>   Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
-        public PackForm Form { get; set; }
+        public FormType Form { get; set; }
 
         /// <summary>   Gets or sets the shape parameter 0. </summary>
         ///

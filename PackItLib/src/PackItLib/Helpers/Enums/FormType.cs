@@ -7,7 +7,7 @@
 namespace PackIt.Helpers.Enums
 {
     /// <summary>   Values that represent pack forms. </summary>
-    public enum PackForm
+    public enum FormType
     {
         /// <summary>   An enum constant representing the none option. </summary>
         None,
