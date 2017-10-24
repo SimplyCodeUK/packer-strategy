@@ -17,9 +17,9 @@ namespace PackItUI.Areas.App.Models
     public class AboutViewModel
     {
         /// <summary>
-        /// Prevents a default instance of the <see cref="AboutViewModel"/> class from being created.
+        /// Initialises a new instance of the <see cref="AboutViewModel" /> class.
         /// </summary>
-        private AboutViewModel()
+        public AboutViewModel()
         {
             this.Services = new Dictionary<string, ServiceInfo>();
         }
@@ -34,9 +34,8 @@ namespace PackItUI.Areas.App.Models
         /// <param name="endpoints"> The service endpoints. </param>
         ///
         /// <returns> The model data. </returns>
-        public static async Task<AboutViewModel> Create(ServiceEndpoints endpoints)
+        public async Task Create(ServiceEndpoints endpoints)
         {
-            var model = new AboutViewModel();
             var serviceMap = new Dictionary<string, Service>
             {
                 { "Materials", new Materials(endpoints.Materials) },
@@ -47,10 +46,8 @@ namespace PackItUI.Areas.App.Models
             foreach (KeyValuePair<string, Service> service in serviceMap)
             {
                 ServiceInfo info = await service.Value.InformationAsync();
-                model.Services[service.Key] = info;
+                this.Services[service.Key] = info;
             }
-
-            return model;
         }
     }
 }
