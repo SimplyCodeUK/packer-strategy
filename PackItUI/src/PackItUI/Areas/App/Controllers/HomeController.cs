@@ -44,10 +44,11 @@ namespace PackItUI.Areas.App.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
-            var model = AboutViewModel.Create(this.AppSettings.ServiceEndpoints);
-            return this.View(model.Result);
+            var model = new AboutViewModel();
+            await model.Create(this.AppSettings.ServiceEndpoints);
+            return this.View(model);
         }
 
         /// <summary>   Handle the Contact view request. </summary>

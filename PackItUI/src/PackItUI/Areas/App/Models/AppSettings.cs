@@ -9,9 +9,9 @@ namespace PackItUI.Areas.App.Models
     /// <summary> App settings. </summary>
     public class AppSettings
     {
-        /// <summary> Gets or sets the service endpoint. </summary>
+        /// <summary> Gets or sets the service endpoints. </summary>
         ///
-        /// <value> The service endpoint. </value>
+        /// <value> The service endpoints. </value>
         public ServiceEndpoints ServiceEndpoints { get; set; }
     }
 }

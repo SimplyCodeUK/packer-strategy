@@ -23,7 +23,7 @@ namespace PackIt.Test.Controllers
         /// <summary>   The controller under test. </summary>
         private UploadsController controller;
 
-        /// <summary>   Tests before. </summary>
+        /// <summary> Setup for all unit tests here. </summary>
         [SetUp]
         public void BeforeTest()
         {
