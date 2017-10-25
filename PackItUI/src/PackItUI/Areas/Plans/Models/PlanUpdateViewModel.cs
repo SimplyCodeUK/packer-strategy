@@ -6,12 +6,8 @@
 
 namespace PackItUI.Areas.Plans.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
-    using System.Net.Http;
-    using System.Threading.Tasks;
     using Newtonsoft.Json;
-    using PackIt.Helpers.Enums;
 
     /// <summary> Plan home view model. </summary>
     public class PlanUpdateViewModel
@@ -28,38 +24,6 @@ namespace PackItUI.Areas.Plans.Models
         ///
         /// <value> The plan data. </value>
         public Plan Data { get; set; }
-
-        /// <summary> Reads asynchronously the model for a plan. </summary>
-        ///
-        /// <param name="endpoint"> The plans service endpoint. </param>
-        /// <param name="id"> The identifier of the plan. </param>
-        ///
-        /// <returns> The model. </returns>
-        public static async Task<PlanUpdateViewModel> ReadAsync(string endpoint, string id)
-        {
-            var httpClient = new HttpClient();
-            string body;
-
-            try
-            {
-                HttpResponseMessage response = await httpClient.GetAsync(endpoint + "Plans/" + id);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-                body = await response.Content.ReadAsStringAsync();
-
-                var ret = new PlanUpdateViewModel
-                {
-                    Data = JsonConvert.DeserializeObject<Plan>(body)
-                };
-
-                return ret;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
 
         /// <summary>
         /// Data for plan view model

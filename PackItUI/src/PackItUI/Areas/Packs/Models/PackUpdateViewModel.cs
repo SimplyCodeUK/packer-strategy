@@ -6,12 +6,11 @@
 
 namespace PackItUI.Areas.Packs.Models
 {
-    using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Net.Http;
-    using System.Threading.Tasks;
     using Newtonsoft.Json;
     using PackIt.Helpers.Enums;
+    using PackIt.Pack;
 
     /// <summary> Pack home view model. </summary>
     public class PackUpdateViewModel
@@ -29,43 +28,19 @@ namespace PackItUI.Areas.Packs.Models
         /// <value> The pack data. </value>
         public Pack Data { get; set; }
 
-        /// <summary> Reads asynchronously the model for a pack. </summary>
-        ///
-        /// <param name="endpoint"> The packs service endpoint. </param>
-        /// <param name="id"> The identifier of the pack. </param>
-        ///
-        /// <returns> The model. </returns>
-        public static async Task<PackUpdateViewModel> ReadAsync(string endpoint, string id)
-        {
-            var httpClient = new HttpClient();
-            string body;
-
-            try
-            {
-                HttpResponseMessage response = await httpClient.GetAsync(endpoint + "Packs/" + id);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-                body = await response.Content.ReadAsStringAsync();
-
-                var ret = new PackUpdateViewModel
-                {
-                    Data = JsonConvert.DeserializeObject<Pack>(body)
-                };
-
-                return ret;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
         /// <summary>
         /// Data for pack view model
         /// </summary>
         public class Pack
         {
+            /// <summary>
+            /// Initialises a new instance of the <see cref="Pack" /> class.
+            /// </summary>
+            public Pack()
+            {
+                this.Costings = new List<Costing>();
+            }
+
             /// <summary> Gets or sets the Pack identifier. </summary>
             ///
             /// <value> The Pack identifier. </value>
@@ -114,6 +89,11 @@ namespace PackItUI.Areas.Packs.Models
             ///
             /// <value> The costing premium. </value>
             public double CostingPremium { get; set; }
+
+            /// <summary>   Gets or sets the collection of costings. </summary>
+            ///
+            /// <value> Collection of costings. </value>
+            public IList<Costing> Costings { get; set; }
         }
     }
 }
