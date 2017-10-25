@@ -6,12 +6,11 @@
 
 namespace PackItUI.Areas.Materials.Models
 {
-    using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Net.Http;
-    using System.Threading.Tasks;
     using Newtonsoft.Json;
     using PackIt.Helpers.Enums;
+    using PackIt.Material;
 
     /// <summary> Material home view model. </summary>
     public class MaterialUpdateViewModel
@@ -29,43 +28,21 @@ namespace PackItUI.Areas.Materials.Models
         /// <value> The material data. </value>
         public Material Data { get; set; }
 
-        /// <summary> Reads asynchronously the model for a material. </summary>
-        ///
-        /// <param name="endpoint"> The materials service endpoint. </param>
-        /// <param name="id"> The identifier of the material. </param>
-        ///
-        /// <returns> The model. </returns>
-        public static async Task<MaterialUpdateViewModel> ReadAsync(string endpoint, string id)
-        {
-            var httpClient = new HttpClient();
-            string body;
-
-            try
-            {
-                HttpResponseMessage response = await httpClient.GetAsync(endpoint + "Materials/" + id);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-                body = await response.Content.ReadAsStringAsync();
-
-                var ret = new MaterialUpdateViewModel
-                {
-                    Data = JsonConvert.DeserializeObject<Material>(body)
-                };
-
-                return ret;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
         /// <summary>
         /// Data for material view model
         /// </summary>
         public class Material
         {
+            /// <summary>
+            /// Initialises a new instance of the <see cref="Material" /> class.
+            /// </summary>
+            public Material()
+            {
+                this.Type = MaterialType.Bottle;
+                this.Form = FormType.Bottle;
+                this.Costings = new List<Costing>();
+            }
+
             /// <summary> Gets or sets the Material identifier. </summary>
             ///
             /// <value> The Material identifier. </value>
@@ -322,6 +299,11 @@ namespace PackItUI.Areas.Materials.Models
             /// <value> The target compression. </value>
             [Display(Name = "Target Compression", Prompt = "Enter Target Compression")]
             public double TargetCompression { get; set; }
+
+            /// <summary>   Gets or sets the collection of costings. </summary>
+            ///
+            /// <value> Collection of costings. </value>
+            public IList<Costing> Costings { get; set; }
         }
     }
 }

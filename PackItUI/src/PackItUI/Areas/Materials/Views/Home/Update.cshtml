@@ -9,6 +9,7 @@
     var VolumeFormat = "{0:N6}";
     var WeightFormat = "{0:N4}";
     var DimensionFormat = "{0:N2}";
+    var CostFormat = "{0:N2}";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -41,6 +42,9 @@
             <li class="active">
                 <a href="#material" aria-controls="material" role="tab" data-toggle="tab">Material</a>
             </li>
+            <li>
+                <a href="#costings" aria-controls="costings" role="tab" data-toggle="tab">Costings</a>
+            </li>
         </ul>
         <div class="tab-content">
             <br />
@@ -56,7 +60,7 @@
                     </div>
                     <label asp-for="Data.Form" class="@LabelClass"></label>
                     <div class="col-sm-2">
-                        <select asp-for="Data.Form" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.PackForm>()" class="@InputClass"></select>
+                        <select asp-for="Data.Form" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.FormType>()" class="@InputClass"></select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -155,6 +159,43 @@
                     <div class="col-sm-4">
                         <input asp-for="Data.Caliper" asp-format="@DimensionFormat" class="@InputClass" />
                     </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane form-horizontal" id="costings">
+                <div class="form-group">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><label asp-for="Data.Costings.FirstOrDefault().Quantity" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Costings.FirstOrDefault().QuantityCost" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Costings.FirstOrDefault().VolumeCost" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Costings.FirstOrDefault().AreaCost" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Costings.FirstOrDefault().LengthCost" class="@LabelClass"></label></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i<Model.Data.Costings.Count; ++i)
+                            {
+                                <tr>
+                                    <td>
+                                        <input asp-for="Data.Costings[i].Quantity" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Costings[i].QuantityCost" asp-format="@CostFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Costings[i].VolumeCost" asp-format="@CostFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Costings[i].AreaCost" asp-format="@CostFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Costings[i].LengthCost" asp-format="@CostFormat" class="@InputClass" />
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
