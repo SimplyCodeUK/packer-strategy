@@ -39,8 +39,8 @@ namespace PackItUI.Areas.App.Models
             var serviceMap = new Dictionary<string, Service>
             {
                 { "Materials", new Materials(endpoints.Materials) },
-                { "Packs", new Materials(endpoints.Packs) },
-                { "Plans", new Materials(endpoints.Plans) }
+                { "Packs", new Packs(endpoints.Packs) },
+                { "Plans", new Plans(endpoints.Plans) }
             };
 
             foreach (KeyValuePair<string, Service> service in serviceMap)

@@ -37,7 +37,7 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return this.View();
+            return this.View("Index");
         }
 
         /// <summary>   Handle the About view request. </summary>
@@ -48,7 +48,7 @@ namespace PackItUI.Areas.App.Controllers
         {
             var model = new AboutViewModel();
             await model.Create(this.AppSettings.ServiceEndpoints);
-            return this.View(model);
+            return this.View("About", model);
         }
 
         /// <summary>   Handle the Contact view request. </summary>
@@ -57,7 +57,7 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public IActionResult Contact()
         {
-            return this.View();
+            return this.View("Contact");
         }
 
         /// <summary>   Handle exceptions. </summary>
@@ -66,7 +66,7 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public IActionResult Error()
         {
-            return this.View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return this.View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

@@ -52,6 +52,10 @@ namespace PackItUI.Test.Areas.App.Controllers
         {
             var result = this.controller.Index();
             Assert.IsInstanceOf<ViewResult>(result);
+
+            ViewResult viewResult = (ViewResult)result;
+            Assert.AreEqual("Index", viewResult.ViewName);
+            Assert.IsNull(viewResult.ViewData.Model);
         }
 
         /// <summary> (Unit Test Method) about action. </summary>
@@ -61,6 +65,11 @@ namespace PackItUI.Test.Areas.App.Controllers
             var result = this.controller.About();
             result.Wait();
             Assert.IsInstanceOf<ViewResult>(result.Result);
+
+            ViewResult viewResult = (ViewResult)result.Result;
+            Assert.AreEqual("About", viewResult.ViewName);
+            Assert.IsNotNull(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<AboutViewModel>(viewResult.ViewData.Model);
         }
 
         /// <summary> (Unit Test Method) contact action. </summary>
@@ -69,6 +78,10 @@ namespace PackItUI.Test.Areas.App.Controllers
         {
             var result = this.controller.Contact();
             Assert.IsInstanceOf<ViewResult>(result);
+
+            ViewResult viewResult = (ViewResult)result;
+            Assert.AreEqual("Contact", viewResult.ViewName);
+            Assert.IsNull(viewResult.ViewData.Model);
         }
 
         /// <summary> (Unit Test Method) error action. </summary>
@@ -77,6 +90,11 @@ namespace PackItUI.Test.Areas.App.Controllers
         {
             var result = this.controller.Error();
             Assert.IsInstanceOf<ViewResult>(result);
+
+            ViewResult viewResult = (ViewResult)result;
+            Assert.AreEqual("Error", viewResult.ViewName);
+            Assert.IsNotNull(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<ErrorViewModel>(viewResult.ViewData.Model);
         }
     }
 }
