@@ -3,59 +3,50 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Materials";
+
+    var LabelClass = "control-label";
+    var DataClass = "control-label";
 }
 
 <h2>@ViewData["Title"]</h2>
 
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Information.Version)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Information.About)
-        </th>
+        <th><label asp-for="Information.Version" class="@LabelClass"></label></th>
+        <th><label asp-for="Information.About" class="@LabelClass"></label></th>
     </tr>
     <tr>
-        <td>
-            @Html.DisplayFor(model => model.Information.Version)
-        </td>
-        <td>
-            @Html.DisplayFor(model => model.Information.About)
-        </td>
+        <td><span class="@DataClass">@Model.Information.Version</span></td>
+        <td><span class="@DataClass">@Model.Information.About</span></td>
     </tr>
 </table>
 <table class="table">
     <thead>
         <tr>
+            <th><label asp-for="Items.FirstOrDefault().MaterialId" class="@LabelClass"></label></th>
+            <th><label asp-for="Items.FirstOrDefault().Name" class="@LabelClass"></label></th>
+            <th><label asp-for="Items.FirstOrDefault().Notes" class="@LabelClass"></label></th>
             <th>
-                @Html.LabelFor(model => model.Items.FirstOrDefault().MaterialId)
+                <a id="create" data-toggle="modal" asp-action="Create" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </a>  
             </th>
-            <th>
-                @Html.LabelFor(model => model.Items.FirstOrDefault().Name)
-            </th>
-            <th>
-                @Html.LabelFor(model => model.Items.FirstOrDefault().Notes)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Items)
         {
             <tr>
+                <td><span class="@DataClass">@item.MaterialId</span></td>
+                <td><span class="@DataClass">@item.Name</span></td>
+                <td><span class="@DataClass">@item.Notes</span></td>
                 <td>
-                    @Html.DisplayFor(model => item.MaterialId)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Notes)
-                </td>
-                <td>
-                    @Html.ActionLink("Update", "Update", new { id = item.MaterialId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MaterialId })
+                    <a id="update" data-toggle="modal" asp-action="Update" asp-route-id="@item.MaterialId" class="btn btn-info">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                    <a id="delete" data-toggle="modal" asp-action="Delete" asp-route-id="@item.MaterialId" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>  
                 </td>
             </tr>
         }
