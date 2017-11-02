@@ -17,6 +17,24 @@ namespace PackItUI.Test.Areas.App.Controllers
     [TestFixture]
     public class TestHomeController
     {
+        /// <summary> The service endpoints. </summary>
+        private static readonly ServiceEndpoints Endpoints = new ServiceEndpoints
+        {
+            Materials = "http://localhost:8001/api/v1/",
+            Packs = "http://localhost:8002/api/v1/",
+            Plans = "http://localhost:8003/api/v1/",
+            Uploads = "http://localhost:8004/api/v1/"
+        };
+
+        /// <summary> The application settings. </summary>
+        private static readonly AppSettings AppSettings = new AppSettings
+        {
+            ServiceEndpoints = Endpoints
+        };
+
+        /// <summary> The options. </summary>
+        private static readonly OptionsWrapper<AppSettings> Options = new OptionsWrapper<AppSettings>(AppSettings);
+
         /// <summary>   The controller under test. </summary>
         private HomeController controller;
 
@@ -24,26 +42,14 @@ namespace PackItUI.Test.Areas.App.Controllers
         [SetUp]
         public void BeforeTest()
         {
-            ServiceEndpoints endpoints = new ServiceEndpoints
+            this.controller = new HomeController(Options)
             {
-                Materials = "http://localhost:8001/api/v1/",
-                Packs = "http://localhost:8002/api/v1/",
-                Plans = "http://localhost:8003/api/v1/"
+                ControllerContext = new ControllerContext
+                {
+                    HttpContext = new DefaultHttpContext()
+                }
             };
-            AppSettings appSettings = new AppSettings
-            {
-                ServiceEndpoints = endpoints
-            };
-
-            var options = new OptionsWrapper<AppSettings>(appSettings);
-
-            this.controller = new HomeController(options);
             Assert.IsNotNull(this.controller);
-
-            this.controller.ControllerContext = new ControllerContext
-            {
-                HttpContext = new DefaultHttpContext()
-            };
         }
 
         /// <summary> (Unit Test Method) index action. </summary>
@@ -58,9 +64,9 @@ namespace PackItUI.Test.Areas.App.Controllers
             Assert.IsNull(viewResult.ViewData.Model);
         }
 
-        /// <summary> (Unit Test Method) about action. </summary>
+        /// <summary> (Unit Test Method) about action when the services are not running. </summary>
         [Test]
-        public void About()
+        public void AboutServicesNotRunning()
         {
             var result = this.controller.About();
             result.Wait();
@@ -70,6 +76,16 @@ namespace PackItUI.Test.Areas.App.Controllers
             Assert.AreEqual("About", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
             Assert.IsInstanceOf<AboutViewModel>(viewResult.ViewData.Model);
+
+            AboutViewModel model = (AboutViewModel)viewResult.ViewData.Model;
+            Assert.AreEqual("Unknown", model.Services["Materials"].Version);
+            Assert.AreEqual("Unknown", model.Services["Packs"].Version);
+            Assert.AreEqual("Unknown", model.Services["Plans"].Version);
+            Assert.AreEqual("Unknown", model.Services["Uploads"].Version);
+            Assert.AreEqual("Service down!", model.Services["Materials"].About);
+            Assert.AreEqual("Service down!", model.Services["Packs"].About);
+            Assert.AreEqual("Service down!", model.Services["Plans"].About);
+            Assert.AreEqual("Service down!", model.Services["Uploads"].About);
         }
 
         /// <summary> (Unit Test Method) contact action. </summary>
