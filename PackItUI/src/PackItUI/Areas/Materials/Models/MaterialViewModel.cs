@@ -6,16 +6,11 @@
 
 namespace PackItUI.Areas.Materials.Models
 {
-    using System;
-    using System.Net.Http;
-    using System.Threading.Tasks;
-    using Newtonsoft.Json;
-
     /// <summary> Material home view model. </summary>
     public class MaterialViewModel
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="MaterialViewModel"/> class.
+        /// Initialises a new instance of the <see cref="MaterialViewModel" /> class.
         /// </summary>
         public MaterialViewModel()
         {
@@ -26,37 +21,5 @@ namespace PackItUI.Areas.Materials.Models
         ///
         /// <value> The material data. </value>
         public PackIt.Material.Material Data { get; set; }
-
-        /// <summary> Reads asynchronously the model for a material. </summary>
-        ///
-        /// <param name="endpoint"> The materials service endpoint. </param>
-        /// <param name="id"> The identifier of the material. </param>
-        ///
-        /// <returns> The model. </returns>
-        public static async Task<MaterialViewModel> ReadAsync(string endpoint, string id)
-        {
-            var httpClient = new HttpClient();
-            string body;
-
-            try
-            {
-                HttpResponseMessage response = await httpClient.GetAsync(endpoint + "Materials/" + id);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-                body = await response.Content.ReadAsStringAsync();
-
-                var ret = new MaterialViewModel
-                {
-                    Data = JsonConvert.DeserializeObject<PackIt.Material.Material>(body)
-                };
-
-                return ret;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
     }
 }

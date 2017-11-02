@@ -16,6 +16,7 @@ namespace PackIt
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
     using PackIt.DTO;
+    using PackIt.Models;
 
     /// <summary>   A start up. </summary>
     public class Startup
@@ -45,6 +46,9 @@ namespace PackIt
         /// <param name="services"> The services. </param>
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configure using a sub-section of the appsettings.json file.
+            services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"));
+
             services.AddDbContext<PlanContext>(options => options.UseInMemoryDatabase("plan"));
             services.AddDbContext<MaterialContext>(options => options.UseInMemoryDatabase("material"));
             services.AddDbContext<PackContext>(options => options.UseInMemoryDatabase("pack"));

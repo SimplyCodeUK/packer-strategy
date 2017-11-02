@@ -26,37 +26,5 @@ namespace PackItUI.Areas.Plans.Models
         ///
         /// <value> The plan data. </value>
         public PackIt.Plan.Plan Data { get; set; }
-
-        /// <summary> Reads asynchronously the model for a material. </summary>
-        ///
-        /// <param name="endpoint"> The plans service endpoint. </param>
-        /// <param name="id"> The identifier of the plan. </param>
-        ///
-        /// <returns> The model. </returns>
-        public static async Task<PlanViewModel> ReadAsync(string endpoint, string id)
-        {
-            var httpClient = new HttpClient();
-            string body;
-
-            try
-            {
-                HttpResponseMessage response = await httpClient.GetAsync(endpoint + "Plans/" + id);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-                body = await response.Content.ReadAsStringAsync();
-
-                var ret = new PlanViewModel
-                {
-                    Data = JsonConvert.DeserializeObject<PackIt.Plan.Plan>(body)
-                };
-
-                return ret;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
     }
 }

@@ -45,7 +45,7 @@ namespace PackItUI.Areas.Materials.Controllers
         public async Task<IActionResult> Index()
         {
             var model = new HomeViewModel(await this.service.InformationAsync(), await this.service.ReadAsync());
-            return this.View(model);
+            return this.View("Index", model);
         }
 
         /// <summary> Display the form to create a new material. </summary>
@@ -55,7 +55,7 @@ namespace PackItUI.Areas.Materials.Controllers
         public IActionResult Create()
         {
             var model = new MaterialViewModel();
-            return this.View(model);
+            return this.View("Create", model);
         }
 
         /// <summary> Stores the material from the form. </summary>
@@ -73,7 +73,7 @@ namespace PackItUI.Areas.Materials.Controllers
             }
             else
             {
-                return this.View(model);
+                return this.View("Create", model);
             }
         }
 
@@ -90,7 +90,7 @@ namespace PackItUI.Areas.Materials.Controllers
                 Data = this.mapper.Map<MaterialUpdateViewModel.Material>(await this.service.ReadAsync(id))
             };
 
-            return this.View(model);
+            return this.View("Update", model);
         }
 
         /// <summary> Save the updated material asynchronously. </summary>
@@ -112,7 +112,7 @@ namespace PackItUI.Areas.Materials.Controllers
             }
             else
             {
-                return this.View(model);
+                return this.View("Update", model);
             }
         }
 
@@ -129,7 +129,7 @@ namespace PackItUI.Areas.Materials.Controllers
                 Data = await this.service.ReadAsync(id)
             };
 
-            return this.View(model);
+            return this.View("Delete", model);
         }
 
         /// <summary> Deletes the specified material. </summary>

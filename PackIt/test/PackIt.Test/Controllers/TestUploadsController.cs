@@ -7,19 +7,43 @@
 namespace PackIt.Test.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Net;
+    using System.Net.Http;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Options;
+    using Moq;
+    using Moq.Protected;
     using Newtonsoft.Json;
     using NUnit.Framework;
     using PackIt.Controllers;
-    using PackIt.DTO;
+    using PackIt.Models;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test plans. </summary>
     [TestFixture]
     public class TestUploadsController
     {
+        /// <summary> The service endpoints. </summary>
+        private static readonly ServiceEndpoints Endpoints = new ServiceEndpoints
+        {
+            Materials = "http://localhost:8001/api/v1/",
+            Packs = "http://localhost:8002/api/v1/",
+            Plans = "http://localhost:8003/api/v1/",
+            Uploads = "http://localhost:8004/api/v1/"
+        };
+
+        /// <summary> The application settings. </summary>
+        private static readonly AppSettings AppSettings = new AppSettings
+        {
+            ServiceEndpoints = Endpoints
+        };
+
+        /// <summary> The options. </summary>
+        private static readonly OptionsWrapper<AppSettings> Options = new OptionsWrapper<AppSettings>(AppSettings);
+
         /// <summary>   The controller under test. </summary>
         private UploadsController controller;
 
@@ -27,57 +51,49 @@ namespace PackIt.Test.Controllers
         [SetUp]
         public void BeforeTest()
         {
-            var planBuilder = new DbContextOptionsBuilder<PlanContext>();
-            planBuilder.EnableSensitiveDataLogging();
-            planBuilder.UseInMemoryDatabase("testplan");
-
-            var materialBuilder = new DbContextOptionsBuilder<MaterialContext>();
-            materialBuilder.EnableSensitiveDataLogging();
-            materialBuilder.UseInMemoryDatabase("testmaterial");
-
-            var packBuilder = new DbContextOptionsBuilder<PackContext>();
-            packBuilder.EnableSensitiveDataLogging();
-            packBuilder.UseInMemoryDatabase("testpack");
-
-            var planContext = new PlanContext(planBuilder.Options);
-            var planRepo = new PlanRepository(planContext);
-            var materialContext = new MaterialContext(materialBuilder.Options);
-            var materialRepo = new MaterialRepository(materialContext);
-            var packContext = new PackContext(packBuilder.Options);
-            var packRepo = new PackRepository(packContext);
-
-            this.controller = new UploadsController(planRepo, materialRepo, packRepo);
-            Assert.IsNotNull(this.controller);
+            this.SetupServicesNotRunning();
         }
 
-        /// <summary>   (Unit Test Method) post this message. </summary>
+        /// <summary> (Unit Test Method) post successful. </summary>
         [Test]
-        public void Post()
+        public void PostSuccessful()
         {
+            this.SetupServicesRunning();
+
             string text = File.ReadAllText("Controllers/TestData/uploadsPass.json");
             UploadsController.Bulk bulk = JsonConvert.DeserializeObject<UploadsController.Bulk>(text);
 
             // make sure IDs are unique
-            foreach (PackIt.Plan.Plan item in bulk.Plans)
+            foreach (Plan.Plan item in bulk.Plans)
             {
                 item.PlanId = Guid.NewGuid().ToString();
             }
 
-            foreach (PackIt.Material.Material item in bulk.Materials)
+            foreach (Material.Material item in bulk.Materials)
             {
                 item.MaterialId = Guid.NewGuid().ToString();
             }
 
-            foreach (PackIt.Pack.Pack item in bulk.Packs)
+            foreach (Pack.Pack item in bulk.Packs)
             {
                 item.PackId = Guid.NewGuid().ToString();
             }
 
             var result = this.controller.Post(bulk);
+            result.Wait();
 
             Assert.IsNotNull(result);
-            Assert.IsInstanceOf<ObjectResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.Created, ((ObjectResult)result).StatusCode);
+            Assert.IsNotNull(result.Result);
+            Assert.IsInstanceOf<ObjectResult>(result.Result);
+
+            ObjectResult obj = (ObjectResult)result.Result;
+            Assert.AreEqual((int)HttpStatusCode.Created, obj.StatusCode);
+
+            Assert.IsInstanceOf<List<string>>(obj.Value);
+            List<string> added = (List<string>)obj.Value;
+            Assert.AreEqual(
+                bulk.Materials.Count + bulk.Packs.Count + bulk.Plans.Count,
+                added.Count);
         }
 
         /// <summary>   (Unit Test Method) posts the no data. </summary>
@@ -85,10 +101,42 @@ namespace PackIt.Test.Controllers
         public void PostNoData()
         {
             var result = this.controller.Post(null);
+            result.Wait();
 
             Assert.IsNotNull(result);
-            Assert.IsInstanceOf<BadRequestResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.BadRequest, ((BadRequestResult)result).StatusCode);
+            Assert.IsNotNull(result.Result);
+            Assert.IsInstanceOf<BadRequestResult>(result.Result);
+            Assert.AreEqual((int)HttpStatusCode.BadRequest, ((BadRequestResult)result.Result).StatusCode);
+        }
+
+        /// <summary> Setup the controller as if the services are not running. </summary>
+        private void SetupServicesNotRunning()
+        {
+            this.controller = new UploadsController(Options);
+            Assert.IsNotNull(this.controller);
+        }
+
+        /// <summary> Setup the controller as if the services are running. </summary>
+        private void SetupServicesRunning()
+        {
+            var handler = new Mock<HttpMessageHandler>();
+
+            // Mock protected method SendAsync
+            handler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(
+                    Task<HttpResponseMessage>.Factory.StartNew(
+                        () =>
+                        {
+                            return new HttpResponseMessage(HttpStatusCode.OK);
+                        }));
+
+            this.controller = new UploadsController(Options, messageHandler: handler.Object);
+
+            Assert.IsNotNull(this.controller);
         }
     }
 }

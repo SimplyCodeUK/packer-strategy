@@ -6,11 +6,6 @@
 
 namespace PackItUI.Areas.Packs.Models
 {
-    using System;
-    using System.Net.Http;
-    using System.Threading.Tasks;
-    using Newtonsoft.Json;
-
     /// <summary> Pack home view model. </summary>
     public class PackViewModel
     {
@@ -26,37 +21,5 @@ namespace PackItUI.Areas.Packs.Models
         ///
         /// <value> The pack data. </value>
         public PackIt.Pack.Pack Data { get; set; }
-
-        /// <summary> Reads asynchronously the model for a material. </summary>
-        ///
-        /// <param name="endpoint"> The packs service endpoint. </param>
-        /// <param name="id"> The identifier of the pack. </param>
-        ///
-        /// <returns> The model. </returns>
-        public static async Task<PackViewModel> ReadAsync(string endpoint, string id)
-        {
-            var httpClient = new HttpClient();
-            string body;
-
-            try
-            {
-                HttpResponseMessage response = await httpClient.GetAsync(endpoint + "Packs/" + id);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-                body = await response.Content.ReadAsStringAsync();
-
-                var ret = new PackViewModel
-                {
-                    Data = JsonConvert.DeserializeObject<PackIt.Pack.Pack>(body)
-                };
-
-                return ret;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
     }
 }

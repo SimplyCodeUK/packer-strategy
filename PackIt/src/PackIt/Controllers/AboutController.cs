@@ -34,7 +34,7 @@ namespace PackIt.Controllers
             public AboutService()
             {
                 this.Version = "1";
-                this.About = "Single controller for Materials, Plans and Packs";
+                this.About = "Single controller for Materials, Plans, Packs and Uploads";
             }
 
             /// <summary> Gets the version version of the service. </summary>

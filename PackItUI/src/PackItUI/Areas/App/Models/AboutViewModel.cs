@@ -6,11 +6,8 @@
 
 namespace PackItUI.Areas.App.Models
 {
-    using System;
     using System.Collections.Generic;
-    using System.Net.Http;
     using System.Threading.Tasks;
-    using Newtonsoft.Json;
     using PackItUI.Services;
 
     /// <summary> About view model. </summary>
@@ -38,9 +35,10 @@ namespace PackItUI.Areas.App.Models
         {
             var serviceMap = new Dictionary<string, Service>
             {
-                { "Materials", new Materials(endpoints.Materials) },
-                { "Packs", new Packs(endpoints.Packs) },
-                { "Plans", new Plans(endpoints.Plans) }
+                { "Materials", new Service(endpoints.Materials) },
+                { "Packs", new Service(endpoints.Packs) },
+                { "Plans", new Service(endpoints.Plans) },
+                { "Uploads", new Service(endpoints.Uploads) }
             };
 
             foreach (KeyValuePair<string, Service> service in serviceMap)
