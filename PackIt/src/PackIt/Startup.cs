@@ -57,9 +57,9 @@ namespace PackIt
             services.AddMvc();
             services.AddApiVersioning();
 
-            services.AddSingleton<IPlanRepository, PlanRepository>();
             services.AddSingleton<IMaterialRepository, MaterialRepository>();
             services.AddSingleton<IPackRepository, PackRepository>();
+            services.AddSingleton<IPlanRepository, PlanRepository>();
         }
 
         /// <summary>   Configures start up. </summary>

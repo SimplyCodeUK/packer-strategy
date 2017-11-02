@@ -1,28 +1,65 @@
-// <copyright company="Simply Code Ltd.">
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Services
+namespace PackItUI.Areas.Materials.DTO
 {
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
+    using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
+    using PackItUI.Areas.App.Models;
+    using PackItUI.Services;
 
-    /// <summary> Materials service. </summary>
-    public class Materials : Service
+    /// <summary> Material I/O implementation. </summary>
+    ///
+    /// <seealso cref="T:PackItUI.Areas.Materials.DTO.IMaterialHandler"/>
+    public class MaterialHandler : IMaterialHandler
     {
+        /// <summary> The HTTP client. </summary>
+        private readonly HttpClient httpClient;
+
+        /// <summary> The application endpoint. </summary>
+        private readonly string endpoint;
+
         /// <summary>
-        /// Initialises a new instance of the <see cref="Materials"/> class.
+        /// Initialises a new instance of the <see cref="MaterialHandler" /> class.
         /// </summary>
         ///
-        /// <param name="endpoint"> The endpoint for the material service. </param>
-        public Materials(string endpoint) : base(endpoint)
+        /// <param name="appSettings"> The application settings. </param>
+        public MaterialHandler(IOptions<AppSettings> appSettings)
         {
+            this.httpClient = new HttpClient();
+            this.endpoint = appSettings.Value.ServiceEndpoints.Materials;
+        }
+
+        /// <summary> Reads asynchronously the service information. </summary>
+        ///
+        /// <returns> The service information. </returns>
+        public async Task<ServiceInfo> InformationAsync()
+        {
+            try
+            {
+                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint);
+
+                // Throw an exception if not successful
+                response.EnsureSuccessStatusCode();
+
+                // Get the content
+                string content = await response.Content.ReadAsStringAsync();
+
+                // Create a plan from the content
+                return JsonConvert.DeserializeObject<ServiceInfo>(content);
+            }
+            catch (Exception)
+            {
+                return new ServiceInfo();
+            }
         }
 
         /// <summary> Creates asynchronously a material. </summary>
@@ -39,7 +76,7 @@ namespace PackItUI.Services
                     json,
                     Encoding.UTF8,
                     "application/json");
-                HttpResponseMessage response = await this.HttpClient.PostAsync(this.Endpoint + "Materials", content);
+                HttpResponseMessage response = await this.httpClient.PostAsync(this.endpoint + "Materials", content);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -59,7 +96,7 @@ namespace PackItUI.Services
         {
             try
             {
-                HttpResponseMessage response = await this.HttpClient.GetAsync(this.Endpoint + "Materials");
+                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint + "Materials");
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -80,12 +117,12 @@ namespace PackItUI.Services
         ///
         /// <param name="id"> The identifier of the material. </param>
         ///
-        /// <returns> The material. </returns>
+        /// <returns> The material or null id the material could not be found. </returns>
         public async Task<PackIt.Material.Material> ReadAsync(string id)
         {
             try
             {
-                HttpResponseMessage response = await this.HttpClient.GetAsync(this.Endpoint + "Materials/" + id);
+                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint + "Materials/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -117,7 +154,7 @@ namespace PackItUI.Services
                     json,
                     Encoding.UTF8,
                     "application/json");
-                var response = await this.HttpClient.PutAsync(this.Endpoint + "Materials/" + id, content);
+                var response = await this.httpClient.PutAsync(this.endpoint + "Materials/" + id, content);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -139,7 +176,7 @@ namespace PackItUI.Services
         {
             try
             {
-                HttpResponseMessage response = await this.HttpClient.DeleteAsync(this.Endpoint + "Materials/" + id);
+                HttpResponseMessage response = await this.httpClient.DeleteAsync(this.endpoint + "Materials/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();

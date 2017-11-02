@@ -9,16 +9,15 @@ namespace PackItUI.Areas.Packs.Controllers
     using System.Threading.Tasks;
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Options;
-    using PackItUI.Areas.App.Models;
+    using PackItUI.Areas.Packs.DTO;
     using PackItUI.Areas.Packs.Models;
 
     /// <summary>   A controller for handling the Packs Home Page. </summary>
     [Area("Packs")]
     public class HomeController : Controller
     {
-        /// <summary> The packs service. </summary>
-        private readonly Services.Packs service;
+        /// <summary> The packs handler. </summary>
+        private readonly IPackHandler handler;
 
         /// <summary> The mapper to view model. </summary>
         private readonly IMapper mapper = new MapperConfiguration(
@@ -32,10 +31,10 @@ namespace PackItUI.Areas.Packs.Controllers
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         ///
-        /// <param name="appSettings"> The application settings. </param>
-        public HomeController(IOptions<AppSettings> appSettings)
+        /// <param name="handler"> The I/O handler. </param>
+        public HomeController(IPackHandler handler)
         {
-            this.service = new Services.Packs(appSettings.Value.ServiceEndpoints.Packs);
+            this.handler = handler;
         }
 
         /// <summary>   Handle the Packs view request. </summary>
@@ -44,7 +43,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var model = new HomeViewModel(await this.service.InformationAsync(), await this.service.ReadAsync());
+            var model = new HomeViewModel(await this.handler.InformationAsync(), await this.handler.ReadAsync());
             return this.View("Index", model);
         }
 
@@ -67,7 +66,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(PackViewModel model)
         {
-            if (ModelState.IsValid && await this.service.CreateAsync(model.Data))
+            if (ModelState.IsValid && await this.handler.CreateAsync(model.Data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }
@@ -87,7 +86,7 @@ namespace PackItUI.Areas.Packs.Controllers
         {
             var model = new PackUpdateViewModel
             {
-                Data = this.mapper.Map<PackUpdateViewModel.Pack>(await this.service.ReadAsync(id))
+                Data = this.mapper.Map<PackUpdateViewModel.Pack>(await this.handler.ReadAsync(id))
             };
 
             return this.View("Update", model);
@@ -103,10 +102,10 @@ namespace PackItUI.Areas.Packs.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(string id, PackUpdateViewModel model)
         {
-            PackIt.Pack.Pack data = await this.service.ReadAsync(id);
+            PackIt.Pack.Pack data = await this.handler.ReadAsync(id);
 
             data = this.mapper.Map(model.Data, data);
-            if (await this.service.UpdateAsync(id, data))
+            if (await this.handler.UpdateAsync(id, data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }
@@ -126,7 +125,7 @@ namespace PackItUI.Areas.Packs.Controllers
         {
             var model = new PackViewModel
             {
-                Data = await this.service.ReadAsync(id)
+                Data = await this.handler.ReadAsync(id)
             };
 
             return this.View("Delete", model);
@@ -142,7 +141,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> DoDelete(string id)
         {
-            await this.service.DeleteAsync(id);
+            await this.handler.DeleteAsync(id);
             return this.RedirectToAction(nameof(this.Index));
         }
     }
