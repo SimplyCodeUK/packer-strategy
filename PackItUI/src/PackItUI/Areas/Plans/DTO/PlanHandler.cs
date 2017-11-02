@@ -1,28 +1,65 @@
-// <copyright company="Simply Code Ltd.">
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Services
+namespace PackItUI.Areas.Plans.DTO
 {
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
+    using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
+    using PackItUI.Areas.App.Models;
+    using PackItUI.Services;
 
-    /// <summary> Plan home view model. </summary>
-    public class Plans : Service
+    /// <summary> Plan I/O implementation. </summary>
+    ///
+    /// <seealso cref="T:PackItUI.Areas.Plans.DTO.IPlanHandler"/>
+    public class PlanHandler : IPlanHandler
     {
+        /// <summary> The HTTP client. </summary>
+        private readonly HttpClient httpClient;
+
+        /// <summary> The application endpoint. </summary>
+        private readonly string endpoint;
+
         /// <summary>
-        /// Initialises a new instance of the <see cref="Plans"/> class.
+        /// Initialises a new instance of the <see cref="PlanHandler" /> class.
         /// </summary>
         ///
-        /// <param name="endpoint"> The endpoint for the plan service. </param>
-        public Plans(string endpoint) : base(endpoint)
+        /// <param name="appSettings"> The application settings. </param>
+        public PlanHandler(IOptions<AppSettings> appSettings)
         {
+            this.httpClient = new HttpClient();
+            this.endpoint = appSettings.Value.ServiceEndpoints.Plans;
+        }
+
+        /// <summary> Reads asynchronously the service information. </summary>
+        ///
+        /// <returns> The service information. </returns>
+        public async Task<ServiceInfo> InformationAsync()
+        {
+            try
+            {
+                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint);
+
+                // Throw an exception if not successful
+                response.EnsureSuccessStatusCode();
+
+                // Get the content
+                string content = await response.Content.ReadAsStringAsync();
+
+                // Create a plan from the content
+                return JsonConvert.DeserializeObject<ServiceInfo>(content);
+            }
+            catch (Exception)
+            {
+                return new ServiceInfo();
+            }
         }
 
         /// <summary> Creates asynchronously a plan. </summary>
@@ -39,7 +76,7 @@ namespace PackItUI.Services
                     json,
                     Encoding.UTF8,
                     "application/json");
-                HttpResponseMessage response = await this.HttpClient.PostAsync(this.Endpoint + "Plans", content);
+                HttpResponseMessage response = await this.httpClient.PostAsync(this.endpoint + "Plans", content);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -59,7 +96,7 @@ namespace PackItUI.Services
         {
             try
             {
-                HttpResponseMessage response = await this.HttpClient.GetAsync(this.Endpoint + "Plans");
+                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint + "Plans");
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -85,7 +122,7 @@ namespace PackItUI.Services
         {
             try
             {
-                HttpResponseMessage response = await this.HttpClient.GetAsync(this.Endpoint + "Plans/" + id);
+                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint + "Plans/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -117,7 +154,7 @@ namespace PackItUI.Services
                     json,
                     Encoding.UTF8,
                     "application/json");
-                HttpResponseMessage response = await this.HttpClient.PutAsync(this.Endpoint + "Plans/" + id, content);
+                HttpResponseMessage response = await this.httpClient.PutAsync(this.endpoint + "Plans/" + id, content);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -139,7 +176,7 @@ namespace PackItUI.Services
         {
             try
             {
-                HttpResponseMessage response = await this.HttpClient.DeleteAsync(this.Endpoint + "Plans/" + id);
+                HttpResponseMessage response = await this.httpClient.DeleteAsync(this.endpoint + "Plans/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();

@@ -9,16 +9,15 @@ namespace PackItUI.Areas.Materials.Controllers
     using System.Threading.Tasks;
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Options;
-    using PackItUI.Areas.App.Models;
+    using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Materials.Models;
 
     /// <summary>   A controller for handling the Materials Home Page. </summary>
     [Area("Materials")]
     public class HomeController : Controller
     {
-        /// <summary> The materials service. </summary>
-        private readonly Services.Materials service;
+        /// <summary> The materials handler. </summary>
+        private readonly IMaterialHandler handler;
 
         /// <summary> The mapper to view model. </summary>
         private readonly IMapper mapper = new MapperConfiguration(
@@ -32,10 +31,10 @@ namespace PackItUI.Areas.Materials.Controllers
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         ///
-        /// <param name="appSettings"> The application settings. </param>
-        public HomeController(IOptions<AppSettings> appSettings)
+        /// <param name="handler"> The I/O handler. </param>
+        public HomeController(IMaterialHandler handler)
         {
-            this.service = new Services.Materials(appSettings.Value.ServiceEndpoints.Materials);
+            this.handler = handler;
         }
 
         /// <summary>   Handle the Materials view request. </summary>
@@ -44,7 +43,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var model = new HomeViewModel(await this.service.InformationAsync(), await this.service.ReadAsync());
+            var model = new HomeViewModel(await this.handler.InformationAsync(), await this.handler.ReadAsync());
             return this.View("Index", model);
         }
 
@@ -67,7 +66,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MaterialViewModel model)
         {
-            if (ModelState.IsValid && await this.service.CreateAsync(model.Data))
+            if (ModelState.IsValid && await this.handler.CreateAsync(model.Data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }
@@ -87,7 +86,7 @@ namespace PackItUI.Areas.Materials.Controllers
         {
             var model = new MaterialUpdateViewModel
             {
-                Data = this.mapper.Map<MaterialUpdateViewModel.Material>(await this.service.ReadAsync(id))
+                Data = this.mapper.Map<MaterialUpdateViewModel.Material>(await this.handler.ReadAsync(id))
             };
 
             return this.View("Update", model);
@@ -103,10 +102,10 @@ namespace PackItUI.Areas.Materials.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(string id, MaterialUpdateViewModel model)
         {
-            PackIt.Material.Material data = await this.service.ReadAsync(id);
+            PackIt.Material.Material data = await this.handler.ReadAsync(id);
 
             data = this.mapper.Map(model.Data, data);
-            if (await this.service.UpdateAsync(id, data))
+            if (await this.handler.UpdateAsync(id, data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }
@@ -126,7 +125,7 @@ namespace PackItUI.Areas.Materials.Controllers
         {
             var model = new MaterialViewModel
             {
-                Data = await this.service.ReadAsync(id)
+                Data = await this.handler.ReadAsync(id)
             };
 
             return this.View("Delete", model);
@@ -142,7 +141,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> DoDelete(string id)
         {
-            await this.service.DeleteAsync(id);
+            await this.handler.DeleteAsync(id);
             return this.RedirectToAction(nameof(this.Index));
         }
     }

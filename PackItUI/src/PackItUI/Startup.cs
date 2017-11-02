@@ -11,6 +11,9 @@ namespace PackItUI
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using PackItUI.Areas.App.Models;
+    using PackItUI.Areas.Materials.DTO;
+    using PackItUI.Areas.Packs.DTO;
+    using PackItUI.Areas.Plans.DTO;
 
     /// <summary>   A start up. </summary>
     public class Startup
@@ -42,6 +45,10 @@ namespace PackItUI
             services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"));
 
             services.AddMvc();
+
+            services.AddSingleton<IMaterialHandler, MaterialHandler>();
+            services.AddSingleton<IPackHandler, PackHandler>();
+            services.AddSingleton<IPlanHandler, PlanHandler>();
         }
 
         /// <summary>
