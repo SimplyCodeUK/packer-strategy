@@ -32,10 +32,31 @@ namespace PackItUI.Areas.Materials.DTO
         /// </summary>
         ///
         /// <param name="appSettings"> The application settings. </param>
-        public MaterialHandler(IOptions<AppSettings> appSettings)
+        /// <param name="timeout"> The timeout for http calls. </param>
+        public MaterialHandler(IOptions<AppSettings> appSettings, TimeSpan timeout) : this(appSettings)
         {
-            this.httpClient = new HttpClient();
-            this.endpoint = appSettings.Value.ServiceEndpoints.Materials;
+            this.httpClient.Timeout = timeout;
+        }
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="MaterialHandler" /> class.
+        /// </summary>
+        ///
+        /// <param name="appSettings"> The application settings. </param>
+        public MaterialHandler(IOptions<AppSettings> appSettings) : this(appSettings,  new HttpClientHandler())
+        {
+        }
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="MaterialHandler" /> class.
+        /// </summary>
+        ///
+        /// <param name="appSettings"> The application settings. </param>
+        /// <param name="messageHandler"> The http message handler. </param>
+        public MaterialHandler(IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler)
+        {
+            this.httpClient = new HttpClient(messageHandler);
+            this.endpoint = appSettings.Value.ServiceEndpoints.Plans;
         }
 
         /// <summary> Reads asynchronously the service information. </summary>
@@ -43,23 +64,7 @@ namespace PackItUI.Areas.Materials.DTO
         /// <returns> The service information. </returns>
         public async Task<ServiceInfo> InformationAsync()
         {
-            try
-            {
-                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-
-                // Get the content
-                string content = await response.Content.ReadAsStringAsync();
-
-                // Create a plan from the content
-                return JsonConvert.DeserializeObject<ServiceInfo>(content);
-            }
-            catch (Exception)
-            {
-                return new ServiceInfo();
-            }
+            return await ServiceHandler.InformationAsync(this.httpClient, this.endpoint);
         }
 
         /// <summary> Creates asynchronously a material. </summary>

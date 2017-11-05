@@ -6,12 +6,23 @@
 
 namespace PackItUI.Test.Areas.App.Controllers
 {
+    using System;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
+    using Moq;
+    using Moq.Protected;
     using NUnit.Framework;
     using PackItUI.Areas.App.Controllers;
     using PackItUI.Areas.App.Models;
+    using PackItUI.Areas.Materials.DTO;
+    using PackItUI.Areas.Packs.DTO;
+    using PackItUI.Areas.Plans.DTO;
+    using PackItUI.Areas.Uploads.DTO;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test materials. </summary>
     [TestFixture]
@@ -33,7 +44,10 @@ namespace PackItUI.Test.Areas.App.Controllers
         };
 
         /// <summary> The options. </summary>
-        private static readonly OptionsWrapper<AppSettings> Options = new OptionsWrapper<AppSettings>(AppSettings);
+        private static readonly IOptions<AppSettings> Options = new OptionsWrapper<AppSettings>(AppSettings);
+
+        /// <summary> The time out for disconnected services. </summary>
+        private static readonly TimeSpan TimeOut = new TimeSpan(0, 0, 0, 0, 20);
 
         /// <summary>   The controller under test. </summary>
         private HomeController controller;
@@ -42,14 +56,7 @@ namespace PackItUI.Test.Areas.App.Controllers
         [SetUp]
         public void BeforeTest()
         {
-            this.controller = new HomeController(Options)
-            {
-                ControllerContext = new ControllerContext
-                {
-                    HttpContext = new DefaultHttpContext()
-                }
-            };
-            Assert.IsNotNull(this.controller);
+            this.SetupDisconnected();
         }
 
         /// <summary> (Unit Test Method) index action. </summary>
@@ -88,6 +95,32 @@ namespace PackItUI.Test.Areas.App.Controllers
             Assert.AreEqual("Service down!", model.Services["Uploads"].About);
         }
 
+        /// <summary> (Unit Test Method) about action when the services are running. </summary>
+        [Test]
+        public void AboutServicesRunning()
+        {
+            this.SetupConnected();
+
+            var result = this.controller.About();
+            result.Wait();
+            Assert.IsInstanceOf<ViewResult>(result.Result);
+
+            ViewResult viewResult = (ViewResult)result.Result;
+            Assert.AreEqual("About", viewResult.ViewName);
+            Assert.IsNotNull(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<AboutViewModel>(viewResult.ViewData.Model);
+
+            AboutViewModel model = (AboutViewModel)viewResult.ViewData.Model;
+            Assert.AreEqual("1", model.Services["Materials"].Version);
+            Assert.AreEqual("1", model.Services["Packs"].Version);
+            Assert.AreEqual("1", model.Services["Plans"].Version);
+            Assert.AreEqual("1", model.Services["Uploads"].Version);
+            Assert.AreEqual("Mock", model.Services["Materials"].About);
+            Assert.AreEqual("Mock", model.Services["Packs"].About);
+            Assert.AreEqual("Mock", model.Services["Plans"].About);
+            Assert.AreEqual("Mock", model.Services["Uploads"].About);
+        }
+
         /// <summary> (Unit Test Method) contact action. </summary>
         [Test]
         public void Contact()
@@ -111,6 +144,50 @@ namespace PackItUI.Test.Areas.App.Controllers
             Assert.AreEqual("Error", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
             Assert.IsInstanceOf<ErrorViewModel>(viewResult.ViewData.Model);
+        }
+
+        /// <summary> Setup for disconnected services. </summary>
+        private void SetupDisconnected()
+        {
+            this.controller = new HomeController(
+                new MaterialHandler(Options, TimeOut),
+                new PackHandler(Options, TimeOut),
+                new PlanHandler(Options, TimeOut),
+                new UploadHandler(Options, TimeOut))
+            {
+                ControllerContext = new ControllerContext
+                {
+                    HttpContext = new DefaultHttpContext()
+                }
+            };
+            Assert.IsNotNull(this.controller);
+        }
+
+        /// <summary> Setup for connected services. </summary>
+        private void SetupConnected()
+        {
+            string testContent = "{'Version': '1', 'About': 'Mock'}";
+            var mockMessageHandler = new Mock<HttpMessageHandler>();
+            mockMessageHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(new HttpResponseMessage
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Content = new StringContent(testContent)
+                }));
+
+            this.controller = new HomeController(
+                new MaterialHandler(Options, mockMessageHandler.Object),
+                new PackHandler(Options, mockMessageHandler.Object),
+                new PlanHandler(Options, mockMessageHandler.Object),
+                new UploadHandler(Options, mockMessageHandler.Object))
+            {
+                ControllerContext = new ControllerContext
+                {
+                    HttpContext = new DefaultHttpContext()
+                }
+            };
+            Assert.IsNotNull(this.controller);
         }
     }
 }

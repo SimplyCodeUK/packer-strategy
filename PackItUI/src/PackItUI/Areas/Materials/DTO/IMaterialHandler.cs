@@ -11,13 +11,8 @@ namespace PackItUI.Areas.Materials.DTO
     using PackItUI.Services;
 
     /// <summary> Interface for material I/O. </summary>
-    public interface IMaterialHandler
+    public interface IMaterialHandler : IServiceHandler
     {
-        /// <summary> Reads asynchronously the service information. </summary>
-        ///
-        /// <returns> The service information. </returns>
-        Task<ServiceInfo> InformationAsync();
-
         /// <summary> Creates asynchronously a material. </summary>
         ///
         /// <param name="data"> The material to save. </param>

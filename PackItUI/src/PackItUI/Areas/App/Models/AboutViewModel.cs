@@ -8,6 +8,11 @@ namespace PackItUI.Areas.App.Models
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Microsoft.Extensions.Options;
+    using PackItUI.Areas.Materials.DTO;
+    using PackItUI.Areas.Packs.DTO;
+    using PackItUI.Areas.Plans.DTO;
+    using PackItUI.Areas.Uploads.DTO;
     using PackItUI.Services;
 
     /// <summary> About view model. </summary>
@@ -28,20 +33,12 @@ namespace PackItUI.Areas.App.Models
 
         /// <summary> Create the model with data from the endpoint. </summary>
         ///
-        /// <param name="endpoints"> The service endpoints. </param>
+        /// <param name="services"> Dictionary of all services. </param>
         ///
         /// <returns> The model data. </returns>
-        public async Task Create(ServiceEndpoints endpoints)
+        public async Task Create(Dictionary<string, IServiceHandler> services)
         {
-            var serviceMap = new Dictionary<string, Service>
-            {
-                { "Materials", new Service(endpoints.Materials) },
-                { "Packs", new Service(endpoints.Packs) },
-                { "Plans", new Service(endpoints.Plans) },
-                { "Uploads", new Service(endpoints.Uploads) }
-            };
-
-            foreach (KeyValuePair<string, Service> service in serviceMap)
+            foreach (KeyValuePair<string, IServiceHandler> service in services)
             {
                 ServiceInfo info = await service.Value.InformationAsync();
                 this.Services[service.Key] = info;

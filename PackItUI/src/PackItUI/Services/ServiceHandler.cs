@@ -1,4 +1,4 @@
-// <copyright company="Simply Code Ltd.">
+﻿// <copyright company="Simply Code Ltd.">
 // Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
@@ -11,34 +11,20 @@ namespace PackItUI.Services
     using System.Threading.Tasks;
     using Newtonsoft.Json;
 
-    /// <summary> Generic service. </summary>
-    public class Service
+    /// <summary> Service information implementation. </summary>
+    public static class ServiceHandler
     {
-        /// <summary> The endpoint for the service. </summary>
-        protected readonly string Endpoint;
-
-        /// <summary> The http client. </summary>
-        protected readonly HttpClient HttpClient;
-
-        /// <summary>
-        /// Initialises a new instance of the <see cref="Service"/> class.
-        /// </summary>
-        ///
-        /// <param name="endpoint"> The endpoint for the material service. </param>
-        public Service(string endpoint)
-        {
-            this.Endpoint = endpoint;
-            this.HttpClient = new HttpClient();
-        }
-
         /// <summary> Reads asynchronously the service information. </summary>
         ///
+        /// <param name="httpClient"> The HTTP client. </param>
+        /// <param name="endpoint"> The service endpoint. </param>
+        ///
         /// <returns> The service information. </returns>
-        public async Task<ServiceInfo> InformationAsync()
+        public static async Task<ServiceInfo> InformationAsync(HttpClient httpClient, string endpoint)
         {
             try
             {
-                HttpResponseMessage response = await this.HttpClient.GetAsync(this.Endpoint);
+                HttpResponseMessage response = await httpClient.GetAsync(endpoint);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();

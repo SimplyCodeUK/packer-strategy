@@ -6,6 +6,7 @@
       <Value>ecma</Value>
       <Value>fefco</Value>
       <Value>edgeboard</Value>
+      <Value>json</Value>
       <Value>shrinkwrap</Value>
       <Value>slipsheet</Value>
     </CollectionProperty>

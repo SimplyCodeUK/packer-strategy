@@ -30,16 +30,20 @@ namespace PackIt.Controllers
         /// </summary>
         ///
         /// <param name="appSettings"> The application settings. </param>
+        public UploadsController(IOptions<AppSettings> appSettings) : this(appSettings, new HttpClientHandler())
+        {
+        }
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="UploadsController" /> class.
+        /// </summary>
+        ///
+        /// <param name="appSettings"> The application settings. </param>
         /// <param name="messageHandler"> The http message handler. </param>
-        /// <param name="timeout"> The timeout for http requests. </param>
-        public UploadsController(IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler = null, TimeSpan timeout = default(TimeSpan))
+        public UploadsController(IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler)
         {
             this.AppSettings = appSettings.Value;
-            this.httpClient = new HttpClient(messageHandler ?? new HttpClientHandler());
-            if (timeout != default(TimeSpan))
-            {
-                this.httpClient.Timeout = timeout;
-            }
+            this.httpClient = new HttpClient(messageHandler);
         }
 
         /// <summary> Gets the application settings. </summary>

@@ -14,6 +14,7 @@ namespace PackItUI
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Packs.DTO;
     using PackItUI.Areas.Plans.DTO;
+    using PackItUI.Areas.Uploads.DTO;
 
     /// <summary>   A start up. </summary>
     public class Startup
@@ -49,6 +50,7 @@ namespace PackItUI
             services.AddSingleton<IMaterialHandler, MaterialHandler>();
             services.AddSingleton<IPackHandler, PackHandler>();
             services.AddSingleton<IPlanHandler, PlanHandler>();
+            services.AddSingleton<IUploadHandler, UploadHandler>();
         }
 
         /// <summary>

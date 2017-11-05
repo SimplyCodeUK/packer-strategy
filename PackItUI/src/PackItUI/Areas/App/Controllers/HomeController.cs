@@ -6,30 +6,42 @@
 
 namespace PackItUI.Areas.App.Controllers
 {
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Options;
     using PackItUI.Areas.App.Models;
+    using PackItUI.Areas.Materials.DTO;
+    using PackItUI.Areas.Packs.DTO;
+    using PackItUI.Areas.Plans.DTO;
+    using PackItUI.Areas.Uploads.DTO;
+    using PackItUI.Services;
 
     /// <summary>   A controller for handling the Home Page. </summary>
     [Area("App")]
     public class HomeController : Controller
     {
+        /// <summary> The dictionary of all services. </summary>
+        private readonly Dictionary<string, IServiceHandler> services;
+
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         ///
-        /// <param name="appSettings"> The application settings. </param>
-        public HomeController(IOptions<AppSettings> appSettings)
+        /// <param name="materialHandler"> The Material service handler. </param>
+        /// <param name="packHandler"> The Pack service handler. </param>
+        /// <param name="planHandler"> The Plan service handler. </param>
+        /// <param name="uploadHandler"> The Upload service handler. </param>
+        public HomeController(IMaterialHandler materialHandler, IPackHandler packHandler, IPlanHandler planHandler, IUploadHandler uploadHandler)
         {
-            this.AppSettings = appSettings.Value;
+            this.services = new Dictionary<string, IServiceHandler>
+            {
+                { "Materials", materialHandler },
+                { "Packs", packHandler },
+                { "Plans", planHandler },
+                { "Uploads", uploadHandler }
+            };
         }
-
-        /// <summary> Gets the application settings. </summary>
-        ///
-        /// <value> The application settings. </value>
-        private AppSettings AppSettings { get; }
 
         /// <summary>   Handle the Index view request. </summary>
         ///
@@ -47,7 +59,7 @@ namespace PackItUI.Areas.App.Controllers
         public async Task<IActionResult> About()
         {
             var model = new AboutViewModel();
-            await model.Create(this.AppSettings.ServiceEndpoints);
+            await model.Create(this.services);
             return this.View("About", model);
         }
 
