@@ -11,13 +11,8 @@ namespace PackItUI.Areas.Plans.DTO
     using PackItUI.Services;
 
     /// <summary> Interface for plan I/O. </summary>
-    public interface IPlanHandler
+    public interface IPlanHandler : IServiceHandler
     {
-        /// <summary> Reads asynchronously the service information. </summary>
-        ///
-        /// <returns> The service information. </returns>
-        Task<ServiceInfo> InformationAsync();
-
         /// <summary> Creates asynchronously a plan. </summary>
         ///
         /// <param name="data"> The plan to save. </param>

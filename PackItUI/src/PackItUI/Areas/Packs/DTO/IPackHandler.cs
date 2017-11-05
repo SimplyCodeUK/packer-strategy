@@ -11,13 +11,8 @@ namespace PackItUI.Areas.Packs.DTO
     using PackItUI.Services;
 
     /// <summary> Interface for pack I/O. </summary>
-    public interface IPackHandler
+    public interface IPackHandler : IServiceHandler
     {
-        /// <summary> Reads asynchronously the service information. </summary>
-        ///
-        /// <returns> The service information. </returns>
-        Task<ServiceInfo> InformationAsync();
-
         /// <summary> Creates asynchronously a pack. </summary>
         ///
         /// <param name="data"> The pack to save. </param>
