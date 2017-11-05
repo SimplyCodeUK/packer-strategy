@@ -7,15 +7,10 @@
 namespace PackItUI.Test.Areas.App.Controllers
 {
     using System;
-    using System.Net;
     using System.Net.Http;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-    using Moq;
-    using Moq.Protected;
     using NUnit.Framework;
     using PackItUI.Areas.App.Controllers;
     using PackItUI.Areas.App.Models;
@@ -23,6 +18,7 @@ namespace PackItUI.Test.Areas.App.Controllers
     using PackItUI.Areas.Packs.DTO;
     using PackItUI.Areas.Plans.DTO;
     using PackItUI.Areas.Uploads.DTO;
+    using PackItUI.Test.HttpMock;
 
     /// <summary>   (Unit Test Fixture) a controller for handling test materials. </summary>
     [TestFixture]
@@ -115,10 +111,10 @@ namespace PackItUI.Test.Areas.App.Controllers
             Assert.AreEqual("1", model.Services["Packs"].Version);
             Assert.AreEqual("1", model.Services["Plans"].Version);
             Assert.AreEqual("1", model.Services["Uploads"].Version);
-            Assert.AreEqual("Mock", model.Services["Materials"].About);
-            Assert.AreEqual("Mock", model.Services["Packs"].About);
-            Assert.AreEqual("Mock", model.Services["Plans"].About);
-            Assert.AreEqual("Mock", model.Services["Uploads"].About);
+            Assert.AreEqual("Materials", model.Services["Materials"].About);
+            Assert.AreEqual("Packs", model.Services["Packs"].About);
+            Assert.AreEqual("Plans", model.Services["Plans"].About);
+            Assert.AreEqual("Uploads", model.Services["Uploads"].About);
         }
 
         /// <summary> (Unit Test Method) contact action. </summary>
@@ -166,21 +162,17 @@ namespace PackItUI.Test.Areas.App.Controllers
         /// <summary> Setup for connected services. </summary>
         private void SetupConnected()
         {
-            string testContent = "{'Version': '1', 'About': 'Mock'}";
-            var mockMessageHandler = new Mock<HttpMessageHandler>();
-            mockMessageHandler.Protected()
-                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
-                .Returns(Task.FromResult(new HttpResponseMessage
-                {
-                    StatusCode = HttpStatusCode.OK,
-                    Content = new StringContent(testContent)
-                }));
+            MockHttpClientHandler httpHandler = new MockHttpClientHandler();
+            httpHandler.AddMockJson(HttpMethod.Get, "http://localhost:8001/api/v1/", "{'Version': '1', 'About': 'Materials'}");
+            httpHandler.AddMockJson(HttpMethod.Get, "http://localhost:8002/api/v1/", "{'Version': '1', 'About': 'Packs'}");
+            httpHandler.AddMockJson(HttpMethod.Get, "http://localhost:8003/api/v1/", "{'Version': '1', 'About': 'Plans'}");
+            httpHandler.AddMockJson(HttpMethod.Get, "http://localhost:8004/api/v1/", "{'Version': '1', 'About': 'Uploads'}");
 
             this.controller = new HomeController(
-                new MaterialHandler(Options, mockMessageHandler.Object),
-                new PackHandler(Options, mockMessageHandler.Object),
-                new PlanHandler(Options, mockMessageHandler.Object),
-                new UploadHandler(Options, mockMessageHandler.Object))
+                new MaterialHandler(Options, httpHandler),
+                new PackHandler(Options, httpHandler),
+                new PlanHandler(Options, httpHandler),
+                new UploadHandler(Options, httpHandler))
             {
                 ControllerContext = new ControllerContext
                 {

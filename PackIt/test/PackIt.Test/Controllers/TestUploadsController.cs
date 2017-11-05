@@ -134,7 +134,7 @@ namespace PackIt.Test.Controllers
                             return new HttpResponseMessage(HttpStatusCode.OK);
                         }));
 
-            this.controller = new UploadsController(Options, messageHandler: handler.Object);
+            this.controller = new UploadsController(Options, handler.Object);
 
             Assert.IsNotNull(this.controller);
         }

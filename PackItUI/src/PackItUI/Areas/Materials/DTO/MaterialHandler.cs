@@ -56,7 +56,7 @@ namespace PackItUI.Areas.Materials.DTO
         public MaterialHandler(IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler)
         {
             this.httpClient = new HttpClient(messageHandler);
-            this.endpoint = appSettings.Value.ServiceEndpoints.Plans;
+            this.endpoint = appSettings.Value.ServiceEndpoints.Materials;
         }
 
         /// <summary> Reads asynchronously the service information. </summary>
