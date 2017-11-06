@@ -45,7 +45,7 @@ namespace PackItUI.Test.Areas.App.Controllers
         /// <summary> The time out for disconnected services. </summary>
         private static readonly TimeSpan TimeOut = new TimeSpan(0, 0, 0, 0, 20);
 
-        /// <summary>   The controller under test. </summary>
+        /// <summary> The controller under test. </summary>
         private HomeController controller;
 
         /// <summary> Setup for all unit tests here. </summary>
@@ -146,10 +146,22 @@ namespace PackItUI.Test.Areas.App.Controllers
         private void SetupDisconnected()
         {
             this.controller = new HomeController(
-                new MaterialHandler(Options, TimeOut),
-                new PackHandler(Options, TimeOut),
-                new PlanHandler(Options, TimeOut),
-                new UploadHandler(Options, TimeOut))
+                new MaterialHandler(Options)
+                {
+                    TimeOut = TimeOut
+                },
+                new PackHandler(Options)
+                {
+                    TimeOut = TimeOut
+                },
+                new PlanHandler(Options)
+                {
+                    TimeOut = TimeOut
+                },
+                new UploadHandler(Options)
+                {
+                    TimeOut = TimeOut
+                })
             {
                 ControllerContext = new ControllerContext
                 {
@@ -163,10 +175,18 @@ namespace PackItUI.Test.Areas.App.Controllers
         private void SetupConnected()
         {
             MockHttpClientHandler httpHandler = new MockHttpClientHandler();
-            httpHandler.AddMockJson(HttpMethod.Get, "http://localhost:8001/api/v1/", "{'Version': '1', 'About': 'Materials'}");
-            httpHandler.AddMockJson(HttpMethod.Get, "http://localhost:8002/api/v1/", "{'Version': '1', 'About': 'Packs'}");
-            httpHandler.AddMockJson(HttpMethod.Get, "http://localhost:8003/api/v1/", "{'Version': '1', 'About': 'Plans'}");
-            httpHandler.AddMockJson(HttpMethod.Get, "http://localhost:8004/api/v1/", "{'Version': '1', 'About': 'Uploads'}");
+            httpHandler
+                .AddRequest(HttpMethod.Get, "http://localhost:8001/api/v1/")
+                .ContentsJson("{'Version': '1', 'About': 'Materials'}");
+            httpHandler
+                .AddRequest(HttpMethod.Get, "http://localhost:8002/api/v1/")
+                .ContentsJson("{'Version': '1', 'About': 'Packs'}");
+            httpHandler
+                .AddRequest(HttpMethod.Get, "http://localhost:8003/api/v1/")
+                .ContentsJson("{'Version': '1', 'About': 'Plans'}");
+            httpHandler
+                .AddRequest(HttpMethod.Get, "http://localhost:8004/api/v1/")
+                .ContentsJson("{'Version': '1', 'About': 'Uploads'}");
 
             this.controller = new HomeController(
                 new MaterialHandler(Options, httpHandler),

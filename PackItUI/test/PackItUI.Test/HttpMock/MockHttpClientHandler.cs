@@ -6,10 +6,8 @@
 
 namespace PackItUI.Test.HttpMock
 {
-    using System;
     using System.Collections.Generic;
     using System.Net.Http;
-    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -19,14 +17,14 @@ namespace PackItUI.Test.HttpMock
     public class MockHttpClientHandler : HttpClientHandler
     {
         /// <summary> Mocked requests. </summary>
-        private List<Request> requests;
+        private readonly List<MockRequest> requests;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="MockHttpClientHandler" /> class.
         /// </summary>
         public MockHttpClientHandler()
         {
-            this.requests = new List<Request>();
+            this.requests = new List<MockRequest>();
         }
 
         /// <summary>
@@ -35,24 +33,14 @@ namespace PackItUI.Test.HttpMock
         ///
         /// <param name="method"> The Http method. </param>
         /// <param name="requestUri"> The Uri used for the HTTP request. </param>
-        /// <param name="content"> The response content for the request. </param>
-        /// <param name="mediaType"> The response media type for the request. </param>
-        public void AddMock(HttpMethod method, string requestUri, string content, string mediaType)
-        {
-            HttpContent httpContent = new StringContent(content, Encoding.UTF8, mediaType);
-            this.requests.Add(new Request(method, requestUri, httpContent));
-        }
-
-        /// <summary>
-        /// Add a request to be mocked where the media type is application/json
-        /// </summary>
         ///
-        /// <param name="method"> The Http method. </param>
-        /// <param name="requestUri"> The Uri used for the HTTP request. </param>
-        /// <param name="content"> The response content for the request. </param>
-        public void AddMockJson(HttpMethod method, string requestUri, string content)
+        /// <returns> The request. </returns>
+        public MockRequest AddRequest(HttpMethod method, string requestUri)
         {
-            this.AddMock(method, requestUri, content, "application/json");
+            MockRequest request = new MockRequest(method, requestUri);
+            this.requests.Add(request);
+
+            return request;
         }
 
         /// <summary>
@@ -68,7 +56,7 @@ namespace PackItUI.Test.HttpMock
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // Search for the request
-            foreach (Request mock in this.requests)
+            foreach (MockRequest mock in this.requests)
             {
                 if (mock.Method == request.Method && mock.RequestUri == request.RequestUri)
                 {
@@ -78,49 +66,25 @@ namespace PackItUI.Test.HttpMock
                         Content = mock.Content
                     };
 
+                    if (mock.Limit > 0)
+                    {
+                        --mock.Limit;
+                        if (mock.Limit == 1)
+                        {
+                            // delete it as it has been used for the last time
+                            this.requests.Remove(mock);
+                        }
+                        else
+                        {
+                            --mock.Limit;
+                        }
+                    }
+
                     return Task.FromResult(responseMessage);
                 }
             }
 
             return base.SendAsync(request, cancellationToken);
-        }
-
-        /// <summary> A mocked request. </summary>
-        public class Request
-        {
-            /// <summary>
-            /// Initialises a new instance of the <see cref="Request" /> class.
-            /// </summary>
-            ///
-            /// <param name="method"> The Http method. </param>
-            /// <param name="requestUri"> The Uri used for the HTTP request. </param>
-            /// <param name="content"> The response content for the request. </param>
-            public Request(HttpMethod method, string requestUri, HttpContent content) : this(method, new Uri(requestUri), content)
-            {
-            }
-
-            /// <summary>
-            /// Initialises a new instance of the <see cref="Request" /> class.
-            /// </summary>
-            ///
-            /// <param name="method"> The Http method. </param>
-            /// <param name="requestUri"> The Uri used for the HTTP request. </param>
-            /// <param name="content"> The response content for the request. </param>
-            public Request(HttpMethod method, Uri requestUri, HttpContent content)
-            {
-                this.Method = method;
-                this.RequestUri = requestUri;
-                this.Content = content;
-            }
-
-            /// <summary> Gets the Http method. </summary>
-            public HttpMethod Method { get; }
-
-            /// <summary> Gets the Uri used for the HTTP request. </summary>
-            public Uri RequestUri { get; }
-
-            /// <summary> Gets the response content. </summary>
-            public HttpContent Content { get; }
         }
     }
 }

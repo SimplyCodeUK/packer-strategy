@@ -32,17 +32,6 @@ namespace PackItUI.Areas.Materials.DTO
         /// </summary>
         ///
         /// <param name="appSettings"> The application settings. </param>
-        /// <param name="timeout"> The timeout for http calls. </param>
-        public MaterialHandler(IOptions<AppSettings> appSettings, TimeSpan timeout) : this(appSettings)
-        {
-            this.httpClient.Timeout = timeout;
-        }
-
-        /// <summary>
-        /// Initialises a new instance of the <see cref="MaterialHandler" /> class.
-        /// </summary>
-        ///
-        /// <param name="appSettings"> The application settings. </param>
         public MaterialHandler(IOptions<AppSettings> appSettings) : this(appSettings,  new HttpClientHandler())
         {
         }
@@ -57,6 +46,17 @@ namespace PackItUI.Areas.Materials.DTO
         {
             this.httpClient = new HttpClient(messageHandler);
             this.endpoint = appSettings.Value.ServiceEndpoints.Materials;
+        }
+
+        /// <summary> Sets the time out for http calls. </summary>
+        ///
+        /// <value> The time out. </value>
+        public TimeSpan TimeOut
+        {
+            set
+            {
+                this.httpClient.Timeout = value;
+            }
         }
 
         /// <summary> Reads asynchronously the service information. </summary>

@@ -25,6 +25,9 @@ namespace PackIt.Controllers
         /// <summary> The HTTP client. </summary>
         private readonly HttpClient httpClient;
 
+        /// <summary> Gets the application settings. </summary>
+        private readonly AppSettings appSettings;
+
         /// <summary>
         /// Initialises a new instance of the <see cref="UploadsController" /> class.
         /// </summary>
@@ -42,14 +45,9 @@ namespace PackIt.Controllers
         /// <param name="messageHandler"> The http message handler. </param>
         public UploadsController(IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler)
         {
-            this.AppSettings = appSettings.Value;
+            this.appSettings = appSettings.Value;
             this.httpClient = new HttpClient(messageHandler);
         }
-
-        /// <summary> Gets the application settings. </summary>
-        ///
-        /// <value> The application settings. </value>
-        private AppSettings AppSettings { get; }
 
         /// <summary>   (An Action that handles HTTP POST requests) post this message. </summary>
         ///
@@ -76,7 +74,7 @@ namespace PackIt.Controllers
                         json,
                         Encoding.UTF8,
                         "application/json");
-                    HttpResponseMessage response = await this.httpClient.PostAsync(this.AppSettings.ServiceEndpoints.Plans + "Plans", content);
+                    HttpResponseMessage response = await this.httpClient.PostAsync(this.appSettings.ServiceEndpoints.Plans + "Plans", content);
 
                     // Throw an exception if not successful
                     response.EnsureSuccessStatusCode();
@@ -97,7 +95,7 @@ namespace PackIt.Controllers
                         json,
                         Encoding.UTF8,
                         "application/json");
-                    HttpResponseMessage response = await this.httpClient.PostAsync(this.AppSettings.ServiceEndpoints.Materials + "Materials", content);
+                    HttpResponseMessage response = await this.httpClient.PostAsync(this.appSettings.ServiceEndpoints.Materials + "Materials", content);
 
                     // Throw an exception if not successful
                     response.EnsureSuccessStatusCode();
@@ -118,7 +116,7 @@ namespace PackIt.Controllers
                         json,
                         Encoding.UTF8,
                         "application/json");
-                    HttpResponseMessage response = await this.httpClient.PostAsync(this.AppSettings.ServiceEndpoints.Packs + "Packs", content);
+                    HttpResponseMessage response = await this.httpClient.PostAsync(this.appSettings.ServiceEndpoints.Packs + "Packs", content);
 
                     // Throw an exception if not successful
                     response.EnsureSuccessStatusCode();
