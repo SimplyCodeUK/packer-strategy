@@ -48,11 +48,16 @@ namespace PackItUI.Areas.Packs.DTO
             this.endpoint = appSettings.Value.ServiceEndpoints.Packs;
         }
 
-        /// <summary> Sets the time out for http calls. </summary>
+        /// <summary> Gets or sets the time out for http calls. </summary>
         ///
         /// <value> The time out. </value>
         public TimeSpan TimeOut
         {
+            get
+            {
+                return this.httpClient.Timeout;
+            }
+
             set
             {
                 this.httpClient.Timeout = value;
