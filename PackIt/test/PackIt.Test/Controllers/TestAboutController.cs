@@ -15,7 +15,7 @@ namespace PackIt.Test.Controllers
     [TestFixture]
     public class TestAboutController
     {
-        /// <summary>   The controller under test. </summary>
+        /// <summary> The controller under test. </summary>
         private AboutController controller;
 
         /// <summary> Setup for all unit tests here. </summary>

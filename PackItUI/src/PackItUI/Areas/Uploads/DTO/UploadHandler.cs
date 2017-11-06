@@ -10,7 +10,6 @@ namespace PackItUI.Areas.Uploads.DTO
     using System.Net.Http;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
-    using Newtonsoft.Json;
     using PackItUI.Areas.App.Models;
     using PackItUI.Services;
 
@@ -24,17 +23,6 @@ namespace PackItUI.Areas.Uploads.DTO
 
         /// <summary> The application endpoint. </summary>
         private readonly string endpoint;
-
-        /// <summary>
-        /// Initialises a new instance of the <see cref="UploadHandler" /> class.
-        /// </summary>
-        ///
-        /// <param name="appSettings"> The application settings. </param>
-        /// <param name="timeout"> The timeout for http calls. </param>
-        public UploadHandler(IOptions<AppSettings> appSettings, TimeSpan timeout) : this(appSettings)
-        {
-            this.httpClient.Timeout = timeout;
-        }
 
         /// <summary>
         /// Initialises a new instance of the <see cref="UploadHandler" /> class.
@@ -55,6 +43,17 @@ namespace PackItUI.Areas.Uploads.DTO
         {
             this.httpClient = new HttpClient(messageHandler);
             this.endpoint = appSettings.Value.ServiceEndpoints.Uploads;
+        }
+
+        /// <summary> Sets the time out for http calls. </summary>
+        ///
+        /// <value> The time out. </value>
+        public TimeSpan TimeOut
+        {
+            set
+            {
+                this.httpClient.Timeout = value;
+            }
         }
 
         /// <summary> Reads asynchronously the service information. </summary>
