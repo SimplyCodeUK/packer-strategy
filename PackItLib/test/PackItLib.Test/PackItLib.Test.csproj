@@ -4,18 +4,18 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Company>Simply Code Ltd.</Company>
     <ProjectGuid>c3d58f03-3de4-431f-8586-ae20eb033d6b</ProjectGuid>
-    <IsPackable>false</IsPackable>
     <Product>PackIt</Product>
     <Authors>Louis Henry Nayegon</Authors>
     <RepositoryUrl>https://github.com/SimplyCodeUK/packer-strategy</RepositoryUrl>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>

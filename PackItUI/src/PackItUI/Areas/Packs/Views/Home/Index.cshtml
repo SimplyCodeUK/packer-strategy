@@ -20,6 +20,9 @@
         <td><span class="@DataClass">@Model.Information.About</span></td>
     </tr>
 </table>
+
+@if (Model.Items != null)
+{
 <table class="table">
     <thead>
         <tr>
@@ -52,3 +55,4 @@
         }
     </tbody>
 </table>
+}

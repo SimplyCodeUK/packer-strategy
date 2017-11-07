@@ -6,6 +6,7 @@
 
 namespace PackIt.Pack
 {
+    using System.ComponentModel.DataAnnotations;
     using PackIt.Helpers.Enums;
 
     /// <summary>   A section. </summary>
@@ -24,10 +25,11 @@ namespace PackIt.Pack
         /// <value> The shape. </value>
         public ShapeType Shape { get; set; }
 
-        /// <summary>   Gets or sets the status. </summary>
+        /// <summary>   Gets or sets the section type. </summary>
         ///
-        /// <value> The status. </value>
-        public long Status { get; set; }
+        /// <value> The section type. </value>
+        [Display(Name = "Type")]
+        public SectionType SectionType { get; set; }
 
         /// <summary>   Gets or sets the dimension 0. </summary>
         ///

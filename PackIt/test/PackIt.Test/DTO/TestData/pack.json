@@ -216,7 +216,7 @@
           "Sections": [
             {
               "Shape": 1,
-              "Status": 2,
+              "SectionType": 2,
               "Dimension0": 40,
               "Dimension1": 40,
               "Dimension2": 0,
@@ -231,7 +231,7 @@
             },
             {
               "Shape": 1,
-              "Status": 1,
+              "SectionType": 1,
               "Dimension0": 46,
               "Dimension1": 46,
               "Dimension2": 0,
@@ -246,7 +246,7 @@
             },
             {
               "Shape": 1,
-              "Status": 4,
+              "SectionType": 4,
               "Dimension0": 45,
               "Dimension1": 45,
               "Dimension2": 0,
@@ -261,7 +261,7 @@
             },
             {
               "Shape": 1,
-              "Status": 4,
+              "SectionType": 4,
               "Dimension0": 40,
               "Dimension1": 40,
               "Dimension2": 0,

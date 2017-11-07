@@ -26,10 +26,10 @@ namespace PackIt.DTO.DtoMaterial
         /// <value> The shape. </value>
         public ShapeType Shape { get; set; }
 
-        /// <summary>   Gets or sets the status. </summary>
+        /// <summary>   Gets or sets the section type. </summary>
         ///
-        /// <value> The status. </value>
-        public long Status { get; set; }
+        /// <value> The section type. </value>
+        public SectionType SectionType { get; set; }
 
         /// <summary>   Gets or sets the dimension 0. </summary>
         ///
