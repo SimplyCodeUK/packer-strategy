@@ -45,6 +45,9 @@
             <li>
                 <a href="#costings" aria-controls="costings" role="tab" data-toggle="tab">Costings</a>
             </li>
+            <li>
+                <a href="#sections" aria-controls="sections" role="tab" data-toggle="tab">Sections</a>
+            </li>
         </ul>
         <div class="tab-content">
             <br />
@@ -198,6 +201,73 @@
                     </table>
                 </div>
             </div>
+            <div role="tabpanel" class="tab-pane form-horizontal" id="sections">
+                <div class="form-group">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().SectionType" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Shape" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Height" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension0" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension1" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension2" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension3" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension4" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension5" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension6" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension7" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension8" class="@LabelClass"></label></th>
+                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension9" class="@LabelClass"></label></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.Data.Sections.Count; ++i)
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <select asp-for="Data.Sections[i].Shape" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.ShapeType>()" class="@InputClass"></select>
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Sections[i].Height" asp-format="@DimensionFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Sections[i].Dimension0" asp-format="@DimensionFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Sections[i].Dimension1" asp-format="@DimensionFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Sections[i].Dimension2" asp-format="@DimensionFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Sections[i].Dimension3" asp-format="@DimensionFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Sections[i].Dimension4" asp-format="@DimensionFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Sections[i].Dimension5" asp-format="@DimensionFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Sections[i].Dimension6" asp-format="@DimensionFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Sections[i].Dimension7" asp-format="@DimensionFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Sections[i].Dimension8" asp-format="@DimensionFormat" class="@InputClass" />
+                                    </td>
+                                    <td>
+                                        <input asp-for="Data.Sections[i].Dimension9" asp-format="@DimensionFormat" class="@InputClass" />
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -208,3 +278,7 @@
     </div>
     <br />
 </form>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

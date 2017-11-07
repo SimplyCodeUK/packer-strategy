@@ -41,6 +41,7 @@ namespace PackItUI.Areas.Materials.Models
                 this.Type = MaterialType.Bottle;
                 this.Form = FormType.Bottle;
                 this.Costings = new List<Costing>();
+                this.Sections = new List<Section>();
             }
 
             /// <summary> Gets or sets the Material identifier. </summary>
@@ -304,6 +305,11 @@ namespace PackItUI.Areas.Materials.Models
             ///
             /// <value> Collection of costings. </value>
             public IList<Costing> Costings { get; set; }
+
+            /// <summary>   Gets or sets the collection of sections. </summary>
+            ///
+            /// <value> Collection of sections. </value>
+            public IList<Section> Sections { get; set; }
         }
     }
 }
