@@ -11,26 +11,54 @@ namespace PackItUI.Areas.Materials.Models
     using Newtonsoft.Json;
     using PackIt.Helpers.Enums;
     using PackIt.Material;
+    using PackItUI.Helpers;
 
     /// <summary> Material home view model. </summary>
     public class MaterialUpdateViewModel
     {
+        /// <summary> The data. </summary>
+        private Material data;
+
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialUpdateViewModel"/> class.
         /// </summary>
         public MaterialUpdateViewModel()
         {
             this.Data = new Material();
+            this.SetSectionTypes();
         }
+
+        /// <summary> Gets and sets the section types used in select box. </summary>
+        public List<ListForFlag<SectionTypes>> SectionTypes { get; private set; }
 
         /// <summary> Gets or sets the material data. </summary>
         ///
         /// <value> The material data. </value>
-        public Material Data { get; set; }
+        public Material Data
+        {
+            get
+            {
+                return this.data;
+            }
 
-        /// <summary>
-        /// Data for material view model
-        /// </summary>
+            set
+            {
+                this.data = value;
+                this.SetSectionTypes();
+            }
+        }
+
+        /// <summary> Sets the section types. </summary>
+        private void SetSectionTypes()
+        {
+            this.SectionTypes = new List<ListForFlag<SectionTypes>>();
+            foreach (Section section in this.Data.Sections)
+            {
+                this.SectionTypes.Add(new ListForFlag<SectionTypes>(section.SectionType));
+            }
+        }
+
+        /// <summary> Data for material view model. </summary>
         public class Material
         {
             /// <summary>
@@ -68,48 +96,6 @@ namespace PackItUI.Areas.Materials.Models
             /// <value> The notes. </value>
             [Display(Prompt = "Enter Material Notes")]
             public string Notes { get; set; }
-
-            /// <summary> Gets or sets the colour. </summary>
-            ///
-            /// <value> The colour. </value>
-            [Display(Prompt = "Enter Material Colour")]
-            public string Colour { get; set; }
-
-            /// <summary> Gets or sets the drawing. </summary>
-            ///
-            /// <value> The drawing. </value>
-            [Display(Prompt = "Enter Drawing ID")]
-            public string Drawing { get; set; }
-
-            /// <summary> Gets or sets the bar code. </summary>
-            ///
-            /// <value> The bar code. </value>
-            [Display(Name = "Bar Code", Prompt = "Enter Bar Code")]
-            public string BarCode { get; set; }
-
-            /// <summary> Gets or sets the computer code. </summary>
-            ///
-            /// <value> The computer code. </value>
-            [Display(Name = "Computer Code", Prompt = "Enter Computer Code")]
-            public string ComputerCode { get; set; }
-
-            /// <summary> Gets or sets the finish. </summary>
-            ///
-            /// <value> The finish. </value>
-            [Display(Prompt = "Enter Material Finish")]
-            public string Finish { get; set; }
-
-            /// <summary> Gets or sets the print. </summary>
-            ///
-            /// <value> The print. </value>
-            [Display(Prompt = "Enter Print")]
-            public string Print { get; set; }
-
-            /// <summary> Gets or sets the type of the print. </summary>
-            ///
-            /// <value> The type of the print. </value>
-            [Display(Name = "Print Type", Prompt = "Enter Print Type")]
-            public long PrintType { get; set; }
 
             /// <summary> Gets or sets the form. </summary>
             ///
@@ -253,41 +239,11 @@ namespace PackItUI.Areas.Materials.Models
             [Display(Name = "Blank Area", Prompt = "Enter Blank Area")]
             public double BlankArea { get; set; }
 
-            /// <summary> Gets or sets the body tolerance. </summary>
-            ///
-            /// <value> The body tolerance. </value>
-            [Display(Name = "Body Tolerance", Prompt = "Enter Body Tolerance")]
-            public double BodyTolerance { get; set; }
-
-            /// <summary> Gets or sets the height tolerance. </summary>
-            ///
-            /// <value> The height tolerance. </value>
-            [Display(Name = "Height Tolerance", Prompt = "Enter Height Tolerance")]
-            public double HeightTolerance { get; set; }
-
             /// <summary> Gets or sets the density. </summary>
             ///
             /// <value> The density. </value>
             [Display(Prompt = "Enter Material Density")]
             public double Density { get; set; }
-
-            /// <summary> Gets or sets the shoulder to top. </summary>
-            ///
-            /// <value> The shoulder to top. </value>
-            [Display(Name = "Shoulder To Top", Prompt = "Enter Shoulder To Top Measurement")]
-            public double ShoulderToTop { get; set; }
-
-            /// <summary> Gets or sets the finish x coordinate. </summary>
-            ///
-            /// <value> The finish x coordinate. </value>
-            [Display(Name = "Length Finish", Prompt = "Enter Length Finish")]
-            public double FinishX { get; set; }
-
-            /// <summary> Gets or sets the finish y coordinate. </summary>
-            ///
-            /// <value> The finish y coordinate. </value>
-            [Display(Name = "Breadth Finish", Prompt = "Enter Breadth Finish")]
-            public double FinishY { get; set; }
 
             /// <summary> Gets or sets the board strength. </summary>
             ///
@@ -301,12 +257,12 @@ namespace PackItUI.Areas.Materials.Models
             [Display(Name = "Target Compression", Prompt = "Enter Target Compression")]
             public double TargetCompression { get; set; }
 
-            /// <summary>   Gets or sets the collection of costings. </summary>
+            /// <summary> Gets or sets the collection of costings. </summary>
             ///
             /// <value> Collection of costings. </value>
             public IList<Costing> Costings { get; set; }
 
-            /// <summary>   Gets or sets the collection of sections. </summary>
+            /// <summary> Gets or sets the collection of sections. </summary>
             ///
             /// <value> Collection of sections. </value>
             public IList<Section> Sections { get; set; }

@@ -8,23 +8,17 @@ namespace PackIt.Helpers.Enums
 {
     using System;
 
-    /// <summary>   Values that represent cost types. </summary>
+    /// <summary> Values that represent cost types. </summary>
     [Flags]
-    public enum SectionType
+    public enum SectionTypes
     {
+        /// <summary> Undefined cross section. </summary>
+        Undefined = 0,
+
         /// <summary> Major cross section. </summary>
         Major = 1,
 
         /// <summary> Minor cross section. </summary>
         Minor = 2,
-
-        /// <summary> Shoulder cross section. </summary>
-        Shoulder = 4,
-
-        /// <summary> Finish cross section. </summary>
-        Finish = 8,
-
-        /// <summary> Neck cross section. </summary>
-        Neck = 16
     }
 }

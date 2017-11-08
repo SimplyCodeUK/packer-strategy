@@ -13,11 +13,11 @@ namespace PackIt.Test.DTO
     using PackIt.DTO.DtoPack;
     using PackIt.Pack;
 
-    /// <summary>   (Unit Test Method) Convert a Pack to it's DTO. </summary>
+    /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
     [TestFixture]
     public class TestPackMapper
     {
-        /// <summary>   (Unit Test Method) post this message. </summary>
+        /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
         public void ConvertPack()
         {

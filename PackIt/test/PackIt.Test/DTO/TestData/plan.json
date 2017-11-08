@@ -92,7 +92,6 @@
       "DrawDetail": 0,
       "MinBlockLength": 0,
       "MinBlockBreadth": 0,
-      "ST_ACTIVERESULT": 0,
       "Limits": [
         {
           "Design": false,
@@ -258,7 +257,6 @@
       "DrawDetail": 1,
       "MinBlockLength": 0,
       "MinBlockBreadth": 0,
-      "ST_ACTIVERESULT": 0,
       "Limits": [
         {
           "Design": false,
@@ -370,7 +368,6 @@
       "DrawDetail": 1,
       "MinBlockLength": 0,
       "MinBlockBreadth": 0,
-      "ST_ACTIVERESULT": 0,
       "Limits": [
         {
           "Design": false,
@@ -482,7 +479,6 @@
       "DrawDetail": 2,
       "MinBlockLength": 0,
       "MinBlockBreadth": 0,
-      "ST_ACTIVERESULT": 0,
       "Limits": [
         {
           "Design": false,

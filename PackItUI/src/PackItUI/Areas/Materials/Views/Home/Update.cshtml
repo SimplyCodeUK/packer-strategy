@@ -15,25 +15,13 @@
 <h2>@ViewData["Title"]</h2>
 
 <form asp-controller="Home" asp-action="Update" method="post">
-    <input asp-for="Data.Colour" hidden="hidden" />
-    <input asp-for="Data.Drawing" hidden="hidden" />
-    <input asp-for="Data.BarCode" hidden="hidden" />
-    <input asp-for="Data.ComputerCode" hidden="hidden" />
-    <input asp-for="Data.Finish" hidden="hidden" />
-    <input asp-for="Data.Print" hidden="hidden" />
-    <input asp-for="Data.PrintType" hidden="hidden" />
     <input asp-for="Data.ClosureType" hidden="hidden" />
     <input asp-for="Data.ClosureWeight" hidden="hidden" />
     <input asp-for="Data.StackStep" hidden="hidden" />
     <input asp-for="Data.Flap" hidden="hidden" />
     <input asp-for="Data.LoadCapacity" hidden="hidden" />
     <input asp-for="Data.BlankArea" hidden="hidden" />
-    <input asp-for="Data.BodyTolerance" hidden="hidden" />
-    <input asp-for="Data.HeightTolerance" hidden="hidden" />
     <input asp-for="Data.Density" hidden="hidden" />
-    <input asp-for="Data.ShoulderToTop" hidden="hidden" />
-    <input asp-for="Data.FinishX" hidden="hidden" />
-    <input asp-for="Data.FinishY" hidden="hidden" />
     <input asp-for="Data.BoardStrength" hidden="hidden" />
     <input asp-for="Data.TargetCompression" hidden="hidden" />
 
@@ -217,15 +205,15 @@
                                 <th><label asp-for="Data.Sections.FirstOrDefault().Dimension5" class="@LabelClass"></label></th>
                                 <th><label asp-for="Data.Sections.FirstOrDefault().Dimension6" class="@LabelClass"></label></th>
                                 <th><label asp-for="Data.Sections.FirstOrDefault().Dimension7" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension8" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension9" class="@LabelClass"></label></th>
                             </tr>
                         </thead>
                         <tbody>
                             @for (int i = 0; i < Model.Data.Sections.Count; ++i)
                             {
                                 <tr>
-                                    <td></td>
+                                    <td>
+                                        <select asp-for="Data.Sections[i].SectionType" asp-items="Model.SectionTypes[i].ListItems" multiple class="@InputClass"></select>
+                                    </td>
                                     <td>
                                         <select asp-for="Data.Sections[i].Shape" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.ShapeType>()" class="@InputClass"></select>
                                     </td>
@@ -255,12 +243,6 @@
                                     </td>
                                     <td>
                                         <input asp-for="Data.Sections[i].Dimension7" asp-format="@DimensionFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Sections[i].Dimension8" asp-format="@DimensionFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Sections[i].Dimension9" asp-format="@DimensionFormat" class="@InputClass" />
                                     </td>
                                 </tr>
                             }

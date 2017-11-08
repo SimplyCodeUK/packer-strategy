@@ -17,7 +17,7 @@ namespace PackItUI.Areas.App.Controllers
     using PackItUI.Areas.Uploads.DTO;
     using PackItUI.Services;
 
-    /// <summary>   A controller for handling the Home Page. </summary>
+    /// <summary> A controller for handling the Home Page. </summary>
     [Area("App")]
     public class HomeController : Controller
     {
@@ -43,7 +43,7 @@ namespace PackItUI.Areas.App.Controllers
             };
         }
 
-        /// <summary>   Handle the Index view request. </summary>
+        /// <summary> Handle the Index view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
@@ -52,7 +52,7 @@ namespace PackItUI.Areas.App.Controllers
             return this.View("Index");
         }
 
-        /// <summary>   Handle the About view request. </summary>
+        /// <summary> Handle the About view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
@@ -63,7 +63,7 @@ namespace PackItUI.Areas.App.Controllers
             return this.View("About", model);
         }
 
-        /// <summary>   Handle the Contact view request. </summary>
+        /// <summary> Handle the Contact view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
@@ -72,7 +72,7 @@ namespace PackItUI.Areas.App.Controllers
             return this.View("Contact");
         }
 
-        /// <summary>   Handle exceptions. </summary>
+        /// <summary> Handle exceptions. </summary>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]

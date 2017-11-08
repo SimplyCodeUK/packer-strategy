@@ -9,7 +9,7 @@ namespace PackItUI
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
 
-    /// <summary>   A program. </summary>
+    /// <summary> A program. </summary>
     public class Program
     {
         /// <summary>
@@ -19,7 +19,7 @@ namespace PackItUI
         {
         }
 
-        /// <summary>   Main entry-point for this application. </summary>
+        /// <summary> Main entry-point for this application. </summary>
         ///
         /// <param name="args"> An array of command-line argument strings. </param>
         public static void Main(string[] args)

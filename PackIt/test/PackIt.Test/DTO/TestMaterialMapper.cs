@@ -13,11 +13,11 @@ namespace PackIt.Test.DTO
     using PackIt.DTO.DtoMaterial;
     using PackIt.Material;
 
-    /// <summary>   (Unit Test Method) Convert a Material to it's DTO. </summary>
+    /// <summary> (Unit Test Method) Convert a Material to it's DTO. </summary>
     [TestFixture]
     public class TestMaterialMapper
     {
-        /// <summary>   (Unit Test Method) post this message. </summary>
+        /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
         public void ConvertMaterial()
         {

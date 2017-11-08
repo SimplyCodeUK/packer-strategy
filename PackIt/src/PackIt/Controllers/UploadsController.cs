@@ -17,7 +17,7 @@ namespace PackIt.Controllers
     using Newtonsoft.Json;
     using PackIt.Models;
 
-    /// <summary>   A controller for handling materials. </summary>
+    /// <summary> A controller for handling materials. </summary>
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class UploadsController : Controller
@@ -49,11 +49,11 @@ namespace PackIt.Controllers
             this.httpClient = new HttpClient(messageHandler);
         }
 
-        /// <summary>   (An Action that handles HTTP POST requests) post this message. </summary>
+        /// <summary> (An Action that handles HTTP POST requests) post this message. </summary>
         ///
-        /// <param name="values">    Bulk upload of data to the databases. </param>
+        /// <param name="values"> Bulk upload of data to the databases. </param>
         ///
-        /// <returns>   An IActionResult. </returns>
+        /// <returns> An IActionResult. </returns>
         [HttpPost("{type}")]
         public async Task<IActionResult> Post([FromBody] Bulk values)
         {
@@ -151,17 +151,17 @@ namespace PackIt.Controllers
                 this.Packs = new List<Pack.Pack>();
             }
 
-            /// <summary>   Gets or sets the collection of Plans of this object. </summary>
+            /// <summary> Gets or sets the collection of Plans of this object. </summary>
             ///
             /// <value> Collection of Plans. </value>
             public IList<Plan.Plan> Plans { get; set; }
 
-            /// <summary>   Gets or sets the collection of Materials of this object. </summary>
+            /// <summary> Gets or sets the collection of Materials of this object. </summary>
             ///
             /// <value> Collection of Materials. </value>
             public IList<Material.Material> Materials { get; set; }
 
-            /// <summary>   Gets or sets the collection of Packs of this object. </summary>
+            /// <summary> Gets or sets the collection of Packs of this object. </summary>
             ///
             /// <value> Collection of Packs. </value>
             public IList<Pack.Pack> Packs { get; set; }

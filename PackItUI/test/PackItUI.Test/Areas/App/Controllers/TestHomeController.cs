@@ -20,7 +20,7 @@ namespace PackItUI.Test.Areas.App.Controllers
     using PackItUI.Areas.Uploads.DTO;
     using PackItUI.Test.HttpMock;
 
-    /// <summary>   (Unit Test Fixture) a controller for handling test materials. </summary>
+    /// <summary> (Unit Test Fixture) a controller for handling test materials. </summary>
     [TestFixture]
     public class TestHomeController
     {

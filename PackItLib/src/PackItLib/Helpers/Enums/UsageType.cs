@@ -6,25 +6,25 @@
 
 namespace PackIt.Helpers.Enums
 {
-    /// <summary>   Values that represent types. </summary>
+    /// <summary> Values that represent types. </summary>
     public enum UsageType
     {
-        /// <summary>   An enum constant representing the outer option. </summary>
+        /// <summary> An enum constant representing the outer option. </summary>
         Outer,
 
-        /// <summary>   An enum constant representing the base layer option. </summary>
+        /// <summary> An enum constant representing the base layer option. </summary>
         BaseLayer,
 
-        /// <summary>   An enum constant representing the inter layer option. </summary>
+        /// <summary> An enum constant representing the inter layer option. </summary>
         InterLayer,
 
-        /// <summary>   An enum constant representing the top layer option. </summary>
+        /// <summary> An enum constant representing the top layer option. </summary>
         TopLayer,
 
-        /// <summary>   An enum constant representing the other inserts option. </summary>
+        /// <summary> An enum constant representing the other inserts option. </summary>
         OtherInserts,
 
-        /// <summary>   An enum constant representing the trimmings option. </summary>
+        /// <summary> An enum constant representing the trimmings option. </summary>
         Trimmings
     }
 }

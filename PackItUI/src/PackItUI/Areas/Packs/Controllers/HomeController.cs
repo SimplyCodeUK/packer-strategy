@@ -12,7 +12,7 @@ namespace PackItUI.Areas.Packs.Controllers
     using PackItUI.Areas.Packs.DTO;
     using PackItUI.Areas.Packs.Models;
 
-    /// <summary>   A controller for handling the Packs Home Page. </summary>
+    /// <summary> A controller for handling the Packs Home Page. </summary>
     [Area("Packs")]
     public class HomeController : Controller
     {
@@ -37,7 +37,7 @@ namespace PackItUI.Areas.Packs.Controllers
             this.handler = handler;
         }
 
-        /// <summary>   Handle the Packs view request. </summary>
+        /// <summary> Handle the Packs view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]

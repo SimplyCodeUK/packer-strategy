@@ -9,7 +9,7 @@ namespace PackIt.Plan
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    /// <summary>   A plan. </summary>
+    /// <summary> A plan. </summary>
     public class Plan
     {
         /// <summary>
@@ -20,27 +20,27 @@ namespace PackIt.Plan
             this.Stages = new List<Stage>();
         }
 
-        /// <summary>   Gets or sets the Plan identifier. </summary>
+        /// <summary> Gets or sets the Plan identifier. </summary>
         ///
         /// <value> The Plan identifier. </value>
         [Required]
         [Display(Name = "ID", Prompt = "Enter Plan Id")]
         public string PlanId { get; set; }
 
-        /// <summary>   Gets or sets the name. </summary>
+        /// <summary> Gets or sets the name. </summary>
         ///
         /// <value> The plan name. </value>
         [Display(Prompt = "Enter Plan Name")]
         public string Name { get; set; }
 
-        /// <summary>   Gets or sets the notes. </summary>
+        /// <summary> Gets or sets the notes. </summary>
         ///
         /// <value> The notes. </value>
         [Display(Prompt = "Enter Plan Notes")]
         [DataType(DataType.MultilineText)]
         public string Notes { get; set; }
 
-        /// <summary>   Gets or sets the collection of stages. </summary>
+        /// <summary> Gets or sets the collection of stages. </summary>
         ///
         /// <value> Collection of stages. </value>
         public IList<Stage> Stages { get; set; }

@@ -6,16 +6,16 @@
 
 namespace PackIt.Helpers.Enums
 {
-    /// <summary>   Values that represent design types. </summary>
+    /// <summary> Values that represent design types. </summary>
     public enum DesignType
     {
-        /// <summary>   An enum constant representing the fefco option. </summary>
+        /// <summary> An enum constant representing the fefco option. </summary>
         Fefco,
 
-        /// <summary>   An enum constant representing the ecma option. </summary>
+        /// <summary> An enum constant representing the ecma option. </summary>
         Ecma,
 
-        /// <summary>   An enum constant representing the user option. </summary>
+        /// <summary> An enum constant representing the user option. </summary>
         User
     }
 }

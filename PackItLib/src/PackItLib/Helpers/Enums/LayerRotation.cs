@@ -6,25 +6,25 @@
 
 namespace PackIt.Helpers.Enums
 {
-    /// <summary>   Values that represent layer rotations. </summary>
+    /// <summary> Values that represent layer rotations. </summary>
     public enum LayerRotation
     {
-        /// <summary>   An enum constant representing the unknown option. </summary>
+        /// <summary> An enum constant representing the unknown option. </summary>
         Unknown,
 
-        /// <summary>   An enum constant representing the east west option. </summary>
+        /// <summary> An enum constant representing the east west option. </summary>
         EastWest,
 
-        /// <summary>   An enum constant representing the north south option. </summary>
+        /// <summary> An enum constant representing the north south option. </summary>
         NorthSouth,
 
-        /// <summary>   An enum constant representing the degrees 180 option. </summary>
+        /// <summary> An enum constant representing the degrees 180 option. </summary>
         Degrees180,
 
-        /// <summary>   An enum constant representing the degrees 90 option. </summary>
+        /// <summary> An enum constant representing the degrees 90 option. </summary>
         Degrees90,
 
-        /// <summary>   An enum constant representing the none option. </summary>
+        /// <summary> An enum constant representing the none option. </summary>
         None
     }
 }

@@ -8,7 +8,7 @@ namespace PackIt.Material
 {
     using System.Collections.Generic;
 
-    /// <summary>   A pallet deck. </summary>
+    /// <summary> A pallet deck. </summary>
     public class PalletDeck
     {
         /// <summary>
@@ -19,12 +19,12 @@ namespace PackIt.Material
             this.Planks = new List<Plank>();
         }
 
-        /// <summary>   Gets or sets caliper. </summary>
+        /// <summary> Gets or sets caliper. </summary>
         ///
         /// <value> The caliper. </value>
         public double Caliper { get; set; }
 
-        /// <summary>   Gets or sets the collection of planks. </summary>
+        /// <summary> Gets or sets the collection of planks. </summary>
         ///
         /// <value> Collection of planks. </value>
         public IList<Plank> Planks { get; set; }

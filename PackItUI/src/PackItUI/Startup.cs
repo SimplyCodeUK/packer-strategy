@@ -16,14 +16,14 @@ namespace PackItUI
     using PackItUI.Areas.Plans.DTO;
     using PackItUI.Areas.Uploads.DTO;
 
-    /// <summary>   A start up. </summary>
+    /// <summary> A start up. </summary>
     public class Startup
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="Startup" /> class.
         /// </summary>
         ///
-        /// <param name="configuration">  The configuration. </param>
+        /// <param name="configuration"> The configuration. </param>
         public Startup(IConfiguration configuration)
         {
             this.Configuration = configuration;

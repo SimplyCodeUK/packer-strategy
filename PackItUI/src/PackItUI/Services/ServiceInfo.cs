@@ -18,7 +18,7 @@ namespace PackItUI.Services
             this.About = "Service down!";
         }
 
-        /// <summary>   Gets or sets the version of the service. </summary>
+        /// <summary> Gets or sets the version of the service. </summary>
         ///
         /// <value> The version of the service. </value>
         public string Version { get; set; }

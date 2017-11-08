@@ -9,28 +9,28 @@ namespace PackIt.DTO
     using System.Collections.Generic;
     using PackIt.Pack;
 
-    /// <summary>   A pack repository. </summary>
+    /// <summary> A pack repository. </summary>
     ///
     /// <seealso cref="T:PackIt.DTO.IPackRepository"/>
     public class PackRepository : IPackRepository
     {
-        /// <summary>   The context. </summary>
+        /// <summary> The context. </summary>
         private readonly PackContext context;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="PackRepository" /> class.
         /// </summary>
         ///
-        /// <param name="context">  The context. </param>
+        /// <param name="context"> The context. </param>
         public PackRepository(PackContext context)
         {
             this.context = context;
         }
 
-        /// <summary>   Gets all items in this collection. </summary>
+        /// <summary> Gets all items in this collection. </summary>
         ///
         /// <returns>
-        ///     An enumerator that allows foreach to be used to process all items in this collection.
+        /// An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
         ///
         /// <seealso cref="M:PackIt.DTO.IPackRepository.GetAll()"/>
@@ -39,7 +39,7 @@ namespace PackIt.DTO
             return this.context.GetPacks();
         }
 
-        /// <summary>   Adds item. </summary>
+        /// <summary> Adds item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
         ///
@@ -50,11 +50,11 @@ namespace PackIt.DTO
             this.context.SaveChanges();
         }
 
-        /// <summary>   Searches for the first match for the given string. </summary>
+        /// <summary> Searches for the first match for the given string. </summary>
         ///
-        /// <param name="key">  The key. </param>
+        /// <param name="key"> The key. </param>
         ///
-        /// <returns>   A Pack. </returns>
+        /// <returns> A Pack. </returns>
         ///
         /// <seealso cref="M:PackIt.DTO.IPackRepository.Find(string)"/>
         public Pack Find(string key)
@@ -62,9 +62,9 @@ namespace PackIt.DTO
             return this.context.FindPack(key);
         }
 
-        /// <summary>   Removes the given key. </summary>
+        /// <summary> Removes the given key. </summary>
         ///
-        /// <param name="key">  The key. </param>
+        /// <param name="key"> The key. </param>
         ///
         /// <seealso cref="M:PackIt.DTO.IPackRepository.Remove(string)"/>
         public void Remove(string key)
@@ -73,7 +73,7 @@ namespace PackIt.DTO
             this.context.SaveChanges();
         }
 
-        /// <summary>   Updates the given item. </summary>
+        /// <summary> Updates the given item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
         ///

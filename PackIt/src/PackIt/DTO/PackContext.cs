@@ -12,27 +12,27 @@ namespace PackIt.DTO
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PackIt.Pack;
 
-    /// <summary>   A pack context. </summary>
+    /// <summary> A pack context. </summary>
     public class PackContext : DbContext
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PackContext" /> class.
         /// </summary>
         ///
-        /// <param name="options">  Options for controlling the operation. </param>
+        /// <param name="options"> Options for controlling the operation. </param>
         public PackContext(DbContextOptions<PackContext> options)
             : base(options)
         {
         }
 
-        /// <summary>   Gets the packs. </summary>
+        /// <summary> Gets the packs. </summary>
         ///
         /// <value> The packs. </value>
         public DbSet<DtoPack.DtoPack> Packs { get; private set; }
 
-        /// <summary>   Gets the packs. </summary>
+        /// <summary> Gets the packs. </summary>
         ///
-        /// <returns>   The packs. </returns>
+        /// <returns> The packs. </returns>
         public IList<Pack> GetPacks()
         {
             var ret = new List<Pack>();
@@ -55,7 +55,7 @@ namespace PackIt.DTO
             return ret;
         }
 
-        /// <summary>   Adds a pack. </summary>
+        /// <summary> Adds a pack. </summary>
         ///
         /// <param name="item"> The item. </param>
         public void AddPack(Pack item)
@@ -64,11 +64,11 @@ namespace PackIt.DTO
             this.Packs.Add(dto);
         }
 
-        /// <summary>   Searches for the first pack. </summary>
+        /// <summary> Searches for the first pack. </summary>
         ///
-        /// <param name="key">  The key. </param>
+        /// <param name="key"> The key. </param>
         ///
-        /// <returns>   The found pack. </returns>
+        /// <returns> The found pack. </returns>
         public Pack FindPack(string key)
         {
             try
@@ -94,16 +94,16 @@ namespace PackIt.DTO
             }
         }
 
-        /// <summary>   Removes the pack described by key. </summary>
+        /// <summary> Removes the pack described by key. </summary>
         ///
-        /// <param name="key">  The key. </param>
+        /// <param name="key"> The key. </param>
         public void RemovePack(string key)
         {
             DtoPack.DtoPack entity = this.Packs.Find(key);
             this.Packs.Remove(entity);
         }
 
-        /// <summary>   Updates the pack described by item. </summary>
+        /// <summary> Updates the pack described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
         public void UpdatePack(Pack item)

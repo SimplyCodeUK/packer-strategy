@@ -18,11 +18,11 @@ namespace PackIt.Test.Controllers
     using PackIt.Helpers.Enums;
     using PackIt.Material;
 
-    /// <summary>   (Unit Test Fixture) a controller for handling test materials. </summary>
+    /// <summary> (Unit Test Fixture) a controller for handling test materials. </summary>
     [TestFixture]
     public class TestMaterialsController
     {
-        /// <summary>   The controller under test. </summary>
+        /// <summary> The controller under test. </summary>
         private MaterialsController controller;
 
         /// <summary> Setup for all unit tests here. </summary>
@@ -40,7 +40,7 @@ namespace PackIt.Test.Controllers
             Assert.IsNotNull(this.controller);
         }
 
-        /// <summary>   (Unit Test Method) post this message. </summary>
+        /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
         public void Post()
         {
@@ -52,7 +52,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
         }
 
-        /// <summary>   (Unit Test Method) posts the no data. </summary>
+        /// <summary> (Unit Test Method) posts the no data. </summary>
         [Test]
         public void PostNoData()
         {
@@ -63,7 +63,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.BadRequest, ((BadRequestResult)result).StatusCode);
         }
 
-        /// <summary>   (Unit Test Method) posts the already exists. </summary>
+        /// <summary> (Unit Test Method) posts the already exists. </summary>
         [Test]
         public void PostAlreadyExists()
         {
@@ -80,7 +80,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.Conflict, ((StatusCodeResult)result).StatusCode);
         }
 
-        /// <summary>   (Unit Test Method) gets all. </summary>
+        /// <summary> (Unit Test Method) gets all. </summary>
         [Test]
         public void GetAll()
         {
@@ -115,7 +115,7 @@ namespace PackIt.Test.Controllers
             Assert.IsEmpty(ids, "IDS not found " + string.Join(",", ids));
         }
 
-        /// <summary>   (Unit Test Method) gets this object. </summary>
+        /// <summary> (Unit Test Method) gets this object. </summary>
         [Test]
         public void Get()
         {
@@ -143,7 +143,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual(item.Notes, StartNote);
         }
 
-        /// <summary>   (Unit Test Method) gets not found. </summary>
+        /// <summary> (Unit Test Method) gets not found. </summary>
         [Test]
         public void GetNotFound()
         {
@@ -155,7 +155,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundObjectResult)result).StatusCode);
         }
 
-        /// <summary>   (Unit Test Method) puts this object. </summary>
+        /// <summary> (Unit Test Method) puts this object. </summary>
         [Test]
         public void Put()
         {
@@ -187,7 +187,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual(item.Name, PutName);
         }
 
-        /// <summary>   (Unit Test Method) puts not found. </summary>
+        /// <summary> (Unit Test Method) puts not found. </summary>
         [Test]
         public void PutNotFound()
         {
@@ -200,7 +200,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundObjectResult)result).StatusCode);
         }
 
-        /// <summary>   (Unit Test Method) deletes this object. </summary>
+        /// <summary> (Unit Test Method) deletes this object. </summary>
         [Test]
         public void Delete()
         {
@@ -217,7 +217,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
         }
 
-        /// <summary>   (Unit Test Method) deletes the not found. </summary>
+        /// <summary> (Unit Test Method) deletes the not found. </summary>
         [Test]
         public void DeleteNotFound()
         {
@@ -229,7 +229,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundObjectResult)result).StatusCode);
         }
 
-        /// <summary>   (Unit Test Method) patches this object. </summary>
+        /// <summary> (Unit Test Method) patches this object. </summary>
         [Test]
         public void Patch()
         {
@@ -277,7 +277,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual(item.Notes, StartNote);
         }
 
-        /// <summary>   (Unit Test Method) patch not found. </summary>
+        /// <summary> (Unit Test Method) patch not found. </summary>
         [Test]
         public void PatchNotFound()
         {
@@ -300,7 +300,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundObjectResult)result).StatusCode);
         }
 
-        /// <summary>   (Unit Test Method) posts the complex pan. </summary>
+        /// <summary> (Unit Test Method) posts the complex pan. </summary>
         [Test]
         public void PostComplexPan()
         {

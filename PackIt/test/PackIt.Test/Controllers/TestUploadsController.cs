@@ -22,7 +22,7 @@ namespace PackIt.Test.Controllers
     using PackIt.Controllers;
     using PackIt.Models;
 
-    /// <summary>   (Unit Test Fixture) a controller for handling test plans. </summary>
+    /// <summary> (Unit Test Fixture) a controller for handling test plans. </summary>
     [TestFixture]
     public class TestUploadsController
     {
@@ -44,7 +44,7 @@ namespace PackIt.Test.Controllers
         /// <summary> The options. </summary>
         private static readonly OptionsWrapper<AppSettings> Options = new OptionsWrapper<AppSettings>(AppSettings);
 
-        /// <summary>   The controller under test. </summary>
+        /// <summary> The controller under test. </summary>
         private UploadsController controller;
 
         /// <summary> Setup for all unit tests here. </summary>
@@ -96,7 +96,7 @@ namespace PackIt.Test.Controllers
                 added.Count);
         }
 
-        /// <summary>   (Unit Test Method) posts the no data. </summary>
+        /// <summary> (Unit Test Method) posts the no data. </summary>
         [Test]
         public void PostNoData()
         {

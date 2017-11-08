@@ -6,16 +6,16 @@
 
 namespace PackIt.Helpers.Enums
 {
-    /// <summary>   Values that represent cost types. </summary>
+    /// <summary> Values that represent cost types. </summary>
     public enum CostType
     {
-        /// <summary>   An enum constant representing the unit option. </summary>
+        /// <summary> An enum constant representing the unit option. </summary>
         Unit,
 
-        /// <summary>   An enum constant representing the area option. </summary>
+        /// <summary> An enum constant representing the area option. </summary>
         Area,
 
-        /// <summary>   An enum constant representing the volume option. </summary>
+        /// <summary> An enum constant representing the volume option. </summary>
         Volume
     }
 }

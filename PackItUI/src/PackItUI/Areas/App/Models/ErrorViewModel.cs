@@ -9,7 +9,7 @@ namespace PackItUI.Areas.App.Models
     /// <summary> Exception model. </summary>
     public class ErrorViewModel
     {
-        /// <summary>   Gets or sets the requested Id. </summary>
+        /// <summary> Gets or sets the requested Id. </summary>
         ///
         /// <value> The position x coordinate. </value>
         public string RequestId { get; set; }
