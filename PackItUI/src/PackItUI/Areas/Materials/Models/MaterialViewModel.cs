@@ -6,20 +6,54 @@
 
 namespace PackItUI.Areas.Materials.Models
 {
+    using System.Collections.Generic;
+    using PackIt.Helpers.Enums;
+    using PackIt.Material;
+    using PackItUI.Helpers;
+
     /// <summary> Material home view model. </summary>
     public class MaterialViewModel
     {
+        /// <summary> The data. </summary>
+        private Material data;
+
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialViewModel" /> class.
         /// </summary>
         public MaterialViewModel()
         {
-            this.Data = new PackIt.Material.Material();
+            this.Data = new Material();
+            this.SetSectionTypes();
         }
+
+        /// <summary> Gets and sets the section types used in select box. </summary>
+        public List<ListForFlag<SectionTypes>> SectionTypes { get; private set; }
 
         /// <summary> Gets or sets the material data. </summary>
         ///
         /// <value> The material data. </value>
-        public PackIt.Material.Material Data { get; set; }
+        public Material Data
+        {
+            get
+            {
+                return this.data;
+            }
+
+            set
+            {
+                this.data = value;
+                this.SetSectionTypes();
+            }
+        }
+
+        /// <summary> Sets the section types. </summary>
+        private void SetSectionTypes()
+        {
+            this.SectionTypes = new List<ListForFlag<SectionTypes>>();
+            foreach (Section section in this.Data.Sections)
+            {
+                this.SectionTypes.Add(new ListForFlag<SectionTypes>(section.SectionType));
+            }
+        }
     }
 }

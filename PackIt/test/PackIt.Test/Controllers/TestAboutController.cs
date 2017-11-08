@@ -11,7 +11,7 @@ namespace PackIt.Test.Controllers
     using NUnit.Framework;
     using PackIt.Controllers;
 
-    /// <summary>   (Unit Test Fixture) a controller for handling test materials. </summary>
+    /// <summary> (Unit Test Fixture) a controller for handling test materials. </summary>
     [TestFixture]
     public class TestAboutController
     {
@@ -26,7 +26,7 @@ namespace PackIt.Test.Controllers
             Assert.IsNotNull(this.controller);
         }
 
-        /// <summary>   (Unit Test Method) gets this object. </summary>
+        /// <summary> (Unit Test Method) gets this object. </summary>
         [Test]
         public void Get()
         {

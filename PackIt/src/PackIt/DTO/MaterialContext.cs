@@ -12,28 +12,28 @@ namespace PackIt.DTO
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PackIt.Material;
 
-    /// <summary>   A material context. </summary>
+    /// <summary> A material context. </summary>
     public class MaterialContext : DbContext
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialContext" /> class.
         /// </summary>
         ///
-        /// <param name="options">  Options for controlling the operation. </param>
+        /// <param name="options"> Options for controlling the operation. </param>
         public MaterialContext(DbContextOptions<MaterialContext> options)
             : base(options)
 
         {
         }
 
-        /// <summary>   Gets the materials. </summary>
+        /// <summary> Gets the materials. </summary>
         ///
         /// <value> The materials. </value>
         public DbSet<DtoMaterial.DtoMaterial> Materials { get; private set; }
 
-        /// <summary>   Gets the materials. </summary>
+        /// <summary> Gets the materials. </summary>
         ///
-        /// <returns>   The materials. </returns>
+        /// <returns> The materials. </returns>
         public IList<Material> GetMaterials()
         {
             var ret = new List<Material>();
@@ -53,7 +53,7 @@ namespace PackIt.DTO
             return ret;
         }
 
-        /// <summary>   Adds a material. </summary>
+        /// <summary> Adds a material. </summary>
         ///
         /// <param name="item"> The item. </param>
         public void AddMaterial(Material item)
@@ -62,11 +62,11 @@ namespace PackIt.DTO
             this.Materials.Add(dto);
         }
 
-        /// <summary>   Searches for the first material. </summary>
+        /// <summary> Searches for the first material. </summary>
         ///
-        /// <param name="key">  The key. </param>
+        /// <param name="key"> The key. </param>
         ///
-        /// <returns>   The found material. </returns>
+        /// <returns> The found material. </returns>
         public Material FindMaterial(string key)
         {
             try
@@ -89,16 +89,16 @@ namespace PackIt.DTO
             }
         }
 
-        /// <summary>   Removes the material. </summary>
+        /// <summary> Removes the material. </summary>
         ///
-        /// <param name="key">  The key. </param>
+        /// <param name="key"> The key. </param>
         public void RemoveMaterial(string key)
         {
             DtoMaterial.DtoMaterial entity = this.Materials.Find(key);
             this.Materials.Remove(entity);
         }
 
-        /// <summary>   Updates the material described by item. </summary>
+        /// <summary> Updates the material described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
         public void UpdateMaterial(Material item)

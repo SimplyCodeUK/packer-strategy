@@ -12,7 +12,7 @@ namespace PackItUI.Areas.Materials.Controllers
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Materials.Models;
 
-    /// <summary>   A controller for handling the Materials Home Page. </summary>
+    /// <summary> A controller for handling the Materials Home Page. </summary>
     [Area("Materials")]
     public class HomeController : Controller
     {
@@ -37,7 +37,7 @@ namespace PackItUI.Areas.Materials.Controllers
             this.handler = handler;
         }
 
-        /// <summary>   Handle the Materials view request. </summary>
+        /// <summary> Handle the Materials view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]

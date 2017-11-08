@@ -12,7 +12,7 @@ namespace PackItUI.Areas.Plans.Controllers
     using PackItUI.Areas.Plans.DTO;
     using PackItUI.Areas.Plans.Models;
 
-    /// <summary>   A controller for handling the Plans Home Page. </summary>
+    /// <summary> A controller for handling the Plans Home Page. </summary>
     [Area("Plans")]
     public class HomeController : Controller
     {
@@ -37,7 +37,7 @@ namespace PackItUI.Areas.Plans.Controllers
             this.handler = handler;
         }
 
-        /// <summary>   Handle the Plans view request. </summary>
+        /// <summary> Handle the Plans view request. </summary>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]

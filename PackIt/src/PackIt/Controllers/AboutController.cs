@@ -8,17 +8,17 @@ namespace PackIt.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
 
-    /// <summary>   The root controller of the service. </summary>
+    /// <summary> The root controller of the service. </summary>
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}", Order = 16)]
     public class AboutController : Controller
     {
         /// <summary>
-        ///     (An Action that handles HTTP GET requests) enumerates the items in this collection that
-        ///     meet given criteria.
+        /// (An Action that handles HTTP GET requests) enumerates the items in this collection that
+        /// meet given criteria.
         /// </summary>
         ///
-        /// <returns>   An enumerator that allows foreach to be used to process the matched items. </returns>
+        /// <returns> An enumerator that allows foreach to be used to process the matched items. </returns>
         [HttpGet]
         public IActionResult Get()
         {

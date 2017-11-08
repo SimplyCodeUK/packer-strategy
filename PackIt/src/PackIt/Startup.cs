@@ -18,14 +18,14 @@ namespace PackIt
     using PackIt.DTO;
     using PackIt.Models;
 
-    /// <summary>   A start up. </summary>
+    /// <summary> A start up. </summary>
     public class Startup
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="Startup" /> class.
         /// </summary>
         ///
-        /// <param name="env">  The environment. </param>
+        /// <param name="env"> The environment. </param>
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -36,12 +36,12 @@ namespace PackIt
             this.Configuration = builder.Build();
         }
 
-        /// <summary>   Gets the configuration. </summary>
+        /// <summary> Gets the configuration. </summary>
         ///
         /// <value> The configuration. </value>
         public IConfigurationRoot Configuration { get; }
 
-        /// <summary>   Configure services. </summary>
+        /// <summary> Configure services. </summary>
         ///
         /// <param name="services"> The services. </param>
         public void ConfigureServices(IServiceCollection services)
@@ -62,11 +62,11 @@ namespace PackIt
             services.AddSingleton<IPlanRepository, PlanRepository>();
         }
 
-        /// <summary>   Configures start up. </summary>
+        /// <summary> Configures start up. </summary>
         ///
-        /// <param name="app">              The application. </param>
-        /// <param name="env">              The environment. </param>
-        /// <param name="loggerFactory">    The logger factory. </param>
+        /// <param name="app"> The application. </param>
+        /// <param name="env"> The environment. </param>
+        /// <param name="loggerFactory"> The logger factory. </param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));

@@ -13,11 +13,11 @@ namespace PackIt.Test.DTO
     using PackIt.DTO.DtoPlan;
     using PackIt.Plan;
 
-    /// <summary>   (Unit Test Fixture) a mapper for plans. </summary>
+    /// <summary> (Unit Test Fixture) a mapper for plans. </summary>
     [TestFixture]
     public class TestPlanMapper
     {
-        /// <summary>   (Unit Test Method) Convert a Plan to it's DTO. </summary>
+        /// <summary> (Unit Test Method) Convert a Plan to it's DTO. </summary>
         [Test]
         public void ConvertPlan()
         {

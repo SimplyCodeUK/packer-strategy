@@ -6,19 +6,19 @@
 
 namespace PackIt.Helpers.Enums
 {
-    /// <summary>   Values that represent pack shapes. </summary>
+    /// <summary> Values that represent pack shapes. </summary>
     public enum ShapeType
     {
-        /// <summary>   An enum constant representing the rectangle option. </summary>
+        /// <summary> An enum constant representing the rectangle option. </summary>
         Rectangle,
 
-        /// <summary>   An enum constant representing the circle option. </summary>
+        /// <summary> An enum constant representing the circle option. </summary>
         Circle,
 
-        /// <summary>   An enum constant representing the oval option. </summary>
+        /// <summary> An enum constant representing the oval option. </summary>
         Oval,
 
-        /// <summary>   An enum constant representing the round rectangle option. </summary>
+        /// <summary> An enum constant representing the round rectangle option. </summary>
         RoundRectangle
     }
 }

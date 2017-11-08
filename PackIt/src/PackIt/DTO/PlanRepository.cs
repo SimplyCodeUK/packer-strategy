@@ -9,28 +9,28 @@ namespace PackIt.DTO
     using System.Collections.Generic;
     using PackIt.Plan;
 
-    /// <summary>   A plan repository. </summary>
+    /// <summary> A plan repository. </summary>
     ///
     /// <seealso cref="T:PackIt.DTO.IPlanRepository"/>
     public class PlanRepository : IPlanRepository
     {
-        /// <summary>   The context. </summary>
+        /// <summary> The context. </summary>
         private readonly PlanContext context;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="PlanRepository" /> class.
         /// </summary>
         ///
-        /// <param name="context">  The context. </param>
+        /// <param name="context"> The context. </param>
         public PlanRepository(PlanContext context)
         {
             this.context = context;
         }
 
-        /// <summary>   Gets all items in this collection. </summary>
+        /// <summary> Gets all items in this collection. </summary>
         ///
         /// <returns>
-        ///     An enumerator that allows foreach to be used to process all items in this collection.
+        /// An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
         ///
         /// <seealso cref="M:PackIt.DTO.IPlanRepository.GetAll()"/>
@@ -39,7 +39,7 @@ namespace PackIt.DTO
             return this.context.GetPlans();
         }
 
-        /// <summary>   Adds item. </summary>
+        /// <summary> Adds item. </summary>
         ///
         /// <param name="item"> The item. </param>
         ///
@@ -50,11 +50,11 @@ namespace PackIt.DTO
             this.context.SaveChanges();
         }
 
-        /// <summary>   Searches for the first match for the given string. </summary>
+        /// <summary> Searches for the first match for the given string. </summary>
         ///
-        /// <param name="key">  The key to remove. </param>
+        /// <param name="key"> The key to remove. </param>
         ///
-        /// <returns>   A Plan. </returns>
+        /// <returns> A Plan. </returns>
         ///
         /// <seealso cref="M:PackIt.DTO.IPlanRepository.Find(string)"/>
         public Plan Find(string key)
@@ -63,9 +63,9 @@ namespace PackIt.DTO
             return ret;
         }
 
-        /// <summary>   Removes the given key. </summary>
+        /// <summary> Removes the given key. </summary>
         ///
-        /// <param name="key">  The key to remove. </param>
+        /// <param name="key"> The key to remove. </param>
         ///
         /// <seealso cref="M:PackIt.DTO.IPlanRepository.Remove(string)"/>
         public void Remove(string key)
@@ -74,7 +74,7 @@ namespace PackIt.DTO
             this.context.SaveChanges();
         }
 
-        /// <summary>   Updates the given item. </summary>
+        /// <summary> Updates the given item. </summary>
         ///
         /// <param name="item"> The item. </param>
         ///

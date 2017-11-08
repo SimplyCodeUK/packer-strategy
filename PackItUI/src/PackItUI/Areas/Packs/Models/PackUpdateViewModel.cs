@@ -60,37 +60,32 @@ namespace PackItUI.Areas.Packs.Models
             [Display(Prompt = "Enter Material Notes")]
             public string Notes { get; set; }
 
-            /// <summary>   Gets or sets the plan code. </summary>
+            /// <summary> Gets or sets the plan code. </summary>
             ///
             /// <value> The plan code. </value>
             public string PlanCode { get; set; }
 
-            /// <summary>   Gets or sets the name of the plan. </summary>
+            /// <summary> Gets or sets the name of the plan. </summary>
             ///
             /// <value> The name of the plan. </value>
             public string PlanName { get; set; }
 
-            /// <summary>   Gets or sets the type of the material. </summary>
+            /// <summary> Gets or sets the type of the material. </summary>
             ///
             /// <value> The type of the material. </value>
             public MaterialType MaterialType { get; set; }
 
-            /// <summary>   Gets or sets the material code. </summary>
+            /// <summary> Gets or sets the material code. </summary>
             ///
             /// <value> The material code. </value>
             public string MaterialCode { get; set; }
 
-            /// <summary>   Gets or sets the name of the material. </summary>
+            /// <summary> Gets or sets the name of the material. </summary>
             ///
             /// <value> The name of the material. </value>
             public string MaterialName { get; set; }
 
-            /// <summary>   Gets or sets the costing premium. </summary>
-            ///
-            /// <value> The costing premium. </value>
-            public double CostingPremium { get; set; }
-
-            /// <summary>   Gets or sets the collection of costings. </summary>
+            /// <summary> Gets or sets the collection of costings. </summary>
             ///
             /// <value> Collection of costings. </value>
             public IList<Costing> Costings { get; set; }

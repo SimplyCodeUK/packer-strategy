@@ -6,35 +6,35 @@
 
 namespace PackIt.DTO.DtoMaterial
 {
-    /// <summary>   A dto costing. </summary>
+    /// <summary> A dto costing. </summary>
     public class DtoCosting
     {
-        /// <summary>   Gets or sets the identifier of the material. </summary>
+        /// <summary> Gets or sets the identifier of the material. </summary>
         ///
         /// <value> The identifier of the material. </value>
         public string MaterialId { get; set; }
 
-        /// <summary>   Gets or sets the quantity. </summary>
+        /// <summary> Gets or sets the quantity. </summary>
         ///
         /// <value> The quantity. </value>
         public long Quantity { get; set; }
 
-        /// <summary>   Gets or sets the quantity cost. </summary>
+        /// <summary> Gets or sets the quantity cost. </summary>
         ///
         /// <value> The quantity cost. </value>
         public double QuantityCost { get; set; }
 
-        /// <summary>   Gets or sets the volume cost. </summary>
+        /// <summary> Gets or sets the volume cost. </summary>
         ///
         /// <value> The volume cost. </value>
         public double VolumeCost { get; set; }
 
-        /// <summary>   Gets or sets the area cost. </summary>
+        /// <summary> Gets or sets the area cost. </summary>
         ///
         /// <value> The area cost. </value>
         public double AreaCost { get; set; }
 
-        /// <summary>   Gets or sets the length cost. </summary>
+        /// <summary> Gets or sets the length cost. </summary>
         ///
         /// <value> The length cost. </value>
         public double LengthCost { get; set; }

@@ -8,7 +8,7 @@ namespace PackIt.Pack
 {
     using PackIt.Helpers.Enums;
 
-    /// <summary>   A key to a Material in its database. </summary>
+    /// <summary> A key to a Material in its database. </summary>
     public class DatabaseMaterial
     {
         /// <summary>
@@ -19,12 +19,12 @@ namespace PackIt.Pack
             this.MaterialType = MaterialType.Bottle;
         }
 
-        /// <summary>   Gets or sets the type of the Material. </summary>
+        /// <summary> Gets or sets the type of the Material. </summary>
         ///
         /// <value> The type of the Material. </value>
         public MaterialType MaterialType { get; set; }
 
-        /// <summary>   Gets or sets the Material identifier. </summary>
+        /// <summary> Gets or sets the Material identifier. </summary>
         ///
         /// <value> The Material identifier. </value>
         public string MaterialId { get; set; }

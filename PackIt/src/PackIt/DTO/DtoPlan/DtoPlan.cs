@@ -8,7 +8,7 @@ namespace PackIt.DTO.DtoPlan
 {
     using System.Collections.Generic;
 
-    /// <summary>   A dto plan. </summary>
+    /// <summary> A dto plan. </summary>
     public class DtoPlan
     {
         /// <summary>
@@ -19,22 +19,22 @@ namespace PackIt.DTO.DtoPlan
             this.Stages = new List<DtoStage>();
         }
 
-        /// <summary>   Gets or sets the Plan identifier. </summary>
+        /// <summary> Gets or sets the Plan identifier. </summary>
         ///
         /// <value> The Plan identifier. </value>
         public string PlanId { get; set; }
 
-        /// <summary>   Gets or sets the name. </summary>
+        /// <summary> Gets or sets the name. </summary>
         ///
         /// <value> The name. </value>
         public string Name { get; set; }
 
-        /// <summary>   Gets or sets the notes. </summary>
+        /// <summary> Gets or sets the notes. </summary>
         ///
         /// <value> The notes. </value>
         public string Notes { get; set; }
 
-        /// <summary>   Gets or sets the collection of stages. </summary>
+        /// <summary> Gets or sets the collection of stages. </summary>
         ///
         /// <value> Collection of stages. </value>
         public IList<DtoStage> Stages { get; set; }

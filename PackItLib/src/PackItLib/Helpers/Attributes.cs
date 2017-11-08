@@ -10,7 +10,7 @@ namespace PackIt.Helpers
     using System.Linq;
     using System.Reflection;
 
-    /// <summary>   An attributes. </summary>
+    /// <summary> An attributes. </summary>
     public static class Attributes
     {
         /// <summary> An Enum extension method that returns the short name. </summary>

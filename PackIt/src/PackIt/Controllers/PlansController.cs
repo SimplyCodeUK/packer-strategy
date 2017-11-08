@@ -13,30 +13,30 @@ namespace PackIt.Controllers
     using PackIt.DTO;
     using PackIt.Plan;
 
-    /// <summary>   A controller for handling plans. </summary>
+    /// <summary> A controller for handling plans. </summary>
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class PlansController : Controller
     {
-        /// <summary>   The repository. </summary>
+        /// <summary> The repository. </summary>
         private readonly IPlanRepository repository;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="PlansController" /> class.
         /// </summary>
         ///
-        /// <param name="repository">   The repository. </param>
+        /// <param name="repository"> The repository. </param>
         public PlansController(IPlanRepository repository)
         {
             this.repository = repository;
         }
 
         /// <summary>
-        ///     (An Action that handles HTTP GET requests) enumerates the items in this collection that
-        ///     meet given criteria.
+        /// (An Action that handles HTTP GET requests) enumerates the items in this collection that
+        /// meet given criteria.
         /// </summary>
         ///
-        /// <returns>   An enumerator that allows foreach to be used to process the matched items. </returns>
+        /// <returns> An enumerator that allows foreach to be used to process the matched items. </returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -44,13 +44,13 @@ namespace PackIt.Controllers
         }
 
         /// <summary>
-        ///     (An Action that handles HTTP GET requests) gets an IActionResult using the given
-        ///     identifier containing a plan.
+        /// (An Action that handles HTTP GET requests) gets an IActionResult using the given
+        /// identifier containing a plan.
         /// </summary>
         ///
-        /// <param name="id">   The identifier. </param>
+        /// <param name="id"> The identifier. </param>
         ///
-        /// <returns>   An IActionResult. </returns>
+        /// <returns> An IActionResult. </returns>
         [HttpGet("{id}")]
         [Route("{id}", Name = "GetPlan")]
         [ProducesResponseType(typeof(Plan), 200)]
@@ -66,11 +66,11 @@ namespace PackIt.Controllers
             return this.Ok(item);
         }
 
-        /// <summary>   (An Action that handles HTTP POST requests) post this message. </summary>
+        /// <summary> (An Action that handles HTTP POST requests) post this message. </summary>
         ///
-        /// <param name="value">    The value. </param>
+        /// <param name="value"> The value. </param>
         ///
-        /// <returns>   An IActionResult. </returns>
+        /// <returns> An IActionResult. </returns>
         [HttpPost]
         public IActionResult Post([FromBody] Plan value)
         {
@@ -96,12 +96,12 @@ namespace PackIt.Controllers
             return result;
         }
 
-        /// <summary>   Updates an existing Plan. </summary>
+        /// <summary> Updates an existing Plan. </summary>
         ///
-        /// <param name="id">       The identifier. </param>
-        /// <param name="value">    The value. </param>
+        /// <param name="id"> The identifier. </param>
+        /// <param name="value"> The value. </param>
         ///
-        /// <returns>   An IActionResult. </returns>
+        /// <returns> An IActionResult. </returns>
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] Plan value)
         {
@@ -118,11 +118,11 @@ namespace PackIt.Controllers
             return this.Ok();
         }
 
-        /// <summary>   Deletes the given ID. </summary>
+        /// <summary> Deletes the given ID. </summary>
         ///
-        /// <param name="id">   The identifier. </param>
+        /// <param name="id"> The identifier. </param>
         ///
-        /// <returns>   An IActionResult. </returns>
+        /// <returns> An IActionResult. </returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
@@ -135,12 +135,12 @@ namespace PackIt.Controllers
             return this.Ok();
         }
 
-        /// <summary>   Patches an existing Plan. </summary>
+        /// <summary> Patches an existing Plan. </summary>
         ///
-        /// <param name="id">       The identifier. </param>
-        /// <param name="update">   The update. </param>
+        /// <param name="id"> The identifier. </param>
+        /// <param name="update"> The update. </param>
         ///
-        /// <returns>   An IActionResult. </returns>
+        /// <returns> An IActionResult. </returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> update)
         {

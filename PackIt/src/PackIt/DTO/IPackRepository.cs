@@ -9,34 +9,34 @@ namespace PackIt.DTO
     using System.Collections.Generic;
     using PackIt.Pack;
 
-    /// <summary>   Interface for pack repository. </summary>
+    /// <summary> Interface for pack repository. </summary>
     public interface IPackRepository
     {
-        /// <summary>   Adds item. </summary>
+        /// <summary> Adds item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
         void Add(Pack item);
 
-        /// <summary>   Gets all items in this collection. </summary>
+        /// <summary> Gets all items in this collection. </summary>
         ///
         /// <returns>
-        ///     An enumerator that allows foreach to be used to process all items in this collection.
+        /// An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
         IList<Pack> GetAll();
 
-        /// <summary>   Searches for the first match for the given string. </summary>
+        /// <summary> Searches for the first match for the given string. </summary>
         ///
-        /// <param name="key">  The key. </param>
+        /// <param name="key"> The key. </param>
         ///
-        /// <returns>   A Pack. </returns>
+        /// <returns> A Pack. </returns>
         Pack Find(string key);
 
-        /// <summary>   Removes the given key. </summary>
+        /// <summary> Removes the given key. </summary>
         ///
-        /// <param name="key">  The key. </param>
+        /// <param name="key"> The key. </param>
         void Remove(string key);
 
-        /// <summary>   Updates the given item. </summary>
+        /// <summary> Updates the given item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
         void Update(Pack item);

@@ -12,27 +12,27 @@ namespace PackIt.DTO
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PackIt.Plan;
 
-    /// <summary>   A plan context. </summary>
+    /// <summary> A plan context. </summary>
     public class PlanContext : DbContext
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PlanContext" /> class.
         /// </summary>
         ///
-        /// <param name="options">  Options for controlling the operation. </param>
+        /// <param name="options"> Options for controlling the operation. </param>
         public PlanContext(DbContextOptions<PlanContext> options)
             : base(options)
         {
         }
 
-        /// <summary>   Gets the plans. </summary>
+        /// <summary> Gets the plans. </summary>
         ///
         /// <value> The plans. </value>
         public DbSet<DtoPlan.DtoPlan> Plans { get; private set; }
 
-        /// <summary>   Gets the plans. </summary>
+        /// <summary> Gets the plans. </summary>
         ///
-        /// <returns>   The plans. </returns>
+        /// <returns> The plans. </returns>
         public IList<Plan> GetPlans()
         {
             var ret = new List<Plan>();
@@ -48,7 +48,7 @@ namespace PackIt.DTO
             return ret;
         }
 
-        /// <summary>   Adds a plan. </summary>
+        /// <summary> Adds a plan. </summary>
         ///
         /// <param name="item"> The item. </param>
         public void AddPlan(Plan item)
@@ -57,11 +57,11 @@ namespace PackIt.DTO
             this.Plans.Add(dto);
         }
 
-        /// <summary>   Searches for the first plan. </summary>
+        /// <summary> Searches for the first plan. </summary>
         ///
-        /// <param name="key">  The key. </param>
+        /// <param name="key"> The key. </param>
         ///
-        /// <returns>   The found plan. </returns>
+        /// <returns> The found plan. </returns>
         public Plan FindPlan(string key)
         {
             try
@@ -80,16 +80,16 @@ namespace PackIt.DTO
             }
         }
 
-        /// <summary>   Removes the plan described by key. </summary>
+        /// <summary> Removes the plan described by key. </summary>
         ///
-        /// <param name="key">  The key. </param>
+        /// <param name="key"> The key. </param>
         public void RemovePlan(string key)
         {
             DtoPlan.DtoPlan entity = this.Plans.Find(key);
             this.Plans.Remove(entity);
         }
 
-        /// <summary>   Updates the plan described by item. </summary>
+        /// <summary> Updates the plan described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
         public void UpdatePlan(Plan item)
