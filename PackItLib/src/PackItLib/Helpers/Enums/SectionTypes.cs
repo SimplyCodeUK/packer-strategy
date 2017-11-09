@@ -8,12 +8,12 @@ namespace PackIt.Helpers.Enums
 {
     using System;
 
-    /// <summary> Values that represent cost types. </summary>
+    /// <summary> Values that represent section types. </summary>
     [Flags]
     public enum SectionTypes
     {
         /// <summary> Undefined cross section. </summary>
-        Undefined = 0,
+        None = 0,
 
         /// <summary> Major cross section. </summary>
         Major = 1,
