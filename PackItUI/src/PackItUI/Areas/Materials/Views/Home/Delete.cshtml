@@ -202,7 +202,7 @@
                             {
                                 <tr>
                                     <td>
-                                        <select asp-for="Data.Sections[i].SectionType" asp-items="Model.SectionTypes[i].ListItems" multiple class="@InputClass" disabled="disabled"></select>
+                                        <select asp-for="Data.Sections[i].SectionType" asp-items="Model.SectionTypes[i].ListItems" multiple class="selectpicker @InputClass" disabled="disabled"></select>
                                     </td>
                                     <td>
                                         <select asp-for="Data.Sections[i].Shape" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.ShapeType>()" class="@InputClass" disabled="disabled"></select>

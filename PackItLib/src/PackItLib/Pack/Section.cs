@@ -18,6 +18,7 @@ namespace PackIt.Pack
         public Section()
         {
             this.Shape = ShapeType.Rectangle;
+            this.SectionType = SectionTypes.Minor;
         }
 
         /// <summary> Gets or sets the shape. </summary>
