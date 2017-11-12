@@ -12,9 +12,6 @@ namespace PackIt.Helpers.Enums
     [Flags]
     public enum SectionTypes
     {
-        /// <summary> Undefined cross section. </summary>
-        None = 0,
-
         /// <summary> Major cross section. </summary>
         Major = 1,
 
