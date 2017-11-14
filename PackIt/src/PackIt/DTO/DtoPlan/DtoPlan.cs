@@ -29,11 +29,6 @@ namespace PackIt.DTO.DtoPlan
         /// <value> The name. </value>
         public string Name { get; set; }
 
-        /// <summary> Gets or sets the notes. </summary>
-        ///
-        /// <value> The notes. </value>
-        public string Notes { get; set; }
-
         /// <summary> Gets or sets the collection of stages. </summary>
         ///
         /// <value> Collection of stages. </value>

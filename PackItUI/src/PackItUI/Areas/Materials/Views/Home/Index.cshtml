@@ -28,7 +28,6 @@
         <tr>
             <th><label asp-for="Items.FirstOrDefault().MaterialId" class="@LabelClass"></label></th>
             <th><label asp-for="Items.FirstOrDefault().Name" class="@LabelClass"></label></th>
-            <th><label asp-for="Items.FirstOrDefault().Notes" class="@LabelClass"></label></th>
             <th>
                 <a id="create" data-toggle="modal" asp-action="Create" class="btn btn-primary">
                     <i class="glyphicon glyphicon-plus"></i>
@@ -42,7 +41,6 @@
             <tr>
                 <td><span class="@DataClass">@item.MaterialId</span></td>
                 <td><span class="@DataClass">@item.Name</span></td>
-                <td><span class="@DataClass">@item.Notes</span></td>
                 <td>
                     <a id="update" data-toggle="modal" asp-action="Update" asp-route-id="@item.MaterialId" class="btn btn-info">
                         <i class="glyphicon glyphicon-pencil"></i>

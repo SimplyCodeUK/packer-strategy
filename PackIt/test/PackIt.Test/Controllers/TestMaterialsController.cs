@@ -120,10 +120,9 @@ namespace PackIt.Test.Controllers
         public void Get()
         {
             const string StartName = "A name";
-            const string StartNote = "Some notes";
             const MaterialType Type = MaterialType.Can;
             string id = Guid.NewGuid().ToString();
-            var item = new Material { MaterialId = id, Type = Type, Name = StartName, Notes = StartNote };
+            var item = new Material { MaterialId = id, Type = Type, Name = StartName};
 
             this.controller.Post(item);
 
@@ -140,7 +139,6 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.Name, StartName);
-            Assert.AreEqual(item.Notes, StartNote);
         }
 
         /// <summary> (Unit Test Method) gets not found. </summary>
@@ -235,10 +233,9 @@ namespace PackIt.Test.Controllers
         {
             const string StartName = "A name";
             const string PatchName = "B name";
-            const string StartNote = "Some notes";
             const MaterialType Type = MaterialType.Crate;
             string id = Guid.NewGuid().ToString();
-            var item = new Material { MaterialId = id, Type = Type, Name = StartName, Notes = StartNote };
+            var item = new Material { MaterialId = id, Type = Type, Name = StartName };
 
             // Create a new material
             this.controller.Post(item);
@@ -261,7 +258,6 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Name, PatchName);
-            Assert.AreEqual(item.Notes, StartNote);
 
             // Get the material and check the returned object has the same Note and new Name
             result = this.controller.Get(id);
@@ -274,7 +270,6 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Name, PatchName);
-            Assert.AreEqual(item.Notes, StartNote);
         }
 
         /// <summary> (Unit Test Method) patch not found. </summary>
@@ -283,10 +278,9 @@ namespace PackIt.Test.Controllers
         {
             const string StartName = "A name";
             const string PatchName = "B name";
-            const string StartNote = "Some notes";
             const MaterialType Type = MaterialType.Crate;
             string id = Guid.NewGuid().ToString();
-            var item = new Material { MaterialId = id, Type = Type, Name = StartName, Notes = StartNote };
+            var item = new Material { MaterialId = id, Type = Type, Name = StartName };
 
             this.controller.Post(item);
 

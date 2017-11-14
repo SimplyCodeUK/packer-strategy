@@ -45,13 +45,6 @@ namespace PackIt.Material
         [Display(Prompt = "Enter Material Name")]
         public string Name { get; set; }
 
-        /// <summary> Gets or sets the notes. </summary>
-        ///
-        /// <value> The notes. </value>
-        [Display(Prompt = "Enter Material Notes")]
-        [DataType(DataType.MultilineText)]
-        public string Notes { get; set; }
-
         /// <summary> Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>
