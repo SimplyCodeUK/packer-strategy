@@ -38,11 +38,6 @@ namespace PackIt.DTO.DtoMaterial
         /// <value> The name. </value>
         public string Name { get; set; }
 
-        /// <summary> Gets or sets the notes. </summary>
-        ///
-        /// <value> The notes. </value>
-        public string Notes { get; set; }
-
         /// <summary> Gets or sets the form. </summary>
         ///
         /// <value> The form. </value>

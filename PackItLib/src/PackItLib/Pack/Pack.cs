@@ -35,13 +35,6 @@ namespace PackIt.Pack
         [Display(Prompt = "Enter Pack Name")]
         public string Name { get; set; }
 
-        /// <summary> Gets or sets the notes. </summary>
-        ///
-        /// <value> The notes. </value>
-        [Display(Prompt = "Enter Pack Notes")]
-        [DataType(DataType.MultilineText)]
-        public string Notes { get; set; }
-
         /// <summary> Gets or sets the plan code. </summary>
         ///
         /// <value> The plan code. </value>

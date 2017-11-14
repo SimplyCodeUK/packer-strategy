@@ -120,9 +120,8 @@ namespace PackIt.Test.Controllers
         public void Get()
         {
             const string StartName = "A name";
-            const string StartNote = "Some notes";
             string id = Guid.NewGuid().ToString();
-            var item = new Plan { PlanId = id, Name = StartName, Notes = StartNote };
+            var item = new Plan { PlanId = id, Name = StartName };
 
             this.controller.Post(item);
 
@@ -138,7 +137,6 @@ namespace PackIt.Test.Controllers
             item = (Plan)objectResult.Value;
             Assert.AreEqual(item.PlanId, id);
             Assert.AreEqual(item.Name, StartName);
-            Assert.AreEqual(item.Notes, StartNote);
         }
 
         /// <summary> (Unit Test Method) gets not found. </summary>
@@ -230,9 +228,8 @@ namespace PackIt.Test.Controllers
         {
             const string StartName = "A name";
             const string PatchName = "B name";
-            const string StartNote = "Some notes";
             string id = Guid.NewGuid().ToString();
-            var item = new Plan { PlanId = id, Name = StartName, Notes = StartNote };
+            var item = new Plan { PlanId = id, Name = StartName };
 
             // Create a new plan
             this.controller.Post(item);
@@ -254,7 +251,6 @@ namespace PackIt.Test.Controllers
             item = (Plan)objectResult.Value;
             Assert.AreEqual(item.PlanId, id);
             Assert.AreEqual(item.Name, PatchName);
-            Assert.AreEqual(item.Notes, StartNote);
 
             // Get the plan and check the returned object has the same Note and new Name
             result = this.controller.Get(id);
@@ -266,7 +262,6 @@ namespace PackIt.Test.Controllers
             item = (Plan)objectResult.Value;
             Assert.AreEqual(item.PlanId, id);
             Assert.AreEqual(item.Name, PatchName);
-            Assert.AreEqual(item.Notes, StartNote);
         }
 
         /// <summary> (Unit Test Method) patch not found. </summary>
@@ -275,8 +270,7 @@ namespace PackIt.Test.Controllers
         {
             const string StartName = "A name";
             const string PatchName = "B name";
-            const string StartNote = "Some notes";
-            var item = new Plan { PlanId = Guid.NewGuid().ToString(), Name = StartName, Notes = StartNote };
+            var item = new Plan { PlanId = Guid.NewGuid().ToString(), Name = StartName };
 
             this.controller.Post(item);
 
