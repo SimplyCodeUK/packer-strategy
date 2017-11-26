@@ -122,7 +122,7 @@ namespace PackIt.Test.Controllers
             const string StartName = "A name";
             const MaterialType Type = MaterialType.Can;
             string id = Guid.NewGuid().ToString();
-            var item = new Material { MaterialId = id, Type = Type, Name = StartName};
+            var item = new Material { MaterialId = id, Type = Type, Name = StartName };
 
             this.controller.Post(item);
 
