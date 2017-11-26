@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackIt", "PackIt\src\PackIt\PackIt.csproj", "{61C44C0B-1705-49A7-B88D-ACB260D2B59E}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE = LICENSE
 		README.md = README.md
 		Settings.StyleCop = Settings.StyleCop
+		Vagrantfile = Vagrantfile
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackIt.Test", "PackIt\test\PackIt.Test\PackIt.Test.csproj", "{DDC0D77C-DDA0-4523-ABB4-23062E066312}"
@@ -33,7 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItLib", "PackItLib\src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItLib.Test", "PackItLib\test\PackItLib.Test\PackItLib.Test.csproj", "{C3D58F03-3DE4-431F-8586-AE20EB033D6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackItUI.Test", "PackItUI\test\PackItUI.Test\PackItUI.Test.csproj", "{4C6A7075-1D16-4730-B297-7D1AC7956AD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItUI.Test", "PackItUI\test\PackItUI.Test\PackItUI.Test.csproj", "{4C6A7075-1D16-4730-B297-7D1AC7956AD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
