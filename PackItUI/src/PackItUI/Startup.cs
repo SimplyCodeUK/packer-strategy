@@ -8,6 +8,7 @@ namespace PackItUI
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using PackItUI.Areas.App.Models;
@@ -82,6 +83,10 @@ namespace PackItUI
                 routes.MapRoute(
                     name: "default",
                     template: "{area=App}/{controller=Home}/{action=Index}/{id?}");
+            });
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
         }
     }
