@@ -61,17 +61,17 @@ Vagrant.configure("2") do |config|
           cd #{SERVICES_DIR}
           if cd #{service}; then git pull; else git clone #{SERVICES[service.to_sym][:repo]} #{service}; fi
           cd #{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}
-		  dotnet restore
+          dotnet restore
           dotnet publish --configuration Release
         SCRIPT
       end
 
-	  # start nginx
+      # start nginx
       buildEnv += <<-SCRIPT
         service nginx restart
       SCRIPT
 
-      node.vm.network "forwarded_port", guest: SERVICES[service.to_sym][:guest_port], host: SERVICES[service.to_sym][:host_port], id: "nginx"
+      node.vm.network "forwarded_port", guest: machine[:guest_port], host: machine[:host_port], id: "nginx"
       node.vm.provision "shell", inline: buildEnv
     end
   end
