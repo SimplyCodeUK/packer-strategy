@@ -1,4 +1,4 @@
-Contributors
+﻿Contributors
 --------------
 This is the official list of the **PackIt** project contributors.
 Names of the original copyright holders (individuals or organizations)

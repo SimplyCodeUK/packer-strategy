@@ -31,7 +31,7 @@ namespace PackItUI
         }
 
         /// <summary> Gets the configuration. </summary>
-        /// 
+        ///
         /// <value> The configuration. </value>
         public IConfiguration Configuration { get; }
 
@@ -40,7 +40,7 @@ namespace PackItUI
         /// This method gets called by the runtime. Use this method to add services to the container.        
         /// </summary>
         /// 
-        /// <param name="services">The services.</param>
+        /// <param name="services"> The services. </param>
         public void ConfigureServices(IServiceCollection services)
         {
             // Configure using a sub-section of the appsettings.json file.

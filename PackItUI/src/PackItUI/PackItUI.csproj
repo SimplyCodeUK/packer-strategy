@@ -32,10 +32,4 @@
     <ProjectReference Include="..\..\..\PackItLib\src\PackItLib\PackItLib.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="Properties\launchSettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>
