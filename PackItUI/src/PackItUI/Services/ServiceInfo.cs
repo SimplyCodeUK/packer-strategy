@@ -12,10 +12,12 @@ namespace PackItUI.Services
         /// <summary>
         /// Initialises a new instance of the <see cref="ServiceInfo" /> class.
         /// </summary>
-        public ServiceInfo()
+        ///
+        /// <param name="endpoint"> The endpoint. </param>
+        public ServiceInfo(string endpoint)
         {
             this.Version = "Unknown";
-            this.About = "Service down!";
+            this.About = "Service down! " + endpoint;
         }
 
         /// <summary> Gets or sets the version of the service. </summary>

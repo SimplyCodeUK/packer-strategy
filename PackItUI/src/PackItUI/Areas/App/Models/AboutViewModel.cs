@@ -8,11 +8,6 @@ namespace PackItUI.Areas.App.Models
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Microsoft.Extensions.Options;
-    using PackItUI.Areas.Materials.DTO;
-    using PackItUI.Areas.Packs.DTO;
-    using PackItUI.Areas.Plans.DTO;
-    using PackItUI.Areas.Uploads.DTO;
     using PackItUI.Services;
 
     /// <summary> About view model. </summary>

@@ -69,7 +69,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
 
             var model = (HomeViewModel)viewResult.ViewData.Model;
             Assert.AreEqual("Unknown", model.Information.Version);
-            Assert.AreEqual("Service down!", model.Information.About);
+            Assert.AreEqual("Service down! http://localhost:8003/api/v1/", model.Information.About);
             Assert.IsNull(model.Items);
         }
 

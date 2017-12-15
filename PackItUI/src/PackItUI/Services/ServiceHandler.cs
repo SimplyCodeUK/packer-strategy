@@ -37,7 +37,7 @@ namespace PackItUI.Services
             }
             catch (Exception)
             {
-                return new ServiceInfo();
+                return new ServiceInfo(endpoint);
             }
         }
     }
