@@ -85,10 +85,10 @@ namespace PackItUI.Test.Areas.App.Controllers
             Assert.AreEqual("Unknown", model.Services["Packs"].Version);
             Assert.AreEqual("Unknown", model.Services["Plans"].Version);
             Assert.AreEqual("Unknown", model.Services["Uploads"].Version);
-            Assert.AreEqual("Service down!", model.Services["Materials"].About);
-            Assert.AreEqual("Service down!", model.Services["Packs"].About);
-            Assert.AreEqual("Service down!", model.Services["Plans"].About);
-            Assert.AreEqual("Service down!", model.Services["Uploads"].About);
+            Assert.AreEqual("Service down! http://localhost:8001/api/v1/", model.Services["Materials"].About);
+            Assert.AreEqual("Service down! http://localhost:8002/api/v1/", model.Services["Packs"].About);
+            Assert.AreEqual("Service down! http://localhost:8003/api/v1/", model.Services["Plans"].About);
+            Assert.AreEqual("Service down! http://localhost:8004/api/v1/", model.Services["Uploads"].About);
         }
 
         /// <summary> (Unit Test Method) about action when the services are running. </summary>
