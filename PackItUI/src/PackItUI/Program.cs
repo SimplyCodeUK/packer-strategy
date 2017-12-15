@@ -8,6 +8,7 @@ namespace PackItUI
 {
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
 
     /// <summary> A program. </summary>
     public class Program
@@ -34,6 +35,7 @@ namespace PackItUI
         /// <returns> The web host. </returns>
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseConfiguration(new ConfigurationBuilder().AddCommandLine(args).Build())
                 .UseStartup<Startup>()
                 .Build();
     }
