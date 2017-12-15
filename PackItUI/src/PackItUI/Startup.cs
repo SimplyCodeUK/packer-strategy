@@ -70,7 +70,7 @@ namespace PackItUI
             }
             else
             {
-                app.UseExceptionHandler("App/Home/Error");
+                app.UseExceptionHandler("/App/Home/Error");
             }
 
             app.UseStaticFiles();

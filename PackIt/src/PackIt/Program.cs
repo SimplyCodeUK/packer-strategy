@@ -9,6 +9,7 @@ namespace PackIt
     using System.IO;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
 
     /// <summary> A program. </summary>
     public class Program
@@ -28,6 +29,7 @@ namespace PackIt
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseConfiguration(new ConfigurationBuilder().AddCommandLine(args).Build())
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
                 .Build();
