@@ -12,7 +12,7 @@ build_script:
 test_script:
 - C:\Users\appveyor\.nuget\packages\opencover\4.6.519\tools\opencover.console -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt\test\PackIt.Test\PackIt.Test.csproj          --configuration %CONFIG% --no-build --logger:trx" -oldstyle
 - C:\Users\appveyor\.nuget\packages\opencover\4.6.519\tools\opencover.console -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib\test\PackItLib.Test\PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput
-- C:\Users\appveyor\.nuget\packages\reportgenerator\3.1.0\tools\ReportGenerator.exe "-reports:coverage.xml" "-targetdir:.\coverage"
+- C:\Users\appveyor\.nuget\packages\reportgenerator\3.1.1\tools\ReportGenerator.exe "-reports:coverage.xml" "-targetdir:.\coverage"
 - 7z a coverage.zip coverage\*.*
 artifacts:
 - path: coverage.zip
