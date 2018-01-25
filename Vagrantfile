@@ -8,8 +8,7 @@ SERVICES = {
     build_dir: "PackIt/src/PackIt",
     binary: "PackIt.dll",
     server_location: "/",
-    guest_port: "8100",
-    host_port: "8000"
+    guest_port: "8000"
   },
   packitui: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
@@ -17,19 +16,15 @@ SERVICES = {
     build_dir: "PackItUI/src/PackItUI",
     binary: "PackItUI.dll",
     server_location: "/",
-    guest_port: "9100",
-    host_port: "9000"
+    guest_port: "9000",
+    host_port: "8080"
   }
 }
 
 MACHINES = {
   packit: {
     services: [
-      "packit"
-    ]
-  },
-  packitui: {
-    services: [
+      "packit",
       "packitui"
     ]
   }
@@ -66,7 +61,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.define "#{key}" do |node|
       machine[:services].each do |service|
-        buildEnv += <<-SCRIPT
+        buildEnv += <<-SCRIPT1
           systemctl stop #{service}.service
 
           cd #{SERVICES_DIR}
@@ -93,8 +88,16 @@ Vagrant.configure("2") do |config|
           echo "WantedBy=multi-user.target"                                                                                              >> "/etc/systemd/system/#{service}.service"
 
           echo "server {"                                                                   > "/etc/nginx/sites-available/#{service}"
-          echo "  listen #{SERVICES[service.to_sym][:host_port]};"                         >> "/etc/nginx/sites-available/#{service}"
-          echo "  listen [::]:#{SERVICES[service.to_sym][:host_port]} default_server;"     >> "/etc/nginx/sites-available/#{service}"
+        SCRIPT1
+
+		if SERVICES[service.to_sym].key?(:host_port)
+          buildEnv += <<-SCRIPT2
+            echo "  listen #{SERVICES[service.to_sym][:host_port]};"                       >> "/etc/nginx/sites-available/#{service}"
+            echo "  listen [::]:#{SERVICES[service.to_sym][:host_port]} default_server;"   >> "/etc/nginx/sites-available/#{service}"
+		  SCRIPT2
+	    end
+
+        buildEnv += <<-SCRIPT3
           echo "  location #{SERVICES[service.to_sym][:server_location]} {"                >> "/etc/nginx/sites-available/#{service}"
           echo "    proxy_pass http://localhost:#{SERVICES[service.to_sym][:guest_port]};" >> "/etc/nginx/sites-available/#{service}"
           echo "  }"                                                                       >> "/etc/nginx/sites-available/#{service}"
@@ -104,9 +107,11 @@ Vagrant.configure("2") do |config|
           systemctl start #{service}.service
 
           ln -sf /etc/nginx/sites-available/#{service} /etc/nginx/sites-enabled/#{service}
-        SCRIPT
+        SCRIPT3
 
-        node.vm.network "forwarded_port", guest: SERVICES[service.to_sym][:guest_port], host: SERVICES[service.to_sym][:host_port], id: "nginx"
+		if SERVICES[service.to_sym].key?(:host_port) && SERVICES[service.to_sym].key?(:guest_port)
+          node.vm.network "forwarded_port", guest: SERVICES[service.to_sym][:guest_port], host: SERVICES[service.to_sym][:host_port], id: "nginx"
+		end
       end
 
       # start nginx
