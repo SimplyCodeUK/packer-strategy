@@ -38,11 +38,17 @@ BASE_INSTALL = <<-SCRIPT
   sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
   sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
   apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+  apt-get install python-software-properties=0.96.20.7 -y
+  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   apt-get update
   apt-get install dotnet-sdk-2.0.3=2.0.3-1      -y
   apt-get install nuget=2.8.7+md510+dhx1-1      -y
   apt-get install git=1:2.7.4-0ubuntu1.3        -y
   apt-get install nginx=1.10.3-0ubuntu0.16.04.2 -y
+  apt-get install nodejs=8.9.4-1nodesource1     -y
+  apt autoremove                                -y
+  npm install -g bower
+  bower --version
   systemctl stop nginx
   rm /etc/nginx/sites-enabled/default 2> /dev/null
 SCRIPT
@@ -67,6 +73,10 @@ Vagrant.configure("2") do |config|
           cd #{SERVICES_DIR}
           if cd #{service}; then git pull; else git clone #{SERVICES[service.to_sym][:repo]} #{service}; fi
           cd #{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}
+          echo cd #{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}
+          if [ -f "./bower.json" ]; then
+            bower install --allow-root
+          fi
           nuget restore #{SERVICES[service.to_sym][:project_file]}
           dotnet restore #{SERVICES[service.to_sym][:project_file]}
           dotnet publish --configuration Release
@@ -90,12 +100,12 @@ Vagrant.configure("2") do |config|
           echo "server {"                                                                   > "/etc/nginx/sites-available/#{service}"
         SCRIPT1
 
-		if SERVICES[service.to_sym].key?(:host_port)
+        if SERVICES[service.to_sym].key?(:host_port)
           buildEnv += <<-SCRIPT2
             echo "  listen #{SERVICES[service.to_sym][:host_port]};"                       >> "/etc/nginx/sites-available/#{service}"
             echo "  listen [::]:#{SERVICES[service.to_sym][:host_port]} default_server;"   >> "/etc/nginx/sites-available/#{service}"
-		  SCRIPT2
-	    end
+          SCRIPT2
+        end
 
         buildEnv += <<-SCRIPT3
           echo "  location #{SERVICES[service.to_sym][:server_location]} {"                >> "/etc/nginx/sites-available/#{service}"
@@ -109,9 +119,9 @@ Vagrant.configure("2") do |config|
           ln -sf /etc/nginx/sites-available/#{service} /etc/nginx/sites-enabled/#{service}
         SCRIPT3
 
-		if SERVICES[service.to_sym].key?(:host_port) && SERVICES[service.to_sym].key?(:guest_port)
+        if SERVICES[service.to_sym].key?(:host_port) && SERVICES[service.to_sym].key?(:guest_port)
           node.vm.network "forwarded_port", guest: SERVICES[service.to_sym][:guest_port], host: SERVICES[service.to_sym][:host_port], id: "nginx"
-		end
+        end
       end
 
       # start nginx
