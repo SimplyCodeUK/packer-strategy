@@ -35,18 +35,17 @@ SERVICES_DIR = "/srv"
 BASE_INSTALL = <<-SCRIPT
   echo "ubuntu:ubuntu" | chpasswd
   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-  sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+  mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
   sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
   apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
   apt-get install python-software-properties=0.96.20.7 -y
   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   apt-get update
-  apt-get install dotnet-sdk-2.0.3=2.0.3-1      -y
+  apt-get install dotnet-sdk-2.1.4=2.1.4-1      -y
   apt-get install nuget=2.8.7+md510+dhx1-1      -y
   apt-get install git=1:2.7.4-0ubuntu1.3        -y
   apt-get install nginx=1.10.3-0ubuntu0.16.04.2 -y
   apt-get install nodejs=8.9.4-1nodesource1     -y
-  apt autoremove                                -y
   npm install -g bower
   bower --version
   systemctl stop nginx
@@ -73,7 +72,6 @@ Vagrant.configure("2") do |config|
           cd #{SERVICES_DIR}
           if cd #{service}; then git pull; else git clone #{SERVICES[service.to_sym][:repo]} #{service}; fi
           cd #{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}
-          echo cd #{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}
           if [ -f "./bower.json" ]; then
             bower install --allow-root
           fi
