@@ -8,7 +8,8 @@ SERVICES = {
     build_dir: "PackIt/src/PackIt",
     binary: "PackIt.dll",
     server_location: "/",
-    guest_port: "8000"
+    guest_port: "8000",
+    host_port: "8100"
   },
   packitui: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
@@ -118,7 +119,7 @@ Vagrant.configure("2") do |config|
         SCRIPT3
 
         if SERVICES[service.to_sym].key?(:host_port) && SERVICES[service.to_sym].key?(:guest_port)
-          node.vm.network "forwarded_port", guest: SERVICES[service.to_sym][:guest_port], host: SERVICES[service.to_sym][:host_port], id: "nginx"
+          node.vm.network "forwarded_port", guest: SERVICES[service.to_sym][:guest_port], host: SERVICES[service.to_sym][:host_port], id: "#{service}"
         end
       end
 
