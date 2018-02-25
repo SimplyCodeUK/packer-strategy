@@ -95,7 +95,7 @@ systemctl stop nginx
 rm /etc/nginx/sites-enabled/default 2> /dev/null
 SERVICE_INSTALL_SCRIPT
 
-MACHINES.each do |key, machine|
+MACHINES.each do |_key, machine|
   buildScript = COMMON_INSTALL
 
   if machine[:dbs]
