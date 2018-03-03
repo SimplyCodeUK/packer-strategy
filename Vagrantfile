@@ -66,19 +66,23 @@ apt-get update
 BASE_PRE_INSTALL_SCRIPT
 
 DATABASE_INSTALL = <<-DATABASE_INSTALL_SCRIPT
-apt-get install postgresql-9.5=9.5.11-0ubuntu0.16.04         -y
-apt-get install postgresql-contrib-9.5=9.5.11-0ubuntu0.16.04 -y
+echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+apt-get update
+apt-get install postgresql-10         -y
+apt-get install postgresql-contrib-10 -y
 service postgresql stop
-echo "-------------------- fixing listen_addresses on /etc/postgresql/9.5/main/postgresql.conf"
-sed -i "s/#listen_address.*/listen_addresses '*'/" /etc/postgresql/9.5/main/postgresql.conf
-echo "-------------------- fixing postgres /etc/postgresql/9.5/main/pg_hba.conf"
-cat >> /etc/postgresql/9.5/main/pg_hba.conf <<EOF
+echo "-------------------- fixing listen_addresses on /etc/postgresql/10/main/postgresql.conf"
+sed -i "s/#listen_address.*/listen_addresses '*'/" /etc/postgresql/10/main/postgresql.conf
+echo "-------------------- fixing postgres /etc/postgresql/10/main/pg_hba.conf"
+cat >> /etc/postgresql/10/main/pg_hba.conf <<EOF
 # Accept all IPv4 connections - FOR DEVELOPMENT ONLY!!!
 host    all         all         0.0.0.0/0             md5
 EOF
-echo "-------------------- set default client_encoding /var/lib/postgresql/9.5/main"
-echo "client_encoding = utf8" >> /var/lib/postgresql/9.5/main
+echo "-------------------- set default client_encoding /var/lib/postgresql/10/main"
+echo "client_encoding = utf8" >> /var/lib/postgresql/10/main
 service postgresql restart
+sudo -u postgres psql --command "ALTER USER postgres WITH PASSWORD 'postgres';"
 DATABASE_INSTALL_SCRIPT
 
 SERVICE_INSTALL = <<-SERVICE_INSTALL_SCRIPT
