@@ -24,7 +24,7 @@ namespace PackIt
     public class Startup
     {
         /// <summary> The database connection manager. </summary>
-        private DbConnectionManager connectionManager;
+        private readonly DbConnectionManager connectionManager;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="Startup" /> class.
