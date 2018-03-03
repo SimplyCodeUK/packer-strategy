@@ -16,12 +16,16 @@ namespace PackIt
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
+    using PackIt.DbInterface;
     using PackIt.DTO;
     using PackIt.Models;
 
     /// <summary> A start up. </summary>
     public class Startup
     {
+        /// <summary> The database connection manager. </summary>
+        private DbConnectionManager connectionManager;
+
         /// <summary>
         /// Initialises a new instance of the <see cref="Startup" /> class.
         /// </summary>
@@ -35,6 +39,12 @@ namespace PackIt
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             this.Configuration = builder.Build();
+
+            // Register database contexts.
+            // The first context will be the default if not specified in <see cref="Configuration" />
+            this.connectionManager = new DbConnectionManager();
+            this.connectionManager.RegisterContextBuilder("inmemory", new DbContextBuilderInMemory());
+            this.connectionManager.RegisterContextBuilder("postgres", new DbContextBuilderPostgres());
         }
 
         /// <summary> Gets the configuration. </summary>
@@ -50,9 +60,9 @@ namespace PackIt
             // Configure using a sub-section of the appsettings.json file.
             services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"));
 
-            services.AddDbContext<PlanContext>(options => options.UseInMemoryDatabase("plan"));
-            services.AddDbContext<MaterialContext>(options => options.UseInMemoryDatabase("material"));
-            services.AddDbContext<PackContext>(options => options.UseInMemoryDatabase("pack"));
+            this.AddDbContext<PlanContext>(services, "PlanContext");
+            this.AddDbContext<MaterialContext>(services, "MaterialContext");
+            this.AddDbContext<PackContext>(services, "PackContext");
 
             // Add framework services.
             services.AddMvc();
@@ -147,6 +157,20 @@ namespace PackIt
 
                 materialContext.SaveChanges();
             }
+        }
+
+        /// <summary> Adds the database context. </summary>
+        ///
+        /// <typeparam name="TContext"> The type of the context. </typeparam>
+        ///
+        /// <param name="services"> The services. </param>
+        /// <param name="section"> The section in the configuration. </param>
+        private void AddDbContext<TContext>(IServiceCollection services, string section) where TContext : DbContext
+        {
+            var connection = this.Configuration.GetSection("Connections").GetSection(section);
+            var builder = this.connectionManager.ContextBuilder(connection["Type"]);
+
+            services.AddDbContext<TContext>(builder.CreateContextOptionsBuilder(connection["ConnectionString"]));
         }
     }
 }
