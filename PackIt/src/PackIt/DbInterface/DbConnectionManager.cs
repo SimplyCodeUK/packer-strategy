@@ -12,7 +12,7 @@ namespace PackIt.DbInterface
     public class DbConnectionManager
     {
         /// <summary> The registered connections. </summary>
-        private Dictionary<string, IDbContextBuilder> connections;
+        private readonly Dictionary<string, IDbContextBuilder> connections;
 
         /// <summary> Initialises a new instance of the <see cref="DbConnectionManager"/> class. </summary>
         public DbConnectionManager()
