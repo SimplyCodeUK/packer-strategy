@@ -8,7 +8,8 @@ DATABASES = {
   postgresql: {
     server_location: "/",
     guest_port: "5432",
-    host_port: "5000"
+    host_port: "5000",
+    connectionString: "Server=localhost;Port=5432;User Id=postgres;Password=postgres;"
   }
 }
 
@@ -20,7 +21,8 @@ SERVICES = {
     binary: "PackIt.dll",
     server_location: "/",
     guest_port: "8000",
-    host_port: "8100"
+    host_port: "8100",
+    database: "postgresql"
   },
   packitui: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
@@ -47,25 +49,25 @@ MACHINES = {
 
 SERVICES_DIR = "/srv"
 
-COMMON_INSTALL = <<-COMMON_INSTALL_SCRIPT
+COMMON_INSTALL = <<-SCRIPT
 echo "ubuntu:ubuntu" | chpasswd
-COMMON_INSTALL_SCRIPT
+SCRIPT
 
-DATABASE_PRE_INSTALL = <<-DATABASE_PRE_INSTALL_SCRIPT
-DATABASE_PRE_INSTALL_SCRIPT
+DATABASE_PRE_INSTALL = <<-SCRIPT
+SCRIPT
 
-SERVICE_PRE_INSTALL = <<-SERVICE_PREP_SCRIPT
+SERVICE_PRE_INSTALL = <<-SCRIPT
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-SERVICE_PREP_SCRIPT
+SCRIPT
 
-BASE_PRE_INSTALL = <<-BASE_PRE_INSTALL_SCRIPT
+BASE_PRE_INSTALL = <<-SCRIPT
 apt-get update
-BASE_PRE_INSTALL_SCRIPT
+SCRIPT
 
-DATABASE_INSTALL = <<-DATABASE_INSTALL_SCRIPT
+DATABASE_INSTALL = <<-SCRIPT
 echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 apt-get update
@@ -83,9 +85,9 @@ echo "-------------------- set default client_encoding /var/lib/postgresql/10/ma
 echo "client_encoding = utf8" >> /var/lib/postgresql/10/main
 service postgresql restart
 sudo -u postgres psql --command "ALTER USER postgres WITH PASSWORD 'postgres';"
-DATABASE_INSTALL_SCRIPT
+SCRIPT
 
-SERVICE_INSTALL = <<-SERVICE_INSTALL_SCRIPT
+SERVICE_INSTALL = <<-SCRIPT
 apt-get install python3-software-properties=0.96.20.7 -y
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 apt-get install dotnet-sdk-2.1.4=2.1.4-1      -y
@@ -97,7 +99,7 @@ npm install -g bower
 bower --version
 systemctl stop nginx
 rm /etc/nginx/sites-enabled/default 2> /dev/null
-SERVICE_INSTALL_SCRIPT
+SCRIPT
 
 MACHINES.each do |_key, machine|
   buildScript = COMMON_INSTALL
@@ -118,27 +120,28 @@ MACHINES.each do |_key, machine|
   end
 
   machine[:dbs].each do |db|
-    buildScript += <<-DB_SCRIPT1
+    buildScript += <<-DB_SCRIPT
       echo "server {"                                                               > "/etc/nginx/sites-available/#{db}"
-    DB_SCRIPT1
+    DB_SCRIPT
     if DATABASES[db.to_sym].key?(:host_port)
-      buildScript += <<-DB_SCRIPT2
+      buildScript += <<-DB_SCRIPT
         echo "  listen #{DATABASES[db.to_sym][:host_port]};"                       >> "/etc/nginx/sites-available/#{db}"
         echo "  listen [::]:#{DATABASES[db.to_sym][:host_port]} default_server;"   >> "/etc/nginx/sites-available/#{db}"
-      DB_SCRIPT2
+      DB_SCRIPT
     end
-    buildScript += <<-DB_SCRIPT3
+    buildScript += <<-DB_SCRIPT
       echo "  location #{DATABASES[db.to_sym][:server_location]} {"                >> "/etc/nginx/sites-available/#{db}"
       echo "    proxy_pass http://localhost:#{DATABASES[db.to_sym][:guest_port]};" >> "/etc/nginx/sites-available/#{db}"
       echo "  }"                                                                   >> "/etc/nginx/sites-available/#{db}"
       echo "}"                                                                     >> "/etc/nginx/sites-available/#{db}"
 
       ln -sf /etc/nginx/sites-available/#{db} /etc/nginx/sites-enabled/#{db}
-    DB_SCRIPT3
+    DB_SCRIPT
   end
 
   machine[:services].each do |service|
-    buildScript += <<-SRV_SCRIPT1
+    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/netcoreapp2.0/publish"
+    buildScript += <<-SRV_SCRIPT
       systemctl stop #{service}.service
 
       cd #{SERVICES_DIR}
@@ -150,11 +153,35 @@ MACHINES.each do |_key, machine|
       nuget restore #{SERVICES[service.to_sym][:project_file]}
       dotnet restore #{SERVICES[service.to_sym][:project_file]}
       dotnet publish --configuration Release
+    SRV_SCRIPT
+    if SERVICES[service.to_sym].key?(:database)
+      db = SERVICES[service.to_sym][:database]
+      connectionString = "#{DATABASES[db.to_sym][:connectionString]}"
+      buildScript += <<-SRV_SCRIPT
+        echo '{'                                                                  > "#{workingDir}/appsettings.local.json"
+        echo '  "Connections": {'                                                >> "#{workingDir}/appsettings.local.json"
+        echo '    "MaterialContext": {'                                          >> "#{workingDir}/appsettings.local.json"
+        echo '      "Type": "postgres",'                                         >> "#{workingDir}/appsettings.local.json"
+        echo '      "ConnectionString": "#{connectionString}Database=material;"' >> "#{workingDir}/appsettings.local.json"
+        echo '    },'                                                            >> "#{workingDir}/appsettings.local.json"
+        echo '    "PackContext": {'                                              >> "#{workingDir}/appsettings.local.json"
+        echo '      "Type": "postgres",'                                         >> "#{workingDir}/appsettings.local.json"
+        echo '      "ConnectionString": "#{connectionString}Database=pack;"'     >> "#{workingDir}/appsettings.local.json"
+        echo '    },'                                                            >> "#{workingDir}/appsettings.local.json"
+        echo '    "PlanContext": {'                                              >> "#{workingDir}/appsettings.local.json"
+        echo '      "Type": "postgres",'                                         >> "#{workingDir}/appsettings.local.json"
+        echo '      "ConnectionString": "#{connectionString}Database=plan;"'     >> "#{workingDir}/appsettings.local.json"
+        echo '    }'                                                             >> "#{workingDir}/appsettings.local.json"
+        echo '  }'                                                               >> "#{workingDir}/appsettings.local.json"
+        echo '}'                                                                 >> "#{workingDir}/appsettings.local.json"
+      SRV_SCRIPT
+    end
+    buildScript += <<-SRV_SCRIPT
       echo "[Unit]"                                                                                                                   > "/etc/systemd/system/#{service}.service"
       echo "Description=Example .NET Web API Application running on Ubuntu"                                                          >> "/etc/systemd/system/#{service}.service"
       echo ""                                                                                                                        >> "/etc/systemd/system/#{service}.service"
       echo "[Service]"                                                                                                               >> "/etc/systemd/system/#{service}.service"
-      echo "WorkingDirectory=#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/netcoreapp2.0/publish"   >> "/etc/systemd/system/#{service}.service"
+      echo "WorkingDirectory=#{workingDir}"                                                                                          >> "/etc/systemd/system/#{service}.service"
       echo "ExecStart=/usr/bin/dotnet #{SERVICES[service.to_sym][:binary]} --urls http://*:#{SERVICES[service.to_sym][:guest_port]}" >> "/etc/systemd/system/#{service}.service"
       echo "Restart=always"                                                                                                          >> "/etc/systemd/system/#{service}.service"
       echo "RestartSec=60s  # Restart service after 60 seconds if dotnet service crashes"                                            >> "/etc/systemd/system/#{service}.service"
@@ -167,15 +194,15 @@ MACHINES.each do |_key, machine|
       echo "[Install]"                                                                                                               >> "/etc/systemd/system/#{service}.service"
       echo "WantedBy=multi-user.target"                                                                                              >> "/etc/systemd/system/#{service}.service"
       echo "server {"                                                                   > "/etc/nginx/sites-available/#{service}"
-    SRV_SCRIPT1
+    SRV_SCRIPT
 
     if SERVICES[service.to_sym].key?(:host_port)
-      buildScript += <<-SRV_SCRIPT2
+      buildScript += <<-SRV_SCRIPT
         echo "  listen #{SERVICES[service.to_sym][:host_port]};"                       >> "/etc/nginx/sites-available/#{service}"
         echo "  listen [::]:#{SERVICES[service.to_sym][:host_port]} default_server;"   >> "/etc/nginx/sites-available/#{service}"
-      SRV_SCRIPT2
+      SRV_SCRIPT
     end
-    buildScript += <<-SRV_SCRIPT3
+    buildScript += <<-SRV_SCRIPT
       echo "  location #{SERVICES[service.to_sym][:server_location]} {"                >> "/etc/nginx/sites-available/#{service}"
       echo "    proxy_pass http://localhost:#{SERVICES[service.to_sym][:guest_port]};" >> "/etc/nginx/sites-available/#{service}"
       echo "  }"                                                                       >> "/etc/nginx/sites-available/#{service}"
@@ -185,12 +212,12 @@ MACHINES.each do |_key, machine|
       systemctl start #{service}.service
 
       ln -sf /etc/nginx/sites-available/#{service} /etc/nginx/sites-enabled/#{service}
-    SRV_SCRIPT3
+    SRV_SCRIPT
   end
 
-  buildScript += <<-SCRIPT4
+  buildScript += <<-SCRIPT
     systemctl start nginx
-  SCRIPT4
+  SCRIPT
 
   machine[:build_script] = buildScript
 end
