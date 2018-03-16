@@ -1,5 +1,8 @@
 ﻿# PackIt
 
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](./LICENSE)
+[![HitCount](http://hits.dwyl.io/SimplyCodeUK/packer-strategy.svg)](http://hits.dwyl.io/SimplyCodeUK/packer-strategy)
+
 ## Status
 
 | Build                 | Result |
