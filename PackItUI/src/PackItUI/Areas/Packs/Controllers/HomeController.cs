@@ -144,5 +144,21 @@ namespace PackItUI.Areas.Packs.Controllers
             await this.handler.DeleteAsync(id);
             return this.RedirectToAction(nameof(this.Index));
         }
+
+        /// <summary> Display the specified pack. </summary>
+        ///
+        /// <param name="id"> The pack identifier. </param>
+        ///
+        /// <returns> An IActionResult. </returns>
+        [HttpGet]
+        public async Task<IActionResult> Display(string id)
+        {
+            var model = new PackUpdateViewModel
+            {
+                Data = this.mapper.Map<PackUpdateViewModel.Pack>(await this.handler.ReadAsync(id))
+            };
+
+            return this.View("Display", model);
+        }
     }
 }
