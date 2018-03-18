@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Packs";
 
-    var LabelClass = "control-label";
     var DataClass = "control-label";
 }
 
@@ -12,12 +11,12 @@
 
 <table class="table">
     <tr>
-        <th><label asp-for="Information.Version" class="@LabelClass"></label></th>
-        <th><label asp-for="Information.About" class="@LabelClass"></label></th>
+        <th scope="col"><label asp-for="Information.Version"></label></th>
+        <th scope="col"><label asp-for="Information.About"></label></th>
     </tr>
     <tr>
-        <td><span class="@DataClass">@Model.Information.Version</span></td>
-        <td><span class="@DataClass">@Model.Information.About</span></td>
+        <td>@Model.Information.Version</td>
+        <td>@Model.Information.About</td>
     </tr>
 </table>
 
@@ -26,11 +25,11 @@
 <table class="table">
     <thead>
         <tr>
-            <th><label asp-for="Items.FirstOrDefault().PackId" class="@LabelClass"></label></th>
-            <th><label asp-for="Items.FirstOrDefault().Name" class="@LabelClass"></label></th>
-            <th>
-                <a id="create" data-toggle="modal" asp-action="Create" class="btn btn-primary">
-                    <i class="glyphicon glyphicon-plus"></i>
+            <th scope="col"><label asp-for="Items.FirstOrDefault().PackId"></label></th>
+            <th scope="col"><label asp-for="Items.FirstOrDefault().Name"></label></th>
+            <th scope="col">
+                <a role="button" class="btn btn-primary" asp-action="Create">
+                    <i class="fas fa-plus"></i>
                 </a>
             </th>
         </tr>
@@ -38,21 +37,21 @@
     <tbody>
         @foreach (var item in Model.Items)
         {
-            <tr>
-                <td><span class="@DataClass">@item.PackId</span></td>
-                <td><span class="@DataClass">@item.Name</span></td>
-                <td>
-                    <a id="update" data-toggle="modal" asp-controller="Home" asp-action="Update" asp-route-id="@item.PackId" class="btn btn-info">
-                        <i class="glyphicon glyphicon-pencil"></i>
-                    </a>
-                    <a id="display" data-toggle="modal" asp-controller="Home" asp-action="Display" asp-route-id="@item.PackId" class="btn btn-primary">
-                        <i class="glyphicon glyphicon-file"></i>
-                    </a>
-                    <a id="delete" data-toggle="modal" asp-controller="Home" asp-action="Delete" asp-route-id="@item.PackId" class="btn btn-danger">
-                        <i class="glyphicon glyphicon-trash"></i>
-                    </a>
-                </td>
-            </tr>
+        <tr>
+            <td><span class="@DataClass">@item.PackId</span></td>
+            <td><span class="@DataClass">@item.Name</span></td>
+            <td>
+                <a role="button" class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@item.PackId">
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
+                <a role="button" class="btn btn-primary" asp-controller="Home" asp-action="Display" asp-route-id="@item.PackId">
+                    <i class="fas fa-boxes"></i>
+                </a>
+                <a role="button" class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@item.PackId">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
