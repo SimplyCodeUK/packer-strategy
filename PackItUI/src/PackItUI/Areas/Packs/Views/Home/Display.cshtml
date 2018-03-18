@@ -18,14 +18,14 @@
     <input asp-for="Data.MaterialName" hidden="hidden" />
 
     <div id="Tabs" role="tabpanel">
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs">
             <li class="active">
-                <a href="#pack" aria-controls="pack" role="tab" data-toggle="tab">Pack</a>
+                <a class="nav-link" href="#pack" role="tab" data-toggle="tab">Pack</a>
             </li>
         </ul>
         <div class="tab-content">
             <br />
-            <div role="tabpanel" class="tab-pane form-horizontal active" id="pack">
+            <div class="tab-pane active" id="pack">
                 <div class="form-group">
                     <label asp-for="Data.PackId" class="@LabelClass"></label>
                     <div class="col-sm-10">

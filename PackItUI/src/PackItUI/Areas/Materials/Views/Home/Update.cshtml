@@ -26,20 +26,20 @@
     <input asp-for="Data.TargetCompression" hidden="hidden" />
 
     <div id="Tabs" role="tabpanel">
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs">
             <li class="active">
-                <a href="#material" aria-controls="material" role="tab" data-toggle="tab">Material</a>
+                <a class="nav-link" href="#material" role="tab" data-toggle="tab">Material</a>
             </li>
             <li>
-                <a href="#costings" aria-controls="costings" role="tab" data-toggle="tab">Costings</a>
+                <a class="nav-link" href="#costings" role="tab" data-toggle="tab">Costings</a>
             </li>
             <li>
-                <a href="#sections" aria-controls="sections" role="tab" data-toggle="tab">Sections</a>
+                <a class="nav-link" href="#sections" role="tab" data-toggle="tab">Sections</a>
             </li>
         </ul>
         <div class="tab-content">
             <br />
-            <div role="tabpanel" class="tab-pane form-horizontal active" id="material">
+            <div class="tab-pane active" id="material">
                 <div class="form-group">
                     <label asp-for="Data.MaterialId" class="@LabelClass"></label>
                     <div class="col-sm-3">
@@ -64,16 +64,16 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th><label class="@LabelClass">Length</label></th>
-                                <th><label class="@LabelClass">Breadth</label></th>
-                                <th><label class="@LabelClass">Height</label></th>
-                                <th><label class="@LabelClass">Volume</label></th>
+                                <th scope="col"></th>
+                                <th scope="col">Length</th>
+                                <th scope="col">Breadth</th>
+                                <th scope="col">Height</th>
+                                <th scope="col">Volume</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th><label class="@LabelClass">Internal</label></th>
+                                <th scope="row">Internal</th>
                                 <td>
                                     <input asp-for="Data.InternalLength" asp-format="@DimensionFormat" class="@InputClass" />
                                 </td>
@@ -88,7 +88,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th><label class="@LabelClass">External</label></th>
+                                <th scope="row">External</th>
                                 <td>
                                     <input asp-for="Data.ExternalLength" asp-format="@DimensionFormat" class="@InputClass" />
                                 </td>
@@ -103,7 +103,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th><label class="@LabelClass">Cell</label></th>
+                                <th scope="row">Cell</th>
                                 <td>
                                     <input asp-for="Data.CellLength" asp-format="@DimensionFormat" class="@InputClass" />
                                 </td>
@@ -115,7 +115,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th><label class="@LabelClass">Center Of Gravity</label></th>
+                                <th scope="row">Center Of Gravity</th>
                                 <td>
                                     <input asp-for="Data.CentreOfGravityX" asp-format="@DimensionFormat" class="@InputClass" />
                                 </td>
@@ -146,99 +146,99 @@
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane form-horizontal" id="costings">
+            <div class="tab-pane" id="costings">
                 <div class="form-group">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th><label asp-for="Data.Costings.FirstOrDefault().Quantity" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Costings.FirstOrDefault().QuantityCost" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Costings.FirstOrDefault().VolumeCost" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Costings.FirstOrDefault().AreaCost" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Costings.FirstOrDefault().LengthCost" class="@LabelClass"></label></th>
+                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().Quantity"></label></th>
+                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().QuantityCost"></label></th>
+                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().VolumeCost"></label></th>
+                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().AreaCost"></label></th>
+                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().LengthCost"></label></th>
                             </tr>
                         </thead>
                         <tbody>
                             @for (int i = 0; i<Model.Data.Costings.Count; ++i)
                             {
-                                <tr>
-                                    <td>
-                                        <input asp-for="Data.Costings[i].Quantity" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Costings[i].QuantityCost" asp-format="@CostFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Costings[i].VolumeCost" asp-format="@CostFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Costings[i].AreaCost" asp-format="@CostFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Costings[i].LengthCost" asp-format="@CostFormat" class="@InputClass" />
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <input asp-for="Data.Costings[i].Quantity" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Costings[i].QuantityCost" asp-format="@CostFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Costings[i].VolumeCost" asp-format="@CostFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Costings[i].AreaCost" asp-format="@CostFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Costings[i].LengthCost" asp-format="@CostFormat" class="@InputClass" />
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane form-horizontal" id="sections">
+            <div class="tab-pane" id="sections">
                 <div class="form-group">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().SectionType" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Shape" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Height" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension0" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension1" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension2" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension3" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension4" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension5" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension6" class="@LabelClass"></label></th>
-                                <th><label asp-for="Data.Sections.FirstOrDefault().Dimension7" class="@LabelClass"></label></th>
+                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().SectionType"></label></th>
+                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Shape"></label></th>
+                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Height"></label></th>
+                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension0"></label></th>
+                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension1"></label></th>
+                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension2"></label></th>
+                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension3"></label></th>
+                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension4"></label></th>
+                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension5"></label></th>
+                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension6"></label></th>
+                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension7"></label></th>
                             </tr>
                         </thead>
                         <tbody>
                             @for (int i = 0; i < Model.Data.Sections.Count; ++i)
                             {
-                                <tr>
-                                    <td>
-                                        <select asp-for="Data.Sections[i].SectionType" asp-items="Model.SectionTypes[i].ListItems" multiple class="selectpicker @InputClass"></select>
-                                    </td>
-                                    <td>
-                                        <select asp-for="Data.Sections[i].Shape" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.ShapeType>()" class="@InputClass"></select>
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Sections[i].Height" asp-format="@DimensionFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Sections[i].Dimension0" asp-format="@DimensionFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Sections[i].Dimension1" asp-format="@DimensionFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Sections[i].Dimension2" asp-format="@DimensionFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Sections[i].Dimension3" asp-format="@DimensionFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Sections[i].Dimension4" asp-format="@DimensionFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Sections[i].Dimension5" asp-format="@DimensionFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Sections[i].Dimension6" asp-format="@DimensionFormat" class="@InputClass" />
-                                    </td>
-                                    <td>
-                                        <input asp-for="Data.Sections[i].Dimension7" asp-format="@DimensionFormat" class="@InputClass" />
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <select multiple asp-for="Data.Sections[i].SectionType" asp-items="Model.SectionTypes[i].ListItems" class="@InputClass"></select>
+                                </td>
+                                <td>
+                                    <select asp-for="Data.Sections[i].Shape" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.ShapeType>()" class="@InputClass"></select>
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Sections[i].Height" asp-format="@DimensionFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Sections[i].Dimension0" asp-format="@DimensionFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Sections[i].Dimension1" asp-format="@DimensionFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Sections[i].Dimension2" asp-format="@DimensionFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Sections[i].Dimension3" asp-format="@DimensionFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Sections[i].Dimension4" asp-format="@DimensionFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Sections[i].Dimension5" asp-format="@DimensionFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Sections[i].Dimension6" asp-format="@DimensionFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <input asp-for="Data.Sections[i].Dimension7" asp-format="@DimensionFormat" class="@InputClass" />
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

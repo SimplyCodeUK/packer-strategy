@@ -7,16 +7,16 @@
 
 <table class="table">
     <tr>
-        <th>Service</th>
-        <th>Version</th>
-        <th>About</th>
+        <th scope="col">Service</th>
+        <th scope="col">Version</th>
+        <th scope="col">About</th>
     </tr>
     @foreach (KeyValuePair<string, PackItUI.Services.ServiceInfo> x in Model.Services)
     {
-        <tr>
-            <td>@x.Key</td>
-            <td>@x.Value.Version</td>
-            <td>@x.Value.About</td>
-        </tr>
+    <tr>
+        <td>@x.Key</td>
+        <td>@x.Value.Version</td>
+        <td>@x.Value.About</td>
+    </tr>
     }
 </table>
