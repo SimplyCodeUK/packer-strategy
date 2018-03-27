@@ -56,6 +56,11 @@
                                 <td>
                                     <input asp-for="Data.Costings[i].RequiredWeight" asp-format="@WeightFormat" class="@InputClass" />
                                 </td>
+                                <td>
+                                    <button onclick="deleteRow(this)" class="btn btn-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
                             </tr>
                             }
                         </tbody>

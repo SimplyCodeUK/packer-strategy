@@ -177,6 +177,11 @@
                                 <td>
                                     <input asp-for="Data.Costings[i].LengthCost" asp-format="@CostFormat" class="@InputClass" />
                                 </td>
+                                <td>
+                                    <button onclick="deleteRow(this)" class="btn btn-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
                             </tr>
                             }
                         </tbody>
@@ -237,6 +242,11 @@
                                 </td>
                                 <td>
                                     <input asp-for="Data.Sections[i].Dimension7" asp-format="@DimensionFormat" class="@InputClass" />
+                                </td>
+                                <td>
+                                    <button onclick="deleteRow(this)" class="btn btn-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
                                 </td>
                             </tr>
                             }
