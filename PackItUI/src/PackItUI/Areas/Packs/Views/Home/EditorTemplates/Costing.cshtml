@@ -1,0 +1,25 @@
+﻿@model PackIt.Pack.Costing
+
+@{
+    var InputClass = "form-control";
+    var WeightFormat = "{0:N4}";
+    var Crud = (PackItUI.Helpers.Crud)ViewData["crud"];
+    var DisabledFlag = Crud == PackItUI.Helpers.Crud.Delete ? "disabled" : null;
+}
+
+<tr>
+    <td>
+        <input asp-for="RequiredQuantity" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="RequiredWeight" asp-format="@WeightFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    @if (Crud != PackItUI.Helpers.Crud.Delete)
+    {
+    <td>
+        <button onclick="deleteRow(this)" class="btn btn-danger">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+    }
+</tr>

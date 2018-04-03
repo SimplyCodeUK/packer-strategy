@@ -1,0 +1,34 @@
+﻿@model PackIt.Material.Costing
+
+@{
+    var InputClass = "form-control";
+    var CostFormat = "{0:N2}";
+    var Crud = (PackItUI.Helpers.Crud)ViewData["crud"];
+    var DisabledFlag = Crud == PackItUI.Helpers.Crud.Delete ? "disabled" : null;
+}
+
+<tr>
+    <td>
+        <input asp-for="Quantity" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="QuantityCost" asp-format="@CostFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="VolumeCost" asp-format="@CostFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="AreaCost" asp-format="@CostFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="LengthCost" asp-format="@CostFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    @if (Crud != PackItUI.Helpers.Crud.Delete)
+    {
+    <td>
+        <button onclick="deleteRow(this)" class="btn btn-danger">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+    }
+</tr>
