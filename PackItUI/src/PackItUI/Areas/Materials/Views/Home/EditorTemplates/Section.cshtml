@@ -1,0 +1,53 @@
+﻿@model PackIt.Material.Section
+
+@{
+    var InputClass = "form-control";
+    var DimensionFormat = "{0:N2}";
+    var Crud = (PackItUI.Helpers.Crud)ViewData["crud"];
+    var SectionTypes = (PackItUI.Helpers.ListForFlag<PackIt.Helpers.Enums.SectionTypes>)ViewData["sectionTypes"];
+    var DisabledFlag = Crud == PackItUI.Helpers.Crud.Delete ? "disabled" : null;
+}
+
+<tr>
+    <td>
+        <select multiple asp-for="SectionType" asp-items="SectionTypes.ListItems" class="@InputClass"disabled="@DisabledFlag" ></select>
+    </td>
+    <td>
+        <select asp-for="Shape" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.ShapeType>()" class="@InputClass"disabled="@DisabledFlag" ></select>
+    </td>
+    <td>
+        <input asp-for="Height" asp-format="@DimensionFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="Dimension0" asp-format="@DimensionFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="Dimension1" asp-format="@DimensionFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="Dimension2" asp-format="@DimensionFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="Dimension3" asp-format="@DimensionFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="Dimension4" asp-format="@DimensionFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="Dimension5" asp-format="@DimensionFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="Dimension6" asp-format="@DimensionFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    <td>
+        <input asp-for="Dimension7" asp-format="@DimensionFormat" class="@InputClass" disabled="@DisabledFlag" />
+    </td>
+    @if (Crud != PackItUI.Helpers.Crud.Delete)
+    {
+    <td>
+        <button onclick="deleteRow(this)" class="btn btn-danger">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+    }
+</tr>

@@ -3,13 +3,6 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "New Material";
-
-    var LabelClass = "control-label col-sm-1";
-    var InputClass = "form-control";
-    var VolumeFormat = "{0:N6}";
-    var WeightFormat = "{0:N4}";
-    var DimensionFormat = "{0:N2}";
-    var CostFormat = "{0:N2}";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -30,149 +23,18 @@
         <div class="tab-content">
             <br />
             <div class="tab-pane active" id="material">
-                <div class="form-group">
-                    <label asp-for="Data.MaterialId" class="@LabelClass"></label>
-                    <div class="col-sm-3">
-                        <input asp-for="Data.MaterialId" class="@InputClass" />
-                    </div>
-                    <label asp-for="Data.Type" class="@LabelClass"></label>
-                    <div class="col-sm-2"> 
-                        <select asp-for="Data.Type" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.MaterialType>()" class="@InputClass"></select>
-                    </div>
-                    <label asp-for="Data.Form" class="@LabelClass"></label>
-                    <div class="col-sm-2">
-                        <select asp-for="Data.Form" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.FormType>()" class="@InputClass"></select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Data.Name" class="@LabelClass"></label>
-                    <div class="col-sm-9">
-                        <input asp-for="Data.Name" class="@InputClass" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Length</th>
-                                <th scope="col">Breadth</th>
-                                <th scope="col">Height</th>
-                                <th scope="col">Volume</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Internal</th>
-                                <td>
-                                    <input asp-for="Data.InternalLength" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.InternalBreadth" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.InternalHeight" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.InternalVolume" asp-format="@VolumeFormat" class="@InputClass" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">External</th>
-                                <td>
-                                    <input asp-for="Data.ExternalLength" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.ExternalBreadth" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.ExternalHeight" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.ExternalVolume" asp-format="@VolumeFormat" class="@InputClass" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Cell</th>
-                                <td>
-                                    <input asp-for="Data.CellLength" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.CellBreadth" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.CellHeight" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Center Of Gravity</th>
-                                <td>
-                                    <input asp-for="Data.CentreOfGravityX" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.CentreOfGravityY" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.CentreOfGravityZ" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Data.NettWeight" class="@LabelClass"></label>
-                    <div class="col-sm-4">
-                        <input asp-for="Data.NettWeight" asp-format="@WeightFormat" class="@InputClass" />
-                    </div>
-                    <label asp-for="Data.GrossWeight" class="@LabelClass"></label>
-                    <div class="col-sm-4">
-                        <input asp-for="Data.GrossWeight" asp-format="@WeightFormat" class="@InputClass" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Data.Caliper" class="@LabelClass"></label>
-                    <div class="col-sm-4">
-                        <input asp-for="Data.Caliper" asp-format="@DimensionFormat" class="@InputClass" />
-                    </div>
-                </div>
+                @Html.EditorFor(m => Model.Data, "MaterialPane", new { crud = PackItUI.Helpers.Crud.Create })
             </div>
             <div class="tab-pane" id="costings">
                 <div class="form-group">
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().Quantity"></label></th>
-                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().QuantityCost"></label></th>
-                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().VolumeCost"></label></th>
-                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().AreaCost"></label></th>
-                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().LengthCost"></label></th>
-                            </tr>
+                            @Html.EditorFor(m => Model.Data.Costings, "CostingHeader")
                         </thead>
                         <tbody>
                             @for (int i = 0; i < Model.Data.Costings.Count; ++i)
                             {
-                            <tr>
-                                <td>
-                                    <input asp-for="Data.Costings[i].Quantity" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Costings[i].QuantityCost" asp-format="@CostFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Costings[i].VolumeCost" asp-format="@CostFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Costings[i].AreaCost" asp-format="@CostFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Costings[i].LengthCost" asp-format="@CostFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <button onclick="deleteRow(this)" class="btn btn-danger">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                                @Html.EditorFor(m => Model.Data.Costings[i], "Costing", new { crud = PackItUI.Helpers.Crud.Create })
                             }
                         </tbody>
                     </table>
@@ -182,63 +44,12 @@
                 <div class="form-group">
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().SectionType"></label></th>
-                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Shape"></label></th>
-                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Height"></label></th>
-                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension0"></label></th>
-                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension1"></label></th>
-                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension2"></label></th>
-                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension3"></label></th>
-                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension4"></label></th>
-                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension5"></label></th>
-                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension6"></label></th>
-                                <th scope="col"><label asp-for="Data.Sections.FirstOrDefault().Dimension7"></label></th>
-                            </tr>
+                            @Html.EditorFor(m => Model.Data.Sections, "SectionHeader")
                         </thead>
                         <tbody>
                             @for (int i = 0; i < Model.Data.Sections.Count; ++i)
                             {
-                            <tr>
-                                <td>
-                                    <select multiple asp-for="Data.Sections[i].SectionType" asp-items="Model.SectionTypes[i].ListItems" class="@InputClass"></select>
-                                </td>
-                                <td>
-                                    <select asp-for="Data.Sections[i].Shape" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.ShapeType>()" class="@InputClass"></select>
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Sections[i].Height" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Sections[i].Dimension0" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Sections[i].Dimension1" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Sections[i].Dimension2" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Sections[i].Dimension3" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Sections[i].Dimension4" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Sections[i].Dimension5" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Sections[i].Dimension6" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Sections[i].Dimension7" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <button onclick="deleteRow(this)" class="btn btn-danger">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                                @Html.EditorFor(m => Model.Data.Sections[i], "Section", new { crud = PackItUI.Helpers.Crud.Create, sectionTypes = Model.SectionTypes[i] })
                             }
                         </tbody>
                     </table>

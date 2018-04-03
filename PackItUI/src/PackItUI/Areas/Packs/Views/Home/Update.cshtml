@@ -6,7 +6,6 @@
 
     var LabelClass = "control-label col-sm-1";
     var InputClass = "form-control";
-    var WeightFormat = "{0:N4}";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -47,27 +46,12 @@
                 <div class="form-group">
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().RequiredQuantity"></label></th>
-                                <th scope="col"><label asp-for="Data.Costings.FirstOrDefault().RequiredWeight"></label></th>
-                            </tr>
+                            @Html.EditorFor(m => Model.Data.Costings, "CostingHeader")
                         </thead>
                         <tbody>
                             @for (int i = 0; i < Model.Data.Costings.Count; ++i)
                             {
-                            <tr>
-                                <td>
-                                    <input asp-for="Data.Costings[i].RequiredQuantity" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.Costings[i].RequiredWeight" asp-format="@WeightFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <button onclick="deleteRow(this)" class="btn btn-danger">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                                @Html.EditorFor(m => Model.Data.Costings[i], "Costing", new { crud = PackItUI.Helpers.Crud.Update })
                             }
                         </tbody>
                     </table>

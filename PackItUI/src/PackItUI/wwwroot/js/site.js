@@ -7,19 +7,19 @@
 // @param e - the node
 // @param name - the parent node name to search for
 function closest(e, name) {
-    var parent = e.parentNode;
-    while (parent != null) {
-        if (parent.nodeName === name) {
-            return parent;
-        }
-        parent = parent.parentNode;
+  var parent = e.parentNode;
+  while (parent != null) {
+    if (parent.nodeName === name) {
+      return parent;
     }
-    return parent;
+    parent = parent.parentNode;
+  }
+  return parent;
 }
 
 // delete a row from a table
 //
 // @param e - the button to delete
 function deleteRow(e) {
-    closest(e, "TABLE").deleteRow(closest(e, "TR").rowIndex);
+  closest(e, "TABLE").deleteRow(closest(e, "TR").rowIndex);
 }
