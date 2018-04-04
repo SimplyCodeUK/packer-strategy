@@ -10,10 +10,10 @@
 
 <tr>
     <td>
-        <select multiple asp-for="SectionType" asp-items="SectionTypes.ListItems" class="@InputClass"disabled="@DisabledFlag" ></select>
+        <select multiple asp-for="SectionType" asp-items="SectionTypes.ListItems" class="@InputClass" disabled="@DisabledFlag" ></select>
     </td>
     <td>
-        <select asp-for="Shape" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.ShapeType>()" class="@InputClass"disabled="@DisabledFlag" ></select>
+        <select asp-for="Shape" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.ShapeType>()" class="@InputClass" disabled="@DisabledFlag" ></select>
     </td>
     <td>
         <input asp-for="Height" asp-format="@DimensionFormat" class="@InputClass" disabled="@DisabledFlag" />
