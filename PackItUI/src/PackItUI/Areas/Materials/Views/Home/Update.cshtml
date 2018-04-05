@@ -157,6 +157,15 @@
                                 @Html.EditorFor(m => Model.Data.Costings[i], "Costing", new { crud = PackItUI.Helpers.Crud.Update })
                             }
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <button type="button" onclick="addRow(this, '@Url.Action("CostingRow")')" class="btn btn-secondary">
+                                        <i class=" fas fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -172,6 +181,15 @@
                                 @Html.EditorFor(m => Model.Data.Sections[i], "Section", new { crud = PackItUI.Helpers.Crud.Update, sectionTypes = Model.SectionTypes[i] })
                             }
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="11">
+                                    <button type="button" onclick="addRow(this, '@Url.Action("SectionRow")')" class="btn btn-secondary">
+                                        <i class=" fas fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

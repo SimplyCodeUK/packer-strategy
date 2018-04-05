@@ -1,12 +1,10 @@
 ﻿@model PackIt.Material.Costing
-
 @{
     var InputClass = "form-control";
     var CostFormat = "{0:N2}";
     var Crud = (PackItUI.Helpers.Crud)ViewData["crud"];
     var DisabledFlag = Crud == PackItUI.Helpers.Crud.Delete ? "disabled" : null;
 }
-
 <tr>
     <td>
         <input asp-for="Quantity" class="@InputClass" disabled="@DisabledFlag" />

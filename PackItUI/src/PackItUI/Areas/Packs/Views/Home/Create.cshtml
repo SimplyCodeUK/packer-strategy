@@ -34,6 +34,15 @@
                                 @Html.EditorFor(m => Model.Data.Costings[i], "Costing", new { crud = PackItUI.Helpers.Crud.Create })
                             }
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">
+                                    <button type="button" onclick="addRow(this, '@Url.Action("CostingRow")')" class="btn btn-secondary">
+                                        <i class=" fas fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
