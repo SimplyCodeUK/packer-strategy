@@ -1,14 +1,11 @@
 ﻿@model PackItUI.Areas.Packs.Models.HomeViewModel
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Packs";
 
     var DataClass = "control-label";
 }
-
 <h2>@ViewData["Title"]</h2>
-
 <table class="table">
     <tr>
         <th scope="col"><label asp-for="Information.Version"></label></th>
@@ -19,7 +16,6 @@
         <td>@Model.Information.About</td>
     </tr>
 </table>
-
 @if (Model.Items != null)
 {
 <table class="table">

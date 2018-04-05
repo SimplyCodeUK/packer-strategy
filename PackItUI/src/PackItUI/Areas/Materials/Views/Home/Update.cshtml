@@ -1,18 +1,9 @@
-﻿@model PackItUI.Areas.Materials.Models.MaterialUpdateViewModel
-
+﻿@model PackItUI.Areas.Materials.Models.MaterialEditViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Update Material";
-
-    var LabelClass = "control-label col-sm-1";
-    var InputClass = "form-control";
-    var VolumeFormat = "{0:N6}";
-    var WeightFormat = "{0:N4}";
-    var DimensionFormat = "{0:N2}";
 }
-
 <h2>@ViewData["Title"]</h2>
-
 <form asp-controller="Home" asp-action="Update" method="post">
     <input asp-for="Data.ClosureType" hidden="hidden" />
     <input asp-for="Data.ClosureWeight" hidden="hidden" />
@@ -39,111 +30,7 @@
         <div class="tab-content">
             <br />
             <div class="tab-pane active" id="material">
-                <div class="form-group">
-                    <label asp-for="Data.MaterialId" class="@LabelClass"></label>
-                    <div class="col-sm-3">
-                        <input asp-for="Data.MaterialId" class="@InputClass" disabled="disabled" />
-                    </div>
-                    <label asp-for="Data.Type" class="@LabelClass"></label>
-                    <div class="col-sm-2">
-                        <select asp-for="Data.Type" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.MaterialType>()" class="@InputClass"></select>
-                    </div>
-                    <label asp-for="Data.Form" class="@LabelClass"></label>
-                    <div class="col-sm-2">
-                        <select asp-for="Data.Form" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.FormType>()" class="@InputClass"></select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Data.Name" class="@LabelClass"></label>
-                    <div class="col-sm-9">
-                        <input asp-for="Data.Name" class="@InputClass" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Length</th>
-                                <th scope="col">Breadth</th>
-                                <th scope="col">Height</th>
-                                <th scope="col">Volume</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Internal</th>
-                                <td>
-                                    <input asp-for="Data.InternalLength" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.InternalBreadth" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.InternalHeight" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.InternalVolume" asp-format="@VolumeFormat" class="@InputClass" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">External</th>
-                                <td>
-                                    <input asp-for="Data.ExternalLength" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.ExternalBreadth" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.ExternalHeight" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.ExternalVolume" asp-format="@VolumeFormat" class="@InputClass" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Cell</th>
-                                <td>
-                                    <input asp-for="Data.CellLength" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.CellBreadth" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.CellHeight" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Center Of Gravity</th>
-                                <td>
-                                    <input asp-for="Data.CentreOfGravityX" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.CentreOfGravityY" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                                <td>
-                                    <input asp-for="Data.CentreOfGravityZ" asp-format="@DimensionFormat" class="@InputClass" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Data.NettWeight" class="@LabelClass"></label>
-                    <div class="col-sm-4">
-                        <input asp-for="Data.NettWeight" asp-format="@WeightFormat" class="@InputClass" />
-                    </div>
-                    <label asp-for="Data.GrossWeight" class="@LabelClass"></label>
-                    <div class="col-sm-4">
-                        <input asp-for="Data.GrossWeight" asp-format="@WeightFormat" class="@InputClass" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Data.Caliper" class="@LabelClass"></label>
-                    <div class="col-sm-4">
-                        <input asp-for="Data.Caliper" asp-format="@DimensionFormat" class="@InputClass" />
-                    </div>
-                </div>
+                @Html.EditorFor(m => Model.Data, "MaterialPane", new { crud = PackItUI.Helpers.Crud.Update })
             </div>
             <div class="tab-pane" id="costings">
                 <div class="form-group">
@@ -195,7 +82,6 @@
             </div>
         </div>
     </div>
-
     <div class="form-group">
         <div class="col-md-offset-1 col-md-10">
             <input type="submit" value="Update" class="btn btn-default" />
@@ -203,7 +89,6 @@
     </div>
     <br />
 </form>
-
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

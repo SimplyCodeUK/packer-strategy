@@ -104,14 +104,14 @@ namespace PackItUI.Test.Areas.Plans.Controllers
             var viewResult = (ViewResult)result;
             Assert.AreEqual("Create", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<PlanViewModel>(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<PlanEditViewModel>(viewResult.ViewData.Model);
         }
 
         /// <summary> (Unit Test Method) create post action. </summary>
         [Test]
         public void CreatePost()
         {
-            var model = new PlanViewModel();
+            var model = new PlanEditViewModel();
             var result = this.controller.Create(model);
             Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
 
@@ -125,7 +125,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         {
             this.SetupDisconnected();
 
-            var model = new PlanViewModel();
+            var model = new PlanEditViewModel();
             var result = this.controller.Create(model);
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
@@ -143,9 +143,9 @@ namespace PackItUI.Test.Areas.Plans.Controllers
             var viewResult = (ViewResult)result.Result;
             Assert.AreEqual("Update", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<PlanUpdateViewModel>(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<PlanEditViewModel>(viewResult.ViewData.Model);
 
-            var viewModel = (PlanUpdateViewModel)viewResult.ViewData.Model;
+            var viewModel = (PlanEditViewModel)viewResult.ViewData.Model;
             Assert.AreEqual("Id1", viewModel.Data.PlanId);
         }
 
@@ -153,7 +153,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         [Test]
         public void UpdatePost()
         {
-            var model = new PlanUpdateViewModel();
+            var model = new PlanEditViewModel();
             var result = this.controller.Update("Id1", model);
             Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
 
@@ -167,7 +167,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         {
             this.SetupDisconnected();
 
-            var model = new PlanUpdateViewModel();
+            var model = new PlanEditViewModel();
             var result = this.controller.Update("Id1", model);
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
@@ -185,9 +185,9 @@ namespace PackItUI.Test.Areas.Plans.Controllers
             var viewResult = (ViewResult)result.Result;
             Assert.AreEqual("Delete", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<PlanViewModel>(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<PlanEditViewModel>(viewResult.ViewData.Model);
 
-            var viewModel = (PlanViewModel)viewResult.ViewData.Model;
+            var viewModel = (PlanEditViewModel)viewResult.ViewData.Model;
             Assert.AreEqual("Id1", viewModel.Data.PlanId);
         }
 

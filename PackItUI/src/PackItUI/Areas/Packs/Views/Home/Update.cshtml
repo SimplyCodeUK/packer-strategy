@@ -1,15 +1,9 @@
-﻿@model PackItUI.Areas.Packs.Models.PackUpdateViewModel
-
+﻿@model PackItUI.Areas.Packs.Models.PackEditViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Update Pack";
-
-    var LabelClass = "control-label col-sm-1";
-    var InputClass = "form-control";
 }
-
 <h2>@ViewData["Title"]</h2>
-
 <form asp-controller="Home" asp-action="Update" method="post">
     <input asp-for="Data.PlanCode" hidden="hidden" />
     <input asp-for="Data.PlanName" hidden="hidden" />
@@ -29,18 +23,7 @@
         <div class="tab-content">
             <br />
             <div class="tab-pane active" id="pack">
-                <div class="form-group">
-                    <label asp-for="Data.PackId" class="@LabelClass"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="Data.PackId" class="@InputClass" disabled="disabled" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Data.Name" class="@LabelClass"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="Data.Name" class="@InputClass" />
-                    </div>
-                </div>
+                @Html.EditorFor(m => Model.Data, "PackPane", new { crud = PackItUI.Helpers.Crud.Update })
             </div>
             <div class="tab-pane" id="costings">
                 <div class="form-group">
@@ -68,7 +51,6 @@
             </div>
         </div>
     </div>
-
     <div class="form-group">
         <div class="col-md-offset-1 col-md-10">
             <input type="submit" value="Update" class="btn btn-default" />
@@ -76,7 +58,6 @@
     </div>
     <br />
 </form>
-
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

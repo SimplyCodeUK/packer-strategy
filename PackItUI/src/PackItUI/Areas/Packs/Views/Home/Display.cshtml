@@ -1,5 +1,4 @@
-﻿@model PackItUI.Areas.Packs.Models.PackUpdateViewModel
-
+﻿@model PackItUI.Areas.Packs.Models.PackEditViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Display Pack";
@@ -7,9 +6,7 @@
     var LabelClass = "control-label col-sm-1";
     var InputClass = "form-control";
 }
-
 <h2>@ViewData["Title"]</h2>
-
 <form asp-controller="Home" asp-action="Display" method="post">
     <input asp-for="Data.PlanCode" hidden="hidden" />
     <input asp-for="Data.PlanName" hidden="hidden" />
@@ -44,7 +41,6 @@
             </div>
         </div>
     </div>
-
     <div class="form-group">
         <div class="col-md-offset-1 col-md-10">
             <input type="submit" value="Update" class="btn btn-secondary" />
@@ -52,7 +48,6 @@
     </div>
     <br />
 </form>
-
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

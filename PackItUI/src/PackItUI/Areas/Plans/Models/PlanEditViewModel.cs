@@ -9,13 +9,13 @@ namespace PackItUI.Areas.Plans.Models
     using System.ComponentModel.DataAnnotations;
     using Newtonsoft.Json;
 
-    /// <summary> Plan home view model. </summary>
-    public class PlanUpdateViewModel
+    /// <summary> Plan edit view model. </summary>
+    public class PlanEditViewModel
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="PlanUpdateViewModel"/> class.
+        /// Initialises a new instance of the <see cref="PlanEditViewModel"/> class.
         /// </summary>
-        public PlanUpdateViewModel()
+        public PlanEditViewModel()
         {
             this.Data = new Plan();
         }

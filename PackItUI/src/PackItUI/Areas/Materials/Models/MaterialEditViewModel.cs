@@ -13,16 +13,16 @@ namespace PackItUI.Areas.Materials.Models
     using PackIt.Material;
     using PackItUI.Helpers;
 
-    /// <summary> Material home view model. </summary>
-    public class MaterialUpdateViewModel
+    /// <summary> Material edit view model. </summary>
+    public class MaterialEditViewModel
     {
         /// <summary> The data. </summary>
         private Material data;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="MaterialUpdateViewModel"/> class.
+        /// Initialises a new instance of the <see cref="MaterialEditViewModel"/> class.
         /// </summary>
-        public MaterialUpdateViewModel()
+        public MaterialEditViewModel()
         {
             this.Data = new Material();
             this.SetSectionTypes();

@@ -25,8 +25,8 @@ namespace PackItUI.Areas.Materials.Controllers
         private readonly IMapper mapper = new MapperConfiguration(
             cfg =>
             {
-                cfg.CreateMap<PackIt.Material.Material, MaterialUpdateViewModel.Material>();
-                cfg.CreateMap<MaterialUpdateViewModel.Material, PackIt.Material.Material>();
+                cfg.CreateMap<PackIt.Material.Material, MaterialEditViewModel.Material>();
+                cfg.CreateMap<MaterialEditViewModel.Material, PackIt.Material.Material>();
             }).CreateMapper();
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var model = new MaterialViewModel();
+            var model = new MaterialEditViewModel();
             return this.View("Create", model);
         }
 
@@ -66,9 +66,12 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(MaterialViewModel model)
+        public async Task<IActionResult> Create(MaterialEditViewModel model)
         {
-            if (ModelState.IsValid && await this.handler.CreateAsync(model.Data))
+            PackIt.Material.Material data = new PackIt.Material.Material();
+
+            data = this.mapper.Map(model.Data, data);
+            if (ModelState.IsValid && await this.handler.CreateAsync(data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }
@@ -86,9 +89,9 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var model = new MaterialUpdateViewModel
+            var model = new MaterialEditViewModel
             {
-                Data = this.mapper.Map<MaterialUpdateViewModel.Material>(await this.handler.ReadAsync(id))
+                Data = this.mapper.Map<MaterialEditViewModel.Material>(await this.handler.ReadAsync(id))
             };
 
             return this.View("Update", model);
@@ -102,7 +105,7 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(string id, MaterialUpdateViewModel model)
+        public async Task<IActionResult> Update(string id, MaterialEditViewModel model)
         {
             PackIt.Material.Material data = await this.handler.ReadAsync(id);
 
@@ -125,9 +128,9 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            var model = new MaterialViewModel
+            var model = new MaterialEditViewModel
             {
-                Data = await this.handler.ReadAsync(id)
+                Data = this.mapper.Map<MaterialEditViewModel.Material>(await this.handler.ReadAsync(id))
             };
 
             return this.View("Delete", model);
@@ -153,7 +156,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public IActionResult CostingRow()
         {
-            ViewBag.crud = Helpers.Crud.Create;
+            ViewBag.crud = Crud.Create;
 
             var mod = new PackIt.Material.Costing();
             var ret = this.PartialView("EditorTemplates/Costing", mod);
