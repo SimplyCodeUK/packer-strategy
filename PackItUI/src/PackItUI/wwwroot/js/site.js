@@ -6,7 +6,7 @@
 //
 // @param e - the node
 // @param name - the parent node name to search for
-function closest( e, name ) {
+function closest( e, name) {
   var parent = e.parentNode
   while (parent != null) {
     if (parent.nodeName === name) {
@@ -20,7 +20,7 @@ function closest( e, name ) {
 // delete a row from a table
 //
 // @param e - the button to delete
-function deleteRow( e ) {
+function deleteRow( e) {
   closest(e, 'TABLE').deleteRow(closest(e, 'TR').rowIndex)
 }
 
@@ -28,13 +28,14 @@ function deleteRow( e ) {
 //
 // @param e      - the button to delete
 // @param getUrl - the url for the partial view
-function addRow( e, getUrl ) {
+function addRow(e, getUrl) {
   var body = closest(e, 'TABLE').getElementsByTagName('TBODY')[0]
   var xhr = new XMLHttpRequest()
-  xhr.open('GET', getUrl, false)
-  xhr.send()
-
-  if (xhr.readyState === 4 && xhr.status === 200) {
-    body.insertAdjacentHTML('beforeend', xhr.responseText)
+  xhr.onload = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      body.insertAdjacentHTML('beforeend', xhr.responseText)
+    }
   }
+  xhr.open('GET', getUrl, true)
+  xhr.send()
 }
