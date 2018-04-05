@@ -1,4 +1,4 @@
-﻿// Copyright (c) Simply Code Ltd. All rights reserved.
+// Copyright (c) Simply Code Ltd. All rights reserved.
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 
@@ -30,12 +30,14 @@ function deleteRow( e) {
 // @param getUrl - the url for the partial view
 function addRow(e, getUrl) {
   var body = closest(e, 'TABLE').getElementsByTagName('TBODY')[0]
+  var count = body.getElementsByTagName('tr').length
   var xhr = new XMLHttpRequest()
   xhr.onload = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       body.insertAdjacentHTML('beforeend', xhr.responseText)
     }
   }
-  xhr.open('GET', getUrl, true)
-  xhr.send()
+  xhr.open('POST', getUrl, true)
+  xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+  xhr.send(JSON.stringify({ index: count }))
 }

@@ -153,10 +153,13 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <summary> Get a costing row. Used when adding a new row to the html. </summary>
         ///
         /// <returns> An IActionResult. </returns>
-        [HttpGet]
-        public IActionResult CostingRow()
+        [HttpPost]
+        public IActionResult CostingRow([FromBody]Newtonsoft.Json.Linq.JObject body)
         {
+            var index = body["index"];
+
             ViewBag.crud = Crud.Create;
+            ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
 
             var mod = new PackIt.Material.Costing();
             var ret = this.PartialView("EditorTemplates/Costing", mod);
@@ -167,11 +170,14 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <summary> Get a section row. Used when adding a new row to the html. </summary>
         ///
         /// <returns> An IActionResult. </returns>
-        [HttpGet]
-        public IActionResult SectionRow()
+        [HttpPost]
+        public IActionResult SectionRow([FromBody]Newtonsoft.Json.Linq.JObject body)
         {
+            var index = body["index"];
+
             ViewBag.crud = Crud.Create;
             ViewBag.sectionTypes = new ListForFlag<SectionTypes>(0);
+            ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Sections[{0}]", index);
 
             var mod = new PackIt.Material.Section();
             var ret = this.PartialView("EditorTemplates/Section", mod);
