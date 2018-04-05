@@ -9,8 +9,10 @@ namespace PackItUI.Areas.Materials.Controllers
     using System.Threading.Tasks;
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
+    using PackIt.Helpers.Enums;
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Materials.Models;
+    using PackItUI.Helpers;
 
     /// <summary> A controller for handling the Materials Home Page. </summary>
     [Area("Materials")]
@@ -143,6 +145,35 @@ namespace PackItUI.Areas.Materials.Controllers
         {
             await this.handler.DeleteAsync(id);
             return this.RedirectToAction(nameof(this.Index));
+        }
+
+        /// <summary> Get a costing row. Used when adding a new row to the html. </summary>
+        ///
+        /// <returns> An IActionResult. </returns>
+        [HttpGet]
+        public IActionResult CostingRow()
+        {
+            ViewBag.crud = Helpers.Crud.Create;
+
+            var mod = new PackIt.Material.Costing();
+            var ret = this.PartialView("EditorTemplates/Costing", mod);
+
+            return ret;
+        }
+
+        /// <summary> Get a section row. Used when adding a new row to the html. </summary>
+        ///
+        /// <returns> An IActionResult. </returns>
+        [HttpGet]
+        public IActionResult SectionRow()
+        {
+            ViewBag.crud = Crud.Create;
+            ViewBag.sectionTypes = new ListForFlag<SectionTypes>(0);
+
+            var mod = new PackIt.Material.Section();
+            var ret = this.PartialView("EditorTemplates/Section", mod);
+
+            return ret;
         }
     }
 }

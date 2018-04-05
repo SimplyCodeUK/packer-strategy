@@ -1,5 +1,4 @@
 ﻿@model PackIt.Material.Material
-
 @{
     var LabelClass = "control-label col-sm-1";
     var InputClass = "form-control";
@@ -10,7 +9,6 @@
     var DisabledFlag = Crud == PackItUI.Helpers.Crud.Delete ? "disabled" : null;
     var IdDisabledFlag = Crud == PackItUI.Helpers.Crud.Delete || Crud == PackItUI.Helpers.Crud.Update ? "disabled" : null;
 }
-
 <div class="form-group">
     <label asp-for="MaterialId" class="@LabelClass"></label>
     <div class="col-sm-3">

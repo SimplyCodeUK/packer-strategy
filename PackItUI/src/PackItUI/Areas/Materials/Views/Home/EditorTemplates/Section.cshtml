@@ -1,5 +1,4 @@
 ﻿@model PackIt.Material.Section
-
 @{
     var InputClass = "form-control";
     var DimensionFormat = "{0:N2}";
@@ -7,7 +6,6 @@
     var SectionTypes = (PackItUI.Helpers.ListForFlag<PackIt.Helpers.Enums.SectionTypes>)ViewData["sectionTypes"];
     var DisabledFlag = Crud == PackItUI.Helpers.Crud.Delete ? "disabled" : null;
 }
-
 <tr>
     <td>
         <select multiple asp-for="SectionType" asp-items="SectionTypes.ListItems" class="@InputClass" disabled="@DisabledFlag" ></select>

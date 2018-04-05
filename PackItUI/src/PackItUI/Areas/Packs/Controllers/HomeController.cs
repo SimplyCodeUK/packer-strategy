@@ -160,5 +160,19 @@ namespace PackItUI.Areas.Packs.Controllers
 
             return this.View("Display", model);
         }
+
+        /// <summary> Get a costing row. Used when adding a new row to the html. </summary>
+        ///
+        /// <returns> An IActionResult. </returns>
+        [HttpGet]
+        public IActionResult CostingRow()
+        {
+            ViewBag.crud = Helpers.Crud.Create;
+
+            var mod = new PackIt.Pack.Costing();
+            var ret = this.PartialView("EditorTemplates/Costing", mod);
+
+            return ret;
+        }
     }
 }
