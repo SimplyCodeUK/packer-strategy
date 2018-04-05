@@ -23,8 +23,8 @@ namespace PackItUI.Areas.Packs.Controllers
         private readonly IMapper mapper = new MapperConfiguration(
             cfg =>
             {
-                cfg.CreateMap<PackIt.Pack.Pack, PackUpdateViewModel.Pack>();
-                cfg.CreateMap<PackUpdateViewModel.Pack, PackIt.Pack.Pack>();
+                cfg.CreateMap<PackIt.Pack.Pack, PackEditViewModel.Pack>();
+                cfg.CreateMap<PackEditViewModel.Pack, PackIt.Pack.Pack>();
             }).CreateMapper();
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var model = new PackViewModel();
+            var model = new PackEditViewModel();
             return this.View("Create", model);
         }
 
@@ -64,9 +64,12 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(PackViewModel model)
+        public async Task<IActionResult> Create(PackEditViewModel model)
         {
-            if (ModelState.IsValid && await this.handler.CreateAsync(model.Data))
+            PackIt.Pack.Pack data = new PackIt.Pack.Pack();
+
+            data = this.mapper.Map(model.Data, data);
+            if (ModelState.IsValid && await this.handler.CreateAsync(data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }
@@ -84,9 +87,9 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var model = new PackUpdateViewModel
+            var model = new PackEditViewModel
             {
-                Data = this.mapper.Map<PackUpdateViewModel.Pack>(await this.handler.ReadAsync(id))
+                Data = this.mapper.Map<PackEditViewModel.Pack>(await this.handler.ReadAsync(id))
             };
 
             return this.View("Update", model);
@@ -100,7 +103,7 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(string id, PackUpdateViewModel model)
+        public async Task<IActionResult> Update(string id, PackEditViewModel model)
         {
             PackIt.Pack.Pack data = await this.handler.ReadAsync(id);
 
@@ -123,9 +126,9 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            var model = new PackViewModel
+            var model = new PackEditViewModel
             {
-                Data = await this.handler.ReadAsync(id)
+                Data = this.mapper.Map<PackEditViewModel.Pack>(await this.handler.ReadAsync(id))
             };
 
             return this.View("Delete", model);
@@ -153,9 +156,9 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Display(string id)
         {
-            var model = new PackUpdateViewModel
+            var model = new PackEditViewModel
             {
-                Data = this.mapper.Map<PackUpdateViewModel.Pack>(await this.handler.ReadAsync(id))
+                Data = this.mapper.Map<PackEditViewModel.Pack>(await this.handler.ReadAsync(id))
             };
 
             return this.View("Display", model);

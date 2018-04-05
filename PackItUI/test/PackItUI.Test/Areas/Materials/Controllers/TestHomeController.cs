@@ -104,14 +104,14 @@ namespace PackItUI.Test.Areas.Materials.Controllers
             var viewResult = (ViewResult)result;
             Assert.AreEqual("Create", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<MaterialViewModel>(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<MaterialEditViewModel>(viewResult.ViewData.Model);
         }
 
         /// <summary> (Unit Test Method) create post action. </summary>
         [Test]
         public void CreatePost()
         {
-            var model = new MaterialViewModel();
+            var model = new MaterialEditViewModel();
             var result = this.controller.Create(model);
             Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
 
@@ -125,7 +125,7 @@ namespace PackItUI.Test.Areas.Materials.Controllers
         {
             this.SetupDisconnected();
 
-            var model = new MaterialViewModel();
+            var model = new MaterialEditViewModel();
             var result = this.controller.Create(model);
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
@@ -143,9 +143,9 @@ namespace PackItUI.Test.Areas.Materials.Controllers
             var viewResult = (ViewResult)result.Result;
             Assert.AreEqual("Update", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<MaterialUpdateViewModel>(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<MaterialEditViewModel>(viewResult.ViewData.Model);
 
-            var viewModel = (MaterialUpdateViewModel)viewResult.ViewData.Model;
+            var viewModel = (MaterialEditViewModel)viewResult.ViewData.Model;
             Assert.AreEqual("Id1", viewModel.Data.MaterialId);
         }
 
@@ -153,7 +153,7 @@ namespace PackItUI.Test.Areas.Materials.Controllers
         [Test]
         public void UpdatePost()
         {
-            var model = new MaterialUpdateViewModel();
+            var model = new MaterialEditViewModel();
             var result = this.controller.Update("Id1", model);
             Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
 
@@ -167,7 +167,7 @@ namespace PackItUI.Test.Areas.Materials.Controllers
         {
             this.SetupDisconnected();
 
-            var model = new MaterialUpdateViewModel();
+            var model = new MaterialEditViewModel();
             var result = this.controller.Update("Id1", model);
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
@@ -185,9 +185,9 @@ namespace PackItUI.Test.Areas.Materials.Controllers
             var viewResult = (ViewResult)result.Result;
             Assert.AreEqual("Delete", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<MaterialViewModel>(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<MaterialEditViewModel>(viewResult.ViewData.Model);
 
-            var viewModel = (MaterialViewModel)viewResult.ViewData.Model;
+            var viewModel = (MaterialEditViewModel)viewResult.ViewData.Model;
             Assert.AreEqual("Id1", viewModel.Data.MaterialId);
         }
 

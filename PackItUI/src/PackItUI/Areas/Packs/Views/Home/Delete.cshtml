@@ -1,12 +1,9 @@
-﻿@model PackItUI.Areas.Packs.Models.PackViewModel
-
+﻿@model PackItUI.Areas.Packs.Models.PackEditViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Delete Pack";
 }
-
 <h2>@ViewData["Title"]</h2>
-
 <form asp-controller="Home" asp-action="Delete" method="post">
     <div id="Tabs" role="tabpanel">
         <ul class="nav nav-tabs">
@@ -47,7 +44,6 @@
     </div>
     <br />
 </form>
-
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

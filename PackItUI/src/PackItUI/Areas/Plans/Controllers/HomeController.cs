@@ -23,8 +23,8 @@ namespace PackItUI.Areas.Plans.Controllers
         private readonly IMapper mapper = new MapperConfiguration(
             cfg =>
             {
-                cfg.CreateMap<PackIt.Plan.Plan, PlanUpdateViewModel.Plan>();
-                cfg.CreateMap<PlanUpdateViewModel.Plan, PackIt.Plan.Plan>();
+                cfg.CreateMap<PackIt.Plan.Plan, PlanEditViewModel.Plan>();
+                cfg.CreateMap<PlanEditViewModel.Plan, PackIt.Plan.Plan>();
             }).CreateMapper();
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var model = new PlanViewModel();
+            var model = new PlanEditViewModel();
             return this.View("Create", model);
         }
 
@@ -64,9 +64,12 @@ namespace PackItUI.Areas.Plans.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(PlanViewModel model)
+        public async Task<IActionResult> Create(PlanEditViewModel model)
         {
-            if (ModelState.IsValid && await this.handler.CreateAsync(model.Data))
+            PackIt.Plan.Plan data = new PackIt.Plan.Plan();
+
+            data = this.mapper.Map(model.Data, data);
+            if (ModelState.IsValid && await this.handler.CreateAsync(data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }
@@ -84,9 +87,9 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            var model = new PlanUpdateViewModel
+            var model = new PlanEditViewModel
             {
-                Data = this.mapper.Map<PlanUpdateViewModel.Plan>(await this.handler.ReadAsync(id))
+                Data = this.mapper.Map<PlanEditViewModel.Plan>(await this.handler.ReadAsync(id))
             };
 
             return this.View("Update", model);
@@ -100,7 +103,7 @@ namespace PackItUI.Areas.Plans.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(string id, PlanUpdateViewModel model)
+        public async Task<IActionResult> Update(string id, PlanEditViewModel model)
         {
             PackIt.Plan.Plan data = await this.handler.ReadAsync(id);
 
@@ -123,9 +126,9 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            var model = new PlanViewModel
+            var model = new PlanEditViewModel
             {
-                Data = await this.handler.ReadAsync(id)
+                Data = this.mapper.Map<PlanEditViewModel.Plan>(await this.handler.ReadAsync(id))
             };
 
             return this.View("Delete", model);

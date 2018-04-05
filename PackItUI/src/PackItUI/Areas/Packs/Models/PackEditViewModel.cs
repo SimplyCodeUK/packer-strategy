@@ -12,13 +12,13 @@ namespace PackItUI.Areas.Packs.Models
     using PackIt.Helpers.Enums;
     using PackIt.Pack;
 
-    /// <summary> Pack home view model. </summary>
-    public class PackUpdateViewModel
+    /// <summary> Pack edit view model. </summary>
+    public class PackEditViewModel
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="PackUpdateViewModel"/> class.
+        /// Initialises a new instance of the <see cref="PackEditViewModel"/> class.
         /// </summary>
-        public PackUpdateViewModel()
+        public PackEditViewModel()
         {
             this.Data = new Pack();
         }

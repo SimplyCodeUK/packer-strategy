@@ -1,15 +1,9 @@
-﻿@model PackItUI.Areas.Plans.Models.PlanUpdateViewModel
-
+﻿@model PackItUI.Areas.Plans.Models.PlanEditViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Update Plan";
-
-    var LabelClass = "control-label col-sm-1";
-    var InputClass = "form-control";
 }
-
 <h2>@ViewData["Title"]</h2>
-
 <form asp-controller="Home" asp-action="Update" method="post">
     <div id="Tabs" role="tabpanel">
         <ul class="nav nav-tabs">
@@ -20,22 +14,10 @@
         <div class="tab-content">
             <br />
             <div class="tab-pane active" id="plan">
-                <div class="form-group">
-                    <label asp-for="Data.PlanId" class="@LabelClass"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="Data.PlanId" class="@InputClass" disabled="disabled" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Data.Name" class="@LabelClass"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="Data.Name" class="@InputClass" />
-                    </div>
-                </div>
+                @Html.EditorFor(m => Model.Data, "PlanPane", new { crud = PackItUI.Helpers.Crud.Update })
             </div>
         </div>
     </div>
-
     <div class="form-group">
         <div class="col-md-offset-1 col-md-10">
             <input type="submit" value="Update" class="btn btn-default" />
@@ -43,7 +25,6 @@
     </div>
     <br />
 </form>
-
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

@@ -9,7 +9,7 @@ solution: PackIt.sln
 
 mono:
   - latest
-  - 5.2.0
+  - 5.10.0
 
 dotnet: 2.0.0
 
