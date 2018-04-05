@@ -167,10 +167,13 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <summary> Get a costing row. Used when adding a new row to the html. </summary>
         ///
         /// <returns> An IActionResult. </returns>
-        [HttpGet]
-        public IActionResult CostingRow()
+        [HttpPost]
+        public IActionResult CostingRow([FromBody]Newtonsoft.Json.Linq.JObject body)
         {
+            var index = body["index"];
+
             ViewBag.crud = Helpers.Crud.Create;
+            ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
 
             var mod = new PackIt.Pack.Costing();
             var ret = this.PartialView("EditorTemplates/Costing", mod);
