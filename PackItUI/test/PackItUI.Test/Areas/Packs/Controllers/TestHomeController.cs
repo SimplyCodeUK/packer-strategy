@@ -202,6 +202,37 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             Assert.AreEqual("Index", redirectResult.ActionName);
         }
 
+        /// <summary> (Unit Test Method) display get action. </summary>
+        [Test]
+        public void DisplayGet()
+        {
+            var result = this.controller.Display("Id1");
+            Assert.IsInstanceOf<ViewResult>(result.Result);
+
+            var viewResult = (ViewResult)result.Result;
+            Assert.AreEqual("Display", viewResult.ViewName);
+            Assert.IsNotNull(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<PackEditViewModel>(viewResult.ViewData.Model);
+
+            var viewModel = (PackEditViewModel)viewResult.ViewData.Model;
+            Assert.AreEqual("Id1", viewModel.Data.PackId);
+        }
+
+        /// <summary> (Unit Test Method) costing row post action. </summary>
+        [Test]
+        public void CostingRowPost()
+        {
+            var body = new Newtonsoft.Json.Linq.JObject
+            {
+                ["index"] = 5
+            };
+            var result = this.controller.CostingRow(body);
+
+            Assert.IsInstanceOf<PartialViewResult>(result);
+            Assert.IsInstanceOf<PackIt.Pack.Costing>(((PartialViewResult)result).Model);
+            Assert.AreEqual("EditorTemplates/Costing", ((PartialViewResult)result).ViewName);
+        }
+
         /// <summary> Setup for disconnected service. </summary>
         private void SetupDisconnected()
         {

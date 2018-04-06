@@ -152,6 +152,8 @@ namespace PackItUI.Areas.Materials.Controllers
 
         /// <summary> Get a costing row. Used when adding a new row to the html. </summary>
         ///
+        /// <param name="body"> The body of the POST command. </param>
+        ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         public IActionResult CostingRow([FromBody]Newtonsoft.Json.Linq.JObject body)
@@ -168,6 +170,8 @@ namespace PackItUI.Areas.Materials.Controllers
         }
 
         /// <summary> Get a section row. Used when adding a new row to the html. </summary>
+        ///
+        /// <param name="body"> The body of the POST command. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
