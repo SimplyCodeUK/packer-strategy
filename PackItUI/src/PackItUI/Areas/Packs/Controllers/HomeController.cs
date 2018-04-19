@@ -156,10 +156,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Display(string id)
         {
-            var model = new PackEditViewModel
-            {
-                Data = this.mapper.Map<PackEditViewModel.Pack>(await this.handler.ReadAsync(id))
-            };
+            var model = await this.handler.ReadAsync(id);
 
             return this.View("Display", model);
         }

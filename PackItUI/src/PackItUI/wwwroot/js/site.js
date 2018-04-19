@@ -1,14 +1,21 @@
-// Copyright (c) Simply Code Ltd. All rights reserved.
-// Licensed under the MIT License.
-// See LICENSE file in the project root for full license information.
+/*!
+ * @copyright Simply Code Ltd. All rights reserved.
+ * @license Licensed under the MIT License.
+ * See LICENSE file in the project root for full license information.
+ */
+'use strict'
 
-// find the closest parent node with a matching node name
-//
-// @param e - the node
-// @param name - the parent node name to search for
-function closest( e, name) {
+/**
+ * Find the closest parent node with a matching node name
+ *
+ * @param {HTMLElement} e - The node
+ * @param {string} name - The parent node name to search for
+ *
+ * @returns {HTMLElement} The parent DOM
+ */
+function closest (e, name) {
   var parent = e.parentNode
-  while (parent != null) {
+  while (parent !== null) {
     if (parent.nodeName === name) {
       return parent
     }
@@ -17,18 +24,26 @@ function closest( e, name) {
   return parent
 }
 
-// delete a row from a table
-//
-// @param e - the button to delete
-function deleteRow( e) {
+/**
+ * Delete a row from a table
+ *
+ * @param {HTMLElement} e - The delete button pressed on the row to delete
+ *
+ * @returns {undefined}
+ */
+var deleteRow = function (e) {
   closest(e, 'TABLE').deleteRow(closest(e, 'TR').rowIndex)
 }
 
-// add a row from a table
-//
-// @param e      - the button to delete
-// @param getUrl - the url for the partial view
-function addRow(e, getUrl) {
+/**
+ * Add a row from a table
+ *
+ * @param {HTMLElement} e - The button pressed to add a row
+ * @param {string} getUrl - The url for the partial view
+ *
+ * @returns {undefined}
+ */
+var addRow = function (e, getUrl) {
   var body = closest(e, 'TABLE').getElementsByTagName('TBODY')[0]
   var count = body.getElementsByTagName('tr').length
   var xhr = new XMLHttpRequest()
