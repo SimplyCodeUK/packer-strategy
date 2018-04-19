@@ -212,10 +212,10 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var viewResult = (ViewResult)result.Result;
             Assert.AreEqual("Display", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<PackEditViewModel>(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<PackIt.Pack.Pack>(viewResult.ViewData.Model);
 
-            var viewModel = (PackEditViewModel)viewResult.ViewData.Model;
-            Assert.AreEqual("Id1", viewModel.Data.PackId);
+            var viewModel = (PackIt.Pack.Pack)viewResult.ViewData.Model;
+            Assert.AreEqual("Id1", viewModel.PackId);
         }
 
         /// <summary> (Unit Test Method) costing row post action. </summary>

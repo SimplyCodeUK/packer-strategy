@@ -94,7 +94,7 @@ apt-get install dotnet-sdk-2.1.4=2.1.4-1      -y
 apt-get install nuget=2.8.7+md510+dhx1-1      -y
 apt-get install git=1:2.7.4-0ubuntu1.3        -y
 apt-get install nginx=1.10.3-0ubuntu0.16.04.2 -y
-apt-get install nodejs=8.9.4-1nodesource1     -y
+apt-get install nodejs=8.11.1-1nodesource1    -y
 npm install -g bower
 bower --version
 systemctl stop nginx
@@ -184,7 +184,7 @@ MACHINES.each do |_key, machine|
       echo "WorkingDirectory=#{workingDir}"                                                                                          >> "/etc/systemd/system/#{service}.service"
       echo "ExecStart=/usr/bin/dotnet #{SERVICES[service.to_sym][:binary]} --urls http://*:#{SERVICES[service.to_sym][:guest_port]}" >> "/etc/systemd/system/#{service}.service"
       echo "Restart=always"                                                                                                          >> "/etc/systemd/system/#{service}.service"
-      echo "RestartSec=60s  # Restart service after 60 seconds if dotnet service crashes"                                            >> "/etc/systemd/system/#{service}.service"
+      echo "RestartSec=60s"                                                                                                          >> "/etc/systemd/system/#{service}.service"
       echo "SyslogIdentifier=#{service}"                                                                                             >> "/etc/systemd/system/#{service}.service"
       echo "User=www-data"                                                                                                           >> "/etc/systemd/system/#{service}.service"
       echo "Environment=ASPNETCORE_ENVIRONMENT=Development"                                                                          >> "/etc/systemd/system/#{service}.service"
