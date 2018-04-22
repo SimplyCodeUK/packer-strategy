@@ -616,7 +616,7 @@ namespace PackIt.Pack
         /// <summary> Gets or sets the draw detail. </summary>
         ///
         /// <value> The draw detail. </value>
-        public long DrawDetail { get; set; }
+        public Detail DrawDetail { get; set; }
 
         /// <summary> Gets or sets the length of the minimum block. </summary>
         ///

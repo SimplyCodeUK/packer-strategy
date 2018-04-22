@@ -6,8 +6,8 @@
 
 namespace PackIt.Helpers.Enums
 {
-    /// <summary> Values that represent layer rotations. </summary>
-    public enum LayerRotation
+    /// <summary> Values that represent layer bond rotations. </summary>
+    public enum BondRotation
     {
         /// <summary> An enum constant representing the unknown option. </summary>
         Unknown,

@@ -78,7 +78,7 @@ namespace PackIt.DTO.DtoPack
         /// <summary> Gets or sets the bond rotation. </summary>
         ///
         /// <value> The bond rotation. </value>
-        public LayerRotation BondRotation { get; set; }
+        public BondRotation BondRotation { get; set; }
 
         /// <summary> Gets or sets the bond east west. </summary>
         ///
