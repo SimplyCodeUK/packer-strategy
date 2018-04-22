@@ -25,12 +25,12 @@ namespace PackIt.Pack
         /// <value> The layers. </value>
         public long Layers { get; set; }
 
-        /// <summary> Gets or sets a value indicating whether the output rotation. </summary>
+        /// <summary> Gets or sets a value indicating whether there is output rotation. </summary>
         ///
         /// <value> True if output rotation, false if not. </value>
         public bool OutputRotation { get; set; }
 
-        /// <summary> Gets or sets a value indicating whether the parent rotation. </summary>
+        /// <summary> Gets or sets a value indicating whether there is parent rotation. </summary>
         ///
         /// <value> True if parent rotation, false if not. </value>
         public bool ParentRotation { get; set; }
@@ -58,7 +58,7 @@ namespace PackIt.Pack
         /// <summary> Gets or sets the bond rotation. </summary>
         ///
         /// <value> The bond rotation. </value>
-        public LayerRotation BondRotation { get; set; }
+        public BondRotation BondRotation { get; set; }
 
         /// <summary> Gets or sets the bond east west. </summary>
         ///
