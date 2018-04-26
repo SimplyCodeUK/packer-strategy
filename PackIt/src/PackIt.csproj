@@ -33,7 +33,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\PackItLib\src\PackItLib\PackItLib.csproj" />
+    <ProjectReference Include="..\..\PackItLib\src\PackItLib.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="appsettings.json">

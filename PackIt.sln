@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackIt", "PackIt\src\PackIt\PackIt.csproj", "{61C44C0B-1705-49A7-B88D-ACB260D2B59E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackIt", "PackIt\src\PackIt.csproj", "{61C44C0B-1705-49A7-B88D-ACB260D2B59E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{2EE77FC5-CFF6-4F8F-8A2B-CAF43892C24B} = {2EE77FC5-CFF6-4F8F-8A2B-CAF43892C24B}
 	EndProjectSection
@@ -23,21 +23,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Vagrantfile = Vagrantfile
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackIt.Test", "PackIt\test\PackIt.Test\PackIt.Test.csproj", "{DDC0D77C-DDA0-4523-ABB4-23062E066312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackIt.Test", "PackIt\test\PackIt.Test.csproj", "{DDC0D77C-DDA0-4523-ABB4-23062E066312}"
 	ProjectSection(ProjectDependencies) = postProject
 		{61C44C0B-1705-49A7-B88D-ACB260D2B59E} = {61C44C0B-1705-49A7-B88D-ACB260D2B59E}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItUI", "PackItUI\src\PackItUI\PackItUI.csproj", "{CA4BD270-DA27-4792-A7D3-6DA15A4E4EB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItUI", "PackItUI\src\PackItUI.csproj", "{CA4BD270-DA27-4792-A7D3-6DA15A4E4EB2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{2EE77FC5-CFF6-4F8F-8A2B-CAF43892C24B} = {2EE77FC5-CFF6-4F8F-8A2B-CAF43892C24B}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItLib", "PackItLib\src\PackItLib\PackItLib.csproj", "{2EE77FC5-CFF6-4F8F-8A2B-CAF43892C24B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItLib", "PackItLib\src\PackItLib.csproj", "{2EE77FC5-CFF6-4F8F-8A2B-CAF43892C24B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItLib.Test", "PackItLib\test\PackItLib.Test\PackItLib.Test.csproj", "{C3D58F03-3DE4-431F-8586-AE20EB033D6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItLib.Test", "PackItLib\test\PackItLib.Test.csproj", "{C3D58F03-3DE4-431F-8586-AE20EB033D6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItUI.Test", "PackItUI\test\PackItUI.Test\PackItUI.Test.csproj", "{4C6A7075-1D16-4730-B297-7D1AC7956AD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItUI.Test", "PackItUI\test\PackItUI.Test.csproj", "{4C6A7075-1D16-4730-B297-7D1AC7956AD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PackItLib\PackItLib.csproj" />
+    <ProjectReference Include="..\src\PackItLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

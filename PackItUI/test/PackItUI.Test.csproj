@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PackItUI\PackItUI.csproj" />
+    <ProjectReference Include="..\src\PackItUI.csproj" />
   </ItemGroup>
 
 </Project>

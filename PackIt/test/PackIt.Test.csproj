@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PackIt\PackIt.csproj" />
+    <ProjectReference Include="..\src\PackIt.csproj" />
   </ItemGroup>
 
   <ItemGroup>
