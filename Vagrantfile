@@ -17,7 +17,7 @@ SERVICES = {
   packit: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
     project_file: "PackIt.csproj",
-    build_dir: "PackIt/src/PackIt",
+    build_dir: "PackIt/src",
     binary: "PackIt.dll",
     server_location: "/",
     guest_port: "8000",
@@ -27,7 +27,7 @@ SERVICES = {
   packitui: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
     project_file: "PackItUI.csproj",
-    build_dir: "PackItUI/src/PackItUI",
+    build_dir: "PackItUI/src",
     binary: "PackItUI.dll",
     server_location: "/",
     guest_port: "9000",
