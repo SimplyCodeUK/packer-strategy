@@ -1,5 +1,6 @@
 ﻿*.suo
 *.leu
+*.min.css
 *.min.js
 packitlib.js
 
