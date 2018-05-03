@@ -6,7 +6,7 @@
 
 namespace PackIt.Helpers.Enums
 {
-    /// <summary> Values that represent types. </summary>
+    /// <summary> Values that represent how a material is used. </summary>
     public enum UsageType
     {
         /// <summary> An enum constant representing the outer option. </summary>

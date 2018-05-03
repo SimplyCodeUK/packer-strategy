@@ -17,7 +17,7 @@
 ### Tools
 
 - [GIT](https://git-scm.com/)
-- [Visual Studio 2017](https://www.visualstudio.com/)
+- [Visual Studio 2017 Version 15.6.7](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -26,8 +26,8 @@
     - SonarLint
     - Bundler & Minifier
     - Markdown Editor
-- [VirtualBox](https://www.virtualbox.org/)
-- [Vagrant](https://www.vagrantup.com/)
+- [VirtualBox Version 5.2.8](https://www.virtualbox.org/)
+- [Vagrant Version 2.0.4](https://www.vagrantup.com/)
 
 ### Vagrant environment
 
