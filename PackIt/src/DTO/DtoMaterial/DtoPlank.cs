@@ -29,12 +29,12 @@ namespace PackIt.DTO.DtoMaterial
         /// <summary> Gets or sets the number to place along the x axis. </summary>
         ///
         /// <value> The number to place along the x axis. </value>
-        public double NoX { get; set; }
+        public long NoX { get; set; }
 
         /// <summary> Gets or sets the number to place along the y axis. </summary>
         ///
         /// <value> The number to place along the y axis. </value>
-        public double NoY { get; set; }
+        public long NoY { get; set; }
 
         /// <summary> Gets or sets the shape. </summary>
         ///
