@@ -54,10 +54,10 @@ namespace PackIt.DTO.DtoMaterial
         /// <value> The total number of y coordinate. </value>
         public long CountY { get; set; }
 
-        /// <summary> Gets or sets the even. </summary>
+        /// <summary> Gets or sets the even row count. </summary>
         ///
-        /// <value> The even. </value>
-        public double Even { get; set; }
+        /// <value> The even row count. </value>
+        public long Even { get; set; }
 
         /// <summary> Gets or sets the nested. </summary>
         ///
