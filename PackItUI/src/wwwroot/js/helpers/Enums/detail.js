@@ -5,6 +5,8 @@
  */
 'use strict'
 
+/* global PackIt */
+
 /** Values that represent the detail on a drawing. */
 PackIt.Helpers.Enums.Detail = Object.freeze(
   {

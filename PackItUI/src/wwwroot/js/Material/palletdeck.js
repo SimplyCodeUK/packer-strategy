@@ -7,13 +7,9 @@
 
 /* global PackIt */
 
-/** Values that represent section types. */
-PackIt.Helpers.Enums.SectionTypes = Object.freeze(
-  {
-    /** Major cross section. */
-    Major: 1,
-
-    /** Minor cross section. */
-    Minor: 2
+PackIt.Material.PalletDeck = class {
+  constructor() {
+    this.Caliper = 0.0
+    this.Planks = []
   }
-)
+}

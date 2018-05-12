@@ -5,6 +5,8 @@
  */
 'use strict'
 
+/* global PackIt */
+
 /** Values that represent pack forms. */
 PackIt.Helpers.Enums.FormType = Object.freeze(
   {

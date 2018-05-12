@@ -5,6 +5,8 @@
  */
 'use strict'
 
+/* global PackIt */
+
 /** Values that represent how a material is used. */
 PackIt.Helpers.Enums.UsageType = Object.freeze(
   {

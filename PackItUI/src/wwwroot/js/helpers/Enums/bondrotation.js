@@ -5,6 +5,8 @@
  */
 'use strict'
 
+/* global PackIt */
+
 /** Values that represent layer bond rotations. */
 PackIt.Helpers.Enums.BondRotation = Object.freeze(
   {

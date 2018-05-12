@@ -5,6 +5,8 @@
  */
 'use strict'
 
+/* global PackIt */
+
 /** Values that represent material types. */
 PackIt.Helpers.Enums.MaterialType = Object.freeze(
   {

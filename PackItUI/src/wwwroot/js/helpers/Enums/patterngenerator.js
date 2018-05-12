@@ -5,6 +5,8 @@
  */
 'use strict'
 
+/* global PackIt */
+
 /** Values that represent pattern generators. */
 PackIt.Helpers.Enums.PatternGenerator = Object.freeze(
   {
