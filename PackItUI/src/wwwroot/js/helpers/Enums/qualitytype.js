@@ -5,6 +5,8 @@
  */
 'use strict'
 
+/* global PackIt */
+
 /** Values that represent quality types. */
 PackIt.Helpers.Enums.QualityType = Object.freeze(
   {

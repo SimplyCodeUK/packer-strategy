@@ -5,6 +5,8 @@
  */
 'use strict'
 
+/* global PackIt */
+
 /** Values that represent pack shapes. */
 PackIt.Helpers.Enums.ShapeType = Object.freeze(
   {

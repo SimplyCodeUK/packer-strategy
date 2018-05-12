@@ -7,13 +7,12 @@
 
 /* global PackIt */
 
-/** Values that represent section types. */
-PackIt.Helpers.Enums.SectionTypes = Object.freeze(
-  {
-    /** Major cross section. */
-    Major: 1,
-
-    /** Minor cross section. */
-    Minor: 2
+PackIt.Material.Costing = class {
+  constructor() {
+    this.Quantity = 0
+    this.QuantityCost = 0.0
+    this.VolumeCost = 0.0
+    this.AreaCost = 0.0
+    this.LengthCost = 0.0
   }
-)
+}

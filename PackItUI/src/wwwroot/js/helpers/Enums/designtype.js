@@ -5,6 +5,8 @@
  */
 'use strict'
 
+/* global PackIt */
+
 /** Values that represent design types. */
 PackIt.Helpers.Enums.DesignType = Object.freeze(
   {

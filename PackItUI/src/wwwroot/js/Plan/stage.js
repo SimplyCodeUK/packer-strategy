@@ -1,0 +1,136 @@
+﻿/**
+ * @copyright Simply Code Ltd. All rights reserved.
+ * @license Licensed under the MIT License.
+ * See LICENSE file in the project root for full license information.
+ */
+'use strict'
+
+/* global PackIt */
+
+PackIt.Plan.Stage = class {
+  constructor() {
+    this.StageLevel = PackIt.Helpers.Enums.StageLevel.New
+    this.Collation = 0
+    this.DrawOffset = 0
+    this.Shape = PackIt.Helpers.Enums.ShapeType.Rectangle
+    this.Form = PackIt.Helpers.Enums.FormType.Box
+    this.ShapeParameter0 = 0.0
+    this.ShapeParameter1 = 0.0
+    this.ShapeParameter2 = 0.0
+    this.ShapeParameter3 = 0.0
+    this.ShapeParameter4 = 0.0
+    this.ShapeParameter5 = 0.0
+    this.ShapeParameter6 = 0.0
+    this.ShapeParameter7 = 0.0
+    this.FormParameter0 = 0.0
+    this.FormParameter1 = 0.0
+    this.FormParameter2 = 0.0
+    this.FormParameter3 = 0.0
+    this.FormParameter4 = 0.0
+    this.FormParameter5 = 0.0
+    this.FormParameter6 = 0.0
+    this.FormParameter7 = 0.0
+    this.Density = 0.0
+    this.Generator = 0
+    this.Rotation = 0
+    this.ComputeMaterials = false
+    this.Sort = 0
+    this.BreathingSpaceX =0.0
+    this.BreathingSpaceY =0.0
+    this.BreathingSpaceZ =0.0
+    this.BulgingX = 0.0
+    this.BulgingY = 0.0
+    this.BulgingZ = 0.0
+    this.PercentMin = 0.0
+    this.PercentMax = 0.0
+    this.LoadMin = 0.0
+    this.LoadMax = 0.0
+    this.LoadStep = 0.0
+    this.TiersMin = 0.0
+    this.TiersMax = 0.0
+    this.TiersStep = 0.0
+    this.PerTierMin = 0.0
+    this.PerTierMax = 0.0
+    this.PerTierStep = 0.0
+    this.AlongSideMin = 0.0
+    this.AlongSideMax = 0.0
+    this.AlongSideStep = 0.0
+    this.ProductMin = 0.0
+    this.ProductMax = 0.0
+    this.ProductStep = 0.0
+    this.ExternalLength = 0.0
+    this.ExternalLengthMin = 0.0
+    this.ExternalLengthMax = 0.0
+    this.ExternalLengthStep = 0.0
+    this.ExternalBreadth = 0.0
+    this.ExternalBreadthMin = 0.0
+    this.ExternalBreadthMax = 0.0
+    this.ExternalBreadthStep = 0.0
+    this.ExternalHeight = 0.0
+    this.ExternalHeightMin = 0.0
+    this.ExternalHeightMax = 0.0
+    this.ExternalHeightStep = 0.0
+    this.ExternalVolume = 0.0
+    this.ExternalVolumeMin = 0.0
+    this.ExternalVolumeMax = 0.0
+    this.ExternalVolumeStep = 0.0
+    this.ExternalLengthToBreadthRatio = 0.0
+    this.ExternalLengthToBreadthRatioMin = 0.0
+    this.ExternalLengthToBreadthRatioMax = 0.0
+    this.ExternalLengthToBreadthRatioStep = 0.0
+    this.ExternalLengthToHeightRatio = 0.0
+    this.ExternalLengthToHeightRatioMin = 0.0
+    this.ExternalLengthToHeightRatioMax = 0.0
+    this.ExternalLengthToHeightRatioStep = 0.0
+    this.ExternalAngle = 0.0
+    this.ExternalAngleMin = 0.0
+    this.ExternalAngleMax = 0.0
+    this.ExternalAngleStep = 0.0
+    this.GrossWeight = 0.0
+    this.GrossWeightMin = 0.0
+    this.GrossWeightMax = 0.0
+    this.GrossWeightStep = 0.0
+    this.InternalLength = 0.0
+    this.InternalLengthMin = 0.0
+    this.InternalLengthMax = 0.0
+    this.InternalLengthStep = 0.0
+    this.InternalBreadth = 0.0
+    this.InternalBreadthMin = 0.0
+    this.InternalBreadthMax = 0.0
+    this.InternalBreadthStep = 0.0
+    this.InternalHeight = 0.0
+    this.InternalHeightMin = 0.0
+    this.InternalHeightMax = 0.0
+    this.InternalHeightStep = 0.0
+    this.InternalVolume = 0.0
+    this.InternalVolumeMin = 0.0
+    this.InternalVolumeMax = 0.0
+    this.InternalVolumeStep = 0.0
+    this.InternalLengthToBreadthRatio = 0.0
+    this.InternalLengthToBreadthRatioMin = 0.0
+    this.InternalLengthToBreadthRatioMax = 0.0
+    this.InternalLengthToBreadthRatioStep = 0.0
+    this.InternalLengthToHeightRatio = 0.0
+    this.InternalLengthToHeightRatioMin = 0.0
+    this.InternalLengthToHeightRatioMax = 0.0
+    this.InternalLengthToHeightRatioStep = 0.0
+    this.InternalAngle = 0.0
+    this.InternalAngleMin = 0.0
+    this.InternalAngleMax = 0.0
+    this.InternalAngleStep = 0.0
+    this.NettWeight = 0.0
+    this.NettWeightMin = 0.0
+    this.NettWeightMax = 0.0
+    this.NettWeightStep = 0.0
+    this.AreaUtilisationMin = 0.0
+    this.AreaUtilisationMax = 0.0
+    this.VolumeUtilisationMin = 0.0
+    this.VolumeUtilisationMax = 0.0
+    this.Outer = 0
+    this.DrawDetail = PackIt.Helpers.Enums.Detail.None
+    this.MinBlockLength = 0
+    this.MinBlockBreadth = 0
+    this.DrawHands = false
+    this.Limits = []
+  }
+}

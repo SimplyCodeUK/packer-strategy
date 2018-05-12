@@ -5,6 +5,8 @@
  */
 'use strict'
 
+/* global PackIt */
+
 /** Values that represent stage levels. */
 PackIt.Helpers.Enums.StageLevel = Object.freeze(
   {

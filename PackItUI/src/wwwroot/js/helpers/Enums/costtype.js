@@ -5,6 +5,8 @@
  */
 'use strict'
 
+/* global PackIt */
+
 /** Values that represent cost types. */
 PackIt.Helpers.Enums.CostType = Object.freeze(
   {
