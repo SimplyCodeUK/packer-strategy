@@ -6,6 +6,8 @@
     <ProjectGuid>ddc0d77c-dda0-4523-abb4-23062e066312</ProjectGuid>
     <Product>PackIt</Product>
     <Authors>Louis Henry Nayegon</Authors>
+    <Copyright>Simply Code Ltd.</Copyright>
+    <PackageLicenseUrl>https://github.com/SimplyCodeUK/packer-strategy/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/SimplyCodeUK/packer-strategy</RepositoryUrl>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -19,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
     <PackageReference Include="Moq" Version="4.8.2" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="NUnit" Version="3.10.1" />

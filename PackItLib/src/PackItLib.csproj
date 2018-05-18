@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -6,6 +6,8 @@
     <ProjectGuid>2ee77fc5-cff6-4f8f-8a2b-caf43892c24b</ProjectGuid>
     <Product>PackIt</Product>
     <Authors>Louis Henry Nayegon</Authors>
+    <Copyright>Simply Code Ltd.</Copyright>
+    <PackageLicenseUrl>https://github.com/SimplyCodeUK/packer-strategy/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/SimplyCodeUK/packer-strategy</RepositoryUrl>
   </PropertyGroup>
 
