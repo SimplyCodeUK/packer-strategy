@@ -6,6 +6,8 @@
     <ProjectGuid>61c44c0b-1705-49a7-b88d-acb260d2b59e</ProjectGuid>
     <Product>PackIt</Product>
     <Authors>Louis Henry Nayegon</Authors>
+    <Copyright>Simply Code Ltd.</Copyright>
+    <PackageLicenseUrl>https://github.com/SimplyCodeUK/packer-strategy/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/SimplyCodeUK/packer-strategy</RepositoryUrl>
   </PropertyGroup>
 

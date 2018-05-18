@@ -88,15 +88,16 @@ sudo -u postgres psql --command "ALTER USER postgres WITH PASSWORD 'postgres';"
 SCRIPT
 
 SERVICE_INSTALL = <<-SCRIPT
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 apt-get install python3-software-properties=0.96.20.7 -y
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-apt-get install dotnet-sdk-2.1.4=2.1.4-1      -y
-apt-get install nuget=2.8.7+md510+dhx1-1      -y
-apt-get install git=1:2.7.4-0ubuntu1.3        -y
-apt-get install nginx=1.10.3-0ubuntu0.16.04.2 -y
-apt-get install nodejs=8.11.1-1nodesource1    -y
-npm install -g bower
-bower --version
+apt-get install dotnet-sdk-2.1.4=2.1.4-1 -y
+apt-get install nuget=2.8.7*             -y
+apt-get install git=1:2.7.4-0*           -y
+apt-get install nginx=1.10.3-0*          -y
+apt-get install nodejs=8.11.1-1*         -y
+apt-get install yarn=1.6.0-1*            -y
 systemctl stop nginx
 rm /etc/nginx/sites-enabled/default 2> /dev/null
 SCRIPT
@@ -147,8 +148,8 @@ MACHINES.each do |_key, machine|
       cd #{SERVICES_DIR}
       if [[ -d "${service}" && ! -L "${service}" ]] ; then git pull; else git clone #{SERVICES[service.to_sym][:repo]} #{service}; fi
       cd #{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}
-      if [ -f "./bower.json" ]; then
-        bower install --allow-root
+      if [ -f "./package.json" ]; then
+        yarn install
       fi
       nuget restore #{SERVICES[service.to_sym][:project_file]}
       dotnet restore #{SERVICES[service.to_sym][:project_file]}

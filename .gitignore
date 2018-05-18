@@ -2,7 +2,6 @@
 *.leu
 *.min.css
 *.min.js
-packitlib.js
 
 **/.vs/
 **/bin/
