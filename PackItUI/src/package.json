@@ -9,12 +9,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^4.1.1",
-    "fontawesome": "^4.7.2",
-    "jquery": "^3.3.1",
-    "jquery-validation": "^1.17.0",
-    "jquery-validation-unobtrusive": "^3.2.9",
-    "popper.js": "^1.14.3",
-    "three.js": "^0.77.1"
+    "babylonjs": "3.2.0",
+    "bootstrap": "4.1.1",
+    "font-awesome-5-css": "5.0.8",
+    "jquery": "3.3.1",
+    "jquery-validation": "1.17.0",
+    "jquery-validation-unobtrusive": "3.2.10",
+    "popper.js": "1.14.3"
   }
 }

@@ -17,17 +17,18 @@
 ### Tools
 
 - [GIT](https://git-scm.com/)
-- [Visual Studio 2017 Version 15.6.7](https://www.visualstudio.com/)
+- [Node.Js Version 8.11.2](https://nodejs.org/)
+- [Yarn Version 1.6.0](https://yarnpkg.com)
+- [Visual Studio 2017 Version 15.7.1](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
   - Extensions
     - StyleCop
-    - SonarLint
     - Bundler & Minifier
     - Markdown Editor
-- [VirtualBox Version 5.2.8](https://www.virtualbox.org/)
-- [Vagrant Version 2.0.4](https://www.vagrantup.com/)
+- [VirtualBox Version 5.2.12](https://www.virtualbox.org/)
+- [Vagrant Version 2.1.1](https://www.vagrantup.com/)
 
 ### Vagrant environment
 

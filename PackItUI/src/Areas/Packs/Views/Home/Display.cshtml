@@ -36,9 +36,10 @@
                     </div>
                 </div>
                 @{ await Html.RenderPartialAsync("_GraphicScriptsPartial"); }
-                <div id="container" class="form-group">
+                <div class="form-group">
+                    <canvas id="renderCanvas"></canvas>
                     <script>
-                        drawPack(document.querySelector('#container'), '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, new Newtonsoft.Json.JsonSerializerSettings { StringEscapeHandling = Newtonsoft.Json.StringEscapeHandling.EscapeHtml }))')
+                        drawPack(document.querySelector('#renderCanvas'), '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, new Newtonsoft.Json.JsonSerializerSettings { StringEscapeHandling = Newtonsoft.Json.StringEscapeHandling.EscapeHtml }))')
                     </script>
                 </div>
             </div>
