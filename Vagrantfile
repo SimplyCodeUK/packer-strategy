@@ -148,9 +148,6 @@ MACHINES.each do |_key, machine|
       cd #{SERVICES_DIR}
       if [[ -d "${service}" && ! -L "${service}" ]] ; then git pull; else git clone #{SERVICES[service.to_sym][:repo]} #{service}; fi
       cd #{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}
-      if [ -f "./package.json" ]; then
-        yarn install
-      fi
       nuget restore #{SERVICES[service.to_sym][:project_file]}
       dotnet restore #{SERVICES[service.to_sym][:project_file]}
       dotnet publish --configuration Release

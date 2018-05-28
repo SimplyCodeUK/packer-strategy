@@ -24,9 +24,7 @@
             <th scope="col"><label asp-for="Items.FirstOrDefault().PlanId"></label></th>
             <th scope="col"><label asp-for="Items.FirstOrDefault().Name"></label></th>
             <th scope="col">
-                <a role="button" class="btn btn-primary" asp-action="Create">
-                    <i class="fas fa-plus"></i>
-                </a>
+                <a role="button" class="btn btn-primary fa fa-plus" asp-action="Create" />
             </th>
         </tr>
     </thead>
@@ -37,12 +35,8 @@
             <td><span class="@DataClass">@item.PlanId</span></td>
             <td><span class="@DataClass">@item.Name</span></td>
             <td>
-                <a role="button" class="btn btn-info" asp-controller="Home" asp-action="Update" asp-route-id="@item.PlanId">
-                    <i class="fas fa-pencil-alt"></i>
-                </a>
-                <a role="button" class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@item.PlanId">
-                    <i class="fas fa-trash-alt"></i>
-                </a>
+                <a role="button" class="btn btn-info fa fa-pencil-alt" asp-controller="Home" asp-action="Update" asp-route-id="@item.PlanId" />
+                <a role="button" class="btn btn-danger fa fa-trash" asp-controller="Home" asp-action="Delete" asp-route-id="@item.PlanId" />
             </td>
         </tr>
         }
