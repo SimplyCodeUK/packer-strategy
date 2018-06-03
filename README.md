@@ -18,8 +18,8 @@
 
 - [GIT](https://git-scm.com/)
 - [Node.Js Version 8.11.2](https://nodejs.org/)
-- [Yarn Version 1.6.0](https://yarnpkg.com)
-- [Visual Studio 2017 Version 15.7.1](https://www.visualstudio.com/)
+- [Yarn Version 1.7.0](https://yarnpkg.com)
+- [Visual Studio 2017 Version 15.7.3](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript

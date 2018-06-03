@@ -96,8 +96,8 @@ apt-get install dotnet-sdk-2.1.4=2.1.4-1 -y
 apt-get install nuget=2.8.7*             -y
 apt-get install git=1:2.7.4-0*           -y
 apt-get install nginx=1.10.3-0*          -y
-apt-get install nodejs=8.11.1-1*         -y
-apt-get install yarn=1.6.0-1*            -y
+apt-get install nodejs=8.11.2-1*         -y
+apt-get install yarn=1.7.0-1*            -y
 systemctl stop nginx
 rm /etc/nginx/sites-enabled/default 2> /dev/null
 SCRIPT
