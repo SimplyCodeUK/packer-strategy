@@ -9,9 +9,9 @@ solution: PackIt.sln
 
 mono:
   - latest
-  - 5.10.0
+  - 5.12.0
 
-dotnet: 2.0.0
+dotnet: 2.1.300
 
 env:
   - CONFIG=Debug
