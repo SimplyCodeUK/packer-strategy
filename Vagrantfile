@@ -61,9 +61,12 @@ curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microso
 mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+dpkg -i packages-microsoft-prod.deb
 SCRIPT
 
 BASE_PRE_INSTALL = <<-SCRIPT
+apt-get install apt-transport-https
 apt-get update
 SCRIPT
 
@@ -92,7 +95,7 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 apt-get install python3-software-properties=0.96.20.7 -y
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-apt-get install dotnet-sdk-2.1.4=2.1.4-1 -y
+apt-get install dotnet-sdk-2.1=2.1.300-1 -y
 apt-get install nuget=2.8.7*             -y
 apt-get install git=1:2.7.4-0*           -y
 apt-get install nginx=1.10.3-0*          -y
