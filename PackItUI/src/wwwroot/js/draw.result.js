@@ -12,7 +12,7 @@
  * Populate the result in the scene
  *
  * @param {BABYLON.Scene} scene - The Babylon scene
- * @parma {JSON} pack - The pack that the result is from
+ * @param {JSON} pack - The pack that the result is from
  * @param {JSON} result - The result in JSON
  *
  * @returns {undefined}
