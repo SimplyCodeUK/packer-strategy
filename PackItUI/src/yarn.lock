@@ -10,9 +10,9 @@ bootstrap@4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.1.tgz#3aec85000fa619085da8d2e4983dfd67cf2114cb"
 
-font-awesome-5-css@5.0.8:
-  version "5.0.8"
-  resolved "https://registry.yarnpkg.com/font-awesome-5-css/-/font-awesome-5-css-5.0.8.tgz#e3984e8700eb4305405116018a1f4e59ddc02308"
+font-awesome-5-css@5.0.13:
+  version "5.0.13"
+  resolved "https://registry.yarnpkg.com/font-awesome-5-css/-/font-awesome-5-css-5.0.13.tgz#6d86d533e39baa7116a332ad851b395cdf1242ae"
 
 jquery-validation-unobtrusive@3.2.10:
   version "3.2.10"
