@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "babylonjs": "3.2.0",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.1.2",
     "font-awesome-5-css": "5.0.13",
     "jquery": "3.3.1",
     "jquery-validation": "1.17.0",

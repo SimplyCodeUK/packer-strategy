@@ -6,9 +6,9 @@ babylonjs@3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-3.2.0.tgz#14cb71f27adaae1b071a03bd0d292b0fe07e448e"
 
-bootstrap@4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.1.tgz#3aec85000fa619085da8d2e4983dfd67cf2114cb"
+bootstrap@4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.2.tgz#aee2a93472e61c471fc79fb475531dcbc87de326"
 
 font-awesome-5-css@5.0.13:
   version "5.0.13"
