@@ -14,9 +14,12 @@
  * @param {BABYLON.Scene} scene - The Babylon scene
  * @param {JSON} result - The result in JSON
  *
- * @returns {undefined}
+ * @returns {BABYLON.Mesh[]} - A list of meshes
  */
 
 PackIt.drawProduct = function (scene, result) {
-  return new BABYLON.MeshBuilder.CreateBox('box', { width: result.ExternalLength, height: result.ExternalHeight, depth: result.ExternalBreadth }, scene)
+  var meshes = []
+
+  meshes.push(new BABYLON.MeshBuilder.CreateBox('box', { width: result.ExternalLength, height: result.ExternalHeight, depth: result.ExternalBreadth }, scene))
+  return meshes
 }

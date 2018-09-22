@@ -12,15 +12,13 @@
  * Populate the scene
  *
  * @param {BABYLON.Scene} scene - The Babylon scene
- * @param {JSON} pack - The pack that the result is from
+ * @param {JSON} model - The model that the result is from
  * @param {JSON} result - The result in JSON
- *
- * @returns {undefined}
  */
-var populateScene = function (scene, pack, result) {
+var populateScene = function (scene, model, result) {
   if ((result.Generator !== PackIt.Helpers.Enums.PatternGenerator.Variable) &&
     (result.Level !== PackIt.Helpers.Enums.StageLevel.New)) {
-    PackIt.drawResult(scene, pack, result)
+    PackIt.drawResult(scene, model, result)
   }
   else {
     PackIt.drawProduct(scene, result)
@@ -32,8 +30,6 @@ var populateScene = function (scene, pack, result) {
  *
  * @param {HTMLElement} canvas - The DOM container to draw in
  * @param {string} pack - The pack as a json string
- *
- * @returns {undefined}
  */
 var drawPack = function (canvas, pack) {
   var model = JSON.parse(pack)
