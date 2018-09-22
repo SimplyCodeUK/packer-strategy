@@ -28,8 +28,6 @@ function closest (e, name) {
  * Delete a row from a table
  *
  * @param {HTMLElement} e - The delete button pressed on the row to delete
- *
- * @returns {undefined}
  */
 var deleteRow = function (e) {
   closest(e, 'TABLE').deleteRow(closest(e, 'TR').rowIndex)
@@ -40,8 +38,6 @@ var deleteRow = function (e) {
  *
  * @param {HTMLElement} e - The button pressed to add a row
  * @param {string} getUrl - The url for the partial view
- *
- * @returns {undefined}
  */
 var addRow = function (e, getUrl) {
   var body = closest(e, 'TABLE').getElementsByTagName('TBODY')[0]

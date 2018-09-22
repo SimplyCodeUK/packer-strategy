@@ -7,6 +7,7 @@
 
 var PackIt = {
   Helpers: {
-    Enums: {}
+    Enums: {},
+    Masks: {}
   }
 }
