@@ -14,15 +14,17 @@
  * @param {JSON} model - The model that the result is from
  * @param {JSON} result - The result in JSON
  *
- * @returns {undefined}
+ * @returns {JSON|null} - the parent
  */
 var getParent = function (model, result) {
-  var stage;
+  var stage
   for (stage in model.Stages) {
-    if (model.Stages[stage].StageLevel === result.ParentLevel) return model.Stages[stage].Results[result.ParentIndex]
+    if (model.Stages[stage].StageLevel === result.ParentLevel) {
+      return model.Stages[stage].Results[result.ParentIndex]
+    }
   }
 
-  return undefined
+  return null
 }
 
 /**
