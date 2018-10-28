@@ -6,7 +6,6 @@
 'use strict'
 
 /* global BABYLON */
-/* global PackIt */
 
 /**
  * Populate the parent of a result
@@ -48,31 +47,35 @@ var rotateResult = function (result, rotation) {
   return ret
 }
 
-/**
- * Populate the result in the scene
- *
- * @param {BABYLON.Scene} scene - The Babylon scene
- * @param {JSON} model - The model that the result is from
- * @param {JSON} result - The result in JSON
- *
- * @returns {BABYLON.Mesh[]} - A list of meshes
- */
-PackIt.drawResult = function (scene, model, result) {
-  var meshes = []
-  var parent = getParent(model, result)
+var PackIt;
+(function (PackIt) {
+  /**
+   * Populate the result in the scene
+   *
+   * @param {BABYLON.Scene} scene - The Babylon scene
+   * @param {JSON} model - The model that the result is from
+   * @param {JSON} result - The result in JSON
+   *
+   * @returns {BABYLON.Mesh[]} - A list of meshes
+   */
+  var drawResult = function (scene, model, result) {
+    var meshes = []
+    var parent = getParent(model, result)
 
-  if (parent) {
-    var layer = result.Layers[0]
-    var parentDimensions = rotateResult(parent, layer.Rotation);
+    if (parent) {
+      var layer = result.Layers[0]
+      var parentDimensions = rotateResult(parent, layer.Rotation);
 
-    for (var idx = 0; idx < layer.Layers; ++idx) {
-      var mesh = new BABYLON.MeshBuilder.CreateBox('box'.concat(idx.toString()), parentDimensions, scene)
-      mesh.position = new BABYLON.Vector3(0, 0, parentDimensions.depth * idx)
-      mesh.enableEdgesRendering()
-      mesh.edgesWidth = 1
-      mesh.edgesColor = new BABYLON.Color4(0, 0, 0, 1)
-      meshes.push(mesh)
+      for (var idx = 0; idx < layer.Layers; ++idx) {
+        var mesh = new BABYLON.MeshBuilder.CreateBox('box'.concat(idx.toString()), parentDimensions, scene)
+        mesh.position = new BABYLON.Vector3(0, 0, parentDimensions.depth * idx)
+        mesh.enableEdgesRendering()
+        mesh.edgesWidth = 1
+        mesh.edgesColor = new BABYLON.Color4(0, 0, 0, 1)
+        meshes.push(mesh)
+      }
     }
+    return meshes
   }
-  return meshes
-}
+  PackIt.drawResult = drawResult
+}) (PackIt || (PackIt = {}))
