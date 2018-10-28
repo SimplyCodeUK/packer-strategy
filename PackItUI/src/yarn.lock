@@ -2,21 +2,21 @@
 # yarn lockfile v1
 
 
-babylonjs@3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-3.2.0.tgz#14cb71f27adaae1b071a03bd0d292b0fe07e448e"
+babylonjs@3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-3.3.0.tgz#f7636c3761cc3260dac8adf26767bc6323e74181"
 
 bootstrap@4.1.3:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.3.tgz#0eb371af2c8448e8c210411d0cb824a6409a12be"
 
-font-awesome-5-css@5.0.13:
-  version "5.0.13"
-  resolved "https://registry.yarnpkg.com/font-awesome-5-css/-/font-awesome-5-css-5.0.13.tgz#6d86d533e39baa7116a332ad851b395cdf1242ae"
+font-awesome-5-css@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/font-awesome-5-css/-/font-awesome-5-css-5.4.1.tgz#6ea4a5205028012574d13a65734844db9d486ecf"
 
-jquery-validation-unobtrusive@3.2.10:
-  version "3.2.10"
-  resolved "https://registry.yarnpkg.com/jquery-validation-unobtrusive/-/jquery-validation-unobtrusive-3.2.10.tgz#5ed7096c10d917c272ce71055b90ca67c27c219c"
+jquery-validation-unobtrusive@3.2.11:
+  version "3.2.11"
+  resolved "https://registry.yarnpkg.com/jquery-validation-unobtrusive/-/jquery-validation-unobtrusive-3.2.11.tgz#175ee46380385a0e33ed320f255fad321f68f9f5"
   dependencies:
     jquery ">=1.8"
     jquery-validation ">=1.16"
