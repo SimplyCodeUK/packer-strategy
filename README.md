@@ -17,9 +17,9 @@
 ### Tools
 
 - [GIT](https://git-scm.com/)
-- [Node.Js Version 8.11.2](https://nodejs.org/)
-- [Yarn Version 1.7.0](https://yarnpkg.com)
-- [Visual Studio 2017 Version 15.7.3](https://www.visualstudio.com/)
+- [Node.Js Version 10.13.0](https://nodejs.org/)
+- [Yarn Version 1.12.1](https://yarnpkg.com)
+- [Visual Studio 2017 Version 15.9.0](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -27,8 +27,9 @@
     - StyleCop
     - Bundler & Minifier
     - Markdown Editor
-- [VirtualBox Version 5.2.12](https://www.virtualbox.org/)
-- [Vagrant Version 2.1.1](https://www.vagrantup.com/)
+- [VirtualBox Version 5.2.22](https://www.virtualbox.org/)
+- [Vagrant Version 2.2.1](https://www.vagrantup.com/)
+  - Box ubuntu/xenial64 version 20181114.0.0
 
 ### Vagrant environment
 
