@@ -74,8 +74,8 @@ DATABASE_INSTALL = <<-SCRIPT
 echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 apt-get update
-apt-get install postgresql-10=10.5-2*         -y
-apt-get install postgresql-contrib-10=10.5-2* -y
+apt-get install postgresql-10=10.6-1*         -y
+apt-get install postgresql-contrib-10=10.6-1* -y
 service postgresql stop
 echo "-------------------- fixing listen_addresses on /etc/postgresql/10/main/postgresql.conf"
 sed -i "s/#listen_address.*/listen_addresses '*'/" /etc/postgresql/10/main/postgresql.conf
@@ -144,7 +144,7 @@ MACHINES.each do |_key, machine|
   end
 
   machine[:services].each do |service|
-    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/netcoreapp2.0/publish"
+    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/netcoreapp2.1/publish"
     buildScript += <<-SRV_SCRIPT
       systemctl stop #{service}.service
 

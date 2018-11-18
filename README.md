@@ -19,7 +19,7 @@
 - [GIT](https://git-scm.com/)
 - [Node.Js Version 10.13.0](https://nodejs.org/)
 - [Yarn Version 1.12.1](https://yarnpkg.com)
-- [Visual Studio 2017 Version 15.9.0](https://www.visualstudio.com/)
+- [Visual Studio 2017 Version 15.9.1](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
