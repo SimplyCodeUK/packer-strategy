@@ -28,7 +28,7 @@
     <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
     <PackageReference Include="OpenCover" Version="4.6.519" />
     <PackageReference Include="OpenCoverToCoberturaConverter" Version="0.3.4" />
-    <PackageReference Include="ReportGenerator" Version="4.0.2" />
+    <PackageReference Include="ReportGenerator" Version="4.0.4" />
   </ItemGroup>
 
   <ItemGroup>
