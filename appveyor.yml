@@ -1,4 +1,4 @@
-﻿# Copyright (c) 2018 Simply Code Ltd. All rights reserved.
+# Copyright (c) 2018 Simply Code Ltd. All rights reserved.
 # Licensed under the MIT License.
 # See LICENSE file in the project root for full license information.
 
@@ -14,10 +14,10 @@ build_script:
 - dotnet build PackIt.sln --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
 - 7z a codedocs.zip codedoc.xml -r
 test_script:
-- C:\Users\appveyor\.nuget\packages\opencover\4.6.519\tools\opencover.console -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib\test\PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput
-- C:\Users\appveyor\.nuget\packages\opencover\4.6.519\tools\opencover.console -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt\test\PackIt.Test.csproj       --configuration %CONFIG% --no-build --logger:trx" -oldstyle
-- C:\Users\appveyor\.nuget\packages\opencover\4.6.519\tools\opencover.console -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItUI\test\PackItUI.Test.csproj   --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput
-- C:\Users\appveyor\.nuget\packages\reportgenerator\4.0.4\tools\ReportGenerator.exe "-reports:coverage.xml" "-targetdir:.\coverage"
+- '"%UserProfile%\.nuget\packages\opencover\4.6.519\tools\opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib\test\PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
+- '"%UserProfile%\.nuget\packages\opencover\4.6.519\tools\opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt\test\PackIt.Test.csproj       --configuration %CONFIG% --no-build --logger:trx" -oldstyle'
+- '"%UserProfile%\.nuget\packages\opencover\4.6.519\tools\opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItUI\test\PackItUI.Test.csproj   --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
+- '"%UserProfile%\.nuget\packages\reportgenerator\4.0.4\tools\net47\ReportGenerator.exe" "-reports:coverage.xml" "-targetdir:.\coverage"'
 - 7z a coverage.zip coverage\*.*
 artifacts:
 - path: coverage.zip
