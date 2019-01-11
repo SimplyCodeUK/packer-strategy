@@ -95,12 +95,12 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 apt-get install python3-software-properties=0.96.20.7 -y
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-apt-get install dotnet-sdk-2.1=2.1.403-1 -y
+apt-get install dotnet-sdk-2.2=2.2.101-1 -y
 apt-get install nuget=2.8.7*             -y
 apt-get install git=1:2.7.4-0*           -y
 apt-get install nginx=1.10.3-0*          -y
 apt-get install nodejs=8.12.0-1*         -y
-apt-get install yarn=1.12.1-1*           -y
+apt-get install yarn=1.12.3-1*           -y
 systemctl stop nginx
 rm /etc/nginx/sites-enabled/default 2> /dev/null
 SCRIPT
@@ -144,7 +144,7 @@ MACHINES.each do |_key, machine|
   end
 
   machine[:services].each do |service|
-    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/netcoreapp2.1/publish"
+    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/netcoreapp2.2/publish"
     buildScript += <<-SRV_SCRIPT
       systemctl stop #{service}.service
 

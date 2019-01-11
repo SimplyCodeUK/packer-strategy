@@ -6,8 +6,7 @@
 
 namespace PackIt
 {
-    using System.IO;
-    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
 
@@ -26,11 +25,11 @@ namespace PackIt
         /// <param name="args"> An array of command-line argument strings. </param>
         public static void Main(string[] args)
         {
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseConfiguration(new ConfigurationBuilder().AddCommandLine(args).Build())
-                .UseStartup<Startup>()
+            var host = WebHost.CreateDefaultBuilder<Startup>(args)
+                .ConfigureAppConfiguration((builderContext, config) =>
+                {
+                    config.AddJsonFile("appsettings.local.json", optional: true);
+                })
                 .UseApplicationInsights()
                 .Build();
 
