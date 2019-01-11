@@ -11,6 +11,7 @@ namespace PackItUI
     using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
     using PackItUI.Areas.App.Models;
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Packs.DTO;
@@ -24,20 +25,34 @@ namespace PackItUI
         /// Initialises a new instance of the <see cref="Startup" /> class.
         /// </summary>
         ///
-        /// <param name="configuration"> The configuration. </param>
-        public Startup(IConfiguration configuration)
+        /// <param name="env"> The environment. </param>
+        /// <param name="configuration"> Configuration. </param>
+        /// <param name="loggerFactory"> Logger factory. </param>
+        public Startup(IHostingEnvironment env, IConfiguration configuration, ILoggerFactory loggerFactory)
         {
+            this.HostingEnvironment = env;
             this.Configuration = configuration;
+            this.LoggerFactory = loggerFactory;
         }
+
+        /// <summary> Gets the hosting environment. </summary>
+        ///
+        /// <value> The hosting environment. </value>
+        public IHostingEnvironment HostingEnvironment { get; }
 
         /// <summary> Gets the configuration. </summary>
         ///
         /// <value> The configuration. </value>
         public IConfiguration Configuration { get; }
 
+        /// <summary> Gets the logger factory. </summary>
+        ///
+        /// <value> The logger factory. </value>
+        public ILoggerFactory LoggerFactory { get; }
+
         /// <summary>
         /// Configures the services.
-        /// This method gets called by the runtime. Use this method to add services to the container.        
+        /// This method gets called by the runtime. Use this method to add services to the container.
         /// </summary>
         /// 
         /// <param name="services"> The services. </param>
@@ -60,10 +75,9 @@ namespace PackItUI
         /// </summary>
         /// 
         /// <param name="app">The application.</param>
-        /// <param name="env">The environment.</param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            if (HostingEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();

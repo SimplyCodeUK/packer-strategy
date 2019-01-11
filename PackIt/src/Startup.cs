@@ -31,15 +31,13 @@ namespace PackIt
         /// </summary>
         ///
         /// <param name="env"> The environment. </param>
-        public Startup(IHostingEnvironment env)
+        /// <param name="configuration"> Configuration. </param>
+        /// <param name="loggerFactory"> Logger factory. </param>
+        public Startup(IHostingEnvironment env, IConfiguration configuration, ILoggerFactory loggerFactory)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddJsonFile("appsettings.local.json", optional: true)
-                .AddEnvironmentVariables();
-            this.Configuration = builder.Build();
+            this.HostingEnvironment = env;
+            this.Configuration = configuration;
+            this.LoggerFactory = loggerFactory;
 
             // Register database contexts.
             // The first context will be the default if not specified in <see cref="Configuration" />
@@ -48,10 +46,20 @@ namespace PackIt
             this.connectionManager.RegisterContextBuilder("postgres", new DbContextBuilderPostgres());
         }
 
+        /// <summary> Gets the hosting environment. </summary>
+        ///
+        /// <value> The hosting environment. </value>
+        public IHostingEnvironment HostingEnvironment { get; }
+
         /// <summary> Gets the configuration. </summary>
         ///
         /// <value> The configuration. </value>
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
+
+        /// <summary> Gets the logger factory. </summary>
+        ///
+        /// <value> The logger factory. </value>
+        public ILoggerFactory LoggerFactory { get; }
 
         /// <summary> Configure services. </summary>
         ///
@@ -61,36 +69,36 @@ namespace PackIt
             // Configure using a sub-section of the appsettings.json file.
             services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"));
 
-            this.AddDbContext<PlanContext>(services, "PlanContext");
             this.AddDbContext<MaterialContext>(services, "MaterialContext");
             this.AddDbContext<PackContext>(services, "PackContext");
+            this.AddDbContext<PlanContext>(services, "PlanContext");
 
             // Add framework services.
             services.AddMvc();
             services.AddApiVersioning();
 
-            services.AddSingleton<IMaterialRepository, MaterialRepository>();
-            services.AddSingleton<IPackRepository, PackRepository>();
-            services.AddSingleton<IPlanRepository, PlanRepository>();
+            services.AddScoped<IMaterialRepository, MaterialRepository>();
+            services.AddScoped<IPackRepository, PackRepository>();
+            services.AddScoped<IPlanRepository, PlanRepository>();
         }
 
         /// <summary> Configures start up. </summary>
         ///
         /// <param name="app"> The application. </param>
-        /// <param name="env"> The environment. </param>
-        /// <param name="loggerFactory"> The logger factory. </param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
-            loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=About}/{action=Get}/{id?}");
+            });
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
-            if (env.IsDevelopment())
+            if ( HostingEnvironment.IsDevelopment() )
             {
                 Seed(app);
             }
