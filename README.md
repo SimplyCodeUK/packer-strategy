@@ -1,6 +1,6 @@
 ﻿# PackIt
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](./LICENSE)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](./LICENSE.md)
 [![HitCount](http://hits.dwyl.io/SimplyCodeUK/packer-strategy.svg)](http://hits.dwyl.io/SimplyCodeUK/packer-strategy)
 
 ## Status
@@ -21,7 +21,7 @@
 - [Node.Js Version 10.13.0](https://nodejs.org/)
 - [Yarn Version 1.12.3](https://yarnpkg.com/)
 - [.NET Core SDK 2.2.101](https://dotnet.microsoft.com/)
-- [Visual Studio 2017 Version 15.9.4](https://www.visualstudio.com/)
+- [Visual Studio 2017 Version 15.9.5](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
