@@ -8,6 +8,7 @@ namespace PackIt.DTO
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PackIt.Material;
@@ -37,13 +38,7 @@ namespace PackIt.DTO
         public IList<Material> GetMaterials()
         {
             var ret = new List<Material>();
-            var query = this.Materials
-                .Include(m => m.Costings)
-                .Include(m => m.Layers)
-                .Include(m => m.Layers).ThenInclude(l => l.Collations)
-                .Include(m => m.PalletDecks)
-                .Include(m => m.PalletDecks).ThenInclude(p => p.Planks)
-                .Include(m => m.Sections);
+            var query = ConstructQuery();
 
             foreach (DtoMaterial.DtoMaterial item in query)
             {
@@ -71,13 +66,7 @@ namespace PackIt.DTO
         {
             try
             {
-                var query = this.Materials
-                    .Include(m => m.Costings)
-                    .Include(m => m.Layers)
-                    .Include(m => m.Layers).ThenInclude(l => l.Collations)
-                    .Include(m => m.PalletDecks)
-                    .Include(m => m.PalletDecks).ThenInclude(p => p.Planks)
-                    .Include(m => m.Sections)
+                var query = ConstructQuery()
                     .SingleAsync(p => p.MaterialId == key);
 
                 query.Wait();
@@ -140,6 +129,22 @@ namespace PackIt.DTO
             Configure(modelBuilder.Entity<DtoMaterial.DtoCollation>());
             Configure(modelBuilder.Entity<DtoMaterial.DtoPalletDeck>());
             Configure(modelBuilder.Entity<DtoMaterial.DtoPlank>());
+        }
+
+        /// <summary>Construct default query.</summary>
+        ///
+        /// <returns> Query for list of materials. </returns>
+        private IQueryable<DtoMaterial.DtoMaterial> ConstructQuery()
+        {
+            var query = this.Materials
+                .Include(m => m.Costings)
+                .Include(m => m.Layers)
+                .Include(m => m.Layers).ThenInclude(l => l.Collations)
+                .Include(m => m.PalletDecks)
+                .Include(m => m.PalletDecks).ThenInclude(p => p.Planks)
+                .Include(m => m.Sections);
+
+            return query;
         }
 
         /// <summary>Configures the specified builder.</summary>

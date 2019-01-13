@@ -8,6 +8,7 @@ namespace PackIt.DTO
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PackIt.Pack;
@@ -36,16 +37,7 @@ namespace PackIt.DTO
         public IList<Pack> GetPacks()
         {
             var ret = new List<Pack>();
-            var query = this.Packs
-                .Include(p => p.Costings)
-                .Include(p => p.Stages)
-                .Include(p => p.Stages).ThenInclude(s => s.Limits)
-                .Include(p => p.Stages).ThenInclude(s => s.Results)
-                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers)
-                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers).ThenInclude(l => l.Collations)
-                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials)
-                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials).ThenInclude(m => m.DatabaseMaterials)
-                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Sections);
+            var query = ConstructQuery();
 
             foreach (DtoPack.DtoPack item in query)
             {
@@ -73,17 +65,7 @@ namespace PackIt.DTO
         {
             try
             {
-                var query = this.Packs
-                    .Include(p => p.Costings)
-                    .Include(p => p.Stages)
-                    .Include(p => p.Stages).ThenInclude(s => s.Limits)
-                    .Include(p => p.Stages).ThenInclude(s => s.Results)
-                    .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers)
-                    .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers).ThenInclude(l => l.Collations)
-                    .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials)
-                    .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials).ThenInclude(m => m.DatabaseMaterials)
-                    .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Sections)
-                    .SingleAsync(p => p.PackId == key);
+                var query = ConstructQuery().SingleAsync(p => p.PackId == key);
 
                 query.Wait();
                 return PackMapper.Convert(query.Result);
@@ -148,6 +130,25 @@ namespace PackIt.DTO
             Configure(modelBuilder.Entity<DtoPack.DtoMaterial>());
             Configure(modelBuilder.Entity<DtoPack.DtoDatabaseMaterial>());
             Configure(modelBuilder.Entity<DtoPack.DtoSection>());
+        }
+
+        /// <summary>Construct default query.</summary>
+        ///
+        /// <returns> Query for list of packs. </returns>
+        private IQueryable<DtoPack.DtoPack> ConstructQuery()
+        {
+            var query = this.Packs
+                .Include(p => p.Costings)
+                .Include(p => p.Stages)
+                .Include(p => p.Stages).ThenInclude(s => s.Limits)
+                .Include(p => p.Stages).ThenInclude(s => s.Results)
+                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers)
+                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers).ThenInclude(l => l.Collations)
+                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials)
+                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials).ThenInclude(m => m.DatabaseMaterials)
+                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Sections);
+
+            return query;
         }
 
         /// <summary>Configures the specified builder.</summary>

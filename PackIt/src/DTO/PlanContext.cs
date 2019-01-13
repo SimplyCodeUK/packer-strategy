@@ -8,6 +8,7 @@ namespace PackIt.DTO
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PackIt.Plan;
@@ -36,9 +37,7 @@ namespace PackIt.DTO
         public IList<Plan> GetPlans()
         {
             var ret = new List<Plan>();
-            var query = this.Plans
-                .Include(p => p.Stages)
-                .Include(p => p.Stages).ThenInclude(s => s.Limits);
+            var query = ConstructQuery();
 
             foreach (DtoPlan.DtoPlan item in query)
             {
@@ -66,9 +65,7 @@ namespace PackIt.DTO
         {
             try
             {
-                var query = this.Plans
-                    .Include(p => p.Stages)
-                    .Include(p => p.Stages).ThenInclude(s => s.Limits)
+                var query = ConstructQuery()
                     .SingleAsync(p => p.PlanId == key);
 
                 query.Wait();
@@ -127,6 +124,18 @@ namespace PackIt.DTO
             Configure(modelBuilder.Entity<DtoPlan.DtoPlan>());
             Configure(modelBuilder.Entity<DtoPlan.DtoStage>());
             Configure(modelBuilder.Entity<DtoPlan.DtoLimit>());
+        }
+
+        /// <summary>Construct default query.</summary>
+        ///
+        /// <returns> Query for list of plans. </returns>
+        private IQueryable<DtoPlan.DtoPlan> ConstructQuery()
+        {
+            var query = this.Plans
+                .Include(p => p.Stages)
+                .Include(p => p.Stages).ThenInclude(s => s.Limits);
+
+            return query;
         }
 
         /// <summary>Configures the specified builder.</summary>
