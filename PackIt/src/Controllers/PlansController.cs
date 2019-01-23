@@ -32,8 +32,7 @@ namespace PackIt.Controllers
         }
 
         /// <summary>
-        /// (An Action that handles HTTP GET requests) enumerates the items in this collection that
-        /// meet given criteria.
+        /// (An Action that handles HTTP GET requests) Enumerates all items in this collection.
         /// </summary>
         ///
         /// <returns> An enumerator that allows foreach to be used to process the matched items. </returns>
@@ -44,13 +43,13 @@ namespace PackIt.Controllers
         }
 
         /// <summary>
-        /// (An Action that handles HTTP GET requests) gets an IActionResult using the given
+        /// (An Action that handles HTTP GET requests) Gets an IActionResult using the given
         /// identifier containing a plan.
         /// </summary>
         ///
         /// <param name="id"> The identifier. </param>
         ///
-        /// <returns> An IActionResult. </returns>
+        /// <returns> An IActionResult containing the Pack if it exists. </returns>
         [HttpGet("{id}")]
         [Route("{id}", Name = "GetPlan")]
         [ProducesResponseType(typeof(Plan), 200)]
@@ -66,9 +65,9 @@ namespace PackIt.Controllers
             return this.Ok(item);
         }
 
-        /// <summary> (An Action that handles HTTP POST requests) post this message. </summary>
+        /// <summary> (An Action that handles HTTP POST requests) Post a new Plan. </summary>
         ///
-        /// <param name="value"> The value. </param>
+        /// <param name="value"> The new Plan. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
@@ -96,7 +95,9 @@ namespace PackIt.Controllers
             return result;
         }
 
-        /// <summary> Updates an existing Plan. </summary>
+        /// <summary>
+        /// (An Action that handles HTTP PUT requests) Put an update to an existing Plan.
+        /// </summary>
         ///
         /// <param name="id"> The identifier. </param>
         /// <param name="value"> The value. </param>
@@ -118,9 +119,9 @@ namespace PackIt.Controllers
             return this.Ok();
         }
 
-        /// <summary> Deletes the given ID. </summary>
+        /// <summary> (An Action that handles HTTP DELETE requests) Deletes a Plan. </summary>
         ///
-        /// <param name="id"> The identifier. </param>
+        /// <param name="id"> The identifier of the Plan. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpDelete("{id}")]
@@ -135,12 +136,14 @@ namespace PackIt.Controllers
             return this.Ok();
         }
 
-        /// <summary> Patches an existing Plan. </summary>
+        /// <summary>
+        /// (An Action that handles HTTP PATCH requests) Patches an existing Plan.
+        /// </summary>
         ///
         /// <param name="id"> The identifier. </param>
         /// <param name="update"> The update. </param>
         ///
-        /// <returns> An IActionResult. </returns>
+        /// <returns> An IActionResult containing the updated Plan. </returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> update)
         {

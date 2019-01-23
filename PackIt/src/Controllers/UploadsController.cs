@@ -28,6 +28,24 @@ namespace PackIt.Controllers
         /// <summary> Gets the application settings. </summary>
         private readonly AppSettings appSettings;
 
+        /// <summary> Save data. </summary>
+        ///
+        /// <param name="item"> The item to save. </param>
+        /// <param name="endpoint"> The endpoint yo post to. </param>
+        ///
+        /// <returns> When async task completed. </returns>
+        private async Task Save(object item, string endpoint)
+        {
+            var json = JsonConvert.SerializeObject(item);
+            var content = new StringContent(
+                json,
+                Encoding.UTF8,
+                "application/json");
+            HttpResponseMessage response = await this.httpClient.PostAsync(endpoint, content);
+            // Throw an exception if not successful
+            response.EnsureSuccessStatusCode();
+        }
+
         /// <summary>
         /// Initialises a new instance of the <see cref="UploadsController" /> class.
         /// </summary>
@@ -49,7 +67,7 @@ namespace PackIt.Controllers
             this.httpClient = new HttpClient(messageHandler);
         }
 
-        /// <summary> (An Action that handles HTTP POST requests) post this message. </summary>
+        /// <summary> (An Action that handles HTTP POST requests) Post this message. </summary>
         ///
         /// <param name="values"> Bulk upload of data to the databases. </param>
         ///
@@ -65,19 +83,11 @@ namespace PackIt.Controllers
                 return this.BadRequest();
             }
 
-            foreach (Plan.Plan item in values.Plans)
+            foreach (var item in values.Plans)
             {
                 try
                 {
-                    var json = JsonConvert.SerializeObject(item);
-                    var content = new StringContent(
-                        json,
-                        Encoding.UTF8,
-                        "application/json");
-                    HttpResponseMessage response = await this.httpClient.PostAsync(this.appSettings.ServiceEndpoints.Plans + "Plans", content);
-
-                    // Throw an exception if not successful
-                    response.EnsureSuccessStatusCode();
+                    await Save(item, this.appSettings.ServiceEndpoints.Plans + "Plans").ConfigureAwait(false);
                     pass.Add(item.PlanId);
                 }
                 catch (Exception)
@@ -86,19 +96,11 @@ namespace PackIt.Controllers
                 }
             }
 
-            foreach (Material.Material item in values.Materials)
+            foreach (var item in values.Materials)
             {
                 try
                 {
-                    var json = JsonConvert.SerializeObject(item);
-                    var content = new StringContent(
-                        json,
-                        Encoding.UTF8,
-                        "application/json");
-                    HttpResponseMessage response = await this.httpClient.PostAsync(this.appSettings.ServiceEndpoints.Materials + "Materials", content);
-
-                    // Throw an exception if not successful
-                    response.EnsureSuccessStatusCode();
+                    await Save(item, this.appSettings.ServiceEndpoints.Materials + "Materials").ConfigureAwait(false);
                     pass.Add(item.MaterialId);
                 }
                 catch (Exception)
@@ -107,19 +109,11 @@ namespace PackIt.Controllers
                 }
             }
 
-            foreach (Pack.Pack item in values.Packs)
+            foreach (var item in values.Packs)
             {
                 try
                 {
-                    var json = JsonConvert.SerializeObject(item);
-                    var content = new StringContent(
-                        json,
-                        Encoding.UTF8,
-                        "application/json");
-                    HttpResponseMessage response = await this.httpClient.PostAsync(this.appSettings.ServiceEndpoints.Packs + "Packs", content);
-
-                    // Throw an exception if not successful
-                    response.EnsureSuccessStatusCode();
+                    await Save(item, this.appSettings.ServiceEndpoints.Packs + "Packs").ConfigureAwait(false);
                     pass.Add(item.PackId);
                 }
                 catch (Exception)

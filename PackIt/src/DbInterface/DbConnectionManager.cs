@@ -34,6 +34,8 @@ namespace PackIt.DbInterface
         /// <param name="key"> The key to the connection. </param>
         ///
         /// <returns> The connection. </returns>
+        ///
+        /// <exception cref="KeyNotFoundException"> Thrown when key not registered. </exception>
         public IDbContextBuilder ContextBuilder(string key)
         {
             return this.connections[key];

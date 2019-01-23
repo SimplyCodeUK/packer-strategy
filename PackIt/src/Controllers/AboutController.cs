@@ -13,12 +13,9 @@ namespace PackIt.Controllers
     [Route("api/v{version:apiVersion}", Order = 16)]
     public class AboutController : Controller
     {
-        /// <summary>
-        /// (An Action that handles HTTP GET requests) enumerates the items in this collection that
-        /// meet given criteria.
-        /// </summary>
+        /// <summary> Get service information. </summary>
         ///
-        /// <returns> An enumerator that allows foreach to be used to process the matched items. </returns>
+        /// <returns> (An Action that handles HTTP GET requests) The service information. </returns>
         [HttpGet]
         public IActionResult Get()
         {
