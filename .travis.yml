@@ -7,6 +7,10 @@ dist: xenial
 language: csharp
 solution: PackIt.sln
 
+addons:
+  sonarcloud:
+    organization: simplycodeuk
+
 mono:
   - latest
   - 5.18.0
@@ -32,6 +36,7 @@ install:
   - dotnet restore PackIt.sln
 
 script:
+  - sonar-scanner
   - msbuild /p:Configuration=$CONFIG /t:rebuild PackIt.sln
   - dotnet pack PackItLib/src/PackItLib.csproj --configuration $CONFIG
   - dotnet test PackItLib/test/PackItLib.Test.csproj --configuration $CONFIG --logger:trx
