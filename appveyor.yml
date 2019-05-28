@@ -14,10 +14,10 @@ build_script:
 - dotnet build PackIt.sln --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
 - 7z a codedocs.zip codedoc.xml -r
 test_script:
-- '"%UserProfile%\.nuget\packages\opencover\4.6.519\tools\opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib\test\PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
-- '"%UserProfile%\.nuget\packages\opencover\4.6.519\tools\opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt\test\PackIt.Test.csproj       --configuration %CONFIG% --no-build --logger:trx" -oldstyle'
-- '"%UserProfile%\.nuget\packages\opencover\4.6.519\tools\opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItUI\test\PackItUI.Test.csproj   --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
-- '"%UserProfile%\.nuget\packages\reportgenerator\4.0.8\tools\net47\ReportGenerator.exe" "-reports:coverage.xml" "-targetdir:.\coverage"'
+- '"%UserProfile%\.nuget\packages\opencover\4.7.922\tools\opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib\test\PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
+- '"%UserProfile%\.nuget\packages\opencover\4.7.922\tools\opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt\test\PackIt.Test.csproj       --configuration %CONFIG% --no-build --logger:trx" -oldstyle'
+- '"%UserProfile%\.nuget\packages\opencover\4.7.922\tools\opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItUI\test\PackItUI.Test.csproj   --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
+- '"%UserProfile%\.nuget\packages\reportgenerator\4.1.8\tools\net47\ReportGenerator.exe" "-reports:coverage.xml" "-targetdir:.\coverage"'
 - 7z a coverage.zip coverage\*.*
 artifacts:
 - path: coverage.zip
