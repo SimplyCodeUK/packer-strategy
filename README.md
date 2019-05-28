@@ -22,7 +22,7 @@
 - [Node.Js Version 10.13.0](https://nodejs.org/)
 - [Yarn Version 1.12.3](https://yarnpkg.com/)
 - [.NET Core SDK 2.2.101](https://dotnet.microsoft.com/)
-- [Visual Studio 2017 Version 15.9.5](https://www.visualstudio.com/)
+- [Visual Studio 2017 Version 15.9.11](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -30,9 +30,9 @@
     - StyleCop
     - Bundler & Minifier
     - Markdown Editor
-- [VirtualBox Version 6.0.0](https://www.virtualbox.org/)
-- [Vagrant Version 2.2.2](https://www.vagrantup.com/)
-  - Box ubuntu/xenial64 version 20181223.0.0
+- [VirtualBox Version 6.0.4](https://www.virtualbox.org/)
+- [Vagrant Version 2.2.4](https://www.vagrantup.com/)
+  - Box ubuntu/xenial64 version 20190308.0.0
 
 ### Vagrant environment
 

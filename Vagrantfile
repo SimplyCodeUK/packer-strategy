@@ -74,8 +74,7 @@ DATABASE_INSTALL = <<-SCRIPT
 echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 apt-get update
-apt-get install postgresql-10=10.6-1*         -y
-apt-get install postgresql-contrib-10=10.6-1* -y
+apt-get install postgresql-10=10.* -y
 service postgresql stop
 echo "-------------------- fixing listen_addresses on /etc/postgresql/10/main/postgresql.conf"
 sed -i "s/#listen_address.*/listen_addresses '*'/" /etc/postgresql/10/main/postgresql.conf
@@ -93,14 +92,14 @@ SCRIPT
 SERVICE_INSTALL = <<-SCRIPT
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-apt-get install python3-software-properties=0.96.20.7 -y
+apt-get install python3-software-properties=0.96.* -y
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-apt-get install dotnet-sdk-2.2=2.2.101-1 -y
-apt-get install nuget=2.8.7*             -y
-apt-get install git=1:2.7.4-0*           -y
-apt-get install nginx=1.10.3-0*          -y
-apt-get install nodejs=8.12.0-1*         -y
-apt-get install yarn=1.12.3-1*           -y
+apt-get install dotnet-sdk-2.2=2.2.* -y
+apt-get install nuget=2.8.*          -y
+apt-get install git=1:2.7.*          -y
+apt-get install nginx=1.10.*         -y
+apt-get install nodejs=8.*           -y
+apt-get install yarn=1.12.*          -y
 systemctl stop nginx
 rm /etc/nginx/sites-enabled/default 2> /dev/null
 SCRIPT
