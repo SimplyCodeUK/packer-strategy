@@ -90,16 +90,13 @@ sudo -u postgres psql --command "ALTER USER postgres WITH PASSWORD 'postgres';"
 SCRIPT
 
 SERVICE_INSTALL = <<-SCRIPT
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 apt-get install python3-software-properties=0.96.* -y
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 apt-get install dotnet-sdk-2.2=2.2.* -y
 apt-get install nuget=2.8.*          -y
 apt-get install git=1:2.7.*          -y
 apt-get install nginx=1.10.*         -y
-apt-get install nodejs=8.*           -y
-apt-get install yarn=1.12.*          -y
+apt-get install nodejs=10.*          -y
 systemctl stop nginx
 rm /etc/nginx/sites-enabled/default 2> /dev/null
 SCRIPT
