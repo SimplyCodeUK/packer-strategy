@@ -19,8 +19,7 @@
 ### Tools
 
 - [GIT](https://git-scm.com/)
-- [Node.Js Version 10.13.0](https://nodejs.org/)
-- [Yarn Version 1.12.3](https://yarnpkg.com/)
+- [Node.Js Version 10.16.0](https://nodejs.org/)
 - [.NET Core SDK 2.2.101](https://dotnet.microsoft.com/)
 - [Visual Studio 2017 Version 15.9.11](https://www.visualstudio.com/)
   - Languages
