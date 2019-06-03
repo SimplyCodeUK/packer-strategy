@@ -91,12 +91,12 @@ SCRIPT
 
 SERVICE_INSTALL = <<-SCRIPT
 apt-get install python3-software-properties=0.96.* -y
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+apt-get install nodejs=10.16.*       -y
 apt-get install dotnet-sdk-2.2=2.2.* -y
 apt-get install nuget=2.8.*          -y
 apt-get install git=1:2.7.*          -y
 apt-get install nginx=1.10.*         -y
-apt-get install nodejs=10.*          -y
 systemctl stop nginx
 rm /etc/nginx/sites-enabled/default 2> /dev/null
 SCRIPT
@@ -150,6 +150,9 @@ MACHINES.each do |_key, machine|
       nuget restore #{SERVICES[service.to_sym][:project_file]}
       dotnet restore #{SERVICES[service.to_sym][:project_file]}
       dotnet publish --configuration Release
+      pwd
+      mkdir ./wwwroot/lib
+      cp -R ./node_modules/** ./wwwroot/lib/
     SRV_SCRIPT
     if SERVICES[service.to_sym].key?(:database)
       db = SERVICES[service.to_sym][:database]
