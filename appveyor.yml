@@ -22,16 +22,14 @@ build_script:
 - sh:  dotnet build PackIt.sln --configuration $CONFIG  /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
 - 7z a codedocs.zip codedoc.xml -r
 test_script:
-- sh: find -iname opencover.console
-- sh: find -iname ReportGenerator
-- cmd: '"%UserProfile%/.nuget/packages/opencover/4.7.922/tools/opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib/test/PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
-- sh:  '"~/packages/opencover/4.7.922/tools/opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib/test/PackItLib.Test.csproj --configuration $CONFIG  --no-build --logger:trx" -oldstyle -mergeoutput'
-- cmd: '"%UserProfile%/packages/opencover/4.7.922/tools/opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt/test/PackIt.Test.csproj       --configuration %CONFIG% --no-build --logger:trx" -oldstyle'
-- sh:  '"~/packages/opencover/4.7.922/tools/opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt/test/PackIt.Test.csproj       --configuration $CONFIG  --no-build --logger:trx" -oldstyle'
-- cmd: '"%UserProfile%/packages/opencover/4.7.922/tools/opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItUI/test/PackItUI.Test.csproj   --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
-- sh:  '"~/packages/opencover/4.7.922/tools/opencover.console" -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItUI/test/PackItUI.Test.csproj   --configuration $CONFIG  --no-build --logger:trx" -oldstyle -mergeoutput'
-- cmd: '"%UserProfile%/packages/reportgenerator/4.1.8/tools/net47/ReportGenerator" -reports:coverage.xml -targetdir:./coverage'
-- sh:  '"~/packages/reportgenerator/4.1.8/tools/net47/ReportGenerator" -reports:coverage.xml -targetdir:./coverage'
+- cmd: 'C:\Users\appveyor\.nuget\packages\opencover\4.7.922\tools\OpenCover.Console.exe -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib\test\PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
+- sh:  '/home/appveyor/.nuget/packages/opencover/4.7.922/tools/OpenCover.Console.exe    -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib/test/PackItLib.Test.csproj --configuration $CONFIG  --no-build --logger:trx" -oldstyle -mergeoutput'
+- cmd: 'C:\Users\appveyor\.nuget\packages\opencover\4.7.922\tools\OpenCover.Console.exe -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt\test\PackIt.Test.csproj       --configuration %CONFIG% --no-build --logger:trx" -oldstyle'
+- sh:  '/home/appveyor/.nuget/packages/opencover/4.7.922/tools/OpenCover.Console.exe    -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt/test/PackIt.Test.csproj       --configuration $CONFIG  --no-build --logger:trx" -oldstyle'
+- cmd: 'C:\Users\appveyor\.nuget\packages\opencover\4.7.922\tools\OpenCover.Console.exe -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItUI\test\PackItUI.Test.csproj   --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
+- sh:  '/home/appveyor/.nuget/packages/opencover/4.7.922/tools/OpenCover.Console.exe    -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItUI/test/PackItUI.Test.csproj   --configuration $CONFIG  --no-build --logger:trx" -oldstyle -mergeoutput'
+- cmd: 'C:\Users\appveyor\.nuget\packages\reportgenerator\4.2.0\tools\net47\ReportGenerator.exe -reports:coverage.xml -targetdir:.\coverage'
+- sh:  '/home/appveyor/.nuget/packages/reportgenerator/4.2.0/tools/net47/ReportGenerator.exe    -reports:coverage.xml -targetdir:./coverage'
 - 7z a coverage.zip coverage/*.*
 artifacts:
 - path: coverage.zip

@@ -145,14 +145,21 @@ MACHINES.each do |_key, machine|
       systemctl stop #{service}.service
 
       cd #{SERVICES_DIR}
-      if [[ -d "${service}" && ! -L "${service}" ]] ; then git pull; else git clone #{SERVICES[service.to_sym][:repo]} #{service}; fi
+      if [[ -d "${service}" && ! -L "${service}" ]]
+      then
+        git pull
+      else
+        git clone #{SERVICES[service.to_sym][:repo]} #{service}
+      fi
       cd #{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}
       nuget restore #{SERVICES[service.to_sym][:project_file]}
       dotnet restore #{SERVICES[service.to_sym][:project_file]}
       dotnet publish --configuration Release
-      pwd
-      mkdir ./wwwroot/lib
-      cp -R ./node_modules/** ./wwwroot/lib/
+      if [ -d "./node_modules" ]
+      then
+        mkdir ./wwwroot/lib
+        cp -R ./node_modules/** ./wwwroot/lib/
+      fi
     SRV_SCRIPT
     if SERVICES[service.to_sym].key?(:database)
       db = SERVICES[service.to_sym][:database]
