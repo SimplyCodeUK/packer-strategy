@@ -3,24 +3,45 @@
 # See LICENSE file in the project root for full license information.
 
 version: 1.0.{build}
+
 image:
 - Visual Studio 2017
 - Visual Studio 2019
 - Ubuntu1804
+
 environment:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   DOTNET_PRINT_TELEMETRY_MESSAGE: false
   ASPNETCORE_ENVIRONMENT: Development
   matrix:
-  - CONFIG: Debug
-  - CONFIG: Release
-build_script:
+    - configuration: Release
+      CONFIG: Release
+    - configuration: Debug
+      CONFIG: Debug
+
+before_build:
 - cmd: msbuild /t:restore /p:Configuration=%CONFIG% /m PackIt.sln
-- sh:  msbuild /t:restore /p:Configuration=$CONFIG  /m PackIt.sln
+- sh:  msbuild /t:restore /p:Configuration=$CONFIG     PackIt.sln
+- dotnet --version
 - dotnet restore PackIt.sln
-- cmd: dotnet build PackIt.sln --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
-- sh:  dotnet build PackIt.sln --configuration $CONFIG  /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+
+build_script:
+- cmd: dotnet build PackItLib/src/PackItLib.csproj --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- sh:  dotnet build PackItLib/src/PackItLib.csproj --configuration $CONFIG  /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- cmd: dotnet build PackItLib/test/PackItLib.Test.csproj --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- sh:  dotnet build PackItLib/test/PackItLib.Test.csproj --configuration $CONFIG  /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- cmd: dotnet build PackIt/src/PackIt.csproj --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- sh:  dotnet build PackIt/src/PackIt.csproj --configuration $CONFIG  /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- cmd: dotnet build PackIt/test/PackIt.Test.csproj --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- sh:  dotnet build PackIt/test/PackIt.Test.csproj --configuration $CONFIG  /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- cmd: dotnet build PackItUI/src/PackItUI.csproj --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- sh:  dotnet build PackItUI/src/PackItUI.csproj --configuration $CONFIG  /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- cmd: dotnet build PackItUI/test/PackItUI.Test.csproj --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- sh:  dotnet build PackItUI/test/PackItUI.Test.csproj --configuration $CONFIG  /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+
+after_build:
 - 7z a codedocs.zip codedoc.xml -r
+
 test_script:
 - cmd: 'C:\Users\appveyor\.nuget\packages\opencover\4.7.922\tools\OpenCover.Console.exe -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib\test\PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
 - sh:  dotnet test PackItLib/test/PackItLib.Test.csproj --configuration $CONFIG  --no-build --logger:trx
@@ -30,11 +51,13 @@ test_script:
 - sh:  dotnet test PackItUI/test/PackItUI.Test.csproj   --configuration $CONFIG  --no-build --logger:trx
 - cmd: 'C:\Users\appveyor\.nuget\packages\reportgenerator\4.2.0\tools\net47\ReportGenerator.exe -reports:coverage.xml -targetdir:.\coverage'
 - cmd: 7z a coverage.zip coverage/*.*
+
 artifacts:
 - path: coverage.zip
   name: Coverage
 - path: codedocs.zip
   name: Code documentation
+
 notifications:
 - provider: Slack
   incoming_webhook: https://hooks.slack.com/services/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
