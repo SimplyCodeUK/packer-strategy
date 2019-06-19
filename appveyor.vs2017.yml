@@ -1,0 +1,55 @@
+# Copyright (c) 2018 Simply Code Ltd. All rights reserved.
+# Licensed under the MIT License.
+# See LICENSE file in the project root for full license information.
+
+version: 1.0.{build}
+
+image:
+- Visual Studio 2017
+
+environment:
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_PRINT_TELEMETRY_MESSAGE: false
+  ASPNETCORE_ENVIRONMENT: Development
+  matrix:
+    - configuration: Release
+      CONFIG: Release
+    - configuration: Debug
+      CONFIG: Debug
+
+before_build:
+- msbuild /t:restore /p:Configuration=%CONFIG% /m PackIt.sln
+- dotnet --version
+- dotnet restore PackIt.sln
+
+build_script:
+- dotnet build PackItLib/src/PackItLib.csproj       --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- dotnet build PackItLib/test/PackItLib.Test.csproj --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- dotnet build PackIt/src/PackIt.csproj             --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- dotnet build PackIt/test/PackIt.Test.csproj       --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- dotnet build PackItUI/src/PackItUI.csproj         --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+- dotnet build PackItUI/test/PackItUI.Test.csproj   --configuration %CONFIG% /p:DocumentationFile=codedoc.xml /p:StyleCopEnabled=true
+
+after_build:
+- 7z a codedocs.zip codedoc.xml -r
+
+test_script:
+- 'C:\Users\appveyor\.nuget\packages\opencover\4.7.922\tools\OpenCover.Console.exe -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib\test\PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
+- 'C:\Users\appveyor\.nuget\packages\opencover\4.7.922\tools\OpenCover.Console.exe -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt\test\PackIt.Test.csproj       --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
+- 'C:\Users\appveyor\.nuget\packages\opencover\4.7.922\tools\OpenCover.Console.exe -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItUI\test\PackItUI.Test.csproj   --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
+- 'C:\Users\appveyor\.nuget\packages\reportgenerator\4.2.1\tools\net47\ReportGenerator.exe -reports:coverage.xml -targetdir:.\coverage'
+- 7z a coverage.zip coverage/*.*
+
+artifacts:
+- path: coverage.zip
+  name: Coverage
+- path: codedocs.zip
+  name: Code documentation
+
+notifications:
+- provider: Slack
+  incoming_webhook: https://hooks.slack.com/services/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
+  channel: packer
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: false

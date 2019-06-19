@@ -13,33 +13,40 @@ addons:
 
 mono:
   - latest
-  - 5.18.0
+  - 5.20.1
 
 dotnet: 2.2
 
 env:
-  - CONFIG=Debug
-  - CONFIG=Release
   global:
     - ASPNETCORE_ENVIRONMENT=Development
     - DOTNET_PRINT_TELEMETRY_MESSAGE=false
     - DOTNET_CLI_TELEMETRY_OPTOUT=true
+  matrix:
+    - CONFIG=Release
+    - CONFIG=Debug
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -y -qq nodejs=10.*
+  - sudo apt-get install -y -qq nodejs
 
 install:
   - nuget restore PackIt.sln
+  - dotnet --version
   - dotnet restore PackIt.sln
 
 script:
   - sonar-scanner
-  - msbuild /p:Configuration=$CONFIG /t:rebuild PackIt.sln
-  - dotnet pack PackItLib/src/PackItLib.csproj --configuration $CONFIG
-  - dotnet test PackItLib/test/PackItLib.Test.csproj --configuration $CONFIG --logger:trx
-  - dotnet test PackIt/test/PackIt.Test.csproj --configuration $CONFIG --logger:trx
-  - dotnet test PackItUI/test/PackItUI.Test.csproj --configuration $CONFIG --logger:trx
+  - dotnet build PackItLib/src/PackItLib.csproj       --configuration $CONFIG
+  - dotnet build PackItLib/test/PackItLib.Test.csproj --configuration $CONFIG
+  - dotnet build PackIt/src/PackIt.csproj             --configuration $CONFIG
+  - dotnet build PackIt/test/PackIt.Test.csproj       --configuration $CONFIG
+  - dotnet build PackItUI/src/PackItUI.csproj         --configuration $CONFIG
+  - dotnet build PackItUI/test/PackItUI.Test.csproj   --configuration $CONFIG
+  - dotnet pack PackItLib/src/PackItLib.csproj        --configuration $CONFIG
+  - dotnet test PackItLib/test/PackItLib.Test.csproj  --configuration $CONFIG --logger:trx
+  - dotnet test PackIt/test/PackIt.Test.csproj        --configuration $CONFIG --logger:trx
+  - dotnet test PackItUI/test/PackItUI.Test.csproj    --configuration $CONFIG --logger:trx
 
 notifications:
   slack: simplycodeuk:FZI8WzeengkGv5LI7WQSCrJs
