@@ -23,8 +23,8 @@
 
 - [GIT](https://git-scm.com/)
 - [Node.Js Version 10.16.0](https://nodejs.org/)
-- [.NET Core SDK 2.2.101](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.1.3](https://www.visualstudio.com/)
+- [.NET Core SDK 2.2.401](https://dotnet.microsoft.com/)
+- [Visual Studio 2019 Version 16.2.2](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -32,9 +32,9 @@
     - StyleCop
     - Bundler & Minifier
     - Markdown Editor
-- [VirtualBox Version 6.0.4](https://www.virtualbox.org/)
-- [Vagrant Version 2.2.4](https://www.vagrantup.com/)
-  - Box ubuntu/xenial64 version 20190530.3.0
+- [VirtualBox Version 6.0.8](https://www.virtualbox.org/)
+- [Vagrant Version 2.2.5](https://www.vagrantup.com/)
+  - Box ubuntu/xenial64 version 20190807.0.0
 
 ### Vagrant environment
 
