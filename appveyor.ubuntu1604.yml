@@ -44,7 +44,7 @@ artifacts:
 
 notifications:
 - provider: Slack
-  incoming_webhook: https://hooks.slack.com/services/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
+  incoming_webhook: https://hooks.slack.com/services/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
   channel: packer
   on_build_success: true
   on_build_failure: true
