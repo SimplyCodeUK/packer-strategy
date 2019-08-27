@@ -24,7 +24,7 @@
 - [GIT](https://git-scm.com/)
 - [Node.Js Version 10.16.0](https://nodejs.org/)
 - [.NET Core SDK 2.2.401](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.2.2](https://www.visualstudio.com/)
+- [Visual Studio 2019 Version 16.2.3](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
