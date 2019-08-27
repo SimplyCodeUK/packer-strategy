@@ -20,7 +20,11 @@ var PackIt;
   var drawProduct = function (scene, result) {
     var meshes = []
 
-    meshes.push(new BABYLON.MeshBuilder.CreateBox('box', { width: result.ExternalLength, height: result.ExternalHeight, depth: result.ExternalBreadth }, scene))
+    var mesh = new BABYLON.MeshBuilder.CreateBox('box', { width: result.ExternalLength, height: result.ExternalHeight, depth: result.ExternalBreadth }, scene)
+    mesh.enableEdgesRendering()
+    mesh.edgesWidth = 1.0
+    mesh.edgesColor = new BABYLON.Color4(0, 0, 1, 1)
+    meshes.push(mesh)
     return meshes
   }
   PackIt.drawProduct = drawProduct
