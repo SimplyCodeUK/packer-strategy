@@ -11,6 +11,7 @@ namespace PackItUI
     using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
     using PackItUI.Areas.App.Models;
     using PackItUI.Areas.Materials.DTO;
@@ -28,7 +29,7 @@ namespace PackItUI
         /// <param name="env"> The environment. </param>
         /// <param name="configuration"> Configuration. </param>
         /// <param name="loggerFactory"> Logger factory. </param>
-        public Startup(IHostingEnvironment env, IConfiguration configuration, ILoggerFactory loggerFactory)
+        public Startup(IWebHostEnvironment env, IConfiguration configuration, ILoggerFactory loggerFactory)
         {
             this.HostingEnvironment = env;
             this.Configuration = configuration;
@@ -38,7 +39,7 @@ namespace PackItUI
         /// <summary> Gets the hosting environment. </summary>
         ///
         /// <value> The hosting environment. </value>
-        public IHostingEnvironment HostingEnvironment { get; }
+        public IWebHostEnvironment HostingEnvironment { get; }
 
         /// <summary> Gets the configuration. </summary>
         ///
@@ -61,7 +62,9 @@ namespace PackItUI
             // Configure using a sub-section of the appsettings.json file.
             services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"));
 
-            services.AddMvc();
+            services.AddApplicationInsightsTelemetry(this.Configuration);
+
+            services.AddMvc(options => options.EnableEndpointRouting = false);
 
             services.AddSingleton<IMaterialHandler, MaterialHandler>();
             services.AddSingleton<IPackHandler, PackHandler>();

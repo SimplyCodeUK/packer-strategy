@@ -15,7 +15,7 @@
     "url": "https://github.com/SimplyCodeUK/packer-strategy"
   },
   "dependencies": {
-    "babylonjs": "3.3.0",
+    "babylonjs": "4.0.3",
     "bootstrap": "4.3.1",
     "font-awesome-5-css": "5.4.1",
     "jquery": "3.4.1",

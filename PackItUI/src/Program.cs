@@ -30,7 +30,6 @@ namespace PackItUI
                 {
                     config.AddJsonFile("appsettings.local.json", optional: true);
                 })
-                .UseApplicationInsights()
                 .Build();
 
             host.Run();

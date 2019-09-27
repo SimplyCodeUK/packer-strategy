@@ -93,7 +93,7 @@ SERVICE_INSTALL = <<-SCRIPT
 apt-get install python3-software-properties=0.96.* -y
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 apt-get install nodejs=10.16.*       -y
-apt-get install dotnet-sdk-2.2=2.2.* -y
+apt-get install dotnet-sdk-3.0=3.0.* -y
 apt-get install nuget=2.8.*          -y
 apt-get install git=1:2.7.*          -y
 apt-get install nginx=1.10.*         -y
@@ -140,7 +140,7 @@ MACHINES.each do |_key, machine|
   end
 
   machine[:services].each do |service|
-    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/netcoreapp2.2/publish"
+    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/netcoreapp3.0/publish"
     buildScript += <<-SRV_SCRIPT
       systemctl stop #{service}.service
 
