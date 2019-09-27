@@ -13,9 +13,9 @@ addons:
 
 mono:
   - latest
-  - 5.20.1
+  - 6.4.0
 
-dotnet: 2.2
+dotnet: 3.0
 
 env:
   global:

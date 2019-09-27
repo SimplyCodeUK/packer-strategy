@@ -14,6 +14,7 @@ namespace PackIt
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
     using PackIt.DbInterface;
@@ -33,7 +34,7 @@ namespace PackIt
         /// <param name="env"> The environment. </param>
         /// <param name="configuration"> Configuration. </param>
         /// <param name="loggerFactory"> Logger factory. </param>
-        public Startup(IHostingEnvironment env, IConfiguration configuration, ILoggerFactory loggerFactory)
+        public Startup(IWebHostEnvironment env, IConfiguration configuration, ILoggerFactory loggerFactory)
         {
             this.HostingEnvironment = env;
             this.Configuration = configuration;
@@ -49,7 +50,7 @@ namespace PackIt
         /// <summary> Gets the hosting environment. </summary>
         ///
         /// <value> The hosting environment. </value>
-        public IHostingEnvironment HostingEnvironment { get; }
+        public IWebHostEnvironment HostingEnvironment { get; }
 
         /// <summary> Gets the configuration. </summary>
         ///
@@ -69,12 +70,14 @@ namespace PackIt
             // Configure using a sub-section of the appsettings.json file.
             services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"));
 
+            services.AddApplicationInsightsTelemetry(this.Configuration);
+
             this.AddDbContext<MaterialContext>(services, "MaterialContext");
             this.AddDbContext<PackContext>(services, "PackContext");
             this.AddDbContext<PlanContext>(services, "PlanContext");
 
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddApiVersioning();
 
             services.AddScoped<IMaterialRepository, MaterialRepository>();
@@ -109,63 +112,61 @@ namespace PackIt
         /// <param name="app"> The application. </param>
         private static void Seed(IApplicationBuilder app)
         {
-            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
-                            .CreateScope())
+            using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
+
+            // Seed Pack database
+            var packContext = serviceScope.ServiceProvider.GetService<PackContext>();
+            packContext.Database.EnsureDeleted();
+            packContext.Database.EnsureCreated();
+
+            var asyncTask = packContext.Packs.AnyAsync();
+            asyncTask.Wait();
+            if (!asyncTask.Result)
             {
-                // Seed Pack database
-                var packContext = serviceScope.ServiceProvider.GetService<PackContext>();
-                packContext.Database.EnsureDeleted();
-                packContext.Database.EnsureCreated();
-
-                var asyncTask = packContext.Packs.AnyAsync();
-                asyncTask.Wait();
-                if (!asyncTask.Result)
+                string text = File.ReadAllText("Seeds/pack.json");
+                foreach (var item in JsonConvert.DeserializeObject<List<Pack.Pack>>(text))
                 {
-                    string text = File.ReadAllText("Seeds/pack.json");
-                    foreach (var item in JsonConvert.DeserializeObject<List<Pack.Pack>>(text))
-                    {
-                        packContext.AddPack(item);
-                    }
+                    packContext.AddPack(item);
                 }
-
-                packContext.SaveChanges();
-
-                // Seed Plan database
-                var planContext = serviceScope.ServiceProvider.GetService<PlanContext>();
-                planContext.Database.EnsureDeleted();
-                planContext.Database.EnsureCreated();
-
-                asyncTask = planContext.Plans.AnyAsync();
-                asyncTask.Wait();
-                if (!asyncTask.Result)
-                {
-                    string text = File.ReadAllText("Seeds/plan.json");
-                    foreach (var item in JsonConvert.DeserializeObject<List<Plan.Plan>>(text))
-                    {
-                        planContext.AddPlan(item);
-                    }
-                }
-
-                planContext.SaveChanges();
-
-                // Seed Material database
-                var materialContext = serviceScope.ServiceProvider.GetService<MaterialContext>();
-                materialContext.Database.EnsureDeleted();
-                materialContext.Database.EnsureCreated();
-
-                asyncTask = materialContext.Materials.AnyAsync();
-                asyncTask.Wait();
-                if (!asyncTask.Result)
-                {
-                    string text = File.ReadAllText("Seeds/material.json");
-                    foreach (var item in JsonConvert.DeserializeObject<List<Material.Material>>(text))
-                    {
-                        materialContext.AddMaterial(item);
-                    }
-                }
-
-                materialContext.SaveChanges();
             }
+
+            packContext.SaveChanges();
+
+            // Seed Plan database
+            var planContext = serviceScope.ServiceProvider.GetService<PlanContext>();
+            planContext.Database.EnsureDeleted();
+            planContext.Database.EnsureCreated();
+
+            asyncTask = planContext.Plans.AnyAsync();
+            asyncTask.Wait();
+            if (!asyncTask.Result)
+            {
+                string text = File.ReadAllText("Seeds/plan.json");
+                foreach (var item in JsonConvert.DeserializeObject<List<Plan.Plan>>(text))
+                {
+                    planContext.AddPlan(item);
+                }
+            }
+
+            planContext.SaveChanges();
+
+            // Seed Material database
+            var materialContext = serviceScope.ServiceProvider.GetService<MaterialContext>();
+            materialContext.Database.EnsureDeleted();
+            materialContext.Database.EnsureCreated();
+
+            asyncTask = materialContext.Materials.AnyAsync();
+            asyncTask.Wait();
+            if (!asyncTask.Result)
+            {
+                string text = File.ReadAllText("Seeds/material.json");
+                foreach (var item in JsonConvert.DeserializeObject<List<Material.Material>>(text))
+                {
+                    materialContext.AddMaterial(item);
+                }
+            }
+
+            materialContext.SaveChanges();
         }
 
         /// <summary> Adds the database context. </summary>
