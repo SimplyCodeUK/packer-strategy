@@ -59,9 +59,9 @@ SCRIPT
 SERVICE_PRE_INSTALL = <<-SCRIPT
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-bionic-prod bionic main" > /etc/apt/sources.list.d/dotnetdev.list'
 apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
 dpkg -i packages-microsoft-prod.deb
 SCRIPT
 
@@ -71,7 +71,7 @@ apt-get update
 SCRIPT
 
 DATABASE_INSTALL = <<-SCRIPT
-echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
+echo 'deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 apt-get update
 apt-get install postgresql-10=10.* -y
@@ -92,12 +92,12 @@ SCRIPT
 SERVICE_INSTALL = <<-SCRIPT
 apt-get install python3-software-properties=0.96.* -y
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-apt-get install nodejs=10.16.*       -y
-apt-get install dotnet-sdk-3.0=3.0.* -y
+apt-get install nodejs=10.*          -y
 apt-get install nuget=2.8.*          -y
-apt-get install git=1:2.7.*          -y
-apt-get install nginx=1.10.*         -y
-systemctl stop nginx
+apt-get install git=1:2.17.*         -y
+apt-get install dotnet-sdk-3.0=3.0.* -y
+apt-get install nginx=1.14.*         -y
+service nginx stop
 rm /etc/nginx/sites-enabled/default 2> /dev/null
 SCRIPT
 
@@ -153,7 +153,7 @@ MACHINES.each do |_key, machine|
       fi
       cd #{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}
       nuget restore #{SERVICES[service.to_sym][:project_file]}
-      dotnet restore #{SERVICES[service.to_sym][:project_file]}
+      dotnet restore #{SERVICES[service.to_sym][:project_file]} --disable-parallel
       dotnet publish --configuration Release
       if [ -d "./node_modules" ]
       then
@@ -223,7 +223,7 @@ MACHINES.each do |_key, machine|
   end
 
   buildScript += <<-SCRIPT
-    systemctl start nginx
+    service nginx start
   SCRIPT
 
   machine[:build_script] = buildScript
@@ -236,7 +236,7 @@ end
 Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/bionic64"
 
   MACHINES.each do |key, machine|
     config.vm.define "#{key}" do |node|
