@@ -1,4 +1,4 @@
-# Copyright (c) 2018 Simply Code Ltd. All rights reserved.
+# Copyright (c) 2018-2020 Simply Code Ltd. All rights reserved.
 # Licensed under the MIT License.
 # See LICENSE file in the project root for full license information.
 
@@ -37,7 +37,7 @@ test_script:
 - 'C:\Users\appveyor\.nuget\packages\opencover\4.7.922\tools\OpenCover.Console.exe -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItLib\test\PackItLib.Test.csproj --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
 - 'C:\Users\appveyor\.nuget\packages\opencover\4.7.922\tools\OpenCover.Console.exe -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackIt\test\PackIt.Test.csproj       --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
 - 'C:\Users\appveyor\.nuget\packages\opencover\4.7.922\tools\OpenCover.Console.exe -register:user -output:coverage.xml -target:dotnet.exe -targetargs:"test PackItUI\test\PackItUI.Test.csproj   --configuration %CONFIG% --no-build --logger:trx" -oldstyle -mergeoutput'
-- 'C:\Users\appveyor\.nuget\packages\reportgenerator\4.3.5\tools\net47\ReportGenerator.exe -reports:coverage.xml -targetdir:.\coverage'
+- 'C:\Users\appveyor\.nuget\packages\reportgenerator\4.4.0\tools\net47\ReportGenerator.exe -reports:coverage.xml -targetdir:.\coverage'
 - 7z a coverage.zip coverage/*.*
 
 artifacts:

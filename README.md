@@ -21,8 +21,9 @@
 
 - [GIT](https://git-scm.com/)
 - [Node.Js Version 10.17.0](https://nodejs.org/)
+- [Yarn Version 1.12.3](https://yarnpkg.com/)
 - [.NET Core SDK 3.0.100](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.3.7](https://www.visualstudio.com/)
+- [Visual Studio 2019 Version 16.4.2](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -33,7 +34,7 @@
 - [Powershell Version 6.2.3](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 6.0.12](https://www.virtualbox.org/)
 - [Vagrant Version 2.2.5](https://www.vagrantup.com/)
-  - Box ubuntu/bionic64 version 20191023.0.0
+  - Box ubuntu/bionic64 version 20191218.0.0
 
 ### Vagrant environment
 
