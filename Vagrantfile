@@ -1,6 +1,6 @@
 ﻿# -*- mode: ruby -*-
 # vi: set ft=ruby :
-# Copyright (c) 2018 Simply Code Ltd. All rights reserved.
+# Copyright (c) 2018-2020 Simply Code Ltd. All rights reserved.
 # Licensed under the MIT License.
 # See LICENSE file in the project root for full license information.
 
@@ -90,9 +90,12 @@ sudo -u postgres psql --command "ALTER USER postgres WITH PASSWORD 'postgres';"
 SCRIPT
 
 SERVICE_INSTALL = <<-SCRIPT
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 apt-get install python3-software-properties=0.96.* -y
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 apt-get install nodejs=10.*          -y
+apt-get install yarn=1.12.*          -y
 apt-get install nuget=2.8.*          -y
 apt-get install git=1:2.17.*         -y
 apt-get install dotnet-sdk-3.0=3.0.* -y
