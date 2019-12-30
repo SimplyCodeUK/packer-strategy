@@ -218,6 +218,18 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             Assert.AreEqual("Id1", viewModel.PackId);
         }
 
+        /// <summary> (Unit Test Method) update post action. </summary>
+        [Test]
+        public void DisplayPost()
+        {
+            var model = new PackEditViewModel();
+            var result = this.controller.Display("Id1", model);
+            Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
+
+            var redirectResult = (RedirectToActionResult)result.Result;
+            Assert.AreEqual("Index", redirectResult.ActionName);
+        }
+
         /// <summary> (Unit Test Method) costing row post action. </summary>
         [Test]
         public void CostingRowPost()

@@ -161,6 +161,29 @@ namespace PackItUI.Areas.Packs.Controllers
             return this.View("Display", model);
         }
 
+        /// <summary> Save the updated pack asynchronously. </summary>
+        ///
+        /// <param name="id"> The pack identifier. </param>
+        /// <param name="model"> The pack data to update. </param>
+        ///
+        /// <returns> An IActionResult. </returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Display(string id, PackEditViewModel model)
+        {
+            PackIt.Pack.Pack data = await this.handler.ReadAsync(id);
+
+            data = this.mapper.Map(model.Data, data);
+            if (await this.handler.UpdateAsync(id, data))
+            {
+                return this.RedirectToAction(nameof(this.Index));
+            }
+            else
+            {
+                return this.View("Update", model);
+            }
+        }
+
         /// <summary> Get a costing row. Used when adding a new row to the html. </summary>
         ///
         /// <param name="body"> The body of the POST command. </param>
