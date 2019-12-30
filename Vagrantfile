@@ -98,7 +98,7 @@ apt-get install nodejs=10.*          -y
 apt-get install yarn=1.12.*          -y
 apt-get install nuget=2.8.*          -y
 apt-get install git=1:2.17.*         -y
-apt-get install dotnet-sdk-3.0=3.0.* -y
+apt-get install dotnet-sdk-3.1=3.1.* -y
 apt-get install nginx=1.14.*         -y
 service nginx stop
 rm /etc/nginx/sites-enabled/default 2> /dev/null
@@ -143,7 +143,7 @@ MACHINES.each do |_key, machine|
   end
 
   machine[:services].each do |service|
-    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/netcoreapp3.0/publish"
+    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/netcoreapp3.1/publish"
     buildScript += <<-SRV_SCRIPT
       systemctl stop #{service}.service
 
