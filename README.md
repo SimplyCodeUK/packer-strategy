@@ -31,7 +31,7 @@
     - Markdown Editor
 - [Powershell Version 6.2.3](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 6.0.12](https://www.virtualbox.org/)
-- [Vagrant Version 2.2.5](https://www.vagrantup.com/)
+- [Vagrant Version 2.2.6](https://www.vagrantup.com/)
   - Box ubuntu/bionic64 version 20191218.0.0
 
 ### Vagrant environment
