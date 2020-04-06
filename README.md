@@ -1,4 +1,4 @@
-﻿# PackIt
+# PackIt
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](./LICENSE.md)
 [![HitCount](http://hits.dwyl.io/SimplyCodeUK/packer-strategy.svg)](http://hits.dwyl.io/SimplyCodeUK/packer-strategy)
@@ -18,19 +18,18 @@
 ### Tools
 
 - [GIT](https://git-scm.com/)
-- [Node.Js Version 10.17.0](https://nodejs.org/)
-- [Yarn Version 1.12.3](https://yarnpkg.com/)
-- [.NET Core SDK 3.0.100](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.4.2](https://www.visualstudio.com/)
+- [Node.Js Version 12.16.1](https://nodejs.org/)
+- [Yarn Version 1.22.4](https://yarnpkg.com/)
+- [.NET Core SDK 3.1.102](https://dotnet.microsoft.com/)
+- [Visual Studio 2019 Version 16.5.2](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
   - Extensions
     - StyleCop
-    - Bundler & Minifier
     - Markdown Editor
 - [Powershell Version 6.2.3](https://docs.microsoft.com/en-us/powershell/)
-- [VirtualBox Version 6.0.12](https://www.virtualbox.org/)
+- [VirtualBox Version 6.1.4](https://www.virtualbox.org/)
 - [Vagrant Version 2.2.6](https://www.vagrantup.com/)
   - Box ubuntu/bionic64 version 20191218.0.0
 
