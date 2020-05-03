@@ -3,6 +3,12 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](./LICENSE.md)
 [![HitCount](http://hits.dwyl.io/SimplyCodeUK/packer-strategy.svg)](http://hits.dwyl.io/SimplyCodeUK/packer-strategy)
 
+## Index
+
+- [Status](#status)
+- [Development Environment](#development-environment)
+- [Vagrant](#vagrant)
+
 ## Status
 
 | Build                       | Result |
@@ -13,15 +19,13 @@
 | Code Climate Quality        | [![Maintainability](https://api.codeclimate.com/v1/badges/429a3e46a3799c29b0b0/maintainability)](https://codeclimate.com/github/SimplyCodeUK/packer-strategy/maintainability) |
 | Sonarcloud Status           | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SimplyCodeUK_packer-strategy&metric=alert_status)](https://sonarcloud.io/dashboard?id=SimplyCodeUK_packer-strategy) |
 
-## Development environment
-
-### Tools
+## Development Environment
 
 - [GIT](https://git-scm.com/)
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
 - [.NET Core SDK 3.1.102](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.5.2](https://www.visualstudio.com/)
+- [Visual Studio 2019 Version 16.5.4](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -30,22 +34,46 @@
     - Markdown Editor
 - [Powershell Version 6.2.3](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 6.1.4](https://www.virtualbox.org/)
-- [Vagrant Version 2.2.6](https://www.vagrantup.com/)
-  - Box ubuntu/bionic64 version 20191218.0.0
+- [Vagrant Version 2.2.7](https://www.vagrantup.com/)
+  - Box ubuntu/bionic64 version 20200427.0.0
 
-### Vagrant environment
+## Vagrant
 
-To create the environemnt, from PowerShell run the command
+### One Time Initialisation
+
+From an elevated Powershell run the following command a reboot may be required
+afterwards
+
+```cmd
+vagrant plugin install vagrant-vbguest
+(Invoke-WebRequest -Uri https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -UseBasicParsing).Content > "$env:USERPROFILE\.ssh/authorized_keys"
+ssh-keygen
+Copy-Item $env:USERPROFILE\.ssh\id_rsa $env:USERPROFILE\.vagrant.d\insecure_private_key -Force
+bcdedit /set hypervisorlaunchtype off
+Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V
 ```
+
+### Creating The Environment
+
+From an elevated PowerShell run the command
+
+```cmd
 vagrant up
 ```
 
-Once it is created the environement can be updated with the command
-```
+### Updating The Environement
+
+Once it is created the environment can be updated.
+From an elevated PowerShell run the command
+
+```cmd
 vagrant provision
 ```
 
-To tear down the environment use the command
-```
+### Destroying The Environment
+
+From an elevated PowerShell run the command
+
+```cmd
 vagrant destroy
 ```
