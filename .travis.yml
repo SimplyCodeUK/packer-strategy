@@ -3,7 +3,7 @@
 # See LICENSE file in the project root for full license information.
 
 sudo: required
-dist: xenial
+dist: bionic
 language: csharp
 solution: PackIt.sln
 
