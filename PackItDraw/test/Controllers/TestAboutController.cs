@@ -4,14 +4,14 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Test.Controllers
+namespace PackItDraw.Test.Controllers
 {
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using Moq;
     using NUnit.Framework;
-    using PackIt.Controllers;
+    using PackItDraw.Controllers;
 
     /// <summary> (Unit Test Fixture) a controller for handling test materials. </summary>
     [TestFixture]

@@ -10,6 +10,7 @@ namespace PackItUI.Areas.App.Controllers
     using System.Diagnostics;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using PackItUI.Areas.App.Models;
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Packs.DTO;
@@ -21,6 +22,9 @@ namespace PackItUI.Areas.App.Controllers
     [Area("App")]
     public class HomeController : Controller
     {
+        /// <summary> The logger. </summary>
+        private readonly ILogger<HomeController> logger;
+
         /// <summary> The dictionary of all services. </summary>
         private readonly Dictionary<string, IServiceHandler> services;
 
@@ -28,12 +32,14 @@ namespace PackItUI.Areas.App.Controllers
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         ///
+        /// <param name="logger"> The logger. </param>
         /// <param name="materialHandler"> The Material service handler. </param>
         /// <param name="packHandler"> The Pack service handler. </param>
         /// <param name="planHandler"> The Plan service handler. </param>
         /// <param name="uploadHandler"> The Upload service handler. </param>
-        public HomeController(IMaterialHandler materialHandler, IPackHandler packHandler, IPlanHandler planHandler, IUploadHandler uploadHandler)
+        public HomeController(ILogger<HomeController> logger, IMaterialHandler materialHandler, IPackHandler packHandler, IPlanHandler planHandler, IUploadHandler uploadHandler)
         {
+            this.logger = logger;
             this.services = new Dictionary<string, IServiceHandler>
             {
                 { "Materials", materialHandler },
@@ -49,6 +55,7 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            logger.LogInformation("Index");
             return this.View("Index");
         }
 
@@ -58,6 +65,7 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public async Task<IActionResult> About()
         {
+            logger.LogInformation("About");
             var model = new AboutViewModel();
             await model.Create(this.services);
             return this.View("About", model);
@@ -69,6 +77,7 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public IActionResult Contact()
         {
+            logger.LogInformation("Contact");
             return this.View("Contact");
         }
 
@@ -78,6 +87,7 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public IActionResult Error()
         {
+            logger.LogInformation("Error");
             return this.View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

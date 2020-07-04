@@ -9,6 +9,7 @@ namespace PackItUI.Areas.Materials.Controllers
     using System.Threading.Tasks;
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using PackIt.Helpers.Enums;
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Materials.Models;
@@ -18,6 +19,9 @@ namespace PackItUI.Areas.Materials.Controllers
     [Area("Materials")]
     public class HomeController : Controller
     {
+        /// <summary> The logger. </summary>
+        private readonly ILogger<HomeController> logger;
+
         /// <summary> The materials handler. </summary>
         private readonly IMaterialHandler handler;
 
@@ -33,9 +37,11 @@ namespace PackItUI.Areas.Materials.Controllers
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         ///
+        /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        public HomeController(IMaterialHandler handler)
+        public HomeController(ILogger<HomeController> logger, IMaterialHandler handler)
         {
+            this.logger = logger;
             this.handler = handler;
         }
 
@@ -45,6 +51,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            this.logger.LogInformation("Index");
             var model = new HomeViewModel(await this.handler.InformationAsync(), await this.handler.ReadAsync());
             return this.View("Index", model);
         }
@@ -55,6 +62,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            this.logger.LogInformation("Create");
             var model = new MaterialEditViewModel();
             return this.View("Create", model);
         }
@@ -69,6 +77,7 @@ namespace PackItUI.Areas.Materials.Controllers
         public async Task<IActionResult> Create(MaterialEditViewModel model)
         {
             PackIt.Material.Material data = new PackIt.Material.Material();
+            this.logger.LogInformation("Create Material id {0}", data.MaterialId);
 
             data = this.mapper.Map(model.Data, data);
             if (ModelState.IsValid && await this.handler.CreateAsync(data))
@@ -89,6 +98,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
+            this.logger.LogInformation("Update id {0}", id);
             var model = new MaterialEditViewModel
             {
                 Data = this.mapper.Map<MaterialEditViewModel.Material>(await this.handler.ReadAsync(id))
@@ -108,6 +118,7 @@ namespace PackItUI.Areas.Materials.Controllers
         public async Task<IActionResult> Update(string id, MaterialEditViewModel model)
         {
             PackIt.Material.Material data = await this.handler.ReadAsync(id);
+            this.logger.LogInformation("Update id {0} Material id {1}", id, model.Data.MaterialId);
 
             data = this.mapper.Map(model.Data, data);
             if (await this.handler.UpdateAsync(id, data))
@@ -128,6 +139,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
+            this.logger.LogInformation("Delete id {0}", id);
             var model = new MaterialEditViewModel
             {
                 Data = this.mapper.Map<MaterialEditViewModel.Material>(await this.handler.ReadAsync(id))
@@ -146,6 +158,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> DoDelete(string id)
         {
+            this.logger.LogInformation("DoDelete id {0}", id);
             await this.handler.DeleteAsync(id);
             return this.RedirectToAction(nameof(this.Index));
         }
@@ -159,6 +172,7 @@ namespace PackItUI.Areas.Materials.Controllers
         public IActionResult CostingRow([FromBody]Newtonsoft.Json.Linq.JObject body)
         {
             var index = body["index"];
+            this.logger.LogInformation("CostingRow index {0}", index);
 
             ViewBag.crud = Crud.Create;
             ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
@@ -178,6 +192,7 @@ namespace PackItUI.Areas.Materials.Controllers
         public IActionResult SectionRow([FromBody]Newtonsoft.Json.Linq.JObject body)
         {
             var index = body["index"];
+            this.logger.LogInformation("SectionRow index {0}", index);
 
             ViewBag.crud = Crud.Create;
             ViewBag.sectionTypes = new ListForFlag<SectionTypes>(0);

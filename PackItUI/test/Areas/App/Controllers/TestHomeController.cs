@@ -10,7 +10,9 @@ namespace PackItUI.Test.Areas.App.Controllers
     using System.Net.Http;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
+    using Moq;
     using NUnit.Framework;
     using PackItUI.Areas.App.Controllers;
     using PackItUI.Areas.App.Models;
@@ -44,6 +46,9 @@ namespace PackItUI.Test.Areas.App.Controllers
 
         /// <summary> The time out for disconnected services. </summary>
         private static readonly TimeSpan TimeOut = new TimeSpan(0, 0, 0, 0, 20);
+
+        /// <summary> The controller logger. </summary>
+        private ILogger<HomeController> logger;
 
         /// <summary> The controller under test. </summary>
         private HomeController controller;
@@ -145,7 +150,9 @@ namespace PackItUI.Test.Areas.App.Controllers
         /// <summary> Setup for disconnected services. </summary>
         private void SetupDisconnected()
         {
+            this.logger = Mock.Of<ILogger<HomeController>>();
             this.controller = new HomeController(
+                this.logger,
                 new MaterialHandler(Options)
                 {
                     TimeOut = TimeOut
@@ -188,7 +195,9 @@ namespace PackItUI.Test.Areas.App.Controllers
                 .AddRequest(HttpMethod.Get, "http://localhost:8004/api/v1/")
                 .ContentsJson("{'Version': '1', 'About': 'Uploads'}");
 
+            this.logger = Mock.Of<ILogger<HomeController>>();
             this.controller = new HomeController(
+                this.logger,
                 new MaterialHandler(Options, httpHandler),
                 new PackHandler(Options, httpHandler),
                 new PlanHandler(Options, httpHandler),

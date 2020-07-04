@@ -13,6 +13,7 @@ namespace PackIt.Controllers
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
     using PackIt.Models;
@@ -22,6 +23,9 @@ namespace PackIt.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class UploadsController : Controller
     {
+        /// <summary> The logger. </summary>
+        private readonly ILogger<UploadsController> logger;
+
         /// <summary> The HTTP client. </summary>
         private readonly HttpClient httpClient;
 
@@ -50,8 +54,9 @@ namespace PackIt.Controllers
         /// Initialises a new instance of the <see cref="UploadsController" /> class.
         /// </summary>
         ///
+        /// <param name="logger"> The logger. </param>
         /// <param name="appSettings"> The application settings. </param>
-        public UploadsController(IOptions<AppSettings> appSettings) : this(appSettings, new HttpClientHandler())
+        public UploadsController(ILogger<UploadsController> logger, IOptions<AppSettings> appSettings) : this(logger, appSettings, new HttpClientHandler())
         {
         }
 
@@ -59,10 +64,12 @@ namespace PackIt.Controllers
         /// Initialises a new instance of the <see cref="UploadsController" /> class.
         /// </summary>
         ///
+        /// <param name="logger"> The logger. </param>
         /// <param name="appSettings"> The application settings. </param>
         /// <param name="messageHandler"> The http message handler. </param>
-        public UploadsController(IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler)
+        public UploadsController(ILogger<UploadsController> logger, IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler)
         {
+            this.logger = logger;
             this.appSettings = appSettings.Value;
             this.httpClient = new HttpClient(messageHandler);
         }
@@ -75,6 +82,7 @@ namespace PackIt.Controllers
         [HttpPost("{type}")]
         public async Task<IActionResult> Post([FromBody] Bulk values)
         {
+            this.logger.LogInformation("Post");
             var pass = new List<string>();
             var fail = new List<string>();
 

@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Controllers
+namespace PackItDraw.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
@@ -46,7 +46,7 @@ namespace PackIt.Controllers
             public AboutService()
             {
                 this.Version = "1";
-                this.About = "Single controller for Materials, Plans, Packs and Uploads";
+                this.About = "Drawing controller";
             }
 
             /// <summary> Gets the version version of the service. </summary>

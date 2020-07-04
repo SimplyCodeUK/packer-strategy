@@ -9,6 +9,7 @@ namespace PackItUI.Areas.Plans.Controllers
     using System.Threading.Tasks;
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using PackItUI.Areas.Plans.DTO;
     using PackItUI.Areas.Plans.Models;
 
@@ -16,6 +17,9 @@ namespace PackItUI.Areas.Plans.Controllers
     [Area("Plans")]
     public class HomeController : Controller
     {
+        /// <summary> The logger. </summary>
+        private readonly ILogger<HomeController> logger;
+
         /// <summary> The plans handler. </summary>
         private readonly IPlanHandler handler;
 
@@ -31,9 +35,11 @@ namespace PackItUI.Areas.Plans.Controllers
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         ///
+        /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        public HomeController(IPlanHandler handler)
+        public HomeController(ILogger<HomeController> logger, IPlanHandler handler)
         {
+            this.logger = logger;
             this.handler = handler;
         }
 
@@ -43,6 +49,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            this.logger.LogInformation("Index");
             var model = new HomeViewModel(await this.handler.InformationAsync(), await this.handler.ReadAsync());
             return this.View("Index", model);
         }
@@ -53,6 +60,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            this.logger.LogInformation("Create");
             var model = new PlanEditViewModel();
             return this.View("Create", model);
         }
@@ -67,6 +75,7 @@ namespace PackItUI.Areas.Plans.Controllers
         public async Task<IActionResult> Create(PlanEditViewModel model)
         {
             PackIt.Plan.Plan data = new PackIt.Plan.Plan();
+            this.logger.LogInformation("Create Plan id {0}", data.PlanId);
 
             data = this.mapper.Map(model.Data, data);
             if (ModelState.IsValid && await this.handler.CreateAsync(data))
@@ -87,6 +96,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
+            this.logger.LogInformation("Update id {0}", id);
             var model = new PlanEditViewModel
             {
                 Data = this.mapper.Map<PlanEditViewModel.Plan>(await this.handler.ReadAsync(id))
@@ -106,6 +116,7 @@ namespace PackItUI.Areas.Plans.Controllers
         public async Task<IActionResult> Update(string id, PlanEditViewModel model)
         {
             PackIt.Plan.Plan data = await this.handler.ReadAsync(id);
+            this.logger.LogInformation("Update id {0} Plan id {1}", id, model.Data.PlanId);
 
             data = this.mapper.Map(model.Data, data);
             if (await this.handler.UpdateAsync(id, data))
@@ -126,6 +137,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
+            this.logger.LogInformation("Delete id {0}", id);
             var model = new PlanEditViewModel
             {
                 Data = this.mapper.Map<PlanEditViewModel.Plan>(await this.handler.ReadAsync(id))
@@ -144,6 +156,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> DoDelete(string id)
         {
+            this.logger.LogInformation("DoDelete id {0}", id);
             await this.handler.DeleteAsync(id);
             return this.RedirectToAction(nameof(this.Index));
         }

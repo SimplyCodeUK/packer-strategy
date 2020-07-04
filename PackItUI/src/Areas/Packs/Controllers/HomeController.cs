@@ -9,6 +9,7 @@ namespace PackItUI.Areas.Packs.Controllers
     using System.Threading.Tasks;
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using PackItUI.Areas.Packs.DTO;
     using PackItUI.Areas.Packs.Models;
 
@@ -16,6 +17,9 @@ namespace PackItUI.Areas.Packs.Controllers
     [Area("Packs")]
     public class HomeController : Controller
     {
+        /// <summary> The logger. </summary>
+        private readonly ILogger<HomeController> logger;
+
         /// <summary> The packs handler. </summary>
         private readonly IPackHandler handler;
 
@@ -31,9 +35,11 @@ namespace PackItUI.Areas.Packs.Controllers
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         ///
+        /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        public HomeController(IPackHandler handler)
+        public HomeController(ILogger<HomeController> logger, IPackHandler handler)
         {
+            this.logger = logger;
             this.handler = handler;
         }
 
@@ -43,6 +49,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            this.logger.LogInformation("Index");
             var model = new HomeViewModel(await this.handler.InformationAsync(), await this.handler.ReadAsync());
             return this.View("Index", model);
         }
@@ -53,6 +60,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            this.logger.LogInformation("Create");
             var model = new PackEditViewModel();
             return this.View("Create", model);
         }
@@ -67,6 +75,7 @@ namespace PackItUI.Areas.Packs.Controllers
         public async Task<IActionResult> Create(PackEditViewModel model)
         {
             PackIt.Pack.Pack data = new PackIt.Pack.Pack();
+            this.logger.LogInformation("Create Pack id {0}", data.PackId);
 
             data = this.mapper.Map(model.Data, data);
             if (ModelState.IsValid && await this.handler.CreateAsync(data))
@@ -87,6 +96,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
+            this.logger.LogInformation("Update id {0}", id);
             var model = new PackEditViewModel
             {
                 Data = this.mapper.Map<PackEditViewModel.Pack>(await this.handler.ReadAsync(id))
@@ -106,6 +116,7 @@ namespace PackItUI.Areas.Packs.Controllers
         public async Task<IActionResult> Update(string id, PackEditViewModel model)
         {
             PackIt.Pack.Pack data = await this.handler.ReadAsync(id);
+            this.logger.LogInformation("Update id {0} Pack id {1}", id, model.Data.PackId);
 
             data = this.mapper.Map(model.Data, data);
             if (await this.handler.UpdateAsync(id, data))
@@ -126,6 +137,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
+            this.logger.LogInformation("Delete id {0}", id);
             var model = new PackEditViewModel
             {
                 Data = this.mapper.Map<PackEditViewModel.Pack>(await this.handler.ReadAsync(id))
@@ -144,6 +156,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> DoDelete(string id)
         {
+            this.logger.LogInformation("DoDelete id {0}", id);
             await this.handler.DeleteAsync(id);
             return this.RedirectToAction(nameof(this.Index));
         }
@@ -156,6 +169,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Display(string id)
         {
+            this.logger.LogInformation("Display id {0}", id);
             var model = await this.handler.ReadAsync(id);
 
             return this.View("Display", model);
@@ -172,6 +186,7 @@ namespace PackItUI.Areas.Packs.Controllers
         public async Task<IActionResult> Display(string id, PackEditViewModel model)
         {
             PackIt.Pack.Pack data = await this.handler.ReadAsync(id);
+            this.logger.LogInformation("Display id {0} Pack id {1}", id, data.PackId);
 
             data = this.mapper.Map(model.Data, data);
             if (await this.handler.UpdateAsync(id, data))
@@ -193,6 +208,7 @@ namespace PackItUI.Areas.Packs.Controllers
         public IActionResult CostingRow([FromBody]Newtonsoft.Json.Linq.JObject body)
         {
             var index = body["index"];
+            this.logger.LogInformation("CostingRow {0}", index);
 
             ViewBag.crud = Helpers.Crud.Create;
             ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);

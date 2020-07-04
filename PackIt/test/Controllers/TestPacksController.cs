@@ -12,6 +12,8 @@ namespace PackIt.Test.Controllers
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
+    using Moq;
     using NUnit.Framework;
     using PackIt.Controllers;
     using PackIt.DTO;
@@ -21,6 +23,9 @@ namespace PackIt.Test.Controllers
     [TestFixture]
     public class TestPacksController
     {
+        /// <summary> The controller logger. </summary>
+        private ILogger<PacksController> logger;
+
         /// <summary> The controller under test. </summary>
         private PacksController controller;
 
@@ -35,7 +40,8 @@ namespace PackIt.Test.Controllers
             var context = new PackContext(builder.Options);
             var repository = new PackRepository(context);
 
-            this.controller = new PacksController(repository);
+            this.logger = Mock.Of<ILogger<PacksController>>();
+            this.controller = new PacksController(this.logger, repository);
             Assert.IsNotNull(this.controller);
         }
 
