@@ -10,6 +10,7 @@ namespace PackIt.Controllers
     using System.Net;
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using PackIt.DTO;
     using PackIt.Material;
 
@@ -18,6 +19,9 @@ namespace PackIt.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class MaterialsController : Controller
     {
+        /// <summary> The logger. </summary>
+        private readonly ILogger<MaterialsController> logger;
+
         /// <summary> The repository. </summary>
         private readonly IMaterialRepository repository;
 
@@ -25,9 +29,11 @@ namespace PackIt.Controllers
         /// Initialises a new instance of the <see cref="MaterialsController" /> class.
         /// </summary>
         ///
+        /// <param name="logger"> The logger. </param>
         /// <param name="repository"> The repository. </param>
-        public MaterialsController(IMaterialRepository repository)
+        public MaterialsController(ILogger<MaterialsController> logger, IMaterialRepository repository)
         {
+            this.logger = logger;
             this.repository = repository;
         }
 
@@ -39,6 +45,7 @@ namespace PackIt.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            this.logger.LogInformation("Get");
             return this.Ok(this.repository.GetAll());
         }
 
@@ -55,6 +62,7 @@ namespace PackIt.Controllers
         [ProducesResponseType(typeof(Material), 200)]
         public IActionResult Get(string id)
         {
+            this.logger.LogInformation("Get id {0}", id);
             var item = this.repository.Find(id);
 
             if (item == null)
@@ -77,6 +85,7 @@ namespace PackIt.Controllers
 
             if (value != null)
             {
+                this.logger.LogInformation("Post Material id {0}", value.MaterialId);
                 try
                 {
                     this.repository.Add(value);
@@ -106,6 +115,7 @@ namespace PackIt.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] Material value)
         {
+            this.logger.LogInformation("Put id {0} for Material id {1}", id, value.MaterialId);
             Material item = this.repository.Find(id);
 
             if (item == null)
@@ -127,6 +137,7 @@ namespace PackIt.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
+            this.logger.LogInformation("Delete id {0}", id);
             if (this.repository.Find(id) == null)
             {
                 return this.NotFound(id);
@@ -147,6 +158,7 @@ namespace PackIt.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Material> update)
         {
+            this.logger.LogInformation("Patch id {0}", id);
             var item = this.repository.Find(id);
 
             if (item == null)

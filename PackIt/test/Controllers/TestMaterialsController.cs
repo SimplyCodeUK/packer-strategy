@@ -12,6 +12,8 @@ namespace PackIt.Test.Controllers
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
+    using Moq;
     using NUnit.Framework;
     using PackIt.Controllers;
     using PackIt.DTO;
@@ -22,6 +24,9 @@ namespace PackIt.Test.Controllers
     [TestFixture]
     public class TestMaterialsController
     {
+        /// <summary> The controller logger. </summary>
+        private ILogger<MaterialsController> logger;
+
         /// <summary> The controller under test. </summary>
         private MaterialsController controller;
 
@@ -36,7 +41,8 @@ namespace PackIt.Test.Controllers
             var context = new MaterialContext(builder.Options);
             var repository = new MaterialRepository(context);
 
-            this.controller = new MaterialsController(repository);
+            this.logger = Mock.Of<ILogger<MaterialsController>>();
+            this.controller = new MaterialsController(this.logger, repository);
             Assert.IsNotNull(this.controller);
         }
 

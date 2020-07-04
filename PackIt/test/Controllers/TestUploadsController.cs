@@ -15,6 +15,7 @@ namespace PackIt.Test.Controllers
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
+    using Microsoft.Extensions.Logging;
     using Moq;
     using Moq.Protected;
     using Newtonsoft.Json;
@@ -43,6 +44,9 @@ namespace PackIt.Test.Controllers
 
         /// <summary> The options. </summary>
         private static readonly OptionsWrapper<AppSettings> Options = new OptionsWrapper<AppSettings>(AppSettings);
+
+        /// <summary> The controller logger. </summary>
+        private ILogger<UploadsController> logger;
 
         /// <summary> The controller under test. </summary>
         private UploadsController controller;
@@ -112,7 +116,8 @@ namespace PackIt.Test.Controllers
         /// <summary> Setup the controller as if the services are not running. </summary>
         private void SetupServicesNotRunning()
         {
-            this.controller = new UploadsController(Options);
+            this.logger = Mock.Of<ILogger<UploadsController>>();
+            this.controller = new UploadsController(this.logger, Options);
             Assert.IsNotNull(this.controller);
         }
 
@@ -134,7 +139,8 @@ namespace PackIt.Test.Controllers
                             return new HttpResponseMessage(HttpStatusCode.OK);
                         }));
 
-            this.controller = new UploadsController(Options, handler.Object);
+            this.logger = Mock.Of<ILogger<UploadsController>>();
+            this.controller = new UploadsController(this.logger, Options, handler.Object);
 
             Assert.IsNotNull(this.controller);
         }
