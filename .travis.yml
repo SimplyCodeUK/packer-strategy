@@ -45,20 +45,14 @@ script:
   - sonar-scanner
   - dotnet build PackItLib/src/PackItLib.csproj         --configuration $CONFIG
   - dotnet build PackItLib/test/PackItLib.Test.csproj   --configuration $CONFIG
+  - dotnet build PackItUI/src/PackItUI.csproj           --configuration $CONFIG
+  - dotnet build PackItUI/test/PackItUI.Test.csproj     --configuration $CONFIG
   - dotnet build PackIt/src/PackIt.csproj               --configuration $CONFIG
   - dotnet build PackIt/test/PackIt.Test.csproj         --configuration $CONFIG
   - dotnet build PackItDraw/src/PackItDraw.csproj       --configuration $CONFIG
   - dotnet build PackItDraw/test/PackItDraw.Test.csproj --configuration $CONFIG
-  - dotnet build PackItUI/src/PackItUI.csproj           --configuration $CONFIG
-  - dotnet build PackItUI/test/PackItUI.Test.csproj     --configuration $CONFIG
   - dotnet pack PackItLib/src/PackItLib.csproj          --configuration $CONFIG
-  - dotnet test PackItLib/test/PackItLib.Test.csproj    --configuration $CONFIG --logger:trx
-  - sleep 2s
-  - dotnet test PackIt/test/PackIt.Test.csproj          --configuration $CONFIG --logger:trx
-  - sleep 2s
-  - dotnet test PackItDraw/test/PackItDraw.Test.csproj  --configuration $CONFIG --logger:trx
-  - sleep 2s
-  - dotnet test PackItUI/test/PackItUI.Test.csproj      --configuration $CONFIG --logger:trx
+  - dotnet test PackIt.sln                              --configuration $CONFIG --logger:trx
   - sleep 2s
 
 notifications:
