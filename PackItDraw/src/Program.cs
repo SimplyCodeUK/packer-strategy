@@ -6,8 +6,9 @@
 
 namespace PackItDraw
 {
+    using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Hosting;
+    using Microsoft.Extensions.Configuration;
 
     /// <summary> A program. </summary>
     public class Program
@@ -30,11 +31,11 @@ namespace PackItDraw
         /// <summary> Create host builder. </summary>
         ///
         /// <param name="args"> An array of command-line argument strings. </param>
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+        private static IWebHostBuilder CreateHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder<Startup>(args)
+                .ConfigureAppConfiguration((builderContext, config) =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    config.AddJsonFile("appsettings.local.json", optional: true);
                 });
     }
 }
