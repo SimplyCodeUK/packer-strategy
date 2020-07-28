@@ -25,14 +25,17 @@ namespace PackItUI
         /// <param name="args"> An array of command-line argument strings. </param>
         public static void Main(string[] args)
         {
-            var host = WebHost.CreateDefaultBuilder<Startup>(args)
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        /// <summary> Create host builder. </summary>
+        ///
+        /// <param name="args"> An array of command-line argument strings. </param>
+        private static IWebHostBuilder CreateHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder<Startup>(args)
                 .ConfigureAppConfiguration((builderContext, config) =>
                 {
                     config.AddJsonFile("appsettings.local.json", optional: true);
-                })
-                .Build();
-
-            host.Run();
-        }
+                });
     }
 }
