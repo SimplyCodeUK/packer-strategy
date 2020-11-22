@@ -25,7 +25,7 @@
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
 - [.NET Core SDK 3.1.102](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.6.5](https://www.visualstudio.com/)
+- [Visual Studio 2019 Version 16.8.2](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -33,9 +33,9 @@
     - StyleCop
     - Markdown Editor
 - [Powershell Version 6.2.3](https://docs.microsoft.com/en-us/powershell/)
-- [VirtualBox Version 6.1.4](https://www.virtualbox.org/)
-- [Vagrant Version 2.2.7](https://www.vagrantup.com/)
-  - Box ubuntu/bionic64 version 20200427.0.0
+- [VirtualBox Version 6.1.12](https://www.virtualbox.org/)
+- [Vagrant Version 2.2.10](https://www.vagrantup.com/)
+  - Box ubuntu/bionic64 version 20200827.0.0
 
 ## Vagrant
 

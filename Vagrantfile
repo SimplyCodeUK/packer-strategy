@@ -24,6 +24,16 @@ SERVICES = {
     host_port: "8100",
     database: "postgresql"
   },
+  packit_draw: {
+    repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
+    project_file: "PackItDraw.csproj",
+    build_dir: "PackItDraw/src",
+    binary: "PackItDraw.dll",
+    server_location: "/",
+    guest_port: "8100",
+    host_port: "8200",
+    database: "postgresql"
+  },
   packitui: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
     project_file: "PackItUI.csproj",
@@ -42,6 +52,7 @@ MACHINES = {
     ],
     services: [
       "packit",
+      "packit_draw",
       "packitui"
     ]
   }
