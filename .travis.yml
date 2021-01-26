@@ -51,8 +51,10 @@ script:
   - dotnet build PackItDraw/src/PackItDraw.csproj       --configuration $CONFIG
   - dotnet build PackItDraw/test/PackItDraw.Test.csproj --configuration $CONFIG
   - dotnet pack PackItLib/src/PackItLib.csproj          --configuration $CONFIG
-  - dotnet test PackIt.sln                              --configuration $CONFIG --logger:trx  < /dev/null
-  - sleep 2s
+  - dotnet test PackItLib/test/PackItLib.Test.csproj    --configuration $CONFIG --logger:trx
+  - dotnet test PackItUI/test/PackItUI.Test.csproj      --configuration $CONFIG --logger:trx
+  - dotnet test PackIt/test/PackIt.Test.csproj          --configuration $CONFIG --logger:trx
+  - dotnet test PackItDraw/test/PackItDraw.Test.csproj  --configuration $CONFIG --logger:trx
 
 notifications:
   slack: simplycodeuk:FZI8WzeengkGv5LI7WQSCrJs
