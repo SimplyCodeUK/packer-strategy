@@ -3,6 +3,14 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](./LICENSE.md)
 [![HitCount](http://hits.dwyl.io/SimplyCodeUK/packer-strategy.svg)](http://hits.dwyl.io/SimplyCodeUK/packer-strategy)
 
+[![BabylonJS](https://img.shields.io/badge/BabylonJS-v4.2.0-green.svg)](https://www.jsdelivr.com/package/npm/babylonjs)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-v4.6.0-green.svg)](https://www.jsdelivr.com/package/npm/bootstrap)
+[![Font Awesome 5](https://img.shields.io/badge/FontAwesome-v5.4.1-green.svg)](https://www.jsdelivr.com/package/npm/font-awesome-5-css)
+[![JQuery](https://img.shields.io/badge/JQuery-v3.5.1-green.svg)](https://www.jsdelivr.com/package/npm/jquery)
+[![JQuery Validation](https://img.shields.io/badge/JQueryValidation-v1.19.3-green.svg)](https://www.jsdelivr.com/package/npm/jquery-validation)
+[![JQuery Validation Unobtrusive](https://img.shields.io/badge/JQueryValidationUnobtrusive-v3.2.11-green.svg)](https://www.jsdelivr.com/package/npm/jquery-validation-unobtrusive)
+[![PopperJS](https://img.shields.io/badge/PopperJS-v1.16.1-green.svg)](https://www.jsdelivr.com/package/npm/popper.js)
+
 ## Index
 
 - [Status](#status)
