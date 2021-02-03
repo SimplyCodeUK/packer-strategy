@@ -40,10 +40,10 @@
   - Extensions
     - StyleCop
     - Markdown Editor
-- [Powershell Version 6.2.3](https://docs.microsoft.com/en-us/powershell/)
-- [VirtualBox Version 6.1.12](https://www.virtualbox.org/)
-- [Vagrant Version 2.2.10](https://www.vagrantup.com/)
-  - Box ubuntu/bionic64 version 20200827.0.0
+- [Powershell Version 7.0.0](https://docs.microsoft.com/en-us/powershell/)
+- [VirtualBox Version 6.1.18](https://www.virtualbox.org/)
+- [Vagrant Version 2.2.14](https://www.vagrantup.com/)
+  - Box ubuntu/bionic64 version 20210129.0.0
 
 ## Vagrant
 
