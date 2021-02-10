@@ -46,6 +46,34 @@ var rotateResult = function (result, rotation) {
 
   return ret
 }
+/**
+ * Draw a collation
+ *
+ * @param {BABYLON.Scene} scene - The Babylon scene
+ * @param {Number} idx - The layer index
+ * @param {JSON} collation - The collation in JSON
+ * @param {Object} parentDimensions - The dimensions of the parent
+ * @param {Number} height - The height the layer is drawn at
+ *
+ * @returns {Object} - The collation as a mesh list
+ */
+var drawCollation = function (scene, idx, collation, parentDimensions, height) {
+  var ret = []
+  var x = 0
+  for (var kdx = 0; kdx < collation.CountX; ++kdx) {
+    var y = 0
+    for (var ldx = 0; ldx < collation.CountY; ++ldx) {
+      var mesh = new BABYLON.MeshBuilder.CreateBox('box'.concat(idx.toString()), parentDimensions, scene)
+      mesh.position = new BABYLON.Vector3(x, y, height)
+      mesh.enableEdgesRendering()
+      mesh.edgesWidth = 1.0
+      mesh.edgesColor = new BABYLON.Color4(0, 0, 1, 1)
+      ret.push(mesh)
+    }
+  }
+
+  return ret
+}
 
 var PackIt;
 (function (PackIt) {
@@ -70,18 +98,7 @@ var PackIt;
       for (var idx = 0; idx < layer.Layers; ++idx) {
         for (var jdx = 0; jdx < layer.Collations.length; ++jdx) {
           var collation = layer.Collations[jdx]
-          var x = 0
-          for (var kdx = 0; kdx < collation.CountX; ++kdx) {
-            var y = 0
-            for (var ldx = 0; ldx < collation.CountY; ++ldx) {
-              var mesh = new BABYLON.MeshBuilder.CreateBox('box'.concat(idx.toString()), parentDimensions, scene)
-              mesh.position = new BABYLON.Vector3(x, y, height)
-              mesh.enableEdgesRendering()
-              mesh.edgesWidth = 1.0
-              mesh.edgesColor = new BABYLON.Color4(0, 0, 1, 1)
-              meshes.push(mesh)
-            }
-          }
+          meshes.push(...drawCollation(scene, idx, collation, parentDimensions, height))
         }
         height += parentDimensions.depth
       }
