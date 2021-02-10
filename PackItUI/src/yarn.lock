@@ -17,12 +17,12 @@ font-awesome-5-css@5.4.1:
   resolved "https://registry.yarnpkg.com/font-awesome-5-css/-/font-awesome-5-css-5.4.1.tgz#6ea4a5205028012574d13a65734844db9d486ecf"
   integrity sha512-76+fW7i24TlA23FJG3tWjRt8WfT5uerwwUFpTWRo7CicXTlKKf5M874gWLZyHMr1hyzuX+61W8k4IIdG3PEfQA==
 
-jquery-validation-unobtrusive@3.2.11:
-  version "3.2.11"
-  resolved "https://registry.yarnpkg.com/jquery-validation-unobtrusive/-/jquery-validation-unobtrusive-3.2.11.tgz#175ee46380385a0e33ed320f255fad321f68f9f5"
-  integrity sha512-3FQPllaWdD+Aq55zJLGSW39+eXPDz1HhwAvrSwYi8zHQ8DVcu5IJ1HVeTiCl0BnCnrIBvfFU3zEB/DrGdcoRIQ==
+jquery-validation-unobtrusive@3.2.12:
+  version "3.2.12"
+  resolved "https://registry.yarnpkg.com/jquery-validation-unobtrusive/-/jquery-validation-unobtrusive-3.2.12.tgz#1d52841f653e516525c251e494b042e664dad8af"
+  integrity sha512-kPixGhVcuat7vZXngGFfSIksy4VlzZcHyRgnBIZdsfVneCU+D5sITC8T8dD/9c9K/Q+qkMlgp7ufJHz93nKSuQ==
   dependencies:
-    jquery ">=1.8"
+    jquery "^3.5.1"
     jquery-validation ">=1.16"
 
 jquery-validation@1.19.3, jquery-validation@>=1.16:
@@ -30,7 +30,7 @@ jquery-validation@1.19.3, jquery-validation@>=1.16:
   resolved "https://registry.yarnpkg.com/jquery-validation/-/jquery-validation-1.19.3.tgz#50b350eba8b02bcfd119ba15f199487b7eb64086"
   integrity sha512-iXxCS5W7STthSTMFX/NDZfWHBLbJ1behVK3eAgHXAV8/0vRa9M4tiqHvJMr39VGWHMGdlkhrtrkBuaL2UlE8yw==
 
-jquery@3.5.1, jquery@>=1.8:
+jquery@3.5.1, jquery@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
   integrity sha512-XwIBPqcMn57FxfT+Go5pzySnm4KWkT1Tv7gjrpT1srtf8Weynl6R273VJ5GjkRb51IzMp5nbaPjJXMWeju2MKg==
