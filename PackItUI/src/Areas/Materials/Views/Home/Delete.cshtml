@@ -25,6 +25,7 @@
             <div class="tab-pane" id="costings">
                 <div class="form-group">
                     <table class="table">
+                        <caption>Material Costings</caption>
                         <thead>
                             @Html.EditorFor(m => Model.Data.Costings, "CostingHeader")
                         </thead>
@@ -40,6 +41,7 @@
             <div class="tab-pane" id="sections">
                 <div class="form-group">
                     <table class="table">
+                        <caption>Material Sections</caption>
                         <thead>
                             @Html.EditorFor(m => Model.Data.Sections, "SectionHeader")
                         </thead>

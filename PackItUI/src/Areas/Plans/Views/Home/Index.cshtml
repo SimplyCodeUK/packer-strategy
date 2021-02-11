@@ -7,6 +7,7 @@
 }
 <h2>@ViewData["Title"]</h2>
 <table class="table">
+    <caption>Plan Service Information</caption>
     <tr>
         <th scope="col"><label asp-for="Information.Version"></label></th>
         <th scope="col"><label asp-for="Information.About"></label></th>
@@ -19,6 +20,7 @@
 @if (Model.Items != null)
 {
 <table class="table">
+    <caption>Plan Descriptions</caption>
     <thead>
         <tr>
             <th scope="col"><label asp-for="Items.FirstOrDefault().PlanId"></label></th>
