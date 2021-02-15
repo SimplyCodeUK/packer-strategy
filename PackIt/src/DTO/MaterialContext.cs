@@ -40,7 +40,7 @@ namespace PackIt.DTO
             var ret = new List<Material>();
             var query = ConstructQuery();
 
-            foreach (DtoMaterial.DtoMaterial item in query)
+            foreach (var item in query)
             {
                 ret.Add(MaterialMapper.Convert(item));
             }
@@ -53,7 +53,7 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void AddMaterial(Material item)
         {
-            DtoMaterial.DtoMaterial dto = MaterialMapper.Convert(item);
+            var dto = MaterialMapper.Convert(item);
             this.Materials.Add(dto);
         }
 
@@ -83,7 +83,7 @@ namespace PackIt.DTO
         /// <param name="key"> The key. </param>
         public void RemoveMaterial(string key)
         {
-            DtoMaterial.DtoMaterial entity = this.Materials.Find(key);
+            var entity = this.Materials.Find(key);
             this.Materials.Remove(entity);
         }
 
@@ -92,8 +92,8 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void UpdateMaterial(Material item)
         {
-            DtoMaterial.DtoMaterial entity = this.Materials.Find(item.MaterialId);
-            DtoMaterial.DtoMaterial dto = MaterialMapper.Convert(item);
+            var entity = this.Materials.Find(item.MaterialId);
+            var dto = MaterialMapper.Convert(item);
             this.Materials.Remove(entity);
             this.SaveChanges();
             this.Materials.Add(dto);

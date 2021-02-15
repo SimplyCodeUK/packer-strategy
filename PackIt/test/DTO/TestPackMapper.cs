@@ -21,14 +21,14 @@ namespace PackIt.Test.DTO
         [Test]
         public void ConvertPack()
         {
-            string text = File.ReadAllText("DTO/TestData/pack.json");
+            var text = File.ReadAllText("DTO/TestData/pack.json");
             var pack = JsonConvert.DeserializeObject<Pack>(text);
             var dto = PackMapper.Convert(pack);
 
             Assert.AreEqual(dto.PackId, pack.PackId);
 
             Assert.AreEqual(dto.Costings.Count, pack.Costings.Count);
-            foreach (DtoCosting costing in dto.Costings)
+            foreach (var costing in dto.Costings)
             {
                 Assert.AreEqual(costing.PackId, pack.PackId);
             }
@@ -36,7 +36,7 @@ namespace PackIt.Test.DTO
             int minLevel = -1;
             Assert.AreEqual(dto.Stages.Count, pack.Stages.Count);
             int stageIndex = 0;
-            foreach (DtoStage stage in dto.Stages)
+            foreach (var stage in dto.Stages)
             {
                 Assert.AreEqual(stage.PackId, pack.PackId);
                 Assert.Greater((int)stage.StageLevel, minLevel);
@@ -44,7 +44,7 @@ namespace PackIt.Test.DTO
 
                 Assert.AreEqual(stage.Limits.Count, pack.Stages[stageIndex].Limits.Count);
                 int limitIndex = 0;
-                foreach (DtoLimit limit in stage.Limits)
+                foreach (var limit in stage.Limits)
                 {
                     Assert.AreEqual(limit.PackId, pack.PackId);
                     Assert.AreEqual(limit.StageLevel, stage.StageLevel);
@@ -55,7 +55,7 @@ namespace PackIt.Test.DTO
 
                 Assert.AreEqual(stage.Results.Count, pack.Stages[stageIndex].Results.Count);
                 int resultIndex = 0;
-                foreach (DtoResult result in stage.Results)
+                foreach (var result in stage.Results)
                 {
                     Assert.AreEqual(result.PackId, pack.PackId);
                     Assert.AreEqual(result.StageLevel, stage.StageLevel);
@@ -63,7 +63,7 @@ namespace PackIt.Test.DTO
 
                     Assert.AreEqual(result.Layers.Count, pack.Stages[stageIndex].Results[resultIndex].Layers.Count);
                     int layerIndex = 0;
-                    foreach (DtoLayer layer in result.Layers)
+                    foreach (var layer in result.Layers)
                     {
                         Assert.AreEqual(layer.PackId, pack.PackId);
                         Assert.AreEqual(layer.StageLevel, stage.StageLevel);
@@ -72,7 +72,7 @@ namespace PackIt.Test.DTO
 
                         Assert.AreEqual(layer.Collations.Count, pack.Stages[stageIndex].Results[resultIndex].Layers[layerIndex].Collations.Count);
                         int collationIndex = 0;
-                        foreach (DtoCollation collation in layer.Collations)
+                        foreach (var collation in layer.Collations)
                         {
                             Assert.AreEqual(collation.PackId, pack.PackId);
                             Assert.AreEqual(collation.StageLevel, stage.StageLevel);
@@ -88,7 +88,7 @@ namespace PackIt.Test.DTO
 
                     Assert.AreEqual(result.Materials.Count, pack.Stages[stageIndex].Results[resultIndex].Materials.Count);
                     int materialIndex = 0;
-                    foreach (DtoMaterial material in result.Materials)
+                    foreach (var material in result.Materials)
                     {
                         Assert.AreEqual(material.PackId, pack.PackId);
                         Assert.AreEqual(material.StageLevel, stage.StageLevel);
@@ -97,7 +97,7 @@ namespace PackIt.Test.DTO
 
                         Assert.AreEqual(material.DatabaseMaterials.Count, pack.Stages[stageIndex].Results[resultIndex].Materials[materialIndex].DatabaseMaterials.Count);
                         int databaseIndex = 0;
-                        foreach (DtoDatabaseMaterial databaseMaterial in material.DatabaseMaterials)
+                        foreach (var databaseMaterial in material.DatabaseMaterials)
                         {
                             Assert.AreEqual(databaseMaterial.PackId, pack.PackId);
                             Assert.AreEqual(databaseMaterial.StageLevel, stage.StageLevel);
@@ -113,7 +113,7 @@ namespace PackIt.Test.DTO
 
                     Assert.AreEqual(result.Sections.Count, pack.Stages[stageIndex].Results[resultIndex].Sections.Count);
                     int sectionIndex = 0;
-                    foreach (DtoSection section in result.Sections)
+                    foreach (var section in result.Sections)
                     {
                         Assert.AreEqual(section.PackId, pack.PackId);
                         Assert.AreEqual(section.StageLevel, stage.StageLevel);

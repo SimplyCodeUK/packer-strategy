@@ -116,7 +116,7 @@ namespace PackIt.Controllers
         public IActionResult Put(string id, [FromBody] Material value)
         {
             this.logger.LogInformation("Put id {0} for Material id {1}", id, value.MaterialId);
-            Material item = this.repository.Find(id);
+            var item = this.repository.Find(id);
 
             if (item == null)
             {

@@ -59,7 +59,7 @@ namespace PackIt.DTO
         /// <seealso cref="M:PackIt.DTO.IPlanRepository.Find(string)"/>
         public Plan Find(string key)
         {
-            Plan ret = this.context.FindPlan(key);
+            var ret = this.context.FindPlan(key);
             return ret;
         }
 

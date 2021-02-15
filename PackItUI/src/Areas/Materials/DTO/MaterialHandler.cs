@@ -86,7 +86,7 @@ namespace PackItUI.Areas.Materials.DTO
                     json,
                     Encoding.UTF8,
                     "application/json");
-                HttpResponseMessage response = await this.httpClient.PostAsync(this.endpoint + "Materials", content);
+                var response = await this.httpClient.PostAsync(this.endpoint + "Materials", content);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -106,13 +106,13 @@ namespace PackItUI.Areas.Materials.DTO
         {
             try
             {
-                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint + "Materials");
+                var response = await this.httpClient.GetAsync(this.endpoint + "Materials");
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
 
                 // Get the content
-                string content = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync();
 
                 // Create a material from the content
                 return JsonConvert.DeserializeObject<List<PackIt.Material.Material>>(content);
@@ -132,13 +132,13 @@ namespace PackItUI.Areas.Materials.DTO
         {
             try
             {
-                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint + "Materials/" + id);
+                var response = await this.httpClient.GetAsync(this.endpoint + "Materials/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
 
                 // Get the content
-                string content = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync();
 
                 // Create a material from the content
                 return JsonConvert.DeserializeObject<PackIt.Material.Material>(content);
@@ -186,7 +186,7 @@ namespace PackItUI.Areas.Materials.DTO
         {
             try
             {
-                HttpResponseMessage response = await this.httpClient.DeleteAsync(this.endpoint + "Materials/" + id);
+                var response = await this.httpClient.DeleteAsync(this.endpoint + "Materials/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();

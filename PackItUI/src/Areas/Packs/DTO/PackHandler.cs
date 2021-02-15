@@ -86,7 +86,7 @@ namespace PackItUI.Areas.Packs.DTO
                     json,
                     Encoding.UTF8,
                     "application/json");
-                HttpResponseMessage response = await this.httpClient.PostAsync(this.endpoint + "Packs", content);
+                var response = await this.httpClient.PostAsync(this.endpoint + "Packs", content);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -106,13 +106,13 @@ namespace PackItUI.Areas.Packs.DTO
         {
             try
             {
-                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint + "Packs");
+                var response = await this.httpClient.GetAsync(this.endpoint + "Packs");
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
 
                 // Get the content
-                string content = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync();
 
                 // Create a pack from the content
                 return JsonConvert.DeserializeObject<List<PackIt.Pack.Pack>>(content);
@@ -132,13 +132,13 @@ namespace PackItUI.Areas.Packs.DTO
         {
             try
             {
-                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint + "Packs/" + id);
+                var response = await this.httpClient.GetAsync(this.endpoint + "Packs/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
 
                 // Get the content
-                string content = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync();
 
                 // Create a pack from the content
                 return JsonConvert.DeserializeObject<PackIt.Pack.Pack>(content);
@@ -164,7 +164,7 @@ namespace PackItUI.Areas.Packs.DTO
                     json,
                     Encoding.UTF8,
                     "application/json");
-                HttpResponseMessage response = await this.httpClient.PutAsync(this.endpoint + "Packs/" + id, content);
+                var response = await this.httpClient.PutAsync(this.endpoint + "Packs/" + id, content);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -186,7 +186,7 @@ namespace PackItUI.Areas.Packs.DTO
         {
             try
             {
-                HttpResponseMessage response = await this.httpClient.DeleteAsync(this.endpoint + "Packs/" + id);
+                var response = await this.httpClient.DeleteAsync(this.endpoint + "Packs/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();

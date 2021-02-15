@@ -116,7 +116,7 @@ namespace PackIt.Controllers
         public IActionResult Put(string id, [FromBody] Plan value)
         {
             this.logger.LogInformation("Put id {0} for Plan id {1}", id, value.PlanId);
-            Plan item = this.repository.Find(id);
+            var item = this.repository.Find(id);
 
             if (item == null)
             {

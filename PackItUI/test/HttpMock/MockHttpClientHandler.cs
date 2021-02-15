@@ -56,12 +56,12 @@ namespace PackItUI.Test.HttpMock
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // Search for the request
-            foreach (MockRequest mock in this.requests)
+            foreach (var mock in this.requests)
             {
                 if (mock.Method == request.Method && mock.RequestUri == request.RequestUri)
                 {
                     // We can process it.
-                    HttpResponseMessage responseMessage = new HttpResponseMessage
+                    var responseMessage = new HttpResponseMessage
                     {
                         Content = mock.Content
                     };

@@ -21,28 +21,28 @@ namespace PackIt.Test.DTO
         [Test]
         public void ConvertMaterial()
         {
-            string text = File.ReadAllText("DTO/TestData/material.json");
+            var text = File.ReadAllText("DTO/TestData/material.json");
             var material = JsonConvert.DeserializeObject<Material>(text);
             var dto = MaterialMapper.Convert(material);
 
             Assert.AreEqual(dto.MaterialId, material.MaterialId);
 
             Assert.AreEqual(dto.Costings.Count, material.Costings.Count);
-            foreach (DtoCosting costing in dto.Costings)
+            foreach (var costing in dto.Costings)
             {
                 Assert.AreEqual(costing.MaterialId, material.MaterialId);
             }
 
             Assert.AreEqual(dto.Layers.Count, material.Layers.Count);
             int layerIndex = 0;
-            foreach (DtoLayer layer in dto.Layers)
+            foreach (var layer in dto.Layers)
             {
                 Assert.AreEqual(layer.MaterialId, material.MaterialId);
                 Assert.AreEqual(layer.LayerIndex, layerIndex);
 
                 Assert.AreEqual(layer.Collations.Count, material.Layers[layerIndex].Collations.Count);
                 int collationIndex = 0;
-                foreach (DtoCollation collation in layer.Collations)
+                foreach (var collation in layer.Collations)
                 {
                     Assert.AreEqual(collation.MaterialId, material.MaterialId);
                     Assert.AreEqual(collation.LayerIndex, layer.LayerIndex);

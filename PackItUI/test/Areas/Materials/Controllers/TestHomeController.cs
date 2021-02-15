@@ -253,8 +253,8 @@ namespace PackItUI.Test.Areas.Materials.Controllers
         /// <summary> Setup for connected services. </summary>
         private void SetupConnected()
         {
-            string root = Endpoints.Materials;
-            MockHttpClientHandler httpHandler = new MockHttpClientHandler();
+            var root = Endpoints.Materials;
+            var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, root)
                 .ContentsJson("{'Version': '1', 'About': 'Materials'}");

@@ -123,7 +123,7 @@ namespace PackIt
             asyncTask.Wait();
             if (!asyncTask.Result)
             {
-                string text = File.ReadAllText("Seeds/pack.json");
+                var text = File.ReadAllText("Seeds/pack.json");
                 foreach (var item in JsonConvert.DeserializeObject<List<Pack.Pack>>(text))
                 {
                     packContext.AddPack(item);
@@ -141,7 +141,7 @@ namespace PackIt
             asyncTask.Wait();
             if (!asyncTask.Result)
             {
-                string text = File.ReadAllText("Seeds/plan.json");
+                var text = File.ReadAllText("Seeds/plan.json");
                 foreach (var item in JsonConvert.DeserializeObject<List<Plan.Plan>>(text))
                 {
                     planContext.AddPlan(item);
@@ -159,7 +159,7 @@ namespace PackIt
             asyncTask.Wait();
             if (!asyncTask.Result)
             {
-                string text = File.ReadAllText("Seeds/material.json");
+                var text = File.ReadAllText("Seeds/material.json");
                 foreach (var item in JsonConvert.DeserializeObject<List<Material.Material>>(text))
                 {
                     materialContext.AddMaterial(item);

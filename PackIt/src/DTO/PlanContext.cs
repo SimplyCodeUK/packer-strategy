@@ -39,7 +39,7 @@ namespace PackIt.DTO
             var ret = new List<Plan>();
             var query = ConstructQuery();
 
-            foreach (DtoPlan.DtoPlan item in query)
+            foreach (var item in query)
             {
                 ret.Add(PlanMapper.Convert(item));
             }
@@ -52,7 +52,7 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void AddPlan(Plan item)
         {
-            DtoPlan.DtoPlan dto = PlanMapper.Convert(item);
+            var dto = PlanMapper.Convert(item);
             this.Plans.Add(dto);
         }
 
@@ -82,7 +82,7 @@ namespace PackIt.DTO
         /// <param name="key"> The key. </param>
         public void RemovePlan(string key)
         {
-            DtoPlan.DtoPlan entity = this.Plans.Find(key);
+            var entity = this.Plans.Find(key);
             this.Plans.Remove(entity);
         }
 
@@ -91,8 +91,8 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void UpdatePlan(Plan item)
         {
-            DtoPlan.DtoPlan entity = this.Plans.Find(item.PlanId);
-            DtoPlan.DtoPlan dto = PlanMapper.Convert(item);
+            var entity = this.Plans.Find(item.PlanId);
+            var dto = PlanMapper.Convert(item);
             this.Plans.Remove(entity);
             this.SaveChanges();
             this.Plans.Add(dto);

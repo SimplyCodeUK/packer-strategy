@@ -94,7 +94,7 @@ namespace PackIt.Test.Controllers
 
             for (int item = 0; item < ItemsToAdd; ++item)
             {
-                string id = Guid.NewGuid().ToString();
+                var id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
                 this.controller.Post(new Pack { PackId = id });
@@ -109,7 +109,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<IList<Pack>>(objectResult.Value);
 
-            foreach (Pack item in (IList<Pack>)objectResult.Value)
+            foreach (var item in (IList<Pack>)objectResult.Value)
             {
                 if (ids.Contains(item.PackId))
                 {
@@ -125,7 +125,7 @@ namespace PackIt.Test.Controllers
         public void Get()
         {
             const string StartName = "A name";
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Pack { PackId = id, Name = StartName };
 
             this.controller.Post(item);
@@ -148,7 +148,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void GetNotFound()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var result = this.controller.Get(id);
 
             Assert.IsNotNull(result);
@@ -162,7 +162,7 @@ namespace PackIt.Test.Controllers
         {
             const string StartName = "A name";
             const string PutName = "B name";
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Pack { PackId = id, Name = StartName };
 
             this.controller.Post(item);
@@ -190,7 +190,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void PutNotFound()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Pack();
             var result = this.controller.Put(id, item);
 
@@ -203,7 +203,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void Delete()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Pack { PackId = id };
 
             this.controller.Post(item);
@@ -219,7 +219,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void DeleteNotFound()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var result = this.controller.Delete(id);
 
             Assert.IsNotNull(result);
@@ -233,7 +233,7 @@ namespace PackIt.Test.Controllers
         {
             const string StartName = "A name";
             const string PatchName = "B name";
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Pack { PackId = id, Name = StartName };
 
             // Create a new pack
@@ -293,7 +293,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void PostComplexPan()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             const long Quantity = 1000;
             const double Weight = 2000.0;
 

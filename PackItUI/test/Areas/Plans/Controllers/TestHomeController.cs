@@ -223,8 +223,8 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         /// <summary> Setup for connected services. </summary>
         private void SetupConnected()
         {
-            string root = Endpoints.Plans;
-            MockHttpClientHandler httpHandler = new MockHttpClientHandler();
+            var root = Endpoints.Plans;
+            var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, root)
                 .ContentsJson("{'Version': '1', 'About': 'Plans'}");

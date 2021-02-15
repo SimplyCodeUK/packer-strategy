@@ -32,17 +32,17 @@ namespace PackIt.DTO
                 cfg.CreateMap<Pack, DtoPack.DtoPack>().AfterMap(
                     (s, d) =>
                     {
-                        foreach (DtoCosting costing in d.Costings)
+                        foreach (var costing in d.Costings)
                         {
                             costing.PackId = s.PackId;
                         }
 
-                        foreach (DtoStage stage in d.Stages)
+                        foreach (var stage in d.Stages)
                         {
                             stage.PackId = s.PackId;
 
                             long limitIndex = 0;
-                            foreach (DtoLimit limit in stage.Limits)
+                            foreach (var limit in stage.Limits)
                             {
                                 limit.PackId = s.PackId;
                                 limit.StageLevel = stage.StageLevel;
@@ -50,14 +50,14 @@ namespace PackIt.DTO
                             }
 
                             long resultIndex = 0;
-                            foreach (DtoResult result in stage.Results)
+                            foreach (var result in stage.Results)
                             {
                                 result.PackId = s.PackId;
                                 result.StageLevel = stage.StageLevel;
                                 result.ResultIndex = resultIndex++;
 
                                 int layerIndex = 0;
-                                foreach (DtoLayer layer in result.Layers)
+                                foreach (var layer in result.Layers)
                                 {
                                     layer.PackId = s.PackId;
                                     layer.StageLevel = stage.StageLevel;
@@ -65,7 +65,7 @@ namespace PackIt.DTO
                                     layer.LayerIndex = layerIndex++;
 
                                     int collationIndex = 0;
-                                    foreach (DtoCollation collation in layer.Collations)
+                                    foreach (var collation in layer.Collations)
                                     {
                                         collation.PackId = s.PackId;
                                         collation.StageLevel = stage.StageLevel;
@@ -76,7 +76,7 @@ namespace PackIt.DTO
                                 }
 
                                 long materialIndex = 0;
-                                foreach (DtoPack.DtoMaterial material in result.Materials)
+                                foreach (var material in result.Materials)
                                 {
                                     material.PackId = s.PackId;
                                     material.StageLevel = stage.StageLevel;
@@ -84,7 +84,7 @@ namespace PackIt.DTO
                                     material.MaterialIndex = materialIndex++;
 
                                     int databaseMaterialIndex = 0;
-                                    foreach (DtoDatabaseMaterial databaseMaterial in material.DatabaseMaterials)
+                                    foreach (var databaseMaterial in material.DatabaseMaterials)
                                     {
                                         databaseMaterial.PackId = s.PackId;
                                         databaseMaterial.StageLevel = stage.StageLevel;
@@ -95,7 +95,7 @@ namespace PackIt.DTO
                                 }
 
                                 long sectionIndex = 0;
-                                foreach (DtoSection section in result.Sections)
+                                foreach (var section in result.Sections)
                                 {
                                     section.PackId = s.PackId;
                                     section.StageLevel = stage.StageLevel;
@@ -135,8 +135,7 @@ namespace PackIt.DTO
         /// <returns> The converted dto. </returns>
         public static DtoPack.DtoPack Convert(Pack pack)
         {
-            DtoPack.DtoPack ret = mapperModelToDto.Map<DtoPack.DtoPack>(pack);
-
+            var ret = mapperModelToDto.Map<DtoPack.DtoPack>(pack);
             return ret;
         }
 
@@ -147,8 +146,7 @@ namespace PackIt.DTO
         /// <returns> The converted plan. </returns>
         public static Pack Convert(DtoPack.DtoPack pack)
         {
-            Pack ret = mapperDtoToModel.Map<Pack>(pack);
-
+            var ret = mapperDtoToModel.Map<Pack>(pack);
             return ret;
         }
     }
