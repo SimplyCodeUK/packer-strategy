@@ -266,8 +266,8 @@ namespace PackItUI.Test.Areas.Packs.Controllers
         /// <summary> Setup for connected services. </summary>
         private void SetupConnected()
         {
-            string root = Endpoints.Packs;
-            MockHttpClientHandler httpHandler = new MockHttpClientHandler();
+            var root = Endpoints.Packs;
+            var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, root)
                 .ContentsJson("{'Version': '1', 'About': 'Packs'}");

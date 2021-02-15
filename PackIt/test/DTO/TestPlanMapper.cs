@@ -21,7 +21,7 @@ namespace PackIt.Test.DTO
         [Test]
         public void ConvertPlan()
         {
-            string text = File.ReadAllText("DTO/TestData/plan.json");
+            var text = File.ReadAllText("DTO/TestData/plan.json");
             var plan = JsonConvert.DeserializeObject<Plan>(text);
             var dto = PlanMapper.Convert(plan);
 
@@ -29,7 +29,7 @@ namespace PackIt.Test.DTO
             int minLevel = -1;
             Assert.AreEqual(dto.Stages.Count, plan.Stages.Count);
             int stageIndex = 0;
-            foreach (DtoStage stage in dto.Stages)
+            foreach (var stage in dto.Stages)
             {
                 Assert.AreEqual(stage.PlanId, plan.PlanId);
                 Assert.Greater((int)stage.StageLevel, minLevel);
@@ -37,7 +37,7 @@ namespace PackIt.Test.DTO
 
                 Assert.AreEqual(stage.Limits.Count, plan.Stages[stageIndex].Limits.Count);
                 int limitIndex = 0;
-                foreach (DtoLimit limit in stage.Limits)
+                foreach (var limit in stage.Limits)
                 {
                     Assert.AreEqual(limit.PlanId, plan.PlanId);
                     Assert.AreEqual(limit.StageLevel, stage.StageLevel);

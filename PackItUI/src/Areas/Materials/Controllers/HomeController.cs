@@ -76,7 +76,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MaterialEditViewModel model)
         {
-            PackIt.Material.Material data = new PackIt.Material.Material();
+            var data = new PackIt.Material.Material();
             this.logger.LogInformation("Create Material id {0}", data.MaterialId);
 
             data = this.mapper.Map(model.Data, data);
@@ -117,7 +117,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(string id, MaterialEditViewModel model)
         {
-            PackIt.Material.Material data = await this.handler.ReadAsync(id);
+            var data = await this.handler.ReadAsync(id);
             this.logger.LogInformation("Update id {0} Material id {1}", id, model.Data.MaterialId);
 
             data = this.mapper.Map(model.Data, data);

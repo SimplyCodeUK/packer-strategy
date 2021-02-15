@@ -95,7 +95,7 @@ namespace PackIt.Test.Controllers
 
             for (int item = 0; item < ItemsToAdd; ++item)
             {
-                string id = Guid.NewGuid().ToString();
+                var id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
                 this.controller.Post(new Material { MaterialId = id });
@@ -110,7 +110,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<IList<Material>>(objectResult.Value);
 
-            foreach (Material item in (IList<Material>)objectResult.Value)
+            foreach (var item in (IList<Material>)objectResult.Value)
             {
                 if (ids.Contains(item.MaterialId))
                 {
@@ -127,7 +127,7 @@ namespace PackIt.Test.Controllers
         {
             const string StartName = "A name";
             const MaterialType Type = MaterialType.Can;
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Material { MaterialId = id, Type = Type, Name = StartName };
 
             this.controller.Post(item);
@@ -151,7 +151,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void GetNotFound()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var result = this.controller.Get(id);
 
             Assert.IsNotNull(result);
@@ -166,7 +166,7 @@ namespace PackIt.Test.Controllers
             const string StartName = "A name";
             const string PutName = "B name";
             const MaterialType Type = MaterialType.Cap;
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Material { Type = Type, MaterialId = id, Name = StartName };
 
             this.controller.Post(item);
@@ -195,7 +195,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void PutNotFound()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Material();
             var result = this.controller.Put(id, item);
 
@@ -209,7 +209,7 @@ namespace PackIt.Test.Controllers
         public void Delete()
         {
             const MaterialType Type = MaterialType.Collar;
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Material { MaterialId = id, Type = Type };
 
             this.controller.Post(item);
@@ -225,7 +225,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void DeleteNotFound()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var result = this.controller.Delete(id);
 
             Assert.IsNotNull(result);
@@ -240,14 +240,14 @@ namespace PackIt.Test.Controllers
             const string StartName = "A name";
             const string PatchName = "B name";
             const MaterialType Type = MaterialType.Crate;
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Material { MaterialId = id, Type = Type, Name = StartName };
 
             // Create a new material
             this.controller.Post(item);
 
             // Patch the material with a new name
-            JsonPatchDocument<Material> patch = new JsonPatchDocument<Material>();
+            var patch = new JsonPatchDocument<Material>();
             patch.Replace(e => e.Name, PatchName);
 
             var result = this.controller.Patch(id, patch);
@@ -285,7 +285,7 @@ namespace PackIt.Test.Controllers
             const string StartName = "A name";
             const string PatchName = "B name";
             const MaterialType Type = MaterialType.Crate;
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Material { MaterialId = id, Type = Type, Name = StartName };
 
             this.controller.Post(item);
@@ -305,7 +305,7 @@ namespace PackIt.Test.Controllers
         public void PostComplexPan()
         {
             const MaterialType Type = MaterialType.Crate;
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
 
             // Create a material with a costing
             var costing = new Costing();

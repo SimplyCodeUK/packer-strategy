@@ -52,7 +52,7 @@ namespace PackItUI.Areas.Materials.Models
         private void SetSectionTypes()
         {
             this.SectionTypes = new List<ListForFlag<SectionTypes>>();
-            foreach (Section section in this.Data.Sections)
+            foreach (var section in this.Data.Sections)
             {
                 this.SectionTypes.Add(new ListForFlag<SectionTypes>(section.SectionType));
             }

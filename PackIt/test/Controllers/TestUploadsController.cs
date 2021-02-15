@@ -64,21 +64,21 @@ namespace PackIt.Test.Controllers
         {
             this.SetupServicesRunning();
 
-            string text = File.ReadAllText("Controllers/TestData/uploadsPass.json");
-            UploadsController.Bulk bulk = JsonConvert.DeserializeObject<UploadsController.Bulk>(text);
+            var text = File.ReadAllText("Controllers/TestData/uploadsPass.json");
+            var bulk = JsonConvert.DeserializeObject<UploadsController.Bulk>(text);
 
             // make sure IDs are unique
-            foreach (Plan.Plan item in bulk.Plans)
+            foreach (var item in bulk.Plans)
             {
                 item.PlanId = Guid.NewGuid().ToString();
             }
 
-            foreach (Material.Material item in bulk.Materials)
+            foreach (var item in bulk.Materials)
             {
                 item.MaterialId = Guid.NewGuid().ToString();
             }
 
-            foreach (Pack.Pack item in bulk.Packs)
+            foreach (var item in bulk.Packs)
             {
                 item.PackId = Guid.NewGuid().ToString();
             }
@@ -90,7 +90,7 @@ namespace PackIt.Test.Controllers
             Assert.IsNotNull(result.Result);
             Assert.IsInstanceOf<ObjectResult>(result.Result);
 
-            ObjectResult obj = (ObjectResult)result.Result;
+            var obj = (ObjectResult)result.Result;
             Assert.AreEqual((int)HttpStatusCode.Created, obj.StatusCode);
 
             Assert.IsInstanceOf<List<string>>(obj.Value);

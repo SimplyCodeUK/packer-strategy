@@ -39,7 +39,7 @@ namespace PackIt.DTO
             var ret = new List<Pack>();
             var query = ConstructQuery();
 
-            foreach (DtoPack.DtoPack item in query)
+            foreach (var item in query)
             {
                 ret.Add(PackMapper.Convert(item));
             }
@@ -52,7 +52,7 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void AddPack(Pack item)
         {
-            DtoPack.DtoPack dto = PackMapper.Convert(item);
+            var dto = PackMapper.Convert(item);
             this.Packs.Add(dto);
         }
 
@@ -81,7 +81,7 @@ namespace PackIt.DTO
         /// <param name="key"> The key. </param>
         public void RemovePack(string key)
         {
-            DtoPack.DtoPack entity = this.Packs.Find(key);
+            var entity = this.Packs.Find(key);
             this.Packs.Remove(entity);
         }
 
@@ -90,8 +90,8 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void UpdatePack(Pack item)
         {
-            DtoPack.DtoPack entity = this.Packs.Find(item.PackId);
-            DtoPack.DtoPack dto = PackMapper.Convert(item);
+            var entity = this.Packs.Find(item.PackId);
+            var dto = PackMapper.Convert(item);
             this.Packs.Remove(entity);
             this.SaveChanges();
             this.Packs.Add(dto);

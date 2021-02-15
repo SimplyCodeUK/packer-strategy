@@ -33,9 +33,9 @@ namespace PackItUI.Areas.App.Models
         /// <returns> The model data. </returns>
         public async Task Create(Dictionary<string, IServiceHandler> services)
         {
-            foreach (KeyValuePair<string, IServiceHandler> service in services)
+            foreach (var service in services)
             {
-                ServiceInfo info = await service.Value.InformationAsync();
+                var info = await service.Value.InformationAsync();
                 this.Services[service.Key] = info;
             }
         }

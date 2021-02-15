@@ -25,12 +25,12 @@ namespace PackIt.DTO
                 cfg.CreateMap<Plan, DtoPlan.DtoPlan>().AfterMap(
                     (s, d) =>
                     {
-                        foreach (DtoStage stage in d.Stages)
+                        foreach (var stage in d.Stages)
                         {
                             stage.PlanId = s.PlanId;
 
                             int limitIndex = 0;
-                            foreach (DtoLimit limit in stage.Limits)
+                            foreach (var limit in stage.Limits)
                             {
                                 limit.PlanId = s.PlanId;
                                 limit.StageLevel = stage.StageLevel;
@@ -62,8 +62,7 @@ namespace PackIt.DTO
         /// <returns> The converted dto. </returns>
         public static DtoPlan.DtoPlan Convert(Plan plan)
         {
-            DtoPlan.DtoPlan ret = mapperModelToDto.Map<DtoPlan.DtoPlan>(plan);
-
+            var ret = mapperModelToDto.Map<DtoPlan.DtoPlan>(plan);
             return ret;
         }
 
@@ -74,8 +73,7 @@ namespace PackIt.DTO
         /// <returns> The converted plan. </returns>
         public static Plan Convert(DtoPlan.DtoPlan plan)
         {
-            Plan ret = mapperDtoToModel.Map<Plan>(plan);
-
+            var ret = mapperDtoToModel.Map<Plan>(plan);
             return ret;
         }
     }

@@ -181,7 +181,7 @@ namespace PackItUI.Test.Areas.App.Controllers
         /// <summary> Setup for connected services. </summary>
         private void SetupConnected()
         {
-            MockHttpClientHandler httpHandler = new MockHttpClientHandler();
+            var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, "http://localhost:8001/api/v1/")
                 .ContentsJson("{'Version': '1', 'About': 'Materials'}");

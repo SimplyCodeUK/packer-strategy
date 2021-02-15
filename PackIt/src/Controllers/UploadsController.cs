@@ -45,7 +45,8 @@ namespace PackIt.Controllers
                 json,
                 Encoding.UTF8,
                 "application/json");
-            HttpResponseMessage response = await this.httpClient.PostAsync(endpoint, content);
+            var response = await this.httpClient.PostAsync(endpoint, content);
+
             // Throw an exception if not successful
             response.EnsureSuccessStatusCode();
         }

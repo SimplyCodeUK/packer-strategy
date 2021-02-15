@@ -21,7 +21,7 @@ namespace PackIt.Helpers
         public static string ShortName(this Enum value)
         {
             // get attributes  
-            FieldInfo field = value.GetType().GetField(value.ToString());
+            var field = value.GetType().GetField(value.ToString());
             object[] attributes = field.GetCustomAttributes(false);
 
             // Description is in a hidden Attribute class called DisplayAttribute
@@ -45,7 +45,7 @@ namespace PackIt.Helpers
         public static string Name(this Enum value)
         {
             // get attributes  
-            FieldInfo field = value.GetType().GetField(value.ToString());
+            var field = value.GetType().GetField(value.ToString());
             object[] attributes = field.GetCustomAttributes(false);
 
             // Description is in a hidden Attribute class called DisplayAttribute

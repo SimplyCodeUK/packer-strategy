@@ -29,19 +29,19 @@ namespace PackIt.DTO
                 cfg.CreateMap<Material, DtoMaterial.DtoMaterial>().AfterMap(
                     (s, d) =>
                     {
-                        foreach (DtoCosting costing in d.Costings)
+                        foreach (var costing in d.Costings)
                         {
                             costing.MaterialId = s.MaterialId;
                         }
 
                         int layerIndex = 0;
-                        foreach (DtoLayer layer in d.Layers)
+                        foreach (var layer in d.Layers)
                         {
                             layer.MaterialId = s.MaterialId;
                             layer.LayerIndex = layerIndex++;
 
                             int collationIndex = 0;
-                            foreach (DtoCollation collation in layer.Collations)
+                            foreach (var collation in layer.Collations)
                             {
                                 collation.MaterialId = s.MaterialId;
                                 collation.LayerIndex = layer.LayerIndex;
@@ -50,13 +50,13 @@ namespace PackIt.DTO
                         }
 
                         int palletDeckIndex = 0;
-                        foreach (DtoPalletDeck palletDeck in d.PalletDecks)
+                        foreach (var palletDeck in d.PalletDecks)
                         {
                             palletDeck.MaterialId = s.MaterialId;
                             palletDeck.PalletDeckIndex = palletDeckIndex++;
 
                             int plankIndex = 0;
-                            foreach (DtoPlank plank in palletDeck.Planks)
+                            foreach (var plank in palletDeck.Planks)
                             {
                                 plank.MaterialId = s.MaterialId;
                                 plank.PalletDeckIndex = palletDeck.PalletDeckIndex;
@@ -65,7 +65,7 @@ namespace PackIt.DTO
                         }
 
                         int sectionIndex = 0;
-                        foreach (DtoSection section in d.Sections)
+                        foreach (var section in d.Sections)
                         {
                             section.MaterialId = s.MaterialId;
                             section.SectionIndex = sectionIndex++;
@@ -99,8 +99,7 @@ namespace PackIt.DTO
         /// <returns> The converted dto. </returns>
         public static DtoMaterial.DtoMaterial Convert(Material material)
         {
-            DtoMaterial.DtoMaterial ret = mapperModelToDto.Map<DtoMaterial.DtoMaterial>(material);
-
+            var ret = mapperModelToDto.Map<DtoMaterial.DtoMaterial>(material);
             return ret;
         }
 
@@ -111,8 +110,7 @@ namespace PackIt.DTO
         /// <returns> The converted Material. </returns>
         public static Material Convert(DtoMaterial.DtoMaterial material)
         {
-            Material ret = mapperDtoToModel.Map<Material>(material);
-
+            var ret = mapperDtoToModel.Map<Material>(material);
             return ret;
         }
     }

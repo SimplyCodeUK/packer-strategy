@@ -74,7 +74,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(PackEditViewModel model)
         {
-            PackIt.Pack.Pack data = new PackIt.Pack.Pack();
+            var data = new PackIt.Pack.Pack();
             this.logger.LogInformation("Create Pack id {0}", data.PackId);
 
             data = this.mapper.Map(model.Data, data);
@@ -115,7 +115,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(string id, PackEditViewModel model)
         {
-            PackIt.Pack.Pack data = await this.handler.ReadAsync(id);
+            var data = await this.handler.ReadAsync(id);
             this.logger.LogInformation("Update id {0} Pack id {1}", id, model.Data.PackId);
 
             data = this.mapper.Map(model.Data, data);
@@ -185,7 +185,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Display(string id, PackEditViewModel model)
         {
-            PackIt.Pack.Pack data = await this.handler.ReadAsync(id);
+            var data = await this.handler.ReadAsync(id);
             this.logger.LogInformation("Display id {0} Pack id {1}", id, data.PackId);
 
             data = this.mapper.Map(model.Data, data);

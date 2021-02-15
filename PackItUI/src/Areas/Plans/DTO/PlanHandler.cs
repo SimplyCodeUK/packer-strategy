@@ -86,7 +86,7 @@ namespace PackItUI.Areas.Plans.DTO
                     json,
                     Encoding.UTF8,
                     "application/json");
-                HttpResponseMessage response = await this.httpClient.PostAsync(this.endpoint + "Plans", content);
+                var response = await this.httpClient.PostAsync(this.endpoint + "Plans", content);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -106,13 +106,13 @@ namespace PackItUI.Areas.Plans.DTO
         {
             try
             {
-                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint + "Plans");
+                var response = await this.httpClient.GetAsync(this.endpoint + "Plans");
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
 
                 // Get the content
-                string content = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync();
 
                 // Create a plan from the content
                 return JsonConvert.DeserializeObject<List<PackIt.Plan.Plan>>(content);
@@ -132,13 +132,13 @@ namespace PackItUI.Areas.Plans.DTO
         {
             try
             {
-                HttpResponseMessage response = await this.httpClient.GetAsync(this.endpoint + "Plans/" + id);
+                var response = await this.httpClient.GetAsync(this.endpoint + "Plans/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
 
                 // Get the content
-                string content = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync();
 
                 // Create a plan from the content
                 return JsonConvert.DeserializeObject<PackIt.Plan.Plan>(content);
@@ -164,7 +164,7 @@ namespace PackItUI.Areas.Plans.DTO
                     json,
                     Encoding.UTF8,
                     "application/json");
-                HttpResponseMessage response = await this.httpClient.PutAsync(this.endpoint + "Plans/" + id, content);
+                var response = await this.httpClient.PutAsync(this.endpoint + "Plans/" + id, content);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
@@ -186,7 +186,7 @@ namespace PackItUI.Areas.Plans.DTO
         {
             try
             {
-                HttpResponseMessage response = await this.httpClient.DeleteAsync(this.endpoint + "Plans/" + id);
+                var response = await this.httpClient.DeleteAsync(this.endpoint + "Plans/" + id);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();

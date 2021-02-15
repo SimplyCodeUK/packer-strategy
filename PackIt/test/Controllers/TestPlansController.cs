@@ -95,7 +95,7 @@ namespace PackIt.Test.Controllers
 
             for (int item = 0; item < ItemsToAdd; ++item)
             {
-                string id = Guid.NewGuid().ToString();
+                var id = Guid.NewGuid().ToString();
 
                 ids.Add(id);
                 this.controller.Post(new Plan { PlanId = id });
@@ -110,7 +110,7 @@ namespace PackIt.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<IList<Plan>>(objectResult.Value);
 
-            foreach (Plan item in (IList<Plan>)objectResult.Value)
+            foreach (var item in (IList<Plan>)objectResult.Value)
             {
                 if (ids.Contains(item.PlanId))
                 {
@@ -126,7 +126,7 @@ namespace PackIt.Test.Controllers
         public void Get()
         {
             const string StartName = "A name";
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Plan { PlanId = id, Name = StartName };
 
             this.controller.Post(item);
@@ -149,7 +149,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void GetNotFound()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var result = this.controller.Get(id);
 
             Assert.IsNotNull(result);
@@ -163,7 +163,7 @@ namespace PackIt.Test.Controllers
         {
             const string StartName = "A name";
             const string PutName = "B name";
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Plan { PlanId = id, Name = StartName };
 
             this.controller.Post(item);
@@ -191,7 +191,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void PutNotFound()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Plan();
             var result = this.controller.Put(id, item);
 
@@ -204,7 +204,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void Delete()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Plan { PlanId = id };
 
             this.controller.Post(item);
@@ -220,7 +220,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void DeleteNotFound()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var result = this.controller.Delete(id);
 
             Assert.IsNotNull(result);
@@ -234,7 +234,7 @@ namespace PackIt.Test.Controllers
         {
             const string StartName = "A name";
             const string PatchName = "B name";
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             var item = new Plan { PlanId = id, Name = StartName };
 
             // Create a new plan
@@ -294,7 +294,7 @@ namespace PackIt.Test.Controllers
         [Test]
         public void PostComplexPlan()
         {
-            string id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid().ToString();
             const StageLevel Level = StageLevel.MultiPack;
 
             // Create a plan with a stage that has a limit

@@ -24,13 +24,13 @@ namespace PackItUI.Services
         {
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(endpoint);
+                var response = await httpClient.GetAsync(endpoint);
 
                 // Throw an exception if not successful
                 response.EnsureSuccessStatusCode();
 
                 // Get the content
-                string content = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync();
 
                 // Create a plan from the content
                 return JsonConvert.DeserializeObject<ServiceInfo>(content);
