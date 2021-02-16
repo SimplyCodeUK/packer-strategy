@@ -8,7 +8,13 @@
 /* global BABYLON */
 
 var PackIt;
-(function (PackIt) {
+(function (PackItDrawResult) {
+  /**
+   * The parent dimension after rotation
+   *
+   */
+  var parentDimensions = { }
+
   /**
    * Populate the parent of a result
    *
@@ -26,7 +32,6 @@ var PackIt;
 
     return null
   }
-  PackIt.getParent = getParent
 
   /**
    * Rotate a result
@@ -48,7 +53,6 @@ var PackIt;
 
     return ret
   }
-  PackIt.rotateResult = rotateResult
 
   /**
    * Draw a collation
@@ -56,12 +60,11 @@ var PackIt;
    * @param {BABYLON.Scene} scene - The Babylon scene
    * @param {Number} idx - The layer index
    * @param {JSON} collation - The collation in JSON
-   * @param {Object} parentDimensions - The dimensions of the parent
    * @param {Number} height - The height the layer is drawn at
    *
    * @returns {Object} - The collation as a mesh list
    */
-  var drawCollation = function (scene, idx, collation, parentDimensions, height) {
+  var drawCollation = function (scene, idx, collation, height) {
     var ret = []
     var x = 0
     for (var kdx = 0; kdx < collation.CountX; ++kdx) {
@@ -78,7 +81,6 @@ var PackIt;
 
     return ret
   }
-  PackIt.drawCollation = drawCollation
 
   /**
    * Populate the result in the scene
@@ -95,13 +97,13 @@ var PackIt;
 
     if (parent) {
       var layer = result.Layers[0]
-      var parentDimensions = rotateResult(parent, layer.Rotation)
+      parentDimensions = rotateResult(parent, layer.Rotation)
 
       var height = 0
       for (var idx = 0; idx < layer.Layers; ++idx) {
         for (var jdx = 0; jdx < layer.Collations.length; ++jdx) {
           var collation = layer.Collations[jdx]
-          meshes.push(...drawCollation(scene, idx, collation, parentDimensions, height))
+          meshes.push(...drawCollation(scene, idx, collation, height))
         }
         height += parentDimensions.depth
       }

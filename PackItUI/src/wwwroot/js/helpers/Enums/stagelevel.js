@@ -6,7 +6,7 @@
 'use strict'
 
 var PackIt;
-(function (PackIt) {
+(function (PackItStageLevel) {
   /** Values that represent stage levels. */
   var StageLevel = Object.freeze(
     {

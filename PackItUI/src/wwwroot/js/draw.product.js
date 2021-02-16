@@ -8,7 +8,7 @@
 /* global BABYLON */
 
 var PackIt;
-(function (PackIt) {
+(function (PackItDrawProduct) {
   /**
    * Populate the result as a product in the secen
    *
