@@ -6,7 +6,7 @@
 'use strict'
 
 var PackIt;
-(function (PackIt) {
+(function (PackItResultRotation) {
   /** Values that represent result rotations. */
   var ResultRotation = Object.freeze(
     {

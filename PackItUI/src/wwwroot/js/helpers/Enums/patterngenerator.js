@@ -6,7 +6,7 @@
 'use strict'
 
 var PackIt;
-(function (PackIt) {
+(function (PackItPatternGenerator) {
   /** Values that represent pattern generators. */
   var PatternGenerator = Object.freeze(
     {
