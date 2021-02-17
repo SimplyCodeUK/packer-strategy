@@ -101,8 +101,7 @@ var PackIt;
 
       var height = 0
       for (var idx = 0; idx < layer.Layers; ++idx) {
-        for (var jdx = 0; jdx < layer.Collations.length; ++jdx) {
-          var collation = layer.Collations[jdx]
+        for (var collation of layer.Collations) {
           meshes.push(...drawCollation(scene, idx, collation, height))
         }
         height += parentDimensions.depth
