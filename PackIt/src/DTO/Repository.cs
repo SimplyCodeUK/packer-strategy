@@ -7,22 +7,21 @@
 namespace PackIt.DTO
 {
     using System.Collections.Generic;
-    using PackIt.Pack;
 
-    /// <summary> A pack repository. </summary>
+    /// <summary> A material repository. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.IPackRepository"/>
-    public class PackRepository : IPackRepository
+    /// <seealso cref="T:PackIt.DTO.IMaterialRepository"/>
+    public class Repository<TContext, TData> where TContext : IContext<TData>
     {
         /// <summary> The context. </summary>
-        private readonly PackContext context;
+        private readonly TContext context;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="PackRepository" /> class.
+        /// Initialises a new instance of the <see cref="MaterialRepository" /> class.
         /// </summary>
         ///
         /// <param name="context"> The context. </param>
-        public PackRepository(PackContext context)
+        public Repository(TContext context)
         {
             this.context = context;
         }
@@ -33,8 +32,8 @@ namespace PackIt.DTO
         /// An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
         ///
-        /// <seealso cref="M:PackIt.DTO.IPackRepository.GetAll()"/>
-        public IList<Pack> GetAll()
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.GetAll()"/>
+        public IList<TData> GetAll()
         {
             return this.context.GetAll();
         }
@@ -43,8 +42,8 @@ namespace PackIt.DTO
         ///
         /// <param name="item"> The item to add. </param>
         ///
-        /// <seealso cref="M:PackIt.DTO.IPackRepository.Add(Pack)"/>
-        public void Add(Pack item)
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Add(Material)"/>
+        public void Add(TData item)
         {
             this.context.Add(item);
             this.context.SaveChanges();
@@ -54,10 +53,10 @@ namespace PackIt.DTO
         ///
         /// <param name="key"> The key. </param>
         ///
-        /// <returns> A Pack. </returns>
+        /// <returns> A Material. </returns>
         ///
-        /// <seealso cref="M:PackIt.DTO.IPackRepository.Find(string)"/>
-        public Pack Find(string key)
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Find(string)"/>
+        public TData Find(string key)
         {
             return this.context.Find(key);
         }
@@ -66,7 +65,7 @@ namespace PackIt.DTO
         ///
         /// <param name="key"> The key. </param>
         ///
-        /// <seealso cref="M:PackIt.DTO.IPackRepository.Remove(string)"/>
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Remove(string)"/>
         public void Remove(string key)
         {
             this.context.Remove(key);
@@ -77,8 +76,8 @@ namespace PackIt.DTO
         ///
         /// <param name="item"> The item to add. </param>
         ///
-        /// <seealso cref="M:PackIt.DTO.IPackRepository.Update(Pack)"/>
-        public void Update(Pack item)
+        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Update(Material)"/>
+        public void Update(TData item)
         {
             this.context.Update(item);
             this.context.SaveChanges();

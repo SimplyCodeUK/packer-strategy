@@ -14,7 +14,7 @@ namespace PackIt.DTO
     using PackIt.Pack;
 
     /// <summary> A pack context. </summary>
-    public class PackContext : DbContext
+    public class PackContext : DbContext, IContext<Pack>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PackContext" /> class.
@@ -34,7 +34,7 @@ namespace PackIt.DTO
         /// <summary> Gets the packs. </summary>
         ///
         /// <returns> The packs. </returns>
-        public IList<Pack> GetPacks()
+        public IList<Pack> GetAll()
         {
             var ret = new List<Pack>();
             var query = ConstructQuery();
@@ -50,7 +50,7 @@ namespace PackIt.DTO
         /// <summary> Adds a pack. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void AddPack(Pack item)
+        public void Add(Pack item)
         {
             var dto = PackMapper.Convert(item);
             this.Packs.Add(dto);
@@ -61,7 +61,7 @@ namespace PackIt.DTO
         /// <param name="key"> The key. </param>
         ///
         /// <returns> The found pack. </returns>
-        public Pack FindPack(string key)
+        public Pack Find(string key)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace PackIt.DTO
         /// <summary> Removes the pack described by key. </summary>
         ///
         /// <param name="key"> The key. </param>
-        public void RemovePack(string key)
+        public void Remove(string key)
         {
             var entity = this.Packs.Find(key);
             this.Packs.Remove(entity);
@@ -88,7 +88,7 @@ namespace PackIt.DTO
         /// <summary> Updates the pack described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void UpdatePack(Pack item)
+        public void Update(Pack item)
         {
             var entity = this.Packs.Find(item.PackId);
             var dto = PackMapper.Convert(item);

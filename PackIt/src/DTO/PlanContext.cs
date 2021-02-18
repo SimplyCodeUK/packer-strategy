@@ -14,7 +14,7 @@ namespace PackIt.DTO
     using PackIt.Plan;
 
     /// <summary> A plan context. </summary>
-    public class PlanContext : DbContext
+    public class PlanContext : DbContext, IContext<Plan>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PlanContext" /> class.
@@ -34,7 +34,7 @@ namespace PackIt.DTO
         /// <summary> Gets the plans. </summary>
         ///
         /// <returns> The plans. </returns>
-        public IList<Plan> GetPlans()
+        public IList<Plan> GetAll()
         {
             var ret = new List<Plan>();
             var query = ConstructQuery();
@@ -50,7 +50,7 @@ namespace PackIt.DTO
         /// <summary> Adds a plan. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void AddPlan(Plan item)
+        public void Add(Plan item)
         {
             var dto = PlanMapper.Convert(item);
             this.Plans.Add(dto);
@@ -61,7 +61,7 @@ namespace PackIt.DTO
         /// <param name="key"> The key. </param>
         ///
         /// <returns> The found plan. </returns>
-        public Plan FindPlan(string key)
+        public Plan Find(string key)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace PackIt.DTO
         /// <summary> Removes the plan described by key. </summary>
         ///
         /// <param name="key"> The key. </param>
-        public void RemovePlan(string key)
+        public void Remove(string key)
         {
             var entity = this.Plans.Find(key);
             this.Plans.Remove(entity);
@@ -89,7 +89,7 @@ namespace PackIt.DTO
         /// <summary> Updates the plan described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void UpdatePlan(Plan item)
+        public void Update(Plan item)
         {
             var entity = this.Plans.Find(item.PlanId);
             var dto = PlanMapper.Convert(item);
