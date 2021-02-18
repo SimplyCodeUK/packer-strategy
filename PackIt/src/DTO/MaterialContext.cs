@@ -14,7 +14,7 @@ namespace PackIt.DTO
     using PackIt.Material;
 
     /// <summary> A material context. </summary>
-    public class MaterialContext : DbContext
+    public class MaterialContext : DbContext, IContext<Material>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialContext" /> class.
@@ -35,7 +35,7 @@ namespace PackIt.DTO
         /// <summary> Gets the materials. </summary>
         ///
         /// <returns> The materials. </returns>
-        public IList<Material> GetMaterials()
+        public IList<Material> GetAll()
         {
             var ret = new List<Material>();
             var query = ConstructQuery();
@@ -51,7 +51,7 @@ namespace PackIt.DTO
         /// <summary> Adds a material. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void AddMaterial(Material item)
+        public void Add(Material item)
         {
             var dto = MaterialMapper.Convert(item);
             this.Materials.Add(dto);
@@ -62,7 +62,7 @@ namespace PackIt.DTO
         /// <param name="key"> The key. </param>
         ///
         /// <returns> The found material. </returns>
-        public Material FindMaterial(string key)
+        public Material Find(string key)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace PackIt.DTO
         /// <summary> Removes the material. </summary>
         ///
         /// <param name="key"> The key. </param>
-        public void RemoveMaterial(string key)
+        public void Remove(string key)
         {
             var entity = this.Materials.Find(key);
             this.Materials.Remove(entity);
@@ -90,7 +90,7 @@ namespace PackIt.DTO
         /// <summary> Updates the material described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void UpdateMaterial(Material item)
+        public void Update(Material item)
         {
             var entity = this.Materials.Find(item.MaterialId);
             var dto = MaterialMapper.Convert(item);
