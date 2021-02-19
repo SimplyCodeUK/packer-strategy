@@ -154,7 +154,7 @@ MACHINES.each do |_key, machine|
   end
 
   machine[:services].each do |service|
-    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/netcoreapp3.1/publish"
+    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/net5.0/publish"
     buildScript += <<-SRV_SCRIPT
       systemctl stop #{service}.service
 
