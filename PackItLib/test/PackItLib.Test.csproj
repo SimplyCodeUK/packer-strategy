@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Company>Simply Code Ltd.</Company>
     <ProjectGuid>c3d58f03-3de4-431f-8586-ae20eb033d6b</ProjectGuid>
     <Product>PackIt</Product>
@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netcoreapp3.1\doc.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\net5.0\doc.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>

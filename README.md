@@ -32,8 +32,8 @@
 - [GIT](https://git-scm.com/)
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
-- [.NET Core SDK 3.1.102](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.8.2](https://www.visualstudio.com/)
+- [.NET Core SDK 5.0.103](https://dotnet.microsoft.com/)
+- [Visual Studio 2019 Version 16.8.5](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript

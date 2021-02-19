@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Company>Simply Code Ltd.</Company>
     <ProjectGuid>50C2D5CB-7541-4CF4-9D87-46D24736DF56</ProjectGuid>
     <Product>PackIt</Product>
