@@ -20,7 +20,7 @@ namespace PackItUI.Areas.Common.Controller
         protected readonly DbServiceHandler<TData> handler;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="PackItController" /> class.
+        /// Initialises a new instance of the <see cref="PackItController{TCategoryName, TData}" /> class.
         /// </summary>
         ///
         /// <param name="logger"> The logger. </param>
