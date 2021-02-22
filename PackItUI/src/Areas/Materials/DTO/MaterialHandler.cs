@@ -7,26 +7,19 @@
 namespace PackItUI.Areas.Materials.DTO
 {
     using System;
-    using System.Collections.Generic;
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
     using PackItUI.Areas.App.Models;
-    using PackItUI.Services;
+    using PackItUI.Areas.Common.DTO;
 
     /// <summary> Material I/O implementation. </summary>
     ///
     /// <seealso cref="T:PackItUI.Areas.Materials.DTO.IMaterialHandler"/>
-    public class MaterialHandler : IMaterialHandler
+    public class MaterialHandler : DbServiceHandler<PackIt.Material.Material>
     {
-        /// <summary> The HTTP client. </summary>
-        private readonly HttpClient httpClient;
-
-        /// <summary> The application endpoint. </summary>
-        private readonly string endpoint;
-
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialHandler" /> class.
         /// </summary>
@@ -43,160 +36,8 @@ namespace PackItUI.Areas.Materials.DTO
         /// <param name="appSettings"> The application settings. </param>
         /// <param name="messageHandler"> The http message handler. </param>
         public MaterialHandler(IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler)
+            : base(messageHandler, appSettings.Value.ServiceEndpoints.Materials, "Materials")
         {
-            this.httpClient = new HttpClient(messageHandler);
-            this.endpoint = appSettings.Value.ServiceEndpoints.Materials;
-        }
-
-        /// <summary> Gets or sets the time out for http calls. </summary>
-        ///
-        /// <value> The time out. </value>
-        public TimeSpan TimeOut
-        {
-            get
-            {
-                return this.httpClient.Timeout;
-            }
-
-            set
-            {
-                this.httpClient.Timeout = value;
-            }
-        }
-
-        /// <summary> Reads asynchronously the service information. </summary>
-        ///
-        /// <returns> The service information. </returns>
-        public async Task<ServiceInfo> InformationAsync()
-        {
-            return await ServiceHandler.InformationAsync(this.httpClient, this.endpoint);
-        }
-
-        /// <summary> Creates asynchronously a material. </summary>
-        ///
-        /// <param name="data"> The material to save. </param>
-        ///
-        /// <returns> True if successful. </returns>
-        public async Task<bool> CreateAsync(PackIt.Material.Material data)
-        {
-            try
-            {
-                var json = JsonConvert.SerializeObject(data);
-                var content = new StringContent(
-                    json,
-                    Encoding.UTF8,
-                    "application/json");
-                var response = await this.httpClient.PostAsync(this.endpoint + "Materials", content);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        /// <summary> Reads asynchronously all materials. </summary>
-        ///
-        /// <returns> The materials. </returns>
-        public async Task<IList<PackIt.Material.Material>> ReadAsync()
-        {
-            try
-            {
-                var response = await this.httpClient.GetAsync(this.endpoint + "Materials");
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-
-                // Get the content
-                var content = await response.Content.ReadAsStringAsync();
-
-                // Create a material from the content
-                return JsonConvert.DeserializeObject<List<PackIt.Material.Material>>(content);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        /// <summary> Reads asynchronously a material. </summary>
-        ///
-        /// <param name="id"> The identifier of the material. </param>
-        ///
-        /// <returns> The material or null id the material could not be found. </returns>
-        public async Task<PackIt.Material.Material> ReadAsync(string id)
-        {
-            try
-            {
-                var response = await this.httpClient.GetAsync(this.endpoint + "Materials/" + id);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-
-                // Get the content
-                var content = await response.Content.ReadAsStringAsync();
-
-                // Create a material from the content
-                return JsonConvert.DeserializeObject<PackIt.Material.Material>(content);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        /// <summary> Updates asynchronously a material. </summary>
-        ///
-        /// <param name="id"> The id of the material. </param>
-        /// <param name="data"> The material to update. </param>
-        ///
-        /// <returns> True if successful. </returns>
-        public async Task<bool> UpdateAsync(string id, PackIt.Material.Material data)
-        {
-            try
-            {
-                var json = JsonConvert.SerializeObject(data);
-                var content = new StringContent(
-                    json,
-                    Encoding.UTF8,
-                    "application/json");
-                var response = await this.httpClient.PutAsync(this.endpoint + "Materials/" + id, content);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        /// <summary> Deletes asynchronously a material. </summary>
-        ///
-        /// <param name="id"> The id of the material. </param>
-        ///
-        /// <returns> True if successful. </returns>
-        public async Task<bool> DeleteAsync(string id)
-        {
-            try
-            {
-                var response = await this.httpClient.DeleteAsync(this.endpoint + "Materials/" + id);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return true;
         }
     }
 }

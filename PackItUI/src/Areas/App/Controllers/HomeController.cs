@@ -12,9 +12,7 @@ namespace PackItUI.Areas.App.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using PackItUI.Areas.App.Models;
-    using PackItUI.Areas.Materials.DTO;
-    using PackItUI.Areas.Packs.DTO;
-    using PackItUI.Areas.Plans.DTO;
+    using PackItUI.Areas.Common.DTO;
     using PackItUI.Areas.Uploads.DTO;
     using PackItUI.Services;
 
@@ -37,7 +35,7 @@ namespace PackItUI.Areas.App.Controllers
         /// <param name="packHandler"> The Pack service handler. </param>
         /// <param name="planHandler"> The Plan service handler. </param>
         /// <param name="uploadHandler"> The Upload service handler. </param>
-        public HomeController(ILogger<HomeController> logger, IMaterialHandler materialHandler, IPackHandler packHandler, IPlanHandler planHandler, IUploadHandler uploadHandler)
+        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Material.Material> materialHandler, DbServiceHandler<PackIt.Pack.Pack> packHandler, DbServiceHandler<PackIt.Plan.Plan> planHandler, IUploadHandler uploadHandler)
         {
             this.logger = logger;
             this.services = new Dictionary<string, IServiceHandler>
