@@ -14,6 +14,7 @@ namespace PackItUI
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
     using PackItUI.Areas.App.Models;
+    using PackItUI.Areas.Common.DTO;
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Packs.DTO;
     using PackItUI.Areas.Plans.DTO;
@@ -66,9 +67,9 @@ namespace PackItUI
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
 
-            services.AddSingleton<IMaterialHandler, MaterialHandler>();
-            services.AddSingleton<IPackHandler, PackHandler>();
-            services.AddSingleton<IPlanHandler, PlanHandler>();
+            services.AddSingleton<DbServiceHandler<PackIt.Material.Material>, MaterialHandler>();
+            services.AddSingleton<DbServiceHandler<PackIt.Pack.Pack>, PackHandler>();
+            services.AddSingleton<DbServiceHandler<PackIt.Plan.Plan>, PlanHandler>();
             services.AddSingleton<IUploadHandler, UploadHandler>();
         }
 

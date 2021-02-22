@@ -34,7 +34,7 @@
     </PackageReference>
     <PackageReference Include="OpenCover" Version="4.7.922" />
     <PackageReference Include="OpenCoverToCoberturaConverter" Version="0.3.4" />
-    <PackageReference Include="ReportGenerator" Version="4.8.5" />
+    <PackageReference Include="ReportGenerator" Version="4.8.6" />
   </ItemGroup>
 
   <ItemGroup>

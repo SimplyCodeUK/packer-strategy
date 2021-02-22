@@ -7,26 +7,19 @@
 namespace PackItUI.Areas.Packs.DTO
 {
     using System;
-    using System.Collections.Generic;
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
     using PackItUI.Areas.App.Models;
-    using PackItUI.Services;
+    using PackItUI.Areas.Common.DTO;
 
     /// <summary> Pack I/O implementation. </summary>
     ///
     /// <seealso cref="T:PackItUI.Areas.Packs.DTO.IPackHandler"/>
-    public class PackHandler : IPackHandler
+    public class PackHandler : DbServiceHandler<PackIt.Pack.Pack>
     {
-        /// <summary> The HTTP client. </summary>
-        private readonly HttpClient httpClient;
-
-        /// <summary> The application endpoint. </summary>
-        private readonly string endpoint;
-
         /// <summary>
         /// Initialises a new instance of the <see cref="PackHandler" /> class.
         /// </summary>
@@ -43,160 +36,8 @@ namespace PackItUI.Areas.Packs.DTO
         /// <param name="appSettings"> The application settings. </param>
         /// <param name="messageHandler"> The http message handler. </param>
         public PackHandler(IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler)
+            : base(messageHandler, appSettings.Value.ServiceEndpoints.Packs, "Packs")
         {
-            this.httpClient = new HttpClient(messageHandler);
-            this.endpoint = appSettings.Value.ServiceEndpoints.Packs;
-        }
-
-        /// <summary> Gets or sets the time out for http calls. </summary>
-        ///
-        /// <value> The time out. </value>
-        public TimeSpan TimeOut
-        {
-            get
-            {
-                return this.httpClient.Timeout;
-            }
-
-            set
-            {
-                this.httpClient.Timeout = value;
-            }
-        }
-
-        /// <summary> Reads asynchronously the service information. </summary>
-        ///
-        /// <returns> The service information. </returns>
-        public async Task<ServiceInfo> InformationAsync()
-        {
-            return await ServiceHandler.InformationAsync(this.httpClient, this.endpoint);
-        }
-
-        /// <summary> Creates asynchronously a pack. </summary>
-        ///
-        /// <param name="data"> The pack to save. </param>
-        ///
-        /// <returns> True if successful. </returns>
-        public async Task<bool> CreateAsync(PackIt.Pack.Pack data)
-        {
-            try
-            {
-                var json = JsonConvert.SerializeObject(data);
-                var content = new StringContent(
-                    json,
-                    Encoding.UTF8,
-                    "application/json");
-                var response = await this.httpClient.PostAsync(this.endpoint + "Packs", content);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        /// <summary> Reads asynchronously all packs. </summary>
-        ///
-        /// <returns> The packs. </returns>
-        public async Task<IList<PackIt.Pack.Pack>> ReadAsync()
-        {
-            try
-            {
-                var response = await this.httpClient.GetAsync(this.endpoint + "Packs");
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-
-                // Get the content
-                var content = await response.Content.ReadAsStringAsync();
-
-                // Create a pack from the content
-                return JsonConvert.DeserializeObject<List<PackIt.Pack.Pack>>(content);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        /// <summary> Reads asynchronously a pack. </summary>
-        ///
-        /// <param name="id"> The identifier of the pack. </param>
-        ///
-        /// <returns> The pack. </returns>
-        public async Task<PackIt.Pack.Pack> ReadAsync(string id)
-        {
-            try
-            {
-                var response = await this.httpClient.GetAsync(this.endpoint + "Packs/" + id);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-
-                // Get the content
-                var content = await response.Content.ReadAsStringAsync();
-
-                // Create a pack from the content
-                return JsonConvert.DeserializeObject<PackIt.Pack.Pack>(content);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        /// <summary> Updates asynchronously a pack. </summary>
-        ///
-        /// <param name="id"> The id of the pack. </param>
-        /// <param name="data"> The pack to update. </param>
-        ///
-        /// <returns> True if successful. </returns>
-        public async Task<bool> UpdateAsync(string id, PackIt.Pack.Pack data)
-        {
-            try
-            {
-                var json = JsonConvert.SerializeObject(data);
-                var content = new StringContent(
-                    json,
-                    Encoding.UTF8,
-                    "application/json");
-                var response = await this.httpClient.PutAsync(this.endpoint + "Packs/" + id, content);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        /// <summary> Deletes asynchronously a pack. </summary>
-        ///
-        /// <param name="id"> The id of the pack. </param>
-        ///
-        /// <returns> True if successful. </returns>
-        public async Task<bool> DeleteAsync(string id)
-        {
-            try
-            {
-                var response = await this.httpClient.DeleteAsync(this.endpoint + "Packs/" + id);
-
-                // Throw an exception if not successful
-                response.EnsureSuccessStatusCode();
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return true;
         }
     }
 }

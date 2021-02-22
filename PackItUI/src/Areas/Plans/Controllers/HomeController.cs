@@ -10,18 +10,16 @@ namespace PackItUI.Areas.Plans.Controllers
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
-    using PackItUI.Areas.Plans.DTO;
+    using PackItUI.Areas.Common.Controller;
+    using PackItUI.Areas.Common.DTO;
     using PackItUI.Areas.Plans.Models;
 
     /// <summary> A controller for handling the Plans Home Page. </summary>
     [Area("Plans")]
-    public class HomeController : Controller
+    public class HomeController : PackItController<HomeController>
     {
-        /// <summary> The logger. </summary>
-        private readonly ILogger<HomeController> logger;
-
         /// <summary> The plans handler. </summary>
-        private readonly IPlanHandler handler;
+        private readonly DbServiceHandler<PackIt.Plan.Plan> handler;
 
         /// <summary> The mapper to view model. </summary>
         private readonly IMapper mapper = new MapperConfiguration(
@@ -37,9 +35,8 @@ namespace PackItUI.Areas.Plans.Controllers
         ///
         /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        public HomeController(ILogger<HomeController> logger, IPlanHandler handler)
+        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Plan.Plan> handler) : base(logger)
         {
-            this.logger = logger;
             this.handler = handler;
         }
 

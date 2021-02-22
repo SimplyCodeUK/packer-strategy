@@ -11,19 +11,17 @@ namespace PackItUI.Areas.Materials.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using PackIt.Helpers.Enums;
-    using PackItUI.Areas.Materials.DTO;
+    using PackItUI.Areas.Common.Controller;
+    using PackItUI.Areas.Common.DTO;
     using PackItUI.Areas.Materials.Models;
     using PackItUI.Helpers;
 
     /// <summary> A controller for handling the Materials Home Page. </summary>
     [Area("Materials")]
-    public class HomeController : Controller
+    public class HomeController : PackItController<HomeController>
     {
-        /// <summary> The logger. </summary>
-        private readonly ILogger<HomeController> logger;
-
         /// <summary> The materials handler. </summary>
-        private readonly IMaterialHandler handler;
+        private readonly DbServiceHandler<PackIt.Material.Material> handler;
 
         /// <summary> The mapper to view model. </summary>
         private readonly IMapper mapper = new MapperConfiguration(
@@ -39,9 +37,8 @@ namespace PackItUI.Areas.Materials.Controllers
         ///
         /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        public HomeController(ILogger<HomeController> logger, IMaterialHandler handler)
+        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Material.Material> handler) : base(logger)
         {
-            this.logger = logger;
             this.handler = handler;
         }
 
