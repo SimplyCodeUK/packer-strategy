@@ -18,11 +18,8 @@ namespace PackItUI.Areas.Materials.Controllers
 
     /// <summary> A controller for handling the Materials Home Page. </summary>
     [Area("Materials")]
-    public class HomeController : PackItController<HomeController>
+    public class HomeController : PackItController<HomeController, PackIt.Material.Material>
     {
-        /// <summary> The materials handler. </summary>
-        private readonly DbServiceHandler<PackIt.Material.Material> handler;
-
         /// <summary> The mapper to view model. </summary>
         private readonly IMapper mapper = new MapperConfiguration(
             cfg =>
@@ -37,9 +34,9 @@ namespace PackItUI.Areas.Materials.Controllers
         ///
         /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Material.Material> handler) : base(logger)
+        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Material.Material> handler)
+            : base(logger, handler)
         {
-            this.handler = handler;
         }
 
         /// <summary> Handle the Materials view request. </summary>
