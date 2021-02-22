@@ -16,11 +16,8 @@ namespace PackItUI.Areas.Plans.Controllers
 
     /// <summary> A controller for handling the Plans Home Page. </summary>
     [Area("Plans")]
-    public class HomeController : PackItController<HomeController>
+    public class HomeController : PackItController<HomeController, PackIt.Plan.Plan>
     {
-        /// <summary> The plans handler. </summary>
-        private readonly DbServiceHandler<PackIt.Plan.Plan> handler;
-
         /// <summary> The mapper to view model. </summary>
         private readonly IMapper mapper = new MapperConfiguration(
             cfg =>
@@ -35,9 +32,9 @@ namespace PackItUI.Areas.Plans.Controllers
         ///
         /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Plan.Plan> handler) : base(logger)
+        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Plan.Plan> handler)
+            : base(logger, handler)
         {
-            this.handler = handler;
         }
 
         /// <summary> Handle the Plans view request. </summary>
