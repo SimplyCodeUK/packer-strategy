@@ -26,6 +26,13 @@ namespace PackItUI.Areas.Common.DTO
         /// <summary> The application resource. </summary>
         protected readonly string resource;
 
+        /// <summary>
+        /// Initialises a new instance of the <see cref="DbServiceHandler{TData}" /> class.
+        /// </summary>
+        ///
+        /// <param name="messageHandler"> The http message handler. </param>
+        /// <param name="endpoint"> The http endpoint. </param>
+        /// <param name="resource"> The REST resource. </param>
         protected DbServiceHandler(HttpMessageHandler messageHandler, string endpoint, string resource)
         {
             this.httpClient = new HttpClient(messageHandler);
