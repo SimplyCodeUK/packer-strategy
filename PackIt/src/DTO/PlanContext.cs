@@ -10,11 +10,12 @@ namespace PackIt.DTO
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PackIt.Plan;
 
     /// <summary> A plan context. </summary>
-    public class PlanContext : DbContext, IContext<Plan>
+    ///
+    /// <seealso cref="T:PackIt.DTO.PackItContext{TData}"/>
+    public class PlanContext : PackItContext<Plan>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PlanContext" /> class.
@@ -34,7 +35,7 @@ namespace PackIt.DTO
         /// <summary> Gets the plans. </summary>
         ///
         /// <returns> The plans. </returns>
-        public IList<Plan> GetAll()
+        public override IList<Plan> GetAll()
         {
             var ret = new List<Plan>();
             var query = ConstructQuery();
@@ -50,7 +51,7 @@ namespace PackIt.DTO
         /// <summary> Adds a plan. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void Add(Plan item)
+        public override void Add(Plan item)
         {
             var dto = PlanMapper.Convert(item);
             this.Plans.Add(dto);
@@ -61,12 +62,11 @@ namespace PackIt.DTO
         /// <param name="key"> The key. </param>
         ///
         /// <returns> The found plan. </returns>
-        public Plan Find(string key)
+        public override Plan Find(string key)
         {
             try
             {
-                var query = ConstructQuery()
-                    .SingleAsync(p => p.PlanId == key);
+                var query = ConstructQuery().SingleAsync(p => p.PlanId == key);
 
                 query.Wait();
                 return PlanMapper.Convert(query.Result);
@@ -80,7 +80,7 @@ namespace PackIt.DTO
         /// <summary> Removes the plan described by key. </summary>
         ///
         /// <param name="key"> The key. </param>
-        public void Remove(string key)
+        public override void Remove(string key)
         {
             var entity = this.Plans.Find(key);
             this.Plans.Remove(entity);
@@ -89,7 +89,7 @@ namespace PackIt.DTO
         /// <summary> Updates the plan described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void Update(Plan item)
+        public override void Update(Plan item)
         {
             var entity = this.Plans.Find(item.PlanId);
             var dto = PlanMapper.Convert(item);
@@ -121,15 +121,15 @@ namespace PackIt.DTO
         {
             base.OnModelCreating(modelBuilder);
 
-            Configure(modelBuilder.Entity<DtoPlan.DtoPlan>());
-            Configure(modelBuilder.Entity<DtoPlan.DtoStage>());
-            Configure(modelBuilder.Entity<DtoPlan.DtoLimit>());
+            ConfigureDtoPlan(modelBuilder);
+            ConfigureDtoStage(modelBuilder);
+            Configure<DtoPlan.DtoLimit>(modelBuilder, "DtoLimit", k => new { k.PlanId, k.StageLevel, k.LimitIndex });
         }
 
         /// <summary>Construct default query.</summary>
         ///
         /// <returns> Query for list of plans. </returns>
-        private IQueryable<DtoPlan.DtoPlan> ConstructQuery()
+        protected IQueryable<DtoPlan.DtoPlan> ConstructQuery()
         {
             var query = this.Plans
                 .Include(p => p.Stages)
@@ -140,12 +140,10 @@ namespace PackIt.DTO
 
         /// <summary>Configures the specified builder.</summary>
         ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPlan.DtoPlan> builder)
+        /// <param name="modelBuilder">The model builder.</param>
+        private static void ConfigureDtoPlan(ModelBuilder modelBuilder)
         {
-            builder.ToTable("DtoPlan");
-            builder.HasKey(p => new { p.PlanId });
-            builder
+            Configure<DtoPlan.DtoPlan>(modelBuilder, "DtoPlan", k => new { k.PlanId })
                 .HasMany(p => p.Stages)
                 .WithOne()
                 .HasForeignKey(s => new { s.PlanId });
@@ -153,24 +151,13 @@ namespace PackIt.DTO
 
         /// <summary>Configures the specified builder.</summary>
         ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPlan.DtoStage> builder)
+        /// <param name="modelBuilder">The model builder.</param>
+        private static void ConfigureDtoStage(ModelBuilder modelBuilder)
         {
-            builder.ToTable("DtoStage");
-            builder.HasKey(s => new { s.PlanId, s.StageLevel });
-            builder
+            Configure<DtoPlan.DtoStage>(modelBuilder, "DtoStage", k => new { k.PlanId, k.StageLevel })
                 .HasMany(s => s.Limits)
                 .WithOne()
                 .HasForeignKey(l => new { l.PlanId, l.StageLevel });
-        }
-
-        /// <summary>Configures the specified builder.</summary>
-        ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPlan.DtoLimit> builder)
-        {
-            builder.ToTable("DtoLimit");
-            builder.HasKey(l => new { l.PlanId, l.StageLevel, l.LimitIndex });
         }
     }
 }

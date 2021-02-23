@@ -11,77 +11,17 @@ namespace PackIt.DTO
 
     /// <summary> A pack repository. </summary>
     ///
+    /// <seealso cref="T:PackIt.DTO.Repository{TContext, TData}"/>
     /// <seealso cref="T:PackIt.DTO.IPackRepository"/>
-    public class PackRepository : IPackRepository
+    public class PackRepository : Repository<PackContext, Pack>, IPackRepository
     {
-        /// <summary> The context. </summary>
-        private readonly PackContext context;
-
         /// <summary>
         /// Initialises a new instance of the <see cref="PackRepository" /> class.
         /// </summary>
         ///
         /// <param name="context"> The context. </param>
-        public PackRepository(PackContext context)
+        public PackRepository(PackContext context) : base(context)
         {
-            this.context = context;
-        }
-
-        /// <summary> Gets all items in this collection. </summary>
-        ///
-        /// <returns>
-        /// An enumerator that allows foreach to be used to process all items in this collection.
-        /// </returns>
-        ///
-        /// <seealso cref="M:PackIt.DTO.IPackRepository.GetAll()"/>
-        public IList<Pack> GetAll()
-        {
-            return this.context.GetAll();
-        }
-
-        /// <summary> Adds item. </summary>
-        ///
-        /// <param name="item"> The item to add. </param>
-        ///
-        /// <seealso cref="M:PackIt.DTO.IPackRepository.Add(Pack)"/>
-        public void Add(Pack item)
-        {
-            this.context.Add(item);
-            this.context.SaveChanges();
-        }
-
-        /// <summary> Searches for the first match for the given string. </summary>
-        ///
-        /// <param name="key"> The key. </param>
-        ///
-        /// <returns> A Pack. </returns>
-        ///
-        /// <seealso cref="M:PackIt.DTO.IPackRepository.Find(string)"/>
-        public Pack Find(string key)
-        {
-            return this.context.Find(key);
-        }
-
-        /// <summary> Removes the given key. </summary>
-        ///
-        /// <param name="key"> The key. </param>
-        ///
-        /// <seealso cref="M:PackIt.DTO.IPackRepository.Remove(string)"/>
-        public void Remove(string key)
-        {
-            this.context.Remove(key);
-            this.context.SaveChanges();
-        }
-
-        /// <summary> Updates the given item. </summary>
-        ///
-        /// <param name="item"> The item to add. </param>
-        ///
-        /// <seealso cref="M:PackIt.DTO.IPackRepository.Update(Pack)"/>
-        public void Update(Pack item)
-        {
-            this.context.Update(item);
-            this.context.SaveChanges();
         }
     }
 }

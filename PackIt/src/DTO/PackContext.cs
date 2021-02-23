@@ -10,11 +10,12 @@ namespace PackIt.DTO
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PackIt.Pack;
 
     /// <summary> A pack context. </summary>
-    public class PackContext : DbContext, IContext<Pack>
+    ///
+    /// <seealso cref="T:PackIt.DTO.PackItContext{TData}"/>
+    public class PackContext : PackItContext<Pack>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PackContext" /> class.
@@ -34,7 +35,7 @@ namespace PackIt.DTO
         /// <summary> Gets the packs. </summary>
         ///
         /// <returns> The packs. </returns>
-        public IList<Pack> GetAll()
+        public override IList<Pack> GetAll()
         {
             var ret = new List<Pack>();
             var query = ConstructQuery();
@@ -50,7 +51,7 @@ namespace PackIt.DTO
         /// <summary> Adds a pack. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void Add(Pack item)
+        public override void Add(Pack item)
         {
             var dto = PackMapper.Convert(item);
             this.Packs.Add(dto);
@@ -61,7 +62,7 @@ namespace PackIt.DTO
         /// <param name="key"> The key. </param>
         ///
         /// <returns> The found pack. </returns>
-        public Pack Find(string key)
+        public override Pack Find(string key)
         {
             try
             {
@@ -79,7 +80,7 @@ namespace PackIt.DTO
         /// <summary> Removes the pack described by key. </summary>
         ///
         /// <param name="key"> The key. </param>
-        public void Remove(string key)
+        public override void Remove(string key)
         {
             var entity = this.Packs.Find(key);
             this.Packs.Remove(entity);
@@ -88,7 +89,7 @@ namespace PackIt.DTO
         /// <summary> Updates the pack described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void Update(Pack item)
+        public override void Update(Pack item)
         {
             var entity = this.Packs.Find(item.PackId);
             var dto = PackMapper.Convert(item);
@@ -120,22 +121,22 @@ namespace PackIt.DTO
         {
             base.OnModelCreating(modelBuilder);
 
-            Configure(modelBuilder.Entity<DtoPack.DtoPack>());
-            Configure(modelBuilder.Entity<DtoPack.DtoCosting>());
-            Configure(modelBuilder.Entity<DtoPack.DtoStage>());
-            Configure(modelBuilder.Entity<DtoPack.DtoLimit>());
-            Configure(modelBuilder.Entity<DtoPack.DtoResult>());
-            Configure(modelBuilder.Entity<DtoPack.DtoLayer>());
-            Configure(modelBuilder.Entity<DtoPack.DtoCollation>());
-            Configure(modelBuilder.Entity<DtoPack.DtoMaterial>());
-            Configure(modelBuilder.Entity<DtoPack.DtoDatabaseMaterial>());
-            Configure(modelBuilder.Entity<DtoPack.DtoSection>());
+            ConfigureDtoPack(modelBuilder);
+            Configure<DtoPack.DtoCosting>(modelBuilder, "DtoCosting", k => new { k.PackId, k.RequiredQuantity });
+            ConfigureDtoStage(modelBuilder);
+            Configure<DtoPack.DtoLimit>(modelBuilder, "DtoLimit", k => new { k.PackId, k.StageLevel, k.LimitIndex });
+            ConfigureDtoResult(modelBuilder);
+            ConfigureDtoLayer(modelBuilder);
+            Configure<DtoPack.DtoCollation>(modelBuilder, "DtoCollation", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.LayerIndex, k.CollationIndex });
+            ConfigureDtoMaterial(modelBuilder);
+            Configure<DtoPack.DtoSection>(modelBuilder, "DtoSection", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.SectionIndex });
+            Configure<DtoPack.DtoDatabaseMaterial>(modelBuilder, "DtoDatabaseMaterial", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.MaterialIndex, k.DatabaseMaterialIndex });
         }
 
         /// <summary>Construct default query.</summary>
         ///
         /// <returns> Query for list of packs. </returns>
-        private IQueryable<DtoPack.DtoPack> ConstructQuery()
+        protected IQueryable<DtoPack.DtoPack> ConstructQuery()
         {
             var query = this.Packs
                 .Include(p => p.Costings)
@@ -153,11 +154,10 @@ namespace PackIt.DTO
 
         /// <summary>Configures the specified builder.</summary>
         ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPack.DtoPack> builder)
+        /// <param name="modelBuilder">The model builder.</param>
+        private static void ConfigureDtoPack(ModelBuilder modelBuilder)
         {
-            builder.ToTable("DtoPack");
-            builder.HasKey(p => p.PackId);
+            var builder = Configure<DtoPack.DtoPack>(modelBuilder, "DtoPack", k => k.PackId);
             builder
                 .HasMany(p => p.Costings)
                 .WithOne()
@@ -170,20 +170,10 @@ namespace PackIt.DTO
 
         /// <summary>Configures the specified builder.</summary>
         ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPack.DtoCosting> builder)
+        /// <param name="modelBuilder">The model builder.</param>
+        private static void ConfigureDtoStage(ModelBuilder modelBuilder)
         {
-            builder.ToTable("DtoCosting");
-            builder.HasKey(c => new { c.PackId, c.RequiredQuantity });
-        }
-
-        /// <summary>Configures the specified builder.</summary>
-        ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPack.DtoStage> builder)
-        {
-            builder.ToTable("DtoStage");
-            builder.HasKey(s => new { s.PackId, s.StageLevel });
+            var builder = Configure<DtoPack.DtoStage>(modelBuilder, "DtoStage", k => new { k.PackId, k.StageLevel });
             builder
                 .HasMany(s => s.Limits)
                 .WithOne()
@@ -196,20 +186,10 @@ namespace PackIt.DTO
 
         /// <summary>Configures the specified builder.</summary>
         ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPack.DtoLimit> builder)
+        /// <param name="modelBuilder">The model builder.</param>
+        private static void ConfigureDtoResult(ModelBuilder modelBuilder)
         {
-            builder.ToTable("DtoLimit");
-            builder.HasKey(l => new { l.PackId, l.StageLevel, l.LimitIndex });
-        }
-
-        /// <summary>Configures the specified builder.</summary>
-        ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPack.DtoResult> builder)
-        {
-            builder.ToTable("DtoResult");
-            builder.HasKey(r => new { r.PackId, r.StageLevel, r.ResultIndex });
+            var builder = Configure<DtoPack.DtoResult>(modelBuilder, "DtoResult", k => new { k.PackId, k.StageLevel, k.ResultIndex });
             builder
                 .HasMany(r => r.Layers)
                 .WithOne()
@@ -226,12 +206,10 @@ namespace PackIt.DTO
 
         /// <summary>Configures the specified builder.</summary>
         ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPack.DtoLayer> builder)
+        /// <param name="modelBuilder">The model builder.</param>
+        private static void ConfigureDtoLayer(ModelBuilder modelBuilder)
         {
-            builder.ToTable("DtoLayer");
-            builder.HasKey(l => new { l.PackId, l.StageLevel, l.ResultIndex, l.LayerIndex });
-            builder
+            Configure<DtoPack.DtoLayer>(modelBuilder, "DtoLayer", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.LayerIndex })
                 .HasMany(l => l.Collations)
                 .WithOne()
                 .HasForeignKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.LayerIndex });
@@ -239,42 +217,13 @@ namespace PackIt.DTO
 
         /// <summary>Configures the specified builder.</summary>
         ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPack.DtoCollation> builder)
+        /// <param name="modelBuilder">The model builder.</param>
+        private static void ConfigureDtoMaterial(ModelBuilder modelBuilder)
         {
-            builder.ToTable("DtoCollation");
-            builder.HasKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.LayerIndex, c.CollationIndex });
-        }
-
-        /// <summary>Configures the specified builder.</summary>
-        ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPack.DtoMaterial> builder)
-        {
-            builder.ToTable("DtoMaterial");
-            builder.HasKey(m => new { m.PackId, m.StageLevel, m.ResultIndex, m.MaterialIndex });
-            builder
+            Configure<DtoPack.DtoMaterial>(modelBuilder, "DtoMaterial", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.MaterialIndex })
                 .HasMany(m => m.DatabaseMaterials)
                 .WithOne()
                 .HasForeignKey(d => new { d.PackId, d.StageLevel, d.ResultIndex, d.MaterialIndex });
-        }
-
-        /// <summary>Configures the specified builder.</summary>
-        ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPack.DtoDatabaseMaterial> builder)
-        {
-            builder.ToTable("DtoDatabaseMaterial");
-            builder.HasKey(d => new { d.PackId, d.StageLevel, d.ResultIndex, d.MaterialIndex, d.DatabaseMaterialIndex });
-        }
-
-        /// <summary>Configures the specified builder.</summary>
-        ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoPack.DtoSection> builder)
-        {
-            builder.ToTable("DtoSection");
-            builder.HasKey(s => new { s.PackId, s.StageLevel, s.ResultIndex, s.SectionIndex });
         }
     }
 }

@@ -10,8 +10,8 @@ namespace PackIt.DTO
 
     /// <summary> A material repository. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.IMaterialRepository"/>
-    public class Repository<TContext, TData> where TContext : IContext<TData>
+    /// <seealso cref="T:PackIt.DTO.PackItContext{TData}"/>
+    public class Repository<TContext, TData> where TContext : PackItContext<TData>
     {
         /// <summary> The context. </summary>
         private readonly TContext context;
