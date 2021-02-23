@@ -10,11 +10,12 @@ namespace PackIt.DTO
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PackIt.Material;
 
     /// <summary> A material context. </summary>
-    public class MaterialContext : DbContext, IContext<Material>
+    ///
+    /// <seealso cref="T:PackIt.DTO.PackItContext{TData}"/>
+    public class MaterialContext : PackItContext<Material>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialContext" /> class.
@@ -35,7 +36,7 @@ namespace PackIt.DTO
         /// <summary> Gets the materials. </summary>
         ///
         /// <returns> The materials. </returns>
-        public IList<Material> GetAll()
+        public override IList<Material> GetAll()
         {
             var ret = new List<Material>();
             var query = ConstructQuery();
@@ -51,7 +52,7 @@ namespace PackIt.DTO
         /// <summary> Adds a material. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void Add(Material item)
+        public override void Add(Material item)
         {
             var dto = MaterialMapper.Convert(item);
             this.Materials.Add(dto);
@@ -62,12 +63,11 @@ namespace PackIt.DTO
         /// <param name="key"> The key. </param>
         ///
         /// <returns> The found material. </returns>
-        public Material Find(string key)
+        public override Material Find(string key)
         {
             try
             {
-                var query = ConstructQuery()
-                    .SingleAsync(p => p.MaterialId == key);
+                var query = ConstructQuery().SingleAsync(p => p.MaterialId == key);
 
                 query.Wait();
                 return MaterialMapper.Convert(query.Result);
@@ -81,7 +81,7 @@ namespace PackIt.DTO
         /// <summary> Removes the material. </summary>
         ///
         /// <param name="key"> The key. </param>
-        public void Remove(string key)
+        public override void Remove(string key)
         {
             var entity = this.Materials.Find(key);
             this.Materials.Remove(entity);
@@ -90,7 +90,7 @@ namespace PackIt.DTO
         /// <summary> Updates the material described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public void Update(Material item)
+        public override void Update(Material item)
         {
             var entity = this.Materials.Find(item.MaterialId);
             var dto = MaterialMapper.Convert(item);
@@ -122,19 +122,19 @@ namespace PackIt.DTO
         {
             base.OnModelCreating(modelBuilder);
 
-            Configure(modelBuilder.Entity<DtoMaterial.DtoMaterial>());
-            Configure(modelBuilder.Entity<DtoMaterial.DtoCosting>());
-            Configure(modelBuilder.Entity<DtoMaterial.DtoLayer>());
-            Configure(modelBuilder.Entity<DtoMaterial.DtoSection>());
-            Configure(modelBuilder.Entity<DtoMaterial.DtoCollation>());
-            Configure(modelBuilder.Entity<DtoMaterial.DtoPalletDeck>());
-            Configure(modelBuilder.Entity<DtoMaterial.DtoPlank>());
+            ConfigureDtoMaterial(modelBuilder);
+            Configure<DtoMaterial.DtoCosting>(modelBuilder, "DtoCosting", k => new { k.MaterialId, k.Quantity });
+            ConfigureDtoLayer(modelBuilder);
+            Configure<DtoMaterial.DtoSection>(modelBuilder, "DtoSection", k => new { k.MaterialId, k.SectionIndex });
+            Configure<DtoMaterial.DtoCollation>(modelBuilder, "DtoCollation", k => new { k.MaterialId, k.LayerIndex, k.CollationIndex });
+            ConfigureDtoPalletDeck(modelBuilder);
+            Configure<DtoMaterial.DtoPlank>(modelBuilder, "DtoPlank", k => new { k.MaterialId, k.PalletDeckIndex, k.PlankIndex });
         }
 
         /// <summary>Construct default query.</summary>
         ///
         /// <returns> Query for list of materials. </returns>
-        private IQueryable<DtoMaterial.DtoMaterial> ConstructQuery()
+        protected IQueryable<DtoMaterial.DtoMaterial> ConstructQuery()
         {
             var query = this.Materials
                 .Include(m => m.Costings)
@@ -149,11 +149,10 @@ namespace PackIt.DTO
 
         /// <summary>Configures the specified builder.</summary>
         ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoMaterial> builder)
+        /// <param name="modelBuilder">The model builder.</param>
+        private static void ConfigureDtoMaterial(ModelBuilder modelBuilder)
         {
-            builder.ToTable("DtoMaterial");
-            builder.HasKey(m => new { m.MaterialId });
+            var builder = Configure<DtoMaterial.DtoMaterial>(modelBuilder, "DtoMaterial", k => new { k.MaterialId });
             builder
                 .HasMany(m => m.Costings)
                 .WithOne()
@@ -174,21 +173,10 @@ namespace PackIt.DTO
 
         /// <summary>Configures the specified builder.</summary>
         ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoCosting> builder)
+        /// <param name="modelBuilder">The model builder.</param>
+        private static void ConfigureDtoLayer(ModelBuilder modelBuilder)
         {
-            builder.ToTable("DtoCosting");
-            builder.HasKey(c => new { c.MaterialId, c.Quantity });
-        }
-
-        /// <summary>Configures the specified builder.</summary>
-        ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoLayer> builder)
-        {
-            builder.ToTable("DtoLayer");
-            builder.HasKey(l => new { l.MaterialId, l.LayerIndex });
-            builder
+            Configure<DtoMaterial.DtoLayer>(modelBuilder, "DtoLayer", k => new { k.MaterialId, k.LayerIndex })
                 .HasMany(m => m.Collations)
                 .WithOne()
                 .HasForeignKey(c => new { c.MaterialId, c.LayerIndex });
@@ -196,42 +184,13 @@ namespace PackIt.DTO
 
         /// <summary>Configures the specified builder.</summary>
         ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoSection> builder)
+        /// <param name="modelBuilder">The model builder.</param>
+        private static void ConfigureDtoPalletDeck(ModelBuilder modelBuilder)
         {
-            builder.ToTable("DtoSection");
-            builder.HasKey(s => new { s.MaterialId, s.SectionIndex });
-        }
-
-        /// <summary>Configures the specified builder.</summary>
-        ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoCollation> builder)
-        {
-            builder.ToTable("DtoCollation");
-            builder.HasKey(c => new { c.MaterialId, c.LayerIndex, c.CollationIndex });
-        }
-
-        /// <summary>Configures the specified builder.</summary>
-        ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoPalletDeck> builder)
-        {
-            builder.ToTable("DtoPalletDeck");
-            builder.HasKey(p => new { p.MaterialId, p.PalletDeckIndex });
-            builder
+            Configure<DtoMaterial.DtoPalletDeck>(modelBuilder, "DtoPalletDeck", k => new { k.MaterialId, k.PalletDeckIndex })
                 .HasMany(p => p.Planks)
                 .WithOne()
                 .HasForeignKey(p => new { p.MaterialId, p.PalletDeckIndex });
-        }
-
-        /// <summary>Configures the specified builder.</summary>
-        ///
-        /// <param name="builder">The builder.</param>
-        private static void Configure(EntityTypeBuilder<DtoMaterial.DtoPlank> builder)
-        {
-            builder.ToTable("DtoPlank");
-            builder.HasKey(p => new { p.MaterialId, p.PalletDeckIndex, p.PlankIndex });
         }
     }
 }

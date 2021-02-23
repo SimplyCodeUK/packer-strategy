@@ -105,12 +105,12 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 apt-get install python3-software-properties=0.96.* -y
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-apt-get install nodejs=10.*          -y
-apt-get install yarn=1.22.*          -y
-apt-get install nuget=2.8.*          -y
-apt-get install git                  -y
-apt-get install dotnet-sdk-3.1=3.1.* -y
-apt-get install nginx=1.14.*         -y
+apt-get install nodejs         -y
+apt-get install yarn           -y
+apt-get install nuget          -y
+apt-get install git            -y
+apt-get install dotnet-sdk-5.0 -y
+apt-get install nginx          -y
 service nginx stop
 rm /etc/nginx/sites-enabled/default 2> /dev/null
 SCRIPT
