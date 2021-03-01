@@ -20,18 +20,7 @@ namespace PackIt.Helpers
         /// <returns> The short name. </returns>
         public static string ShortName(this Enum value)
         {
-            // get attributes  
-            var field = value.GetType().GetField(value.ToString());
-            object[] attributes = field.GetCustomAttributes(false);
-
-            // Description is in a hidden Attribute class called DisplayAttribute
-            // Not to be confused with DisplayNameAttribute
-            dynamic displayAttribute = null;
-
-            if (attributes.Any())
-            {
-                displayAttribute = attributes.ElementAt(0);
-            }
+            dynamic displayAttribute = DisplayAttribute(value);
 
             // return description
             return displayAttribute?.ShortName ?? value.ToString();
@@ -44,18 +33,7 @@ namespace PackIt.Helpers
         /// <returns> The name. </returns>
         public static string Name(this Enum value)
         {
-            // get attributes  
-            var field = value.GetType().GetField(value.ToString());
-            object[] attributes = field.GetCustomAttributes(false);
-
-            // Description is in a hidden Attribute class called DisplayAttribute
-            // Not to be confused with DisplayNameAttribute
-            dynamic displayAttribute = null;
-
-            if (attributes.Any())
-            {
-                displayAttribute = attributes.ElementAt(0);
-            }
+            dynamic displayAttribute = DisplayAttribute(value);
 
             // return description
             return displayAttribute?.Name ?? value.ToString();
@@ -69,6 +47,30 @@ namespace PackIt.Helpers
         public static string UrlName(this Enum value)
         {
             return ShortName(value).ToLowerInvariant();
+        }
+
+        /// <summary> An Enum extension method to get the display attrubute of a value. </summary>
+        ///
+        /// <param name="value"> The value to act on. </param>
+        ///
+        /// <returns> The display attribute. </returns>
+        private static dynamic DisplayAttribute(this Enum value)
+        {
+            // get attributes  
+            var field = value.GetType().GetField(value.ToString());
+            object[] attributes = field.GetCustomAttributes(false);
+
+            // Description is in a hidden Attribute class called DisplayAttribute
+            // Not to be confused with DisplayNameAttribute
+            dynamic displayAttribute = null;
+
+            if (attributes.Any())
+            {
+                displayAttribute = attributes.ElementAt(0);
+            }
+
+            // return description
+            return displayAttribute;
         }
     }
 }
