@@ -8,6 +8,7 @@ namespace PackIt
 {
     using System.Collections.Generic;
     using System.IO;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.HttpOverrides;
@@ -107,6 +108,28 @@ namespace PackIt
             }
         }
 
+        private static TContext CleanContext<TContext>(IServiceScope serviceScope) where TContext : DbContext
+        {
+            var context = serviceScope.ServiceProvider.GetService<TContext>();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+            return context;
+        }
+
+        private static void ReadData<TData, TContext>(Task<bool> anyElements, string filename, TContext context) where TContext : PackItContext<TData>
+        {
+            anyElements.Wait();
+            if (!anyElements.Result)
+            {
+                var text = File.ReadAllText(filename);
+                foreach (var item in JsonConvert.DeserializeObject<List<TData>>(text))
+                {
+                    context.Add(item);
+                }
+            }
+            context.SaveChanges();
+        }
+
         /// <summary> Seeds the specified application. </summary>
         ///
         /// <param name="app"> The application. </param>
@@ -115,58 +138,16 @@ namespace PackIt
             using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
 
             // Seed Pack database
-            var packContext = serviceScope.ServiceProvider.GetService<PackContext>();
-            packContext.Database.EnsureDeleted();
-            packContext.Database.EnsureCreated();
-
-            var asyncTask = packContext.Packs.AnyAsync();
-            asyncTask.Wait();
-            if (!asyncTask.Result)
-            {
-                var text = File.ReadAllText("Seeds/pack.json");
-                foreach (var item in JsonConvert.DeserializeObject<List<Pack.Pack>>(text))
-                {
-                    packContext.Add(item);
-                }
-            }
-
-            packContext.SaveChanges();
+            var packContext = CleanContext<PackContext>(serviceScope);
+            ReadData<Pack.Pack, PackContext>(packContext.Packs.AnyAsync(), "Seeds/pack.json", packContext);
 
             // Seed Plan database
-            var planContext = serviceScope.ServiceProvider.GetService<PlanContext>();
-            planContext.Database.EnsureDeleted();
-            planContext.Database.EnsureCreated();
-
-            asyncTask = planContext.Plans.AnyAsync();
-            asyncTask.Wait();
-            if (!asyncTask.Result)
-            {
-                var text = File.ReadAllText("Seeds/plan.json");
-                foreach (var item in JsonConvert.DeserializeObject<List<Plan.Plan>>(text))
-                {
-                    planContext.Add(item);
-                }
-            }
-
-            planContext.SaveChanges();
+            var planContext = CleanContext<PlanContext>(serviceScope);
+            ReadData<Plan.Plan, PlanContext>(planContext.Plans.AnyAsync(), "Seeds/plan.json", planContext);
 
             // Seed Material database
-            var materialContext = serviceScope.ServiceProvider.GetService<MaterialContext>();
-            materialContext.Database.EnsureDeleted();
-            materialContext.Database.EnsureCreated();
-
-            asyncTask = materialContext.Materials.AnyAsync();
-            asyncTask.Wait();
-            if (!asyncTask.Result)
-            {
-                var text = File.ReadAllText("Seeds/material.json");
-                foreach (var item in JsonConvert.DeserializeObject<List<Material.Material>>(text))
-                {
-                    materialContext.Add(item);
-                }
-            }
-
-            materialContext.SaveChanges();
+            var materialContext = CleanContext<MaterialContext>(serviceScope);
+            ReadData<Material.Material, MaterialContext>(materialContext.Materials.AnyAsync(), "Seeds/material.json", materialContext);
         }
 
         /// <summary> Adds the database context. </summary>
