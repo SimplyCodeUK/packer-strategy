@@ -9,19 +9,17 @@ namespace PackIt.DTO
     using System.Collections.Generic;
 
     /// <summary> A material repository. </summary>
-    ///
-    /// <seealso cref="T:PackIt.DTO.PackItContext{TData}"/>
-    public class Repository<TContext, TData> where TContext : PackItContext<TData>
+    public class Repository<TData, TDtoData> where TDtoData : class
     {
         /// <summary> The context. </summary>
-        private readonly TContext context;
+        private readonly PackItContext<TData, TDtoData> context;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialRepository" /> class.
         /// </summary>
         ///
         /// <param name="context"> The context. </param>
-        public Repository(TContext context)
+        public Repository(PackItContext<TData, TDtoData> context)
         {
             this.context = context;
         }
@@ -31,8 +29,6 @@ namespace PackIt.DTO
         /// <returns>
         /// An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
-        ///
-        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.GetAll()"/>
         public IList<TData> GetAll()
         {
             return this.context.GetAll();
@@ -41,8 +37,6 @@ namespace PackIt.DTO
         /// <summary> Adds item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
-        ///
-        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Add(Material)"/>
         public void Add(TData item)
         {
             this.context.Add(item);
@@ -54,8 +48,6 @@ namespace PackIt.DTO
         /// <param name="key"> The key. </param>
         ///
         /// <returns> A Material. </returns>
-        ///
-        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Find(string)"/>
         public TData Find(string key)
         {
             return this.context.Find(key);
@@ -64,8 +56,6 @@ namespace PackIt.DTO
         /// <summary> Removes the given key. </summary>
         ///
         /// <param name="key"> The key. </param>
-        ///
-        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Remove(string)"/>
         public void Remove(string key)
         {
             this.context.Remove(key);
@@ -75,8 +65,6 @@ namespace PackIt.DTO
         /// <summary> Updates the given item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
-        ///
-        /// <seealso cref="M:PackIt.DTO.IMaterialRepository.Update(Material)"/>
         public void Update(TData item)
         {
             this.context.Update(item);

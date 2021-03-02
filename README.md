@@ -43,7 +43,7 @@
 - [Powershell Version 7.0.0](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 6.1.18](https://www.virtualbox.org/)
 - [Vagrant Version 2.2.14](https://www.vagrantup.com/)
-  - Box ubuntu/bionic64 version 20210129.0.0
+  - Box ubuntu/bionic64 version 20210224.0.0
 
 ## Vagrant
 

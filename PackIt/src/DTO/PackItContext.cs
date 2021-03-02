@@ -14,7 +14,8 @@ namespace PackIt.DTO
     using System.Linq.Expressions;
 
     /// <summary> A context. </summary>
-    public abstract class PackItContext<TData> : DbContext
+    public abstract class PackItContext<TData, TDtoData> : DbContext
+                                                           where TDtoData : class
     {
         /// <summary> Create a DbContext. </summary>
         ///
@@ -22,7 +23,13 @@ namespace PackIt.DTO
         public PackItContext([NotNullAttribute] DbContextOptions options)
             : base(options)
         {
+            Resources = this.Set<TDtoData>();
         }
+
+        /// <summary> Gets the resources. </summary>
+        ///
+        /// <value> The resources. </value>
+        public DbSet<TDtoData> Resources { get; private set; }
 
         /// <summary> Gets all data. </summary>
         ///
@@ -44,7 +51,11 @@ namespace PackIt.DTO
         /// <summary> Removes a data item. </summary>
         ///
         /// <param name="key"> The key. </param>
-        public abstract void Remove(string key);
+        public void Remove(string key)
+        {
+            var entity = this.Resources.Find(key);
+            this.Resources.Remove(entity);
+        }
 
         /// <summary> Updates a data item. </summary>
         ///

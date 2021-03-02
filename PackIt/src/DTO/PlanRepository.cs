@@ -10,9 +10,9 @@ namespace PackIt.DTO
 
     /// <summary> A plan repository. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.Repository{TContext, TData}"/>
+    /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData}"/>
     /// <seealso cref="T:PackIt.DTO.IPlanRepository"/>
-    public class PlanRepository : Repository<PlanContext, Plan>, IPlanRepository
+    public class PlanRepository : Repository<Plan, DtoPlan.DtoPlan>, IPlanRepository
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PlanRepository" /> class.

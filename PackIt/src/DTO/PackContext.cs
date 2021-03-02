@@ -14,8 +14,8 @@ namespace PackIt.DTO
 
     /// <summary> A pack context. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItContext{TData}"/>
-    public class PackContext : PackItContext<Pack>
+    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData}"/>
+    public class PackContext : PackItContext<Pack, DtoPack.DtoPack>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PackContext" /> class.
@@ -26,11 +26,6 @@ namespace PackIt.DTO
             : base(options)
         {
         }
-
-        /// <summary> Gets the packs. </summary>
-        ///
-        /// <value> The packs. </value>
-        public DbSet<DtoPack.DtoPack> Packs { get; private set; }
 
         /// <summary> Gets the packs. </summary>
         ///
@@ -54,7 +49,7 @@ namespace PackIt.DTO
         public override void Add(Pack item)
         {
             var dto = PackMapper.Convert(item);
-            this.Packs.Add(dto);
+            this.Resources.Add(dto);
         }
 
         /// <summary> Searches for the first pack. </summary>
@@ -77,25 +72,16 @@ namespace PackIt.DTO
             }
         }
 
-        /// <summary> Removes the pack described by key. </summary>
-        ///
-        /// <param name="key"> The key. </param>
-        public override void Remove(string key)
-        {
-            var entity = this.Packs.Find(key);
-            this.Packs.Remove(entity);
-        }
-
         /// <summary> Updates the pack described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
         public override void Update(Pack item)
         {
-            var entity = this.Packs.Find(item.PackId);
+            var entity = this.Resources.Find(item.PackId);
             var dto = PackMapper.Convert(item);
-            this.Packs.Remove(entity);
+            this.Resources.Remove(entity);
             this.SaveChanges();
-            this.Packs.Add(dto);
+            this.Resources.Add(dto);
         }
 
         /// <summary>
@@ -138,7 +124,7 @@ namespace PackIt.DTO
         /// <returns> Query for list of packs. </returns>
         protected IQueryable<DtoPack.DtoPack> ConstructQuery()
         {
-            var query = this.Packs
+            var query = this.Resources
                 .Include(p => p.Costings)
                 .Include(p => p.Stages)
                 .Include(p => p.Stages).ThenInclude(s => s.Limits)

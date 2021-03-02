@@ -14,8 +14,8 @@ namespace PackIt.DTO
 
     /// <summary> A material context. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItContext{TData}"/>
-    public class MaterialContext : PackItContext<Material>
+    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData}"/>
+    public class MaterialContext : PackItContext<Material, DtoMaterial.DtoMaterial>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialContext" /> class.
@@ -27,11 +27,6 @@ namespace PackIt.DTO
 
         {
         }
-
-        /// <summary> Gets the materials. </summary>
-        ///
-        /// <value> The materials. </value>
-        public DbSet<DtoMaterial.DtoMaterial> Materials { get; private set; }
 
         /// <summary> Gets the materials. </summary>
         ///
@@ -55,7 +50,7 @@ namespace PackIt.DTO
         public override void Add(Material item)
         {
             var dto = MaterialMapper.Convert(item);
-            this.Materials.Add(dto);
+            this.Resources.Add(dto);
         }
 
         /// <summary> Searches for the first material. </summary>
@@ -78,25 +73,16 @@ namespace PackIt.DTO
             }
         }
 
-        /// <summary> Removes the material. </summary>
-        ///
-        /// <param name="key"> The key. </param>
-        public override void Remove(string key)
-        {
-            var entity = this.Materials.Find(key);
-            this.Materials.Remove(entity);
-        }
-
         /// <summary> Updates the material described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
         public override void Update(Material item)
         {
-            var entity = this.Materials.Find(item.MaterialId);
+            var entity = this.Resources.Find(item.MaterialId);
             var dto = MaterialMapper.Convert(item);
-            this.Materials.Remove(entity);
+            this.Resources.Remove(entity);
             this.SaveChanges();
-            this.Materials.Add(dto);
+            this.Resources.Add(dto);
         }
 
         /// <summary>
@@ -136,7 +122,7 @@ namespace PackIt.DTO
         /// <returns> Query for list of materials. </returns>
         protected IQueryable<DtoMaterial.DtoMaterial> ConstructQuery()
         {
-            var query = this.Materials
+            var query = this.Resources
                 .Include(m => m.Costings)
                 .Include(m => m.Layers)
                 .Include(m => m.Layers).ThenInclude(l => l.Collations)

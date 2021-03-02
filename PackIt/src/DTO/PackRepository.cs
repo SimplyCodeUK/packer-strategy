@@ -11,9 +11,9 @@ namespace PackIt.DTO
 
     /// <summary> A pack repository. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.Repository{TContext, TData}"/>
+    /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData}"/>
     /// <seealso cref="T:PackIt.DTO.IPackRepository"/>
-    public class PackRepository : Repository<PackContext, Pack>, IPackRepository
+    public class PackRepository : Repository<Pack, DtoPack.DtoPack>, IPackRepository
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PackRepository" /> class.
