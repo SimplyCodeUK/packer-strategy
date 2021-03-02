@@ -8,7 +8,6 @@ namespace PackIt
 {
     using System.Collections.Generic;
     using System.IO;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.HttpOverrides;
@@ -108,18 +107,15 @@ namespace PackIt
             }
         }
 
-        private static TContext CleanContext<TContext>(IServiceScope serviceScope) where TContext : DbContext
+        private static void ReadData<TContext, TData, TDtoData>(IServiceScope serviceScope, string filename)
+            where TDtoData : class
+            where TContext : PackItContext<TData, TDtoData>
         {
             var context = serviceScope.ServiceProvider.GetService<TContext>();
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
-            return context;
-        }
-
-        private static void ReadData<TData, TContext>(Task<bool> anyElements, string filename, TContext context) where TContext : PackItContext<TData>
-        {
-            anyElements.Wait();
-            if (!anyElements.Result)
+            context.Resources.AnyAsync().Wait();
+            if (!context.Resources.AnyAsync().Result)
             {
                 var text = File.ReadAllText(filename);
                 foreach (var item in JsonConvert.DeserializeObject<List<TData>>(text))
@@ -138,16 +134,13 @@ namespace PackIt
             using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
 
             // Seed Pack database
-            var packContext = CleanContext<PackContext>(serviceScope);
-            ReadData<Pack.Pack, PackContext>(packContext.Packs.AnyAsync(), "Seeds/pack.json", packContext);
+            ReadData<PackContext, Pack.Pack, DTO.DtoPack.DtoPack>(serviceScope, "Seeds/pack.json");
 
             // Seed Plan database
-            var planContext = CleanContext<PlanContext>(serviceScope);
-            ReadData<Plan.Plan, PlanContext>(planContext.Plans.AnyAsync(), "Seeds/plan.json", planContext);
+            ReadData<PlanContext, Plan.Plan, DTO.DtoPlan.DtoPlan>(serviceScope, "Seeds/plan.json");
 
             // Seed Material database
-            var materialContext = CleanContext<MaterialContext>(serviceScope);
-            ReadData<Material.Material, MaterialContext>(materialContext.Materials.AnyAsync(), "Seeds/material.json", materialContext);
+            ReadData<MaterialContext, Material.Material, DTO.DtoMaterial.DtoMaterial>(serviceScope, "Seeds/material.json");
         }
 
         /// <summary> Adds the database context. </summary>

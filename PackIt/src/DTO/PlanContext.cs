@@ -14,8 +14,8 @@ namespace PackIt.DTO
 
     /// <summary> A plan context. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItContext{TData}"/>
-    public class PlanContext : PackItContext<Plan>
+    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData}"/>
+    public class PlanContext : PackItContext<Plan, DtoPlan.DtoPlan>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PlanContext" /> class.
@@ -26,11 +26,6 @@ namespace PackIt.DTO
             : base(options)
         {
         }
-
-        /// <summary> Gets the plans. </summary>
-        ///
-        /// <value> The plans. </value>
-        public DbSet<DtoPlan.DtoPlan> Plans { get; private set; }
 
         /// <summary> Gets the plans. </summary>
         ///
@@ -54,7 +49,7 @@ namespace PackIt.DTO
         public override void Add(Plan item)
         {
             var dto = PlanMapper.Convert(item);
-            this.Plans.Add(dto);
+            this.Resources.Add(dto);
         }
 
         /// <summary> Searches for the first plan. </summary>
@@ -77,25 +72,16 @@ namespace PackIt.DTO
             }
         }
 
-        /// <summary> Removes the plan described by key. </summary>
-        ///
-        /// <param name="key"> The key. </param>
-        public override void Remove(string key)
-        {
-            var entity = this.Plans.Find(key);
-            this.Plans.Remove(entity);
-        }
-
         /// <summary> Updates the plan described by item. </summary>
         ///
         /// <param name="item"> The item. </param>
         public override void Update(Plan item)
         {
-            var entity = this.Plans.Find(item.PlanId);
+            var entity = this.Resources.Find(item.PlanId);
             var dto = PlanMapper.Convert(item);
-            this.Plans.Remove(entity);
+            this.Resources.Remove(entity);
             this.SaveChanges();
-            this.Plans.Add(dto);
+            this.Resources.Add(dto);
         }
 
         /// <summary>
@@ -131,7 +117,7 @@ namespace PackIt.DTO
         /// <returns> Query for list of plans. </returns>
         protected IQueryable<DtoPlan.DtoPlan> ConstructQuery()
         {
-            var query = this.Plans
+            var query = this.Resources
                 .Include(p => p.Stages)
                 .Include(p => p.Stages).ThenInclude(s => s.Limits);
 

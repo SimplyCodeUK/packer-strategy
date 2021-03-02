@@ -10,9 +10,9 @@ namespace PackIt.DTO
 
     /// <summary> A material repository. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.Repository{TContext, TData}"/>
+    /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData}"/>
     /// <seealso cref="T:PackIt.DTO.IMaterialRepository"/>
-    public class MaterialRepository : Repository<MaterialContext, Material>, IMaterialRepository
+    public class MaterialRepository : Repository<Material, DtoMaterial.DtoMaterial>, IMaterialRepository
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialRepository" /> class.
