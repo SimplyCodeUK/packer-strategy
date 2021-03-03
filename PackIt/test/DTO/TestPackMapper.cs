@@ -10,20 +10,30 @@ namespace PackIt.Test.DTO
     using Newtonsoft.Json;
     using NUnit.Framework;
     using PackIt.DTO;
-    using PackIt.DTO.DtoPack;
     using PackIt.Pack;
 
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
     [TestFixture]
     public class TestPackMapper
     {
+        /// <summary> The mapper under test. </summary>
+        private PackMapper mapper;
+
+        /// <summary> Setup for all unit tests here. </summary>
+        [SetUp]
+        public void BeforeTest()
+        {
+            this.mapper = new PackMapper();
+            Assert.IsNotNull(this.mapper);
+        }
+
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
         public void ConvertPack()
         {
             var text = File.ReadAllText("DTO/TestData/pack.json");
             var pack = JsonConvert.DeserializeObject<Pack>(text);
-            var dto = PackMapper.Convert(pack);
+            var dto = this.mapper.ConvertToDto(pack);
 
             Assert.AreEqual(dto.PackId, pack.PackId);
 

@@ -12,7 +12,7 @@ namespace PackIt.DTO
     ///
     /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData}"/>
     /// <seealso cref="T:PackIt.DTO.IPlanRepository"/>
-    public class PlanRepository : Repository<Plan, DtoPlan.DtoPlan>, IPlanRepository
+    public class PlanRepository : Repository<Plan, DtoPlan.DtoPlan, PlanMapper>, IPlanRepository
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PlanRepository" /> class.

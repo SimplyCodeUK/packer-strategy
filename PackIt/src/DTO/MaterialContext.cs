@@ -14,8 +14,8 @@ namespace PackIt.DTO
 
     /// <summary> A material context. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData}"/>
-    public class MaterialContext : PackItContext<Material, DtoMaterial.DtoMaterial>
+    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData, TMapper}"/>
+    public class MaterialContext : PackItContext<Material, DtoMaterial.DtoMaterial, MaterialMapper>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialContext" /> class.
@@ -26,31 +26,6 @@ namespace PackIt.DTO
             : base(options)
 
         {
-        }
-
-        /// <summary> Gets the materials. </summary>
-        ///
-        /// <returns> The materials. </returns>
-        public override IList<Material> GetAll()
-        {
-            var ret = new List<Material>();
-            var query = ConstructQuery();
-
-            foreach (var item in query)
-            {
-                ret.Add(MaterialMapper.Convert(item));
-            }
-
-            return ret;
-        }
-
-        /// <summary> Adds a material. </summary>
-        ///
-        /// <param name="item"> The item. </param>
-        public override void Add(Material item)
-        {
-            var dto = MaterialMapper.Convert(item);
-            this.Resources.Add(dto);
         }
 
         /// <summary> Searches for the first material. </summary>
@@ -65,7 +40,7 @@ namespace PackIt.DTO
                 var query = ConstructQuery().SingleAsync(p => p.MaterialId == key);
 
                 query.Wait();
-                return MaterialMapper.Convert(query.Result);
+                return this.Mapper.ConvertToData(query.Result);
             }
             catch (Exception)
             {
@@ -79,7 +54,7 @@ namespace PackIt.DTO
         public override void Update(Material item)
         {
             var entity = this.Resources.Find(item.MaterialId);
-            var dto = MaterialMapper.Convert(item);
+            var dto = this.Mapper.ConvertToDto(item);
             this.Resources.Remove(entity);
             this.SaveChanges();
             this.Resources.Add(dto);
@@ -120,7 +95,7 @@ namespace PackIt.DTO
         /// <summary>Construct default query.</summary>
         ///
         /// <returns> Query for list of materials. </returns>
-        protected IQueryable<DtoMaterial.DtoMaterial> ConstructQuery()
+        protected override IQueryable<DtoMaterial.DtoMaterial> ConstructQuery()
         {
             var query = this.Resources
                 .Include(m => m.Costings)

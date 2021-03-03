@@ -10,20 +10,30 @@ namespace PackIt.Test.DTO
     using Newtonsoft.Json;
     using NUnit.Framework;
     using PackIt.DTO;
-    using PackIt.DTO.DtoPlan;
     using PackIt.Plan;
 
     /// <summary> (Unit Test Fixture) a mapper for plans. </summary>
     [TestFixture]
     public class TestPlanMapper
     {
+        /// <summary> The mapper under test. </summary>
+        private PlanMapper mapper;
+
+        /// <summary> Setup for all unit tests here. </summary>
+        [SetUp]
+        public void BeforeTest()
+        {
+            this.mapper = new PlanMapper();
+            Assert.IsNotNull(this.mapper);
+        }
+
         /// <summary> (Unit Test Method) Convert a Plan to it's DTO. </summary>
         [Test]
         public void ConvertPlan()
         {
             var text = File.ReadAllText("DTO/TestData/plan.json");
             var plan = JsonConvert.DeserializeObject<Plan>(text);
-            var dto = PlanMapper.Convert(plan);
+            var dto = this.mapper.ConvertToDto(plan);
 
             Assert.AreEqual(dto.PlanId, plan.PlanId);
             int minLevel = -1;

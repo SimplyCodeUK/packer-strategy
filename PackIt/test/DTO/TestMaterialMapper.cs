@@ -10,20 +10,30 @@ namespace PackIt.Test.DTO
     using Newtonsoft.Json;
     using NUnit.Framework;
     using PackIt.DTO;
-    using PackIt.DTO.DtoMaterial;
     using PackIt.Material;
 
     /// <summary> (Unit Test Method) Convert a Material to it's DTO. </summary>
     [TestFixture]
     public class TestMaterialMapper
     {
+        /// <summary> The mapper under test. </summary>
+        private MaterialMapper mapper;
+
+        /// <summary> Setup for all unit tests here. </summary>
+        [SetUp]
+        public void BeforeTest()
+        {
+            this.mapper = new MaterialMapper();
+            Assert.IsNotNull(this.mapper);
+        }
+
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
         public void ConvertMaterial()
         {
             var text = File.ReadAllText("DTO/TestData/material.json");
             var material = JsonConvert.DeserializeObject<Material>(text);
-            var dto = MaterialMapper.Convert(material);
+            var dto = this.mapper.ConvertToDto(material);
 
             Assert.AreEqual(dto.MaterialId, material.MaterialId);
 

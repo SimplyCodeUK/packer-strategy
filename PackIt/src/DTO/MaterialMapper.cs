@@ -13,7 +13,7 @@ namespace PackIt.DTO
     /// <summary>
     /// Maps from and to DtoPlan
     /// </summary>
-    public static class MaterialMapper
+    public class MaterialMapper : PackItMapper<Material, DtoMaterial.DtoMaterial>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static MapperConfiguration configModelToDto = new MapperConfiguration(
@@ -97,7 +97,7 @@ namespace PackIt.DTO
         /// <param name="material"> Material to convert. </param>
         /// 
         /// <returns> The converted dto. </returns>
-        public static DtoMaterial.DtoMaterial Convert(Material material)
+        public override DtoMaterial.DtoMaterial ConvertToDto(Material material)
         {
             var ret = mapperModelToDto.Map<DtoMaterial.DtoMaterial>(material);
             return ret;
@@ -108,7 +108,7 @@ namespace PackIt.DTO
         /// <param name="material"> Dto to convert. </param>
         ///
         /// <returns> The converted Material. </returns>
-        public static Material Convert(DtoMaterial.DtoMaterial material)
+        public override Material ConvertToData(DtoMaterial.DtoMaterial material)
         {
             var ret = mapperDtoToModel.Map<Material>(material);
             return ret;

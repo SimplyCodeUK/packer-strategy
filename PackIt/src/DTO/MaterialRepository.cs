@@ -12,7 +12,7 @@ namespace PackIt.DTO
     ///
     /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData}"/>
     /// <seealso cref="T:PackIt.DTO.IMaterialRepository"/>
-    public class MaterialRepository : Repository<Material, DtoMaterial.DtoMaterial>, IMaterialRepository
+    public class MaterialRepository : Repository<Material, DtoMaterial.DtoMaterial, MaterialMapper>, IMaterialRepository
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialRepository" /> class.
