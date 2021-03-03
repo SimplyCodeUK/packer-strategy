@@ -13,7 +13,7 @@ namespace PackIt.DTO
     /// <summary>
     /// Maps from and to DtoPack
     /// </summary>
-    public static class PackMapper
+    public class PackMapper : PackItMapper<Pack, DtoPack.DtoPack>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static MapperConfiguration configModelToDto = new MapperConfiguration(
@@ -133,7 +133,7 @@ namespace PackIt.DTO
         /// <param name="pack"> Pack to convert. </param>
         /// 
         /// <returns> The converted dto. </returns>
-        public static DtoPack.DtoPack Convert(Pack pack)
+        public override DtoPack.DtoPack ConvertToDto(Pack pack)
         {
             var ret = mapperModelToDto.Map<DtoPack.DtoPack>(pack);
             return ret;
@@ -144,7 +144,7 @@ namespace PackIt.DTO
         /// <param name="pack"> Dto to convert. </param>
         ///
         /// <returns> The converted plan. </returns>
-        public static Pack Convert(DtoPack.DtoPack pack)
+        public override Pack ConvertToData(DtoPack.DtoPack pack)
         {
             var ret = mapperDtoToModel.Map<Pack>(pack);
             return ret;

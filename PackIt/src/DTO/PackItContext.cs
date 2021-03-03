@@ -14,8 +14,9 @@ namespace PackIt.DTO
     using System.Linq.Expressions;
 
     /// <summary> A context. </summary>
-    public abstract class PackItContext<TData, TDtoData> : DbContext
-                                                           where TDtoData : class
+    public abstract class PackItContext<TData, TDtoData, TMapper> : DbContext
+        where TDtoData : class
+        where TMapper : PackItMapper<TData, TDtoData>, new()
     {
         /// <summary> Create a DbContext. </summary>
         ///
@@ -24,6 +25,7 @@ namespace PackIt.DTO
             : base(options)
         {
             Resources = this.Set<TDtoData>();
+            Mapper = new TMapper();
         }
 
         /// <summary> Gets the resources. </summary>
@@ -31,22 +33,40 @@ namespace PackIt.DTO
         /// <value> The resources. </value>
         public DbSet<TDtoData> Resources { get; private set; }
 
+        /// <summary> Gets the resources. </summary>
+        ///
+        /// <value> The resources. </value>
+        public PackItMapper<TData, TDtoData> Mapper { get; private set; }
+
+        /// <summary>Construct default query.</summary>
+        ///
+        /// <returns> Query for list of TDtoData. </returns>
+        protected abstract IQueryable<TDtoData> ConstructQuery();
+
         /// <summary> Gets all data. </summary>
         ///
         /// <returns> The data. </returns>
-        public abstract IList<TData> GetAll();
+        public IList<TData> GetAll()
+        {
+            var ret = new List<TData>();
+            var query = ConstructQuery();
+
+            foreach (var item in query)
+            {
+                ret.Add(this.Mapper.ConvertToData(item));
+            }
+
+            return ret;
+        }
 
         /// <summary> Add a data item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public abstract void Add(TData item);
-
-        /// <summary> Searches for the first data item. </summary>
-        ///
-        /// <param name="key"> The key. </param>
-        ///
-        /// <returns> The found material. </returns>
-        public abstract TData Find(string key);
+        public void Add(TData item)
+        {
+            var dto = this.Mapper.ConvertToDto(item);
+            this.Resources.Add(dto);
+        }
 
         /// <summary> Removes a data item. </summary>
         ///
@@ -56,6 +76,13 @@ namespace PackIt.DTO
             var entity = this.Resources.Find(key);
             this.Resources.Remove(entity);
         }
+
+        /// <summary> Searches for the first data item. </summary>
+        ///
+        /// <param name="key"> The key. </param>
+        ///
+        /// <returns> The found material. </returns>
+        public abstract TData Find(string key);
 
         /// <summary> Updates a data item. </summary>
         ///

@@ -9,17 +9,19 @@ namespace PackIt.DTO
     using System.Collections.Generic;
 
     /// <summary> A material repository. </summary>
-    public class Repository<TData, TDtoData> where TDtoData : class
+    public class Repository<TData, TDtoData, TMapper>
+        where TDtoData : class
+        where TMapper : PackItMapper<TData, TDtoData>, new()
     {
         /// <summary> The context. </summary>
-        private readonly PackItContext<TData, TDtoData> context;
+        private readonly PackItContext<TData, TDtoData, TMapper> context;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialRepository" /> class.
         /// </summary>
         ///
         /// <param name="context"> The context. </param>
-        public Repository(PackItContext<TData, TDtoData> context)
+        public Repository(PackItContext<TData, TDtoData, TMapper> context)
         {
             this.context = context;
         }

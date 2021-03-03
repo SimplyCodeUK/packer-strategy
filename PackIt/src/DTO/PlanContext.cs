@@ -14,8 +14,8 @@ namespace PackIt.DTO
 
     /// <summary> A plan context. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData}"/>
-    public class PlanContext : PackItContext<Plan, DtoPlan.DtoPlan>
+    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData, TMapper}"/>
+    public class PlanContext : PackItContext<Plan, DtoPlan.DtoPlan, PlanMapper>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PlanContext" /> class.
@@ -25,31 +25,6 @@ namespace PackIt.DTO
         public PlanContext(DbContextOptions<PlanContext> options)
             : base(options)
         {
-        }
-
-        /// <summary> Gets the plans. </summary>
-        ///
-        /// <returns> The plans. </returns>
-        public override IList<Plan> GetAll()
-        {
-            var ret = new List<Plan>();
-            var query = ConstructQuery();
-
-            foreach (var item in query)
-            {
-                ret.Add(PlanMapper.Convert(item));
-            }
-
-            return ret;
-        }
-
-        /// <summary> Adds a plan. </summary>
-        ///
-        /// <param name="item"> The item. </param>
-        public override void Add(Plan item)
-        {
-            var dto = PlanMapper.Convert(item);
-            this.Resources.Add(dto);
         }
 
         /// <summary> Searches for the first plan. </summary>
@@ -64,7 +39,7 @@ namespace PackIt.DTO
                 var query = ConstructQuery().SingleAsync(p => p.PlanId == key);
 
                 query.Wait();
-                return PlanMapper.Convert(query.Result);
+                return this.Mapper.ConvertToData(query.Result);
             }
             catch (Exception)
             {
@@ -78,7 +53,7 @@ namespace PackIt.DTO
         public override void Update(Plan item)
         {
             var entity = this.Resources.Find(item.PlanId);
-            var dto = PlanMapper.Convert(item);
+            var dto = this.Mapper.ConvertToDto(item);
             this.Resources.Remove(entity);
             this.SaveChanges();
             this.Resources.Add(dto);
@@ -115,7 +90,7 @@ namespace PackIt.DTO
         /// <summary>Construct default query.</summary>
         ///
         /// <returns> Query for list of plans. </returns>
-        protected IQueryable<DtoPlan.DtoPlan> ConstructQuery()
+        protected override IQueryable<DtoPlan.DtoPlan> ConstructQuery()
         {
             var query = this.Resources
                 .Include(p => p.Stages)

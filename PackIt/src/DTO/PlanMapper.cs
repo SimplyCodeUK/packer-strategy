@@ -13,7 +13,7 @@ namespace PackIt.DTO
     /// <summary>
     /// Maps from and to DtoPlan
     /// </summary>
-    public static class PlanMapper
+    public class PlanMapper : PackItMapper<Plan, DtoPlan.DtoPlan>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static MapperConfiguration configModelToDto = new MapperConfiguration(
@@ -60,7 +60,7 @@ namespace PackIt.DTO
         /// <param name="plan"> Plan to convert. </param>
         /// 
         /// <returns> The converted dto. </returns>
-        public static DtoPlan.DtoPlan Convert(Plan plan)
+        public override DtoPlan.DtoPlan ConvertToDto(Plan plan)
         {
             var ret = mapperModelToDto.Map<DtoPlan.DtoPlan>(plan);
             return ret;
@@ -71,7 +71,7 @@ namespace PackIt.DTO
         /// <param name="plan"> Dto to convert. </param>
         ///
         /// <returns> The converted plan. </returns>
-        public static Plan Convert(DtoPlan.DtoPlan plan)
+        public override Plan ConvertToData(DtoPlan.DtoPlan plan)
         {
             var ret = mapperDtoToModel.Map<Plan>(plan);
             return ret;

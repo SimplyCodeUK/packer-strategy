@@ -14,8 +14,8 @@ namespace PackIt.DTO
 
     /// <summary> A pack context. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData}"/>
-    public class PackContext : PackItContext<Pack, DtoPack.DtoPack>
+    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData, TMapper}"/>
+    public class PackContext : PackItContext<Pack, DtoPack.DtoPack, PackMapper>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PackContext" /> class.
@@ -25,31 +25,6 @@ namespace PackIt.DTO
         public PackContext(DbContextOptions<PackContext> options)
             : base(options)
         {
-        }
-
-        /// <summary> Gets the packs. </summary>
-        ///
-        /// <returns> The packs. </returns>
-        public override IList<Pack> GetAll()
-        {
-            var ret = new List<Pack>();
-            var query = ConstructQuery();
-
-            foreach (var item in query)
-            {
-                ret.Add(PackMapper.Convert(item));
-            }
-
-            return ret;
-        }
-
-        /// <summary> Adds a pack. </summary>
-        ///
-        /// <param name="item"> The item. </param>
-        public override void Add(Pack item)
-        {
-            var dto = PackMapper.Convert(item);
-            this.Resources.Add(dto);
         }
 
         /// <summary> Searches for the first pack. </summary>
@@ -64,7 +39,7 @@ namespace PackIt.DTO
                 var query = ConstructQuery().SingleAsync(p => p.PackId == key);
 
                 query.Wait();
-                return PackMapper.Convert(query.Result);
+                return this.Mapper.ConvertToData(query.Result);
             }
             catch (Exception)
             {
@@ -78,7 +53,7 @@ namespace PackIt.DTO
         public override void Update(Pack item)
         {
             var entity = this.Resources.Find(item.PackId);
-            var dto = PackMapper.Convert(item);
+            var dto = this.Mapper.ConvertToDto(item);
             this.Resources.Remove(entity);
             this.SaveChanges();
             this.Resources.Add(dto);
@@ -122,7 +97,7 @@ namespace PackIt.DTO
         /// <summary>Construct default query.</summary>
         ///
         /// <returns> Query for list of packs. </returns>
-        protected IQueryable<DtoPack.DtoPack> ConstructQuery()
+        protected override IQueryable<DtoPack.DtoPack> ConstructQuery()
         {
             var query = this.Resources
                 .Include(p => p.Costings)

@@ -107,9 +107,10 @@ namespace PackIt
             }
         }
 
-        private static void ReadData<TContext, TData, TDtoData>(IServiceScope serviceScope, string filename)
+        private static void ReadData<TContext, TData, TDtoData, TMapper>(IServiceScope serviceScope, string filename)
             where TDtoData : class
-            where TContext : PackItContext<TData, TDtoData>
+            where TContext : PackItContext<TData, TDtoData, TMapper>
+            where TMapper : PackItMapper<TData, TDtoData>, new()
         {
             var context = serviceScope.ServiceProvider.GetService<TContext>();
             context.Database.EnsureDeleted();
@@ -134,13 +135,13 @@ namespace PackIt
             using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
 
             // Seed Pack database
-            ReadData<PackContext, Pack.Pack, DTO.DtoPack.DtoPack>(serviceScope, "Seeds/pack.json");
+            ReadData<PackContext, Pack.Pack, DTO.DtoPack.DtoPack, PackMapper>(serviceScope, "Seeds/pack.json");
 
             // Seed Plan database
-            ReadData<PlanContext, Plan.Plan, DTO.DtoPlan.DtoPlan>(serviceScope, "Seeds/plan.json");
+            ReadData<PlanContext, Plan.Plan, DTO.DtoPlan.DtoPlan, PlanMapper>(serviceScope, "Seeds/plan.json");
 
             // Seed Material database
-            ReadData<MaterialContext, Material.Material, DTO.DtoMaterial.DtoMaterial>(serviceScope, "Seeds/material.json");
+            ReadData<MaterialContext, Material.Material, DTO.DtoMaterial.DtoMaterial, MaterialMapper>(serviceScope, "Seeds/material.json");
         }
 
         /// <summary> Adds the database context. </summary>
