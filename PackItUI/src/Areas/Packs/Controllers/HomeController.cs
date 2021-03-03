@@ -7,7 +7,6 @@
 namespace PackItUI.Areas.Packs.Controllers
 {
     using System.Threading.Tasks;
-    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using PackItUI.Areas.Common.Controller;
@@ -16,16 +15,8 @@ namespace PackItUI.Areas.Packs.Controllers
 
     /// <summary> A controller for handling the Packs Home Page. </summary>
     [Area("Packs")]
-    public class HomeController : PackItController<HomeController, PackIt.Pack.Pack>
+    public class HomeController : PackItController<HomeController, PackIt.Pack.Pack, PackEditViewModel.Pack>
     {
-        /// <summary> The mapper to view model. </summary>
-        private readonly IMapper mapper = new MapperConfiguration(
-            cfg =>
-            {
-                cfg.CreateMap<PackIt.Pack.Pack, PackEditViewModel.Pack>();
-                cfg.CreateMap<PackEditViewModel.Pack, PackIt.Pack.Pack>();
-            }).CreateMapper();
-
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
