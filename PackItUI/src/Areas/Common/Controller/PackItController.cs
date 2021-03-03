@@ -6,18 +6,23 @@
 
 namespace PackItUI.Areas.Common.Controller
 {
+    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using PackItUI.Areas.Common.DTO;
 
     /// <summary> A base class for MVC controller handling data. </summary>
-    public class PackItController<TCategoryName, TData> : Controller where TData : new()
+    public class PackItController<TCategoryName, TData, TModel> : Controller
+        where TData : new()
     {
         /// <summary> The logger. </summary>
         protected readonly ILogger<TCategoryName> logger;
 
         /// <summary> The materials handler. </summary>
         protected readonly DbServiceHandler<TData> handler;
+
+        /// <summary> The mapper to view model. </summary>
+        protected readonly IMapper mapper;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="PackItController{TCategoryName, TData}" /> class.
@@ -29,6 +34,12 @@ namespace PackItUI.Areas.Common.Controller
         {
             this.logger = logger;
             this.handler = handler;
+            this.mapper = new MapperConfiguration(
+                            cfg =>
+                            {
+                                cfg.CreateMap<TData, TModel>();
+                                cfg.CreateMap<TModel, TData>();
+                            }).CreateMapper();
         }
     }
 }

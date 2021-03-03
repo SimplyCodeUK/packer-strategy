@@ -7,7 +7,6 @@
 namespace PackItUI.Areas.Materials.Controllers
 {
     using System.Threading.Tasks;
-    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using PackIt.Helpers.Enums;
@@ -18,16 +17,8 @@ namespace PackItUI.Areas.Materials.Controllers
 
     /// <summary> A controller for handling the Materials Home Page. </summary>
     [Area("Materials")]
-    public class HomeController : PackItController<HomeController, PackIt.Material.Material>
+    public class HomeController : PackItController<HomeController, PackIt.Material.Material, MaterialEditViewModel.Material>
     {
-        /// <summary> The mapper to view model. </summary>
-        private readonly IMapper mapper = new MapperConfiguration(
-            cfg =>
-            {
-                cfg.CreateMap<PackIt.Material.Material, MaterialEditViewModel.Material>();
-                cfg.CreateMap<MaterialEditViewModel.Material, PackIt.Material.Material>();
-            }).CreateMapper();
-
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
