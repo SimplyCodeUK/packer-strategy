@@ -10,9 +10,9 @@ namespace PackIt.DTO
     using PackIt.DTO.DtoPlan;
     using PackIt.Plan;
 
-    /// <summary>
-    /// Maps from and to DtoPlan
-    /// </summary>
+    /// <summary> Maps from and to DtoPlan </summary>
+    ///
+    /// <seealso cref="T:PackIt.DTO.PackItMapper{TData, TDtoData}"/>
     public class PlanMapper : PackItMapper<Plan, DtoPlan.DtoPlan>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
@@ -55,26 +55,34 @@ namespace PackIt.DTO
         /// <summary> The mapper from Dto to Model. </summary>
         private static IMapper mapperDtoToModel = configDtoToModel.CreateMapper();
 
-        /// <summary> Converts a Plan to its DTO. </summary>
+        /// <summary> Converts a Data to its DTO. </summary>
         /// 
-        /// <param name="plan"> Plan to convert. </param>
+        /// <param name="data"> Data to convert. </param>
         /// 
-        /// <returns> The converted dto. </returns>
-        public override DtoPlan.DtoPlan ConvertToDto(Plan plan)
+        /// <returns> The converted DTO. </returns>
+        public override DtoPlan.DtoPlan ConvertToDto(Plan data)
         {
-            var ret = mapperModelToDto.Map<DtoPlan.DtoPlan>(plan);
-            return ret;
+            return mapperModelToDto.Map<DtoPlan.DtoPlan>(data);
         }
 
-        /// <summary> Converts a DTO to its Plan. </summary>
+        /// <summary> Converts a DTO to its Data. </summary>
         ///
-        /// <param name="plan"> Dto to convert. </param>
+        /// <param name="dtoData"> DTO to convert. </param>
         ///
-        /// <returns> The converted plan. </returns>
-        public override Plan ConvertToData(DtoPlan.DtoPlan plan)
+        /// <returns> The converted Data. </returns>
+        public override Plan ConvertToData(DtoPlan.DtoPlan dtoData)
         {
-            var ret = mapperDtoToModel.Map<Plan>(plan);
-            return ret;
+            return mapperDtoToModel.Map<Plan>(dtoData);
+        }
+
+        /// <summary> Get Data key. </summary>
+        ///
+        /// <param name="data"> Data to get the key for. </param>
+        ///
+        /// <returns> The key. </returns>
+        public override string KeyForData(Plan data)
+        {
+            return data.PlanId;
         }
     }
 }

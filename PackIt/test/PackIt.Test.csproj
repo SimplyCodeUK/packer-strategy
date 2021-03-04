@@ -9,10 +9,7 @@
     <Copyright>Simply Code Ltd.</Copyright>
     <RepositoryUrl>https://github.com/SimplyCodeUK/packer-strategy</RepositoryUrl>
     <IsPackable>false</IsPackable>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netcoreapp3.1\doc.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\net5.0\doc.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>

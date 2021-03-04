@@ -10,9 +10,9 @@ namespace PackIt.DTO
     using PackIt.DTO.DtoPack;
     using PackIt.Pack;
 
-    /// <summary>
-    /// Maps from and to DtoPack
-    /// </summary>
+    /// <summary> Maps from and to DtoPack </summary>
+    ///
+    /// <seealso cref="T:PackIt.DTO.PackItMapper{TData, TDtoData}"/>
     public class PackMapper : PackItMapper<Pack, DtoPack.DtoPack>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
@@ -128,26 +128,34 @@ namespace PackIt.DTO
         /// <summary> The mapper from Dto to Model. </summary>
         private static IMapper mapperDtoToModel = configDtoToModel.CreateMapper();
 
-        /// <summary> Converts a Pack to its DTO. </summary>
+        /// <summary> Converts a Data to its DTO. </summary>
         /// 
-        /// <param name="pack"> Pack to convert. </param>
+        /// <param name="data"> Data to convert. </param>
         /// 
-        /// <returns> The converted dto. </returns>
-        public override DtoPack.DtoPack ConvertToDto(Pack pack)
+        /// <returns> The converted DTO. </returns>
+        public override DtoPack.DtoPack ConvertToDto(Pack data)
         {
-            var ret = mapperModelToDto.Map<DtoPack.DtoPack>(pack);
-            return ret;
+            return mapperModelToDto.Map<DtoPack.DtoPack>(data);
         }
 
-        /// <summary> Converts a DTO to its Plan. </summary>
+        /// <summary> Converts a DTO to its Data. </summary>
         ///
-        /// <param name="pack"> Dto to convert. </param>
+        /// <param name="dtoData"> DTO to convert. </param>
         ///
-        /// <returns> The converted plan. </returns>
-        public override Pack ConvertToData(DtoPack.DtoPack pack)
+        /// <returns> The converted Data. </returns>
+        public override Pack ConvertToData(DtoPack.DtoPack dtoData)
         {
-            var ret = mapperDtoToModel.Map<Pack>(pack);
-            return ret;
+            return mapperDtoToModel.Map<Pack>(dtoData);
+        }
+
+        /// <summary> Get Data key. </summary>
+        ///
+        /// <param name="data"> Data to get the key for. </param>
+        ///
+        /// <returns> The key. </returns>
+        public override string KeyForData(Pack data)
+        {
+            return data.PackId;
         }
     }
 }

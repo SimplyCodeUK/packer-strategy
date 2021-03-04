@@ -6,18 +6,14 @@
 
 namespace PackItUI.Areas.Materials.DTO
 {
-    using System;
     using System.Net.Http;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
-    using Newtonsoft.Json;
     using PackItUI.Areas.App.Models;
     using PackItUI.Areas.Common.DTO;
 
     /// <summary> Material I/O implementation. </summary>
     ///
-    /// <seealso cref="T:PackItUI.Areas.Materials.DTO.IMaterialHandler"/>
+    /// <seealso cref="T:PackItUI.Areas.Common.DTO.DbServiceHandler{TData}"/>
     public class MaterialHandler : DbServiceHandler<PackIt.Material.Material>
     {
         /// <summary>

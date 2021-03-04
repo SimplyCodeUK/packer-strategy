@@ -7,7 +7,6 @@
 namespace PackIt.DTO
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
     using PackIt.Plan;
@@ -45,18 +44,6 @@ namespace PackIt.DTO
             {
                 return null;
             }
-        }
-
-        /// <summary> Updates the plan described by item. </summary>
-        ///
-        /// <param name="item"> The item. </param>
-        public override void Update(Plan item)
-        {
-            var entity = this.Resources.Find(item.PlanId);
-            var dto = this.Mapper.ConvertToDto(item);
-            this.Resources.Remove(entity);
-            this.SaveChanges();
-            this.Resources.Add(dto);
         }
 
         /// <summary>

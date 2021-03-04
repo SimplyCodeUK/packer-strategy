@@ -6,23 +6,31 @@
 
 namespace PackIt.DTO
 {
-    /// <summary>
-    /// Maps from and to DtoPack
-    /// </summary>
+    /// <summary> Maps TData from and to TDtoData </summary>
+    ///
+    /// <typeparam name="TData"> The type of the data. </typeparam>
+    /// <typeparam name="TDtoData"> The type of the data transfer object. </typeparam>
     public abstract class PackItMapper<TData, TDtoData>
     {
-        /// <summary> Converts a Pack to its DTO. </summary>
+        /// <summary> Converts a Data to its DTO. </summary>
         /// 
-        /// <param name="pack"> Pack to convert. </param>
+        /// <param name="data"> Data to convert. </param>
         /// 
-        /// <returns> The converted dto. </returns>
-        public abstract TDtoData ConvertToDto(TData pack);
+        /// <returns> The converted DTO. </returns>
+        public abstract TDtoData ConvertToDto(TData data);
 
-        /// <summary> Converts a DTO to its Plan. </summary>
+        /// <summary> Converts a DTO to its Data. </summary>
         ///
-        /// <param name="pack"> Dto to convert. </param>
+        /// <param name="dtoData"> DTO to convert. </param>
         ///
-        /// <returns> The converted plan. </returns>
-        public abstract TData ConvertToData(TDtoData pack);
+        /// <returns> The converted Data. </returns>
+        public abstract TData ConvertToData(TDtoData dtoData);
+
+        /// <summary> Get Data key. </summary>
+        ///
+        /// <param name="data"> Data to get the key for. </param>
+        ///
+        /// <returns> The key. </returns>
+        public abstract string KeyForData(TData data);
     }
 }

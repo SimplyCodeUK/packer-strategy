@@ -10,9 +10,9 @@ namespace PackIt.DTO
     using PackIt.DTO.DtoMaterial;
     using PackIt.Material;
 
-    /// <summary>
-    /// Maps from and to DtoPlan
-    /// </summary>
+    /// <summary> Maps from and to DtoMaterial </summary>
+    ///
+    /// <seealso cref="T:PackIt.DTO.PackItMapper{TData, TDtoData}"/>
     public class MaterialMapper : PackItMapper<Material, DtoMaterial.DtoMaterial>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
@@ -86,32 +86,40 @@ namespace PackIt.DTO
                 cfg.CreateMap<DtoPlank, Plank>();
             });
 
-        /// <summary> The mapper from Model to Dto.</summary>
+        /// <summary> The mapper from Model to Dto. </summary>
         private static IMapper mapperModelToDto = configModelToDto.CreateMapper();
 
-        /// <summary> The mapper from Dto to Model.</summary>
+        /// <summary> The mapper from Dto to Model. </summary>
         private static IMapper mapperDtoToModel = configDtoToModel.CreateMapper();
 
-        /// <summary> Converts a Material to its DTO. </summary>
+        /// <summary> Converts a Data to its DTO. </summary>
         /// 
-        /// <param name="material"> Material to convert. </param>
+        /// <param name="data"> Data to convert. </param>
         /// 
-        /// <returns> The converted dto. </returns>
-        public override DtoMaterial.DtoMaterial ConvertToDto(Material material)
+        /// <returns> The converted DTO. </returns>
+        public override DtoMaterial.DtoMaterial ConvertToDto(Material data)
         {
-            var ret = mapperModelToDto.Map<DtoMaterial.DtoMaterial>(material);
-            return ret;
+            return mapperModelToDto.Map<DtoMaterial.DtoMaterial>(data);
         }
 
-        /// <summary> Converts a DTO to its Material. </summary>
+        /// <summary> Converts a DTO to its Data. </summary>
         ///
-        /// <param name="material"> Dto to convert. </param>
+        /// <param name="dtoData"> DTO to convert. </param>
         ///
-        /// <returns> The converted Material. </returns>
-        public override Material ConvertToData(DtoMaterial.DtoMaterial material)
+        /// <returns> The converted Data. </returns>
+        public override Material ConvertToData(DtoMaterial.DtoMaterial dtoData)
         {
-            var ret = mapperDtoToModel.Map<Material>(material);
-            return ret;
+            return mapperDtoToModel.Map<Material>(dtoData);
+        }
+
+        /// <summary> Get Data key. </summary>
+        ///
+        /// <param name="data"> Data to get the key for. </param>
+        ///
+        /// <returns> The key. </returns>
+        public override string KeyForData(Material data)
+        {
+            return data.MaterialId;
         }
     }
 }

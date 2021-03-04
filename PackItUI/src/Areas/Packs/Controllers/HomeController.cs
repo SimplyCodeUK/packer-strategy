@@ -14,6 +14,8 @@ namespace PackItUI.Areas.Packs.Controllers
     using PackItUI.Areas.Packs.Models;
 
     /// <summary> A controller for handling the Packs Home Page. </summary>
+    ///
+    /// <seealso cref="T:PackItUI.Areas.Common.Controller.PackItController{TCategoryName, TData, TModel}"/>
     [Area("Packs")]
     public class HomeController : PackItController<HomeController, PackIt.Pack.Pack, PackEditViewModel.Pack>
     {
