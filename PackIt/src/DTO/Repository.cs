@@ -8,7 +8,11 @@ namespace PackIt.DTO
 {
     using System.Collections.Generic;
 
-    /// <summary> A material repository. </summary>
+    /// <summary> A data repository. </summary>
+    ///
+    /// <typeparam name="TData"> The type of the data. </typeparam>
+    /// <typeparam name="TDtoData"> The type of the data transfer object. </typeparam>
+    /// <typeparam name="TMapper"> Data to/from DTO mapper. </typeparam>
     public class Repository<TData, TDtoData, TMapper>
         where TDtoData : class
         where TMapper : PackItMapper<TData, TDtoData>, new()

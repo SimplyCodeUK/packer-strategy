@@ -22,10 +22,7 @@
     <TypeScriptSourceMap>True</TypeScriptSourceMap>
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\net5.0\doc.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\net5.0\doc.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>

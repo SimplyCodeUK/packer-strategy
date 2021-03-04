@@ -10,7 +10,7 @@ namespace PackIt.DTO
 
     /// <summary> A plan repository. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData}"/>
+    /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData, TMapper}"/>
     /// <seealso cref="T:PackIt.DTO.IPlanRepository"/>
     public class PlanRepository : Repository<Plan, DtoPlan.DtoPlan, PlanMapper>, IPlanRepository
     {

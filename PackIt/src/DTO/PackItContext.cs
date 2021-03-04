@@ -14,6 +14,10 @@ namespace PackIt.DTO
     using System.Linq.Expressions;
 
     /// <summary> A context. </summary>
+    ///
+    /// <typeparam name="TData"> The type of the data. </typeparam>
+    /// <typeparam name="TDtoData"> The type of the data transfer object. </typeparam>
+    /// <typeparam name="TMapper"> Data to/from DTO mapper. </typeparam>
     public abstract class PackItContext<TData, TDtoData, TMapper> : DbContext
         where TDtoData : class
         where TMapper : PackItMapper<TData, TDtoData>, new()
@@ -87,7 +91,14 @@ namespace PackIt.DTO
         /// <summary> Updates a data item. </summary>
         ///
         /// <param name="item"> The item. </param>
-        public abstract void Update(TData item);
+        public void Update(TData item)
+        {
+            var entity = this.Resources.Find(this.Mapper.KeyForData(item));
+            var dto = this.Mapper.ConvertToDto(item);
+            this.Resources.Remove(entity);
+            this.SaveChanges();
+            this.Resources.Add(dto);
+        }
 
         /// <summary>Configures the specified builder.</summary>
         ///
@@ -96,7 +107,8 @@ namespace PackIt.DTO
         /// <param name="keyExpression">The table key expression.</param>
         ///
         /// <returns> A builder. </returns>
-        protected static Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TDto> Configure<TDto>(ModelBuilder modelBuilder, string table, [NotNullAttribute] Expression<Func<TDto, object>> keyExpression) where TDto : class
+        protected static Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TDto> Configure<TDto>(ModelBuilder modelBuilder, string table, [NotNullAttribute] Expression<Func<TDto, object>> keyExpression)
+            where TDto : class
         {
             var builder = modelBuilder.Entity<TDto>();
             builder.ToTable(table);

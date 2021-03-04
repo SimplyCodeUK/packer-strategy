@@ -10,7 +10,7 @@ namespace PackIt.DTO
 
     /// <summary> A material repository. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData}"/>
+    /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData, TMapper}"/>
     /// <seealso cref="T:PackIt.DTO.IMaterialRepository"/>
     public class MaterialRepository : Repository<Material, DtoMaterial.DtoMaterial, MaterialMapper>, IMaterialRepository
     {

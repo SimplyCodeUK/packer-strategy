@@ -11,7 +11,7 @@ namespace PackIt.DTO
 
     /// <summary> A pack repository. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData}"/>
+    /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData, TMapper}"/>
     /// <seealso cref="T:PackIt.DTO.IPackRepository"/>
     public class PackRepository : Repository<Pack, DtoPack.DtoPack, PackMapper>, IPackRepository
     {

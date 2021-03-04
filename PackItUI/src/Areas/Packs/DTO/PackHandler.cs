@@ -6,18 +6,14 @@
 
 namespace PackItUI.Areas.Packs.DTO
 {
-    using System;
     using System.Net.Http;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
-    using Newtonsoft.Json;
     using PackItUI.Areas.App.Models;
     using PackItUI.Areas.Common.DTO;
 
     /// <summary> Pack I/O implementation. </summary>
     ///
-    /// <seealso cref="T:PackItUI.Areas.Packs.DTO.IPackHandler"/>
+    /// <seealso cref="T:PackItUI.Areas.Common.DTO.DbServiceHandler{TData}"/>
     public class PackHandler : DbServiceHandler<PackIt.Pack.Pack>
     {
         /// <summary>

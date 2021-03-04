@@ -17,7 +17,7 @@ namespace PackItUI.Areas.Plans.DTO
 
     /// <summary> Plan I/O implementation. </summary>
     ///
-    /// <seealso cref="T:PackItUI.Areas.Plans.DTO.IPlanHandler"/>
+    /// <seealso cref="T:PackItUI.Areas.Common.DTO.DbServiceHandler{TData}"/>
     public class PlanHandler : DbServiceHandler<PackIt.Plan.Plan>
     {
         /// <summary>

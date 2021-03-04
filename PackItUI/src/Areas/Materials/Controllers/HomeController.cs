@@ -16,6 +16,8 @@ namespace PackItUI.Areas.Materials.Controllers
     using PackItUI.Helpers;
 
     /// <summary> A controller for handling the Materials Home Page. </summary>
+    ///
+    /// <seealso cref="T:PackItUI.Areas.Common.Controller.PackItController{TCategoryName, TData, TModel}"/>
     [Area("Materials")]
     public class HomeController : PackItController<HomeController, PackIt.Material.Material, MaterialEditViewModel.Material>
     {

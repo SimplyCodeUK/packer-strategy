@@ -12,6 +12,11 @@ namespace PackItUI.Areas.Common.Controller
     using PackItUI.Areas.Common.DTO;
 
     /// <summary> A base class for MVC controller handling data. </summary>
+    ///
+    /// <typeparam name="TCategoryName"> The logger category. </typeparam>
+    /// <typeparam name="TData"> The type of the data. </typeparam>
+    /// <typeparam name="TModel"> Controller Model. </typeparam>
+
     public class PackItController<TCategoryName, TData, TModel> : Controller
         where TData : new()
     {
@@ -25,7 +30,7 @@ namespace PackItUI.Areas.Common.Controller
         protected readonly IMapper mapper;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="PackItController{TCategoryName, TData}" /> class.
+        /// Initialises a new instance of the <see cref="PackItController{TCategoryName, TData, TModel}" /> class.
         /// </summary>
         ///
         /// <param name="logger"> The logger. </param>

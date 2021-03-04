@@ -7,7 +7,6 @@
 namespace PackIt.DTO
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
     using PackIt.Material;
@@ -24,7 +23,6 @@ namespace PackIt.DTO
         /// <param name="options"> Options for controlling the operation. </param>
         public MaterialContext(DbContextOptions<MaterialContext> options)
             : base(options)
-
         {
         }
 
@@ -46,18 +44,6 @@ namespace PackIt.DTO
             {
                 return null;
             }
-        }
-
-        /// <summary> Updates the material described by item. </summary>
-        ///
-        /// <param name="item"> The item. </param>
-        public override void Update(Material item)
-        {
-            var entity = this.Resources.Find(item.MaterialId);
-            var dto = this.Mapper.ConvertToDto(item);
-            this.Resources.Remove(entity);
-            this.SaveChanges();
-            this.Resources.Add(dto);
         }
 
         /// <summary>
