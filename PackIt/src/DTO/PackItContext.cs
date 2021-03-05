@@ -19,6 +19,7 @@ namespace PackIt.DTO
     /// <typeparam name="TDtoData"> The type of the data transfer object. </typeparam>
     /// <typeparam name="TMapper"> Data to/from DTO mapper. </typeparam>
     public abstract class PackItContext<TData, TDtoData, TMapper> : DbContext
+        where TData : class
         where TDtoData : class
         where TMapper : PackItMapper<TData, TDtoData>, new()
     {
@@ -46,6 +47,13 @@ namespace PackIt.DTO
         ///
         /// <returns> Query for list of TDtoData. </returns>
         protected abstract IQueryable<TDtoData> ConstructQuery();
+
+        /// <summary>Construct a find task.</summary>
+        ///
+        /// <param name="key"> The key to search for. </param>
+        ///
+        /// <returns> The find task. </returns>
+        protected abstract System.Threading.Tasks.Task<TDtoData> ConstructFindTask(string key);
 
         /// <summary> Gets all data. </summary>
         ///
@@ -86,7 +94,19 @@ namespace PackIt.DTO
         /// <param name="key"> The key. </param>
         ///
         /// <returns> The found material. </returns>
-        public abstract TData Find(string key);
+        public TData Find(string key)
+        {
+            try
+            {
+                var query = ConstructFindTask(key);
+                query.Wait();
+                return this.Mapper.ConvertToData(query.Result);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
         /// <summary> Updates a data item. </summary>
         ///

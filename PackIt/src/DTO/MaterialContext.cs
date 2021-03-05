@@ -6,7 +6,6 @@
 
 namespace PackIt.DTO
 {
-    using System;
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
     using PackIt.Material;
@@ -24,26 +23,6 @@ namespace PackIt.DTO
         public MaterialContext(DbContextOptions<MaterialContext> options)
             : base(options)
         {
-        }
-
-        /// <summary> Searches for the first material. </summary>
-        ///
-        /// <param name="key"> The key. </param>
-        ///
-        /// <returns> The found material. </returns>
-        public override Material Find(string key)
-        {
-            try
-            {
-                var query = ConstructQuery().SingleAsync(p => p.MaterialId == key);
-
-                query.Wait();
-                return this.Mapper.ConvertToData(query.Result);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
         }
 
         /// <summary>
@@ -92,6 +71,16 @@ namespace PackIt.DTO
                 .Include(m => m.Sections);
 
             return query;
+        }
+
+        /// <summary>Construct a find task.</summary>
+        ///
+        /// <param name="key"> The key to search for. </param>
+        ///
+        /// <returns> The find task. </returns>
+        protected override System.Threading.Tasks.Task<DtoMaterial.DtoMaterial> ConstructFindTask(string key)
+        {
+            return ConstructQuery().SingleAsync(p => p.MaterialId == key);
         }
 
         /// <summary>Configures the specified builder.</summary>

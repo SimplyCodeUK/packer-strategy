@@ -108,6 +108,7 @@ namespace PackIt
         }
 
         private static void ReadData<TContext, TData, TDtoData, TMapper>(IServiceScope serviceScope, string filename)
+            where TData : class
             where TDtoData : class
             where TContext : PackItContext<TData, TDtoData, TMapper>
             where TMapper : PackItMapper<TData, TDtoData>, new()

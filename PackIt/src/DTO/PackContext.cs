@@ -6,7 +6,6 @@
 
 namespace PackIt.DTO
 {
-    using System;
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
     using PackIt.Pack;
@@ -24,26 +23,6 @@ namespace PackIt.DTO
         public PackContext(DbContextOptions<PackContext> options)
             : base(options)
         {
-        }
-
-        /// <summary> Searches for the first pack. </summary>
-        ///
-        /// <param name="key"> The key. </param>
-        ///
-        /// <returns> The found pack. </returns>
-        public override Pack Find(string key)
-        {
-            try
-            {
-                var query = ConstructQuery().SingleAsync(p => p.PackId == key);
-
-                query.Wait();
-                return this.Mapper.ConvertToData(query.Result);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
         }
 
         /// <summary>
@@ -98,6 +77,16 @@ namespace PackIt.DTO
                 .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Sections);
 
             return query;
+        }
+
+        /// <summary>Construct a find task.</summary>
+        ///
+        /// <param name="key"> The key to search for. </param>
+        ///
+        /// <returns> The find task. </returns>
+        protected override System.Threading.Tasks.Task<DtoPack.DtoPack> ConstructFindTask(string key)
+        {
+            return ConstructQuery().SingleAsync(p => p.PackId == key);
         }
 
         /// <summary>Configures the specified builder.</summary>

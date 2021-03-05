@@ -14,6 +14,7 @@ namespace PackIt.DTO
     /// <typeparam name="TDtoData"> The type of the data transfer object. </typeparam>
     /// <typeparam name="TMapper"> Data to/from DTO mapper. </typeparam>
     public class Repository<TData, TDtoData, TMapper>
+        where TData : class
         where TDtoData : class
         where TMapper : PackItMapper<TData, TDtoData>, new()
     {
