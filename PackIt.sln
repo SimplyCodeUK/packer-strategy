@@ -42,7 +42,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItUI.Test", "PackItUI\t
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItDraw", "PackItDraw\src\PackItDraw.csproj", "{3FC756A2-8063-432D-971A-82F119E2CCFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackItDraw.Test", "PackItDraw\test\PackItDraw.Test.csproj", "{50C2D5CB-7541-4CF4-9D87-46D24736DF56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItDraw.Test", "PackItDraw\test\PackItDraw.Test.csproj", "{50C2D5CB-7541-4CF4-9D87-46D24736DF56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D498A2E9-8772-44F3-AD62-D68035D88591}"
+	ProjectSection(SolutionItems) = preProject
+		docs\.gitignore = docs\.gitignore
+		docs\doxygen = docs\doxygen
+		docs\DOXYGENHOME.md = docs\DOXYGENHOME.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
