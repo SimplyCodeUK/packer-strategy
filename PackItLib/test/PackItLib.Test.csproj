@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -29,7 +29,7 @@
     </PackageReference>
     <PackageReference Include="OpenCover" Version="4.7.922" />
     <PackageReference Include="OpenCoverToCoberturaConverter" Version="0.3.4" />
-    <PackageReference Include="ReportGenerator" Version="4.8.6" />
+    <PackageReference Include="ReportGenerator" Version="4.8.7" />
   </ItemGroup>
 
   <ItemGroup>

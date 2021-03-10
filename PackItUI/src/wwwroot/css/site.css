@@ -1,8 +1,8 @@
-﻿/*
+/**
  * Copyright (c) Simply Code Ltd. All rights reserved.
  * Licensed under the MIT License.
  * See LICENSE file in the project root for full license information.
- */
+**/
 
 body {
     padding-top: 50px;
@@ -23,13 +23,8 @@ body {
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
+.carousel-inner .item img[src=".svg"] {
     width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
 }
 
 /* Hide/rearrange for smaller screens */

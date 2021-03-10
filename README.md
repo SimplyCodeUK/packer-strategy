@@ -26,7 +26,7 @@
 
 [![Font Awesome 5](https://img.shields.io/badge/FontAwesome-v5.4.1-green.svg)](https://www.jsdelivr.com/package/npm/font-awesome-5-css)
 
-[![JQuery](https://img.shields.io/badge/JQuery-v3.5.1-green.svg)](https://www.jsdelivr.com/package/npm/jquery)
+[![JQuery](https://img.shields.io/badge/JQuery-v3.6.0-green.svg)](https://www.jsdelivr.com/package/npm/jquery)
 
 [![JQuery Validation](https://img.shields.io/badge/JQueryValidation-v1.19.3-green.svg)](https://www.jsdelivr.com/package/npm/jquery-validation)
 
@@ -52,7 +52,7 @@
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
 - [.NET Core SDK 5.0.103](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.8.5](https://www.visualstudio.com/)
+- [Visual Studio 2019 Version 16.9.0](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
