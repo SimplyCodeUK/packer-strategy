@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8966A5E7-72BB-48F0-A9D8-AAFB4ADF88DC}"
 	ProjectSection(SolutionItems) = preProject
 		.codacy.yml = .codacy.yml
+		.codeclimate.yml = .codeclimate.yml
 		.eslintignore = .eslintignore
 		.gitignore = .gitignore
 		.travis.yml = .travis.yml

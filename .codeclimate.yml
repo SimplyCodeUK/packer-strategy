@@ -8,3 +8,20 @@ checks:
     enabled: true
     config:
       threshold: 100
+plugins:
+  csslint:
+    enabled: true
+    checks:
+      order-alphabetical:
+        enabled: false
+  eslint:
+    enabled: true
+  markdownlint:
+    enabled: true
+    checks:
+      MD009:
+        enabled: false
+      MD013:
+        enabled: false
+      MD033:
+        enabled: false
