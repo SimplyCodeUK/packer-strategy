@@ -55,10 +55,10 @@ script:
   - dotnet build PackItUI/src/PackItUI.csproj           --configuration $CONFIG
   - dotnet build PackItUI/test/PackItUI.Test.csproj     --configuration $CONFIG
   - dotnet pack PackItLib/src/PackItLib.csproj          --configuration $CONFIG
-  - dotnet test PackItLib/test/PackItLib.Test.csproj    --configuration $CONFIG --logger:trx
-  - dotnet test PackIt/test/PackIt.Test.csproj          --configuration $CONFIG --logger:trx
-  - dotnet test PackItDraw/test/PackItDraw.Test.csproj  --configuration $CONFIG --logger:trx
-  - dotnet test PackItUI/test/PackItUI.Test.csproj      --configuration $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura PackItLib/test/PackItLib.Test.csproj   --configuration $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura PackIt/test/PackIt.Test.csproj         --configuration $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura PackItDraw/test/PackItDraw.Test.csproj --configuration $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura PackItUI/test/PackItUI.Test.csproj     --configuration $CONFIG --logger:trx
 
 notifications:
   slack: simplycodeuk:FZI8WzeengkGv5LI7WQSCrJs
