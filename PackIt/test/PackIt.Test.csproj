@@ -51,10 +51,13 @@
     <None Update="Controllers\TestData\uploadsPass.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DTO\TestData\material.json">
+    <None Update="DTO\TestData\material_bottle.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DTO\TestData\plan.json">
+	  <None Update="DTO\TestData\material_pallet.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="DTO\TestData\plan.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="DTO\TestData\pack.json">

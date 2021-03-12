@@ -29,9 +29,21 @@ namespace PackIt.Test.DTO
 
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
-        public void ConvertMaterial()
+        public void ConvertMaterialBottle()
         {
-            var text = File.ReadAllText("DTO/TestData/material.json");
+            DoTest("DTO/TestData/material_bottle.json");
+        }
+
+        /// <summary> (Unit Test Method) post this message. </summary>
+        [Test]
+        public void ConvertMaterialPallet()
+        {
+            DoTest("DTO/TestData/material_pallet.json");
+        }
+
+        private void DoTest(string file)
+        {
+            var text = File.ReadAllText(file);
             var material = JsonConvert.DeserializeObject<Material>(text);
             var dto = this.mapper.ConvertToDto(material);
 
@@ -57,11 +69,36 @@ namespace PackIt.Test.DTO
                     Assert.AreEqual(collation.MaterialId, material.MaterialId);
                     Assert.AreEqual(collation.LayerIndex, layer.LayerIndex);
                     Assert.AreEqual(collation.CollationIndex, collationIndex);
-
                     ++collationIndex;
                 }
-
                 ++layerIndex;
+            }
+            Assert.AreEqual(dto.Layers.Count, material.Layers.Count);
+
+            int palletDeckIndex = 0;
+            foreach (var palletDeck in dto.PalletDecks)
+            {
+                Assert.AreEqual(palletDeck.MaterialId, material.MaterialId);
+                Assert.AreEqual(palletDeck.PalletDeckIndex, palletDeckIndex);
+
+                Assert.AreEqual(palletDeck.Planks.Count, material.PalletDecks[palletDeckIndex].Planks.Count);
+                int plankIndex = 0;
+                foreach (var plank in palletDeck.Planks)
+                {
+                    Assert.AreEqual(plank.MaterialId, material.MaterialId);
+                    Assert.AreEqual(plank.PalletDeckIndex, palletDeck.PalletDeckIndex);
+                    Assert.AreEqual(plank.PlankIndex, plankIndex);
+                    ++plankIndex;
+                }
+                ++palletDeckIndex;
+            }
+
+            int sectionIndex = 0;
+            foreach (var section in dto.Sections)
+            {
+                Assert.AreEqual(section.MaterialId, material.MaterialId);
+                Assert.AreEqual(section.SectionIndex, sectionIndex);
+                ++sectionIndex;
             }
         }
     }

@@ -1,0 +1,170 @@
+{
+  "MaterialType": 4,
+  "MaterialId": "Benl.125ml",
+  "Name": "125ml Brown Gl.Bottle",
+  "Form": 5,
+  "ClosureType": 0,
+  "ClosureWeight": 0,
+  "StackStep": 0,
+  "Flap": 0,
+  "InternalLength": 46,
+  "InternalBreadth": 46,
+  "InternalHeight": 108,
+  "InternalVolume": 164.343843,
+  "NettWeight": 0.075,
+  "ExternalLength": 48,
+  "ExternalBreadth": 48,
+  "ExternalHeight": 110,
+  "ExternalVolume": 165.405701,
+  "GrossWeight": 0.075,
+  "LoadCapacity": 0,
+  "CentreOfGravityX": 0,
+  "CentreOfGravityY": 0,
+  "CentreOfGravityZ": 0,
+  "Caliper": 1,
+  "CellLength": 0,
+  "CellBreadth": 0,
+  "CellHeight": 0,
+  "BlankArea": 0,
+  "Density": 0,
+  "BoardStrength": 0,
+  "TargetCompression": 0,
+  "Costings": [
+    {
+      "Quantity": 1000,
+      "QuantityCost": 2000,
+      "VolumeCost": 0,
+      "AreaCost": 0,
+      "LengthCost": 0
+    },
+    {
+      "Quantity": 5000,
+      "QuantityCost": 9000,
+      "VolumeCost": 0,
+      "AreaCost": 0,
+      "LengthCost": 0
+    },
+    {
+      "Quantity": 10000,
+      "QuantityCost": 16500,
+      "VolumeCost": 0,
+      "AreaCost": 0,
+      "LengthCost": 0
+    },
+    {
+      "Quantity": 50000,
+      "QuantityCost": 75000,
+      "VolumeCost": 0,
+      "AreaCost": 0,
+      "LengthCost": 0
+    },
+    {
+      "Quantity": 100000,
+      "QuantityCost": 115000,
+      "VolumeCost": 0,
+      "AreaCost": 0,
+      "LengthCost": 0
+    }
+  ],
+  "Layers": [
+    {
+      "Layers": 0,
+      "OutputRotation": 0,
+      "ParentRotation": 0,
+      "Rotation": 0,
+      "Percent": 0,
+      "Length": 0,
+      "Breadth": 0,
+      "BondRotation": 0,
+      "BondEastWest": 0,
+      "BondNorthSouth": 0,
+      "Bond180Degrees": 0,
+      "Bond90Degrees": 0,
+      "LineEastWest": 0,
+      "LineNorthSouth": 0,
+      "Line180Degrees": 0,
+      "Line90Degrees": 0,
+      "Count": 0
+    }
+  ],
+  "Sections": [
+    {
+      "Shape": 1,
+      "SectionType": 2,
+      "Dimension0": 42,
+      "Dimension1": 42,
+      "Dimension2": 0,
+      "Dimension3": 0,
+      "Dimension4": 0,
+      "Dimension5": 0,
+      "Dimension6": 0,
+      "Dimension7": 0,
+      "Height": 0
+    },
+    {
+      "Shape": 1,
+      "SectionType": 1,
+      "Dimension0": 48,
+      "Dimension1": 48,
+      "Dimension2": 0,
+      "Dimension3": 0,
+      "Dimension4": 0,
+      "Dimension5": 0,
+      "Dimension6": 0,
+      "Dimension7": 0,
+      "Height": 6
+    },
+    {
+      "Shape": 1,
+      "SectionType": 0,
+      "Dimension0": 47.8,
+      "Dimension1": 47.8,
+      "Dimension2": 0,
+      "Dimension3": 0,
+      "Dimension4": 0,
+      "Dimension5": 0,
+      "Dimension6": 0,
+      "Dimension7": 0,
+      "Height": 70
+    },
+    {
+      "Shape": 1,
+      "SectionType": 0,
+      "Dimension0": 44,
+      "Dimension1": 44,
+      "Dimension2": 0,
+      "Dimension3": 0,
+      "Dimension4": 0,
+      "Dimension5": 0,
+      "Dimension6": 0,
+      "Dimension7": 0,
+      "Height": 80
+    },
+    {
+      "Shape": 1,
+      "SectionType": 0,
+      "Dimension0": 32,
+      "Dimension1": 32,
+      "Dimension2": 0,
+      "Dimension3": 0,
+      "Dimension4": 0,
+      "Dimension5": 0,
+      "Dimension6": 0,
+      "Dimension7": 0,
+      "Height": 92
+    },
+    {
+      "Shape": 1,
+      "SectionType": 0,
+      "Dimension0": 26,
+      "Dimension1": 26,
+      "Dimension2": 0,
+      "Dimension3": 0,
+      "Dimension4": 0,
+      "Dimension5": 0,
+      "Dimension6": 0,
+      "Dimension7": 0,
+      "Height": 95
+    }
+  ]
+}

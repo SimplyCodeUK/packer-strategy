@@ -1,0 +1,169 @@
+{
+  "MaterialType": 15,
+  "MaterialId": "EUR",
+  "Name": "EUROPALLET 1200 x 800",
+  "Form": 1,
+  "ClosureType": 0,
+  "ClosureWeight": 0,
+  "StackStep": 0,
+  "Flap": 0,
+  "InternalLength": 1200,
+  "InternalBreadth": 800,
+  "InternalHeight": 144,
+  "InternalVolume": 138240,
+  "NettWeight": 22.5,
+  "ExternalLength": 1200,
+  "ExternalBreadth": 800,
+  "ExternalHeight": 144,
+  "ExternalVolume": 138240,
+  "GrossWeight": 22.5,
+  "LoadCapacity": 1000,
+  "CentreOfGravityX": 0,
+  "CentreOfGravityY": 0,
+  "CentreOfGravityZ": 0,
+  "Caliper": 144,
+  "CellLength": 0,
+  "CellBreadth": 0,
+  "CellHeight": 0,
+  "BlankArea": 0.96,
+  "Density": 0,
+  "BoardStrength": 0,
+  "TargetCompression": 0,
+  "Costings": [
+    {
+      "Quantity": 100,
+      "QuantityCost": 1000,
+      "VolumeCost": 0,
+      "AreaCost": 0,
+      "LengthCost": 0
+    },
+    {
+      "Quantity": 500,
+      "QuantityCost": 4000,
+      "VolumeCost": 0,
+      "AreaCost": 0,
+      "LengthCost": 0
+    }
+  ],
+  "Layers": [
+    {
+      "Layers": 0,
+      "OutputRotation": 0,
+      "ParentRotation": 0,
+      "Rotation": 0,
+      "Percent": 0,
+      "Length": 0,
+      "Breadth": 0,
+      "BondRotation": 0,
+      "BondEastWest": 0,
+      "BondNorthSouth": 0,
+      "Bond180Degrees": 0,
+      "Bond90Degrees": 0,
+      "LineEastWest": 0,
+      "LineNorthSouth": 0,
+      "Line180Degrees": 0,
+      "Line90Degrees": 0,
+      "Count": 0
+    }
+  ],
+  "PalletDecks": [
+    {
+      "Caliper": 22,
+      "Planks": [
+        {
+          "NoX": 1,
+          "NoY": 3,
+          "Shape": 0,
+          "PosX": 0,
+          "PosY": 0,
+          "GapX": 0,
+          "GapY": 182.5,
+          "Length": 1200,
+          "Breadth": 145
+        },
+        {
+          "NoX": 1,
+          "NoY": 2,
+          "Shape": 0,
+          "PosX": 0,
+          "PosY": 191,
+          "GapX": 0,
+          "GapY": 218,
+          "Length": 1200,
+          "Breadth": 100
+        }
+      ]
+    },
+    {
+      "Caliper": 22,
+      "Planks": [
+        {
+          "NoX": 3,
+          "NoY": 1,
+          "Shape": 0,
+          "PosX": 0,
+          "PosY": 0,
+          "GapX": 382.5,
+          "GapY": 0,
+          "Length": 145,
+          "Breadth": 800
+        }
+      ]
+    },
+    {
+      "Caliper": 78,
+      "Planks": [
+        {
+          "NoX": 3,
+          "NoY": 2,
+          "Shape": 0,
+          "PosX": 0,
+          "PosY": 0,
+          "GapX": 382.5,
+          "GapY": 600,
+          "Length": 145,
+          "Breadth": 100
+        },
+        {
+          "NoX": 3,
+          "NoY": 1,
+          "Shape": 0,
+          "PosX": 0,
+          "PosY": 327.5,
+          "GapX": 382.5,
+          "GapY": 0,
+          "Length": 145,
+          "Breadth": 145
+        }
+      ]
+    },
+    {
+      "Caliper": 22,
+      "Planks": [
+        {
+          "NoX": 1,
+          "NoY": 2,
+          "Shape": 0,
+          "PosX": 0,
+          "PosY": 0,
+          "GapX": 0,
+          "GapY": 600,
+          "Length": 1200,
+          "Breadth": 100
+        },
+        {
+          "NoX": 1,
+          "NoY": 1,
+          "Shape": 0,
+          "PosX": 0,
+          "PosY": 327.5,
+          "GapX": 0,
+          "GapY": 0,
+          "Length": 1200,
+          "Breadth": 145
+        }
+      ]
+    }
+  ],
+  "Sections": []
+}
