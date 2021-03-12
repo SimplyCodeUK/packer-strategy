@@ -37,14 +37,15 @@
 <a name="status"></a>
 ## Status
 
-| Build                       | Result |
-| :----                       | :----- |
-| Azure DevOps Build          | [![Build Badge](https://simplycodeuk.visualstudio.com/_apis/public/build/definitions/e0e00fa3-b395-4320-937a-56af7d655cc5/1/badge)](https://simplycodeuk.visualstudio.com/packer-strategy/_build/index?context=mine&path=%5C&definitionId=1&_a=completed) |
-| Azure DevOps Coverage       | [![Coverage Badge](https://img.shields.io/azure-devops/coverage/simplycodeuk/packer-strategy/1)](https://simplycodeuk.visualstudio.com/packer-strategy/_build/index?context=mine&path=%5C&definitionId=1&_a=completed) |
-| Travis Linux                | [![Build Status](https://travis-ci.com/SimplyCodeUK/packer-strategy.svg)](https://travis-ci.com/SimplyCodeUK/packer-strategy) |
-| Codacy Quality              | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d7a5a9f269a744d38dcda165f328517a)](https://www.codacy.com/app/SimplyCodeUK/packer-strategy?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SimplyCodeUK/packer-strategy&amp;utm_campaign=Badge_Grade) |
-| Code Climate Quality        | [![Maintainability](https://api.codeclimate.com/v1/badges/429a3e46a3799c29b0b0/maintainability)](https://codeclimate.com/github/SimplyCodeUK/packer-strategy/maintainability) |
-| Sonarcloud Status           | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SimplyCodeUK_packer-strategy&metric=alert_status)](https://sonarcloud.io/dashboard?id=SimplyCodeUK_packer-strategy) |
+| Build                 | Result |
+| :----                 | :----- |
+| Azure DevOps Build    | [![Build Badge](https://simplycodeuk.visualstudio.com/_apis/public/build/definitions/e0e00fa3-b395-4320-937a-56af7d655cc5/1/badge)](https://simplycodeuk.visualstudio.com/packer-strategy/_build/index?context=mine&path=%5C&definitionId=1&_a=completed) |
+| Azure DevOps Coverage | [![Coverage Badge](https://img.shields.io/azure-devops/coverage/simplycodeuk/packer-strategy/1)](https://simplycodeuk.visualstudio.com/packer-strategy/_build/index?context=mine&path=%5C&definitionId=1&_a=completed) |
+| Azure DevOps Tests    | [![Tests Badge](https://img.shields.io/azure-devops/tests/simplycodeuk/packer-strategy/1)](https://simplycodeuk.visualstudio.com/packer-strategy/_build/index?context=mine&path=%5C&definitionId=1&_a=completed) |
+| Travis Linux          | [![Build Status](https://travis-ci.com/SimplyCodeUK/packer-strategy.svg)](https://travis-ci.com/SimplyCodeUK/packer-strategy) |
+| Codacy Quality        | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d7a5a9f269a744d38dcda165f328517a)](https://www.codacy.com/app/SimplyCodeUK/packer-strategy?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SimplyCodeUK/packer-strategy&amp;utm_campaign=Badge_Grade) |
+| Code Climate Quality  | [![Maintainability](https://api.codeclimate.com/v1/badges/429a3e46a3799c29b0b0/maintainability)](https://codeclimate.com/github/SimplyCodeUK/packer-strategy/maintainability) |
+| Sonarcloud Status     | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SimplyCodeUK_packer-strategy&metric=alert_status)](https://sonarcloud.io/dashboard?id=SimplyCodeUK_packer-strategy) |
 
 <a name="development-environment"></a>
 ## Development Environment
