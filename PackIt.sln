@@ -48,8 +48,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D498A2E9-8772-44F3-AD62-D68035D88591}"
 	ProjectSection(SolutionItems) = preProject
 		docs\.gitignore = docs\.gitignore
+		docs\API-VERSIONING.md = docs\API-VERSIONING.md
 		docs\doxygen = docs\doxygen
 		docs\DOXYGENHOME.md = docs\DOXYGENHOME.md
+		docs\README-VERSIONING.md = docs\README-VERSIONING.md
+		docs\RELEASE-NOTES-PROCESS.md = docs\RELEASE-NOTES-PROCESS.md
+		docs\SERVICE-VERSIONING.md = docs\SERVICE-VERSIONING.md
 	EndProjectSection
 EndProject
 Global
