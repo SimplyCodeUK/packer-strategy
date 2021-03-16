@@ -57,10 +57,10 @@ script:
   - dotnet build PackItUI/src/PackItUI.csproj           --configuration $CONFIG
   - dotnet build PackItUI/test/PackItUI.Test.csproj     --configuration $CONFIG
   - dotnet pack PackItLib/src/PackItLib.csproj          --configuration $CONFIG
-  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov PackItLib/test/PackItLib.Test.csproj   --configuration $CONFIG --logger:trx
-  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov PackIt/test/PackIt.Test.csproj         --configuration $CONFIG --logger:trx
-  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov PackItDraw/test/PackItDraw.Test.csproj --configuration $CONFIG --logger:trx
-  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov PackItUI/test/PackItUI.Test.csproj     --configuration $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItLib/test/PackItLib.Test.csproj   --configuration $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         --configuration $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/test/PackItDraw.Test.csproj --configuration $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItUI/test/PackItUI.Test.csproj     --configuration $CONFIG --logger:trx
 
 # Pipe the coverage data to Code Climate
 after_script:
