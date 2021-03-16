@@ -13,7 +13,7 @@ namespace PackIt.DTO
     /// <summary> Maps from and to DtoMaterial </summary>
     ///
     /// <seealso cref="T:PackIt.DTO.PackItMapper{TData, TDtoData}"/>
-    public class MaterialMapper : PackItMapper<Material, DtoMaterial.DtoMaterial>
+    public class MaterialMapper : IPackItMapper<Material, DtoMaterial.DtoMaterial>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static MapperConfiguration configModelToDto = new MapperConfiguration(
@@ -97,7 +97,7 @@ namespace PackIt.DTO
         /// <param name="data"> Data to convert. </param>
         /// 
         /// <returns> The converted DTO. </returns>
-        public override DtoMaterial.DtoMaterial ConvertToDto(Material data)
+        public DtoMaterial.DtoMaterial ConvertToDto(Material data)
         {
             return mapperModelToDto.Map<DtoMaterial.DtoMaterial>(data);
         }
@@ -107,7 +107,7 @@ namespace PackIt.DTO
         /// <param name="dtoData"> DTO to convert. </param>
         ///
         /// <returns> The converted Data. </returns>
-        public override Material ConvertToData(DtoMaterial.DtoMaterial dtoData)
+        public Material ConvertToData(DtoMaterial.DtoMaterial dtoData)
         {
             return mapperDtoToModel.Map<Material>(dtoData);
         }
@@ -117,7 +117,7 @@ namespace PackIt.DTO
         /// <param name="data"> Data to get the key for. </param>
         ///
         /// <returns> The key. </returns>
-        public override string KeyForData(Material data)
+        public string KeyForData(Material data)
         {
             return data.MaterialId;
         }

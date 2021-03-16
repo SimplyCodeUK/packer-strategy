@@ -111,7 +111,7 @@ namespace PackIt
             where TData : class
             where TDtoData : class
             where TContext : PackItContext<TData, TDtoData, TMapper>
-            where TMapper : PackItMapper<TData, TDtoData>, new()
+            where TMapper : IPackItMapper<TData, TDtoData>, new()
         {
             var context = serviceScope.ServiceProvider.GetService<TContext>();
             context.Database.EnsureDeleted();

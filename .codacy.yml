@@ -5,3 +5,9 @@
 exclude_paths:
   - '**.min.css'
   - '**.min.js'
+
+engines:
+  duplication:
+    enabled: true
+    exclude_paths:
+      - 'Test*.cs'

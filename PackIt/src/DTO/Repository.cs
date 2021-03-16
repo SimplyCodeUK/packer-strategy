@@ -16,7 +16,7 @@ namespace PackIt.DTO
     public class Repository<TData, TDtoData, TMapper>
         where TData : class
         where TDtoData : class
-        where TMapper : PackItMapper<TData, TDtoData>, new()
+        where TMapper : IPackItMapper<TData, TDtoData>, new()
     {
         /// <summary> The context. </summary>
         private readonly PackItContext<TData, TDtoData, TMapper> context;

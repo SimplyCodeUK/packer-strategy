@@ -44,9 +44,6 @@ namespace PackItUI.Test.Areas.Materials.Controllers
         /// <summary> The time out for disconnected services. </summary>
         private static readonly TimeSpan TimeOut = new TimeSpan(0, 0, 0, 0, 20);
 
-        /// <summary> The controller logger. </summary>
-        private ILogger<HomeController> logger;
-
         /// <summary> The controller under test. </summary>
         private HomeController controller;
 
@@ -240,9 +237,8 @@ namespace PackItUI.Test.Areas.Materials.Controllers
         /// <summary> Setup for disconnected service. </summary>
         private void SetupDisconnected()
         {
-            this.logger = Mock.Of<ILogger<HomeController>>();
             this.controller = new HomeController(
-                this.logger,
+                Mock.Of<ILogger<HomeController>>(),
                 new MaterialHandler(Options)
                 {
                     TimeOut = TimeOut
@@ -271,9 +267,8 @@ namespace PackItUI.Test.Areas.Materials.Controllers
             httpHandler
                 .AddRequest(HttpMethod.Delete, root + "Materials/Id1");
 
-            this.logger = Mock.Of<ILogger<HomeController>>();
             this.controller = new HomeController(
-                this.logger,
+                Mock.Of<ILogger<HomeController>>(),
                 new MaterialHandler(Options, httpHandler)
                 {
                     TimeOut = TimeOut

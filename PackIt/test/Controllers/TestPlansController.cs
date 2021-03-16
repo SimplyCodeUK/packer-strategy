@@ -24,9 +24,6 @@ namespace PackIt.Test.Controllers
     [TestFixture]
     public class TestPlansController
     {
-        /// <summary> The controller logger. </summary>
-        private ILogger<PlansController> logger;
-
         /// <summary> The controller under test. </summary>
         private PlansController controller;
 
@@ -41,8 +38,9 @@ namespace PackIt.Test.Controllers
             var context = new PlanContext(builder.Options);
             var repository = new PlanRepository(context);
 
-            this.logger = Mock.Of<ILogger<PlansController>>();
-            this.controller = new PlansController(this.logger, repository);
+            this.controller = new PlansController(
+                Mock.Of<ILogger<PlansController>>(),
+                repository);
             Assert.IsNotNull(this.controller);
         }
 

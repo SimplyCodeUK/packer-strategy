@@ -1,0 +1,98 @@
+{
+  "MaterialId": "Crate.1",
+  "Type": 10,
+  "Name": "Open Crate",
+  "Form": 1,
+  "ClosureType": 0,
+  "ClosureWeight": 0,
+  "StackStep": 0,
+  "Flap": 0,
+  "InternalLength": 246,
+  "InternalBreadth": 188,
+  "InternalHeight": 230,
+  "InternalVolume": 10637.04,
+  "NettWeight": 0.766,
+  "ExternalLength": 256,
+  "ExternalBreadth": 198,
+  "ExternalHeight": 235,
+  "ExternalVolume": 11911.68,
+  "GrossWeight": 0.268,
+  "LoadCapacity": 10,
+  "CentreOfGravityX": 0,
+  "CentreOfGravityY": 0,
+  "CentreOfGravityZ": 0,
+  "Caliper": 5,
+  "CellLength": 60,
+  "CellBreadth": 60,
+  "CellHeight": 110,
+  "BlankArea": 0.599238,
+  "Density": 0,
+  "BoardStrength": 0,
+  "TargetCompression": 0,
+  "Costings": [
+    {
+      "Quantity": 100,
+      "QuantityCost": 500,
+      "VolumeCost": 0,
+      "AreaCost": 0,
+      "LengthCost": 0
+    },
+    {
+      "Quantity": 500,
+      "QuantityCost": 2000,
+      "VolumeCost": 0,
+      "AreaCost": 0,
+      "LengthCost": 0
+    },
+    {
+      "Quantity": 1000,
+      "QuantityCost": 4000,
+      "VolumeCost": 0,
+      "AreaCost": 0,
+      "LengthCost": 0
+    },
+    {
+      "Quantity": 5000,
+      "QuantityCost": 7000,
+      "VolumeCost": 0,
+      "AreaCost": 0,
+      "LengthCost": 0
+    }
+  ],
+  "Layers": [
+    {
+      "Layers": 1,
+      "OutputRotation": 0,
+      "ParentRotation": 0,
+      "Rotation": 0,
+      "Percent": 0,
+      "Length": 0,
+      "Breadth": 0,
+      "BondRotation": 0,
+      "BondEastWest": 0,
+      "BondNorthSouth": 0,
+      "Bond180Degrees": 0,
+      "Bond90Degrees": 0,
+      "LineEastWest": 0,
+      "LineNorthSouth": 0,
+      "Line180Degrees": 0,
+      "Line90Degrees": 0,
+      "Count": 12,
+      "Collations": [
+        {
+          "PosX": 0,
+          "PosY": 0,
+          "GapX": 4,
+          "GapY": 2,
+          "CountX": 4,
+          "CountY": 3,
+          "Even": 0,
+          "Nested": 0,
+          "AlongBreadth": 0,
+          "Rotation": 0
+        }
+      ]
+    }
+  ],
+  "Sections": []
+}

@@ -17,9 +17,6 @@ namespace PackItDraw.Test.Controllers
     [TestFixture]
     public class TestAboutController
     {
-        /// <summary> The controller logger. </summary>
-        private ILogger<AboutController> logger;
-
         /// <summary> The controller under test. </summary>
         private AboutController controller;
 
@@ -27,8 +24,8 @@ namespace PackItDraw.Test.Controllers
         [SetUp]
         public void BeforeTest()
         {
-            this.logger = Mock.Of<ILogger<AboutController>>();
-            this.controller = new AboutController(this.logger);
+            this.controller = new AboutController(
+                Mock.Of<ILogger<AboutController>>());
             Assert.IsNotNull(this.controller);
         }
 
