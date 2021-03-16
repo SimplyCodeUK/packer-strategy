@@ -9,6 +9,7 @@
   + [Add functionality to the plans service](#add-functionality-to-the-plans-service)
 
 <a name="acronyms"></a>
+
 ## Acronyms
 
 | Acronym | Description                   |
@@ -16,6 +17,7 @@
 | API     | Application Program Interface |
 
 <a name="overview"></a>
+
 ## Overview
 
 A PackIt Platform release consists of a specific versioned set of
@@ -33,6 +35,7 @@ clients.
 This document summarises the relevant versioning policies.
 
 <a name="relationship-between-components"></a>
+
 ## Relationship between components
 
 The following rules ensure consistent numbering of Hub, Service, and
@@ -63,6 +66,7 @@ For Service versioning policies, see [How to version an API](./api-versioning.ht
 For more about release notes, see [Release Notes Process](./release-notes-process.html)
 
 <a name="use-cases-when-updating-the-version-of-the-hub-api-and-services"></a>
+
 ## Use Cases when updating the version of the Hub, API and Services
 
 | Use Case             | Service Version                   | Hub Version  | API Version |
@@ -73,9 +77,11 @@ For more about release notes, see [Release Notes Process](./release-notes-proces
 | Change functionality | Major change to services impacted | Major change | Increment   |
 
 <a name="version-change-examples"></a>
+
 ## Version change examples
 
 <a name="defect-fix-on-the-plans-service"></a>
+
 ### Defect fix on the plans service
 
 |             | Service Version     | Hub Version | API Version |
@@ -84,6 +90,7 @@ For more about release notes, see [Release Notes Process](./release-notes-proces
 | Post change | Plans service 1.0.1 | 1.0.2       | v1          |
 
 <a name="add-functionality-to-the-plans-service"></a>
+
 ### Add functionality to the plans service
 
 |             | Service Version     | Hub Version | API Version |

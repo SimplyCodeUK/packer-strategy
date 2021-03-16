@@ -24,9 +24,6 @@ namespace PackIt.Test.Controllers
     [TestFixture]
     public class TestMaterialsController
     {
-        /// <summary> The controller logger. </summary>
-        private ILogger<MaterialsController> logger;
-
         /// <summary> The controller under test. </summary>
         private MaterialsController controller;
 
@@ -41,8 +38,9 @@ namespace PackIt.Test.Controllers
             var context = new MaterialContext(builder.Options);
             var repository = new MaterialRepository(context);
 
-            this.logger = Mock.Of<ILogger<MaterialsController>>();
-            this.controller = new MaterialsController(this.logger, repository);
+            this.controller = new MaterialsController(
+                Mock.Of<ILogger<MaterialsController>>(),
+                repository);
             Assert.IsNotNull(this.controller);
         }
 

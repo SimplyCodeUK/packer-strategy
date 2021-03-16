@@ -13,7 +13,7 @@ namespace PackIt.DTO
     /// <summary> Maps from and to DtoPlan </summary>
     ///
     /// <seealso cref="T:PackIt.DTO.PackItMapper{TData, TDtoData}"/>
-    public class PlanMapper : PackItMapper<Plan, DtoPlan.DtoPlan>
+    public class PlanMapper : IPackItMapper<Plan, DtoPlan.DtoPlan>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static MapperConfiguration configModelToDto = new MapperConfiguration(
@@ -60,7 +60,7 @@ namespace PackIt.DTO
         /// <param name="data"> Data to convert. </param>
         /// 
         /// <returns> The converted DTO. </returns>
-        public override DtoPlan.DtoPlan ConvertToDto(Plan data)
+        public DtoPlan.DtoPlan ConvertToDto(Plan data)
         {
             return mapperModelToDto.Map<DtoPlan.DtoPlan>(data);
         }
@@ -70,7 +70,7 @@ namespace PackIt.DTO
         /// <param name="dtoData"> DTO to convert. </param>
         ///
         /// <returns> The converted Data. </returns>
-        public override Plan ConvertToData(DtoPlan.DtoPlan dtoData)
+        public Plan ConvertToData(DtoPlan.DtoPlan dtoData)
         {
             return mapperDtoToModel.Map<Plan>(dtoData);
         }
@@ -80,7 +80,7 @@ namespace PackIt.DTO
         /// <param name="data"> Data to get the key for. </param>
         ///
         /// <returns> The key. </returns>
-        public override string KeyForData(Plan data)
+        public string KeyForData(Plan data)
         {
             return data.PlanId;
         }

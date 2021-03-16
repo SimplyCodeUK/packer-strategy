@@ -2,12 +2,15 @@
 *.leu
 *.min.css
 *.min.js
+coverage.info
+coverage.opencover.xml
 
 **/.vs/
 **/bin/
 **/lib/
 **/obj/
 **/MSTest.*
+**/TestResults/
 
 **/.vagrant/
 **/*.log

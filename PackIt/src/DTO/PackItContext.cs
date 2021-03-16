@@ -21,12 +21,12 @@ namespace PackIt.DTO
     public abstract class PackItContext<TData, TDtoData, TMapper> : DbContext
         where TData : class
         where TDtoData : class
-        where TMapper : PackItMapper<TData, TDtoData>, new()
+        where TMapper : IPackItMapper<TData, TDtoData>, new()
     {
         /// <summary> Create a DbContext. </summary>
         ///
         /// <param name="options"> The options for this context. </param>
-        public PackItContext([NotNullAttribute] DbContextOptions options)
+        protected PackItContext([NotNullAttribute] DbContextOptions options)
             : base(options)
         {
             Resources = this.Set<TDtoData>();
@@ -41,7 +41,7 @@ namespace PackIt.DTO
         /// <summary> Gets the resources. </summary>
         ///
         /// <value> The resources. </value>
-        public PackItMapper<TData, TDtoData> Mapper { get; private set; }
+        public IPackItMapper<TData, TDtoData> Mapper { get; private set; }
 
         /// <summary>Construct default query.</summary>
         ///

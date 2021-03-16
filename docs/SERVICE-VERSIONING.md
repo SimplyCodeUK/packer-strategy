@@ -6,6 +6,7 @@
 + [API deprecation](#api-deprecation)
 
 <a name="acronyms"></a>
+
 ## Acronyms
 
 | Acronym | Description                   |
@@ -13,6 +14,7 @@
 | API     | Application Program Interface |
 
 <a name="basics"></a>
+
 ## Basics
 
 The version of services will be following Semantic Versioning 2.0.0, details of
@@ -39,6 +41,7 @@ the source code management system e.g.:
 + The git short revision
 
 <a name="incompatible-api-changes"></a>
+
 ## Incompatible API changes
 
 API breaks include:
@@ -56,6 +59,7 @@ Prior to an incompatible API change, the following needs to be adhered to:
 + The migration path must be documented
 
 <a name="api-deprecation"></a>
+
 ## API deprecation
 
 API deprecation should go through two stages

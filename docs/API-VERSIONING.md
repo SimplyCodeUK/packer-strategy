@@ -5,6 +5,7 @@
 + [When to change versions](#when-to-change-versions)
 
 <a name="acronyms"></a>
+
 ## Acronyms
 
 | Acronym | Description                   |
@@ -14,6 +15,7 @@
 | URI     | Uniform Resource Identifier   |
 
 <a name="basics"></a>
+
 ## Basics
 
 APIs are versioned using a **MAJOR** number only. The version of the API appears in it's URI.
@@ -33,6 +35,7 @@ https://packit.org/v2/plans
 Follow the Semantic Versioning 2.0.0 standard for **MAJOR** number format, see [this link](<http://semver.org/spec/v2.0.0.html>)
 
 <a name="when-to-change-versions"></a>
+
 ## When to change versions
 
 The API version number indicates a certain level of backwards-compatibility for the API behaviour.

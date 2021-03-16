@@ -17,7 +17,7 @@ namespace PackItUI.Areas.Common.DTO
     /// <summary> Interface for a database service. </summary>
     ///
     /// <typeparam name="TData"> The type of the data. </typeparam>
-    public abstract class DbServiceHandler<TData> : IServiceHandler
+    public class DbServiceHandler<TData> : IServiceHandler
     {
         /// <summary> The HTTP client. </summary>
         protected readonly HttpClient httpClient;

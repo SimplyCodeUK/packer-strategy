@@ -20,6 +20,9 @@ namespace PackIt.Test.DbInterface
             var manager = new DbConnectionManager();
             var inmemory = new DbContextBuilderInMemory();
             var postgres = new DbContextBuilderPostgres();
+            Assert.IsNotNull(manager);
+            Assert.IsNotNull(inmemory);
+            Assert.IsNotNull(postgres);
 
             manager.RegisterContextBuilder("inmemory", inmemory);
             manager.RegisterContextBuilder("postgres", postgres);
@@ -35,6 +38,9 @@ namespace PackIt.Test.DbInterface
             var manager = new DbConnectionManager();
             var inmemory = new DbContextBuilderInMemory();
             var postgres = new DbContextBuilderPostgres();
+            Assert.IsNotNull(manager);
+            Assert.IsNotNull(inmemory);
+            Assert.IsNotNull(postgres);
 
             manager.RegisterContextBuilder("inmemory", inmemory);
             manager.RegisterContextBuilder("postgres", postgres);

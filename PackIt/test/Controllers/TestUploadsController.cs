@@ -45,9 +45,6 @@ namespace PackIt.Test.Controllers
         /// <summary> The options. </summary>
         private static readonly OptionsWrapper<AppSettings> Options = new OptionsWrapper<AppSettings>(AppSettings);
 
-        /// <summary> The controller logger. </summary>
-        private ILogger<UploadsController> logger;
-
         /// <summary> The controller under test. </summary>
         private UploadsController controller;
 
@@ -116,8 +113,9 @@ namespace PackIt.Test.Controllers
         /// <summary> Setup the controller as if the services are not running. </summary>
         private void SetupServicesNotRunning()
         {
-            this.logger = Mock.Of<ILogger<UploadsController>>();
-            this.controller = new UploadsController(this.logger, Options);
+            this.controller = new UploadsController(
+                Mock.Of<ILogger<UploadsController>>(),
+                Options);
             Assert.IsNotNull(this.controller);
         }
 
@@ -139,9 +137,10 @@ namespace PackIt.Test.Controllers
                             return new HttpResponseMessage(HttpStatusCode.OK);
                         }));
 
-            this.logger = Mock.Of<ILogger<UploadsController>>();
-            this.controller = new UploadsController(this.logger, Options, handler.Object);
-
+            this.controller = new UploadsController(
+                Mock.Of<ILogger<UploadsController>>(),
+                Options,
+                handler.Object);
             Assert.IsNotNull(this.controller);
         }
     }

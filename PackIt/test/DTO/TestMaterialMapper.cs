@@ -36,6 +36,13 @@ namespace PackIt.Test.DTO
 
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
+        public void ConvertMaterialCrate()
+        {
+            DoTest("DTO/TestData/material_crate.json");
+        }
+
+        /// <summary> (Unit Test Method) post this message. </summary>
+        [Test]
         public void ConvertMaterialPallet()
         {
             DoTest("DTO/TestData/material_pallet.json");
