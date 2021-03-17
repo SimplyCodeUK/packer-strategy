@@ -4,6 +4,7 @@
 *.min.js
 coverage.info
 coverage.opencover.xml
+coverage.cobertura.xml
 
 **/.vs/
 **/bin/
