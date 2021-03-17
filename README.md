@@ -7,6 +7,7 @@
 - [Status](#status)
 - [Development Environment](#development-environment)
 - [Vagrant](#vagrant)
+- [Documentation](./docs/DOXYGENHOME.md)
 
 <a name="github"></a>
 
