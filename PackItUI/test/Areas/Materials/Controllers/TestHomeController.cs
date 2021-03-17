@@ -227,7 +227,7 @@ namespace PackItUI.Test.Areas.Materials.Controllers
             {
                 ["index"] = 5
             };
-    var result = this.controller.SectionRow(body);
+            var result = this.controller.SectionRow(body);
 
             Assert.IsInstanceOf<PartialViewResult>(result);
             Assert.IsInstanceOf<PackIt.Material.Section>(((PartialViewResult)result).Model);
