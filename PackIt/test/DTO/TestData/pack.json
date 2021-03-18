@@ -669,7 +669,12 @@
               "Density": 0,
               "BoardStrength": 0,
               "TargetCompression": 0,
-              "DatabaseMaterials": []
+              "DatabaseMaterials": [
+                {
+                  "MaterialType": "4",
+                  "MaterialId": "Benl.125ml"
+                }
+              ]
             },
             {
               "MaterialType": 21,

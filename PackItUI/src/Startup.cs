@@ -19,8 +19,10 @@ namespace PackItUI
     using PackItUI.Areas.Packs.DTO;
     using PackItUI.Areas.Plans.DTO;
     using PackItUI.Areas.Uploads.DTO;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary> A start up. </summary>
+    [ExcludeFromCodeCoverage]
     public class Startup
     {
         /// <summary>
