@@ -7,6 +7,7 @@
 namespace PackIt
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -22,6 +23,7 @@ namespace PackIt
     using PackIt.Models;
 
     /// <summary> A start up. </summary>
+    [ExcludeFromCodeCoverage]
     public class Startup
     {
         /// <summary> The database connection manager. </summary>

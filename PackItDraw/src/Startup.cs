@@ -11,8 +11,10 @@ namespace PackItDraw
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary> A start up. </summary>
+    [ExcludeFromCodeCoverage]
     public class Startup
     {
         /// <summary>

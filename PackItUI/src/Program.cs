@@ -9,8 +9,10 @@ namespace PackItUI
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary> A program. </summary>
+    [ExcludeFromCodeCoverage]
     public class Program
     {
         /// <summary>
