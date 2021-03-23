@@ -15,9 +15,9 @@ namespace PackItUI.Areas.Packs.Controllers
 
     /// <summary> A controller for handling the Packs Home Page. </summary>
     ///
-    /// <seealso cref="T:PackItUI.Areas.Common.Controller.PackItController{TCategoryName, TData, TModel}"/>
+    /// <seealso cref="T:PackItUI.Areas.Common.Controller.PackItController{TCategoryName, TData, TModel, TEditViewModel}"/>
     [Area("Packs")]
-    public class HomeController : PackItController<HomeController, PackIt.Pack.Pack, PackEditViewModel.Pack>
+    public class HomeController : PackItController<HomeController, PackIt.Pack.Pack, PackEditViewModel.Pack, PackEditViewModel>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
@@ -34,22 +34,11 @@ namespace PackItUI.Areas.Packs.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public override async Task<IActionResult> Index()
         {
             this.logger.LogInformation("Index");
             var model = new HomeViewModel(await this.handler.InformationAsync(), await this.handler.ReadAsync());
             return this.View("Index", model);
-        }
-
-        /// <summary> Display the form to create a new pack. </summary>
-        ///
-        /// <returns> An IActionResult. </returns>
-        [HttpGet]
-        public IActionResult Create()
-        {
-            this.logger.LogInformation("Create");
-            var model = new PackEditViewModel();
-            return this.View("Create", model);
         }
 
         /// <summary> Stores the pack from the form. </summary>
@@ -59,7 +48,7 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(PackEditViewModel model)
+        public override async Task<IActionResult> Create(PackEditViewModel model)
         {
             var data = new PackIt.Pack.Pack();
             this.logger.LogInformation("Create Pack id {0}", data.PackId);
@@ -131,21 +120,6 @@ namespace PackItUI.Areas.Packs.Controllers
             };
 
             return this.View("Delete", model);
-        }
-
-        /// <summary> Deletes the specified pack. </summary>
-        ///
-        /// <param name="id"> The pack identifier. </param>
-        ///
-        /// <returns> An IActionResult. </returns>
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DoDelete(string id)
-        {
-            this.logger.LogInformation("DoDelete id {0}", id);
-            await this.handler.DeleteAsync(id);
-            return this.RedirectToAction(nameof(this.Index));
         }
 
         /// <summary> Display the specified pack. </summary>
