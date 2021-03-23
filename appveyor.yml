@@ -21,14 +21,19 @@ platform: Any CPU
 build_script:
 - ps: >-
     dotnet --version
+
     dotnet restore
+
     dotnet build /p:DocumentationFile=codedoc.xml
+
     7z a codedocs.zip codedoc.xml -r
 
 test_script:
 - ps: >-
     dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" --logger:trx
+
     7z a coverage.zip coverage.cobertura.xml -r
+
     7z a testresults.zip *.trx -r
 
 artifacts:
