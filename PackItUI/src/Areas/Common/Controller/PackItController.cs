@@ -38,7 +38,7 @@ namespace PackItUI.Areas.Common.Controller
         ///
         /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        public PackItController(ILogger<TCategoryName> logger, DbServiceHandler<TData> handler)
+        protected PackItController(ILogger<TCategoryName> logger, DbServiceHandler<TData> handler)
         {
             this.logger = logger;
             this.handler = handler;
