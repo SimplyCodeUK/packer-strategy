@@ -1,0 +1,40 @@
+# Copyright (c) 2018-2021 Simply Code Ltd. All rights reserved.
+# Licensed under the MIT License.
+# See LICENSE file in the project root for full license information.
+
+version: 1.0.{build}
+
+image:
+- Visual Studio 2019
+- Ubuntu1804
+
+environment:
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_PRINT_TELEMETRY_MESSAGE: false
+
+configuration:
+- Debug
+- Release
+
+platform: Any CPU
+
+build_script:
+- ps: >-
+    dotnet --version
+    dotnet restore
+    dotnet build /p:DocumentationFile=codedoc.xml
+    7z a codedocs.zip codedoc.xml -r
+
+test_script:
+- ps: >-
+    dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" --logger:trx
+    7z a coverage.zip coverage.cobertura.xml -r
+    7z a testresults.zip *.trx -r
+
+artifacts:
+- path: coverage.zip
+  name: Coverage
+- path: codedocs.zip
+  name: Code Documentation
+- path: testresults.zip
+  name: Test Results
