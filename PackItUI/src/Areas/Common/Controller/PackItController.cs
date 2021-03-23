@@ -10,15 +10,18 @@ namespace PackItUI.Areas.Common.Controller
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using PackItUI.Areas.Common.DTO;
+    using System.Threading.Tasks;
 
     /// <summary> A base class for MVC controller handling data. </summary>
     ///
     /// <typeparam name="TCategoryName"> The logger category. </typeparam>
     /// <typeparam name="TData"> The type of the data. </typeparam>
     /// <typeparam name="TModel"> Controller Model. </typeparam>
+    /// <typeparam name="TEditViewModel"> Edit view model. </typeparam>
 
-    public class PackItController<TCategoryName, TData, TModel> : Controller
+    public abstract class PackItController<TCategoryName, TData, TModel, TEditViewModel> : Controller
         where TData : new()
+        where TEditViewModel : new()
     {
         /// <summary> The logger. </summary>
         protected readonly ILogger<TCategoryName> logger;
@@ -30,7 +33,7 @@ namespace PackItUI.Areas.Common.Controller
         protected readonly IMapper mapper;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="PackItController{TCategoryName, TData, TModel}" /> class.
+        /// Initialises a new instance of the <see cref="PackItController{TCategoryName, TData, TModel, TEditViewModel}" /> class.
         /// </summary>
         ///
         /// <param name="logger"> The logger. </param>
@@ -45,6 +48,47 @@ namespace PackItUI.Areas.Common.Controller
                                 cfg.CreateMap<TData, TModel>();
                                 cfg.CreateMap<TModel, TData>();
                             }).CreateMapper();
+        }
+
+        /// <summary> Handle the Materials view request. </summary>
+        ///
+        /// <returns> An IActionResult. </returns>
+        [HttpGet]
+        public abstract Task<IActionResult> Index();
+
+        /// <summary> Stores the plan from the form. </summary>
+        ///
+        /// <param name="model"> The plan to save. </param>
+        ///
+        /// <returns> An IActionResult. </returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public abstract Task<IActionResult> Create(TEditViewModel model);
+
+        /// <summary> Display the form to create a new data item. </summary>
+        ///
+        /// <returns> An IActionResult. </returns>
+        [HttpGet]
+        public IActionResult Create()
+        {
+            this.logger.LogInformation("Create");
+            var model = new TEditViewModel();
+            return this.View("Create", model);
+        }
+
+        /// <summary> Deletes the specified data. </summary>
+        ///
+        /// <param name="id"> The data identifier. </param>
+        ///
+        /// <returns> An IActionResult. </returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DoDelete(string id)
+        {
+            this.logger.LogInformation("DoDelete id {0}", id);
+            await this.handler.DeleteAsync(id);
+            return this.RedirectToAction(nameof(this.Index));
         }
     }
 }
