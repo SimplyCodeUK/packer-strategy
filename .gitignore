@@ -2,6 +2,7 @@
 *.leu
 *.min.css
 *.min.js
+codedoc.xml
 coverage.info
 coverage.opencover.xml
 coverage.cobertura.xml
