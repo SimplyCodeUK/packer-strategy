@@ -48,11 +48,33 @@ namespace PackIt.Test.Controllers
         /// <summary> The controller under test. </summary>
         private UploadsController controller;
 
+        /// <summary> Data to upload. </summary>
+        private UploadsController.Bulk bulk;
+
         /// <summary> Setup for all unit tests here. </summary>
         [SetUp]
         public void BeforeTest()
         {
             this.SetupServicesNotRunning();
+
+            var text = File.ReadAllText("Controllers/TestData/uploadsPass.json");
+            this.bulk = JsonConvert.DeserializeObject<UploadsController.Bulk>(text);
+
+            // make sure IDs are unique
+            foreach (var item in this.bulk.Plans)
+            {
+                item.PlanId = Guid.NewGuid().ToString();
+            }
+
+            foreach (var item in this.bulk.Materials)
+            {
+                item.MaterialId = Guid.NewGuid().ToString();
+            }
+
+            foreach (var item in this.bulk.Packs)
+            {
+                item.PackId = Guid.NewGuid().ToString();
+            }
         }
 
         /// <summary> (Unit Test Method) post successful. </summary>
@@ -61,26 +83,7 @@ namespace PackIt.Test.Controllers
         {
             this.SetupServicesRunning();
 
-            var text = File.ReadAllText("Controllers/TestData/uploadsPass.json");
-            var bulk = JsonConvert.DeserializeObject<UploadsController.Bulk>(text);
-
-            // make sure IDs are unique
-            foreach (var item in bulk.Plans)
-            {
-                item.PlanId = Guid.NewGuid().ToString();
-            }
-
-            foreach (var item in bulk.Materials)
-            {
-                item.MaterialId = Guid.NewGuid().ToString();
-            }
-
-            foreach (var item in bulk.Packs)
-            {
-                item.PackId = Guid.NewGuid().ToString();
-            }
-
-            var result = this.controller.Post(bulk);
+            var result = this.controller.Post(this.bulk);
             result.Wait();
 
             Assert.IsNotNull(result);
@@ -90,14 +93,17 @@ namespace PackIt.Test.Controllers
             var obj = (ObjectResult)result.Result;
             Assert.AreEqual((int)HttpStatusCode.Created, obj.StatusCode);
 
-            Assert.IsInstanceOf<List<string>>(obj.Value);
-            List<string> added = (List<string>)obj.Value;
+            Assert.IsInstanceOf<Dictionary<string, List<string>>>(obj.Value);
+            var ret = (Dictionary<string, List<string>>)(obj.Value);
             Assert.AreEqual(
-                bulk.Materials.Count + bulk.Packs.Count + bulk.Plans.Count,
-                added.Count);
+                this.bulk.Materials.Count + this.bulk.Packs.Count + this.bulk.Plans.Count,
+                ret["pass"].Count);
+            Assert.AreEqual(
+                0,
+                ret["fail"].Count);
         }
 
-        /// <summary> (Unit Test Method) posts the no data. </summary>
+        /// <summary> (Unit Test Method) posts no data. </summary>
         [Test]
         public void PostNoData()
         {
@@ -108,6 +114,30 @@ namespace PackIt.Test.Controllers
             Assert.IsNotNull(result.Result);
             Assert.IsInstanceOf<BadRequestResult>(result.Result);
             Assert.AreEqual((int)HttpStatusCode.BadRequest, ((BadRequestResult)result.Result).StatusCode);
+        }
+
+        /// <summary> (Unit Test Method) post disconnected. </summary>
+        [Test]
+        public void PostDisconnected()
+        {
+            var result = this.controller.Post(this.bulk);
+            result.Wait();
+
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Result);
+            Assert.IsInstanceOf<ObjectResult>(result.Result);
+
+            var obj = (ObjectResult)result.Result;
+            Assert.AreEqual((int)HttpStatusCode.Conflict, obj.StatusCode);
+
+            Assert.IsInstanceOf<Dictionary<string, List<string>>>(obj.Value);
+            var ret = (Dictionary<string, List<string>>)(obj.Value);
+            Assert.AreEqual(
+                0,
+                ret["pass"].Count);
+            Assert.AreEqual(
+                bulk.Materials.Count + bulk.Packs.Count + bulk.Plans.Count,
+                ret["fail"].Count);
         }
 
         /// <summary> Setup the controller as if the services are not running. </summary>

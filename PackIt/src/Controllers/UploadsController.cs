@@ -131,12 +131,11 @@ namespace PackIt.Controllers
                 }
             }
 
-            if (fail.Count != 0)
-            {
-                return this.StatusCode((int)HttpStatusCode.Conflict, fail);
-            }
-
-            return this.StatusCode((int)HttpStatusCode.Created, pass);
+            Dictionary<string, List<string>> ret = new Dictionary<string, List<string>>();
+            ret.Add("pass", pass);
+            ret.Add("fail", fail);
+            var status = fail.Count != 0 ? HttpStatusCode.Conflict : HttpStatusCode.Created;
+            return this.StatusCode((int)status, ret);
         }
 
         /// <summary>
