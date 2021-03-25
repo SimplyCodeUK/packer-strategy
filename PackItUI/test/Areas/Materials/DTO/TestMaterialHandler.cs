@@ -17,7 +17,7 @@ namespace PackItUI.Test.Areas.Materials.DTO
 
     /// <summary> (Unit Test Fixture) a handler for test materials. </summary>
     [TestFixture]
-    public class TestPackHandler
+    public class TestMaterialHandler
     {
         /// <summary> The service endpoints. </summary>
         private static readonly ServiceEndpoints Endpoints = new ServiceEndpoints
