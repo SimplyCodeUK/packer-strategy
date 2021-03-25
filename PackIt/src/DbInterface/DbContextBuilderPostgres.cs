@@ -7,11 +7,13 @@
 namespace PackIt.DbInterface
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using Microsoft.EntityFrameworkCore;
 
     /// <summary> Postgres database connection. </summary>
     ///
     /// <seealso cref="PackIt.DbInterface.IDbContextBuilder" />
+    [ExcludeFromCodeCoverage]
     public class DbContextBuilderPostgres : IDbContextBuilder
     {
         /// <summary> Creates the context options builder for an in memory database. </summary>

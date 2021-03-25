@@ -43,3 +43,9 @@ artifacts:
   name: Code Documentation
 - path: testresults.zip
   name: Test Results
+
+before_deploy:
+- ps: >-
+    dotnet pack
+
+    dotnet publish
