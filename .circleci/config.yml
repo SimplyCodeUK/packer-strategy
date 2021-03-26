@@ -6,7 +6,6 @@
  jobs:
    build:
      executor: win/default
-
      steps:
        - checkout
        - run:
@@ -15,11 +14,32 @@
        - run:
            name: "Pack the solution"
            command: dotnet pack
+   test:
+     executor: win/default
+     steps:
        - run:
            name: "Test solution"
            command: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" --logger:trx --results-directory:test_coverage --collect:"Code Coverage"
+       - store_artifacts:
+           path: ./test_coverage
+   publish:
+     executor: win/default
+     steps:
        - run:
            name: "Publish the solution"
            command: dotnet publish
-       - store_artifacts:
-           path: ./test_coverage
+
+ workflows:
+    version: 2
+    build-test-and-publish:
+      jobs:
+        - build:
+            matrix:
+              parameters:
+                config: ["Debug", "Release"]
+        - test:
+            requires:
+              - build
+        - publish:
+            requires:
+              - test
