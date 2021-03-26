@@ -25,3 +25,6 @@ plugins:
         enabled: false
       MD033:
         enabled: false
+exclude_patterns:
+- "**/*.cshtml"
+- "**/test/"
