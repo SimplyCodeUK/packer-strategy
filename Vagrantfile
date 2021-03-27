@@ -168,7 +168,7 @@ MACHINES.each do |_key, machine|
       cd #{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}
       nuget restore #{SERVICES[service.to_sym][:project_file]}
       dotnet restore #{SERVICES[service.to_sym][:project_file]} --disable-parallel
-      dotnet publish --configuration Release
+      dotnet publish -c Release
       if [ -d "./node_modules" ]
       then
         mkdir ./wwwroot/lib

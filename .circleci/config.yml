@@ -8,12 +8,6 @@ workflows:
           matrix:
             parameters:
               config: ["Debug", "Release"]
-      - test:
-          requires:
-            - build
-      - publish:
-          requires:
-            - test
 
 orbs:
   win: circleci/windows@2.2.0
@@ -28,30 +22,27 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Nuget Restore"
+          command: nuget restore PackIt.sln
+      - run:
+          name: "dotnet version"
+          command: dotnet --version
+      - run:
+          name: "Restore solution"
+          command: dotnet restore PackIt.sln
+      - run:
           name: "Build solution"
-          command: dotnet build --configuration << parameters.config >> /p:DocumentationFile=codedoc.xml
+          command: dotnet build PackIt.sln -c << parameters.config >> /p:DocumentationFile=codedoc.xml
       - run:
           name: "Pack the solution"
-          command: dotnet pack --configuration << parameters.config >> 
-  test:
-    parameters:
-      config:
-        default: "Debug"
-        type: string
-    executor: win/default
-    steps:
+          command: dotnet pack PackIt.sln -c << parameters.config >> 
       - run:
           name: "Test solution"
-          command: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" --logger:trx --configuration << parameters.config >> --results-directory:test_coverage --collect:"Code Coverage"
+          command: dotnet test PackIt.sln -c << parameters.config >> /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" --logger:trx --results-directory:test_coverage --collect:"Code Coverage"
+      - store_test_results:
+          path: ./test_coverage
       - store_artifacts:
           path: ./test_coverage
-  publish:
-    parameters:
-      config:
-        default: "Debug"
-        type: string
-    executor: win/default
-    steps:
       - run:
           name: "Publish the solution"
-          command: dotnet publish --configuration << parameters.config >>
+          command: dotnet publish PackIt.sln -c << parameters.config >>

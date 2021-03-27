@@ -48,19 +48,19 @@ install:
 script:
   - doxygen docs/doxygen
   - sonar-scanner
-  - dotnet build PackItLib/src/PackItLib.csproj         --configuration $CONFIG /p:DocumentationFile=codedoc.xml
-  - dotnet build PackItLib/test/PackItLib.Test.csproj   --configuration $CONFIG /p:DocumentationFile=codedoc.xml
-  - dotnet build PackIt/src/PackIt.csproj               --configuration $CONFIG /p:DocumentationFile=codedoc.xml
-  - dotnet build PackIt/test/PackIt.Test.csproj         --configuration $CONFIG /p:DocumentationFile=codedoc.xml
-  - dotnet build PackItDraw/src/PackItDraw.csproj       --configuration $CONFIG /p:DocumentationFile=codedoc.xml
-  - dotnet build PackItDraw/test/PackItDraw.Test.csproj --configuration $CONFIG /p:DocumentationFile=codedoc.xml
-  - dotnet build PackItUI/src/PackItUI.csproj           --configuration $CONFIG /p:DocumentationFile=codedoc.xml
-  - dotnet build PackItUI/test/PackItUI.Test.csproj     --configuration $CONFIG /p:DocumentationFile=codedoc.xml
-  - dotnet pack PackItLib/src/PackItLib.csproj          --configuration $CONFIG
-  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItLib/test/PackItLib.Test.csproj   --configuration $CONFIG --logger:trx
-  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         --configuration $CONFIG --logger:trx
-  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/test/PackItDraw.Test.csproj --configuration $CONFIG --logger:trx
-  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItUI/test/PackItUI.Test.csproj     --configuration $CONFIG --logger:trx
+  - dotnet build PackItLib/src/PackItLib.csproj         -c $CONFIG /p:DocumentationFile=codedoc.xml
+  - dotnet build PackItLib/test/PackItLib.Test.csproj   -c $CONFIG /p:DocumentationFile=codedoc.xml
+  - dotnet build PackIt/src/PackIt.csproj               -c $CONFIG /p:DocumentationFile=codedoc.xml
+  - dotnet build PackIt/test/PackIt.Test.csproj         -c $CONFIG /p:DocumentationFile=codedoc.xml
+  - dotnet build PackItDraw/src/PackItDraw.csproj       -c $CONFIG /p:DocumentationFile=codedoc.xml
+  - dotnet build PackItDraw/test/PackItDraw.Test.csproj -c $CONFIG /p:DocumentationFile=codedoc.xml
+  - dotnet build PackItUI/src/PackItUI.csproj           -c $CONFIG /p:DocumentationFile=codedoc.xml
+  - dotnet build PackItUI/test/PackItUI.Test.csproj     -c $CONFIG /p:DocumentationFile=codedoc.xml
+  - dotnet pack PackItLib/src/PackItLib.csproj          -c $CONFIG
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItLib/test/PackItLib.Test.csproj   -c $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         -c $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/test/PackItDraw.Test.csproj -c $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItUI/test/PackItUI.Test.csproj     -c $CONFIG --logger:trx
 
 # Pipe the coverage data to Code Climate
 after_script:
