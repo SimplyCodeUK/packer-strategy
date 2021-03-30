@@ -4,20 +4,20 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Test.Areas.Materials.DTO
+namespace PackItUI.Test.Areas.Uploads.DTO
 {
     using System;
     using System.Net.Http;
     using Microsoft.Extensions.Options;
     using NUnit.Framework;
     using PackItUI.Areas.App.Models;
-    using PackItUI.Areas.Materials.DTO;
+    using PackItUI.Areas.Uploads.DTO;
     using PackItUI.Services;
     using PackItUI.Test.HttpMock;
 
-    /// <summary> (Unit Test Fixture) a handler for test materials. </summary>
+    /// <summary> (Unit Test Fixture) a handler for test plans. </summary>
     [TestFixture]
-    public class TestMaterialHandler
+    public class TestUploadHandler
     {
         /// <summary> The service endpoints. </summary>
         private static readonly ServiceEndpoints Endpoints = new ServiceEndpoints
@@ -41,7 +41,7 @@ namespace PackItUI.Test.Areas.Materials.DTO
         private static readonly TimeSpan TimeOut = new TimeSpan(0, 0, 0, 0, 20);
 
         /// <summary> The handler under test. </summary>
-        private MaterialHandler handler;
+        private UploadHandler handler;
 
         /// <summary> Setup for all unit tests here. </summary>
         [SetUp]
@@ -58,7 +58,7 @@ namespace PackItUI.Test.Areas.Materials.DTO
             result.Wait();
             Assert.IsInstanceOf<ServiceInfo>(result.Result);
             Assert.AreEqual(result.Result.Version, "1");
-            Assert.AreEqual(result.Result.About, "Materials");
+            Assert.AreEqual(result.Result.About, "Uploads");
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
@@ -70,13 +70,22 @@ namespace PackItUI.Test.Areas.Materials.DTO
             result.Wait();
             Assert.IsInstanceOf<ServiceInfo>(result.Result);
             Assert.AreEqual(result.Result.Version, "Unknown");
-            Assert.AreEqual(result.Result.About, "Service down! http://localhost:8001/api/v1/");
+            Assert.AreEqual(result.Result.About, "Service down! http://localhost:8004/api/v1/");
+        }
+
+        /// <summary> (Unit Test Method) test set and get Timeout property. </summary>
+        [Test]
+        public void Timeout()
+        {
+            TimeSpan span = new TimeSpan(0, 0, 0, 0, 10);
+            this.handler.TimeOut = span;
+            Assert.AreEqual(this.handler.TimeOut, span);
         }
 
         /// <summary> Setup for disconnected service. </summary>
         private void SetupDisconnected()
         {
-            this.handler = new MaterialHandler(Options)
+            this.handler = new UploadHandler(Options)
             {
                 TimeOut = TimeOut
             };
@@ -87,14 +96,14 @@ namespace PackItUI.Test.Areas.Materials.DTO
         /// <summary> Setup for connected services. </summary>
         private void SetupConnected()
         {
-            var root = Endpoints.Materials;
+            var root = Endpoints.Uploads;
             var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, root)
-                .ContentsJson("{'Version': '1', 'About': 'Materials'}");
-            this.handler = new MaterialHandler(Options, httpHandler)
+                .ContentsJson("{'Version': '1', 'About': 'Uploads'}");
+            this.handler = new UploadHandler(Options, httpHandler)
                 {
-                    TimeOut = TimeOut
+                   TimeOut = TimeOut
                 };
             Assert.IsNotNull(this.handler);
             Assert.AreEqual(this.handler.TimeOut, TimeOut);

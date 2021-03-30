@@ -6,12 +6,8 @@
 
 namespace PackItUI.Areas.Plans.DTO
 {
-    using System;
     using System.Net.Http;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
-    using Newtonsoft.Json;
     using PackItUI.Areas.App.Models;
     using PackItUI.Areas.Common.DTO;
 

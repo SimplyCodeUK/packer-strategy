@@ -40,7 +40,7 @@ namespace PackItUI.Test.Areas.Packs.DTO
         /// <summary> The time out for disconnected services. </summary>
         private static readonly TimeSpan TimeOut = new TimeSpan(0, 0, 0, 0, 20);
 
-        /// <summary> The controller under test. </summary>
+        /// <summary> The handler under test. </summary>
         private PackHandler handler;
 
         /// <summary> Setup for all unit tests here. </summary>
@@ -50,7 +50,7 @@ namespace PackItUI.Test.Areas.Packs.DTO
             this.SetupConnected();
         }
 
-        /// <summary> (Unit Test Method) index action when the service is down. </summary>
+        /// <summary> (Unit Test Method) index action when the service is up. </summary>
         [Test]
         public void ConnectedInformationAsync()
         {
