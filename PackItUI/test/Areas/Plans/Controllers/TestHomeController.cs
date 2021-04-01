@@ -204,12 +204,36 @@ namespace PackItUI.Test.Areas.Plans.Controllers
             Assert.AreEqual("Index", redirectResult.ActionName);
         }
 
+        /// <summary> (Unit Test Method) delete post action when disconnected. </summary>
+        [Test]
+        public void DeletePostDisconnected()
+        {
+            SetupDisconnected();
+
+            var result = this.controller.DoDelete("Id1");
+            Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
+
+            var redirectResult = (RedirectToActionResult)result.Result;
+            Assert.AreEqual("Index", redirectResult.ActionName);
+        }
+
         /// <summary> Setup for disconnected service. </summary>
         private void SetupDisconnected()
         {
+            var root = Endpoints.Plans;
+            var httpHandler = new MockHttpClientHandler();
+            httpHandler
+                .AddRequest(HttpMethod.Get, root + "Plans/Id1")
+                .ThrowException = true;
+            httpHandler
+                .AddRequest(HttpMethod.Post, root + "Plans/Id1")
+                .ThrowException = true;
+            httpHandler
+                .AddRequest(HttpMethod.Delete, root + "Plans/Id1")
+                .ThrowException = true;
             this.controller = new HomeController(
                 Mock.Of<ILogger<HomeController>>(),
-                new PlanHandler(Options)
+                new PlanHandler(Options, httpHandler)
                 {
                     TimeOut = TimeOut
                 });

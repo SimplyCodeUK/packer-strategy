@@ -35,6 +35,7 @@ namespace PackItUI.Test.HttpMock
             this.RequestUri = requestUri;
             this.Content = null;
             this.Limit = 0;
+            this.ThrowException = false;
         }
 
         /// <summary> Gets the Http method. </summary>
@@ -48,6 +49,9 @@ namespace PackItUI.Test.HttpMock
 
         /// <summary> Gets or sets the limit on the number of times this request can be called. </summary>
         public int Limit { get; set; }
+
+        /// <summary> True if the request throws an exception. </summary>
+        public bool ThrowException { get; set; }
 
         /// <summary> Set the json contents of the request. </summary>
         ///

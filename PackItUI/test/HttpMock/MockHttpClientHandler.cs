@@ -6,6 +6,7 @@
 
 namespace PackItUI.Test.HttpMock
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -52,6 +53,8 @@ namespace PackItUI.Test.HttpMock
         /// <param name="request"> The HTTP request message. </param>
         /// <param name="cancellationToken"> A cancellation token to cancel the operation. </param>
         ///
+        /// <exception cref="System.Exception"> Thrown when required in testing. </exception>
+        ///
         /// <returns> The task object representing the asynchronous operation. </returns>
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
@@ -65,19 +68,21 @@ namespace PackItUI.Test.HttpMock
                     {
                         Content = mock.Content
                     };
+                    var throwException = mock.ThrowException;
 
                     if (mock.Limit > 0)
                     {
                         --mock.Limit;
-                        if (mock.Limit == 1)
+                        if (mock.Limit == 0)
                         {
                             // delete it as it has been used for the last time
                             this.requests.Remove(mock);
                         }
-                        else
-                        {
-                            --mock.Limit;
-                        }
+                    }
+
+                    if (throwException)
+                    {
+                        throw new Exception();
                     }
 
                     return Task.FromResult(responseMessage);

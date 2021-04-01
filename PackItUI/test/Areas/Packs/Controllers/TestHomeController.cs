@@ -204,6 +204,19 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             Assert.AreEqual("Index", redirectResult.ActionName);
         }
 
+        /// <summary> (Unit Test Method) delete post action when disconnected. </summary>
+        [Test]
+        public void DeletePostDisconnected()
+        {
+            SetupDisconnected();
+
+            var result = this.controller.DoDelete("Id1");
+            Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
+
+            var redirectResult = (RedirectToActionResult)result.Result;
+            Assert.AreEqual("Index", redirectResult.ActionName);
+        }
+
         /// <summary> (Unit Test Method) display get action. </summary>
         [Test]
         public void DisplayGet()
@@ -232,6 +245,20 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             Assert.AreEqual("Index", redirectResult.ActionName);
         }
 
+        /// <summary> (Unit Test Method) update post action disconnected. </summary>
+        [Test]
+        public void DisplayPostDisconnected()
+        {
+            SetupDisconnected();
+
+            var model = new PackEditViewModel();
+            var result = this.controller.Display("Id1", model);
+            Assert.IsInstanceOf<ViewResult>(result.Result);
+
+            var viewResult = (ViewResult)result.Result;
+            Assert.AreEqual("Update", viewResult.ViewName);
+        }
+
         /// <summary> (Unit Test Method) costing row post action. </summary>
         [Test]
         public void CostingRowPost()
@@ -250,9 +277,20 @@ namespace PackItUI.Test.Areas.Packs.Controllers
         /// <summary> Setup for disconnected service. </summary>
         private void SetupDisconnected()
         {
+            var root = Endpoints.Packs;
+            var httpHandler = new MockHttpClientHandler();
+            httpHandler
+                .AddRequest(HttpMethod.Get, root + "Packs/Id1")
+                .ThrowException = true;
+            httpHandler
+                .AddRequest(HttpMethod.Post, root + "Packs/Id1")
+                .ThrowException = true;
+            httpHandler
+                .AddRequest(HttpMethod.Delete, root + "Packs/Id1")
+                .ThrowException = true;
             this.controller = new HomeController(
                 Mock.Of<ILogger<HomeController>>(),
-                new PackHandler(Options)
+                new PackHandler(Options, httpHandler)
                 {
                     TimeOut = TimeOut
                 });

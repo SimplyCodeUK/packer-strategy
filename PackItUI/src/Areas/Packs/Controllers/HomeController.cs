@@ -147,17 +147,23 @@ namespace PackItUI.Areas.Packs.Controllers
         public async Task<IActionResult> Display(string id, PackEditViewModel model)
         {
             var data = await this.handler.ReadAsync(id);
-            this.logger.LogInformation("Display id {0} Pack id {1}", id, data.PackId);
 
-            data = this.mapper.Map(model.Data, data);
-            if (await this.handler.UpdateAsync(id, data))
+            if (data == null)
             {
-                return this.RedirectToAction(nameof(this.Index));
+                this.logger.LogError("Display id {0}", id);
             }
             else
             {
-                return this.View("Update", model);
+                this.logger.LogInformation("Display id {0} Pack id {1}", id, data.PackId);
+
+                data = this.mapper.Map(model.Data, data);
+                if (await this.handler.UpdateAsync(id, data))
+                {
+                    return this.RedirectToAction(nameof(this.Index));
+                }
             }
+
+            return this.View("Update", model);
         }
 
         /// <summary> Get a costing row. Used when adding a new row to the html. </summary>

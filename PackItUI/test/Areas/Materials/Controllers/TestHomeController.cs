@@ -204,6 +204,19 @@ namespace PackItUI.Test.Areas.Materials.Controllers
             Assert.AreEqual("Index", redirectResult.ActionName);
         }
 
+        /// <summary> (Unit Test Method) delete post action when disconnected. </summary>
+        [Test]
+        public void DeletePostDisconnected()
+        {
+            SetupDisconnected();
+
+            var result = this.controller.DoDelete("Id1");
+            Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
+
+            var redirectResult = (RedirectToActionResult)result.Result;
+            Assert.AreEqual("Index", redirectResult.ActionName);
+        }
+
         /// <summary> (Unit Test Method) costing row post action. </summary>
         [Test]
         public void CostingRowPost()
@@ -237,9 +250,20 @@ namespace PackItUI.Test.Areas.Materials.Controllers
         /// <summary> Setup for disconnected service. </summary>
         private void SetupDisconnected()
         {
+            var root = Endpoints.Materials;
+            var httpHandler = new MockHttpClientHandler();
+            httpHandler
+                .AddRequest(HttpMethod.Get, root + "Materials/Id1")
+                .ThrowException = true;
+            httpHandler
+                .AddRequest(HttpMethod.Post, root + "Materials/Id1")
+                .ThrowException = true;
+            httpHandler
+                .AddRequest(HttpMethod.Delete, root + "Materials/Id1")
+                .ThrowException = true;
             this.controller = new HomeController(
                 Mock.Of<ILogger<HomeController>>(),
-                new MaterialHandler(Options)
+                new MaterialHandler(Options, httpHandler)
                 {
                     TimeOut = TimeOut
                 });
