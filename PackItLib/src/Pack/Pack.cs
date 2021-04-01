@@ -8,9 +8,11 @@ namespace PackIt.Pack
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Diagnostics.CodeAnalysis;
     using PackIt.Helpers.Enums;
 
     /// <summary> A pack. </summary>
+    [ExcludeFromCodeCoverage]
     public class Pack
     {
         /// <summary>

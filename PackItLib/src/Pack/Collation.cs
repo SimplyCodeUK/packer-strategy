@@ -6,7 +6,10 @@
 
 namespace PackIt.Pack
 {
+    using System.Diagnostics.CodeAnalysis;
+
     /// <summary> A collation. </summary>
+    [ExcludeFromCodeCoverage]
     public class Collation
     {
         /// <summary> Gets or sets the position x coordinate. </summary>

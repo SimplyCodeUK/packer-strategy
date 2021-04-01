@@ -6,9 +6,11 @@
 
 namespace PackIt.Pack
 {
+    using System.Diagnostics.CodeAnalysis;
     using PackIt.Helpers.Enums;
 
     /// <summary> A key to a Material in its database. </summary>
+    [ExcludeFromCodeCoverage]
     public class DatabaseMaterial
     {
         /// <summary>

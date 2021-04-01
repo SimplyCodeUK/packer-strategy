@@ -7,9 +7,11 @@
 namespace PackIt.Pack
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using PackIt.Helpers.Enums;
 
     /// <summary> A layer. </summary>
+    [ExcludeFromCodeCoverage]
     public class Layer
     {
         /// <summary>

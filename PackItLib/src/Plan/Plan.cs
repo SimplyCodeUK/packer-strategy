@@ -7,9 +7,11 @@
 namespace PackIt.Plan
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary> A plan. </summary>
+    [ExcludeFromCodeCoverage]
     public class Plan
     {
         /// <summary>

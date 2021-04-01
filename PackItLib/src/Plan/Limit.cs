@@ -6,9 +6,11 @@
 
 namespace PackIt.Plan
 {
+    using System.Diagnostics.CodeAnalysis;
     using PackIt.Helpers.Enums;
 
     /// <summary> A limit. </summary>
+    [ExcludeFromCodeCoverage]
     public class Limit
     {
         /// <summary> Gets or sets a value indicating whether the design. </summary>

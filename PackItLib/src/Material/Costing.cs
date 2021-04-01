@@ -7,8 +7,10 @@
 namespace PackIt.Material
 {
     using System.ComponentModel.DataAnnotations;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary> A costing. </summary>
+    [ExcludeFromCodeCoverage]
     public class Costing
     {
         /// <summary> Gets or sets the quantity. </summary>

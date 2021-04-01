@@ -7,8 +7,10 @@
 namespace PackIt.Material
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary> A pallet deck. </summary>
+    [ExcludeFromCodeCoverage]
     public class PalletDeck
     {
         /// <summary>

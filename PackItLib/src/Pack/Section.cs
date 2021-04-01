@@ -7,9 +7,11 @@
 namespace PackIt.Pack
 {
     using System.ComponentModel.DataAnnotations;
+    using System.Diagnostics.CodeAnalysis;
     using PackIt.Helpers.Enums;
 
     /// <summary> A section. </summary>
+    [ExcludeFromCodeCoverage]
     public class Section
     {
         /// <summary>

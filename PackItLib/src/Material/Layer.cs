@@ -8,8 +8,10 @@ namespace PackIt.Material
 {
     using System.Collections.Generic;
     using PackIt.Helpers.Enums;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary> A layer. </summary>
+    [ExcludeFromCodeCoverage]
     public class Layer
     {
         /// <summary>

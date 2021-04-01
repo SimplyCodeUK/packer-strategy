@@ -6,9 +6,11 @@
 
 namespace PackIt.Material
 {
+    using System.Diagnostics.CodeAnalysis;
     using PackIt.Helpers.Enums;
 
     /// <summary> A plank. </summary>
+    [ExcludeFromCodeCoverage]
     public class Plank
     {
         /// <summary>
