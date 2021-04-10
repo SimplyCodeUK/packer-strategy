@@ -10,7 +10,7 @@ namespace PackItUI.Test.Areas.Plans.DTO
     using System.Net.Http;
     using Microsoft.Extensions.Options;
     using NUnit.Framework;
-    using PackItUI.Areas.App.Models;
+    using PackIt.Models;
     using PackItUI.Areas.Plans.DTO;
     using PackItUI.Services;
     using PackItUI.Test.HttpMock;

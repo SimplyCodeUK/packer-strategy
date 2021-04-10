@@ -14,6 +14,7 @@ namespace PackItUI.Test.Areas.App.Controllers
     using Microsoft.Extensions.Options;
     using Moq;
     using NUnit.Framework;
+    using PackIt.Models;
     using PackItUI.Areas.App.Controllers;
     using PackItUI.Areas.App.Models;
     using PackItUI.Areas.Materials.DTO;

@@ -8,7 +8,7 @@ namespace PackItUI.Areas.Materials.DTO
 {
     using System.Net.Http;
     using Microsoft.Extensions.Options;
-    using PackItUI.Areas.App.Models;
+    using PackIt.Models;
     using PackItUI.Areas.Common.DTO;
 
     /// <summary> Material I/O implementation. </summary>

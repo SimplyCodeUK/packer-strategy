@@ -35,9 +35,9 @@ namespace PackItDraw
         /// <param name="args"> An array of command-line argument strings. </param>
         private static IWebHostBuilder CreateHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder<Startup>(args)
-                .ConfigureAppConfiguration((builderContext, config) =>
-                {
-                    config.AddJsonFile("appsettings.local.json", optional: true);
-                });
+                   .ConfigureAppConfiguration((builderContext, config) =>
+                    {
+                        config.AddJsonFile("appsettings.local.json", optional: true);
+                    });
     }
 }

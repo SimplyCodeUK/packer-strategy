@@ -21,7 +21,7 @@ namespace PackIt.DTO.DtoPack
         /// <value> The stage level. </value>
         public StageLevel StageLevel { get; set; }
 
-        /// <summary> Gets or sets the zero-based index of the Limit. </summary>
+        /// <summary> Gets or sets the zero-based index of this Limit. </summary>
         ///
         /// <value> The Limit index. </value>
         public long LimitIndex { get; set; }

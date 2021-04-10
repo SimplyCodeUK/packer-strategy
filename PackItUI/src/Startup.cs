@@ -13,7 +13,7 @@ namespace PackItUI
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
-    using PackItUI.Areas.App.Models;
+    using PackIt.Models;
     using PackItUI.Areas.Common.DTO;
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Packs.DTO;
@@ -29,20 +29,13 @@ namespace PackItUI
         /// Initialises a new instance of the <see cref="Startup" /> class.
         /// </summary>
         ///
-        /// <param name="env"> The environment. </param>
         /// <param name="configuration"> Configuration. </param>
         /// <param name="loggerFactory"> Logger factory. </param>
-        public Startup(IWebHostEnvironment env, IConfiguration configuration, ILoggerFactory loggerFactory)
+        public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
         {
-            this.HostingEnvironment = env;
             this.Configuration = configuration;
             this.LoggerFactory = loggerFactory;
         }
-
-        /// <summary> Gets the hosting environment. </summary>
-        ///
-        /// <value> The hosting environment. </value>
-        public IWebHostEnvironment HostingEnvironment { get; }
 
         /// <summary> Gets the configuration. </summary>
         ///
@@ -54,36 +47,28 @@ namespace PackItUI
         /// <value> The logger factory. </value>
         public ILoggerFactory LoggerFactory { get; }
 
-        /// <summary>
-        /// Configures the services.
-        /// This method gets called by the runtime. Use this method to add services to the container.
-        /// </summary>
-        /// 
+        /// <summary> This method gets called by the runtime. Use this method to add services to the container. </summary>
+        ///
         /// <param name="services"> The services. </param>
         public void ConfigureServices(IServiceCollection services)
         {
             // Configure using a sub-section of the appsettings.json file.
-            services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"));
-
-            services.AddApplicationInsightsTelemetry(this.Configuration);
-
-            services.AddMvc(options => options.EnableEndpointRouting = false);
-
-            services.AddSingleton<DbServiceHandler<PackIt.Material.Material>, MaterialHandler>();
-            services.AddSingleton<DbServiceHandler<PackIt.Pack.Pack>, PackHandler>();
-            services.AddSingleton<DbServiceHandler<PackIt.Plan.Plan>, PlanHandler>();
-            services.AddSingleton<IUploadHandler, UploadHandler>();
+            services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"))
+                    .AddApplicationInsightsTelemetry(this.Configuration)
+                    .AddSingleton<DbServiceHandler<PackIt.Material.Material>, MaterialHandler>()
+                    .AddSingleton<DbServiceHandler<PackIt.Pack.Pack>, PackHandler>()
+                    .AddSingleton<DbServiceHandler<PackIt.Plan.Plan>, PlanHandler>()
+                    .AddSingleton<IUploadHandler, UploadHandler>()
+                    .AddMvc(options => options.EnableEndpointRouting = false);
         }
 
-        /// <summary>
-        /// Configures the specified application.
-        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.        
-        /// </summary>
-        /// 
-        /// <param name="app">The application.</param>
-        public void Configure(IApplicationBuilder app)
+        /// <summary> This method gets called by the runtime. Use this method to configure the HTTP request pipeline. </summary>
+        ///
+        /// <param name="app"> The application. </param>
+        /// <param name="env"> The environment. </param>
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (HostingEnvironment.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();

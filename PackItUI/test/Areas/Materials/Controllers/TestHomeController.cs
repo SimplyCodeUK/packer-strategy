@@ -13,7 +13,7 @@ namespace PackItUI.Test.Areas.Materials.Controllers
     using Microsoft.Extensions.Options;
     using Moq;
     using NUnit.Framework;
-    using PackItUI.Areas.App.Models;
+    using PackIt.Models;
     using PackItUI.Areas.Materials.Controllers;
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Materials.Models;

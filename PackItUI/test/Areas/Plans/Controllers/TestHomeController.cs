@@ -13,7 +13,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
     using Microsoft.Extensions.Options;
     using Moq;
     using NUnit.Framework;
-    using PackItUI.Areas.App.Models;
+    using PackIt.Models;
     using PackItUI.Areas.Plans.Controllers;
     using PackItUI.Areas.Plans.DTO;
     using PackItUI.Areas.Plans.Models;

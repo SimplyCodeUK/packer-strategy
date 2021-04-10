@@ -33,12 +33,10 @@ namespace PackIt
         /// Initialises a new instance of the <see cref="Startup" /> class.
         /// </summary>
         ///
-        /// <param name="env"> The environment. </param>
         /// <param name="configuration"> Configuration. </param>
         /// <param name="loggerFactory"> Logger factory. </param>
-        public Startup(IWebHostEnvironment env, IConfiguration configuration, ILoggerFactory loggerFactory)
+        public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
         {
-            this.HostingEnvironment = env;
             this.Configuration = configuration;
             this.LoggerFactory = loggerFactory;
 
@@ -48,11 +46,6 @@ namespace PackIt
             this.connectionManager.RegisterContextBuilder("inmemory", new DbContextBuilderInMemory());
             this.connectionManager.RegisterContextBuilder("postgres", new DbContextBuilderPostgres());
         }
-
-        /// <summary> Gets the hosting environment. </summary>
-        ///
-        /// <value> The hosting environment. </value>
-        public IWebHostEnvironment HostingEnvironment { get; }
 
         /// <summary> Gets the configuration. </summary>
         ///
@@ -64,33 +57,30 @@ namespace PackIt
         /// <value> The logger factory. </value>
         public ILoggerFactory LoggerFactory { get; }
 
-        /// <summary> Configure services. </summary>
+        /// <summary> This method gets called by the runtime. Use this method to add services to the container. </summary>
         ///
         /// <param name="services"> The services. </param>
         public void ConfigureServices(IServiceCollection services)
         {
             // Configure using a sub-section of the appsettings.json file.
-            services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"));
-
-            services.AddApplicationInsightsTelemetry(this.Configuration);
+            services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"))
+                    .AddApplicationInsightsTelemetry(this.Configuration)
+                    .AddApiVersioning()
+                    .AddScoped<IMaterialRepository, MaterialRepository>()
+                    .AddScoped<IPackRepository, PackRepository>()
+                    .AddScoped<IPlanRepository, PlanRepository>()
+                    .AddMvc(options => options.EnableEndpointRouting = false);
 
             this.AddDbContext<MaterialContext>(services, "MaterialContext");
             this.AddDbContext<PackContext>(services, "PackContext");
             this.AddDbContext<PlanContext>(services, "PlanContext");
-
-            // Add framework services.
-            services.AddMvc(options => options.EnableEndpointRouting = false);
-            services.AddApiVersioning();
-
-            services.AddScoped<IMaterialRepository, MaterialRepository>();
-            services.AddScoped<IPackRepository, PackRepository>();
-            services.AddScoped<IPlanRepository, PlanRepository>();
         }
 
-        /// <summary> Configures start up. </summary>
+        /// <summary> This method gets called by the runtime. Use this method to configure the HTTP request pipeline. </summary>
         ///
         /// <param name="app"> The application. </param>
-        public void Configure(IApplicationBuilder app)
+        /// <param name="env"> The environment. </param>
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseMvc(routes =>
             {
@@ -103,7 +93,7 @@ namespace PackIt
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
-            if ( HostingEnvironment.IsDevelopment() )
+            if (env.IsDevelopment())
             {
                 Seed(app);
             }
