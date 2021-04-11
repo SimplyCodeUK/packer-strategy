@@ -172,7 +172,7 @@ namespace PackItUI.Areas.Packs.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
-        public IActionResult CostingRow([FromBody]Newtonsoft.Json.Linq.JObject body)
+        public IActionResult CostingRow([FromBody] Newtonsoft.Json.Linq.JObject body)
         {
             var index = body["index"];
             this.logger.LogInformation("CostingRow {0}", index);

@@ -93,9 +93,9 @@ namespace PackItUI.Test.Areas.Packs.DTO
                 .AddRequest(HttpMethod.Get, root)
                 .ContentsJson("{'Version': '1', 'About': 'Packs'}");
             this.handler = new PackHandler(Options, httpHandler)
-                {
-                    TimeOut = TimeOut
-                };
+            {
+                TimeOut = TimeOut
+            };
             Assert.IsNotNull(this.handler);
             Assert.AreEqual(this.handler.TimeOut, TimeOut);
         }

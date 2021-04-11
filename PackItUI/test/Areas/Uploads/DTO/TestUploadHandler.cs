@@ -102,9 +102,9 @@ namespace PackItUI.Test.Areas.Uploads.DTO
                 .AddRequest(HttpMethod.Get, root)
                 .ContentsJson("{'Version': '1', 'About': 'Uploads'}");
             this.handler = new UploadHandler(Options, httpHandler)
-                {
-                   TimeOut = TimeOut
-                };
+            {
+                TimeOut = TimeOut
+            };
             Assert.IsNotNull(this.handler);
             Assert.AreEqual(this.handler.TimeOut, TimeOut);
         }

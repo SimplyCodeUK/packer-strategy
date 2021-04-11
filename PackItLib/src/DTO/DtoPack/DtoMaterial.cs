@@ -193,7 +193,7 @@ namespace PackIt.DTO.DtoPack
         /// <summary> Gets or sets the number used.  </summary>
         ///
         /// <value> The number used. </value>
-        public long Count { get; set;  }
+        public long Count { get; set; }
 
         /// <summary> Gets or sets the collection of database materials. </summary>
         ///

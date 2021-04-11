@@ -22,7 +22,7 @@ namespace PackIt.DTO
         private readonly PackItContext<TData, TDtoData, TMapper> context;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="MaterialRepository" /> class.
+        /// Initialises a new instance of the <see cref="Repository{TData, TDtoData, TMapper}" /> class.
         /// </summary>
         ///
         /// <param name="context"> The context. </param>

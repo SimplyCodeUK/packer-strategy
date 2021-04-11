@@ -9,16 +9,17 @@ namespace PackItDraw
     using System.Diagnostics.CodeAnalysis;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
-    using PackIt.Models;
+    using PackIt.DbInterface;
+    using PackIt.DTO;
 
     /// <summary> A start up. </summary>
+    ///
+    /// <seealso cref="DbStartup" />
     [ExcludeFromCodeCoverage]
-    public class Startup
+    public class Startup : DbStartup
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="Startup" /> class.
@@ -27,65 +28,47 @@ namespace PackItDraw
         /// <param name="configuration"> Configuration. </param>
         /// <param name="loggerFactory"> Logger factory. </param>
         public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
+            : base(configuration, loggerFactory)
         {
-            this.Configuration = configuration;
-            this.LoggerFactory = loggerFactory;
         }
-
-        /// <summary> Gets the configuration. </summary>
-        ///
-        /// <value> The configuration. </value>
-        public IConfiguration Configuration { get; }
-
-        /// <summary> Gets the logger factory. </summary>
-        ///
-        /// <value> The logger factory. </value>
-        public ILoggerFactory LoggerFactory { get; }
 
         /// <summary> This method gets called by the runtime. Use this method to add services to the container. </summary>
         ///
         /// <param name="services"> The services. </param>
+        ///
+        /// <seealso cref="DbStartup.SetupServices" />
         public void ConfigureServices(IServiceCollection services)
         {
-            // Configure using a sub-section of the appsettings.json file.
-            services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"))
-                    .AddApplicationInsightsTelemetry(this.Configuration)
-                    .AddApiVersioning()
+            SetupServices(services);
+            services.AddScoped<IDrawingRepository, DrawingRepository>()
                     .AddMvc(options => options.EnableEndpointRouting = false);
+
+            this.AddDbContext<DrawingContext>(services, "DrawingContext");
         }
 
         /// <summary> This method gets called by the runtime. Use this method to configure the HTTP request pipeline. </summary>
         ///
         /// <param name="app"> The application. </param>
         /// <param name="env"> The environment. </param>
+        ///
+        /// <seealso cref="DbStartup.SetupApp" />
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            SetupApp(app, env);
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=About}/{action=Get}/{id?}");
             });
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseHttpsRedirection()
+               .UseAuthorization()
+               .UseRouting()
+               .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
         }
     }
 }

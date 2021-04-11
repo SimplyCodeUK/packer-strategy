@@ -8,7 +8,6 @@ namespace PackIt.Helpers
 {
     using System;
     using System.Linq;
-    using System.Reflection;
 
     /// <summary> An attributes. </summary>
     public static class Attributes

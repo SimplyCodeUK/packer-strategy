@@ -130,7 +130,7 @@ namespace PackItUI.Areas.Materials.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
-        public IActionResult CostingRow([FromBody]Newtonsoft.Json.Linq.JObject body)
+        public IActionResult CostingRow([FromBody] Newtonsoft.Json.Linq.JObject body)
         {
             var index = body["index"];
             this.logger.LogInformation("CostingRow index {0}", index);
@@ -150,7 +150,7 @@ namespace PackItUI.Areas.Materials.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
-        public IActionResult SectionRow([FromBody]Newtonsoft.Json.Linq.JObject body)
+        public IActionResult SectionRow([FromBody] Newtonsoft.Json.Linq.JObject body)
         {
             var index = body["index"];
             this.logger.LogInformation("SectionRow index {0}", index);

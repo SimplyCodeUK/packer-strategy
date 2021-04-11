@@ -93,9 +93,9 @@ namespace PackItUI.Test.Areas.Materials.DTO
                 .AddRequest(HttpMethod.Get, root)
                 .ContentsJson("{'Version': '1', 'About': 'Materials'}");
             this.handler = new MaterialHandler(Options, httpHandler)
-                {
-                    TimeOut = TimeOut
-                };
+            {
+                TimeOut = TimeOut
+            };
             Assert.IsNotNull(this.handler);
             Assert.AreEqual(this.handler.TimeOut, TimeOut);
         }

@@ -21,7 +21,7 @@ namespace PackItUI.Areas.Materials.DTO
         /// </summary>
         ///
         /// <param name="appSettings"> The application settings. </param>
-        public MaterialHandler(IOptions<AppSettings> appSettings) : this(appSettings,  new HttpClientHandler())
+        public MaterialHandler(IOptions<AppSettings> appSettings) : this(appSettings, new HttpClientHandler())
         {
         }
 

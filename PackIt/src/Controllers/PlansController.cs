@@ -156,7 +156,7 @@ namespace PackIt.Controllers
         ///
         /// <returns> An IActionResult containing the updated Plan. </returns>
         [HttpPatch("{id}")]
-        public IActionResult Patch(string id, [FromBody]JsonPatchDocument<Plan> update)
+        public IActionResult Patch(string id, [FromBody] JsonPatchDocument<Plan> update)
         {
             this.logger.LogInformation("Patch id {0}", id);
             var item = this.repository.Find(id);

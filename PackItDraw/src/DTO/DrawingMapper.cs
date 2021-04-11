@@ -13,7 +13,7 @@ namespace PackIt.DTO
     /// <summary> Maps from and to DtoPack </summary>
     ///
     /// <seealso cref="T:PackIt.DTO.PackItMapper{TData, TDtoData}"/>
-    public class PackMapper : IPackItMapper<Pack, DtoPack.DtoPack>
+    public class DrawingMapper : IPackItMapper<Pack, DtoPack.DtoPack>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static readonly MapperConfiguration configModelToDto = new MapperConfiguration(

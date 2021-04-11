@@ -4,44 +4,41 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Controllers
+namespace PackItDraw.Controllers
 {
     using System;
     using System.Net;
-    using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using PackIt.DTO;
     using PackIt.Pack;
 
-    /// <summary> A controller for handling Packs. </summary>
+    /// <summary> The root controller of the service. </summary>
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class PacksController : Controller
+    public class DrawingsController : Controller
     {
         /// <summary> The logger. </summary>
-        private readonly ILogger<PacksController> logger;
+        private readonly ILogger<DrawingsController> logger;
 
         /// <summary> The repository. </summary>
-        private readonly IPackRepository repository;
+        private readonly IDrawingRepository repository;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="PacksController" /> class.
+        /// Initialises a new instance of the <see cref="AboutController" /> class.
         /// </summary>
         ///
         /// <param name="logger"> The logger. </param>
         /// <param name="repository"> The repository. </param>
-        public PacksController(ILogger<PacksController> logger, IPackRepository repository)
+        public DrawingsController(ILogger<DrawingsController> logger, IDrawingRepository repository)
         {
             this.logger = logger;
             this.repository = repository;
         }
 
-        /// <summary>
-        /// (An Action that handles HTTP GET requests) Enumerates all items in this collection.
-        /// </summary>
+        /// <summary> Get service information. </summary>
         ///
-        /// <returns> An enumerator that allows foreach to be used to process the matched items. </returns>
+        /// <returns> (An Action that handles HTTP GET requests) The service information. </returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -58,7 +55,7 @@ namespace PackIt.Controllers
         ///
         /// <returns> An IActionResult containing the Pack if it exists. </returns>
         [HttpGet("{id}")]
-        [Route("{id}", Name = "GetPack")]
+        [Route("{id}", Name = "GetDrawing")]
         [ProducesResponseType(typeof(Pack), 200)]
         public IActionResult Get(string id)
         {
@@ -89,7 +86,7 @@ namespace PackIt.Controllers
                 try
                 {
                     this.repository.Add(value);
-                    result = this.CreatedAtRoute("GetPack", new { id = value.PackId }, value);
+                    result = this.CreatedAtRoute("GetDrawing", new { id = value.PackId }, value);
                 }
                 catch (Exception)
                 {
@@ -102,31 +99,6 @@ namespace PackIt.Controllers
             }
 
             return result;
-        }
-
-        /// <summary>
-        /// (An Action that handles HTTP PUT requests) Put an update to an existing Pack.
-        /// </summary>
-        ///
-        /// <param name="id"> The identifier. </param>
-        /// <param name="value"> The value. </param>
-        ///
-        /// <returns> An IActionResult. </returns>
-        [HttpPut("{id}")]
-        public IActionResult Put(string id, [FromBody] Pack value)
-        {
-            this.logger.LogInformation("Put id {0} for Pack id {1}", id, value.PackId);
-            var item = this.repository.Find(id);
-
-            if (item == null)
-            {
-                return this.NotFound(id);
-            }
-
-            item = value;
-            item.PackId = id;
-            this.repository.Update(item);
-            return this.Ok();
         }
 
         /// <summary> (An Action that handles HTTP DELETE requests) Deletes a Pack. </summary>
@@ -145,30 +117,6 @@ namespace PackIt.Controllers
 
             this.repository.Remove(id);
             return this.Ok();
-        }
-
-        /// <summary>
-        /// (An Action that handles HTTP PATCH requests) Patches an existing Pack.
-        /// </summary>
-        ///
-        /// <param name="id"> The identifier. </param>
-        /// <param name="update"> The update. </param>
-        ///
-        /// <returns> An IActionResult containing the updated Pack. </returns>
-        [HttpPatch("{id}")]
-        public IActionResult Patch(string id, [FromBody] JsonPatchDocument<Pack> update)
-        {
-            this.logger.LogInformation("Patch id {0}", id);
-            var item = this.repository.Find(id);
-
-            if (item == null)
-            {
-                return this.NotFound(id);
-            }
-
-            update.ApplyTo(item);
-            this.repository.Update(item);
-            return this.Ok(item);
         }
     }
 }

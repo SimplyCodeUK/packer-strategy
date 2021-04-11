@@ -11,7 +11,6 @@ namespace PackIt
     using System.IO;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -20,15 +19,13 @@ namespace PackIt
     using Newtonsoft.Json;
     using PackIt.DbInterface;
     using PackIt.DTO;
-    using PackIt.Models;
 
     /// <summary> A start up. </summary>
+    ///
+    /// <seealso cref="DbStartup" />
     [ExcludeFromCodeCoverage]
-    public class Startup
+    public class Startup : DbStartup
     {
-        /// <summary> The database connection manager. </summary>
-        private readonly DbConnectionManager connectionManager;
-
         /// <summary>
         /// Initialises a new instance of the <see cref="Startup" /> class.
         /// </summary>
@@ -36,37 +33,19 @@ namespace PackIt
         /// <param name="configuration"> Configuration. </param>
         /// <param name="loggerFactory"> Logger factory. </param>
         public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
+            : base(configuration, loggerFactory)
         {
-            this.Configuration = configuration;
-            this.LoggerFactory = loggerFactory;
-
-            // Register database contexts.
-            // The first context will be the default if not specified in <see cref="Configuration" />
-            this.connectionManager = new DbConnectionManager();
-            this.connectionManager.RegisterContextBuilder("inmemory", new DbContextBuilderInMemory());
-            this.connectionManager.RegisterContextBuilder("postgres", new DbContextBuilderPostgres());
         }
-
-        /// <summary> Gets the configuration. </summary>
-        ///
-        /// <value> The configuration. </value>
-        public IConfiguration Configuration { get; }
-
-        /// <summary> Gets the logger factory. </summary>
-        ///
-        /// <value> The logger factory. </value>
-        public ILoggerFactory LoggerFactory { get; }
 
         /// <summary> This method gets called by the runtime. Use this method to add services to the container. </summary>
         ///
         /// <param name="services"> The services. </param>
+        ///
+        /// <seealso cref="DbStartup.SetupServices" />
         public void ConfigureServices(IServiceCollection services)
         {
-            // Configure using a sub-section of the appsettings.json file.
-            services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"))
-                    .AddApplicationInsightsTelemetry(this.Configuration)
-                    .AddApiVersioning()
-                    .AddScoped<IMaterialRepository, MaterialRepository>()
+            SetupServices(services);
+            services.AddScoped<IMaterialRepository, MaterialRepository>()
                     .AddScoped<IPackRepository, PackRepository>()
                     .AddScoped<IPlanRepository, PlanRepository>()
                     .AddMvc(options => options.EnableEndpointRouting = false);
@@ -80,17 +59,16 @@ namespace PackIt
         ///
         /// <param name="app"> The application. </param>
         /// <param name="env"> The environment. </param>
+        ///
+        /// <seealso cref="DbStartup.SetupApp" />
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            SetupApp(app, env);
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=About}/{action=Get}/{id?}");
-            });
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
             if (env.IsDevelopment())
@@ -135,20 +113,6 @@ namespace PackIt
 
             // Seed Material database
             ReadData<MaterialContext, Material.Material, DTO.DtoMaterial.DtoMaterial, MaterialMapper>(serviceScope, "Seeds/material.json");
-        }
-
-        /// <summary> Adds the database context. </summary>
-        ///
-        /// <typeparam name="TContext"> The type of the context. </typeparam>
-        ///
-        /// <param name="services"> The services. </param>
-        /// <param name="section"> The section in the configuration. </param>
-        private void AddDbContext<TContext>(IServiceCollection services, string section) where TContext : DbContext
-        {
-            var connection = this.Configuration.GetSection("Connections").GetSection(section);
-            var builder = this.connectionManager.ContextBuilder(connection["Type"]);
-
-            services.AddDbContext<TContext>(builder.CreateContextOptionsBuilder(connection["ConnectionString"]));
         }
     }
 }

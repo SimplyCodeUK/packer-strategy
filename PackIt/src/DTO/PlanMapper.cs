@@ -16,7 +16,7 @@ namespace PackIt.DTO
     public class PlanMapper : IPackItMapper<Plan, DtoPlan.DtoPlan>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
-        private static MapperConfiguration configModelToDto = new MapperConfiguration(
+        private static readonly MapperConfiguration configModelToDto = new MapperConfiguration(
             cfg =>
             {
                 cfg.CreateMap<Plan, DtoPlan.DtoPlan>();
@@ -41,7 +41,7 @@ namespace PackIt.DTO
             });
 
         /// <summary> Configuration of map from Dto to Model. </summary>
-        private static MapperConfiguration configDtoToModel = new MapperConfiguration(
+        private static readonly MapperConfiguration configDtoToModel = new MapperConfiguration(
             cfg =>
             {
                 cfg.CreateMap<DtoPlan.DtoPlan, Plan>();
@@ -50,10 +50,10 @@ namespace PackIt.DTO
             });
 
         /// <summary> The mapper from Model to Dto. </summary>
-        private static IMapper mapperModelToDto = configModelToDto.CreateMapper();
+        private static readonly IMapper mapperModelToDto = configModelToDto.CreateMapper();
 
         /// <summary> The mapper from Dto to Model. </summary>
-        private static IMapper mapperDtoToModel = configDtoToModel.CreateMapper();
+        private static readonly IMapper mapperDtoToModel = configDtoToModel.CreateMapper();
 
         /// <summary> Converts a Data to its DTO. </summary>
         /// 
