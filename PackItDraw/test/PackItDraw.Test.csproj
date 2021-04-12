@@ -47,4 +47,10 @@
     <ProjectReference Include="..\..\PackItLib\src\PackItLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="DTO\TestData\drawing.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

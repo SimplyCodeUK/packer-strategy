@@ -7,7 +7,7 @@
 namespace PackIt.DTO
 {
     using System.Collections.Generic;
-    using PackIt.Pack;
+    using PackIt.Drawing;
 
     /// <summary> Interface for drawing repository. </summary>
     public interface IDrawingRepository
@@ -15,21 +15,21 @@ namespace PackIt.DTO
         /// <summary> Adds item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
-        void Add(Pack item);
+        void Add(Drawing item);
 
         /// <summary> Gets all items in this collection. </summary>
         ///
         /// <returns>
         /// An enumerator that allows foreach to be used to process all items in this collection.
         /// </returns>
-        IList<Pack> GetAll();
+        IList<Drawing> GetAll();
 
         /// <summary> Searches for the first match for the given string. </summary>
         ///
         /// <param name="key"> The key. </param>
         ///
-        /// <returns> A Pack.Pack. </returns>
-        Pack Find(string key);
+        /// <returns> A Drawing. </returns>
+        Drawing Find(string key);
 
         /// <summary> Removes the given key. </summary>
         ///
@@ -39,6 +39,6 @@ namespace PackIt.DTO
         /// <summary> Updates the given item. </summary>
         ///
         /// <param name="item"> The item to add. </param>
-        void Update(Pack item);
+        void Update(Drawing item);
     }
 }

@@ -28,7 +28,7 @@ namespace PackIt.DTO
         ///
         /// <param name="key"> The key to remove. </param>
         ///
-        /// <returns> A Plan.Plan. </returns>
+        /// <returns> A Plan. </returns>
         Plan Find(string key);
 
         /// <summary> Removes the given key. </summary>

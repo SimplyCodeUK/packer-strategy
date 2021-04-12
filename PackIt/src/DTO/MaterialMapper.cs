@@ -7,25 +7,23 @@
 namespace PackIt.DTO
 {
     using AutoMapper;
-    using PackIt.DTO.DtoMaterial;
     using PackIt.Material;
 
     /// <summary> Maps from and to DtoMaterial </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItMapper{TData, TDtoData}"/>
+    /// <seealso cref="T:PackIt.DTO.IPackItMapper{TData, TDtoData}"/>
     public class MaterialMapper : IPackItMapper<Material, DtoMaterial.DtoMaterial>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static readonly MapperConfiguration configModelToDto = new MapperConfiguration(
             cfg =>
             {
-                cfg.CreateMap<Material, DtoMaterial.DtoMaterial>();
-                cfg.CreateMap<Costing, DtoCosting>();
-                cfg.CreateMap<Layer, DtoLayer>();
-                cfg.CreateMap<PalletDeck, DtoPalletDeck>();
-                cfg.CreateMap<Section, DtoSection>();
-                cfg.CreateMap<Collation, DtoCollation>();
-                cfg.CreateMap<Plank, DtoPlank>();
+                cfg.CreateMap<Costing, DtoMaterial.DtoCosting>();
+                cfg.CreateMap<Layer, DtoMaterial.DtoLayer>();
+                cfg.CreateMap<PalletDeck, DtoMaterial.DtoPalletDeck>();
+                cfg.CreateMap<Section, DtoMaterial.DtoSection>();
+                cfg.CreateMap<Collation, DtoMaterial.DtoCollation>();
+                cfg.CreateMap<Plank, DtoMaterial.DtoPlank>();
                 cfg.CreateMap<Material, DtoMaterial.DtoMaterial>().AfterMap(
                     (s, d) =>
                     {
@@ -78,12 +76,12 @@ namespace PackIt.DTO
             cfg =>
             {
                 cfg.CreateMap<DtoMaterial.DtoMaterial, Material>();
-                cfg.CreateMap<DtoCosting, Costing>();
-                cfg.CreateMap<DtoLayer, Layer>();
-                cfg.CreateMap<DtoPalletDeck, PalletDeck>();
-                cfg.CreateMap<DtoSection, Section>();
-                cfg.CreateMap<DtoCollation, Collation>();
-                cfg.CreateMap<DtoPlank, Plank>();
+                cfg.CreateMap<DtoMaterial.DtoCosting, Costing>();
+                cfg.CreateMap<DtoMaterial.DtoLayer, Layer>();
+                cfg.CreateMap<DtoMaterial.DtoPalletDeck, PalletDeck>();
+                cfg.CreateMap<DtoMaterial.DtoSection, Section>();
+                cfg.CreateMap<DtoMaterial.DtoCollation, Collation>();
+                cfg.CreateMap<DtoMaterial.DtoPlank, Plank>();
             });
 
         /// <summary> The mapper from Model to Dto. </summary>

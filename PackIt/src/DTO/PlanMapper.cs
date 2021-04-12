@@ -7,21 +7,19 @@
 namespace PackIt.DTO
 {
     using AutoMapper;
-    using PackIt.DTO.DtoPlan;
     using PackIt.Plan;
 
     /// <summary> Maps from and to DtoPlan </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItMapper{TData, TDtoData}"/>
+    /// <seealso cref="T:PackIt.DTO.IPackItMapper{TData, TDtoData}"/>
     public class PlanMapper : IPackItMapper<Plan, DtoPlan.DtoPlan>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static readonly MapperConfiguration configModelToDto = new MapperConfiguration(
             cfg =>
             {
-                cfg.CreateMap<Plan, DtoPlan.DtoPlan>();
-                cfg.CreateMap<Limit, DtoLimit>();
-                cfg.CreateMap<Stage, DtoStage>();
+                cfg.CreateMap<Limit, DtoPlan.DtoLimit>();
+                cfg.CreateMap<Stage, DtoPlan.DtoStage>();
                 cfg.CreateMap<Plan, DtoPlan.DtoPlan>().AfterMap(
                     (s, d) =>
                     {
@@ -45,8 +43,8 @@ namespace PackIt.DTO
             cfg =>
             {
                 cfg.CreateMap<DtoPlan.DtoPlan, Plan>();
-                cfg.CreateMap<DtoStage, Stage>();
-                cfg.CreateMap<DtoLimit, Limit>();
+                cfg.CreateMap<DtoPlan.DtoStage, Stage>();
+                cfg.CreateMap<DtoPlan.DtoLimit, Limit>();
             });
 
         /// <summary> The mapper from Model to Dto. </summary>

@@ -10,6 +10,7 @@ namespace PackItDraw.Controllers
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
+    using PackIt.Drawing;
     using PackIt.DTO;
     using PackIt.Pack;
 
@@ -48,15 +49,15 @@ namespace PackItDraw.Controllers
 
         /// <summary>
         /// (An Action that handles HTTP GET requests) Gets an IActionResult using the given
-        /// identifier containing a pack.
+        /// identifier containing a drawing.
         /// </summary>
         ///
         /// <param name="id"> The identifier. </param>
         ///
-        /// <returns> An IActionResult containing the Pack if it exists. </returns>
+        /// <returns> An IActionResult containing the Drawing if it exists. </returns>
         [HttpGet("{id}")]
         [Route("{id}", Name = "GetDrawing")]
-        [ProducesResponseType(typeof(Pack), 200)]
+        [ProducesResponseType(typeof(Drawing), 200)]
         public IActionResult Get(string id)
         {
             this.logger.LogInformation("Get id {0}", id);
@@ -70,23 +71,29 @@ namespace PackItDraw.Controllers
             return this.Ok(item);
         }
 
-        /// <summary> (An Action that handles HTTP POST requests) Post a new Pack. </summary>
+        /// <summary> (An Action that handles HTTP POST requests) Post a new Drawing. </summary>
         ///
-        /// <param name="value"> The new Pack. </param>
+        /// <param name="pack"> The new Pack to create the drawing for. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
-        public IActionResult Post([FromBody] Pack value)
+        public IActionResult Post([FromBody] Pack pack)
         {
             IActionResult result;
+            Drawing value = new Drawing
+            {
+                DrawingId = Guid.NewGuid().ToString(),
+                Computed = false,
+                Pack = pack
+            };
 
             if (value != null)
             {
-                this.logger.LogInformation("Post Pack id {0}", value.PackId);
+                this.logger.LogInformation("Post Drawing id {0}", value.DrawingId);
                 try
                 {
                     this.repository.Add(value);
-                    result = this.CreatedAtRoute("GetDrawing", new { id = value.PackId }, value);
+                    result = this.CreatedAtRoute("GetDrawing", new { id = value.DrawingId }, value);
                 }
                 catch (Exception)
                 {
@@ -101,9 +108,9 @@ namespace PackItDraw.Controllers
             return result;
         }
 
-        /// <summary> (An Action that handles HTTP DELETE requests) Deletes a Pack. </summary>
+        /// <summary> (An Action that handles HTTP DELETE requests) Deletes a Drawing. </summary>
         ///
-        /// <param name="id"> The identifier of the Pack. </param>
+        /// <param name="id"> The identifier of the Drawing. </param>
         ///
         /// <returns> An IActionResult. </returns>
         [HttpDelete("{id}")]

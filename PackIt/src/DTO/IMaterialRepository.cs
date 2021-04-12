@@ -28,7 +28,7 @@ namespace PackIt.DTO
         ///
         /// <param name="key"> The key. </param>
         ///
-        /// <returns> A Material.Material. </returns>
+        /// <returns> A Material. </returns>
         Material Find(string key);
 
         /// <summary> Removes the given key. </summary>

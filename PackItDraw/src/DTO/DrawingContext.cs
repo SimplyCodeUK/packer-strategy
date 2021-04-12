@@ -8,12 +8,12 @@ namespace PackIt.DTO
 {
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
-    using PackIt.Pack;
+    using PackIt.Drawing;
 
     /// <summary> A drawing context. </summary>
     ///
     /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData, TMapper}"/>
-    public class DrawingContext : PackItContext<Pack, DtoPack.DtoPack, DrawingMapper>
+    public class DrawingContext : PackItContext<Drawing, DtoDrawing.DtoDrawing, DrawingMapper>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="DrawingContext" /> class.
@@ -63,18 +63,19 @@ namespace PackIt.DTO
         /// <summary>Construct default query.</summary>
         ///
         /// <returns> Query for list of packs. </returns>
-        protected override IQueryable<DtoPack.DtoPack> ConstructQuery()
+        protected override IQueryable<DtoDrawing.DtoDrawing> ConstructQuery()
         {
             var query = this.Resources
-                .Include(p => p.Costings)
-                .Include(p => p.Stages)
-                .Include(p => p.Stages).ThenInclude(s => s.Limits)
-                .Include(p => p.Stages).ThenInclude(s => s.Results)
-                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers)
-                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers).ThenInclude(l => l.Collations)
-                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials)
-                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials).ThenInclude(m => m.DatabaseMaterials)
-                .Include(p => p.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Sections);
+                .Include(p => p.Pack)
+                .Include(p => p.Pack.Costings)
+                .Include(p => p.Pack.Stages)
+                .Include(p => p.Pack.Stages).ThenInclude(s => s.Limits)
+                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results)
+                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers)
+                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers).ThenInclude(l => l.Collations)
+                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials)
+                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials).ThenInclude(m => m.DatabaseMaterials)
+                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Sections);
 
             return query;
         }
@@ -84,9 +85,9 @@ namespace PackIt.DTO
         /// <param name="key"> The key to search for. </param>
         ///
         /// <returns> The find task. </returns>
-        protected override System.Threading.Tasks.Task<DtoPack.DtoPack> ConstructFindTask(string key)
+        protected override System.Threading.Tasks.Task<DtoDrawing.DtoDrawing> ConstructFindTask(string key)
         {
-            return ConstructQuery().SingleAsync(p => p.PackId == key);
+            return ConstructQuery().SingleAsync(p => p.DrawingId == key);
         }
 
         /// <summary>Configures the specified builder.</summary>

@@ -29,7 +29,7 @@ namespace PackIt.Test.DTO
 
         /// <summary> (Unit Test Method) Convert a Plan to it's DTO. </summary>
         [Test]
-        public void ConvertPlan()
+        public void ConvertPlanToDto()
         {
             var text = File.ReadAllText("DTO/TestData/plan.json");
             var plan = JsonConvert.DeserializeObject<Plan>(text);
@@ -52,10 +52,31 @@ namespace PackIt.Test.DTO
                     Assert.AreEqual(limit.PlanId, plan.PlanId);
                     Assert.AreEqual(limit.StageLevel, stage.StageLevel);
                     Assert.AreEqual(limit.LimitIndex, limitIndex);
-
                     ++limitIndex;
                 }
+                ++stageIndex;
+            }
+        }
 
+        /// <summary> (Unit Test Method) Convert a Plan to it's DTO. </summary>
+        [Test]
+        public void ConvertDtoToPlan()
+        {
+            var text = File.ReadAllText("DTO/TestData/plan.json");
+            var plan = JsonConvert.DeserializeObject<Plan>(text);
+            var dto = this.mapper.ConvertToDto(plan);
+            var data = this.mapper.ConvertToData(dto);
+
+            Assert.AreEqual(data.PlanId, plan.PlanId);
+            int minLevel = -1;
+            Assert.AreEqual(data.Stages.Count, plan.Stages.Count);
+            int stageIndex = 0;
+            foreach (var stage in data.Stages)
+            {
+                Assert.Greater((int)stage.StageLevel, minLevel);
+                minLevel = (int)stage.StageLevel;
+
+                Assert.AreEqual(stage.Limits.Count, plan.Stages[stageIndex].Limits.Count);
                 ++stageIndex;
             }
         }

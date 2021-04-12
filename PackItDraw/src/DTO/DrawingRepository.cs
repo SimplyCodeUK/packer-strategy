@@ -6,13 +6,13 @@
 
 namespace PackIt.DTO
 {
-    using PackIt.Pack;
+    using PackIt.Drawing;
 
     /// <summary> A pack repository. </summary>
     ///
     /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData, TMapper}"/>
     /// <seealso cref="T:PackIt.DTO.IDrawingRepository"/>
-    public class DrawingRepository : Repository<Pack, DtoPack.DtoPack, DrawingMapper>, IDrawingRepository
+    public class DrawingRepository : Repository<Drawing, DtoDrawing.DtoDrawing, DrawingMapper>, IDrawingRepository
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="DrawingRepository" /> class.

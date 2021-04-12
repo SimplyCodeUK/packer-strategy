@@ -7,28 +7,26 @@
 namespace PackIt.DTO
 {
     using AutoMapper;
-    using PackIt.DTO.DtoPack;
     using PackIt.Pack;
 
     /// <summary> Maps from and to DtoPack </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItMapper{TData, TDtoData}"/>
+    /// <seealso cref="T:PackIt.DTO.IPackItMapper{TData, TDtoData}"/>
     public class PackMapper : IPackItMapper<Pack, DtoPack.DtoPack>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static readonly MapperConfiguration configModelToDto = new MapperConfiguration(
             cfg =>
             {
-                cfg.CreateMap<Pack, DtoPack.DtoPack>();
-                cfg.CreateMap<Costing, DtoCosting>();
-                cfg.CreateMap<Stage, DtoStage>();
-                cfg.CreateMap<Limit, DtoLimit>();
-                cfg.CreateMap<Result, DtoResult>();
-                cfg.CreateMap<Layer, DtoLayer>();
-                cfg.CreateMap<Collation, DtoCollation>();
+                cfg.CreateMap<Costing, DtoPack.DtoCosting>();
+                cfg.CreateMap<Stage, DtoPack.DtoStage>();
+                cfg.CreateMap<Limit, DtoPack.DtoLimit>();
+                cfg.CreateMap<Result, DtoPack.DtoResult>();
+                cfg.CreateMap<Layer, DtoPack.DtoLayer>();
+                cfg.CreateMap<Collation, DtoPack.DtoCollation>();
                 cfg.CreateMap<Material, DtoPack.DtoMaterial>();
-                cfg.CreateMap<DatabaseMaterial, DtoDatabaseMaterial>();
-                cfg.CreateMap<Section, DtoSection>();
+                cfg.CreateMap<DatabaseMaterial, DtoPack.DtoDatabaseMaterial>();
+                cfg.CreateMap<Section, DtoPack.DtoSection>();
                 cfg.CreateMap<Pack, DtoPack.DtoPack>().AfterMap(
                     (s, d) =>
                     {
@@ -112,14 +110,15 @@ namespace PackIt.DTO
             cfg =>
             {
                 cfg.CreateMap<DtoPack.DtoPack, Pack>();
-                cfg.CreateMap<DtoCosting, Costing>();
-                cfg.CreateMap<DtoStage, Stage>();
-                cfg.CreateMap<DtoLimit, Limit>();
-                cfg.CreateMap<DtoResult, Result>();
-                cfg.CreateMap<DtoLayer, Layer>();
-                cfg.CreateMap<DtoCollation, Collation>();
+                cfg.CreateMap<DtoPack.DtoCosting, Costing>();
+                cfg.CreateMap<DtoPack.DtoStage, Stage>();
+                cfg.CreateMap<DtoPack.DtoLimit, Limit>();
+                cfg.CreateMap<DtoPack.DtoResult, Result>();
+                cfg.CreateMap<DtoPack.DtoLayer, Layer>();
+                cfg.CreateMap<DtoPack.DtoCollation, Collation>();
                 cfg.CreateMap<DtoPack.DtoMaterial, Material>();
-                cfg.CreateMap<DtoSection, Section>();
+                cfg.CreateMap<DtoPack.DtoDatabaseMaterial, DatabaseMaterial>();
+                cfg.CreateMap<DtoPack.DtoSection, Section>();
             });
 
         /// <summary> The mapper from Model to Dto. </summary>

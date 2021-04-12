@@ -29,26 +29,47 @@ namespace PackIt.Test.DTO
 
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
-        public void ConvertMaterialBottle()
+        public void ConvertMaterialBottleToDto()
         {
-            DoTest("DTO/TestData/material_bottle.json");
+            DoToDtoTest("DTO/TestData/material_bottle.json");
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
-        public void ConvertMaterialCrate()
+        public void ConvertDtoToMaterialBottle()
         {
-            DoTest("DTO/TestData/material_crate.json");
+            DoToDataTest("DTO/TestData/material_bottle.json");
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
-        public void ConvertMaterialPallet()
+        public void ConvertMaterialCrateToDto()
         {
-            DoTest("DTO/TestData/material_pallet.json");
+            DoToDtoTest("DTO/TestData/material_crate.json");
         }
 
-        private void DoTest(string file)
+        /// <summary> (Unit Test Method) post this message. </summary>
+        [Test]
+        public void ConvertDtoToMaterialCrate()
+        {
+            DoToDataTest("DTO/TestData/material_crate.json");
+        }
+
+        /// <summary> (Unit Test Method) post this message. </summary>
+        [Test]
+        public void ConvertMaterialPalletToDto()
+        {
+            DoToDtoTest("DTO/TestData/material_pallet.json");
+        }
+
+        /// <summary> (Unit Test Method) post this message. </summary>
+        [Test]
+        public void ConvertDtoToMaterialPallet()
+        {
+            DoToDataTest("DTO/TestData/material_pallet.json");
+        }
+
+        private void DoToDtoTest(string file)
         {
             var text = File.ReadAllText(file);
             var material = JsonConvert.DeserializeObject<Material>(text);
@@ -106,6 +127,34 @@ namespace PackIt.Test.DTO
                 Assert.AreEqual(section.MaterialId, material.MaterialId);
                 Assert.AreEqual(section.SectionIndex, sectionIndex);
                 ++sectionIndex;
+            }
+        }
+
+        private void DoToDataTest(string file)
+        {
+            var text = File.ReadAllText(file);
+            var material = JsonConvert.DeserializeObject<Material>(text);
+            var dto = this.mapper.ConvertToDto(material);
+            var data = this.mapper.ConvertToData(dto);
+
+            Assert.AreEqual(data.MaterialId, material.MaterialId);
+
+            Assert.AreEqual(data.Costings.Count, material.Costings.Count);
+
+            Assert.AreEqual(data.Layers.Count, material.Layers.Count);
+            int layerIndex = 0;
+            foreach (var layer in data.Layers)
+            {
+                Assert.AreEqual(layer.Collations.Count, material.Layers[layerIndex].Collations.Count);
+                ++layerIndex;
+            }
+            Assert.AreEqual(data.Layers.Count, material.Layers.Count);
+
+            int palletDeckIndex = 0;
+            foreach (var palletDeck in data.PalletDecks)
+            {
+                Assert.AreEqual(palletDeck.Planks.Count, material.PalletDecks[palletDeckIndex].Planks.Count);
+                ++palletDeckIndex;
             }
         }
     }
