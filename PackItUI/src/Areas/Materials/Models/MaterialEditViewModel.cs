@@ -36,10 +36,7 @@ namespace PackItUI.Areas.Materials.Models
         /// <value> The material data. </value>
         public Material Data
         {
-            get
-            {
-                return this.data;
-            }
+            get => this.data;
 
             set
             {

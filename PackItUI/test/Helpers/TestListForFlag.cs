@@ -14,7 +14,7 @@ namespace PackItUI.Test.Helpers
     [TestFixture]
     public class TestListForFlag
     {
-        enum TestEnum { t1, t2 }
+        private enum TestEnum { t1, t2 }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
         [Test]

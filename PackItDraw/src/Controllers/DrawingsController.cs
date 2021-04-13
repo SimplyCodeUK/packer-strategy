@@ -26,7 +26,7 @@ namespace PackItDraw.Controllers
         private readonly IDrawingRepository repository;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="AboutController" /> class.
+        /// Initialises a new instance of the <see cref="DrawingsController" /> class.
         /// </summary>
         ///
         /// <param name="logger"> The logger. </param>

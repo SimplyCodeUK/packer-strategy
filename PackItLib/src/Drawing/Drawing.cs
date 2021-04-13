@@ -13,7 +13,7 @@ namespace PackIt.Drawing
     public class Drawing
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="Material" /> class.
+        /// Initialises a new instance of the <see cref="Drawing" /> class.
         /// </summary>
         public Drawing()
         {

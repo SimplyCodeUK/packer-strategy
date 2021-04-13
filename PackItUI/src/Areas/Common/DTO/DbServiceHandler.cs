@@ -55,15 +55,9 @@ namespace PackItUI.Areas.Common.DTO
         /// <value> The time out. </value>
         public TimeSpan TimeOut
         {
-            get
-            {
-                return this.httpClient.Timeout;
-            }
+            get => this.httpClient.Timeout;
 
-            set
-            {
-                this.httpClient.Timeout = value;
-            }
+            set => this.httpClient.Timeout = value;
         }
 
         /// <summary> Creates asynchronously a data entry. </summary>
