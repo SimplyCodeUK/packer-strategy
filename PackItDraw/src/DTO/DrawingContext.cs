@@ -48,6 +48,7 @@ namespace PackIt.DTO
         {
             base.OnModelCreating(modelBuilder);
 
+            ConfigureDtoDrawing(modelBuilder);
             ConfigureDtoPack(modelBuilder);
             Configure<DtoPack.DtoCosting>(modelBuilder, "DtoCosting", k => new { k.PackId, k.RequiredQuantity });
             ConfigureDtoStage(modelBuilder);
@@ -88,6 +89,16 @@ namespace PackIt.DTO
         protected override System.Threading.Tasks.Task<DtoDrawing.DtoDrawing> ConstructFindTask(string key)
         {
             return ConstructQuery().SingleAsync(p => p.DrawingId == key);
+        }
+
+        /// <summary>Configures the specified builder.</summary>
+        ///
+        /// <param name="modelBuilder">The model builder.</param>
+        private static void ConfigureDtoDrawing(ModelBuilder modelBuilder)
+        {
+            var builder = Configure<DtoDrawing.DtoDrawing>(modelBuilder, "DtoDrawing", k => k.DrawingId);
+            builder
+                .HasOne(p => p.Pack);
         }
 
         /// <summary>Configures the specified builder.</summary>

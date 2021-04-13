@@ -52,7 +52,9 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
+            CreatedAtRouteResult res = result as CreatedAtRouteResult;
+            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.IsTrue(res.RouteValues.ContainsKey("id"));
         }
 
         /// <summary> (Unit Test Method) posts the no data. </summary>

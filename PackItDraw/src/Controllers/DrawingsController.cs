@@ -87,7 +87,7 @@ namespace PackItDraw.Controllers
                 Pack = pack
             };
 
-            if (value != null)
+            if (pack != null)
             {
                 this.logger.LogInformation("Post Drawing id {0}", value.DrawingId);
                 try
