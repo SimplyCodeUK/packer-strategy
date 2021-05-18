@@ -29,6 +29,7 @@ build_script:
     dotnet build /p:DocumentationFile=codedoc.xml
 
     7z a codedocs.zip codedoc.xml -r
+
     7z a doxygen.zip ./docs/html/ -r
 
 test_script:
