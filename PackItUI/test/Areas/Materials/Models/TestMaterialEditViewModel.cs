@@ -7,7 +7,6 @@
 namespace PackItUI.Test.Areas.Materials.Models
 {
     using NUnit.Framework;
-    using PackIt.Material;
     using PackItUI.Areas.Materials.Models;
 
     /// <summary> (Unit Test Fixture) Material edit view model. </summary>
@@ -21,7 +20,7 @@ namespace PackItUI.Test.Areas.Materials.Models
         [SetUp]
         public void BeforeTest()
         {
-            this.model = new MaterialEditViewModel();
+            this.model = new();
             Assert.IsNotNull(this.model);
         }
 
@@ -29,8 +28,8 @@ namespace PackItUI.Test.Areas.Materials.Models
         [Test]
         public void SetCostings()
         {
-            MaterialEditViewModel.Material data = new MaterialEditViewModel.Material();
-            data.Costings.Add(new Costing());
+            MaterialEditViewModel.Material data = new();
+            data.Costings.Add(new());
             this.model.Data = data;
             Assert.AreEqual(this.model.Data.Costings.Count, 1);
         }
@@ -40,7 +39,7 @@ namespace PackItUI.Test.Areas.Materials.Models
         public void SetSections()
         {
             MaterialEditViewModel.Material data = new MaterialEditViewModel.Material();
-            data.Sections.Add(new Section());
+            data.Sections.Add(new());
             this.model.Data = data;
             Assert.AreEqual(this.model.Data.Sections.Count, 1);
         }

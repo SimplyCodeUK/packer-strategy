@@ -23,7 +23,7 @@ namespace PackIt.Test.DTO
         [SetUp]
         public void BeforeTest()
         {
-            this.mapper = new MaterialMapper();
+            this.mapper = new();
             Assert.IsNotNull(this.mapper);
         }
 

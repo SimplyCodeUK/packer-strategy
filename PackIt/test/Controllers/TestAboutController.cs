@@ -24,7 +24,7 @@ namespace PackIt.Test.Controllers
         [SetUp]
         public void BeforeTest()
         {
-            this.controller = new AboutController(
+            this.controller = new(
                 Mock.Of<ILogger<AboutController>>());
             Assert.IsNotNull(this.controller);
         }

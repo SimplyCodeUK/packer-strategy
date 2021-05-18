@@ -17,7 +17,7 @@ namespace PackIt.DbInterface
         /// <summary> Initialises a new instance of the <see cref="DbConnectionManager"/> class. </summary>
         public DbConnectionManager()
         {
-            this.connections = new Dictionary<string, IDbContextBuilder>();
+            this.connections = new();
         }
 
         /// <summary> Registers a context builder. </summary>

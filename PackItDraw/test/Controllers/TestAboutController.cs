@@ -24,7 +24,7 @@ namespace PackItDraw.Test.Controllers
         [SetUp]
         public void BeforeTest()
         {
-            this.controller = new AboutController(
+            this.controller = new(
                 Mock.Of<ILogger<AboutController>>());
             Assert.IsNotNull(this.controller);
         }
@@ -38,7 +38,7 @@ namespace PackItDraw.Test.Controllers
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            var objectResult = (OkObjectResult)result;
+            var objectResult = result as OkObjectResult;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<AboutController.AboutService>(objectResult.Value);
 

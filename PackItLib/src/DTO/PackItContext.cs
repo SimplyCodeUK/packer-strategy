@@ -29,8 +29,8 @@ namespace PackIt.DTO
         protected PackItContext([NotNullAttribute] DbContextOptions options)
             : base(options)
         {
-            Resources = this.Set<TDtoData>();
-            Mapper = new TMapper();
+            this.Resources = this.Set<TDtoData>();
+            this.Mapper = new TMapper();
         }
 
         /// <summary> Gets the resources. </summary>
@@ -113,10 +113,10 @@ namespace PackIt.DTO
         /// <param name="item"> The item. </param>
         public void Update(TData item)
         {
-            var entity = this.Resources.Find(this.Mapper.KeyForData(item));
-            var dto = this.Mapper.ConvertToDto(item);
-            this.Resources.Remove(entity);
+            this.Remove(this.Mapper.KeyForData(item));
             this.SaveChanges();
+
+            var dto = this.Mapper.ConvertToDto(item);
             this.Resources.Add(dto);
         }
 

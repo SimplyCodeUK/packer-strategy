@@ -37,7 +37,7 @@ namespace PackItUI.Areas.Common.DTO
         /// <param name="resource"> The REST resource. </param>
         protected DbServiceHandler(HttpMessageHandler messageHandler, string endpoint, string resource)
         {
-            this.httpClient = new HttpClient(messageHandler);
+            this.httpClient = new(messageHandler);
             this.endpoint = endpoint;
             this.resource = resource;
         }

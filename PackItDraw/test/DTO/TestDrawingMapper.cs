@@ -23,7 +23,7 @@ namespace PackIt.Test.DTO
         [SetUp]
         public void BeforeTest()
         {
-            this.mapper = new DrawingMapper();
+            this.mapper = new();
             Assert.IsNotNull(this.mapper);
         }
 
@@ -37,22 +37,22 @@ namespace PackIt.Test.DTO
 
             Assert.AreEqual(dto.DrawingId, drawing.DrawingId);
 
-            Assert.AreEqual(dto.Pack.Costings.Count, drawing.Pack.Costings.Count);
-            foreach (var costing in dto.Pack.Costings)
+            Assert.AreEqual(dto.Packs[0].Costings.Count, drawing.Packs[0].Costings.Count);
+            foreach (var costing in dto.Packs[0].Costings)
             {
                 Assert.AreEqual(costing.PackId, drawing.DrawingId);
             }
 
             int minLevel = -1;
-            Assert.AreEqual(dto.Pack.Stages.Count, drawing.Pack.Stages.Count);
+            Assert.AreEqual(dto.Packs[0].Stages.Count, drawing.Packs[0].Stages.Count);
             int stageIndex = 0;
-            foreach (var stage in dto.Pack.Stages)
+            foreach (var stage in dto.Packs[0].Stages)
             {
                 Assert.AreEqual(stage.PackId, drawing.DrawingId);
                 Assert.Greater((int)stage.StageLevel, minLevel);
                 minLevel = (int)stage.StageLevel;
 
-                Assert.AreEqual(stage.Limits.Count, drawing.Pack.Stages[stageIndex].Limits.Count);
+                Assert.AreEqual(stage.Limits.Count, drawing.Packs[0].Stages[stageIndex].Limits.Count);
                 int limitIndex = 0;
                 foreach (var limit in stage.Limits)
                 {
@@ -62,15 +62,15 @@ namespace PackIt.Test.DTO
                     ++limitIndex;
                 }
 
-                Assert.AreEqual(stage.Results.Count, drawing.Pack.Stages[stageIndex].Results.Count);
+                Assert.AreEqual(stage.Results.Count, drawing.Packs[0].Stages[stageIndex].Results.Count);
                 int resultIndex = 0;
                 foreach (var result in stage.Results)
                 {
-                    Assert.AreEqual(result.PackId, drawing.Pack.PackId);
+                    Assert.AreEqual(result.PackId, drawing.DrawingId);
                     Assert.AreEqual(result.StageLevel, stage.StageLevel);
                     Assert.AreEqual(result.ResultIndex, resultIndex);
 
-                    Assert.AreEqual(result.Layers.Count, drawing.Pack.Stages[stageIndex].Results[resultIndex].Layers.Count);
+                    Assert.AreEqual(result.Layers.Count, drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers.Count);
                     int layerIndex = 0;
                     foreach (var layer in result.Layers)
                     {
@@ -79,7 +79,7 @@ namespace PackIt.Test.DTO
                         Assert.AreEqual(layer.ResultIndex, result.ResultIndex);
                         Assert.AreEqual(layer.LayerIndex, layerIndex);
 
-                        Assert.AreEqual(layer.Collations.Count, drawing.Pack.Stages[stageIndex].Results[resultIndex].Layers[layerIndex].Collations.Count);
+                        Assert.AreEqual(layer.Collations.Count, drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers[layerIndex].Collations.Count);
                         int collationIndex = 0;
                         foreach (var collation in layer.Collations)
                         {
@@ -93,7 +93,7 @@ namespace PackIt.Test.DTO
                         ++layerIndex;
                     }
 
-                    Assert.AreEqual(result.Materials.Count, drawing.Pack.Stages[stageIndex].Results[resultIndex].Materials.Count);
+                    Assert.AreEqual(result.Materials.Count, drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials.Count);
                     int materialIndex = 0;
                     foreach (var material in result.Materials)
                     {
@@ -102,7 +102,7 @@ namespace PackIt.Test.DTO
                         Assert.AreEqual(material.ResultIndex, result.ResultIndex);
                         Assert.AreEqual(material.MaterialIndex, materialIndex);
 
-                        Assert.AreEqual(material.DatabaseMaterials.Count, drawing.Pack.Stages[stageIndex].Results[resultIndex].Materials[materialIndex].DatabaseMaterials.Count);
+                        Assert.AreEqual(material.DatabaseMaterials.Count, drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials[materialIndex].DatabaseMaterials.Count);
                         int databaseIndex = 0;
                         foreach (var databaseMaterial in material.DatabaseMaterials)
                         {
@@ -116,7 +116,7 @@ namespace PackIt.Test.DTO
                         ++materialIndex;
                     }
 
-                    Assert.AreEqual(result.Sections.Count, drawing.Pack.Stages[stageIndex].Results[resultIndex].Sections.Count);
+                    Assert.AreEqual(result.Sections.Count, drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Sections.Count);
                     int sectionIndex = 0;
                     foreach (var section in result.Sections)
                     {
@@ -143,39 +143,39 @@ namespace PackIt.Test.DTO
 
             Assert.AreEqual(data.DrawingId, drawing.DrawingId);
 
-            Assert.AreEqual(data.Pack.Costings.Count, drawing.Pack.Costings.Count);
+            Assert.AreEqual(data.Packs[0].Costings.Count, drawing.Packs[0].Costings.Count);
 
             int minLevel = -1;
-            Assert.AreEqual(data.Pack.Stages.Count, drawing.Pack.Stages.Count);
+            Assert.AreEqual(data.Packs[0].Stages.Count, drawing.Packs[0].Stages.Count);
             int stageIndex = 0;
-            foreach (var stage in data.Pack.Stages)
+            foreach (var stage in data.Packs[0].Stages)
             {
                 Assert.Greater((int)stage.StageLevel, minLevel);
                 minLevel = (int)stage.StageLevel;
 
-                Assert.AreEqual(stage.Limits.Count, drawing.Pack.Stages[stageIndex].Limits.Count);
+                Assert.AreEqual(stage.Limits.Count, drawing.Packs[0].Stages[stageIndex].Limits.Count);
 
-                Assert.AreEqual(stage.Results.Count, drawing.Pack.Stages[stageIndex].Results.Count);
+                Assert.AreEqual(stage.Results.Count, drawing.Packs[0].Stages[stageIndex].Results.Count);
                 int resultIndex = 0;
                 foreach (var result in stage.Results)
                 {
-                    Assert.AreEqual(result.Layers.Count, drawing.Pack.Stages[stageIndex].Results[resultIndex].Layers.Count);
+                    Assert.AreEqual(result.Layers.Count, drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers.Count);
                     int layerIndex = 0;
                     foreach (var layer in result.Layers)
                     {
-                        Assert.AreEqual(layer.Collations.Count, drawing.Pack.Stages[stageIndex].Results[resultIndex].Layers[layerIndex].Collations.Count);
+                        Assert.AreEqual(layer.Collations.Count, drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers[layerIndex].Collations.Count);
                         ++layerIndex;
                     }
 
-                    Assert.AreEqual(result.Materials.Count, drawing.Pack.Stages[stageIndex].Results[resultIndex].Materials.Count);
+                    Assert.AreEqual(result.Materials.Count, drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials.Count);
                     int materialIndex = 0;
                     foreach (var material in result.Materials)
                     {
-                        Assert.AreEqual(material.DatabaseMaterials.Count, drawing.Pack.Stages[stageIndex].Results[resultIndex].Materials[materialIndex].DatabaseMaterials.Count);
+                        Assert.AreEqual(material.DatabaseMaterials.Count, drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials[materialIndex].DatabaseMaterials.Count);
                         ++materialIndex;
                     }
 
-                    Assert.AreEqual(result.Sections.Count, drawing.Pack.Stages[stageIndex].Results[resultIndex].Sections.Count);
+                    Assert.AreEqual(result.Sections.Count, drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Sections.Count);
                     ++resultIndex;
                 }
                 ++stageIndex;

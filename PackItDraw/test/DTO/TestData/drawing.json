@@ -1,7 +1,7 @@
 {
   "DrawingId": "1234-567-89",
   "Computed": false,
-  "DrawingPack": {
+  "Pack": {
     "PackId": "125g.Benl.",
     "Name": "Export Pack.",
     "PlanCode": "Benylin",
@@ -1774,5 +1774,7 @@
         ]
       }
     ]
-  }
+  },
+  "Shapes": [
+  ]
 }

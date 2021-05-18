@@ -46,6 +46,6 @@ namespace PackItUI.Helpers
         /// <summary> Gets the list items. </summary>
         ///
         /// <value> The list items. </value>
-        public List<SelectListItem> ListItems { get; }
+        public IList<SelectListItem> ListItems { get; }
     }
 }

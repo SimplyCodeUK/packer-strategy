@@ -24,12 +24,12 @@ namespace PackItUI.Areas.Materials.Models
         /// </summary>
         public MaterialEditViewModel()
         {
-            this.Data = new Material();
+            this.Data = new();
             this.SetSectionTypes();
         }
 
         /// <summary> Gets and sets the section types used in select box. </summary>
-        public List<ListForFlag<SectionTypes>> SectionTypes { get; private set; }
+        public IList<ListForFlag<SectionTypes>> SectionTypes { get; private set; }
 
         /// <summary> Gets or sets the material data. </summary>
         ///
@@ -51,7 +51,7 @@ namespace PackItUI.Areas.Materials.Models
             this.SectionTypes = new List<ListForFlag<SectionTypes>>();
             foreach (var section in this.Data.Sections)
             {
-                this.SectionTypes.Add(new ListForFlag<SectionTypes>(section.SectionType));
+                this.SectionTypes.Add(new(section.SectionType));
             }
         }
 

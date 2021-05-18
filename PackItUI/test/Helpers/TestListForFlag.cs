@@ -21,7 +21,7 @@ namespace PackItUI.Test.Helpers
         public void EnumValid()
         {
             ListForFlag<TestEnum> test;
-            Assert.DoesNotThrow(delegate { test = new ListForFlag<TestEnum>(0); });
+            Assert.DoesNotThrow(delegate { test = new(0); });
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
@@ -29,7 +29,7 @@ namespace PackItUI.Test.Helpers
         public void EnumInvalid()
         {
             ListForFlag<int> test;
-            Assert.Throws<ArgumentException>(delegate { test = new ListForFlag<int>(0); });
+            Assert.Throws<ArgumentException>(delegate { test = new(0); });
         }
     }
 }

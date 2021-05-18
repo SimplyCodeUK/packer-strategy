@@ -57,8 +57,9 @@ namespace PackIt.DTO
             ConfigureDtoLayer(modelBuilder);
             Configure<DtoPack.DtoCollation>(modelBuilder, "DtoCollation", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.LayerIndex, k.CollationIndex });
             ConfigureDtoMaterial(modelBuilder);
-            Configure<DtoPack.DtoSection>(modelBuilder, "DtoSection", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.SectionIndex });
             Configure<DtoPack.DtoDatabaseMaterial>(modelBuilder, "DtoDatabaseMaterial", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.MaterialIndex, k.DatabaseMaterialIndex });
+            Configure<DtoPack.DtoSection>(modelBuilder, "DtoSection", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.SectionIndex });
+            Configure<DtoDrawing.DtoShape3D>(modelBuilder, "DtoShape", k => new { k.DrawingId, k.ShapeIndex });
         }
 
         /// <summary>Construct default query.</summary>
@@ -67,16 +68,8 @@ namespace PackIt.DTO
         protected override IQueryable<DtoDrawing.DtoDrawing> ConstructQuery()
         {
             var query = this.Resources
-                .Include(p => p.Pack)
-                .Include(p => p.Pack.Costings)
-                .Include(p => p.Pack.Stages)
-                .Include(p => p.Pack.Stages).ThenInclude(s => s.Limits)
-                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results)
-                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers)
-                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Layers).ThenInclude(l => l.Collations)
-                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials)
-                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Materials).ThenInclude(m => m.DatabaseMaterials)
-                .Include(p => p.Pack.Stages).ThenInclude(s => s.Results).ThenInclude(r => r.Sections);
+                .Include(p => p.Packs)
+                .Include(p => p.Shapes);
 
             return query;
         }
@@ -98,7 +91,13 @@ namespace PackIt.DTO
         {
             var builder = Configure<DtoDrawing.DtoDrawing>(modelBuilder, "DtoDrawing", k => k.DrawingId);
             builder
-                .HasOne(p => p.Pack);
+                .HasMany(d => d.Packs)
+                .WithOne()
+                .HasForeignKey(k => new { k.PackId });
+            builder
+                .HasMany(d => d.Shapes)
+                .WithOne()
+                .HasForeignKey(k => new { k.DrawingId });
         }
 
         /// <summary>Configures the specified builder.</summary>

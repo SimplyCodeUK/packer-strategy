@@ -6,6 +6,8 @@
 
 namespace PackIt.Drawing
 {
+    using System;
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary> A drawing. </summary>
@@ -17,13 +19,27 @@ namespace PackIt.Drawing
         /// </summary>
         public Drawing()
         {
-            this.Pack = new Pack.Pack();
+            this.DrawingId = Guid.NewGuid().ToString();
+            this.Packs = new List<Pack.Pack>();
+            this.Packs.Add(new Pack.Pack());
+            this.Computed = false;
+            this.Shapes = new List<Shape3D>();
+        }
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="Drawing" /> class.
+        /// </summary>
+        ///
+        /// <param name="pack"> The pack. </param>
+        public Drawing(Pack.Pack pack) : this()
+        {
+            this.Packs[0] = pack;
         }
 
         /// <summary> Gets or sets the drawing id. </summary>
         ///
         /// <value> The drawing id. </value>
-        public string DrawingId { get; set; }
+        public string DrawingId { get; private set; }
 
         /// <summary> Flag indicating if the drawing has been computed. </summary>
         ///
@@ -35,6 +51,11 @@ namespace PackIt.Drawing
         /// <value> The Pack. </value>
         ///
         /// <see cref="Pack.Pack"/>
-        public Pack.Pack Pack { get; set; }
+        public IList<Pack.Pack> Packs { get; set; }
+
+        /// <summary> Gets or sets the collection of 3D shapes. </summary>
+        ///
+        /// <value> Collection of 3D shapes. </value>
+        public IList<Shape3D> Shapes { get; set; }
     }
 }

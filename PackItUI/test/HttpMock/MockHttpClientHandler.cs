@@ -18,7 +18,7 @@ namespace PackItUI.Test.HttpMock
     public class MockHttpClientHandler : HttpClientHandler
     {
         /// <summary> Mocked requests. </summary>
-        private readonly List<MockRequest> requests;
+        private readonly IList<MockRequest> requests;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="MockHttpClientHandler" /> class.
@@ -38,7 +38,7 @@ namespace PackItUI.Test.HttpMock
         /// <returns> The request. </returns>
         public MockRequest AddRequest(HttpMethod method, string requestUri)
         {
-            MockRequest request = new MockRequest(method, requestUri);
+            MockRequest request = new(method, requestUri);
             this.requests.Add(request);
 
             return request;

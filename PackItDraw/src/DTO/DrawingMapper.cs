@@ -15,29 +15,26 @@ namespace PackIt.DTO
     public class DrawingMapper : IPackItMapper<Drawing, DtoDrawing.DtoDrawing>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
-        private static readonly MapperConfiguration configModelToDto = new MapperConfiguration(
+        private static readonly MapperConfiguration configModelToDto = new(
             cfg =>
             {
-                cfg.CreateMap<Pack.Pack, DtoPack.DtoPack>();
-                cfg.CreateMap<Pack.Costing, DtoPack.DtoCosting>();
-                cfg.CreateMap<Pack.Stage, DtoPack.DtoStage>();
-                cfg.CreateMap<Pack.Limit, DtoPack.DtoLimit>();
-                cfg.CreateMap<Pack.Result, DtoPack.DtoResult>();
-                cfg.CreateMap<Pack.Layer, DtoPack.DtoLayer>();
-                cfg.CreateMap<Pack.Collation, DtoPack.DtoCollation>();
-                cfg.CreateMap<Pack.Material, DtoPack.DtoMaterial>();
-                cfg.CreateMap<Pack.DatabaseMaterial, DtoPack.DtoDatabaseMaterial>();
-                cfg.CreateMap<Pack.Section, DtoPack.DtoSection>();
                 cfg.CreateMap<Drawing, DtoDrawing.DtoDrawing>().AfterMap(
                     (s, d) =>
                     {
-                        d.Pack.PackId = s.DrawingId;
-                        foreach (var costing in d.Pack.Costings)
+                        d.Packs[0].PackId = s.DrawingId;
+                        foreach (var costing in d.Packs[0].Costings)
                         {
                             costing.PackId = s.DrawingId;
                         }
 
-                        foreach (var stage in d.Pack.Stages)
+                        long shapeIndex = 0;
+                        foreach (var shape in d.Shapes)
+                        {
+                            shape.DrawingId = s.DrawingId;
+                            shape.ShapeIndex = shapeIndex++;
+                        }
+
+                        foreach (var stage in d.Packs[0].Stages)
                         {
                             stage.PackId = s.DrawingId;
 
@@ -105,13 +102,25 @@ namespace PackIt.DTO
                             }
                         }
                     });
+                cfg.CreateMap<Pack.Pack, DtoPack.DtoPack>();
+                cfg.CreateMap<Pack.Costing, DtoPack.DtoCosting>();
+                cfg.CreateMap<Pack.Stage, DtoPack.DtoStage>();
+                cfg.CreateMap<Pack.Limit, DtoPack.DtoLimit>();
+                cfg.CreateMap<Pack.Result, DtoPack.DtoResult>();
+                cfg.CreateMap<Pack.Layer, DtoPack.DtoLayer>();
+                cfg.CreateMap<Pack.Collation, DtoPack.DtoCollation>();
+                cfg.CreateMap<Pack.Material, DtoPack.DtoMaterial>();
+                cfg.CreateMap<Pack.DatabaseMaterial, DtoPack.DtoDatabaseMaterial>();
+                cfg.CreateMap<Pack.Section, DtoPack.DtoSection>();
+                cfg.CreateMap<Shape3D, DtoDrawing.DtoShape3D>();
             });
 
         /// <summary> Configuration of map from Dto to Model. </summary>
-        private static readonly MapperConfiguration configDtoToModel = new MapperConfiguration(
+        private static readonly MapperConfiguration configDtoToModel = new(
             cfg =>
             {
                 cfg.CreateMap<DtoDrawing.DtoDrawing, Drawing>();
+                cfg.CreateMap<DtoDrawing.DtoShape3D, Shape3D>();
                 cfg.CreateMap<DtoPack.DtoPack, Pack.Pack>();
                 cfg.CreateMap<DtoPack.DtoCosting, Pack.Costing>();
                 cfg.CreateMap<DtoPack.DtoStage, Pack.Stage>();
@@ -120,6 +129,7 @@ namespace PackIt.DTO
                 cfg.CreateMap<DtoPack.DtoLayer, Pack.Layer>();
                 cfg.CreateMap<DtoPack.DtoCollation, Pack.Collation>();
                 cfg.CreateMap<DtoPack.DtoMaterial, Pack.Material>();
+                cfg.CreateMap<DtoPack.DtoDatabaseMaterial, Pack.DatabaseMaterial>();
                 cfg.CreateMap<DtoPack.DtoSection, Pack.Section>();
             });
 

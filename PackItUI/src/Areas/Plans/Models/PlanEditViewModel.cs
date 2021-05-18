@@ -17,7 +17,7 @@ namespace PackItUI.Areas.Plans.Models
         /// </summary>
         public PlanEditViewModel()
         {
-            this.Data = new Plan();
+            this.Data = new();
         }
 
         /// <summary> Gets or sets the plan data. </summary>

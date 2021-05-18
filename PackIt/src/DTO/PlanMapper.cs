@@ -15,7 +15,7 @@ namespace PackIt.DTO
     public class PlanMapper : IPackItMapper<Plan, DtoPlan.DtoPlan>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
-        private static readonly MapperConfiguration configModelToDto = new MapperConfiguration(
+        private static readonly MapperConfiguration configModelToDto = new(
             cfg =>
             {
                 cfg.CreateMap<Limit, DtoPlan.DtoLimit>();
@@ -39,7 +39,7 @@ namespace PackIt.DTO
             });
 
         /// <summary> Configuration of map from Dto to Model. </summary>
-        private static readonly MapperConfiguration configDtoToModel = new MapperConfiguration(
+        private static readonly MapperConfiguration configDtoToModel = new(
             cfg =>
             {
                 cfg.CreateMap<DtoPlan.DtoPlan, Plan>();

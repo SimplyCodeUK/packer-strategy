@@ -18,7 +18,7 @@ namespace PackItUI.Areas.App.Models
         /// </summary>
         public AboutViewModel()
         {
-            this.Services = new Dictionary<string, ServiceInfo>();
+            this.Services = new();
         }
 
         /// <summary> Gets the services. </summary>

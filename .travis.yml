@@ -46,7 +46,7 @@ install:
   - dotnet restore PackIt.sln
 
 script:
-  - doxygen docs/doxygen
+  - doxygen ./docs/doxygen
   - sonar-scanner
   - dotnet build PackItLib/src/PackItLib.csproj         -c $CONFIG /p:DocumentationFile=codedoc.xml
   - dotnet build PackItLib/test/PackItLib.Test.csproj   -c $CONFIG /p:DocumentationFile=codedoc.xml

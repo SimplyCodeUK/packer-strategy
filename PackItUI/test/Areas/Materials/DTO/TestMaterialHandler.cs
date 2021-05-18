@@ -20,7 +20,7 @@ namespace PackItUI.Test.Areas.Materials.DTO
     public class TestMaterialHandler
     {
         /// <summary> The service endpoints. </summary>
-        private static readonly ServiceEndpoints Endpoints = new ServiceEndpoints
+        private static readonly ServiceEndpoints Endpoints = new()
         {
             Materials = "http://localhost:8001/api/v1/",
             Packs = "http://localhost:8002/api/v1/",
@@ -29,7 +29,7 @@ namespace PackItUI.Test.Areas.Materials.DTO
         };
 
         /// <summary> The application settings. </summary>
-        private static readonly AppSettings AppSettings = new AppSettings
+        private static readonly AppSettings AppSettings = new()
         {
             ServiceEndpoints = Endpoints
         };
@@ -38,7 +38,7 @@ namespace PackItUI.Test.Areas.Materials.DTO
         private static readonly IOptions<AppSettings> Options = new OptionsWrapper<AppSettings>(AppSettings);
 
         /// <summary> The time out for disconnected services. </summary>
-        private static readonly TimeSpan TimeOut = new TimeSpan(0, 0, 0, 0, 20);
+        private static readonly TimeSpan TimeOut = new(0, 0, 0, 0, 20);
 
         /// <summary> The handler under test. </summary>
         private MaterialHandler handler;
@@ -76,7 +76,7 @@ namespace PackItUI.Test.Areas.Materials.DTO
         /// <summary> Setup for disconnected service. </summary>
         private void SetupDisconnected()
         {
-            this.handler = new MaterialHandler(Options)
+            this.handler = new(Options)
             {
                 TimeOut = TimeOut
             };
@@ -92,7 +92,7 @@ namespace PackItUI.Test.Areas.Materials.DTO
             httpHandler
                 .AddRequest(HttpMethod.Get, root)
                 .ContentsJson("{'Version': '1', 'About': 'Materials'}");
-            this.handler = new MaterialHandler(Options, httpHandler)
+            this.handler = new(Options, httpHandler)
             {
                 TimeOut = TimeOut
             };

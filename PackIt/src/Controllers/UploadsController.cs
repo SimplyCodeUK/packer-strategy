@@ -72,7 +72,7 @@ namespace PackIt.Controllers
         {
             this.logger = logger;
             this.appSettings = appSettings.Value;
-            this.httpClient = new HttpClient(messageHandler);
+            this.httpClient = new(messageHandler);
         }
 
         /// <summary> (An Action that handles HTTP POST requests) Post this message. </summary>
@@ -131,9 +131,11 @@ namespace PackIt.Controllers
                 }
             }
 
-            Dictionary<string, List<string>> ret = new Dictionary<string, List<string>>();
-            ret.Add("pass", pass);
-            ret.Add("fail", fail);
+            Dictionary<string, List<string>> ret = new()
+            {
+                { "pass", pass },
+                { "fail", fail }
+            };
             var status = fail.Count != 0 ? HttpStatusCode.Conflict : HttpStatusCode.Created;
             return this.StatusCode((int)status, ret);
         }

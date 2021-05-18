@@ -41,7 +41,7 @@ namespace PackItUI.Areas.Uploads.DTO
         /// <param name="messageHandler"> The http message handler. </param>
         public UploadHandler(IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler)
         {
-            this.httpClient = new HttpClient(messageHandler);
+            this.httpClient = new(messageHandler);
             this.endpoint = appSettings.Value.ServiceEndpoints.Uploads;
         }
 

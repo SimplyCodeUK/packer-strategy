@@ -38,7 +38,7 @@ namespace PackIt.Test.Controllers
             var context = new MaterialContext(builder.Options);
             var repository = new MaterialRepository(context);
 
-            this.controller = new MaterialsController(
+            this.controller = new(
                 Mock.Of<ILogger<MaterialsController>>(),
                 repository);
             Assert.IsNotNull(this.controller);
@@ -53,9 +53,10 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
-            CreatedAtRouteResult res = result as CreatedAtRouteResult;
+            var res = result as CreatedAtRouteResult;
             Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
             Assert.IsTrue(res.RouteValues.ContainsKey("id"));
+            Assert.IsInstanceOf<Material>(res.Value);
         }
 
         /// <summary> (Unit Test Method) posts the no data. </summary>
@@ -65,7 +66,7 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(null);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<BadRequestResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.BadRequest, ((BadRequestResult)result).StatusCode);
+            Assert.AreEqual((int)HttpStatusCode.BadRequest, (result as BadRequestResult).StatusCode);
         }
 
         /// <summary> (Unit Test Method) posts the already exists. </summary>
@@ -77,7 +78,10 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
+            var res = result as CreatedAtRouteResult;
+            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.IsTrue(res.RouteValues.ContainsKey("id"));
+            Assert.IsInstanceOf<Material>(res.Value);
 
             result = this.controller.Post(item);
             Assert.IsNotNull(result);
@@ -104,11 +108,12 @@ namespace PackIt.Test.Controllers
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            var objectResult = (OkObjectResult)result;
+            var objectResult = result as OkObjectResult;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<IList<Material>>(objectResult.Value);
 
-            foreach (var item in (IList<Material>)objectResult.Value)
+            var items = objectResult.Value as IList<Material>;
+            foreach (var item in items)
             {
                 if (ids.Contains(item.MaterialId))
                 {
@@ -131,17 +136,20 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
+            var res = result as CreatedAtRouteResult;
+            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.IsTrue(res.RouteValues.ContainsKey("id"));
+            Assert.IsInstanceOf<Material>(res.Value);
 
             result = this.controller.Get(id);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            var objectResult = (OkObjectResult)result;
+            var objectResult = result as OkObjectResult;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
-            item = (Material)objectResult.Value;
+            item = objectResult.Value as Material;
             Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.Name, StartName);
@@ -156,7 +164,9 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Get(id);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundObjectResult)result).StatusCode);
+            var notfound = result as NotFoundObjectResult;
+            Assert.AreEqual((int)HttpStatusCode.NotFound, notfound.StatusCode);
+            Assert.AreEqual(id, notfound.Value);
         }
 
         /// <summary> (Unit Test Method) puts this object. </summary>
@@ -172,23 +182,26 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
+            var res = result as CreatedAtRouteResult;
+            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.IsTrue(res.RouteValues.ContainsKey("id"));
+            Assert.IsInstanceOf<Material>(res.Value);
 
             item.Name = PutName;
             result = this.controller.Put(id, item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
+            Assert.AreEqual((int)HttpStatusCode.OK, (result as OkResult).StatusCode);
 
             // Get the material and check the returned object has the new Name
             result = this.controller.Get(id);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            var objectResult = (OkObjectResult)result;
+            var objectResult = result as OkObjectResult;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
-            item = (Material)objectResult.Value;
+            item = objectResult.Value as Material;
             Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Name, PutName);
@@ -204,7 +217,9 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Put(id, item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundObjectResult)result).StatusCode);
+            var notfound = result as NotFoundObjectResult;
+            Assert.AreEqual((int)HttpStatusCode.NotFound, notfound.StatusCode);
+            Assert.AreEqual(id, notfound.Value);
         }
 
         /// <summary> (Unit Test Method) deletes this object. </summary>
@@ -218,12 +233,15 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
+            var res = result as CreatedAtRouteResult;
+            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.IsTrue(res.RouteValues.ContainsKey("id"));
+            Assert.IsInstanceOf<Material>(res.Value);
 
             result = this.controller.Delete(id);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.OK, ((OkResult)result).StatusCode);
+            Assert.AreEqual((int)HttpStatusCode.OK, (result as OkResult).StatusCode);
         }
 
         /// <summary> (Unit Test Method) deletes the not found. </summary>
@@ -235,7 +253,9 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Delete(id);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundObjectResult)result).StatusCode);
+            var notfound = result as NotFoundObjectResult;
+            Assert.AreEqual((int)HttpStatusCode.NotFound, notfound.StatusCode);
+            Assert.AreEqual(id, notfound.Value);
         }
 
         /// <summary> (Unit Test Method) patches this object. </summary>
@@ -252,7 +272,10 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
+            var res = result as CreatedAtRouteResult;
+            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.IsTrue(res.RouteValues.ContainsKey("id"));
+            Assert.IsInstanceOf<Material>(res.Value);
 
             // Patch the material with a new name
             var patch = new JsonPatchDocument<Material>();
@@ -263,11 +286,11 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<OkObjectResult>(result);
 
             // Check the returned object from the patch has the same Note but different Name
-            var objectResult = (OkObjectResult)result;
+            var objectResult = result as OkObjectResult;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
-            item = (Material)objectResult.Value;
+            item = objectResult.Value as Material;
             Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Name, PatchName);
@@ -276,11 +299,11 @@ namespace PackIt.Test.Controllers
             result = this.controller.Get(id);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            objectResult = (OkObjectResult)result;
+            objectResult = result as OkObjectResult;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
-            item = (Material)objectResult.Value;
+            item = objectResult.Value as Material;
             Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Name, PatchName);
@@ -293,21 +316,26 @@ namespace PackIt.Test.Controllers
             const string StartName = "A name";
             const string PatchName = "B name";
             const MaterialType Type = MaterialType.Crate;
-            var id = Guid.NewGuid().ToString();
-            var item = new Material { MaterialId = id, Type = Type, Name = StartName };
+            var item = new Material { MaterialId = Guid.NewGuid().ToString(), Type = Type, Name = StartName };
 
             var result = this.controller.Post(item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
+            var res = result as CreatedAtRouteResult;
+            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.IsTrue(res.RouteValues.ContainsKey("id"));
+            Assert.IsInstanceOf<Material>(res.Value);
 
             var patch = new JsonPatchDocument<Material>();
             patch.Replace(e => e.Name, PatchName);
 
-            result = this.controller.Patch(Guid.NewGuid().ToString(), patch);
+            var id = Guid.NewGuid().ToString();
+            result = this.controller.Patch(id, patch);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<NotFoundObjectResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.NotFound, ((NotFoundObjectResult)result).StatusCode);
+            var notfound = result as NotFoundObjectResult;
+            Assert.AreEqual((int)HttpStatusCode.NotFound, notfound.StatusCode);
+            Assert.AreEqual(id, notfound.Value);
         }
 
         /// <summary> (Unit Test Method) posts the complex material. </summary>
@@ -325,19 +353,22 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<CreatedAtRouteResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.Created, ((CreatedAtRouteResult)result).StatusCode);
+            var res = result as CreatedAtRouteResult;
+            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.IsTrue(res.RouteValues.ContainsKey("id"));
+            Assert.IsInstanceOf<Material>(res.Value);
 
             // Get the material
             result = this.controller.Get(id);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
 
-            var objectResult = (OkObjectResult)result;
+            var objectResult = result as OkObjectResult;
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
             // Test the material
-            item = (Material)objectResult.Value;
+            item = objectResult.Value as Material;
             Assert.AreEqual(item.Type, Type);
             Assert.AreEqual(item.MaterialId, id);
             Assert.AreEqual(item.Costings.Count, 1);

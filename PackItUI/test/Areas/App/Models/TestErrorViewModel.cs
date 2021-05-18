@@ -18,7 +18,7 @@ namespace PackItUI.Test.Areas.App.Controllers
         [Test]
         public void CanShowRequestId()
         {
-            ErrorViewModel model = new ErrorViewModel();
+            ErrorViewModel model = new();
 
             model.RequestId = "";
 
@@ -30,7 +30,7 @@ namespace PackItUI.Test.Areas.App.Controllers
         [Test]
         public void CannotShowRequestId()
         {
-            ErrorViewModel model = new ErrorViewModel();
+            ErrorViewModel model = new();
 
             model.RequestId = "id";
 

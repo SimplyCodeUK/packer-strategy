@@ -28,7 +28,7 @@ namespace PackIt.Test.Controllers
     public class TestUploadsController
     {
         /// <summary> The service endpoints. </summary>
-        private static readonly ServiceEndpoints Endpoints = new ServiceEndpoints
+        private static readonly ServiceEndpoints Endpoints = new()
         {
             Materials = "http://localhost:8001/api/v1/",
             Packs = "http://localhost:8002/api/v1/",
@@ -37,13 +37,13 @@ namespace PackIt.Test.Controllers
         };
 
         /// <summary> The application settings. </summary>
-        private static readonly AppSettings AppSettings = new AppSettings
+        private static readonly AppSettings AppSettings = new()
         {
             ServiceEndpoints = Endpoints
         };
 
         /// <summary> The options. </summary>
-        private static readonly OptionsWrapper<AppSettings> Options = new OptionsWrapper<AppSettings>(AppSettings);
+        private static readonly OptionsWrapper<AppSettings> Options = new(AppSettings);
 
         /// <summary> The controller under test. </summary>
         private UploadsController controller;
@@ -90,11 +90,11 @@ namespace PackIt.Test.Controllers
             Assert.IsNotNull(result.Result);
             Assert.IsInstanceOf<ObjectResult>(result.Result);
 
-            var obj = (ObjectResult)result.Result;
+            var obj = result.Result as ObjectResult;
             Assert.AreEqual((int)HttpStatusCode.Created, obj.StatusCode);
 
             Assert.IsInstanceOf<Dictionary<string, List<string>>>(obj.Value);
-            var ret = (Dictionary<string, List<string>>)(obj.Value);
+            var ret = obj.Value as Dictionary<string, List<string>>;
             Assert.AreEqual(
                 this.bulk.Materials.Count + this.bulk.Packs.Count + this.bulk.Plans.Count,
                 ret["pass"].Count);
@@ -113,7 +113,7 @@ namespace PackIt.Test.Controllers
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Result);
             Assert.IsInstanceOf<BadRequestResult>(result.Result);
-            Assert.AreEqual((int)HttpStatusCode.BadRequest, ((BadRequestResult)result.Result).StatusCode);
+            Assert.AreEqual((int)HttpStatusCode.BadRequest, (result.Result as BadRequestResult).StatusCode);
         }
 
         /// <summary> (Unit Test Method) post disconnected. </summary>
@@ -127,11 +127,11 @@ namespace PackIt.Test.Controllers
             Assert.IsNotNull(result.Result);
             Assert.IsInstanceOf<ObjectResult>(result.Result);
 
-            var obj = (ObjectResult)result.Result;
+            var obj = result.Result as ObjectResult;
             Assert.AreEqual((int)HttpStatusCode.Conflict, obj.StatusCode);
 
             Assert.IsInstanceOf<Dictionary<string, List<string>>>(obj.Value);
-            var ret = (Dictionary<string, List<string>>)(obj.Value);
+            var ret = obj.Value as Dictionary<string, List<string>>;
             Assert.AreEqual(
                 0,
                 ret["pass"].Count);
@@ -143,7 +143,7 @@ namespace PackIt.Test.Controllers
         /// <summary> Setup the controller as if the services are not running. </summary>
         private void SetupServicesNotRunning()
         {
-            this.controller = new UploadsController(
+            this.controller = new(
                 Mock.Of<ILogger<UploadsController>>(),
                 Options);
             Assert.IsNotNull(this.controller);
@@ -167,7 +167,7 @@ namespace PackIt.Test.Controllers
                             return new HttpResponseMessage(HttpStatusCode.OK);
                         }));
 
-            this.controller = new UploadsController(
+            this.controller = new(
                 Mock.Of<ILogger<UploadsController>>(),
                 Options,
                 handler.Object);

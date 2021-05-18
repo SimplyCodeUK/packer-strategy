@@ -37,7 +37,7 @@ namespace PackIt.DbInterface
 
             // Register database contexts.
             // The first context will be the default if not specified in <see cref="Configuration" />
-            this.connectionManager = new DbConnectionManager();
+            this.connectionManager = new();
             this.connectionManager.RegisterContextBuilder("inmemory", new DbContextBuilderInMemory());
             this.connectionManager.RegisterContextBuilder("postgres", new DbContextBuilderPostgres());
         }

@@ -12,6 +12,7 @@ namespace PackItDraw.Controllers
     using Microsoft.Extensions.Logging;
     using PackIt.Drawing;
     using PackIt.DTO;
+    using PackIt.Models;
     using PackIt.Pack;
 
     /// <summary> The root controller of the service. </summary>
@@ -80,12 +81,7 @@ namespace PackItDraw.Controllers
         public IActionResult Post([FromBody] Pack pack)
         {
             IActionResult result;
-            Drawing value = new Drawing
-            {
-                DrawingId = Guid.NewGuid().ToString(),
-                Computed = false,
-                Pack = pack
-            };
+            Drawing value = new(pack);
 
             if (pack != null)
             {
@@ -93,6 +89,8 @@ namespace PackItDraw.Controllers
                 try
                 {
                     this.repository.Add(value);
+                    // Start thread to create drawing
+                    DoDrawing.Start(value.DrawingId, this.repository);
                     result = this.CreatedAtRoute("GetDrawing", new { id = value.DrawingId }, value);
                 }
                 catch (Exception)

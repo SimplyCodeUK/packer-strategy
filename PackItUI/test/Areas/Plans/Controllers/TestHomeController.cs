@@ -24,7 +24,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
     public class TestHomeController
     {
         /// <summary> The service endpoints. </summary>
-        private static readonly ServiceEndpoints Endpoints = new ServiceEndpoints
+        private static readonly ServiceEndpoints Endpoints = new()
         {
             Materials = "http://localhost:8001/api/v1/",
             Packs = "http://localhost:8002/api/v1/",
@@ -33,7 +33,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         };
 
         /// <summary> The application settings. </summary>
-        private static readonly AppSettings AppSettings = new AppSettings
+        private static readonly AppSettings AppSettings = new()
         {
             ServiceEndpoints = Endpoints
         };
@@ -42,7 +42,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         private static readonly IOptions<AppSettings> Options = new OptionsWrapper<AppSettings>(AppSettings);
 
         /// <summary> The time out for disconnected services. </summary>
-        private static readonly TimeSpan TimeOut = new TimeSpan(0, 0, 0, 0, 20);
+        private static readonly TimeSpan TimeOut = new(0, 0, 0, 0, 20);
 
         /// <summary> The controller under test. </summary>
         private HomeController controller;
@@ -231,7 +231,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
             httpHandler
                 .AddRequest(HttpMethod.Delete, root + "Plans/Id1")
                 .ThrowException = true;
-            this.controller = new HomeController(
+            this.controller = new(
                 Mock.Of<ILogger<HomeController>>(),
                 new PlanHandler(Options, httpHandler)
                 {
@@ -261,7 +261,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
             httpHandler
                 .AddRequest(HttpMethod.Delete, root + "Plans/Id1");
 
-            this.controller = new HomeController(
+            this.controller = new(
                 Mock.Of<ILogger<HomeController>>(),
                 new PlanHandler(Options, httpHandler)
                 {

@@ -38,7 +38,7 @@ namespace PackItUI.Areas.App.Controllers
         public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Material.Material> materialHandler, DbServiceHandler<PackIt.Pack.Pack> packHandler, DbServiceHandler<PackIt.Plan.Plan> planHandler, IUploadHandler uploadHandler)
         {
             this.logger = logger;
-            this.services = new Dictionary<string, IServiceHandler>
+            this.services = new()
             {
                 { "Materials", materialHandler },
                 { "Packs", packHandler },

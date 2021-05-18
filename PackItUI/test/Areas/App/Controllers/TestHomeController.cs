@@ -28,7 +28,7 @@ namespace PackItUI.Test.Areas.App.Controllers
     public class TestHomeController
     {
         /// <summary> The service endpoints. </summary>
-        private static readonly ServiceEndpoints Endpoints = new ServiceEndpoints
+        private static readonly ServiceEndpoints Endpoints = new()
         {
             Materials = "http://localhost:8001/api/v1/",
             Packs = "http://localhost:8002/api/v1/",
@@ -37,7 +37,7 @@ namespace PackItUI.Test.Areas.App.Controllers
         };
 
         /// <summary> The application settings. </summary>
-        private static readonly AppSettings AppSettings = new AppSettings
+        private static readonly AppSettings AppSettings = new()
         {
             ServiceEndpoints = Endpoints
         };
@@ -46,7 +46,7 @@ namespace PackItUI.Test.Areas.App.Controllers
         private static readonly IOptions<AppSettings> Options = new OptionsWrapper<AppSettings>(AppSettings);
 
         /// <summary> The time out for disconnected services. </summary>
-        private static readonly TimeSpan TimeOut = new TimeSpan(0, 0, 0, 0, 20);
+        private static readonly TimeSpan TimeOut = new(0, 0, 0, 0, 20);
 
         /// <summary> The controller under test. </summary>
         private HomeController controller;
@@ -148,7 +148,7 @@ namespace PackItUI.Test.Areas.App.Controllers
         /// <summary> Setup for disconnected services. </summary>
         private void SetupDisconnected()
         {
-            this.controller = new HomeController(
+            this.controller = new(
                 Mock.Of<ILogger<HomeController>>(),
                 new MaterialHandler(Options)
                 {
@@ -167,7 +167,7 @@ namespace PackItUI.Test.Areas.App.Controllers
                     TimeOut = TimeOut
                 })
             {
-                ControllerContext = new ControllerContext
+                ControllerContext = new()
                 {
                     HttpContext = new DefaultHttpContext()
                 }
@@ -192,14 +192,14 @@ namespace PackItUI.Test.Areas.App.Controllers
                 .AddRequest(HttpMethod.Get, "http://localhost:8004/api/v1/")
                 .ContentsJson("{'Version': '1', 'About': 'Uploads'}");
 
-            this.controller = new HomeController(
+            this.controller = new(
                 Mock.Of<ILogger<HomeController>>(),
                 new MaterialHandler(Options, httpHandler),
                 new PackHandler(Options, httpHandler),
                 new PlanHandler(Options, httpHandler),
                 new UploadHandler(Options, httpHandler))
             {
-                ControllerContext = new ControllerContext
+                ControllerContext = new()
                 {
                     HttpContext = new DefaultHttpContext()
                 }
