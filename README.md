@@ -17,15 +17,13 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE.md)
 
-[![HitCount](http://hits.dwyl.io/SimplyCodeUK/packer-strategy.svg)](http://hits.dwyl.io/SimplyCodeUK/packer-strategy)
-
 <a name="java-script-dependencies"></a>
 
 ## Java Script Dependencies
 
 [![BabylonJS](https://img.shields.io/badge/BabylonJS-v4.2.0-green.svg)](https://www.jsdelivr.com/package/npm/babylonjs)
 
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-v4.6.0-green.svg)](https://www.jsdelivr.com/package/npm/bootstrap)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.0.1-green.svg)](https://www.jsdelivr.com/package/npm/bootstrap)
 
 [![Font Awesome 5](https://img.shields.io/badge/FontAwesome-v5.4.1-green.svg)](https://www.jsdelivr.com/package/npm/font-awesome-5-css)
 
