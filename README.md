@@ -57,13 +57,14 @@
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
 - [.NET Core SDK 5.0.103](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.9.5](https://www.visualstudio.com/)
+- [Visual Studio 2019 Version 16.9.6](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
   - Extensions
     - StyleCop
     - Markdown Editor
+- [Nuget Version 5.9.1](https://www.nuget.org/)
 - [Powershell Version 7.1.3](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 6.1.18](https://www.virtualbox.org/)
 - [Vagrant Version 2.2.14](https://www.vagrantup.com/)
