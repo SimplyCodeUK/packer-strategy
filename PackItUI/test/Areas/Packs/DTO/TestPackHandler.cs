@@ -25,7 +25,8 @@ namespace PackItUI.Test.Areas.Packs.DTO
             Materials = "http://localhost:8001/api/v1/",
             Packs = "http://localhost:8002/api/v1/",
             Plans = "http://localhost:8003/api/v1/",
-            Uploads = "http://localhost:8004/api/v1/"
+            Uploads = "http://localhost:8004/api/v1/",
+            Drawings = "http://localhost:5000/api/v1/"
         };
 
         /// <summary> The application settings. </summary>

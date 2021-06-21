@@ -9,8 +9,10 @@ namespace PackItUI.Areas.Packs.Controllers
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
+    using Newtonsoft.Json.Linq;
     using PackItUI.Areas.Common.Controller;
     using PackItUI.Areas.Common.DTO;
+    using PackItUI.Areas.Packs.DTO;
     using PackItUI.Areas.Packs.Models;
 
     /// <summary> A controller for handling the Packs Home Page. </summary>
@@ -19,15 +21,19 @@ namespace PackItUI.Areas.Packs.Controllers
     [Area("Packs")]
     public class HomeController : PackItController<HomeController, PackIt.Pack.Pack, PackEditViewModel.Pack, PackEditViewModel>
     {
+        private readonly DrawHandler drawHandler;
+
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         ///
         /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Pack.Pack> handler)
+        /// <param name="drawHandler"> The drawing handler. </param>
+        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Pack.Pack> handler, DrawHandler drawHandler)
             : base(logger, handler)
         {
+            this.drawHandler = drawHandler;
         }
 
         /// <summary> Handle the Packs view request. </summary>
@@ -54,7 +60,7 @@ namespace PackItUI.Areas.Packs.Controllers
             this.logger.LogInformation("Create Pack id {0}", data.PackId);
 
             data = this.mapper.Map(model.Data, data);
-            if (ModelState.IsValid && await this.handler.CreateAsync(data))
+            if (this.ModelState.IsValid && await this.handler.CreateAsync(data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }
@@ -131,8 +137,19 @@ namespace PackItUI.Areas.Packs.Controllers
         public async Task<IActionResult> Display(string id)
         {
             this.logger.LogInformation("Display id {0}", id);
-            var model = await this.handler.ReadAsync(id);
+            PackDisplayViewModel model = new()
+            {
+                Pack = await this.handler.ReadAsync(id)
+            };
 
+            var created = await this.drawHandler.CreateAsync(model.Pack);
+            if ( created.StatusCode == System.Net.HttpStatusCode.Created )
+            {
+                var content = created.Content.ReadAsStringAsync();
+                content.Wait();
+                JObject cont = JObject.Parse(content.Result);
+                model.Drawing = await this.drawHandler.ReadAsync(cont["id"].ToString());
+            }
             return this.View("Display", model);
         }
 
@@ -172,13 +189,14 @@ namespace PackItUI.Areas.Packs.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult CostingRow([FromBody] Newtonsoft.Json.Linq.JObject body)
         {
             var index = body["index"];
             this.logger.LogInformation("CostingRow {0}", index);
 
-            ViewBag.crud = Helpers.Crud.Create;
-            ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
+            this.ViewBag.crud = Helpers.Crud.Create;
+            this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
 
             var mod = new PackIt.Pack.Costing();
             var ret = this.PartialView("EditorTemplates/Costing", mod);

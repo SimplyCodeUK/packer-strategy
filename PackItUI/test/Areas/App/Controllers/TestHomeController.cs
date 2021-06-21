@@ -33,7 +33,8 @@ namespace PackItUI.Test.Areas.App.Controllers
             Materials = "http://localhost:8001/api/v1/",
             Packs = "http://localhost:8002/api/v1/",
             Plans = "http://localhost:8003/api/v1/",
-            Uploads = "http://localhost:8004/api/v1/"
+            Uploads = "http://localhost:8004/api/v1/",
+            Drawings = "http://localhost:5000/api/v1/"
         };
 
         /// <summary> The application settings. </summary>
@@ -65,7 +66,7 @@ namespace PackItUI.Test.Areas.App.Controllers
             var result = this.controller.Index();
             Assert.IsInstanceOf<ViewResult>(result);
 
-            ViewResult viewResult = (ViewResult)result;
+            ViewResult viewResult = result as ViewResult;
             Assert.AreEqual("Index", viewResult.ViewName);
             Assert.IsNull(viewResult.ViewData.Model);
         }
@@ -78,12 +79,12 @@ namespace PackItUI.Test.Areas.App.Controllers
             result.Wait();
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
-            ViewResult viewResult = (ViewResult)result.Result;
+            ViewResult viewResult = result.Result as ViewResult;
             Assert.AreEqual("About", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
             Assert.IsInstanceOf<AboutViewModel>(viewResult.ViewData.Model);
 
-            AboutViewModel model = (AboutViewModel)viewResult.ViewData.Model;
+            AboutViewModel model = viewResult.ViewData.Model as AboutViewModel;
             Assert.AreEqual("Unknown", model.Services["Materials"].Version);
             Assert.AreEqual("Unknown", model.Services["Packs"].Version);
             Assert.AreEqual("Unknown", model.Services["Plans"].Version);
@@ -104,20 +105,22 @@ namespace PackItUI.Test.Areas.App.Controllers
             result.Wait();
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
-            ViewResult viewResult = (ViewResult)result.Result;
+            ViewResult viewResult = result.Result as ViewResult;
             Assert.AreEqual("About", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
             Assert.IsInstanceOf<AboutViewModel>(viewResult.ViewData.Model);
 
-            AboutViewModel model = (AboutViewModel)viewResult.ViewData.Model;
+            AboutViewModel model = viewResult.ViewData.Model as AboutViewModel;
             Assert.AreEqual("1", model.Services["Materials"].Version);
             Assert.AreEqual("1", model.Services["Packs"].Version);
             Assert.AreEqual("1", model.Services["Plans"].Version);
             Assert.AreEqual("1", model.Services["Uploads"].Version);
+            Assert.AreEqual("1", model.Services["Drawings"].Version);
             Assert.AreEqual("Materials", model.Services["Materials"].About);
             Assert.AreEqual("Packs", model.Services["Packs"].About);
             Assert.AreEqual("Plans", model.Services["Plans"].About);
             Assert.AreEqual("Uploads", model.Services["Uploads"].About);
+            Assert.AreEqual("Draw", model.Services["Drawings"].About);
         }
 
         /// <summary> (Unit Test Method) contact action. </summary>
@@ -127,7 +130,7 @@ namespace PackItUI.Test.Areas.App.Controllers
             var result = this.controller.Contact();
             Assert.IsInstanceOf<ViewResult>(result);
 
-            ViewResult viewResult = (ViewResult)result;
+            ViewResult viewResult = result as ViewResult;
             Assert.AreEqual("Contact", viewResult.ViewName);
             Assert.IsNull(viewResult.ViewData.Model);
         }
@@ -139,7 +142,7 @@ namespace PackItUI.Test.Areas.App.Controllers
             var result = this.controller.Error();
             Assert.IsInstanceOf<ViewResult>(result);
 
-            ViewResult viewResult = (ViewResult)result;
+            ViewResult viewResult = result as ViewResult;
             Assert.AreEqual("Error", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
             Assert.IsInstanceOf<ErrorViewModel>(viewResult.ViewData.Model);
@@ -163,6 +166,10 @@ namespace PackItUI.Test.Areas.App.Controllers
                     TimeOut = TimeOut
                 },
                 new UploadHandler(Options)
+                {
+                    TimeOut = TimeOut
+                },
+                new DrawHandler(Options)
                 {
                     TimeOut = TimeOut
                 })
@@ -191,13 +198,17 @@ namespace PackItUI.Test.Areas.App.Controllers
             httpHandler
                 .AddRequest(HttpMethod.Get, "http://localhost:8004/api/v1/")
                 .ContentsJson("{'Version': '1', 'About': 'Uploads'}");
+            httpHandler
+                .AddRequest(HttpMethod.Get, "http://localhost:5000/api/v1/")
+                .ContentsJson("{'Version': '1', 'About': 'Draw'}");
 
             this.controller = new(
                 Mock.Of<ILogger<HomeController>>(),
                 new MaterialHandler(Options, httpHandler),
                 new PackHandler(Options, httpHandler),
                 new PlanHandler(Options, httpHandler),
-                new UploadHandler(Options, httpHandler))
+                new UploadHandler(Options, httpHandler),
+                new DrawHandler(Options, httpHandler))
             {
                 ControllerContext = new()
                 {

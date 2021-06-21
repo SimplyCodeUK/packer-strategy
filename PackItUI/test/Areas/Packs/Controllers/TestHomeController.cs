@@ -29,7 +29,8 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             Materials = "http://localhost:8001/api/v1/",
             Packs = "http://localhost:8002/api/v1/",
             Plans = "http://localhost:8003/api/v1/",
-            Uploads = "http://localhost:8004/api/v1/"
+            Uploads = "http://localhost:8004/api/v1/",
+            Drawings = "http://localhost:5000/api/v1/"
         };
 
         /// <summary> The application settings. </summary>
@@ -64,12 +65,12 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             result.Wait();
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
-            var viewResult = (ViewResult)result.Result;
+            var viewResult = result.Result as ViewResult;
             Assert.AreEqual("Index", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
             Assert.IsInstanceOf<HomeViewModel>(viewResult.ViewData.Model);
 
-            var model = (HomeViewModel)viewResult.ViewData.Model;
+            var model = viewResult.ViewData.Model as HomeViewModel;
             Assert.AreEqual("Unknown", model.Information.Version);
             Assert.AreEqual("Service down! http://localhost:8002/api/v1/", model.Information.About);
             Assert.IsNull(model.Items);
@@ -83,12 +84,12 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             result.Wait();
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
-            var viewResult = (ViewResult)result.Result;
+            var viewResult = result.Result as ViewResult;
             Assert.AreEqual("Index", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
             Assert.IsInstanceOf<HomeViewModel>(viewResult.ViewData.Model);
 
-            var model = (HomeViewModel)viewResult.ViewData.Model;
+            var model = viewResult.ViewData.Model as HomeViewModel;
             Assert.AreEqual("1", model.Information.Version);
             Assert.AreEqual("Packs", model.Information.About);
             Assert.AreEqual(2, model.Items.Count);
@@ -103,7 +104,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.Create();
             Assert.IsInstanceOf<ViewResult>(result);
 
-            var viewResult = (ViewResult)result;
+            var viewResult = result as ViewResult;
             Assert.AreEqual("Create", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
             Assert.IsInstanceOf<PackEditViewModel>(viewResult.ViewData.Model);
@@ -117,7 +118,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.Create(model);
             Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
 
-            var redirectResult = (RedirectToActionResult)result.Result;
+            var redirectResult = result.Result as RedirectToActionResult;
             Assert.AreEqual("Index", redirectResult.ActionName);
         }
 
@@ -131,7 +132,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.Create(model);
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
-            var viewResult = (ViewResult)result.Result;
+            var viewResult = result.Result as ViewResult;
             Assert.AreEqual("Create", viewResult.ViewName);
         }
 
@@ -142,12 +143,12 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.Update("Id1");
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
-            var viewResult = (ViewResult)result.Result;
+            var viewResult = result.Result as ViewResult;
             Assert.AreEqual("Update", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
             Assert.IsInstanceOf<PackEditViewModel>(viewResult.ViewData.Model);
 
-            var viewModel = (PackEditViewModel)viewResult.ViewData.Model;
+            var viewModel = viewResult.ViewData.Model as PackEditViewModel;
             Assert.AreEqual("Id1", viewModel.Data.PackId);
         }
 
@@ -159,7 +160,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.Update("Id1", model);
             Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
 
-            var redirectResult = (RedirectToActionResult)result.Result;
+            var redirectResult = result.Result as RedirectToActionResult;
             Assert.AreEqual("Index", redirectResult.ActionName);
         }
 
@@ -173,7 +174,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.Update("Id1", model);
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
-            var viewResult = (ViewResult)result.Result;
+            var viewResult = result.Result as ViewResult;
             Assert.AreEqual("Update", viewResult.ViewName);
         }
 
@@ -184,12 +185,12 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.Delete("Id1");
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
-            var viewResult = (ViewResult)result.Result;
+            var viewResult = result.Result as ViewResult;
             Assert.AreEqual("Delete", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
             Assert.IsInstanceOf<PackEditViewModel>(viewResult.ViewData.Model);
 
-            var viewModel = (PackEditViewModel)viewResult.ViewData.Model;
+            var viewModel = viewResult.ViewData.Model as PackEditViewModel;
             Assert.AreEqual("Id1", viewModel.Data.PackId);
         }
 
@@ -200,7 +201,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.DoDelete("Id1");
             Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
 
-            var redirectResult = (RedirectToActionResult)result.Result;
+            var redirectResult = result.Result as RedirectToActionResult;
             Assert.AreEqual("Index", redirectResult.ActionName);
         }
 
@@ -208,12 +209,12 @@ namespace PackItUI.Test.Areas.Packs.Controllers
         [Test]
         public void DeletePostDisconnected()
         {
-            SetupDisconnected();
+            this.SetupDisconnected();
 
             var result = this.controller.DoDelete("Id1");
             Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
 
-            var redirectResult = (RedirectToActionResult)result.Result;
+            var redirectResult = result.Result as RedirectToActionResult;
             Assert.AreEqual("Index", redirectResult.ActionName);
         }
 
@@ -224,13 +225,13 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.Display("Id1");
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
-            var viewResult = (ViewResult)result.Result;
+            var viewResult = result.Result as ViewResult;
             Assert.AreEqual("Display", viewResult.ViewName);
             Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<PackIt.Pack.Pack>(viewResult.ViewData.Model);
+            Assert.IsInstanceOf<PackDisplayViewModel>(viewResult.ViewData.Model);
 
-            var viewModel = (PackIt.Pack.Pack)viewResult.ViewData.Model;
-            Assert.AreEqual("Id1", viewModel.PackId);
+            var viewModel = viewResult.ViewData.Model as PackDisplayViewModel;
+            Assert.AreEqual("Id1", viewModel.Pack.PackId);
         }
 
         /// <summary> (Unit Test Method) update post action. </summary>
@@ -241,7 +242,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.Display("Id1", model);
             Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
 
-            var redirectResult = (RedirectToActionResult)result.Result;
+            var redirectResult = result.Result as RedirectToActionResult;
             Assert.AreEqual("Index", redirectResult.ActionName);
         }
 
@@ -249,13 +250,13 @@ namespace PackItUI.Test.Areas.Packs.Controllers
         [Test]
         public void DisplayPostDisconnected()
         {
-            SetupDisconnected();
+            this.SetupDisconnected();
 
             var model = new PackEditViewModel();
             var result = this.controller.Display("Id1", model);
             Assert.IsInstanceOf<ViewResult>(result.Result);
 
-            var viewResult = (ViewResult)result.Result;
+            var viewResult = result.Result as ViewResult;
             Assert.AreEqual("Update", viewResult.ViewName);
         }
 
@@ -270,27 +271,21 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.CostingRow(body);
 
             Assert.IsInstanceOf<PartialViewResult>(result);
-            Assert.IsInstanceOf<PackIt.Pack.Costing>(((PartialViewResult)result).Model);
-            Assert.AreEqual("EditorTemplates/Costing", ((PartialViewResult)result).ViewName);
+            Assert.IsInstanceOf<PackIt.Pack.Costing>((result as PartialViewResult).Model);
+            Assert.AreEqual("EditorTemplates/Costing", (result as PartialViewResult).ViewName);
         }
 
         /// <summary> Setup for disconnected service. </summary>
         private void SetupDisconnected()
         {
-            var root = Endpoints.Packs;
             var httpHandler = new MockHttpClientHandler();
-            httpHandler
-                .AddRequest(HttpMethod.Get, root + "Packs/Id1")
-                .ThrowException = true;
-            httpHandler
-                .AddRequest(HttpMethod.Post, root + "Packs/Id1")
-                .ThrowException = true;
-            httpHandler
-                .AddRequest(HttpMethod.Delete, root + "Packs/Id1")
-                .ThrowException = true;
             this.controller = new(
                 Mock.Of<ILogger<HomeController>>(),
                 new PackHandler(Options, httpHandler)
+                {
+                    TimeOut = TimeOut
+                },
+                new DrawHandler(Options, httpHandler)
                 {
                     TimeOut = TimeOut
                 });
@@ -300,27 +295,35 @@ namespace PackItUI.Test.Areas.Packs.Controllers
         /// <summary> Setup for connected services. </summary>
         private void SetupConnected()
         {
-            var root = Endpoints.Packs;
+            var rootPacks = Endpoints.Packs;
+            var rootDrawings = Endpoints.Drawings;
             var httpHandler = new MockHttpClientHandler();
             httpHandler
-                .AddRequest(HttpMethod.Get, root)
+                .AddRequest(HttpMethod.Get, rootPacks)
                 .ContentsJson("{'Version': '1', 'About': 'Packs'}");
             httpHandler
-                .AddRequest(HttpMethod.Get, root + "Packs")
+                .AddRequest(HttpMethod.Get, rootPacks + "Packs")
                 .ContentsJson("[{'PackId' : 'Id1'}, {'PackId' : 'Id2'}]");
             httpHandler
-                .AddRequest(HttpMethod.Post, root + "Packs");
+                .AddRequest(HttpMethod.Post, rootPacks + "Packs");
             httpHandler
-                .AddRequest(HttpMethod.Get, root + "Packs/Id1")
+                .AddRequest(HttpMethod.Get, rootPacks + "Packs/Id1")
                 .ContentsJson("{'PackId' : 'Id1'}");
             httpHandler
-                .AddRequest(HttpMethod.Put, root + "Packs/Id1");
+                .AddRequest(HttpMethod.Put, rootPacks + "Packs/Id1");
             httpHandler
-                .AddRequest(HttpMethod.Delete, root + "Packs/Id1");
+                .AddRequest(HttpMethod.Delete, rootPacks + "Packs/Id1");
+            httpHandler
+                .AddRequest(HttpMethod.Post, rootDrawings + "Drawings")
+                .ContentsJson("{'id': '1111-2222-3333-4444'}");
 
             this.controller = new(
                 Mock.Of<ILogger<HomeController>>(),
                 new PackHandler(Options, httpHandler)
+                {
+                    TimeOut = TimeOut
+                },
+                new DrawHandler(Options, httpHandler)
                 {
                     TimeOut = TimeOut
                 });

@@ -54,7 +54,7 @@ namespace PackItUI.Areas.Plans.Controllers
             this.logger.LogInformation("Create Plan id {0}", data.PlanId);
 
             data = this.mapper.Map(model.Data, data);
-            if (ModelState.IsValid && await this.handler.CreateAsync(data))
+            if (this.ModelState.IsValid && await this.handler.CreateAsync(data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }

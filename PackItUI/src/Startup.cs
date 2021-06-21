@@ -44,11 +44,12 @@ namespace PackItUI
         /// <seealso cref="DbStartup.SetupServices" />
         public void ConfigureServices(IServiceCollection services)
         {
-            SetupServices(services);
+            this.SetupServices(services);
             services.AddSingleton<DbServiceHandler<PackIt.Material.Material>, MaterialHandler>()
                     .AddSingleton<DbServiceHandler<PackIt.Pack.Pack>, PackHandler>()
                     .AddSingleton<DbServiceHandler<PackIt.Plan.Plan>, PlanHandler>()
                     .AddSingleton<IUploadHandler, UploadHandler>()
+                    .AddSingleton<DrawHandler, DrawHandler>()
                     .AddMvc(options => options.EnableEndpointRouting = false);
         }
 

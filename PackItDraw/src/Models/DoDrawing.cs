@@ -44,11 +44,11 @@ namespace PackIt.Models
             if ((result.Generator != PatternGenerator.Variable) &&
                 (stage.StageLevel != StageLevel.New))
             {
-                DrawResult(pack, result);
+                this.DrawResult(pack, result);
             }
             else
             {
-                DrawProduct(result);
+                this.DrawProduct(result);
             }
             this.drawing.Computed = true;
             this.repository.Update(this.drawing);

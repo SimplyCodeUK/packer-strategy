@@ -61,7 +61,7 @@ namespace PackIt.DTO
         public IList<TData> GetAll()
         {
             var ret = new List<TData>();
-            var query = ConstructQuery();
+            var query = this.ConstructQuery();
 
             foreach (var item in query)
             {
@@ -98,7 +98,7 @@ namespace PackIt.DTO
         {
             try
             {
-                var query = ConstructFindTask(key);
+                var query = this.ConstructFindTask(key);
                 query.Wait();
                 return this.Mapper.ConvertToData(query.Result);
             }

@@ -7,6 +7,7 @@
 namespace PackItUI.Test.HttpMock
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Text;
 
@@ -34,6 +35,10 @@ namespace PackItUI.Test.HttpMock
             this.Method = method;
             this.RequestUri = requestUri;
             this.Content = null;
+            this.StatusCode = method == HttpMethod.Get ? HttpStatusCode.OK :
+                              method == HttpMethod.Post ? HttpStatusCode.Created :
+                              method == HttpMethod.Put ? HttpStatusCode.Created :
+                              method == HttpMethod.Delete ? HttpStatusCode.Gone : HttpStatusCode.BadRequest;
             this.Limit = 0;
             this.ThrowException = false;
         }
@@ -46,6 +51,9 @@ namespace PackItUI.Test.HttpMock
 
         /// <summary> Gets the response content. </summary>
         public HttpContent Content { get; private set; }
+
+        /// <summary> The http status code from the request. </summary>
+        public HttpStatusCode StatusCode { get; private set; }
 
         /// <summary> Gets or sets the limit on the number of times this request can be called. </summary>
         public int Limit { get; set; }

@@ -86,7 +86,7 @@ namespace PackIt.DTO
         /// <returns> The find task. </returns>
         protected override System.Threading.Tasks.Task<DtoPack.DtoPack> ConstructFindTask(string key)
         {
-            return ConstructQuery().SingleAsync(p => p.PackId == key);
+            return this.ConstructQuery().SingleAsync(p => p.PackId == key);
         }
 
         /// <summary>Configures the specified builder.</summary>

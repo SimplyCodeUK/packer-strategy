@@ -33,7 +33,8 @@ namespace PackIt.Test.Controllers
             Materials = "http://localhost:8001/api/v1/",
             Packs = "http://localhost:8002/api/v1/",
             Plans = "http://localhost:8003/api/v1/",
-            Uploads = "http://localhost:8004/api/v1/"
+            Uploads = "http://localhost:8004/api/v1/",
+            Drawings = "http://localhost:5000/api/v1/"
         };
 
         /// <summary> The application settings. </summary>
@@ -136,7 +137,7 @@ namespace PackIt.Test.Controllers
                 0,
                 ret["pass"].Count);
             Assert.AreEqual(
-                bulk.Materials.Count + bulk.Packs.Count + bulk.Plans.Count,
+                this.bulk.Materials.Count + this.bulk.Packs.Count + this.bulk.Plans.Count,
                 ret["fail"].Count);
         }
 

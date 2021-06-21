@@ -42,7 +42,7 @@ namespace PackItDraw.Test.Controllers
             Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsInstanceOf<AboutController.AboutService>(objectResult.Value);
 
-            var item = (AboutController.AboutService)objectResult.Value;
+            var item = objectResult.Value as AboutController.AboutService;
             Assert.IsNotEmpty(item.Version);
             Assert.IsNotEmpty(item.About);
         }

@@ -28,5 +28,10 @@ namespace PackIt.Models
         ///
         /// <value> The Uploads endpoint.</value>
         public string Uploads { get; set; }
+
+        /// <summary> Gets or sets the Drawings endpoint.</summary>
+        ///
+        /// <value> The Drawings endpoint.</value>
+        public string Drawings { get; set; }
     }
 }

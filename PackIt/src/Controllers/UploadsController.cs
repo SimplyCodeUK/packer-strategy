@@ -96,7 +96,7 @@ namespace PackIt.Controllers
             {
                 try
                 {
-                    await Save(item, this.appSettings.ServiceEndpoints.Plans + "Plans").ConfigureAwait(false);
+                    await this.Save(item, this.appSettings.ServiceEndpoints.Plans + "Plans").ConfigureAwait(false);
                     pass.Add(item.PlanId);
                 }
                 catch (Exception)
@@ -109,7 +109,7 @@ namespace PackIt.Controllers
             {
                 try
                 {
-                    await Save(item, this.appSettings.ServiceEndpoints.Materials + "Materials").ConfigureAwait(false);
+                    await this.Save(item, this.appSettings.ServiceEndpoints.Materials + "Materials").ConfigureAwait(false);
                     pass.Add(item.MaterialId);
                 }
                 catch (Exception)
@@ -122,7 +122,7 @@ namespace PackIt.Controllers
             {
                 try
                 {
-                    await Save(item, this.appSettings.ServiceEndpoints.Packs + "Packs").ConfigureAwait(false);
+                    await this.Save(item, this.appSettings.ServiceEndpoints.Packs + "Packs").ConfigureAwait(false);
                     pass.Add(item.PackId);
                 }
                 catch (Exception)

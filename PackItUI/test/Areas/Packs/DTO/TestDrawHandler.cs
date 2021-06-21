@@ -4,20 +4,21 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Test.Areas.Uploads.DTO
+namespace PackItUI.Test.Areas.Packs.DTO
 {
     using System;
     using System.Net.Http;
     using Microsoft.Extensions.Options;
+    using Newtonsoft.Json.Linq;
     using NUnit.Framework;
     using PackIt.Models;
-    using PackItUI.Areas.Uploads.DTO;
+    using PackItUI.Areas.Packs.DTO;
     using PackItUI.Services;
     using PackItUI.Test.HttpMock;
 
-    /// <summary> (Unit Test Fixture) a handler for test plans. </summary>
+    /// <summary> (Unit Test Fixture) a handler for test drawings. </summary>
     [TestFixture]
-    public class TestUploadHandler
+    public class TestDrawHandler
     {
         /// <summary> The service endpoints. </summary>
         private static readonly ServiceEndpoints Endpoints = new()
@@ -42,7 +43,7 @@ namespace PackItUI.Test.Areas.Uploads.DTO
         private static readonly TimeSpan TimeOut = new(0, 0, 0, 0, 20);
 
         /// <summary> The handler under test. </summary>
-        private UploadHandler handler;
+        private DrawHandler handler;
 
         /// <summary> Setup for all unit tests here. </summary>
         [SetUp]
@@ -59,7 +60,7 @@ namespace PackItUI.Test.Areas.Uploads.DTO
             result.Wait();
             Assert.IsInstanceOf<ServiceInfo>(result.Result);
             Assert.AreEqual(result.Result.Version, "1");
-            Assert.AreEqual(result.Result.About, "Uploads");
+            Assert.AreEqual(result.Result.About, "Drawings");
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
@@ -71,16 +72,31 @@ namespace PackItUI.Test.Areas.Uploads.DTO
             result.Wait();
             Assert.IsInstanceOf<ServiceInfo>(result.Result);
             Assert.AreEqual(result.Result.Version, "Unknown");
-            Assert.AreEqual(result.Result.About, "Service down! http://localhost:8004/api/v1/");
+            Assert.AreEqual(result.Result.About, "Service down! http://localhost:5000/api/v1/");
         }
 
-        /// <summary> (Unit Test Method) test set and get Timeout property. </summary>
+        /// <summary> (Unit Test Method) index action when the service is down. </summary>
         [Test]
-        public void Timeout()
+        public void CreateAsync()
         {
-            TimeSpan span = new(0, 0, 0, 0, 10);
-            this.handler.TimeOut = span;
-            Assert.AreEqual(this.handler.TimeOut, span);
+            var result = this.handler.CreateAsync(new());
+            result.Wait();
+            Assert.IsInstanceOf<HttpResponseMessage>(result.Result);
+            Assert.AreEqual(result.Result.StatusCode, System.Net.HttpStatusCode.Created);
+            var content = result.Result.Content.ReadAsStringAsync();
+            content.Wait();
+            JObject cont = JObject.Parse(content.Result);
+            Assert.AreEqual(cont["id"].ToString(), "1111-2222-3333-4444");
+        }
+
+        /// <summary> (Unit Test Method) index action when the service is down. </summary>
+        [Test]
+        public void CreateAsyncDisconnected()
+        {
+            this.SetupDisconnected();
+            var result = this.handler.CreateAsync(new());
+            result.Wait();
+            Assert.IsNull(result.Result);
         }
 
         /// <summary> Setup for disconnected service. </summary>
@@ -97,11 +113,14 @@ namespace PackItUI.Test.Areas.Uploads.DTO
         /// <summary> Setup for connected services. </summary>
         private void SetupConnected()
         {
-            var root = Endpoints.Uploads;
+            var root = Endpoints.Drawings;
             var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, root)
-                .ContentsJson("{'Version': '1', 'About': 'Uploads'}");
+                .ContentsJson("{'Version': '1', 'About': 'Drawings'}");
+            httpHandler
+                .AddRequest(HttpMethod.Post, root + "Drawings")
+                .ContentsJson("{'id': '1111-2222-3333-4444'}");
             this.handler = new(Options, httpHandler)
             {
                 TimeOut = TimeOut

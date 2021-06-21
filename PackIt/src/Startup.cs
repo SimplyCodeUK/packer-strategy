@@ -44,7 +44,7 @@ namespace PackIt
         /// <seealso cref="DbStartup.SetupServices" />
         public void ConfigureServices(IServiceCollection services)
         {
-            SetupServices(services);
+            this.SetupServices(services);
             services.AddScoped<IMaterialRepository, MaterialRepository>()
                     .AddScoped<IPackRepository, PackRepository>()
                     .AddScoped<IPlanRepository, PlanRepository>()

@@ -6,7 +6,6 @@
 
 namespace PackItUI.Test.HttpMock
 {
-    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -66,7 +65,8 @@ namespace PackItUI.Test.HttpMock
                     // We can process it.
                     var responseMessage = new HttpResponseMessage
                     {
-                        Content = mock.Content
+                        Content = mock.Content,
+                        StatusCode = mock.StatusCode
                     };
                     var throwException = mock.ThrowException;
 
@@ -82,7 +82,7 @@ namespace PackItUI.Test.HttpMock
 
                     if (throwException)
                     {
-                        throw new Exception();
+                        throw new MockHttpException();
                     }
 
                     return Task.FromResult(responseMessage);

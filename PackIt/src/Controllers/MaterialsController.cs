@@ -79,6 +79,7 @@ namespace PackIt.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Post([FromBody] Material value)
         {
             IActionResult result;

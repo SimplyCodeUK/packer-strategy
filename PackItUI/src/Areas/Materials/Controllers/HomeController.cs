@@ -56,7 +56,7 @@ namespace PackItUI.Areas.Materials.Controllers
             this.logger.LogInformation("Create Material id {0}", data.MaterialId);
 
             data = this.mapper.Map(model.Data, data);
-            if (ModelState.IsValid && await this.handler.CreateAsync(data))
+            if (this.ModelState.IsValid && await this.handler.CreateAsync(data))
             {
                 return this.RedirectToAction(nameof(this.Index));
             }
@@ -130,13 +130,14 @@ namespace PackItUI.Areas.Materials.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult CostingRow([FromBody] Newtonsoft.Json.Linq.JObject body)
         {
             var index = body["index"];
             this.logger.LogInformation("CostingRow index {0}", index);
 
-            ViewBag.crud = Crud.Create;
-            ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
+            this.ViewBag.crud = Crud.Create;
+            this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
 
             var mod = new PackIt.Material.Costing();
             var ret = this.PartialView("EditorTemplates/Costing", mod);
@@ -150,14 +151,15 @@ namespace PackItUI.Areas.Materials.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult SectionRow([FromBody] Newtonsoft.Json.Linq.JObject body)
         {
             var index = body["index"];
             this.logger.LogInformation("SectionRow index {0}", index);
 
-            ViewBag.crud = Crud.Create;
-            ViewBag.sectionTypes = new ListForFlag<SectionTypes>(0);
-            ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Sections[{0}]", index);
+            this.ViewBag.crud = Crud.Create;
+            this.ViewBag.sectionTypes = new ListForFlag<SectionTypes>(0);
+            this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Sections[{0}]", index);
 
             var mod = new PackIt.Material.Section();
             var ret = this.PartialView("EditorTemplates/Section", mod);

@@ -35,7 +35,8 @@ namespace PackItUI.Areas.App.Controllers
         /// <param name="packHandler"> The Pack service handler. </param>
         /// <param name="planHandler"> The Plan service handler. </param>
         /// <param name="uploadHandler"> The Upload service handler. </param>
-        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Material.Material> materialHandler, DbServiceHandler<PackIt.Pack.Pack> packHandler, DbServiceHandler<PackIt.Plan.Plan> planHandler, IUploadHandler uploadHandler)
+        /// <param name="drawHandler"> The Draw service handler. </param>
+        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Material.Material> materialHandler, DbServiceHandler<PackIt.Pack.Pack> packHandler, DbServiceHandler<PackIt.Plan.Plan> planHandler, IUploadHandler uploadHandler, Packs.DTO.DrawHandler drawHandler)
         {
             this.logger = logger;
             this.services = new()
@@ -43,7 +44,8 @@ namespace PackItUI.Areas.App.Controllers
                 { "Materials", materialHandler },
                 { "Packs", packHandler },
                 { "Plans", planHandler },
-                { "Uploads", uploadHandler }
+                { "Uploads", uploadHandler },
+                { "Drawings", drawHandler },
             };
         }
 
@@ -53,7 +55,7 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            logger.LogInformation("Index");
+            this.logger.LogInformation("Index");
             return this.View("Index");
         }
 
@@ -63,7 +65,7 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public async Task<IActionResult> About()
         {
-            logger.LogInformation("About");
+            this.logger.LogInformation("About");
             var model = new AboutViewModel();
             await model.Create(this.services);
             return this.View("About", model);
@@ -75,7 +77,7 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public IActionResult Contact()
         {
-            logger.LogInformation("Contact");
+            this.logger.LogInformation("Contact");
             return this.View("Contact");
         }
 
@@ -85,8 +87,8 @@ namespace PackItUI.Areas.App.Controllers
         [HttpGet]
         public IActionResult Error()
         {
-            logger.LogInformation("Error");
-            return this.View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            this.logger.LogInformation("Error");
+            return this.View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
     }
 }

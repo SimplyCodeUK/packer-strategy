@@ -31,42 +31,42 @@ namespace PackIt.Test.DTO
         [Test]
         public void ConvertMaterialBottleToDto()
         {
-            DoToDtoTest("DTO/TestData/material_bottle.json");
+            this.DoToDtoTest("DTO/TestData/material_bottle.json");
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
         public void ConvertDtoToMaterialBottle()
         {
-            DoToDataTest("DTO/TestData/material_bottle.json");
+            this.DoToDataTest("DTO/TestData/material_bottle.json");
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
         public void ConvertMaterialCrateToDto()
         {
-            DoToDtoTest("DTO/TestData/material_crate.json");
+            this.DoToDtoTest("DTO/TestData/material_crate.json");
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
         public void ConvertDtoToMaterialCrate()
         {
-            DoToDataTest("DTO/TestData/material_crate.json");
+            this.DoToDataTest("DTO/TestData/material_crate.json");
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
         public void ConvertMaterialPalletToDto()
         {
-            DoToDtoTest("DTO/TestData/material_pallet.json");
+            this.DoToDtoTest("DTO/TestData/material_pallet.json");
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
         public void ConvertDtoToMaterialPallet()
         {
-            DoToDataTest("DTO/TestData/material_pallet.json");
+            this.DoToDataTest("DTO/TestData/material_pallet.json");
         }
 
         private void DoToDtoTest(string file)

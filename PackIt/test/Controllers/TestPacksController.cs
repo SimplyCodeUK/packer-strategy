@@ -85,7 +85,7 @@ namespace PackIt.Test.Controllers
             result = this.controller.Post(item);
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<StatusCodeResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.Conflict, ((StatusCodeResult)result).StatusCode);
+            Assert.AreEqual((int)HttpStatusCode.Conflict, (result as StatusCodeResult).StatusCode);
         }
 
         /// <summary> (Unit Test Method) gets all. </summary>

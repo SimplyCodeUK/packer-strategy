@@ -80,7 +80,7 @@ namespace PackIt.DTO
         /// <returns> The find task. </returns>
         protected override System.Threading.Tasks.Task<DtoMaterial.DtoMaterial> ConstructFindTask(string key)
         {
-            return ConstructQuery().SingleAsync(p => p.MaterialId == key);
+            return this.ConstructQuery().SingleAsync(p => p.MaterialId == key);
         }
 
         /// <summary>Configures the specified builder.</summary>
