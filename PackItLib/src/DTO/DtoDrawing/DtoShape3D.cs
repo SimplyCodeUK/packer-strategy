@@ -11,13 +11,6 @@ namespace PackIt.DTO.DtoDrawing
     /// <summary> A dto 3D shape. </summary>
     public class DtoShape3D
     {
-        /// <summary>
-        /// Initialises a new instance of the <see cref="DtoShape3D" /> class.
-        /// </summary>
-        public DtoShape3D()
-        {
-        }
-
         /// <summary> Gets or sets the drawing id. </summary>
         ///
         /// <value> The drawing id. </value>

@@ -7,7 +7,7 @@
 namespace PackIt.Helpers.Masks
 {
     /// <summary> Values that represent result rotations. </summary>
-    public class ResultRotation
+    public static class ResultRotation
     {
         /// <summary> A mask constant representing outout rotation of height to height. </summary>
         public static readonly int OutputHeightToHeight = 0x0001;

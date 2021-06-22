@@ -14,13 +14,13 @@ namespace PackItUI.Test.Helpers
     [TestFixture]
     public class TestListForFlag
     {
-        private enum TestEnum { t1, t2 }
+        private enum TestType { t1, t2 }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
         [Test]
         public void EnumValid()
         {
-            ListForFlag<TestEnum> test;
+            ListForFlag<TestType> test;
             Assert.DoesNotThrow(delegate { test = new(0); });
         }
 

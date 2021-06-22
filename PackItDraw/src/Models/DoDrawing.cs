@@ -38,17 +38,17 @@ namespace PackIt.Models
         {
             var pack = this.drawing.Packs[0];
             var stage = pack.Stages[(int)this.stageLevel];
-            var result = stage.Results[this.result];
+            var res = stage.Results[this.result];
 
             // Populate the scene
-            if ((result.Generator != PatternGenerator.Variable) &&
+            if ((res.Generator != PatternGenerator.Variable) &&
                 (stage.StageLevel != StageLevel.New))
             {
-                this.DrawResult(pack, result);
+                this.DrawResult(pack, res);
             }
             else
             {
-                this.DrawProduct(result);
+                this.DrawProduct(res);
             }
             this.drawing.Computed = true;
             this.repository.Update(this.drawing);
