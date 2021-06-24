@@ -148,7 +148,7 @@ namespace PackItUI.Areas.Packs.Controllers
                 var content = created.Content.ReadAsStringAsync();
                 content.Wait();
                 JObject cont = JObject.Parse(content.Result);
-                model.Drawing = await this.drawHandler.ReadAsync(cont["id"].ToString());
+                model.Drawing = await this.drawHandler.ReadAsync(cont["drawingId"].ToString());
             }
             return this.View("Display", model);
         }

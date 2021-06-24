@@ -78,7 +78,6 @@ namespace PackItDraw.Controllers
         ///
         /// <returns> An IActionResult. </returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Post([FromBody] Pack pack)
         {
             IActionResult result;

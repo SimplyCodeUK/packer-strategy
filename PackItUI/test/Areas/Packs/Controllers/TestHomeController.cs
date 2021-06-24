@@ -315,7 +315,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
                 .AddRequest(HttpMethod.Delete, rootPacks + "Packs/Id1");
             httpHandler
                 .AddRequest(HttpMethod.Post, rootDrawings + "Drawings")
-                .ContentsJson("{'id': '1111-2222-3333-4444'}");
+                .ContentsJson("{'drawingId': '1111-2222-3333-4444'}");
 
             this.controller = new(
                 Mock.Of<ILogger<HomeController>>(),
