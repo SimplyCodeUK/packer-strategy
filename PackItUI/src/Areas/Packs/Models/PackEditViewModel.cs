@@ -8,7 +8,6 @@ namespace PackItUI.Areas.Packs.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Newtonsoft.Json;
     using PackIt.Helpers.Enums;
     using PackIt.Pack;
 

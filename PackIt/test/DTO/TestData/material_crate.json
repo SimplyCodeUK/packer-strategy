@@ -62,8 +62,8 @@
   "Layers": [
     {
       "Layers": 1,
-      "OutputRotation": 0,
-      "ParentRotation": 0,
+      "OutputRotation": false,
+      "ParentRotation": false,
       "Rotation": 0,
       "Percent": 0,
       "Length": 0,
@@ -88,7 +88,7 @@
           "CountY": 3,
           "Even": 0,
           "Nested": 0,
-          "AlongBreadth": 0,
+          "AlongBreadth": false,
           "Rotation": 0
         }
       ]

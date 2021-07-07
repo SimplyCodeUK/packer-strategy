@@ -188,19 +188,19 @@ namespace PackItUI.Test.Areas.App.Controllers
             var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, "http://localhost:8001/api/v1/")
-                .ContentsJson("{'Version': '1', 'About': 'Materials'}");
+                .ContentsJson("{\"Version\": \"1\", \"About\": \"Materials\"}");
             httpHandler
                 .AddRequest(HttpMethod.Get, "http://localhost:8002/api/v1/")
-                .ContentsJson("{'Version': '1', 'About': 'Packs'}");
+                .ContentsJson("{\"Version\": \"1\", \"About\": \"Packs\"}");
             httpHandler
                 .AddRequest(HttpMethod.Get, "http://localhost:8003/api/v1/")
-                .ContentsJson("{'Version': '1', 'About': 'Plans'}");
+                .ContentsJson("{\"Version\": \"1\", \"About\": \"Plans\"}");
             httpHandler
                 .AddRequest(HttpMethod.Get, "http://localhost:8004/api/v1/")
-                .ContentsJson("{'Version': '1', 'About': 'Uploads'}");
+                .ContentsJson("{\"Version\": \"1\", \"About\": \"Uploads\"}");
             httpHandler
                 .AddRequest(HttpMethod.Get, "http://localhost:5000/api/v1/")
-                .ContentsJson("{'Version': '1', 'About': 'Draw'}");
+                .ContentsJson("{\"Version\": \"1\", \"About\": \"Draw\"}");
 
             this.controller = new(
                 Mock.Of<ILogger<HomeController>>(),

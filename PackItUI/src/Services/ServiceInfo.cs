@@ -11,6 +11,14 @@ namespace PackItUI.Services
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="ServiceInfo" /> class.
+        /// Required for Serialisation.
+        /// </summary>
+        public ServiceInfo() : this("")
+        {
+        }
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="ServiceInfo" /> class.
         /// </summary>
         ///
         /// <param name="endpoint"> The endpoint. </param>

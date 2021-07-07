@@ -300,22 +300,22 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, rootPacks)
-                .ContentsJson("{'Version': '1', 'About': 'Packs'}");
+                .ContentsJson("{\"Version\": \"1\", \"About\": \"Packs\"}");
             httpHandler
                 .AddRequest(HttpMethod.Get, rootPacks + "Packs")
-                .ContentsJson("[{'PackId' : 'Id1'}, {'PackId' : 'Id2'}]");
+                .ContentsJson("[{\"PackId\" : \"Id1\"}, {\"PackId\" : \"Id2\"}]");
             httpHandler
                 .AddRequest(HttpMethod.Post, rootPacks + "Packs");
             httpHandler
                 .AddRequest(HttpMethod.Get, rootPacks + "Packs/Id1")
-                .ContentsJson("{'PackId' : 'Id1'}");
+                .ContentsJson("{\"PackId\" : \"Id1\"}");
             httpHandler
                 .AddRequest(HttpMethod.Put, rootPacks + "Packs/Id1");
             httpHandler
                 .AddRequest(HttpMethod.Delete, rootPacks + "Packs/Id1");
             httpHandler
                 .AddRequest(HttpMethod.Post, rootDrawings + "Drawings")
-                .ContentsJson("{'drawingId': '1111-2222-3333-4444'}");
+                .ContentsJson("{\"drawingId\": \"1111-2222-3333-4444\"}");
 
             this.controller = new(
                 Mock.Of<ILogger<HomeController>>(),

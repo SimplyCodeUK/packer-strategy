@@ -8,7 +8,6 @@ namespace PackItUI.Areas.Materials.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Newtonsoft.Json;
     using PackIt.Helpers.Enums;
     using PackIt.Material;
     using PackItUI.Helpers;
@@ -137,7 +136,7 @@ namespace PackItUI.Areas.Materials.Models
             /// <summary> Gets or sets the internal volume. </summary>
             ///
             /// <value> The internal volume. </value>
-            [Display(Name = "Internal Colume", Prompt = "Enter Internal Volume")]
+            [Display(Name = "Internal Volume", Prompt = "Enter Internal Volume")]
             public double InternalVolume { get; set; }
 
             /// <summary> Gets or sets the nett weight. </summary>

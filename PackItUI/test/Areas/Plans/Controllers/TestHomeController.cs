@@ -238,15 +238,15 @@ namespace PackItUI.Test.Areas.Plans.Controllers
             var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, root)
-                .ContentsJson("{'Version': '1', 'About': 'Plans'}");
+                .ContentsJson("{\"Version\": \"1\", \"About\": \"Plans\"}");
             httpHandler
                 .AddRequest(HttpMethod.Get, root + "Plans")
-                .ContentsJson("[{'PlanId' : 'Id1'}, {'PlanId' : 'Id2'}]");
+                .ContentsJson("[{\"PlanId\" : \"Id1\"}, {\"PlanId\" : \"Id2\"}]");
             httpHandler
                 .AddRequest(HttpMethod.Post, root + "Plans");
             httpHandler
                 .AddRequest(HttpMethod.Get, root + "Plans/Id1")
-                .ContentsJson("{'PlanId' : 'Id1'}");
+                .ContentsJson("{\"PlanId\" : \"Id1\"}");
             httpHandler
                 .AddRequest(HttpMethod.Put, root + "Plans/Id1");
             httpHandler

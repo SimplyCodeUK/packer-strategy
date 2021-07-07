@@ -3,7 +3,7 @@
   "Name": "Export Pack.",
   "PlanCode": "Benylin",
   "PlanName": "Pharma",
-  "MaterialType": "0",
+  "MaterialType": 0,
   "MaterialCode": "Benl525.",
   "MaterialName": "125 ml Syrup",
   "Costings": [
@@ -39,7 +39,7 @@
       "Density": 0,
       "Generator": 8,
       "Rotation": 72,
-      "ComputeMaterials": 0,
+      "ComputeMaterials": false,
       "Sort": 3,
       "BreathingSpaceX": 0,
       "BreathingSpaceY": 0,
@@ -283,7 +283,7 @@
       "Density": 0,
       "Generator": 8,
       "Rotation": 72,
-      "ComputeMaterials": 0,
+      "ComputeMaterials": false,
       "Sort": 3,
       "BreathingSpaceX": 0,
       "BreathingSpaceY": 0,
@@ -671,7 +671,7 @@
               "TargetCompression": 0,
               "DatabaseMaterials": [
                 {
-                  "MaterialType": "4",
+                  "MaterialType": 4,
                   "MaterialId": "Benl.125ml"
                 }
               ]
@@ -806,7 +806,7 @@
       "Density": 0,
       "Generator": 8,
       "Rotation": 72,
-      "ComputeMaterials": 0,
+      "ComputeMaterials": false,
       "Sort": 3,
       "BreathingSpaceX": 0,
       "BreathingSpaceY": 0,
@@ -1090,7 +1090,7 @@
       "Density": 0,
       "Generator": 15120,
       "Rotation": 72,
-      "ComputeMaterials": 0,
+      "ComputeMaterials": false,
       "Sort": 3,
       "BreathingSpaceX": 0,
       "BreathingSpaceY": 0,
@@ -1422,7 +1422,7 @@
       "Density": 0,
       "Generator": 8,
       "Rotation": 72,
-      "ComputeMaterials": 0,
+      "ComputeMaterials": false,
       "Sort": 3,
       "BreathingSpaceX": 0,
       "BreathingSpaceY": 0,

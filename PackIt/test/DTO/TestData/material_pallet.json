@@ -48,8 +48,8 @@
   "Layers": [
     {
       "Layers": 0,
-      "OutputRotation": 0,
-      "ParentRotation": 0,
+      "OutputRotation": false,
+      "ParentRotation": false,
       "Rotation": 0,
       "Percent": 0,
       "Length": 0,

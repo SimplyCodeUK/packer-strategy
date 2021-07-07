@@ -117,10 +117,10 @@ namespace PackItUI.Test.Areas.Packs.DTO
             var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, root)
-                .ContentsJson("{'Version': '1', 'About': 'Drawings'}");
+                .ContentsJson("{\"Version\": \"1\", \"About\": \"Drawings\"}");
             httpHandler
                 .AddRequest(HttpMethod.Post, root + "Drawings")
-                .ContentsJson("{'id': '1111-2222-3333-4444'}");
+                .ContentsJson("{\"id\": \"1111-2222-3333-4444\"}");
             this.handler = new(Options, httpHandler)
             {
                 TimeOut = TimeOut

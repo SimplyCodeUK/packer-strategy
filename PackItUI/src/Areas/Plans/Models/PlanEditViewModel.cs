@@ -7,7 +7,6 @@
 namespace PackItUI.Areas.Plans.Models
 {
     using System.ComponentModel.DataAnnotations;
-    using Newtonsoft.Json;
 
     /// <summary> Plan edit view model. </summary>
     public class PlanEditViewModel

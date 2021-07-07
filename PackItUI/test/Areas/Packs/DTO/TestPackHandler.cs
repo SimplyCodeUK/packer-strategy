@@ -92,7 +92,7 @@ namespace PackItUI.Test.Areas.Packs.DTO
             var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, root)
-                .ContentsJson("{'Version': '1', 'About': 'Packs'}");
+                .ContentsJson("{\"Version\": \"1\", \"About\": \"Packs\"}");
             this.handler = new(Options, httpHandler)
             {
                 TimeOut = TimeOut

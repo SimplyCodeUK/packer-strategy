@@ -268,15 +268,15 @@ namespace PackItUI.Test.Areas.Materials.Controllers
             var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, root)
-                .ContentsJson("{'Version': '1', 'About': 'Materials'}");
+                .ContentsJson("{\"Version\": \"1\", \"About\": \"Materials\"}");
             httpHandler
                 .AddRequest(HttpMethod.Get, root + "Materials")
-                .ContentsJson("[{'MaterialId' : 'Id1'}, {'MaterialId' : 'Id2'}]");
+                .ContentsJson("[{\"MaterialId\" : \"Id1\"}, {\"MaterialId\" : \"Id2\"}]");
             httpHandler
                 .AddRequest(HttpMethod.Post, root + "Materials");
             httpHandler
                 .AddRequest(HttpMethod.Get, root + "Materials/Id1")
-                .ContentsJson("{'MaterialId' : 'Id1'}");
+                .ContentsJson("{\"MaterialId\" : \"Id1\"}");
             httpHandler
                 .AddRequest(HttpMethod.Put, root + "Materials/Id1");
             httpHandler

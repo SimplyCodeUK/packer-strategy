@@ -101,7 +101,7 @@ namespace PackItUI.Test.Areas.Uploads.DTO
             var httpHandler = new MockHttpClientHandler();
             httpHandler
                 .AddRequest(HttpMethod.Get, root)
-                .ContentsJson("{'Version': '1', 'About': 'Uploads'}");
+                .ContentsJson("{\"Version\": \"1\", \"About\": \"Uploads\"}");
             this.handler = new(Options, httpHandler)
             {
                 TimeOut = TimeOut

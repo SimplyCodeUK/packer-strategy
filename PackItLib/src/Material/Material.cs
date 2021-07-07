@@ -96,7 +96,7 @@ namespace PackIt.Material
         /// <summary> Gets or sets the internal volume. </summary>
         ///
         /// <value> The internal volume. </value>
-        [Display(Name = "Internal Colume", Prompt = "Enter Internal Volume")]
+        [Display(Name = "Internal Volume", Prompt = "Enter Internal Volume")]
         public double InternalVolume { get; set; }
 
         /// <summary> Gets or sets the nett weight. </summary>
