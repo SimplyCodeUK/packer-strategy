@@ -7,10 +7,10 @@
 namespace PackIt.Test.DTO
 {
     using System.IO;
-    using Newtonsoft.Json;
     using NUnit.Framework;
     using PackIt.DTO;
     using PackIt.Drawing;
+    using System.Text.Json;
 
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
     [TestFixture]
@@ -32,7 +32,7 @@ namespace PackIt.Test.DTO
         public void ConvertDrawingToDto()
         {
             var text = File.ReadAllText("DTO/TestData/drawing.json");
-            var drawing = JsonConvert.DeserializeObject<Drawing>(text);
+            var drawing = JsonSerializer.Deserialize<Drawing>(text);
             var dto = this.mapper.ConvertToDto(drawing);
 
             Assert.AreEqual(dto.DrawingId, drawing.DrawingId);
@@ -137,7 +137,7 @@ namespace PackIt.Test.DTO
         public void ConvertDtoDrawing()
         {
             var text = File.ReadAllText("DTO/TestData/drawing.json");
-            var drawing = JsonConvert.DeserializeObject<Drawing>(text);
+            var drawing = JsonSerializer.Deserialize<Drawing>(text);
             var dto = this.mapper.ConvertToDto(drawing);
             var data = this.mapper.ConvertToData(dto);
 

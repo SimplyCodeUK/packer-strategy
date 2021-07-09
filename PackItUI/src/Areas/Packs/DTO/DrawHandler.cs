@@ -9,9 +9,9 @@ namespace PackItUI.Areas.Packs.DTO
     using System;
     using System.Net.Http;
     using System.Text;
+    using System.Text.Json;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
-    using Newtonsoft.Json;
     using PackIt.Models;
     using PackIt.Pack;
     using PackItUI.Services;
@@ -80,7 +80,7 @@ namespace PackItUI.Areas.Packs.DTO
             HttpResponseMessage response;
             try
             {
-                var json = JsonConvert.SerializeObject(data);
+                var json = JsonSerializer.Serialize(data);
                 var content = new StringContent(
                     json,
                     Encoding.UTF8,
@@ -116,7 +116,7 @@ namespace PackItUI.Areas.Packs.DTO
                 var content = await response.Content.ReadAsStringAsync();
 
                 // Create a pack from the content
-                return JsonConvert.DeserializeObject<PackIt.Drawing.Drawing>(content);
+                return JsonSerializer.Deserialize<PackIt.Drawing.Drawing>(content);
             }
             catch (Exception)
             {

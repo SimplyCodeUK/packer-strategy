@@ -8,8 +8,8 @@ namespace PackItUI.Services
 {
     using System;
     using System.Net.Http;
+    using System.Text.Json;
     using System.Threading.Tasks;
-    using Newtonsoft.Json;
 
     /// <summary> Service information implementation. </summary>
     public static class ServiceHandler
@@ -33,7 +33,7 @@ namespace PackItUI.Services
                 var content = await response.Content.ReadAsStringAsync();
 
                 // Create a plan from the content
-                return JsonConvert.DeserializeObject<ServiceInfo>(content);
+                return JsonSerializer.Deserialize<ServiceInfo>(content);
             }
             catch (Exception)
             {

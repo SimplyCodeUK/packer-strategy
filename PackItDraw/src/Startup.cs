@@ -41,7 +41,8 @@ namespace PackItDraw
         {
             this.SetupServices(services);
             services.AddScoped<IDrawingRepository, DrawingRepository>()
-                    .AddMvc(options => options.EnableEndpointRouting = false);
+                    .AddMvc(options => options.EnableEndpointRouting = false)
+                    .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
             this.AddDbContext<DrawingContext>(services, "DrawingContext");
         }

@@ -7,6 +7,7 @@
 namespace PackItUI.Test.Areas.Packs.Controllers
 {
     using System;
+    using System.Text.Json;
     using System.Net.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
@@ -264,10 +265,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
         [Test]
         public void CostingRowPost()
         {
-            var body = new Newtonsoft.Json.Linq.JObject
-            {
-                ["index"] = 5
-            };
+            var body = JsonDocument.Parse("{\"index\": 5}");
             var result = this.controller.CostingRow(body);
 
             Assert.IsInstanceOf<PartialViewResult>(result);
@@ -315,7 +313,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
                 .AddRequest(HttpMethod.Delete, rootPacks + "Packs/Id1");
             httpHandler
                 .AddRequest(HttpMethod.Post, rootDrawings + "Drawings")
-                .ContentsJson("{\"drawingId\": \"1111-2222-3333-4444\"}");
+                .ContentsJson("{\"DrawingId\": \"1111-2222-3333-4444\"}");
 
             this.controller = new(
                 Mock.Of<ILogger<HomeController>>(),

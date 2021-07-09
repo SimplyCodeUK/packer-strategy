@@ -11,6 +11,7 @@ namespace PackIt.Test.Controllers
     using System.IO;
     using System.Net;
     using System.Net.Http;
+    using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,6 @@ namespace PackIt.Test.Controllers
     using Microsoft.Extensions.Logging;
     using Moq;
     using Moq.Protected;
-    using Newtonsoft.Json;
     using NUnit.Framework;
     using PackIt.Controllers;
     using PackIt.Models;
@@ -59,7 +59,7 @@ namespace PackIt.Test.Controllers
             this.SetupServicesNotRunning();
 
             var text = File.ReadAllText("Controllers/TestData/uploadsPass.json");
-            this.bulk = JsonConvert.DeserializeObject<UploadsController.Bulk>(text);
+            this.bulk = JsonSerializer.Deserialize<UploadsController.Bulk>(text);
 
             // make sure IDs are unique
             foreach (var item in this.bulk.Plans)

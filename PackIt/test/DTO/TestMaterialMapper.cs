@@ -7,7 +7,7 @@
 namespace PackIt.Test.DTO
 {
     using System.IO;
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using NUnit.Framework;
     using PackIt.DTO;
     using PackIt.Material;
@@ -72,7 +72,7 @@ namespace PackIt.Test.DTO
         private void DoToDtoTest(string file)
         {
             var text = File.ReadAllText(file);
-            var material = JsonConvert.DeserializeObject<Material>(text);
+            var material = JsonSerializer.Deserialize<Material>(text);
             var dto = this.mapper.ConvertToDto(material);
 
             Assert.AreEqual(dto.MaterialId, material.MaterialId);
@@ -133,7 +133,7 @@ namespace PackIt.Test.DTO
         private void DoToDataTest(string file)
         {
             var text = File.ReadAllText(file);
-            var material = JsonConvert.DeserializeObject<Material>(text);
+            var material = JsonSerializer.Deserialize<Material>(text);
             var dto = this.mapper.ConvertToDto(material);
             var data = this.mapper.ConvertToData(dto);
 

@@ -10,11 +10,11 @@ namespace PackItDraw.Test.Controllers
     using System.Collections.Generic;
     using System.IO;
     using System.Net;
+    using System.Text.Json;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
     using Moq;
-    using Newtonsoft.Json;
     using NUnit.Framework;
     using PackIt.Drawing;
     using PackIt.DTO;
@@ -44,7 +44,7 @@ namespace PackItDraw.Test.Controllers
 
             // Pack to draw in tests
             var text = File.ReadAllText("Controllers/TestData/pack.json");
-            this.drawingPack = JsonConvert.DeserializeObject<Pack>(text);
+            this.drawingPack = JsonSerializer.Deserialize<Pack>(text);
 
             this.controller = new(
                 Mock.Of<ILogger<DrawingsController>>(),

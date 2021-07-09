@@ -6,6 +6,7 @@
 
 namespace PackItUI.Areas.Materials.Controllers
 {
+    using System.Text.Json;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
@@ -131,9 +132,9 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CostingRow([FromBody] Newtonsoft.Json.Linq.JObject body)
+        public IActionResult CostingRow([FromBody] JsonDocument body)
         {
-            var index = body["index"];
+            var index = body.RootElement.GetProperty("index");
             this.logger.LogInformation("CostingRow index {0}", index);
 
             this.ViewBag.crud = Crud.Create;
@@ -152,9 +153,9 @@ namespace PackItUI.Areas.Materials.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult SectionRow([FromBody] Newtonsoft.Json.Linq.JObject body)
+        public IActionResult SectionRow([FromBody] JsonDocument body)
         {
-            var index = body["index"];
+            var index = body.RootElement.GetProperty("index");
             this.logger.LogInformation("SectionRow index {0}", index);
 
             this.ViewBag.crud = Crud.Create;

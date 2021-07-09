@@ -50,7 +50,8 @@ namespace PackItUI
                     .AddSingleton<DbServiceHandler<PackIt.Plan.Plan>, PlanHandler>()
                     .AddSingleton<IUploadHandler, UploadHandler>()
                     .AddSingleton<DrawHandler, DrawHandler>()
-                    .AddMvc(options => options.EnableEndpointRouting = false);
+                    .AddMvc(options => options.EnableEndpointRouting = false)
+                    .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
         }
 
         /// <summary> This method gets called by the runtime. Use this method to configure the HTTP request pipeline. </summary>

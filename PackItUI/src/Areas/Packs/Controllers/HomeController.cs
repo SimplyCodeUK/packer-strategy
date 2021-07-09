@@ -6,10 +6,10 @@
 
 namespace PackItUI.Areas.Packs.Controllers
 {
+    using System.Text.Json;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json.Linq;
     using PackItUI.Areas.Common.Controller;
     using PackItUI.Areas.Common.DTO;
     using PackItUI.Areas.Packs.DTO;
@@ -143,12 +143,12 @@ namespace PackItUI.Areas.Packs.Controllers
             };
 
             var created = await this.drawHandler.CreateAsync(model.Pack);
-            if ( created.StatusCode == System.Net.HttpStatusCode.Created )
+            if (created.StatusCode == System.Net.HttpStatusCode.Created)
             {
                 var content = created.Content.ReadAsStringAsync();
                 content.Wait();
-                JObject cont = JObject.Parse(content.Result);
-                model.Drawing = await this.drawHandler.ReadAsync(cont["drawingId"].ToString());
+                JsonDocument cont = JsonDocument.Parse(content.Result);
+                model.Drawing = await this.drawHandler.ReadAsync(cont.RootElement.GetProperty("DrawingId").ToString());
             }
             return this.View("Display", model);
         }
@@ -190,9 +190,9 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CostingRow([FromBody] Newtonsoft.Json.Linq.JObject body)
+        public IActionResult CostingRow([FromBody] JsonDocument body)
         {
-            var index = body["index"];
+            var index = body.RootElement.GetProperty("index");
             this.logger.LogInformation("CostingRow {0}", index);
 
             this.ViewBag.crud = Helpers.Crud.Create;

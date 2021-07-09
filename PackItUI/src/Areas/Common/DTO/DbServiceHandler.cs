@@ -10,8 +10,8 @@ namespace PackItUI.Areas.Common.DTO
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Text;
+    using System.Text.Json;
     using System.Threading.Tasks;
-    using Newtonsoft.Json;
     using PackItUI.Services;
 
     /// <summary> Interface for a database service. </summary>
@@ -69,7 +69,7 @@ namespace PackItUI.Areas.Common.DTO
         {
             try
             {
-                var json = JsonConvert.SerializeObject(data);
+                var json = JsonSerializer.Serialize(data);
                 var content = new StringContent(
                     json,
                     Encoding.UTF8,
@@ -103,7 +103,7 @@ namespace PackItUI.Areas.Common.DTO
                 var content = await response.Content.ReadAsStringAsync();
 
                 // Create a material from the content
-                return JsonConvert.DeserializeObject<List<TData>>(content);
+                return JsonSerializer.Deserialize<List<TData>>(content);
             }
             catch (Exception)
             {
@@ -129,7 +129,7 @@ namespace PackItUI.Areas.Common.DTO
                 var content = await response.Content.ReadAsStringAsync();
 
                 // Create a pack from the content
-                return JsonConvert.DeserializeObject<TData>(content);
+                return JsonSerializer.Deserialize<TData>(content);
             }
             catch (Exception)
             {
@@ -147,7 +147,7 @@ namespace PackItUI.Areas.Common.DTO
         {
             try
             {
-                var json = JsonConvert.SerializeObject(data);
+                var json = JsonSerializer.Serialize(data);
                 var content = new StringContent(
                     json,
                     Encoding.UTF8,

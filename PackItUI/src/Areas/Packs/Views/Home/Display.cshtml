@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <canvas id="renderCanvas"></canvas>
                     <script>
-                        drawPack(document.querySelector('#renderCanvas'), '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Pack, new Newtonsoft.Json.JsonSerializerSettings { StringEscapeHandling = Newtonsoft.Json.StringEscapeHandling.EscapeHtml }))')
+                        drawPack(document.querySelector('#renderCanvas'), '@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Pack))')
                     </script>
                 </div>
             </div>

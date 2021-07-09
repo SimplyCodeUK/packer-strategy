@@ -8,11 +8,11 @@ namespace PackIt.Test.Models
 {
     using System.IO;
     using Microsoft.EntityFrameworkCore;
-    using Newtonsoft.Json;
     using NUnit.Framework;
     using PackIt.DTO;
     using PackIt.Drawing;
     using PackIt.Models;
+    using System.Text.Json;
 
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
     [TestFixture]
@@ -34,7 +34,7 @@ namespace PackIt.Test.Models
 
             // Pack to draw in tests
             var text = File.ReadAllText("Models/TestData/pack.json");
-            var pack = JsonConvert.DeserializeObject<Pack.Pack>(text);
+            var pack = JsonSerializer.Deserialize<Pack.Pack>(text);
 
             Drawing value = new(pack);
             this.drawingId = value.DrawingId;

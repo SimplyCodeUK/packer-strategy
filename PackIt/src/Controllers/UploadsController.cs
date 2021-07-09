@@ -11,11 +11,11 @@ namespace PackIt.Controllers
     using System.Net;
     using System.Net.Http;
     using System.Text;
+    using System.Text.Json;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
-    using Newtonsoft.Json;
     using PackIt.Models;
 
     /// <summary> A controller for handling materials. </summary>
@@ -40,7 +40,7 @@ namespace PackIt.Controllers
         /// <returns> When async task completed. </returns>
         private async Task Save(object item, string endpoint)
         {
-            var json = JsonConvert.SerializeObject(item);
+            var json = JsonSerializer.Serialize(item);
             var content = new StringContent(
                 json,
                 Encoding.UTF8,

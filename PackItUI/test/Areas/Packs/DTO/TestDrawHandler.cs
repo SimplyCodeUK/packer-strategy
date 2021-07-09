@@ -8,8 +8,8 @@ namespace PackItUI.Test.Areas.Packs.DTO
 {
     using System;
     using System.Net.Http;
+    using System.Text.Json;
     using Microsoft.Extensions.Options;
-    using Newtonsoft.Json.Linq;
     using NUnit.Framework;
     using PackIt.Models;
     using PackItUI.Areas.Packs.DTO;
@@ -85,8 +85,8 @@ namespace PackItUI.Test.Areas.Packs.DTO
             Assert.AreEqual(result.Result.StatusCode, System.Net.HttpStatusCode.Created);
             var content = result.Result.Content.ReadAsStringAsync();
             content.Wait();
-            JObject cont = JObject.Parse(content.Result);
-            Assert.AreEqual(cont["id"].ToString(), "1111-2222-3333-4444");
+            JsonDocument cont = JsonDocument.Parse(content.Result);
+            Assert.AreEqual(cont.RootElement.GetProperty("id").GetString(), "1111-2222-3333-4444");
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>

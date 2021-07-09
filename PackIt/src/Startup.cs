@@ -9,6 +9,7 @@ namespace PackIt
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
+    using System.Text.Json;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,6 @@ namespace PackIt
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
     using PackIt.DbInterface;
     using PackIt.DTO;
 
@@ -48,7 +48,8 @@ namespace PackIt
             services.AddScoped<IMaterialRepository, MaterialRepository>()
                     .AddScoped<IPackRepository, PackRepository>()
                     .AddScoped<IPlanRepository, PlanRepository>()
-                    .AddMvc(options => options.EnableEndpointRouting = false);
+                    .AddMvc(options => options.EnableEndpointRouting = false)
+                    .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
             this.AddDbContext<MaterialContext>(services, "MaterialContext");
             this.AddDbContext<PackContext>(services, "PackContext");
@@ -90,7 +91,7 @@ namespace PackIt
             if (!context.Resources.AnyAsync().Result)
             {
                 var text = File.ReadAllText(filename);
-                foreach (var item in JsonConvert.DeserializeObject<List<TData>>(text))
+                foreach (var item in JsonSerializer.Deserialize<List<TData>>(text))
                 {
                     context.Add(item);
                 }
