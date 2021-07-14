@@ -16,12 +16,15 @@
  * @param {JSON} result - The result in JSON
  */
 var populateScene = function (scene, model, result) {
-  if ((result.Generator !== PackIt.Helpers.Enums.PatternGenerator.Variable) &&
-    (result.Level !== PackIt.Helpers.Enums.StageLevel.New)) {
-    PackIt.drawResult(scene, model, result)
-  }
-  else {
-    PackIt.drawProduct(scene, result)
+  var idx = 0
+  for ( const shape of model.Drawing.Shapes ) {
+    var parentDimensions = { width: shape.Length, depth: shape.Breadth, height: shape.Height }
+    var mesh = new BABYLON.MeshBuilder.CreateBox('box'.concat(idx.toString()), parentDimensions, scene)
+    mesh.position = new BABYLON.Vector3(shape.X, shape.Y, shape.Z)
+    mesh.enableEdgesRendering()
+    mesh.edgesWidth = 1.0
+    mesh.edgesColor = new BABYLON.Color4(0, 0, 1, 1)
+    ++idx
   }
 }
 
@@ -29,11 +32,11 @@ var populateScene = function (scene, model, result) {
  * Draw a pack
  *
  * @param {HTMLElement} canvas - The DOM container to draw in
- * @param {string} pack - The pack as a json string
+ * @param {string} model_json - The pack as a json string
  */
-var drawPack = function (canvas, pack) {
-  var model = JSON.parse(pack)
-  var result = model.Stages[model.Stages.length-1].Results[0]
+var drawPack = function (canvas, model_json) {
+  var model = JSON.parse(model_json)
+  var result = model.Pack.Stages[model.Pack.Stages.length-1].Results[0]
   var engine = new BABYLON.Engine(canvas, true)
 
   // Create the scene

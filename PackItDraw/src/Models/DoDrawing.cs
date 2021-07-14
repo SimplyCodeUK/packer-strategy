@@ -114,17 +114,20 @@ namespace PackIt.Models
 
         private void DrawCollation(Dims parentDimensions, Collation collation, double height)
         {
-            var x = 0;
+            var x = collation.PosX;
             for (var kdx = 0; kdx < collation.CountX; ++kdx)
             {
-                var y = 0;
+                var y = collation.PosY;
                 for (var ldx = 0; ldx < collation.CountY; ++ldx)
                 {
                     var shape = new Shape3D(FormType.Box)
                     {
-                        Length = parentDimensions.Width + x,
-                        Breadth = parentDimensions.Depth + y,
-                        Height = parentDimensions.Height + height
+                        Length = parentDimensions.Width,
+                        Breadth = parentDimensions.Depth,
+                        Height = parentDimensions.Height,
+                        X = x,
+                        Y = y,
+                        Z = height
                     };
                     this.drawing.Shapes.Add(shape);
                 }

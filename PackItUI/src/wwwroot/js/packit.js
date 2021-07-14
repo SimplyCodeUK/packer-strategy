@@ -6,8 +6,4 @@
 'use strict'
 
 var PackIt = {
-  Helpers: {
-    Enums: {},
-    Masks: {}
-  }
 }

@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <canvas id="renderCanvas"></canvas>
                     <script>
-                        drawPack(document.querySelector('#renderCanvas'), '@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Pack))')
+                        drawPack(document.querySelector('#renderCanvas'), '@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model))')
                     </script>
                 </div>
             </div>

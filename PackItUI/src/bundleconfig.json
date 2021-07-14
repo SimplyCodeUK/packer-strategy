@@ -19,11 +19,6 @@
     "outputFileName": "wwwroot/js/draw.min.js",
     "inputFiles": [
       "wwwroot/js/packit.js",
-      "wwwroot/js/helpers/Enums/patterngenerator.js",
-      "wwwroot/js/helpers/Enums/stagelevel.js",
-      "wwwroot/js/helpers/Masks/resultrotation.js",
-      "wwwroot/js/draw.product.js",
-      "wwwroot/js/draw.result.js",
       "wwwroot/js/draw.js"
     ],
     "minify": {
