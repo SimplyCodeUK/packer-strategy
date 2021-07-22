@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
   integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
 
-babylonjs@5.0.0-alpha.30:
-  version "5.0.0-alpha.30"
-  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.0.0-alpha.30.tgz#e5a957730a20e4e34087b3938c545cc30a24dd41"
-  integrity sha512-msvxKLz7ai03j7KWkSQ3XSO9JGIVo9iZz7FIWmE5xOf0NJCjscZmy/egQxx2fnIzcG/mo9ZiIuYrDuiw6uhFvw==
+babylonjs@5.0.0-alpha.33:
+  version "5.0.0-alpha.33"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.0.0-alpha.33.tgz#e3c33c62cf1caae11a4ac2a7f3e63f76629c6fc6"
+  integrity sha512-+TFmNvnny/LnlNvko5BVl1zxGsE8aA+RpzUTwClLd0zmEGfAYS4NcxkFhwBYGAcb13AONgkG+P+wRnyRorlMCA==
 
 bootstrap@5.0.2:
   version "5.0.2"

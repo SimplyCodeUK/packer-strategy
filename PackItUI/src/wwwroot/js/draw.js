@@ -13,17 +13,16 @@
  *
  * @param {BABYLON.Scene} scene - The Babylon scene
  * @param {JSON} model - The model that the result is from
- * @param {JSON} result - The result in JSON
  */
-var populateScene = function (scene, model, result) {
+var populateScene = function (scene, model) {
   var idx = 0
   for ( const shape of model.Drawing.Shapes ) {
     var parentDimensions = { width: shape.Length, depth: shape.Breadth, height: shape.Height }
-    var mesh = new BABYLON.MeshBuilder.CreateBox('box'.concat(idx.toString()), parentDimensions, scene)
-    mesh.position = new BABYLON.Vector3(shape.X, shape.Y, shape.Z)
-    mesh.enableEdgesRendering()
-    mesh.edgesWidth = 1.0
-    mesh.edgesColor = new BABYLON.Color4(0, 0, 1, 1)
+    var box = new BABYLON.MeshBuilder.CreateBox('box'.concat(idx.toString()), parentDimensions, scene)
+    box.position = new BABYLON.Vector3(shape.X, shape.Y, shape.Z)
+    box.enableEdgesRendering()
+    box.edgesWidth = 1.0
+    box.edgesColor = new BABYLON.Color4(0, 0, 0)
     ++idx
   }
 }
@@ -48,7 +47,7 @@ var drawPack = function (canvas, model_json) {
   light.diffuse = new BABYLON.Color3(1, 1, 1)
 
   // Populate the scene
-  populateScene(scene, model, result)
+  populateScene(scene, model)
 
   engine.runRenderLoop(function () {
     scene.render()
