@@ -56,20 +56,51 @@ namespace PackItDraw
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             SetupApp(app, env);
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=About}/{action=Get}/{id?}");
-            });
+            _ = app.UseMvc(routes =>
+              {
+                  routes.MapRoute(
+                      name: "default",
+                      template: "{controller=About}/{action=Get}/{id?}");
+              });
 
-            app.UseHttpsRedirection()
+            _ = app.UseHttpsRedirection()
                .UseAuthorization()
                .UseRouting()
                .UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();
                 });
+            InitialiseDatabases(app);
+        }
+
+        /// <summary> Initialise a data base. Read data into development environment and ensure it is created. </summary>
+        ///
+        /// <typeparam name="TContext"> The context. </typeparam>
+        /// <typeparam name="TData"> The data to store. </typeparam>
+        /// <typeparam name="TDtoData"> The DTO for the data. </typeparam>
+        /// <typeparam name="TMapper"> The mapper to convert data to DTO and vice versa. </typeparam>
+        ///
+        /// <param name="serviceScope"> The service scope. </param>
+        private static void InitialiseDatabase<TContext, TData, TDtoData, TMapper>(IServiceScope serviceScope)
+            where TData : class
+            where TDtoData : class
+            where TContext : PackItContext<TData, TDtoData, TMapper>
+            where TMapper : IPackItMapper<TData, TDtoData>, new()
+        {
+            var context = serviceScope.ServiceProvider.GetService<TContext>();
+            _ = context.Database.EnsureDeleted();
+            _ = context.Database.EnsureCreated();
+        }
+
+        /// <summary> Initialise the databases. </summary>
+        ///
+        /// <param name="app"> The application. </param>
+        private static void InitialiseDatabases(IApplicationBuilder app)
+        {
+            using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
+
+            // Seed Drawings database
+            InitialiseDatabase<DrawingContext, PackIt.Drawing.Drawing, PackIt.DTO.DtoDrawing.DtoDrawing, DrawingMapper>(serviceScope);
         }
     }
 }

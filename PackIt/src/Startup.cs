@@ -65,55 +65,73 @@ namespace PackIt
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             SetupApp(app, env);
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=About}/{action=Get}/{id?}");
-            });
+            _ = app.UseMvc(routes =>
+              {
+                  routes.MapRoute(
+                      name: "default",
+                      template: "{controller=About}/{action=Get}/{id?}");
+              });
 
-            if (env.IsDevelopment())
-            {
-                Seed(app);
-            }
+            InitialiseDatabases(app, env);
         }
 
-        private static void ReadData<TContext, TData, TDtoData, TMapper>(IServiceScope serviceScope, string filename)
+        /// <summary> Initialise a data base. Read data into development environment and ensure it is created. </summary>
+        ///
+        /// <typeparam name="TContext"> The context. </typeparam>
+        /// <typeparam name="TData"> The data to store. </typeparam>
+        /// <typeparam name="TDtoData"> The DTO for the data. </typeparam>
+        /// <typeparam name="TMapper"> The mapper to convert data to DTO and vice versa. </typeparam>
+        ///
+        /// <param name="serviceScope"> The service scope. </param>
+        /// <param name="env"> The environment. </param>
+        /// <param name="filename"> Data file name for development environment. </param>
+        private static void InitialiseDatabase<TContext, TData, TDtoData, TMapper>(IServiceScope serviceScope, IWebHostEnvironment env, string filename)
             where TData : class
             where TDtoData : class
             where TContext : PackItContext<TData, TDtoData, TMapper>
             where TMapper : IPackItMapper<TData, TDtoData>, new()
         {
             var context = serviceScope.ServiceProvider.GetService<TContext>();
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
-            context.Resources.AnyAsync().Wait();
-            if (!context.Resources.AnyAsync().Result)
+
+            // Only reconstruct the database when in development
+            if (env.IsDevelopment())
             {
-                var text = File.ReadAllText(filename);
-                foreach (var item in JsonSerializer.Deserialize<List<TData>>(text))
+                _ = context.Database.EnsureDeleted();
+            }
+            _ = context.Database.EnsureCreated();
+            context.Resources.AnyAsync().Wait();
+
+            // Only reconstruct the database when in development
+            if (env.IsDevelopment())
+            {
+                if (!context.Resources.AnyAsync().Result)
                 {
-                    context.Add(item);
+                    var text = File.ReadAllText(filename);
+                    foreach (var item in JsonSerializer.Deserialize<List<TData>>(text))
+                    {
+                        context.Add(item);
+                    }
                 }
             }
-            context.SaveChanges();
+            _ = context.SaveChanges();
         }
 
-        /// <summary> Seeds the specified application. </summary>
+        /// <summary> Initialise the databases. </summary>
         ///
         /// <param name="app"> The application. </param>
-        private static void Seed(IApplicationBuilder app)
+        /// <param name="env"> The environment. </param>
+        private static void InitialiseDatabases(IApplicationBuilder app, IWebHostEnvironment env)
         {
             using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
 
-            // Seed Pack database
-            ReadData<PackContext, Pack.Pack, DTO.DtoPack.DtoPack, PackMapper>(serviceScope, "Seeds/pack.json");
+            // Initialise Pack database
+            InitialiseDatabase<PackContext, Pack.Pack, DTO.DtoPack.DtoPack, PackMapper>(serviceScope, env, "Seeds/pack.json");
 
-            // Seed Plan database
-            ReadData<PlanContext, Plan.Plan, DTO.DtoPlan.DtoPlan, PlanMapper>(serviceScope, "Seeds/plan.json");
+            // Initialise Plan database
+            InitialiseDatabase<PlanContext, Plan.Plan, DTO.DtoPlan.DtoPlan, PlanMapper>(serviceScope, env, "Seeds/plan.json");
 
-            // Seed Material database
-            ReadData<MaterialContext, Material.Material, DTO.DtoMaterial.DtoMaterial, MaterialMapper>(serviceScope, "Seeds/material.json");
+            // Initialise Material database
+            InitialiseDatabase<MaterialContext, Material.Material, DTO.DtoMaterial.DtoMaterial, MaterialMapper>(serviceScope, env, "Seeds/material.json");
         }
     }
 }

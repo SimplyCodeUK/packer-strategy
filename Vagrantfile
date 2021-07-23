@@ -30,7 +30,7 @@ SERVICES = {
     build_dir: "PackItDraw/src",
     binary: "PackItDraw.dll",
     server_location: "/",
-    guest_port: "8100",
+    guest_port: "5000",
     host_port: "8200",
     database: "postgresql"
   },
@@ -192,6 +192,10 @@ MACHINES.each do |_key, machine|
         echo '    "PlanContext": {'                                              >> "#{workingDir}/appsettings.local.json"
         echo '      "Type": "postgres",'                                         >> "#{workingDir}/appsettings.local.json"
         echo '      "ConnectionString": "#{connectionString}Database=plan;"'     >> "#{workingDir}/appsettings.local.json"
+        echo '    },'                                                            >> "#{workingDir}/appsettings.local.json"
+        echo '    "DrawingContext": {'                                           >> "#{workingDir}/appsettings.local.json"
+        echo '      "Type": "postgres",'                                         >> "#{workingDir}/appsettings.local.json"
+        echo '      "ConnectionString": "#{connectionString}Database=drawing;"'  >> "#{workingDir}/appsettings.local.json"
         echo '    }'                                                             >> "#{workingDir}/appsettings.local.json"
         echo '  }'                                                               >> "#{workingDir}/appsettings.local.json"
         echo '}'                                                                 >> "#{workingDir}/appsettings.local.json"
