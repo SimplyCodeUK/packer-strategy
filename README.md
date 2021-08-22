@@ -21,9 +21,9 @@
 
 ## Java Script Dependencies
 
-[![BabylonJS](https://img.shields.io/badge/BabylonJS-v4.2.0-green.svg)](https://www.jsdelivr.com/package/npm/babylonjs)
+[![BabylonJS](https://img.shields.io/badge/BabylonJS-v5.0.0-green.svg)](https://www.jsdelivr.com/package/npm/babylonjs)
 
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.0.1-green.svg)](https://www.jsdelivr.com/package/npm/bootstrap)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.1.0-green.svg)](https://www.jsdelivr.com/package/npm/bootstrap)
 
 [![Font Awesome 5](https://img.shields.io/badge/FontAwesome-v5.4.1-green.svg)](https://www.jsdelivr.com/package/npm/font-awesome-5-css)
 
@@ -33,7 +33,7 @@
 
 [![JQuery Validation Unobtrusive](https://img.shields.io/badge/JQueryValidationUnobtrusive-v3.2.12-green.svg)](https://www.jsdelivr.com/package/npm/jquery-validation-unobtrusive)
 
-[![@popperjs/core](https://img.shields.io/badge/@PopperJsCore-v2.9.2-green.svg)](https://www.jsdelivr.com/package/npm/@popperjs/core)
+[![@popperjs/core](https://img.shields.io/badge/@PopperJsCore-v2.9.3-green.svg)](https://www.jsdelivr.com/package/npm/@popperjs/core)
 
 <a name="status"></a>
 
@@ -57,7 +57,7 @@
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
 - [.NET Core SDK 5.0.302](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.10.4](https://www.visualstudio.com/)
+- [Visual Studio 2019 Version 16.11.1](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
