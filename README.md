@@ -42,7 +42,7 @@
 | Build                 | Result | Tests | Coverage |
 | :----                 | :----- | :---- | :------- |
 | Azure DevOps Build    | [![Azure DevOps Build](https://simplycodeuk.visualstudio.com/_apis/public/build/definitions/e0e00fa3-b395-4320-937a-56af7d655cc5/1/badge)](https://simplycodeuk.visualstudio.com/packer-strategy/_build/index?context=mine&path=%5C&definitionId=1&_a=completed) | ![Azure DevOps Tests](https://img.shields.io/azure-devops/tests/simplycodeuk/packer-strategy/1) | ![Azure DevOps Coverage](https://img.shields.io/azure-devops/coverage/simplycodeuk/packer-strategy/1) |
-| Travis Linux          | [![Travis Linux](https://travis-ci.com/SimplyCodeUK/packer-strategy.svg)](https://travis-ci.com/SimplyCodeUK/packer-strategy) | | |
+| Travis Linux          | [![Travis Linux](https://app.travis-ci.com/SimplyCodeUK/packer-strategy.svg)](https://app.travis-ci.com/SimplyCodeUK/packer-strategy) | | |
 | Appveyor              | [![Appveyor](https://ci.appveyor.com/api/projects/status/h2ii287cd49liemf?svg=true)](https://ci.appveyor.com/project/louisnayegon/packer-strategy) | | |
 | CircleCI              | [![CircleCI](https://circleci.com/gh/SimplyCodeUK/packer-strategy.svg?style=shield)](https://circleci.com/gh/SimplyCodeUK/packer-strategy) | |
 | Codacy Quality        | [![Codacy Quality](https://api.codacy.com/project/badge/Grade/d7a5a9f269a744d38dcda165f328517a)](https://app.codacy.com/manual/SimplyCodeUK/packer-strategy/dashboard) | | ![Codacy Coverage](https://app.codacy.com/project/badge/Coverage/d7a5a9f269a744d38dcda165f328517a) |
