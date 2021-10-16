@@ -23,7 +23,7 @@
 
 [![BabylonJS](https://img.shields.io/badge/BabylonJS-v5.0.0-green.svg)](https://www.jsdelivr.com/package/npm/babylonjs)
 
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.1.0-green.svg)](https://www.jsdelivr.com/package/npm/bootstrap)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.1.3-green.svg)](https://www.jsdelivr.com/package/npm/bootstrap)
 
 [![Font Awesome 5](https://img.shields.io/badge/FontAwesome-v5.4.1-green.svg)](https://www.jsdelivr.com/package/npm/font-awesome-5-css)
 
@@ -33,7 +33,7 @@
 
 [![JQuery Validation Unobtrusive](https://img.shields.io/badge/JQueryValidationUnobtrusive-v3.2.12-green.svg)](https://www.jsdelivr.com/package/npm/jquery-validation-unobtrusive)
 
-[![@popperjs/core](https://img.shields.io/badge/@PopperJsCore-v2.9.3-green.svg)](https://www.jsdelivr.com/package/npm/@popperjs/core)
+[![@popperjs/core](https://img.shields.io/badge/@PopperJsCore-v2.10.2-green.svg)](https://www.jsdelivr.com/package/npm/@popperjs/core)
 
 <a name="status"></a>
 
@@ -57,7 +57,7 @@
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
 - [.NET Core SDK 5.0.302](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.11.1](https://www.visualstudio.com/)
+- [Visual Studio 2019 Version 16.11.5](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -67,7 +67,7 @@
 - [Nuget Version 5.10.0](https://www.nuget.org/)
 - [Powershell Version 7.1.3](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 6.1.22](https://www.virtualbox.org/)
-  - Oracle VM VirtualBox Extension Pack verison 6.1.22
+  - Oracle VM VirtualBox Extension Pack version 6.1.22
 - [Vagrant Version 2.2.17](https://www.vagrantup.com/)
   - Box ubuntu/bionic64 version 20210720.0.1
 - [Doxygen Version 1.9.1](https://www.doxygen.nl/)
@@ -104,7 +104,7 @@ vagrant up
 
 <a name="updating-the-environment"></a>
 
-### Updating The Environement
+### Updating The Environment
 
 Once it is created the environment can be updated.
 From an elevated PowerShell run the command

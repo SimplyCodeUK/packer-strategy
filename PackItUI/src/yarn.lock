@@ -2,20 +2,20 @@
 # yarn lockfile v1
 
 
-"@popperjs/core@2.9.3":
-  version "2.9.3"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.3.tgz#8b68da1ebd7fc603999cf6ebee34a4899a14b88e"
-  integrity sha512-xDu17cEfh7Kid/d95kB6tZsLOmSWKCZKtprnhVepjsSaCij+lM3mItSJDuuHDMbCWTh8Ejmebwb+KONcCJ0eXQ==
+"@popperjs/core@2.10.2":
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
+  integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
 
-babylonjs@5.0.0-alpha.38:
-  version "5.0.0-alpha.38"
-  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.0.0-alpha.38.tgz#0020cd60023931e7a0c3b24bdd81ac845ea61b98"
-  integrity sha512-yZJhOaH+VVnTperRZzPJXqLdFB7oKr3HxRcauxhgD2iO7kHwDnbXIqQV2w1aRBtEv7s+N4WDhOikTV8F7rzN1w==
+babylonjs@5.0.0-alpha.48:
+  version "5.0.0-alpha.48"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.0.0-alpha.48.tgz#702845d9ed590d9e176176be37122c75344ab494"
+  integrity sha512-yes5MLcN21XATRDgnvbIxmCur94ZqcUOfITC7ejh9TAXoLwJi7tFGYvhHn5schodtz7JhHQGe1nqA9b91xnhQw==
 
-bootstrap@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.1.0.tgz#543ef8f44f4b9af67b0230f19508542fec38ef55"
-  integrity sha512-bs74WNI9BgBo3cEovmdMHikSKoXnDgA6VQjJ7TyTotU6L7d41ZyCEEelPwkYEzsG/Zjv3ie9IE3EMAje0W9Xew==
+bootstrap@5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.1.1.tgz#9d6eed81e08feaccedf3adaca51fe4b73a2871df"
+  integrity sha512-/jUa4sSuDZWlDLQ1gwQQR8uoYSvLJzDd8m5o6bPKh3asLAMYVZKdRCjb1joUd5WXf0WwCNzd2EjwQQhupou0dA==
 
 font-awesome-5-css@5.4.1:
   version "5.4.1"

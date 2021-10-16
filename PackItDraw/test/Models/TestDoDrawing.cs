@@ -20,6 +20,7 @@ namespace PackIt.Test.Models
     {
         private IDrawingRepository repository;
         private string drawingId;
+        private Pack.Pack pack;
 
         /// <summary> Setup for all unit tests here. </summary>
         [SetUp]
@@ -34,17 +35,17 @@ namespace PackIt.Test.Models
 
             // Pack to draw in tests
             var text = File.ReadAllText("Models/TestData/pack.json");
-            var pack = JsonSerializer.Deserialize<Pack.Pack>(text);
-
-            Drawing value = new(pack);
-            this.drawingId = value.DrawingId;
-            this.repository.Add(value);
+            this.pack = JsonSerializer.Deserialize<Pack.Pack>(text);
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
         [Test]
         public void TestStart()
         {
+            Drawing value = new(pack);
+            this.drawingId = value.DrawingId;
+            this.repository.Add(value);
+
             DoDrawing.Start(this.drawingId, this.repository);
             var drawing = this.repository.Find(this.drawingId);
             Assert.IsTrue(drawing.Computed);
