@@ -34,7 +34,13 @@ build_script:
 
 test_script:
 - ps: >-
-    dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" --logger:trx
+    dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" PackItLib/test/PackItLib.Test.csproj   --logger:trx
+
+    dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         --logger:trx
+
+    dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/test/PackItDraw.Test.csproj --logger:trx
+
+    dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" PackItUI/test/PackItUI.Test.csproj     --logger:trx
 
     7z a coverage.zip coverage.cobertura.xml -r
 

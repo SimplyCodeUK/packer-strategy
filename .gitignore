@@ -16,3 +16,5 @@ coverage.cobertura.xml
 
 **/.vagrant/
 **/*.log
+
+**/*.feature.cs

@@ -8,14 +8,11 @@
     <Authors>Louis Henry Nayegon</Authors>
     <Copyright>Simply Code Ltd.</Copyright>
     <RepositoryUrl>https://github.com/SimplyCodeUK/packer-strategy</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <DocumentationFile>bin\$(Configuration)\net5.0\doc.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <RepositoryType>git</RepositoryType>
     <AssemblyName>PackItUI</AssemblyName>
     <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
   </PropertyGroup>
