@@ -37,8 +37,17 @@ jobs:
           name: "Pack the solution"
           command: dotnet pack PackIt.sln -c << parameters.config >> 
       - run:
-          name: "Test solution"
-          command: dotnet test PackIt.sln -c << parameters.config >> /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" --logger:trx --results-directory:test_coverage --collect:"Code Coverage"
+          name: "Test PackItLib"
+          command: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" PackItLib/test/PackItLib.Test.csproj   -c << parameters.config >> --logger:trx
+      - run:
+          name: "Test PackIt"
+          command: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         -c << parameters.config >> --logger:trx
+      - run:
+          name: "Test PackItDraw"
+          command: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/test/PackItDraw.Test.csproj -c << parameters.config >> --logger:trx
+      - run:
+          name: "Test PackItUI"
+          command: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" PackItUI/test/PackItUI.Test.csproj     -c << parameters.config >> --logger:trx
       - store_test_results:
           path: ./test_coverage
       - store_artifacts:

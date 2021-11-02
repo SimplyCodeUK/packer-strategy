@@ -1,0 +1,23 @@
+﻿{
+  "bindingCulture":
+  {
+    "name" :"en-us"
+  },
+  "language": {
+    "feature": "en-us"
+  },
+  "service": {
+    "Materials": {
+      "url": "http://localhost:8000/api/v1/"
+    },
+    "Packs": {
+      "url": "http://localhost:8000/api/v1/"
+    },
+    "Plans": {
+      "url": "http://localhost:8000/api/v1/"
+    },
+    "Uploads": {
+      "url": "http://localhost:8000/api/v1/"
+    }
+  }
+}
