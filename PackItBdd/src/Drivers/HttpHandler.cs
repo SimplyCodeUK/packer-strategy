@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Bdd.Drivers
+namespace PackItBdd.Drivers
 {
     using System.Net.Http;
 
@@ -12,15 +12,19 @@ namespace PackIt.Bdd.Drivers
     public class HttpHandler
     {
         /// <summary> Client for HTTP requests </summary>
-        private HttpClient client;
+        private readonly HttpClient client;
 
         /// <summary> Response of the last HTTP requests </summary>
         private HttpResponseMessage response;
 
         /// <summary> Constructor </summary>
-        public HttpHandler()
+        ///
+        /// <param name="client">Http Client</param>
+        public HttpHandler(HttpClient client = null)
         {
-            this.client = new HttpClient();
+            this.client = client;
+            if (this.client == null )
+                this.client = new HttpClient();
             this.response = null;
         }
 

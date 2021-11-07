@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Company>Simply Code Ltd.</Company>
-    <ProjectGuid>3fc756a2-8063-432d-971a-82f119e2ccfc</ProjectGuid>
+    <ProjectGuid>50857ace-12b0-4262-a89f-413ac8ad31b1</ProjectGuid>
     <Product>PackIt</Product>
     <Authors>Louis Henry Nayegon</Authors>
     <Copyright>Simply Code Ltd.</Copyright>
@@ -16,28 +16,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\PackItLib\src\PackItLib.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Update="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\LICENSE.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+    <PackageReference Include="SpecFlow.NUnit" Version="3.9.22" />
+    <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
   </ItemGroup>
 
 </Project>

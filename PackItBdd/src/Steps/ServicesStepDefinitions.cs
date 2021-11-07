@@ -4,11 +4,11 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Bdd.Steps
+namespace PackItBdd.Steps
 {
     using Microsoft.Extensions.Configuration;
     using NUnit.Framework;
-    using PackIt.Bdd.Drivers;
+    using PackItBdd.Drivers;
     using TechTalk.SpecFlow;
 
     /// <summary> Generic service steps </summary>

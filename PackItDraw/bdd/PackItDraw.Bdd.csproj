@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Company>Simply Code Ltd.</Company>
-    <ProjectGuid>fae04ec0-301f-11d3-bf4b-00c04F79efbc</ProjectGuid>
+    <ProjectGuid>48f66a85-6ecc-439a-b0c1-c92317df276d</ProjectGuid>
     <Product>PackIt</Product>
     <Authors>Louis Henry Nayegon</Authors>
     <Copyright>Simply Code Ltd.</Copyright>
@@ -32,7 +32,7 @@
     <Folder Include="Steps\" />
   </ItemGroup>
 
-    <ItemGroup>
+  <ItemGroup>
     <Content Update="specflow.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -45,31 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\PackItBdd\src\PackItBdd.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Features\Updates.feature.cs">
-      <DependentUpon>Updates.feature</DependentUpon>
-    </Compile>
-    <Compile Update="Features\Plans.feature.cs">
-      <DependentUpon>Plans.feature</DependentUpon>
-    </Compile>
-    <Compile Update="Features\Packs.feature.cs">
-      <DependentUpon>Packs.feature</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <SpecFlowFeatureFiles Update="Features\Updates.feature">
-      <Visible>$(UsingMicrosoftNETSdk)</Visible>
-      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
-    </SpecFlowFeatureFiles>
-    <SpecFlowFeatureFiles Update="Features\Plans.feature">
-      <Visible>$(UsingMicrosoftNETSdk)</Visible>
-      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
-    </SpecFlowFeatureFiles>
-    <SpecFlowFeatureFiles Update="Features\Packs.feature">
-      <Visible>$(UsingMicrosoftNETSdk)</Visible>
-      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
-    </SpecFlowFeatureFiles>
   </ItemGroup>
 
 </Project>

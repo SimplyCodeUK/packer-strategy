@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Bdd.Hooks
+namespace PackItBdd.Hooks
 {
     using BoDi;
     using Microsoft.Extensions.Configuration;

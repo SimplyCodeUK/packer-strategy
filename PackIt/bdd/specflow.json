@@ -1,11 +1,15 @@
 ﻿{
-  "bindingCulture":
-  {
-    "name" :"en-us"
+  "bindingCulture": {
+    "name": "en-us"
   },
   "language": {
     "feature": "en-us"
   },
+  "stepAssemblies": [
+    {
+      "assembly": "PackItBdd"
+    }
+  ],
   "service": {
     "Materials": {
       "url": "http://localhost:8000/api/v1/"
