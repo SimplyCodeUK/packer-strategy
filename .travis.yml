@@ -41,6 +41,19 @@ cache:
   yarn: yes
 
 install:
+  # Install libvrt & KVM
+  - sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
+
+  # Download Vagrant & Install Vagrant package
+  - sudo wget -nv https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb
+  - sudo dpkg -i vagrant_2.2.19_x86_64.deb
+
+  # Vagrant correctly installed?
+  - vagrant --version
+
+  # Install vagrant-libvirt Vagrant plugin
+  - sudo vagrant plugin install vagrant-libvirt
+
   - nuget restore PackIt.sln
   - dotnet --version
   - dotnet restore PackIt.sln
@@ -65,6 +78,9 @@ script:
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         -c $CONFIG --logger:trx
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/test/PackItDraw.Test.csproj -c $CONFIG --logger:trx
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItUI/test/PackItUI.Test.csproj     -c $CONFIG --logger:trx
+  # - sudo vagrant up --provider=libvirt
+  # - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/bdd/PackIt.Bdd.csproj         -c $CONFIG --logger:trx
+  # - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/bdd/PackItDraw.Bdd.csproj -c $CONFIG --logger:trx
 
 # Pipe the coverage data to Code Climate
 after_script:

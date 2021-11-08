@@ -12,10 +12,10 @@ namespace PackItBdd.Hooks
 
     /// <summary> Configuration files setup hooks </summary>
     [Binding]
-    class ConfigSetupHooks
+    internal class ConfigSetupHooks
     {
         /// <summary> The container for the configuration. </summary>
-        private IObjectContainer container;
+        private readonly IObjectContainer container;
 
         /// <summary> The configuration. Read before the start of a sceanrio. </summary>
         private static IConfiguration _config;
@@ -40,7 +40,7 @@ namespace PackItBdd.Hooks
                     .Build();
             }
 
-            this.container.RegisterInstanceAs<IConfiguration>(_config);
+            this.container.RegisterInstanceAs(_config);
         }
     }
 }

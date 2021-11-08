@@ -42,7 +42,7 @@ namespace PackIt.Test.Models
         [Test]
         public void TestStart()
         {
-            Drawing value = new(pack);
+            Drawing value = new(this.pack);
             this.drawingId = value.DrawingId;
             this.repository.Add(value);
 
