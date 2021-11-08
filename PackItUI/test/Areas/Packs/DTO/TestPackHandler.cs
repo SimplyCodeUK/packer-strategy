@@ -11,9 +11,9 @@ namespace PackItUI.Test.Areas.Packs.DTO
     using Microsoft.Extensions.Options;
     using NUnit.Framework;
     using PackIt.Models;
+    using PackItMock.HttpMock;
     using PackItUI.Areas.Packs.DTO;
     using PackItUI.Services;
-    using PackItUI.Test.HttpMock;
 
     /// <summary> (Unit Test Fixture) a handler for test packs. </summary>
     [TestFixture]

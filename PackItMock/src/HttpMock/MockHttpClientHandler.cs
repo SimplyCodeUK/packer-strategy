@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackItUI.Test.HttpMock
+namespace PackItMock.HttpMock
 {
     using System.Collections.Generic;
     using System.Net.Http;

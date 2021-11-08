@@ -19,12 +19,10 @@ namespace PackItBdd.Drivers
 
         /// <summary> Constructor </summary>
         ///
-        /// <param name="client">Http Client</param>
-        public HttpHandler(HttpClient client = null)
+        /// <param name="clientHandler">The HttpClient Handler. @see HttpClient</param>
+        public HttpHandler(HttpClientHandler clientHandler)
         {
-            this.client = client;
-            if (this.client == null )
-                this.client = new HttpClient();
+            this.client = new HttpClient(clientHandler);
             this.response = null;
         }
 

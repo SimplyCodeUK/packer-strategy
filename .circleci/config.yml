@@ -40,6 +40,9 @@ jobs:
           name: "Test PackItLib"
           command: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" PackItLib/test/PackItLib.Test.csproj   -c << parameters.config >> --logger:trx
       - run:
+          name: "Test PackItBdd"
+          command: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" PackItBdd/test/PackItBdd.Test.csproj   -c << parameters.config >> --logger:trx
+      - run:
           name: "Test PackIt"
           command: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         -c << parameters.config >> --logger:trx
       - run:

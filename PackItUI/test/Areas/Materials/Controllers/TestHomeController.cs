@@ -15,10 +15,10 @@ namespace PackItUI.Test.Areas.Materials.Controllers
     using Moq;
     using NUnit.Framework;
     using PackIt.Models;
+    using PackItMock.HttpMock;
     using PackItUI.Areas.Materials.Controllers;
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Materials.Models;
-    using PackItUI.Test.HttpMock;
 
     /// <summary> (Unit Test Fixture) a controller for handling test materials. </summary>
     [TestFixture]

@@ -22,4 +22,9 @@
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\PackItMock\src\PackItMock.csproj" />
+    <ProjectReference Include="..\src\PackItBdd.csproj" />
+  </ItemGroup>
+
 </Project>
