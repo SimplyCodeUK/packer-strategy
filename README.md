@@ -64,7 +64,7 @@
   - Extensions
     - StyleCop
     - Markdown Editor
-- [Nuget Version 5.10.0](https://www.nuget.org/)
+- [Nuget Version 5.11.0](https://www.nuget.org/)
 - [Powershell Version 7.1.3](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 6.1.22](https://www.virtualbox.org/)
   - Oracle VM VirtualBox Extension Pack version 6.1.22
