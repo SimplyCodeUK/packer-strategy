@@ -57,7 +57,7 @@
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
 - [.NET Core SDK 5.0.402](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.11.5](https://www.visualstudio.com/)
+- [Visual Studio 2019 Version 16.11.6](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -65,10 +65,10 @@
     - StyleCop
     - Markdown Editor
 - [Nuget Version 5.11.0](https://www.nuget.org/)
-- [Powershell Version 7.1.3](https://docs.microsoft.com/en-us/powershell/)
-- [VirtualBox Version 6.1.22](https://www.virtualbox.org/)
-  - Oracle VM VirtualBox Extension Pack version 6.1.22
-- [Vagrant Version 2.2.17](https://www.vagrantup.com/)
+- [Powershell Version 7.2.0](https://docs.microsoft.com/en-us/powershell/)
+- [VirtualBox Version 6.1.28](https://www.virtualbox.org/)
+  - Oracle VM VirtualBox Extension Pack version 6.1.28
+- [Vagrant Version 2.2.19](https://www.vagrantup.com/)
   - Box ubuntu/bionic64 version 20210720.0.1
 - [Doxygen Version 1.9.1](https://www.doxygen.nl/)
 
