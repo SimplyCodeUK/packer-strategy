@@ -33,9 +33,14 @@
     <Folder Include="Steps\" />
   </ItemGroup>
 
-    <ItemGroup>
+  <ItemGroup>
     <Content Update="specflow.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="specflow.local.json">
+      <CopyToOutputDirectory Condition="Exists('specflow.local.json')">PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

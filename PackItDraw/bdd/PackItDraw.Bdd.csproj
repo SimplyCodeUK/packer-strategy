@@ -39,6 +39,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="specflow.local.json">
+      <CopyToOutputDirectory Condition="Exists('specflow.local.json')">PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="..\..\LICENSE.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

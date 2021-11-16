@@ -54,6 +54,37 @@ install:
   # Install vagrant-libvirt Vagrant plugin
   - sudo vagrant plugin install vagrant-libvirt
 
+  - 'echo -e <<EOD1
+{
+  "service": {
+    "Materials": {
+      "url": "http://localhost:8100/api/v1/"
+    },
+    "Packs": {
+      "url": "http://localhost:8100/api/v1/"
+    },
+    "Plans": {
+      "url": "http://localhost:8100/api/v1/"
+    },
+    "Uploads": {
+      "url": "http://localhost:8100/api/v1/"
+    }
+  }
+}
+EOD1
+>./PackIt/bdd/specflow.local.json'
+
+  - 'echo -e <<EOD2
+{
+  "service": {
+    "Drawings": {
+      "url": "http://localhost:8200/api/v1/"
+    }
+  }
+}
+EOD2
+>./PackItDraw/bdd/specflow.local.json'
+
   - nuget restore PackIt.sln
   - dotnet --version
   - dotnet restore PackIt.sln

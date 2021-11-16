@@ -18,3 +18,4 @@ coverage.cobertura.xml
 **/*.log
 
 **/*.feature.cs
+**/*.local.json
