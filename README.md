@@ -57,7 +57,7 @@
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
 - [.NET Core SDK 5.0.402](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.11.6](https://www.visualstudio.com/)
+- [Visual Studio 2019 Version 16.11.7](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -69,8 +69,8 @@
 - [VirtualBox Version 6.1.28](https://www.virtualbox.org/)
   - Oracle VM VirtualBox Extension Pack version 6.1.28
 - [Vagrant Version 2.2.19](https://www.vagrantup.com/)
-  - Box ubuntu/bionic64 version 20210720.0.1
-- [Doxygen Version 1.9.1](https://www.doxygen.nl/)
+  - Box generic/ubuntu2004 version 3.5.2
+- [Doxygen Version 1.9.2](https://www.doxygen.nl/)
 
 <a name="vagrant"></a>
 

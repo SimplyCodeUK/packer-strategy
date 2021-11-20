@@ -27,7 +27,7 @@ namespace PackItUI.Test.Areas.Packs.DTO
             Packs = "http://localhost:8002/api/v1/",
             Plans = "http://localhost:8003/api/v1/",
             Uploads = "http://localhost:8004/api/v1/",
-            Drawings = "http://localhost:5000/api/v1/"
+            Drawings = "http://localhost:8005/api/v1/"
         };
 
         /// <summary> The application settings. </summary>
@@ -72,7 +72,7 @@ namespace PackItUI.Test.Areas.Packs.DTO
             result.Wait();
             Assert.IsInstanceOf<ServiceInfo>(result.Result);
             Assert.AreEqual(result.Result.Version, "Unknown");
-            Assert.AreEqual(result.Result.About, "Service down! http://localhost:5000/api/v1/");
+            Assert.AreEqual(result.Result.About, "Service down! http://localhost:8005/api/v1/");
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>

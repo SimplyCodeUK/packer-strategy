@@ -34,7 +34,7 @@ namespace PackItUI.Test.Areas.App.Controllers
             Packs = "http://localhost:8002/api/v1/",
             Plans = "http://localhost:8003/api/v1/",
             Uploads = "http://localhost:8004/api/v1/",
-            Drawings = "http://localhost:5000/api/v1/"
+            Drawings = "http://localhost:8005/api/v1/"
         };
 
         /// <summary> The application settings. </summary>
@@ -199,7 +199,7 @@ namespace PackItUI.Test.Areas.App.Controllers
                 .AddRequest(HttpMethod.Get, "http://localhost:8004/api/v1/")
                 .ContentsJson("{\"Version\": \"1\", \"About\": \"Uploads\"}");
             httpHandler
-                .AddRequest(HttpMethod.Get, "http://localhost:5000/api/v1/")
+                .AddRequest(HttpMethod.Get, "http://localhost:8005/api/v1/")
                 .ContentsJson("{\"Version\": \"1\", \"About\": \"Draw\"}");
 
             this.controller = new(

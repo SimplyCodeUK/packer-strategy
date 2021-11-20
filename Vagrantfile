@@ -30,7 +30,7 @@ SERVICES = {
     build_dir: "PackItDraw/src",
     binary: "PackItDraw.dll",
     server_location: "/",
-    guest_port: "5000",
+    guest_port: "8010",
     host_port: "8200",
     database: "postgresql"
   },
@@ -70,9 +70,9 @@ SCRIPT
 SERVICE_PRE_INSTALL = <<-SCRIPT
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-bionic-prod bionic main" > /etc/apt/sources.list.d/dotnetdev.list'
+sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-focal-prod focal main" > /etc/apt/sources.list.d/dotnetdev.list'
 apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 dpkg -i packages-microsoft-prod.deb
 SCRIPT
 
@@ -82,7 +82,7 @@ apt-get update
 SCRIPT
 
 DATABASE_INSTALL = <<-SCRIPT
-echo 'deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
+echo 'deb http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 apt-get update
 apt-get install postgresql-10=10.* -y
@@ -254,7 +254,7 @@ end
 Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "generic/ubuntu1804"
+  config.vm.box = "generic/ubuntu2004"
   config.vm.provider "virtualbox" do |vb|
     vb.cpus = 4
     vb.memory = 2048

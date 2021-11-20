@@ -2,8 +2,8 @@
 # Licensed under the MIT License.
 # See LICENSE file in the project root for full license information.
 
-sudo: required
-dist: bionic
+os: linux
+dist: focal
 language: csharp
 solution: PackIt.sln
 
@@ -24,7 +24,7 @@ env:
     - ASPNETCORE_ENVIRONMENT=Development
     - DOTNET_PRINT_TELEMETRY_MESSAGE=false
     - DOTNET_CLI_TELEMETRY_OPTOUT=true
-  matrix:
+  jobs:
     - CONFIG=Release
     - CONFIG=Debug
 
@@ -106,8 +106,14 @@ script:
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/test/PackItDraw.Test.csproj -c $CONFIG --logger:trx
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItUI/test/PackItUI.Test.csproj     -c $CONFIG --logger:trx
   - sudo vagrant up --provider=libvirt
-  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/bdd/PackIt.Bdd.csproj         -c $CONFIG --logger:trx
-  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/bdd/PackItDraw.Bdd.csproj -c $CONFIG --logger:trx
+  - wget localhost:8000/api/v1
+  - wget localhost:8100/api/v1
+  - wget localhost:8010/api/v1
+  - wget localhost:8200/api/v1
+  - wget localhost:9000
+  - wget localhost:8080
+#  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/bdd/PackIt.Bdd.csproj         -c $CONFIG --logger:trx
+#  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/bdd/PackItDraw.Bdd.csproj -c $CONFIG --logger:trx
 
 # Pipe the coverage data to Code Climate
 after_script:

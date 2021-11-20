@@ -34,7 +34,7 @@ namespace PackIt.Test.Controllers
             Packs = "http://localhost:8002/api/v1/",
             Plans = "http://localhost:8003/api/v1/",
             Uploads = "http://localhost:8004/api/v1/",
-            Drawings = "http://localhost:5000/api/v1/"
+            Drawings = "http://localhost:8005/api/v1/"
         };
 
         /// <summary> The application settings. </summary>
