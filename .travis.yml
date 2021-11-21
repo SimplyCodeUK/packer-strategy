@@ -5,28 +5,32 @@
 os: linux
 dist: focal
 language: csharp
+dotnet: 5.0
+mono: none
 solution: PackIt.sln
 
 addons:
   apt:
     packages:
       - doxygen
+      - nuget
   sonarcloud:
     organization: simplycodeuk
 
-mono:
-  - latest
-
-dotnet: 5.0
-
 env:
   global:
-    - ASPNETCORE_ENVIRONMENT=Development
-    - DOTNET_PRINT_TELEMETRY_MESSAGE=false
-    - DOTNET_CLI_TELEMETRY_OPTOUT=true
+    - ASPNETCORE_ENVIRONMENT: Development
+    - DOTNET_PRINT_TELEMETRY_MESSAGE: false
+    - DOTNET_CLI_TELEMETRY_OPTOUT: true
+    - VAGRANT_DEFAULT_PROVIDER: libvirt
   jobs:
     - CONFIG=Release
     - CONFIG=Debug
+
+cache:
+  yarn: yes
+  directories:
+  - /home/travis/.vagrant.d/boxes
 
 before_install:
   # Repo for Yarn
@@ -37,22 +41,17 @@ before_install:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
 
-cache:
-  yarn: yes
-
 install:
-  # Install libvrt & KVM
-  - sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
-
-  # Download Vagrant & Install Vagrant package
-  - sudo wget -nv https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb
-  - sudo dpkg -i vagrant_2.2.19_x86_64.deb
+  # Install Vagrant and libvirt
+  - |
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+    sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+    sudo apt-get update && sudo apt-get install vagrant
+    sudo apt-get install -y build-essential qemu-kvm qemu-utils libvirt-dev libvirt-daemon-system libvirt-clients bridge-utils virtinst virt-manager dnsmasq
+    sudo vagrant plugin install vagrant-libvirt
 
   # Vagrant correctly installed?
   - vagrant --version
-
-  # Install vagrant-libvirt Vagrant plugin
-  - sudo vagrant plugin install vagrant-libvirt
 
   - echo -e
     '{
@@ -105,7 +104,7 @@ script:
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         -c $CONFIG --logger:trx
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/test/PackItDraw.Test.csproj -c $CONFIG --logger:trx
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItUI/test/PackItUI.Test.csproj     -c $CONFIG --logger:trx
-  - sudo vagrant up --provider=libvirt
+  - sudo vagrant up
   - wget localhost:8000/api/v1
   - wget localhost:8100/api/v1
   - wget localhost:8010/api/v1
