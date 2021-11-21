@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Company>Simply Code Ltd.</Company>
     <ProjectGuid>ca4bd270-da27-4792-a7d3-6da15a4e4eb2</ProjectGuid>
     <Product>PackIt</Product>
@@ -9,7 +9,7 @@
     <Copyright>Simply Code Ltd.</Copyright>
     <RepositoryUrl>https://github.com/SimplyCodeUK/packer-strategy</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <DocumentationFile>bin\$(Configuration)\net5.0\doc.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\net6.0\doc.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
@@ -20,8 +20,8 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.4.4">
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.5.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

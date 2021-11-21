@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Company>Simply Code Ltd.</Company>
     <ProjectGuid>3fc756a2-8063-432d-971a-82f119e2ccfc</ProjectGuid>
     <Product>PackIt</Product>
@@ -9,7 +9,7 @@
     <Copyright>Simply Code Ltd.</Copyright>
     <RepositoryUrl>https://github.com/SimplyCodeUK/packer-strategy</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <DocumentationFile>bin\$(Configuration)\net5.0\doc.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\net6.0\doc.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
