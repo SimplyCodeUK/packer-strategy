@@ -105,14 +105,11 @@ script:
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/test/PackItDraw.Test.csproj -c $CONFIG --logger:trx
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItUI/test/PackItUI.Test.csproj     -c $CONFIG --logger:trx
   - sudo vagrant up
-  - wget localhost:8000/api/v1
   - wget localhost:8100/api/v1
-  - wget localhost:8010/api/v1
   - wget localhost:8200/api/v1
-  - wget localhost:9000
   - wget localhost:8080
-#  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/bdd/PackIt.Bdd.csproj         -c $CONFIG --logger:trx
-#  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/bdd/PackItDraw.Bdd.csproj -c $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/bdd/PackIt.Bdd.csproj         -c $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/bdd/PackItDraw.Bdd.csproj -c $CONFIG --logger:trx
 
 # Pipe the coverage data to Code Climate
 after_script:
