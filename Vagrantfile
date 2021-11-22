@@ -16,6 +16,7 @@ DATABASES = {
 SERVICES = {
   packit: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
+    branch: "dotnet6",
     project_file: "PackIt.csproj",
     build_dir: "PackIt/src",
     binary: "PackIt.dll",
@@ -26,6 +27,7 @@ SERVICES = {
   },
   packit_draw: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
+    branch: "dotnet6",
     project_file: "PackItDraw.csproj",
     build_dir: "PackItDraw/src",
     binary: "PackItDraw.dll",
@@ -36,6 +38,7 @@ SERVICES = {
   },
   packitui: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
+    branch: "dotnet6",
     project_file: "PackItUI.csproj",
     build_dir: "PackItUI/src",
     binary: "PackItUI.dll",
@@ -109,7 +112,7 @@ apt-get install nodejs         -y
 apt-get install yarn           -y
 apt-get install nuget          -y
 apt-get install git            -y
-apt-get install dotnet-sdk-5.0 -y
+apt-get install dotnet-sdk-6.0 -y
 apt-get install nginx          -y
 service nginx stop
 rm /etc/nginx/sites-enabled/default 2> /dev/null
@@ -163,7 +166,7 @@ MACHINES.each do |_key, machine|
       then
         git pull
       else
-        git clone #{SERVICES[service.to_sym][:repo]} #{service}
+        git clone --branch #{SERVICES[service.to_sym][:branch]} #{SERVICES[service.to_sym][:repo]} #{service}
       fi
       cd #{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}
       nuget restore #{SERVICES[service.to_sym][:project_file]}
