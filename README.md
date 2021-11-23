@@ -44,7 +44,6 @@
 | Azure DevOps Build    | [![Azure DevOps Build](https://simplycodeuk.visualstudio.com/_apis/public/build/definitions/e0e00fa3-b395-4320-937a-56af7d655cc5/1/badge)](https://simplycodeuk.visualstudio.com/packer-strategy/_build/index?context=mine&path=%5C&definitionId=1&_a=completed) | ![Azure DevOps Tests](https://img.shields.io/azure-devops/tests/simplycodeuk/packer-strategy/1) | ![Azure DevOps Coverage](https://img.shields.io/azure-devops/coverage/simplycodeuk/packer-strategy/1) |
 | Travis Linux          | [![Travis Linux](https://app.travis-ci.com/SimplyCodeUK/packer-strategy.svg)](https://app.travis-ci.com/SimplyCodeUK/packer-strategy) | | |
 | Appveyor              | [![Appveyor](https://ci.appveyor.com/api/projects/status/h2ii287cd49liemf?svg=true)](https://ci.appveyor.com/project/louisnayegon/packer-strategy) | | |
-| CircleCI              | [![CircleCI](https://circleci.com/gh/SimplyCodeUK/packer-strategy.svg?style=shield)](https://circleci.com/gh/SimplyCodeUK/packer-strategy) | |
 | Codacy Quality        | [![Codacy Quality](https://api.codacy.com/project/badge/Grade/d7a5a9f269a744d38dcda165f328517a)](https://app.codacy.com/manual/SimplyCodeUK/packer-strategy/dashboard) | | ![Codacy Coverage](https://app.codacy.com/project/badge/Coverage/d7a5a9f269a744d38dcda165f328517a) |
 | Code Climate Quality  | [![Code Climate Quality](https://api.codeclimate.com/v1/badges/429a3e46a3799c29b0b0/maintainability)](https://codeclimate.com/github/SimplyCodeUK/packer-strategy) | | ![Code Climate Coverage](https://img.shields.io/codeclimate/coverage/SimplyCodeUK/packer-strategy) |
 | Sonarcloud Status     | [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=SimplyCodeUK_packer-strategy&metric=alert_status)](https://sonarcloud.io/dashboard?id=SimplyCodeUK_packer-strategy) | | ![Coverage](https://sonarcloud.io/api/project_badges/measure?project=SimplyCodeUK_packer-strategy&metric=coverage) |
@@ -56,15 +55,15 @@
 - [GIT](https://git-scm.com/)
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
-- [.NET Core SDK 5.0.402](https://dotnet.microsoft.com/)
-- [Visual Studio 2019 Version 16.11.7](https://www.visualstudio.com/)
+- [.NET Core SDK 6.0.100](https://dotnet.microsoft.com/)
+- [Visual Studio 2022 Version 17.0.1](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
   - Extensions
     - StyleCop
     - Markdown Editor
-- [Nuget Version 5.11.0](https://www.nuget.org/)
+- [Nuget Version 6.0.0](https://www.nuget.org/)
 - [Powershell Version 7.2.0](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 6.1.28](https://www.virtualbox.org/)
   - Oracle VM VirtualBox Extension Pack version 6.1.28
