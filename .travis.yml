@@ -99,6 +99,8 @@ script:
   - dotnet build PackItUI/src/PackItUI.csproj           -c $CONFIG /p:DocumentationFile=codedoc.xml
   - dotnet build PackItUI/test/PackItUI.Test.csproj     -c $CONFIG /p:DocumentationFile=codedoc.xml
   - dotnet pack PackItLib/src/PackItLib.csproj          -c $CONFIG
+  - dotnet pack PackItMock/src/PackItMock.csproj        -c $CONFIG
+  - dotnet pack PackItBdd/src/PackItBdd.csproj          -c $CONFIG
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItLib/test/PackItLib.Test.csproj   -c $CONFIG --logger:trx
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItBdd/test/PackItBdd.Test.csproj   -c $CONFIG --logger:trx
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         -c $CONFIG --logger:trx

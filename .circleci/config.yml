@@ -9,21 +9,16 @@ workflows:
             parameters:
               config: ["Debug", "Release"]
 
-orbs:
-  win: circleci/windows@2.4.1
-
 jobs:
   build:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
     parameters:
       config:
         default: "Debug"
         type: string
-    executor: win/default
     steps:
       - checkout
-      - run:
-          name: "Nuget Restore"
-          command: nuget restore PackIt.sln
       - run:
           name: "dotnet version"
           command: dotnet --version
