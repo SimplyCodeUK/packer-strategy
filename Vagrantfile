@@ -16,7 +16,7 @@ DATABASES = {
 SERVICES = {
   packit: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
-    branch: "dotnet6",
+    branch: "master",
     project_file: "PackIt.csproj",
     build_dir: "PackIt/src",
     binary: "PackIt.dll",
@@ -27,7 +27,7 @@ SERVICES = {
   },
   packit_draw: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
-    branch: "dotnet6",
+    branch: "master",
     project_file: "PackItDraw.csproj",
     build_dir: "PackItDraw/src",
     binary: "PackItDraw.dll",
@@ -38,7 +38,7 @@ SERVICES = {
   },
   packitui: {
     repo: "https://github.com/SimplyCodeUK/packer-strategy.git",
-    branch: "dotnet6",
+    branch: "master",
     project_file: "PackItUI.csproj",
     build_dir: "PackItUI/src",
     binary: "PackItUI.dll",
