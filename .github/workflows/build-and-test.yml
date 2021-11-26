@@ -1,0 +1,97 @@
+name: build-and-test
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    strategy:
+      matrix:
+        config: [Release, Debug]
+        os: [ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.100'
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      # Install Vagrant, libvirt and doxygen
+      - name: Install tools Ubuntu
+        if: ${{ matrix.os == 'ubuntu-20.04' }}
+        run: |
+          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+          sudo apt-get update && sudo apt-get install -y vagrant
+          sudo vagrant autocomplete install
+          sudo apt-get install -y build-essential qemu-kvm qemu-utils libvirt-dev libvirt-daemon-system libvirt-clients bridge-utils virtinst virt-manager dnsmasq
+          sudo vagrant plugin install vagrant-libvirt
+          sudo apt-get install -y doxygen doxygen-doc doxygen-gui graphviz
+      - name: Install tools macos
+        if: ${{ matrix.os == 'macos-latest' }}
+        run: |
+          vagrant autocomplete install
+          brew install doxygen
+      - name: Tool versions
+        run: |
+          node --version
+          yarn --version
+          dotnet --version
+          vagrant --version
+          doxygen --version
+      - name: Create local config fot PackIt service
+        run: |
+          echo -e '{
+             "service":{
+               "Materials":{
+                 "url":"http://localhost:8100/api/v1/"
+               },
+               "Packs":{
+                 "url":"http://localhost:8100/api/v1/"
+               },
+               "Plans":{
+                 "url":"http://localhost:8100/api/v1/"
+               },
+               "Uploads":{
+                 "url":"http://localhost:8100/api/v1/"
+             }
+            }
+          }' >./PackIt/bdd/specflow.local.json
+      - name: Create local config fot PackItDraw service
+        run: |
+          echo -e '{
+             "service":{
+               "Drawings":{
+                 "url":"http://localhost:8200/api/v1/"
+               }
+           }
+          }' >./PackItDraw/bdd/specflow.local.json
+      - name: Restore
+        run: |
+          nuget restore PackIt.sln
+          dotnet restore PackIt.sln
+      - name: Create Documentation
+        run: |
+          doxygen ./docs/doxygen
+          dotnet build --no-restore -c ${{ matrix.config }} /p:DocumentationFile=codedoc.xml
+      - name: Pack
+        if: ${{ matrix.config == 'Release' }}
+        run: |
+          dotnet pack PackItLib/src/PackItLib.csproj   -c ${{ matrix.config }}
+          dotnet pack PackItMock/src/PackItMock.csproj -c ${{ matrix.config }}
+          dotnet pack PackItBdd/src/PackItBdd.csproj   -c ${{ matrix.config }}
+      - name: Test
+        run: |
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItLib/test/PackItLib.Test.csproj   -c ${{ matrix.config }} --logger:trx
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItBdd/test/PackItBdd.Test.csproj   -c ${{ matrix.config }} --logger:trx
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         -c ${{ matrix.config }} --logger:trx
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/test/PackItDraw.Test.csproj -c ${{ matrix.config }} --logger:trx
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItUI/test/PackItUI.Test.csproj     -c ${{ matrix.config }} --logger:trx
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Test Results ${{ matrix.config }}-${{ matrix.os }}
+          path: "**/*.trx"
+          reporter: dotnet-trx
