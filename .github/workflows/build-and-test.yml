@@ -95,3 +95,8 @@ jobs:
           name: Test Results ${{ matrix.config }}-${{ matrix.os }}
           path: "**/*.trx"
           reporter: dotnet-trx
+      - name: Save documentation artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: packit-documentation
+          path: "**/codedoc.xml"
