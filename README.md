@@ -15,6 +15,7 @@
 
 [Project Location](https://github.com/SimplyCodeUK/packer-strategy)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/20c15f81da714e55b00f8220bacbf3fa)](https://app.codacy.com/gh/SimplyCodeUK/packer-strategy?utm_source=github.com&utm_medium=referral&utm_content=SimplyCodeUK/packer-strategy&utm_campaign=Badge_Grade_Settings)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE.md)
 
 <a name="java-script-dependencies"></a>
