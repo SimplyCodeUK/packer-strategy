@@ -39,15 +39,14 @@
 
 ## Status
 
-| Build                 | Result | Tests | Coverage |
-| :----                 | :----- | :---- | :------- |
-| Azure DevOps Build    | [![Azure DevOps Build](https://simplycodeuk.visualstudio.com/_apis/public/build/definitions/e0e00fa3-b395-4320-937a-56af7d655cc5/1/badge)](https://simplycodeuk.visualstudio.com/packer-strategy/_build/index?context=mine&path=%5C&definitionId=1&_a=completed) | ![Azure DevOps Tests](https://img.shields.io/azure-devops/tests/simplycodeuk/packer-strategy/1) | ![Azure DevOps Coverage](https://img.shields.io/azure-devops/coverage/simplycodeuk/packer-strategy/1) |
-| Travis Linux          | [![Travis Linux](https://app.travis-ci.com/SimplyCodeUK/packer-strategy.svg)](https://app.travis-ci.com/SimplyCodeUK/packer-strategy) | | |
-| Appveyor              | [![Appveyor](https://ci.appveyor.com/api/projects/status/h2ii287cd49liemf?svg=true)](https://ci.appveyor.com/project/louisnayegon/packer-strategy) | | |
-| Github Actions        | [![Github Actions](https://github.com/SimplyCodeUK/packer-strategy/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/SimplyCodeUK/packer-strategy/actions/workflows/build-and-test.yml) | | |
-| Codacy Quality        | [![Codacy Quality](https://api.codacy.com/project/badge/Grade/d7a5a9f269a744d38dcda165f328517a)](https://app.codacy.com/manual/SimplyCodeUK/packer-strategy/dashboard) | | ![Codacy Coverage](https://app.codacy.com/project/badge/Coverage/d7a5a9f269a744d38dcda165f328517a) |
-| Code Climate Quality  | [![Code Climate Quality](https://api.codeclimate.com/v1/badges/429a3e46a3799c29b0b0/maintainability)](https://codeclimate.com/github/SimplyCodeUK/packer-strategy) | | ![Code Climate Coverage](https://img.shields.io/codeclimate/coverage/SimplyCodeUK/packer-strategy) |
-| Sonarcloud Status     | [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=SimplyCodeUK_packer-strategy&metric=alert_status)](https://sonarcloud.io/dashboard?id=SimplyCodeUK_packer-strategy) | | ![Coverage](https://sonarcloud.io/api/project_badges/measure?project=SimplyCodeUK_packer-strategy&metric=coverage) |
+| Build                       | Result | Tests | Coverage |
+| :----                       | :----- | :---- | :------- |
+| Azure DevOps Build          | [![Azure DevOps Build](https://simplycodeuk.visualstudio.com/_apis/public/build/definitions/e0e00fa3-b395-4320-937a-56af7d655cc5/1/badge)](https://simplycodeuk.visualstudio.com/packer-strategy/_build/index?context=mine&path=%5C&definitionId=1&_a=completed) | ![Azure DevOps Tests](https://img.shields.io/azure-devops/tests/simplycodeuk/packer-strategy/1) | ![Azure DevOps Coverage](https://img.shields.io/azure-devops/coverage/simplycodeuk/packer-strategy/1) |
+| Appveyor                    | [![Appveyor](https://ci.appveyor.com/api/projects/status/h2ii287cd49liemf?svg=true)](https://ci.appveyor.com/project/louisnayegon/packer-strategy) | | |
+| Github Actions              | [![Github Actions](https://github.com/SimplyCodeUK/packer-strategy/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/SimplyCodeUK/packer-strategy/actions/workflows/build-and-test.yml) | | |
+| Github Actions Code Quality | [![code-quality](https://github.com/SimplyCodeUK/packer-strategy/actions/workflows/code-quality.yml/badge.svg)](https://github.com/SimplyCodeUK/packer-strategy/actions/workflows/code-quality.yml) | | |
+| Code Climate Quality        | [![Code Climate Quality](https://api.codeclimate.com/v1/badges/429a3e46a3799c29b0b0/maintainability)](https://codeclimate.com/github/SimplyCodeUK/packer-strategy) | | ![Code Climate Coverage](https://img.shields.io/codeclimate/coverage/SimplyCodeUK/packer-strategy) |
+| Sonarcloud Status           | [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=SimplyCodeUK_packer-strategy&metric=alert_status)](https://sonarcloud.io/dashboard?id=SimplyCodeUK_packer-strategy) | | ![Coverage](https://sonarcloud.io/api/project_badges/measure?project=SimplyCodeUK_packer-strategy&metric=coverage) |
 
 <a name="development-environment"></a>
 

@@ -10,11 +10,14 @@ jobs:
         os: [ubuntu-20.04]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-dotnet@v1
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set .NET version to use
+        uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.100'
-      - uses: actions/setup-node@v2
+      - name: Set Node version to use
+        uses: actions/setup-node@v2
         with:
           node-version: '14'
       # Install Vagrant, libvirt and doxygen
@@ -100,3 +103,8 @@ jobs:
         with:
           name: packit-documentation
           path: "**/codedoc.xml"
+      - name: Save packages
+        uses: actions/upload-artifact@v2
+        with:
+          name: packit-packages
+          path: "**/bin/Release/*.nupkg"

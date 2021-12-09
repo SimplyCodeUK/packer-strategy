@@ -1,0 +1,35 @@
+name: code-quality
+
+on: [push, pull_request]
+
+jobs:
+  code-quality:
+    strategy:
+      matrix:
+        os: [ubuntu-20.04]
+        language: ['csharp']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set .NET version to use
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.100'
+      - name: Set Node version to use
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: ${{ matrix.language }}
+      - name: Restore
+        run: |
+          nuget restore PackIt.sln
+          dotnet restore PackIt.sln
+      - name: Build
+        run: |
+          dotnet build
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
