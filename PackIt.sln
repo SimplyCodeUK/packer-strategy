@@ -74,6 +74,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".vscode", ".vscode", "{37C7997A-E24F-4384-8F8D-29A32E80E11B}"
 	ProjectSection(SolutionItems) = preProject
 		.vscode\launch.json = .vscode\launch.json
+		.vscode\settings.json = .vscode\settings.json
 		.vscode\tasks.json = .vscode\tasks.json
 	EndProjectSection
 EndProject

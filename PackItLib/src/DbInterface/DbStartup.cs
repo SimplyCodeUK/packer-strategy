@@ -29,11 +29,9 @@ namespace PackIt.DbInterface
         /// </summary>
         ///
         /// <param name="configuration"> Configuration. </param>
-        /// <param name="loggerFactory"> Logger factory. </param>
-        public DbStartup(IConfiguration configuration, ILoggerFactory loggerFactory)
+        public DbStartup(IConfiguration configuration)
         {
             this.Configuration = configuration;
-            this.LoggerFactory = loggerFactory;
 
             // Register database contexts.
             // The first context will be the default if not specified in <see cref="Configuration" />
@@ -46,11 +44,6 @@ namespace PackIt.DbInterface
         ///
         /// <value> The configuration. </value>
         public IConfiguration Configuration { get; }
-
-        /// <summary> Gets the logger factory. </summary>
-        ///
-        /// <value> The logger factory. </value>
-        public ILoggerFactory LoggerFactory { get; }
 
         /// <summary> Setup common services. </summary>
         ///

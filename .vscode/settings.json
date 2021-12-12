@@ -1,15 +1,21 @@
 {
-    "cSpell.words": [
-        "bcdedit",
-        "doxygen",
-        "doxygenhome",
-        "hypervisorlaunchtype",
-        "Initialises",
-        "initialisation",
-        "nett",
-        "nuget",
-        "popperjs",
-        "userprofile",
-        "vbguest"
-    ]
+  "cSpell.words": [
+    "babylonjs",
+    "bcdedit",
+    "doxygen",
+    "doxygenhome",
+    "hypervisorlaunchtype",
+    "initialisation",
+    "initialises",
+    "Nayegon",
+    "nett",
+    "nuget",
+    "packit",
+    "packitbdd",
+    "packitdraw",
+    "packitui",
+    "popperjs",
+    "userprofile",
+    "vbguest"
+  ]
 }

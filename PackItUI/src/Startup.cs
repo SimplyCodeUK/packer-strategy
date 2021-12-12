@@ -31,9 +31,8 @@ namespace PackItUI
         /// </summary>
         ///
         /// <param name="configuration"> Configuration. </param>
-        /// <param name="loggerFactory"> Logger factory. </param>
-        public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
-            : base(configuration, loggerFactory)
+        public Startup(IConfiguration configuration)
+            : base(configuration)
         {
         }
 

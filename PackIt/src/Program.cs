@@ -3,41 +3,19 @@
 // Licensed under the MIT License.
 // See LICENSE file in the project root for full license information.
 // </copyright>
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using PackIt;
 
-namespace PackIt
-{
-    using Microsoft.AspNetCore;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Configuration;
-    using System.Diagnostics.CodeAnalysis;
+var builder = WebApplication.CreateBuilder(args);
 
-    /// <summary> A program. </summary>
-    [ExcludeFromCodeCoverage]
-    public class Program
-    {
-        /// <summary>
-        /// Prevents a default instance of the <see cref="Program" /> class from being created.
-        /// </summary>
-        private Program()
-        {
-        }
+builder.Configuration.AddJsonFile("appsettings.json", optional: false)
+                     .AddJsonFile("appsettings.local.json", optional: true);
 
-        /// <summary> Main entry-point for this application. </summary>
-        ///
-        /// <param name="args"> An array of command-line argument strings. </param>
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+var startup = new Startup(builder.Configuration);
 
-        /// <summary> Create host builder. </summary>
-        ///
-        /// <param name="args"> An array of command-line argument strings. </param>
-        private static IWebHostBuilder CreateHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder<Startup>(args)
-                   .ConfigureAppConfiguration((builderContext, config) =>
-                    {
-                        config.AddJsonFile("appsettings.local.json", optional: true);
-                    });
-    }
-}
+startup.ConfigureServices(builder.Services);
+
+var app = builder.Build();
+startup.Configure(app, builder.Environment);
+app.Run();
