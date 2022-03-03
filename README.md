@@ -33,7 +33,7 @@
 
 [![JQuery Validation Unobtrusive](https://img.shields.io/badge/JQueryValidationUnobtrusive-v3.2.12-green.svg)](https://www.jsdelivr.com/package/npm/jquery-validation-unobtrusive)
 
-[![@popperjs/core](https://img.shields.io/badge/@PopperJsCore-v2.11.0-green.svg)](https://www.jsdelivr.com/package/npm/@popperjs/core)
+[![@popperjs/core](https://img.shields.io/badge/@PopperJsCore-v2.11.2-green.svg)](https://www.jsdelivr.com/package/npm/@popperjs/core)
 
 <a name="status"></a>
 
@@ -55,8 +55,8 @@
 - [GIT](https://git-scm.com/)
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
-- [.NET Core SDK 6.0.100](https://dotnet.microsoft.com/)
-- [Visual Studio 2022 Version 17.0.2](https://www.visualstudio.com/)
+- [.NET Core SDK 6.0.200](https://dotnet.microsoft.com/)
+- [Visual Studio 2022 Version 17.1.0](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript

@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@popperjs/core@2.11.0":
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.0.tgz#6734f8ebc106a0860dff7f92bf90df193f0935d7"
-  integrity sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ==
+"@popperjs/core@2.11.2":
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.2.tgz#830beaec4b4091a9e9398ac50f865ddea52186b9"
+  integrity sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==
 
-babylonjs@5.0.0-alpha.63:
-  version "5.0.0-alpha.63"
-  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.0.0-alpha.63.tgz#ea397316c5992700a3488b2e4d61d02dbd1923b3"
-  integrity sha512-riQd+jZ7NjOYVsi8p7IH99I2oeyxjSAAsgD7uIWK/sjYy5TCn4jhJZOdgW1yb1IPcKNxEXt3WhJ1zuswwy8c+Q==
+babylonjs@5.0.0-rc.0:
+  version "5.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.0.0-rc.0.tgz#0dce78268b595be56931dfad5c92274204ad5398"
+  integrity sha512-HUCZh+bgX6aisBpddYxKQdzp6DXgReN7JJPwKySFaEUYZsQDbW6DALXBvyKZBOSRgajrA52qZ2a+NWC7DjIpLQ==
 
 bootstrap@5.1.3:
   version "5.1.3"
