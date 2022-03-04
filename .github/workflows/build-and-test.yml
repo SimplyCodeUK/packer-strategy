@@ -43,7 +43,7 @@ jobs:
           dotnet --version
           vagrant --version
           doxygen --version
-      - name: Create local config fot PackIt service
+      - name: Create local config for PackIt service
         run: |
           echo -e '{
              "service":{
@@ -61,7 +61,7 @@ jobs:
              }
             }
           }' >./PackIt/bdd/specflow.local.json
-      - name: Create local config fot PackItDraw service
+      - name: Create local config for PackItDraw service
         run: |
           echo -e '{
              "service":{

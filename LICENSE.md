@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2017-2021 Simply Code Ltd
+Copyright (c) 2017-2022 Simply Code Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

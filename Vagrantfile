@@ -1,8 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-# Copyright (c) 2018-2021 Simply Code Ltd. All rights reserved.
+# Copyright (c) 2018-2022 Simply Code Ltd. All rights reserved.
 # Licensed under the MIT License.
 # See LICENSE file in the project root for full license information.
+
+required_plugins = %w( vagrant-disksize vagrant-reload vagrant-vbguest )
+required_plugins.each do |plugin|
+  system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
+end
 
 DATABASES = {
   postgresql: {

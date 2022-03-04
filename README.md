@@ -83,7 +83,6 @@ From an elevated Powershell run the following command a reboot may be required
 afterwards
 
 ```cmd
-vagrant plugin install vagrant-vbguest
 (Invoke-WebRequest -Uri https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -UseBasicParsing).Content > "$env:USERPROFILE\.ssh/authorized_keys"
 ssh-keygen
 Copy-Item $env:USERPROFILE\.ssh\id_rsa $env:USERPROFILE\.vagrant.d\insecure_private_key -Force
