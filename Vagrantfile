@@ -112,7 +112,7 @@ SERVICE_INSTALL = <<-SCRIPT
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 apt-get install python3-software-properties=0.96.* -y
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 apt-get install nodejs         -y
 apt-get install yarn           -y
 apt-get install nuget          -y
