@@ -56,7 +56,7 @@
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
 - [.NET Core SDK 6.0.200](https://dotnet.microsoft.com/)
-- [Visual Studio 2022 Version 17.1.0](https://www.visualstudio.com/)
+- [Visual Studio 2022 Version 17.1.1](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
