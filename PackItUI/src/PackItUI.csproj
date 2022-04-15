@@ -17,6 +17,7 @@
     <AssemblyName>PackItUI</AssemblyName>
     <ApplicationIcon>wwwroot/favicon.ico</ApplicationIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <TypeScriptTarget>ES2020</TypeScriptTarget>
   </PropertyGroup>
 
   <ItemGroup>
