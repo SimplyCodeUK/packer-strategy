@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
   integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
 
-babylonjs@5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.2.0.tgz#1c1079d73ec1fbf261e11c214724dcb06cbf8801"
-  integrity sha512-H9U61kPtVhUgssjBBdF9RsBk+IVd0jyC7+hoFoRbpAoBA07/LgZfCQUelfS9Yf5ay3FE51XQVYmSnXCGadn1Sg==
+babylonjs@5.9.1:
+  version "5.9.1"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.9.1.tgz#c685ec0dbd41b8fa902c510d77f6d30ba7934501"
+  integrity sha512-/2AZq6j1ouzP5NBFBOGxYSwCtSL/MujsF2K0ma6+RPbJ5QRqiBlmWokL+8FR/u7fHd8pf0pyvSSX7z4LesIxmQ==
 
 bootstrap@5.1.3:
   version "5.1.3"
@@ -30,7 +30,12 @@ jquery-validation-unobtrusive@3.2.12:
     jquery "^3.5.1"
     jquery-validation ">=1.16"
 
-jquery-validation@1.19.3, jquery-validation@>=1.16:
+jquery-validation@1.19.4:
+  version "1.19.4"
+  resolved "https://registry.yarnpkg.com/jquery-validation/-/jquery-validation-1.19.4.tgz#a765781d954e5876fa437d5c75b7a9440bfa37a8"
+  integrity sha512-PcwKcATCR+JL77m9kkWd84NAHAunJP9iasF6IbMxUgl73xDAimxjt5oYFmYHDXBmTZM4rpkXxMNR/jGI5TlSjA==
+
+jquery-validation@>=1.16:
   version "1.19.3"
   resolved "https://registry.yarnpkg.com/jquery-validation/-/jquery-validation-1.19.3.tgz#50b350eba8b02bcfd119ba15f199487b7eb64086"
   integrity sha512-iXxCS5W7STthSTMFX/NDZfWHBLbJ1behVK3eAgHXAV8/0vRa9M4tiqHvJMr39VGWHMGdlkhrtrkBuaL2UlE8yw==
