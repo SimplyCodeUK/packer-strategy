@@ -39,8 +39,6 @@ namespace PackItMock.HttpMock
                               method == HttpMethod.Post ? HttpStatusCode.Created :
                               method == HttpMethod.Put ? HttpStatusCode.Created :
                               method == HttpMethod.Delete ? HttpStatusCode.Gone : HttpStatusCode.BadRequest;
-            this.Limit = 0;
-            this.ThrowException = false;
         }
 
         /// <summary> Gets the Http method. </summary>
@@ -54,12 +52,6 @@ namespace PackItMock.HttpMock
 
         /// <summary> The http status code from the request. </summary>
         public HttpStatusCode StatusCode { get; private set; }
-
-        /// <summary> Gets or sets the limit on the number of times this request can be called. </summary>
-        public int Limit { get; set; }
-
-        /// <summary> True if the request throws an exception. </summary>
-        public bool ThrowException { get; set; }
 
         /// <summary> Set the json contents of the request. </summary>
         ///

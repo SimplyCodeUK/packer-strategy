@@ -28,3 +28,4 @@ plugins:
 exclude_patterns:
 - "**/Views/"
 - "**/test/"
+- "**/bdd/"

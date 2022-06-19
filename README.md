@@ -55,8 +55,8 @@
 - [GIT](https://git-scm.com/)
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
-- [.NET Core SDK 6.0.200](https://dotnet.microsoft.com/)
-- [Visual Studio 2022 Version 17.2.3](https://www.visualstudio.com/)
+- [.NET Core SDK 6.0.301](https://dotnet.microsoft.com/)
+- [Visual Studio 2022 Version 17.2.4](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -65,11 +65,11 @@
     - Markdown Editor
 - [Nuget Version 6.0.0](https://www.nuget.org/)
 - [Powershell Version 7.2.0](https://docs.microsoft.com/en-us/powershell/)
-- [VirtualBox Version 6.1.32](https://www.virtualbox.org/)
-  - Oracle VM VirtualBox Extension Pack version 6.1.32
+- [VirtualBox Version 6.1.34a](https://www.virtualbox.org/)
+  - Oracle VM VirtualBox Extension Pack version 6.1.34a
 - [Vagrant Version 2.2.19](https://www.vagrantup.com/)
   - Box generic/ubuntu2004 version 3.5.2
-- [Doxygen Version 1.9.2](https://www.doxygen.nl/)
+- [Doxygen Version 1.9.4](https://www.doxygen.nl/)
 
 <a name="vagrant"></a>
 

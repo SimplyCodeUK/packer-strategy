@@ -68,22 +68,7 @@ namespace PackItMock.HttpMock
                         Content = mock.Content,
                         StatusCode = mock.StatusCode
                     };
-                    var throwException = mock.ThrowException;
-
-                    if (mock.Limit > 0)
-                    {
-                        --mock.Limit;
-                        if (mock.Limit == 0)
-                        {
-                            // delete it as it has been used for the last time
-                            this.requests.Remove(mock);
-                        }
-                    }
-
-                    if (throwException)
-                    {
-                        throw new MockHttpException();
-                    }
+                    this.requests.Remove(mock);
 
                     return Task.FromResult(responseMessage);
                 }
