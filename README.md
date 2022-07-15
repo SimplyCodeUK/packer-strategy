@@ -21,7 +21,7 @@
 
 ## Java Script Dependencies
 
-[![BabylonJS](https://img.shields.io/badge/BabylonJS-v5.9.1-green.svg)](https://www.jsdelivr.com/package/npm/babylonjs)
+[![BabylonJS](https://img.shields.io/badge/BabylonJS-v5.15.1-green.svg)](https://www.jsdelivr.com/package/npm/babylonjs)
 
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.1.3-green.svg)](https://www.jsdelivr.com/package/npm/bootstrap)
 
@@ -29,7 +29,7 @@
 
 [![JQuery](https://img.shields.io/badge/JQuery-v3.6.0-green.svg)](https://www.jsdelivr.com/package/npm/jquery)
 
-[![JQuery Validation](https://img.shields.io/badge/JQueryValidation-v1.19.4-green.svg)](https://www.jsdelivr.com/package/npm/jquery-validation)
+[![JQuery Validation](https://img.shields.io/badge/JQueryValidation-v1.19.5-green.svg)](https://www.jsdelivr.com/package/npm/jquery-validation)
 
 [![JQuery Validation Unobtrusive](https://img.shields.io/badge/JQueryValidationUnobtrusive-v3.2.12-green.svg)](https://www.jsdelivr.com/package/npm/jquery-validation-unobtrusive)
 
@@ -56,7 +56,7 @@
 - [Node.Js Version 12.16.1](https://nodejs.org/)
 - [Yarn Version 1.22.4](https://yarnpkg.com/)
 - [.NET Core SDK 6.0.301](https://dotnet.microsoft.com/)
-- [Visual Studio 2022 Version 17.2.4](https://www.visualstudio.com/)
+- [Visual Studio 2022 Version 17.2.6](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
