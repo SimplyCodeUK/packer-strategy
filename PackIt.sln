@@ -15,7 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		.markdownlint.json = .markdownlint.json
 		.travis.yml = .travis.yml
-		_config.yml = _config.yml
 		appveyor.yml = appveyor.yml
 		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
 		CONTRIBUTING.md = CONTRIBUTING.md
@@ -25,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Settings.StyleCop = Settings.StyleCop
 		sonar-project.properties = sonar-project.properties
 		Vagrantfile = Vagrantfile
+		_config.yml = _config.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackIt.Test", "PackIt\test\PackIt.Test.csproj", "{DDC0D77C-DDA0-4523-ABB4-23062E066312}"
@@ -59,6 +59,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItBdd.Test", "PackItBdd
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItMock", "PackItMock\src\PackItMock.csproj", "{F5158A45-A037-421A-A482-B66563A92958}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackItMock.Test", "PackItMock\test\PackItMock.Test.csproj", "{5059DD28-EBE1-4A22-9F81-CFFBF8DC16CD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F5158A45-A037-421A-A482-B66563A92958} = {F5158A45-A037-421A-A482-B66563A92958}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D498A2E9-8772-44F3-AD62-D68035D88591}"
 	ProjectSection(SolutionItems) = preProject
@@ -151,6 +156,10 @@ Global
 		{F5158A45-A037-421A-A482-B66563A92958}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5158A45-A037-421A-A482-B66563A92958}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5158A45-A037-421A-A482-B66563A92958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5059DD28-EBE1-4A22-9F81-CFFBF8DC16CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5059DD28-EBE1-4A22-9F81-CFFBF8DC16CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5059DD28-EBE1-4A22-9F81-CFFBF8DC16CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5059DD28-EBE1-4A22-9F81-CFFBF8DC16CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
