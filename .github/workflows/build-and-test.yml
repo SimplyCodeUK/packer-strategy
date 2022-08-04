@@ -86,7 +86,7 @@ jobs:
           dotnet pack PackItBdd/src/PackItBdd.csproj   -c ${{ matrix.config }}
       - name: Test
         run: |
-          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItLib/test/PackItMock.Test.csproj  -c ${{ matrix.config }} --logger:trx
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItMock/test/PackItMock.Test.csproj  -c ${{ matrix.config }} --logger:trx
           dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItLib/test/PackItLib.Test.csproj   -c ${{ matrix.config }} --logger:trx
           dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItBdd/test/PackItBdd.Test.csproj   -c ${{ matrix.config }} --logger:trx
           dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         -c ${{ matrix.config }} --logger:trx
