@@ -90,6 +90,7 @@ script:
   - dotnet build PackItLib/src/PackItLib.csproj         -c $CONFIG /p:DocumentationFile=codedoc.xml
   - dotnet build PackItLib/test/PackItLib.Test.csproj   -c $CONFIG /p:DocumentationFile=codedoc.xml
   - dotnet build PackItMock/src/PackItMock.csproj       -c $CONFIG /p:DocumentationFile=codedoc.xml
+  - dotnet build PackItMock/test/PackItMockTest.csproj  -c $CONFIG /p:DocumentationFile=codedoc.xml
   - dotnet build PackItBdd/src/PackItBdd.csproj         -c $CONFIG /p:DocumentationFile=codedoc.xml
   - dotnet build PackItBdd/test/PackItBdd.Test.csproj   -c $CONFIG /p:DocumentationFile=codedoc.xml
   - dotnet build PackIt/src/PackIt.csproj               -c $CONFIG /p:DocumentationFile=codedoc.xml
@@ -102,6 +103,7 @@ script:
   - dotnet pack PackItMock/src/PackItMock.csproj        -c $CONFIG
   - dotnet pack PackItBdd/src/PackItBdd.csproj          -c $CONFIG
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItLib/test/PackItLib.Test.csproj   -c $CONFIG --logger:trx
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItMock/test/PackItMock.Test.csproj -c $CONFIG --logger:trx
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItBdd/test/PackItBdd.Test.csproj   -c $CONFIG --logger:trx
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackIt/test/PackIt.Test.csproj         -c $CONFIG --logger:trx
   - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeFromCoverage="**/*.cshtml" PackItDraw/test/PackItDraw.Test.csproj -c $CONFIG --logger:trx
@@ -123,6 +125,7 @@ after_script:
   - ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 4
   - ./cc-test-reporter upload-coverage
   - bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -r ./PackItLib/test/coverage.info
+  - bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -r ./PackItMock/test/coverage.info
   - bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -r ./PackItBdd/test/coverage.info
   - bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -r ./PackIt/test/coverage.info
   - bash <(curl -Ls https://coverage.codacy.com/get.sh) report --partial -r ./PackItDraw/test/coverage.info
