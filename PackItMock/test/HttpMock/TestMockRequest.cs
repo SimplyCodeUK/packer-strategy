@@ -65,7 +65,10 @@ namespace PackItMock.Test.HttpMock
         {
             var request = new MockRequest(HttpMethod.Post, "http://url.co.uk/");
             request.ContentsJson("{}");
+            Assert.NotNull(request.Content.Headers.ContentType);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             Assert.AreEqual(request.Content.Headers.ContentType.MediaType, "application/json");
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             Assert.AreEqual(request.Content.Headers.ContentType.CharSet, "utf-8");
             Assert.AreEqual(request.Content.Headers.ContentLength, 2);
         }

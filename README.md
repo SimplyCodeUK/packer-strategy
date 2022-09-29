@@ -3,7 +3,6 @@
 ## Index
 
 - [Github](#github)
-- [Java Script Dependencies](#java-script-dependencies)
 - [Status](#status)
 - [Development Environment](#development-environment)
 - [Vagrant](#vagrant)
@@ -16,24 +15,6 @@
 [Project Location](https://github.com/SimplyCodeUK/packer-strategy)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE.md)
-
-<a name="java-script-dependencies"></a>
-
-## Java Script Dependencies
-
-[![BabylonJS](https://img.shields.io/badge/BabylonJS-v5.15.1-green.svg)](https://www.jsdelivr.com/package/npm/babylonjs)
-
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.1.3-green.svg)](https://www.jsdelivr.com/package/npm/bootstrap)
-
-[![Font Awesome 5](https://img.shields.io/badge/FontAwesome-v5.4.1-green.svg)](https://www.jsdelivr.com/package/npm/font-awesome-5-css)
-
-[![JQuery](https://img.shields.io/badge/JQuery-v3.6.0-green.svg)](https://www.jsdelivr.com/package/npm/jquery)
-
-[![JQuery Validation](https://img.shields.io/badge/JQueryValidation-v1.19.5-green.svg)](https://www.jsdelivr.com/package/npm/jquery-validation)
-
-[![JQuery Validation Unobtrusive](https://img.shields.io/badge/JQueryValidationUnobtrusive-v3.2.12-green.svg)](https://www.jsdelivr.com/package/npm/jquery-validation-unobtrusive)
-
-[![@popperjs/core](https://img.shields.io/badge/@PopperJsCore-v2.11.5-green.svg)](https://www.jsdelivr.com/package/npm/@popperjs/core)
 
 <a name="status"></a>
 
@@ -53,10 +34,10 @@
 ## Development Environment
 
 - [GIT](https://git-scm.com/)
-- [Node.Js Version 12.16.1](https://nodejs.org/)
-- [Yarn Version 1.22.4](https://yarnpkg.com/)
+- [Node.Js Version 16.17.1](https://nodejs.org/)
+- [Yarn Version 1.22.19](https://yarnpkg.com/)
 - [.NET Core SDK 6.0.301](https://dotnet.microsoft.com/)
-- [Visual Studio 2022 Version 17.2.6](https://www.visualstudio.com/)
+- [Visual Studio 2022 Version 17.3.5](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -65,11 +46,11 @@
     - Markdown Editor
 - [Nuget Version 6.0.0](https://www.nuget.org/)
 - [Powershell Version 7.2.0](https://docs.microsoft.com/en-us/powershell/)
-- [VirtualBox Version 6.1.34a](https://www.virtualbox.org/)
-  - Oracle VM VirtualBox Extension Pack version 6.1.34a
-- [Vagrant Version 2.2.19](https://www.vagrantup.com/)
+- [VirtualBox Version 6.1.38](https://www.virtualbox.org/)
+  - Oracle VM VirtualBox Extension Pack version 6.1.36
+- [Vagrant Version 2.3.0](https://www.vagrantup.com/)
   - Box generic/ubuntu2004 version 3.5.2
-- [Doxygen Version 1.9.4](https://www.doxygen.nl/)
+- [Doxygen Version 1.9.5](https://www.doxygen.nl/)
 
 <a name="vagrant"></a>
 
@@ -94,7 +75,7 @@ Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V
 
 ### Creating The Environment
 
-From an elevated PowerShell run the command
+From a command line
 
 ```cmd
 vagrant up
@@ -104,8 +85,7 @@ vagrant up
 
 ### Updating The Environment
 
-Once it is created the environment can be updated.
-From an elevated PowerShell run the command
+From a command line
 
 ```cmd
 vagrant provision
@@ -115,7 +95,7 @@ vagrant provision
 
 ### Destroying The Environment
 
-From an elevated PowerShell run the command
+From a command line
 
 ```cmd
 vagrant destroy
