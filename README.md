@@ -2,11 +2,21 @@
 
 ## Index
 
+- [Acronyms](#acronyms)
 - [Github](#github)
 - [Status](#status)
 - [Development Environment](#development-environment)
-- [Vagrant](#vagrant)
+- [WSL Setup](#wsl-setup)
 - [Documentation](./docs/DOXYGENHOME.md)
+
+<a name="acronyms"></a>
+
+## Acronyms
+
+| Acronyn | Description                 |
+| :------ | :----------                 |
+| SDK     | Software Development Kit    |
+| WSL     | Windows Subsystem for Linux |
 
 <a name="github"></a>
 
@@ -47,56 +57,17 @@
 - [Nuget Version 6.0.0](https://www.nuget.org/)
 - [Powershell Version 7.2.0](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 6.1.38](https://www.virtualbox.org/)
-  - Oracle VM VirtualBox Extension Pack version 6.1.36
+  - Oracle VM VirtualBox Extension Pack version 6.1.38
 - [Vagrant Version 2.3.0](https://www.vagrantup.com/)
-  - Box generic/ubuntu2004 version 3.5.2
+  - Box generic/ubuntu2004 version 4.1.14
 - [Doxygen Version 1.9.5](https://www.doxygen.nl/)
 
-<a name="vagrant"></a>
 
-## Vagrant
+<a name="wsl-setup"></a>
 
-<a name="one-time-initialisation"></a>
+## WSL Setup
 
-### One Time Initialisation
-
-From an elevated Powershell run the following command a reboot may be required
-afterwards
-
-```cmd
-(Invoke-WebRequest -Uri https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -UseBasicParsing).Content > "$env:USERPROFILE\.ssh/authorized_keys"
-ssh-keygen
-Copy-Item $env:USERPROFILE\.ssh\id_rsa $env:USERPROFILE\.vagrant.d\insecure_private_key -Force
-bcdedit /set hypervisorlaunchtype off
-Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V
-```
-
-<a name="creating-the-environment"></a>
-
-### Creating The Environment
-
-From a command line
-
-```cmd
-vagrant up
-```
-
-<a name="updating-the-environment"></a>
-
-### Updating The Environment
-
-From a command line
-
-```cmd
-vagrant provision
-```
-
-<a name="destroying-the-environment"></a>
-
-### Destroying The Environment
-
-From a command line
-
-```cmd
-vagrant destroy
+```bash
+sudo apt install g++ gdb make ninja-build rsync zip
+sudo apt install doxygen
 ```
