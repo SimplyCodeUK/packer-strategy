@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="bg" viewBox="0 0 1140 360"><defs id="defs5230"><style id="style5228">.cls-1{fill:#7fba00}.cls-2{fill:#fff}</style></defs><title id="title5232">banner3b</title><path class="cls-1" d="M0 0h1140v360H0V0z" id="path5234"/><text style="line-height:1.25" x="363.916" y="141.172" id="text5245" font-weight="400" font-size="40" letter-spacing="0" word-spacing="0" font-family="sans-serif" fill="#fff"><tspan x="363.916" y="190" id="tspan858">Define how you plan</tspan></text><text style="line-height:1.25" x="355.732" y="141.172" font-weight="400" font-size="40" letter-spacing="0" word-spacing="0" id="text960" font-family="sans-serif" fill="#fff"><tspan x="355.732" y="240" id="tspan962">to use your materials</tspan></text><g id="g4394" transform="translate(.018)" fill="#fff"><path d="M510.972 109.808l.18 16.461h71.057l.18-16.461.118-16.414h-71.653z" id="path10" stroke-width=".014"/><path d="M510.854 140.654v9.46h14.663v-9.46h37.37v9.46h14.664v-9.46h37.369v9.46h14.191v-18.921H510.854z" id="path12" stroke-width=".013"/><path d="M591.65 109.808l.09 16.461h36.253l.09-16.461.061-16.414h-36.556z" id="path10-7" stroke-width=".01"/><path d="M510.914 72.158l.092 16.461h36.252l.091-16.461.06-16.414h-36.555z" id="path10-7-3" stroke-width=".01"/><path d="M556.61 72.158l.179 16.461h71.058l.179-16.461.118-16.414h-71.653z" id="path10-6" stroke-width=".014"/><text transform="scale(1.10905 .90167)" id="text910" y="56.619" x="460.084" style="line-height:1.25" font-weight="400" font-size="33.379" letter-spacing="0" word-spacing="0" font-family="sans-serif" stroke-width=".767"><tspan y="56.619" x="460.084" id="tspan908">PackIt</tspan></text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 360">
+    <path fill="#20973a" d="M0 0h1140v360H0V0z" />
+    <g fill="#fff">
+        <text word-spacing="0" letter-spacing="0" font-size="33.389" font-weight="400" style="line-height:1.25"
+            x="465" y="50" transform="scale(1.10928 .90148)" font-family="sans-serif" stroke-width=".767">
+            <tspan x="465" y="50">PackIt</tspan>
+        </text>
+        <path
+            d="M510.974 109.813l.179 16.466h71.077l.18-16.466.118-16.419h-71.673zM510.855 140.668v9.463h14.667v-9.462h37.38v9.462h14.668v-9.462h37.38v9.462h14.195v-18.927h-118.29zM591.673 109.813l.091 16.466h36.262l.092-16.466.06-16.419h-36.566zm-80.757-37.66l.091 16.466h36.262l.091-16.466.061-16.419h-36.566zM556.624 72.153l.179 16.466h71.077l.18-16.466.118-16.419h-71.673z" />
+    </g>
+</svg>

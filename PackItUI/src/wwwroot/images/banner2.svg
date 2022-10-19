@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 360"><path d="M0 0h1140v360H0V0z" fill="#68217A"/><text style="line-height:1.25" x="331.299" y="166.172" font-weight="400" font-size="40" letter-spacing="0" word-spacing="0" font-family="sans-serif" fill="#fff"><tspan x="331.299" y="190">Maintain your materials</tspan></text><g fill="#fff"><path d="M510.974 109.813l.179 16.466h71.077l.18-16.466.118-16.419h-71.673zM510.855 140.668v9.463h14.667v-9.462h37.38v9.462h14.668v-9.462h37.38v9.462h14.195v-18.927h-118.29zM591.673 109.813l.091 16.466h36.262l.092-16.466.06-16.419h-36.566zm-80.757-37.66l.091 16.466h36.262l.091-16.466.061-16.419h-36.566zM556.624 72.153l.179 16.466h71.077l.18-16.466.118-16.419h-71.673z"/><text word-spacing="0" letter-spacing="0" font-size="33.389" font-weight="400" style="line-height:1.25" x="459.989" y="56.626" transform="scale(1.10928 .90148)" font-family="sans-serif" stroke-width=".767"><tspan x="459.989" y="56.626">PackIt</tspan></text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 360">
+    <path fill="#68217A" d="M0 0h1140v360H0V0z" />
+    <g fill="#fff">
+        <text word-spacing="0" letter-spacing="0" font-size="33.389" font-weight="400" style="line-height:1.25"
+            x="465" y="50" transform="scale(1.10928 .90148)" font-family="sans-serif" stroke-width=".767">
+            <tspan x="465" y="50">PackIt</tspan>
+        </text>
+        <path
+            d="M510.974 109.813l.179 16.466h71.077l.18-16.466.118-16.419h-71.673zM510.855 140.668v9.463h14.667v-9.462h37.38v9.462h14.668v-9.462h37.38v9.462h14.195v-18.927h-118.29zM591.673 109.813l.091 16.466h36.262l.092-16.466.06-16.419h-36.566zm-80.757-37.66l.091 16.466h36.262l.091-16.466.061-16.419h-36.566zM556.624 72.153l.179 16.466h71.077l.18-16.466.118-16.419h-71.673z" />
+    </g>
+</svg>

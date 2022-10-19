@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+<script>var exports = {};</script>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,8 +13,8 @@
     </environment>
 
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
-              integrity="sha256-KTPJY0ik6ufLv48oDKCYFYaptcCX75UrmWytfSjy+tA="
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+              integrity="sha256-IUOUHAPazai08QFs7W4MbzTlwEWFo7z/4zw8YmxEiko="
               crossorigin="anonymous"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
@@ -27,40 +28,54 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a asp-area="" asp-controller="" asp-action="" class="navbar-brand">PackItUI</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMaterials" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materials</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMaterials">
-                        <a class="dropdown-item" asp-area="Materials" asp-controller="" asp-action="">List</a>
-                        <a class="dropdown-item" asp-area="Materials" asp-controller="" asp-action="Create">New...</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPlans" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plans</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownPlans">
-                        <a class="dropdown-item" asp-area="Plans" asp-controller="" asp-action="">List</a>
-                        <a class="dropdown-item" asp-area="Plans" asp-controller="" asp-action="Create">New...</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPacks" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Packs</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownPacks">
-                        <a class="dropdown-item" asp-area="Packs" asp-controller="" asp-action="">List</a>
-                        <a class="dropdown-item" asp-area="Packs" asp-controller="" asp-action="Create">New...</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="" asp-action="About">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="" asp-action="Contact">Contact</a>
-                </li>
-            </ul>
+        <div class="container-fluid">
+            <a asp-area="" asp-controller="" asp-action="" class="navbar-brand">PackItUI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMaterials" role="button" data-bs-toggle="dropdown" aria-expanded="false">Materials</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMaterials">
+                            <li>
+                                <a class="dropdown-item" asp-area="Materials" asp-controller="" asp-action="">List</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" asp-area="Materials" asp-controller="" asp-action="Create">New...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPlans" data-bs-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false">Plans</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownPlans">
+                            <li>
+                                <a class="dropdown-item" asp-area="Plans" asp-controller="" asp-action="">List</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" asp-area="Plans" asp-controller="" asp-action="Create">New...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPacks" data-bs-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false">Packs</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownPacks">
+                            <li>
+                                <a class="dropdown-item" asp-area    ="Packs" asp-controller="" asp-action="">List</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" asp-area="Packs" asp-controller="" asp-action="Create">New...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="" asp-action="About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="" asp-action="Contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     <div class="body-content">
@@ -75,7 +90,7 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
         <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"></script>
-        <script src="~/lib/@@popperjs/core/dist/cjs/popper.js"></script>
+        <script src="~/lib/@@popperjs/core/dist/umd/popper.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
@@ -96,11 +111,13 @@
                 crossorigin="anonymous"
                 asp-fallback-src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js">
         </script>
-        <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.6/dist/cjs/popper.min.js"
-                asp-fallback-src="~/lib/@@popperjs/core/dist/cjs/popper.js">
+        <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.6/dist/umd/popper.min.js"
+                integrity="sha256-BRqBN7dYgABqtY9Hd4ynE+1slnEw+roEPFzQ7TRRfcg="
+                crossorigin="anonymous"
+                asp-fallback-src="~/lib/@@popperjs/core/dist/umd/popper.js">
         </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-                integrity="sha256-kIefIGMekNBIvB4ALXeVJzrdfjpa4SUr6+PJ4BecqDM="
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+                integrity="sha256-h1OMS35Ij1pJ0S+Y1qBK/GHQDyankPMZVpeZrNQ062U="
                 crossorigin="anonymous"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">

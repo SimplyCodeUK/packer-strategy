@@ -47,7 +47,7 @@
 - [Node.Js Version 16.17.1](https://nodejs.org/)
 - [Yarn Version 1.22.19](https://yarnpkg.com/)
 - [.NET Core SDK 6.0.301](https://dotnet.microsoft.com/)
-- [Visual Studio 2022 Version 17.3.5](https://www.visualstudio.com/)
+- [Visual Studio 2022 Version 17.3.6](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -58,7 +58,7 @@
 - [Powershell Version 7.2.0](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 6.1.38](https://www.virtualbox.org/)
   - Oracle VM VirtualBox Extension Pack version 6.1.38
-- [Vagrant Version 2.3.0](https://www.vagrantup.com/)
+- [Vagrant Version 2.3.1](https://www.vagrantup.com/)
   - Box generic/ubuntu2004 version 4.1.14
 - [Doxygen Version 1.9.5](https://www.doxygen.nl/)
 
