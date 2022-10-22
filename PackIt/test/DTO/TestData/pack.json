@@ -1,7 +1,7 @@
 {
   "PackId": "125g.Benl.",
   "Name": "Export Pack.",
-  "PlanCode": "Benylin",
+  "PlanCode": "Benlyn",
   "PlanName": "Pharma",
   "MaterialType": 0,
   "MaterialCode": "Benl525.",
@@ -14,7 +14,7 @@
   ],
   "Stages": [
     {
-      "ProductCode": "Benylin",
+      "ProductCode": "Benlyn",
       "StageLevel": 0,
       "Collation": 1,
       "DrawOffset": 0,
@@ -258,7 +258,7 @@
       ]
     },
     {
-      "ProductCode": "Benylin",
+      "ProductCode": "Benlyn",
       "StageLevel": 2,
       "Collation": 1,
       "DrawOffset": 0,
@@ -781,7 +781,7 @@
       ]
     },
     {
-      "ProductCode": "Benylin",
+      "ProductCode": "Benlyn",
       "StageLevel": 5,
       "Collation": 1,
       "DrawOffset": 0,
@@ -1065,7 +1065,7 @@
       ]
     },
     {
-      "ProductCode": "Benylin",
+      "ProductCode": "Benlyn",
       "StageLevel": 6,
       "Collation": 1,
       "DrawOffset": 1,
@@ -1397,7 +1397,7 @@
       ]
     },
     {
-      "ProductCode": "Benylin",
+      "ProductCode": "Benlyn",
       "StageLevel": 7,
       "Collation": 32769,
       "DrawOffset": 0,

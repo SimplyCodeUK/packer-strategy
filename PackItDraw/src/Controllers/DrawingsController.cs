@@ -61,7 +61,7 @@ namespace PackItDraw.Controllers
         [ProducesResponseType(typeof(Drawing), 200)]
         public IActionResult Get(string id)
         {
-            this.logger.LogInformation("Get id {0}", id);
+            this.logger.LogInformation("Get id {Id}", id);
             var item = this.repository.Find(id);
 
             if (item == null)
@@ -85,7 +85,7 @@ namespace PackItDraw.Controllers
 
             if (pack != null)
             {
-                this.logger.LogInformation("Post Drawing id {0}", value.DrawingId);
+                this.logger.LogInformation("Post Drawing id {DrawingId}", value.DrawingId);
                 try
                 {
                     this.repository.Add(value);
@@ -114,7 +114,7 @@ namespace PackItDraw.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            this.logger.LogInformation("Delete id {0}", id);
+            this.logger.LogInformation("Delete id {Id}", id);
             if (this.repository.Find(id) == null)
             {
                 return this.NotFound(id);

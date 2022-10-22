@@ -62,7 +62,7 @@ namespace PackIt.Controllers
         [ProducesResponseType(typeof(Material), 200)]
         public IActionResult Get(string id)
         {
-            this.logger.LogInformation("Get id {0}", id);
+            this.logger.LogInformation("Get id {Id}", id);
             var item = this.repository.Find(id);
 
             if (item == null)
@@ -86,7 +86,7 @@ namespace PackIt.Controllers
 
             if (value != null)
             {
-                this.logger.LogInformation("Post Material id {0}", value.MaterialId);
+                this.logger.LogInformation("Post Material id {MaterialId}", value.MaterialId);
                 try
                 {
                     this.repository.Add(value);
@@ -116,7 +116,7 @@ namespace PackIt.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] Material value)
         {
-            this.logger.LogInformation("Put id {0} for Material id {1}", id, value.MaterialId);
+            this.logger.LogInformation("Put id {Id} for Material id {MaterialId}", id, value.MaterialId);
             var item = this.repository.Find(id);
 
             if (item == null)
@@ -138,7 +138,7 @@ namespace PackIt.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            this.logger.LogInformation("Delete id {0}", id);
+            this.logger.LogInformation("Delete id {Id}", id);
             if (this.repository.Find(id) == null)
             {
                 return this.NotFound(id);
@@ -159,7 +159,7 @@ namespace PackIt.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(string id, [FromBody] JsonPatchDocument<Material> update)
         {
-            this.logger.LogInformation("Patch id {0}", id);
+            this.logger.LogInformation("Patch id {Id}", id);
             var item = this.repository.Find(id);
 
             if (item == null)

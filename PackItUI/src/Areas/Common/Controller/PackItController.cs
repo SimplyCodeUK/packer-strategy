@@ -86,7 +86,7 @@ namespace PackItUI.Areas.Common.Controller
         [ActionName("Delete")]
         public async Task<IActionResult> DoDelete(string id)
         {
-            this.logger.LogInformation("DoDelete id {0}", id);
+            this.logger.LogInformation("DoDelete id {Id}", id);
             await this.handler.DeleteAsync(id);
             return this.RedirectToAction(nameof(this.Index));
         }

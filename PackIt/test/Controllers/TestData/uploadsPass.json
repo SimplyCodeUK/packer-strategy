@@ -1,7 +1,7 @@
 {
   "Plans": [
     {
-      "PlanId": "Benylin.Mod",
+      "PlanId": "Benlyn.Mod",
       "PlanName": "Pharma",
       "Stages": [
         {
@@ -880,7 +880,7 @@
             {
               "Design": false,
               "MaterialType": 12,
-              "MaterialCode": "CS.3.CupaSoup",
+              "MaterialCode": "CS.3.CupSoup",
               "DesignType": 2,
               "DesignCode": "0442",
               "QualityType": 0,
@@ -1048,7 +1048,7 @@
     },
     {
       "PlanId": "CTN525gContr.",
-      "PlanName": "ChickenTonight",
+      "PlanName": "ChickenToday",
       "Stages": [
         {
           "StageLevel": 2,
@@ -1815,7 +1815,7 @@
       ]
     },
     {
-      "PlanId": "ElsevBalsam",
+      "PlanId": "ElsBalsam",
       "PlanName": "Balsam400ml",
       "Stages": [
         {
@@ -2305,7 +2305,7 @@
     {
       "PackId": "125g.Benl.",
       "Name": "Export Pack.",
-      "PlanCode": "Benylin",
+      "PlanCode": "Benlyn",
       "PlanName": "Pharma",
       "MaterialType": 0,
       "MaterialCode": "Benl525.",
@@ -2318,7 +2318,7 @@
       ],
       "Stages": [
         {
-          "ProductCode": "Benylin",
+          "ProductCode": "Benlyn",
           "StageLevel": 0,
           "Collation": 1,
           "DrawOffset": 0,
@@ -2562,7 +2562,7 @@
           ]
         },
         {
-          "ProductCode": "Benylin",
+          "ProductCode": "Benlyn",
           "StageLevel": 2,
           "Collation": 1,
           "DrawOffset": 0,
@@ -3080,7 +3080,7 @@
           ]
         },
         {
-          "ProductCode": "Benylin",
+          "ProductCode": "Benlyn",
           "StageLevel": 5,
           "Collation": 1,
           "DrawOffset": 0,
@@ -3364,7 +3364,7 @@
           ]
         },
         {
-          "ProductCode": "Benylin",
+          "ProductCode": "Benlyn",
           "StageLevel": 6,
           "Collation": 1,
           "DrawOffset": 1,
@@ -3696,7 +3696,7 @@
           ]
         },
         {
-          "ProductCode": "Benylin",
+          "ProductCode": "Benlyn",
           "StageLevel": 7,
           "Collation": 32769,
           "DrawOffset": 0,
@@ -4074,7 +4074,7 @@
     {
       "PackId": "125g.Benl.Cont",
       "Name": "Export Cont.",
-      "PlanCode": "Benylin",
+      "PlanCode": "Benlyn",
       "PlanName": "Pharma",
       "MaterialType": 0,
       "MaterialCode": "Benl525.",
@@ -4087,7 +4087,7 @@
       ],
       "Stages": [
         {
-          "ProductCode": "Benylin",
+          "ProductCode": "Benlyn",
           "StageLevel": 0,
           "Collation": 1,
           "DrawOffset": 0,
@@ -4331,7 +4331,7 @@
           ]
         },
         {
-          "ProductCode": "Benylin",
+          "ProductCode": "Benlyn",
           "StageLevel": 2,
           "Collation": 1,
           "DrawOffset": 0,
@@ -4849,7 +4849,7 @@
           ]
         },
         {
-          "ProductCode": "Benylin",
+          "ProductCode": "Benlyn",
           "StageLevel": 5,
           "Collation": 1,
           "DrawOffset": 0,
@@ -5133,7 +5133,7 @@
           ]
         },
         {
-          "ProductCode": "Benylin",
+          "ProductCode": "Benlyn",
           "StageLevel": 6,
           "Collation": 1,
           "DrawOffset": 1,
@@ -5465,7 +5465,7 @@
           ]
         },
         {
-          "ProductCode": "Benylin",
+          "ProductCode": "Benlyn",
           "StageLevel": 7,
           "Collation": 1,
           "DrawOffset": 0,
@@ -5839,7 +5839,7 @@
           ]
         },
         {
-          "ProductCode": "Benylin",
+          "ProductCode": "Benlyn",
           "StageLevel": 8,
           "Collation": 1,
           "DrawOffset": 0,
@@ -7708,8 +7708,8 @@
       "PlanCode": "CS x 4 Special",
       "PlanName": "9 Pack Tray",
       "MaterialType": 0,
-      "MaterialCode": "Cup.a.Soup",
-      "MaterialName": "Cup a Soup Single Serving",
+      "MaterialCode": "Cup.of.Soup",
+      "MaterialName": "Cup of Soup Single Serving",
       "Costings": [
         {
           "RequiredQuantity": 10000,
@@ -8171,7 +8171,7 @@
                 {
                   "MaterialType": 1,
                   "MaterialId": "Sachet.1.CS",
-                  "Name": "Cup a Soup Special",
+                  "Name": "Cup of Soup Special",
                   "Form": 1,
                   "ClosureType": 0,
                   "ClosureWeight": 0,
@@ -8455,7 +8455,7 @@
                 {
                   "MaterialType": 1,
                   "MaterialId": "CS.2.Traded",
-                  "Name": "Cup a Soup x 4 Carton",
+                  "Name": "Cup of Soup x 4 Carton",
                   "Form": 1,
                   "ClosureType": 0,
                   "ClosureWeight": 0,
@@ -8617,7 +8617,7 @@
             {
               "Design": false,
               "MaterialType": 12,
-              "MaterialCode": "CS.3.CupaSoup",
+              "MaterialCode": "CS.3.CupSoup",
               "MaterialCodeMin": "",
               "DesignType": 2,
               "DesignCode": "0442",
@@ -8738,7 +8738,7 @@
               "Materials": [
                 {
                   "MaterialType": 12,
-                  "MaterialId": "CS.3.CupaSoup",
+                  "MaterialId": "CS.3.CupSoup",
                   "Name": "9-Pack tray.",
                   "Form": 1,
                   "ClosureType": 0,
@@ -9290,12 +9290,12 @@
     },
     {
       "PackId": "CTN.525g.Glass",
-      "Name": "CTonight/Oriental",
+      "Name": "CToday/Oriental",
       "PlanCode": "CTN 525g Contr.",
-      "PlanName": "Chicken Tonight",
+      "PlanName": "Chicken Today",
       "MaterialType": 0,
       "MaterialCode": "CTN.Nett.Product",
-      "MaterialName": "Chicken Tonight",
+      "MaterialName": "Chicken Today",
       "Costings": [
         {
           "RequiredQuantity": 50000,

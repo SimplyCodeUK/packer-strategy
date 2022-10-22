@@ -1,6 +1,6 @@
 [
   {
-    "PlanId": "Benylin",
+    "PlanId": "Benlyn",
     "Name": "Pharma",
     "Stages": [
       {
@@ -522,7 +522,7 @@
     ]
   },
   {
-    "PlanId": "Benylin.Mod",
+    "PlanId": "Benlyn.Mod",
     "Name": "Pharma",
     "Stages": [
       {
@@ -1401,7 +1401,7 @@
           {
             "Design": false,
             "MaterialType": 12,
-            "MaterialCode": "CS.3.CupaSoup",
+            "MaterialCode": "CS.3.CupSoup",
             "DesignType": 2,
             "DesignCode": "0442",
             "QualityType": 0,
@@ -1569,7 +1569,7 @@
   },
   {
     "PlanId": "CTN525gContr.",
-    "Name": "ChickenTonight",
+    "Name": "ChickenToday",
     "Stages": [
       {
         "StageLevel": 2,
@@ -2336,7 +2336,7 @@
     ]
   },
   {
-    "PlanId": "ElsevBalsam",
+    "PlanId": "ElsBalsam",
     "Name": "Balsam400ml",
     "Stages": [
       {
@@ -4616,7 +4616,7 @@
     ]
   },
   {
-    "PlanId": "OXO12's",
+    "PlanId": "XOX12's",
     "Name": "WHATIFS.",
     "Stages": [
       {
@@ -4955,9 +4955,9 @@
             "MaterialType": 9,
             "MaterialCode": "",
             "DesignType": 2,
-            "DesignCode": "OXO12'sShrink",
+            "DesignCode": "XOX12'sShrink",
             "QualityType": 0,
-            "QualityCode": "Oxo15micron",
+            "QualityCode": "Xox15micron",
             "Inverted": false,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -5084,9 +5084,9 @@
             "MaterialType": 9,
             "MaterialCode": "",
             "DesignType": 2,
-            "DesignCode": "OXO12'sShrink",
+            "DesignCode": "XOX12'sShrink",
             "QualityType": 0,
-            "QualityCode": "Oxo15micron",
+            "QualityCode": "Xox15micron",
             "Inverted": false,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -5249,7 +5249,7 @@
     ]
   },
   {
-    "PlanId": "OXO12's4x1x3",
+    "PlanId": "XOX12's4x1x3",
     "Name": "14x2x1Trays.",
     "Stages": [
       {
@@ -5588,9 +5588,9 @@
             "MaterialType": 9,
             "MaterialCode": "",
             "DesignType": 2,
-            "DesignCode": "OXO12'sShrink",
+            "DesignCode": "XOX12'sShrink",
             "QualityType": 0,
-            "QualityCode": "Oxo15micron",
+            "QualityCode": "Xox15micron",
             "Inverted": false,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -5717,9 +5717,9 @@
             "MaterialType": 9,
             "MaterialCode": "",
             "DesignType": 2,
-            "DesignCode": "OXO12'sShrink",
+            "DesignCode": "XOX12'sShrink",
             "QualityType": 0,
-            "QualityCode": "Oxo15micron",
+            "QualityCode": "Xox15micron",
             "Inverted": false,
             "LayerCount": 1,
             "LayerStart": 1,
@@ -8893,7 +8893,7 @@
     ]
   },
   {
-    "PlanId": "Teachers",
+    "PlanId": "Whisky",
     "Name": "70clBulk",
     "Stages": [
       {
@@ -9285,7 +9285,7 @@
     ]
   },
   {
-    "PlanId": "Teachers.2",
+    "PlanId": "Whisky.2",
     "Name": "70clBlendedWhisky",
     "Stages": [
       {
@@ -9400,7 +9400,7 @@
           {
             "Design": false,
             "MaterialType": 21,
-            "MaterialCode": "T70/McTeachers",
+            "MaterialCode": "T70/McWhisky",
             "DesignType": 0,
             "DesignCode": "",
             "QualityType": 0,

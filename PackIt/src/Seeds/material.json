@@ -226,7 +226,7 @@
   {
     "MaterialId": "CTN.Filled",
     "Type": 0,
-    "Name": "Chicken Tonight Container",
+    "Name": "Chicken Today Container",
     "Form": 5,
     "ClosureType": 0,
     "ClosureWeight": 0,
@@ -282,7 +282,7 @@
   {
     "MaterialId": "CTN.Nett.Product",
     "Type": 0,
-    "Name": "Chicken Tonight",
+    "Name": "Chicken Today",
     "Form": 5,
     "ClosureType": 0,
     "ClosureWeight": 0,
@@ -392,9 +392,9 @@
     "Sections": []
   },
   {
-    "MaterialId": "Cup.a.Soup",
+    "MaterialId": "Cup.of.Soup",
     "Type": 0,
-    "Name": "Cup a Soup Single Serving",
+    "Name": "Cup of Soup Single Serving",
     "Form": 1,
     "ClosureType": 0,
     "ClosureWeight": 0,
@@ -909,7 +909,7 @@
     "Sections": []
   },
   {
-    "MaterialId": "Oxo.Cube",
+    "MaterialId": "Xox.Cube",
     "Type": 0,
     "Name": "Van den Bergh Foods",
     "Form": 1,
@@ -1342,7 +1342,7 @@
   {
     "MaterialId": "R.Rect",
     "Type": 0,
-    "Name": "Teachers 70cl Bottle",
+    "Name": "Whisky 70cl Bottle",
     "Form": 5,
     "ClosureType": 0,
     "ClosureWeight": 0,
@@ -1452,7 +1452,7 @@
     "Sections": []
   },
   {
-    "MaterialId": "S.Perrier",
+    "MaterialId": "S.Perryer",
     "Type": 0,
     "Name": "Natural Min. Water",
     "Form": 5,
@@ -1564,7 +1564,7 @@
     "Sections": []
   },
   {
-    "MaterialId": "TeachersBlended",
+    "MaterialId": "WhiskyBlended",
     "Type": 0,
     "Name": "70cl Blend",
     "Form": 5,
@@ -6895,7 +6895,7 @@
   {
     "MaterialId": "CS.2.Traded",
     "Type": 1,
-    "Name": "Cup a Soup x 4 Carton",
+    "Name": "Cup of Soup x 4 Carton",
     "Form": 1,
     "ClosureType": 0,
     "ClosureWeight": 0,
@@ -7721,7 +7721,7 @@
   {
     "MaterialId": "Sachet.1.CS",
     "Type": 1,
-    "Name": "Cup a Soup Special",
+    "Name": "Cup of Soup Special",
     "Form": 1,
     "ClosureType": 0,
     "ClosureWeight": 0,
@@ -8120,7 +8120,7 @@
   {
     "MaterialId": "T70.2.8-Pack",
     "Type": 1,
-    "Name": "Teachers/2/8-Pack",
+    "Name": "Whisky/2/8-Pack",
     "Form": 1,
     "ClosureType": 0,
     "ClosureWeight": 0,
@@ -8204,7 +8204,7 @@
   {
     "MaterialId": "T70.8-Pack",
     "Type": 1,
-    "Name": "Teachers 8-Pack",
+    "Name": "Whisky 8-Pack",
     "Form": 1,
     "ClosureType": 0,
     "ClosureWeight": 0,
@@ -9221,7 +9221,7 @@
   {
     "MaterialId": "T.70",
     "Type": 4,
-    "Name": "70cl Teachers Whisky",
+    "Name": "70cl Whisky Whisky",
     "Form": 5,
     "ClosureType": 0,
     "ClosureWeight": 0,
@@ -11015,7 +11015,7 @@
     "Sections": []
   },
   {
-    "MaterialId": "CS.3.CupaSoup",
+    "MaterialId": "CS.3.CupSoup",
     "Type": 12,
     "Name": "9-Pack tray.",
     "Form": 1,
@@ -19479,7 +19479,7 @@
     ]
   },
   {
-    "MaterialId": "T70.Mc.Teachers",
+    "MaterialId": "T70.Mc.Whisky",
     "Type": 21,
     "Name": "Al. alloy 27.1",
     "Form": 2,

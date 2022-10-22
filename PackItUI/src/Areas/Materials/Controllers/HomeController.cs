@@ -54,7 +54,7 @@ namespace PackItUI.Areas.Materials.Controllers
         public override async Task<IActionResult> Create(MaterialEditViewModel model)
         {
             var data = new PackIt.Material.Material();
-            this.logger.LogInformation("Create Material id {0}", data.MaterialId);
+            this.logger.LogInformation("Create Material id {MaterialId}", data.MaterialId);
 
             data = this.mapper.Map(model.Data, data);
             if (this.ModelState.IsValid && await this.handler.CreateAsync(data))
@@ -75,7 +75,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            this.logger.LogInformation("Update id {0}", id);
+            this.logger.LogInformation("Update id {Id}", id);
             var model = new MaterialEditViewModel
             {
                 Data = this.mapper.Map<MaterialEditViewModel.Material>(await this.handler.ReadAsync(id))
@@ -95,7 +95,7 @@ namespace PackItUI.Areas.Materials.Controllers
         public async Task<IActionResult> Update(string id, MaterialEditViewModel model)
         {
             var data = await this.handler.ReadAsync(id);
-            this.logger.LogInformation("Update id {0} Material id {1}", id, model.Data.MaterialId);
+            this.logger.LogInformation("Update id {Id} Material id {MaterialId}", id, model.Data.MaterialId);
 
             data = this.mapper.Map(model.Data, data);
             if (await this.handler.UpdateAsync(id, data))
@@ -116,7 +116,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            this.logger.LogInformation("Delete id {0}", id);
+            this.logger.LogInformation("Delete id {Id}", id);
             var model = new MaterialEditViewModel
             {
                 Data = this.mapper.Map<MaterialEditViewModel.Material>(await this.handler.ReadAsync(id))
@@ -135,7 +135,7 @@ namespace PackItUI.Areas.Materials.Controllers
         public IActionResult CostingRow([FromBody] JsonDocument body)
         {
             var index = body.RootElement.GetProperty("index");
-            this.logger.LogInformation("CostingRow index {0}", index);
+            this.logger.LogInformation("CostingRow index {Index}", index);
 
             this.ViewBag.crud = Crud.Create;
             this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
@@ -156,7 +156,7 @@ namespace PackItUI.Areas.Materials.Controllers
         public IActionResult SectionRow([FromBody] JsonDocument body)
         {
             var index = body.RootElement.GetProperty("index");
-            this.logger.LogInformation("SectionRow index {0}", index);
+            this.logger.LogInformation("SectionRow index {Index}", index);
 
             this.ViewBag.crud = Crud.Create;
             this.ViewBag.sectionTypes = new ListForFlag<SectionTypes>(0);

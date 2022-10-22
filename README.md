@@ -54,12 +54,11 @@
   - Extensions
     - StyleCop
     - Markdown Editor
-- [Nuget Version 6.0.0](https://www.nuget.org/)
 - [Powershell Version 7.2.0](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 6.1.38](https://www.virtualbox.org/)
   - Oracle VM VirtualBox Extension Pack version 6.1.38
 - [Vagrant Version 2.3.1](https://www.vagrantup.com/)
-  - Box generic/ubuntu2004 version 4.1.14
+  - Box generic/ubuntu2004 version 4.1.16
 - [Doxygen Version 1.9.5](https://www.doxygen.nl/)
 
 

@@ -51,7 +51,7 @@ namespace PackItUI.Areas.Plans.Controllers
         public override async Task<IActionResult> Create(PlanEditViewModel model)
         {
             var data = new PackIt.Plan.Plan();
-            this.logger.LogInformation("Create Plan id {0}", data.PlanId);
+            this.logger.LogInformation("Create Plan id {PlanId}", data.PlanId);
 
             data = this.mapper.Map(model.Data, data);
             if (this.ModelState.IsValid && await this.handler.CreateAsync(data))
@@ -72,7 +72,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            this.logger.LogInformation("Update id {0}", id);
+            this.logger.LogInformation("Update id {Id}", id);
             var model = new PlanEditViewModel
             {
                 Data = this.mapper.Map<PlanEditViewModel.Plan>(await this.handler.ReadAsync(id))
@@ -92,7 +92,7 @@ namespace PackItUI.Areas.Plans.Controllers
         public async Task<IActionResult> Update(string id, PlanEditViewModel model)
         {
             var data = await this.handler.ReadAsync(id);
-            this.logger.LogInformation("Update id {0} Plan id {1}", id, model.Data.PlanId);
+            this.logger.LogInformation("Update id {Id} Plan id {PlanId}", id, model.Data.PlanId);
 
             data = this.mapper.Map(model.Data, data);
             if (await this.handler.UpdateAsync(id, data))
@@ -113,7 +113,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            this.logger.LogInformation("Delete id {0}", id);
+            this.logger.LogInformation("Delete id {Id}", id);
             var model = new PlanEditViewModel
             {
                 Data = this.mapper.Map<PlanEditViewModel.Plan>(await this.handler.ReadAsync(id))
