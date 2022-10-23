@@ -4,15 +4,15 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Test.Models
+namespace PackItDraw.Test.Models
 {
     using System.IO;
+    using System.Text.Json;
     using Microsoft.EntityFrameworkCore;
     using NUnit.Framework;
     using PackIt.DTO;
     using PackIt.Drawing;
     using PackIt.Models;
-    using System.Text.Json;
 
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
     [TestFixture]
@@ -20,7 +20,7 @@ namespace PackIt.Test.Models
     {
         private IDrawingRepository repository;
         private string drawingId;
-        private Pack.Pack pack;
+        private PackIt.Pack.Pack pack;
 
         /// <summary> Setup for all unit tests here. </summary>
         [SetUp]
@@ -35,7 +35,7 @@ namespace PackIt.Test.Models
 
             // Pack to draw in tests
             var text = File.ReadAllText("Models/TestData/pack.json");
-            this.pack = JsonSerializer.Deserialize<Pack.Pack>(text);
+            this.pack = JsonSerializer.Deserialize<PackIt.Pack.Pack>(text);
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>

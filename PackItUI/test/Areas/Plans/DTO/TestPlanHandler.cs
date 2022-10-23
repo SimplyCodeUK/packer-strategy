@@ -58,8 +58,8 @@ namespace PackItUI.Test.Areas.Plans.DTO
             var result = this.handler.InformationAsync();
             result.Wait();
             Assert.IsInstanceOf<ServiceInfo>(result.Result);
-            Assert.AreEqual(result.Result.Version, "1");
-            Assert.AreEqual(result.Result.About, "Plans");
+            Assert.AreEqual("1", result.Result.Version);
+            Assert.AreEqual("Plans", result.Result.About);
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
@@ -70,8 +70,8 @@ namespace PackItUI.Test.Areas.Plans.DTO
             var result = this.handler.InformationAsync();
             result.Wait();
             Assert.IsInstanceOf<ServiceInfo>(result.Result);
-            Assert.AreEqual(result.Result.Version, "Unknown");
-            Assert.AreEqual(result.Result.About, "Service down! http://localhost:8003/api/v1/");
+            Assert.AreEqual("Unknown", result.Result.Version);
+            Assert.AreEqual("Service down! http://localhost:8003/api/v1/", result.Result.About);
         }
 
         /// <summary> Setup for disconnected service. </summary>
@@ -82,7 +82,7 @@ namespace PackItUI.Test.Areas.Plans.DTO
                 TimeOut = TimeOut
             };
             Assert.IsNotNull(this.handler);
-            Assert.AreEqual(this.handler.TimeOut, TimeOut);
+            Assert.AreEqual(TimeOut, this.handler.TimeOut);
         }
 
         /// <summary> Setup for connected services. </summary>
@@ -98,7 +98,7 @@ namespace PackItUI.Test.Areas.Plans.DTO
                 TimeOut = TimeOut
             };
             Assert.IsNotNull(this.handler);
-            Assert.AreEqual(this.handler.TimeOut, TimeOut);
+            Assert.AreEqual(TimeOut, this.handler.TimeOut);
         }
     }
 }

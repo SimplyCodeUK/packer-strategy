@@ -148,8 +148,8 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Pack>(objectResult.Value);
 
             item = objectResult.Value as Pack;
-            Assert.AreEqual(item.PackId, id);
-            Assert.AreEqual(item.Name, StartName);
+            Assert.AreEqual(id, item.PackId);
+            Assert.AreEqual(StartName, item.Name);
         }
 
         /// <summary> (Unit Test Method) gets not found. </summary>
@@ -198,8 +198,8 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Pack>(objectResult.Value);
 
             item = objectResult.Value as Pack;
-            Assert.AreEqual(item.PackId, id);
-            Assert.AreEqual(item.Name, PutName);
+            Assert.AreEqual(id, item.PackId);
+            Assert.AreEqual(PutName, item.Name);
         }
 
         /// <summary> (Unit Test Method) puts not found. </summary>
@@ -284,8 +284,8 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Pack>(objectResult.Value);
 
             item = objectResult.Value as Pack;
-            Assert.AreEqual(item.PackId, id);
-            Assert.AreEqual(item.Name, PatchName);
+            Assert.AreEqual(id, item.PackId);
+            Assert.AreEqual(PatchName, item.Name);
 
             // Get the pack and check the returned object has the same Note and new Name
             result = this.controller.Get(id);
@@ -296,8 +296,8 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Pack>(objectResult.Value);
 
             item = objectResult.Value as Pack;
-            Assert.AreEqual(item.PackId, id);
-            Assert.AreEqual(item.Name, PatchName);
+            Assert.AreEqual(id, item.PackId);
+            Assert.AreEqual(PatchName, item.Name);
         }
 
         /// <summary> (Unit Test Method) patch not found. </summary>
@@ -361,11 +361,11 @@ namespace PackIt.Test.Controllers
 
             // Test the pack
             item = objectResult.Value as Pack;
-            Assert.AreEqual(item.PackId, id);
+            Assert.AreEqual(id, item.PackId);
             // Test for one stage
-            Assert.AreEqual(item.Costings.Count, 1);
-            Assert.AreEqual(item.Costings[0].RequiredQuantity, Quantity);
-            Assert.AreEqual(item.Costings[0].RequiredWeight, Weight);
+            Assert.AreEqual(1, item.Costings.Count);
+            Assert.AreEqual(Quantity, item.Costings[0].RequiredQuantity);
+            Assert.AreEqual(Weight, item.Costings[0].RequiredWeight);
         }
     }
 }

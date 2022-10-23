@@ -149,8 +149,8 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Plan>(objectResult.Value);
 
             item = objectResult.Value as Plan;
-            Assert.AreEqual(item.PlanId, id);
-            Assert.AreEqual(item.Name, StartName);
+            Assert.AreEqual(id, item.PlanId);
+            Assert.AreEqual(StartName, item.Name);
         }
 
         /// <summary> (Unit Test Method) gets not found. </summary>
@@ -199,8 +199,8 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Plan>(objectResult.Value);
 
             item = objectResult.Value as Plan;
-            Assert.AreEqual(item.PlanId, id);
-            Assert.AreEqual(item.Name, PutName);
+            Assert.AreEqual(id, item.PlanId);
+            Assert.AreEqual(PutName, item.Name);
         }
 
         /// <summary> (Unit Test Method) puts not found. </summary>
@@ -285,8 +285,8 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Plan>(objectResult.Value);
 
             item = objectResult.Value as Plan;
-            Assert.AreEqual(item.PlanId, id);
-            Assert.AreEqual(item.Name, PatchName);
+            Assert.AreEqual(id, item.PlanId);
+            Assert.AreEqual(PatchName, item.Name);
 
             // Get the plan and check the returned object has the same Note and new Name
             result = this.controller.Get(id);
@@ -297,8 +297,8 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Plan>(objectResult.Value);
 
             item = objectResult.Value as Plan;
-            Assert.AreEqual(item.PlanId, id);
-            Assert.AreEqual(item.Name, PatchName);
+            Assert.AreEqual(id, item.PlanId);
+            Assert.AreEqual(PatchName, item.Name);
         }
 
         /// <summary> (Unit Test Method) patch not found. </summary>
@@ -361,12 +361,12 @@ namespace PackIt.Test.Controllers
 
             // Test the plan
             item = objectResult.Value as Plan;
-            Assert.AreEqual(item.PlanId, id);
+            Assert.AreEqual(id, item.PlanId);
             // Test for one stage
-            Assert.AreEqual(item.Stages.Count, 1);
-            Assert.AreEqual(item.Stages[0].StageLevel, Level);
+            Assert.AreEqual(1, item.Stages.Count);
+            Assert.AreEqual(Level, item.Stages[0].StageLevel);
             // Test for one limit in the stage
-            Assert.AreEqual(item.Stages[0].Limits.Count, 1);
+            Assert.AreEqual(1, item.Stages[0].Limits.Count);
         }
     }
 }

@@ -166,8 +166,8 @@ namespace PackItDraw.Test.Controllers
             Assert.IsInstanceOf<Drawing>(objectResult.Value);
 
             var drawing = objectResult.Value as Drawing;
-            Assert.AreEqual(drawing.DrawingId, val1);
-            Assert.AreEqual(drawing.Packs[0].Name, StartName);
+            Assert.AreEqual(val1, drawing.DrawingId);
+            Assert.AreEqual(StartName, drawing.Packs[0].Name);
         }
 
         /// <summary> (Unit Test Method) gets not found. </summary>

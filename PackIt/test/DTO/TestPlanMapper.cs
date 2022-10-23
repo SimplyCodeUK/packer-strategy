@@ -35,23 +35,23 @@ namespace PackIt.Test.DTO
             var plan = JsonSerializer.Deserialize<Plan>(text);
             var dto = this.mapper.ConvertToDto(plan);
 
-            Assert.AreEqual(dto.PlanId, plan.PlanId);
+            Assert.AreEqual(plan.PlanId, dto.PlanId);
             int minLevel = -1;
-            Assert.AreEqual(dto.Stages.Count, plan.Stages.Count);
+            Assert.AreEqual(plan.Stages.Count, dto.Stages.Count);
             int stageIndex = 0;
             foreach (var stage in dto.Stages)
             {
-                Assert.AreEqual(stage.PlanId, plan.PlanId);
-                Assert.Greater((int)stage.StageLevel, minLevel);
+                Assert.AreEqual(plan.PlanId, stage.PlanId);
+                Assert.LessOrEqual(minLevel, (int)stage.StageLevel);
                 minLevel = (int)stage.StageLevel;
 
-                Assert.AreEqual(stage.Limits.Count, plan.Stages[stageIndex].Limits.Count);
+                Assert.AreEqual(plan.Stages[stageIndex].Limits.Count, stage.Limits.Count);
                 int limitIndex = 0;
                 foreach (var limit in stage.Limits)
                 {
-                    Assert.AreEqual(limit.PlanId, plan.PlanId);
-                    Assert.AreEqual(limit.StageLevel, stage.StageLevel);
-                    Assert.AreEqual(limit.LimitIndex, limitIndex);
+                    Assert.AreEqual(plan.PlanId, limit.PlanId);
+                    Assert.AreEqual(stage.StageLevel, limit.StageLevel);
+                    Assert.AreEqual(limitIndex, limit.LimitIndex);
                     ++limitIndex;
                 }
                 ++stageIndex;
@@ -67,16 +67,16 @@ namespace PackIt.Test.DTO
             var dto = this.mapper.ConvertToDto(plan);
             var data = this.mapper.ConvertToData(dto);
 
-            Assert.AreEqual(data.PlanId, plan.PlanId);
+            Assert.AreEqual(plan.PlanId, data.PlanId);
             int minLevel = -1;
-            Assert.AreEqual(data.Stages.Count, plan.Stages.Count);
+            Assert.AreEqual(plan.Stages.Count, data.Stages.Count);
             int stageIndex = 0;
             foreach (var stage in data.Stages)
             {
-                Assert.Greater((int)stage.StageLevel, minLevel);
+                Assert.LessOrEqual(minLevel, (int)stage.StageLevel);
                 minLevel = (int)stage.StageLevel;
 
-                Assert.AreEqual(stage.Limits.Count, plan.Stages[stageIndex].Limits.Count);
+                Assert.AreEqual(plan.Stages[stageIndex].Limits.Count, stage.Limits.Count);
                 ++stageIndex;
             }
         }

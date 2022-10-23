@@ -31,7 +31,7 @@ namespace PackItUI.Test.Areas.Materials.Models
             MaterialEditViewModel.Material data = new();
             data.Costings.Add(new());
             this.model.Data = data;
-            Assert.AreEqual(this.model.Data.Costings.Count, 1);
+            Assert.AreEqual(1, this.model.Data.Costings.Count);
         }
 
         /// <summary> (Unit Test Method) set model sections. </summary>
@@ -41,7 +41,7 @@ namespace PackItUI.Test.Areas.Materials.Models
             MaterialEditViewModel.Material data = new MaterialEditViewModel.Material();
             data.Sections.Add(new());
             this.model.Data = data;
-            Assert.AreEqual(this.model.Data.Sections.Count, 1);
+            Assert.AreEqual(1, this.model.Data.Sections.Count);
         }
     }
 }

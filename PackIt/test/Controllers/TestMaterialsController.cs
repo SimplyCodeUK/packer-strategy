@@ -150,9 +150,9 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
             item = objectResult.Value as Material;
-            Assert.AreEqual(item.MaterialId, id);
-            Assert.AreEqual(item.Type, Type);
-            Assert.AreEqual(item.Name, StartName);
+            Assert.AreEqual(id, item.MaterialId);
+            Assert.AreEqual(Type, item.Type);
+            Assert.AreEqual(StartName, item.Name);
         }
 
         /// <summary> (Unit Test Method) gets not found. </summary>
@@ -202,9 +202,9 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
             item = objectResult.Value as Material;
-            Assert.AreEqual(item.Type, Type);
-            Assert.AreEqual(item.MaterialId, id);
-            Assert.AreEqual(item.Name, PutName);
+            Assert.AreEqual(Type, item.Type);
+            Assert.AreEqual(id, item.MaterialId);
+            Assert.AreEqual(PutName, item.Name);
         }
 
         /// <summary> (Unit Test Method) puts not found. </summary>
@@ -291,9 +291,9 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
             item = objectResult.Value as Material;
-            Assert.AreEqual(item.Type, Type);
-            Assert.AreEqual(item.MaterialId, id);
-            Assert.AreEqual(item.Name, PatchName);
+            Assert.AreEqual(Type, item.Type);
+            Assert.AreEqual(id, item.MaterialId);
+            Assert.AreEqual(PatchName, item.Name);
 
             // Get the material and check the returned object has the same Note and new Name
             result = this.controller.Get(id);
@@ -304,9 +304,9 @@ namespace PackIt.Test.Controllers
             Assert.IsInstanceOf<Material>(objectResult.Value);
 
             item = objectResult.Value as Material;
-            Assert.AreEqual(item.Type, Type);
-            Assert.AreEqual(item.MaterialId, id);
-            Assert.AreEqual(item.Name, PatchName);
+            Assert.AreEqual(Type, item.Type);
+            Assert.AreEqual(id, item.MaterialId);
+            Assert.AreEqual(PatchName, item.Name);
         }
 
         /// <summary> (Unit Test Method) patch not found. </summary>
@@ -369,9 +369,9 @@ namespace PackIt.Test.Controllers
 
             // Test the material
             item = objectResult.Value as Material;
-            Assert.AreEqual(item.Type, Type);
-            Assert.AreEqual(item.MaterialId, id);
-            Assert.AreEqual(item.Costings.Count, 1);
+            Assert.AreEqual(Type, item.Type);
+            Assert.AreEqual(id, item.MaterialId);
+            Assert.AreEqual(1, item.Costings.Count);
         }
     }
 }

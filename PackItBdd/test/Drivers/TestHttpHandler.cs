@@ -9,6 +9,7 @@ namespace PackItBdd.Test.Drivers
     using NUnit.Framework;
     using PackItBdd.Drivers;
     using PackItMock.HttpMock;
+    using System.Net;
     using System.Net.Http;
 
     /// <summary> (Unit Test Fixture) a controller for handling test materials. </summary>
@@ -50,7 +51,7 @@ namespace PackItBdd.Test.Drivers
         public void TestGet()
         {
             this.handler.Get(root);
-            Assert.AreEqual(this.handler.ResponseStatusCode(), 200);
+            Assert.AreEqual((int)HttpStatusCode.OK, this.handler.ResponseStatusCode());
         }
     }
 }

@@ -8,9 +8,9 @@ namespace PackIt.Models
 {
     using PackIt.DTO;
     using PackIt.Drawing;
-    using PackIt.Helpers.Masks;
     using PackIt.Pack;
     using PackIt.Helpers.Enums;
+    using static PackIt.Models.DoDrawingHelpers;
 
     /// <summary> Evaluate the drawing. </summary>
     public class DoDrawing
@@ -26,13 +26,6 @@ namespace PackIt.Models
 
         /// <summary> Index of result to draw in stage. </summary>
         private readonly int result;
-
-        private class Dims
-        {
-            public double Width { get; set; }
-            public double Height { get; set; }
-            public double Depth { get; set; }
-        }
 
         private Drawing Go()
         {
@@ -86,30 +79,6 @@ namespace PackIt.Models
             }
 
             return null;
-        }
-
-        private static Dims RotateResult(Result result, long rotation)
-        {
-            Dims ret = new()
-            {
-                Width = result.ExternalLength,
-                Height = result.ExternalHeight,
-                Depth = result.ExternalBreadth
-            };
-            if ((rotation & ResultRotation.ParentBreadthToHeight) != 0)
-            {
-                ret.Width = result.ExternalLength;
-                ret.Height = result.ExternalBreadth;
-                ret.Depth = result.ExternalHeight;
-            } // if
-
-            if ((rotation & ResultRotation.ParentLengthToHeight) != 0)
-            {
-                ret.Width = result.ExternalBreadth;
-                ret.Height = result.ExternalHeight;
-                ret.Depth = result.ExternalLength;
-            } // if
-            return ret;
         }
 
         private void DrawCollation(Dims parentDimensions, Collation collation, double height)

@@ -59,8 +59,8 @@ namespace PackItUI.Test.Areas.Packs.DTO
             var result = this.handler.InformationAsync();
             result.Wait();
             Assert.IsInstanceOf<ServiceInfo>(result.Result);
-            Assert.AreEqual(result.Result.Version, "1");
-            Assert.AreEqual(result.Result.About, "Drawings");
+            Assert.AreEqual("1", result.Result.Version);
+            Assert.AreEqual("Drawings", result.Result.About);
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
@@ -71,8 +71,8 @@ namespace PackItUI.Test.Areas.Packs.DTO
             var result = this.handler.InformationAsync();
             result.Wait();
             Assert.IsInstanceOf<ServiceInfo>(result.Result);
-            Assert.AreEqual(result.Result.Version, "Unknown");
-            Assert.AreEqual(result.Result.About, "Service down! http://localhost:8005/api/v1/");
+            Assert.AreEqual("Unknown", result.Result.Version);
+            Assert.AreEqual("Service down! http://localhost:8005/api/v1/", result.Result.About);
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
@@ -82,11 +82,11 @@ namespace PackItUI.Test.Areas.Packs.DTO
             var result = this.handler.CreateAsync(new());
             result.Wait();
             Assert.IsInstanceOf<HttpResponseMessage>(result.Result);
-            Assert.AreEqual(result.Result.StatusCode, System.Net.HttpStatusCode.Created);
+            Assert.AreEqual(System.Net.HttpStatusCode.Created, result.Result.StatusCode);
             var content = result.Result.Content.ReadAsStringAsync();
             content.Wait();
             JsonDocument cont = JsonDocument.Parse(content.Result);
-            Assert.AreEqual(cont.RootElement.GetProperty("id").GetString(), "1111-2222-3333-4444");
+            Assert.AreEqual("1111-2222-3333-4444", cont.RootElement.GetProperty("id").GetString());
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
@@ -107,7 +107,7 @@ namespace PackItUI.Test.Areas.Packs.DTO
                 TimeOut = TimeOut
             };
             Assert.IsNotNull(this.handler);
-            Assert.AreEqual(this.handler.TimeOut, TimeOut);
+            Assert.AreEqual(TimeOut, this.handler.TimeOut);
         }
 
         /// <summary> Setup for connected services. </summary>
@@ -126,7 +126,7 @@ namespace PackItUI.Test.Areas.Packs.DTO
                 TimeOut = TimeOut
             };
             Assert.IsNotNull(this.handler);
-            Assert.AreEqual(this.handler.TimeOut, TimeOut);
+            Assert.AreEqual(TimeOut, this.handler.TimeOut);
         }
     }
 }
