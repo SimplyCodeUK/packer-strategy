@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Company>Simply Code Ltd.</Company>
     <ProjectGuid>50c2d5cb-7541-4cf4-9d87-46d24736df56</ProjectGuid>
     <Product>PackIt</Product>
@@ -9,7 +9,7 @@
     <Copyright>Simply Code Ltd.</Copyright>
     <RepositoryUrl>https://github.com/SimplyCodeUK/packer-strategy</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <DocumentationFile>bin/$(Configuration)/net6.0/doc.xml</DocumentationFile>
+    <DocumentationFile>bin/$(Configuration)/net7.0/doc.xml</DocumentationFile>
     <WarningLevel>5</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
@@ -22,7 +22,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
     <PackageReference Include="Moq" Version="4.18.2" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit.ConsoleRunner" Version="3.15.2" />
@@ -30,7 +30,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ReportGenerator" Version="5.1.10" />
+    <PackageReference Include="ReportGenerator" Version="5.1.11" />
   </ItemGroup>
 
   <ItemGroup>

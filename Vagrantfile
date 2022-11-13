@@ -117,7 +117,7 @@ apt-get install nodejs         -y
 apt-get install yarn           -y
 apt-get install nuget          -y
 apt-get install git            -y
-apt-get install dotnet-sdk-6.0 -y
+apt-get install dotnet-sdk-7.0 -y
 apt-get install nginx          -y
 service nginx stop
 rm /etc/nginx/sites-enabled/default 2> /dev/null
@@ -162,7 +162,7 @@ MACHINES.each do |_key, machine|
   end
 
   machine[:services].each do |service|
-    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/net6.0/publish"
+    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/net7.0/publish"
     buildScript += <<-SRV_SCRIPT
       systemctl stop #{service}.service
 
