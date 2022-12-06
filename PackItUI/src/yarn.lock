@@ -7,15 +7,15 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
   integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
 
-babylonjs@5.31.0:
-  version "5.31.0"
-  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.31.0.tgz#a257b07f92065f048b380ee0bde9a7cf7b19d864"
-  integrity sha512-uaxb58qo/UaoVH97I52UJUmpar0icZRNS45Pdc3SrxZfYcy8KeZkxvoO77c6PV9B9bblJFJdyl8gjEgoVZuQaw==
+babylonjs@5.35.1:
+  version "5.35.1"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.35.1.tgz#0bd4981bb0402b525ba4a560fbec6ff4c7202fa8"
+  integrity sha512-oNkKHRSv/qVIMwlfAb07Cg8ptF7bDZKJV4T7dfshI0Em2MTs/j8kWTntNd65kO8J3c/o92k+7cDxN15UYTyFew==
 
-bootstrap@5.2.2:
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.2.2.tgz#834e053eed584a65e244d8aa112a6959f56e27a0"
-  integrity sha512-dEtzMTV71n6Fhmbg4fYJzQsw1N29hJKO1js5ackCgIpDcGid2ETMGC6zwSYw09v05Y+oRdQ9loC54zB1La3hHQ==
+bootstrap@5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.2.3.tgz#54739f4414de121b9785c5da3c87b37ff008322b"
+  integrity sha512-cEKPM+fwb3cT8NzQZYEu4HilJ3anCrWqh3CHAok1p9jXqMPsPTBhU25fBckEJHJ/p+tTxTFTsFQGM+gaHpi3QQ==
 
 font-awesome-5-css@5.4.1:
   version "5.4.1"
