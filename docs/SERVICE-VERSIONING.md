@@ -4,6 +4,7 @@
 + [Basics](#basics)
 + [Incompatible API changes](#incompatible-api-changes)
 + [API deprecation](#api-deprecation)
++ [API deletion](#api-deletion)
 
 <a name="acronyms"></a>
 
@@ -62,8 +63,13 @@ Prior to an incompatible API change, the following needs to be adhered to:
 
 ## API deprecation
 
-API deprecation should go through two stages
+On deprecation an API will still be available and working, but unsupported,
+with a documented migration path. This should produce a **MINOR** change.
 
-1. The API will still be available and working, but unsupported, with a
-   documented migration path. This should produce a **MINOR** change
-1. The API will be removed. This will produce a **MAJOR** change
+<a name="api-deletion"></a>
+
+## API deletion
+
+Deletion of an an API follows a deprecation, users are expected to follow the
+migration path documented in the deprecation migration path. This will produce
+a **MAJOR** change.

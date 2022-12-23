@@ -71,7 +71,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D498A2E9-8
 		docs\doxygen = docs\doxygen
 		docs\DOXYGENHOME.md = docs\DOXYGENHOME.md
 		docs\README-VERSIONING.md = docs\README-VERSIONING.md
-		docs\RELEASE-NOTES-PROCESS.md = docs\RELEASE-NOTES-PROCESS.md
 		docs\SERVICE-VERSIONING.md = docs\SERVICE-VERSIONING.md
 	EndProjectSection
 EndProject
