@@ -6,6 +6,7 @@ codedoc.xml
 coverage.info
 coverage.opencover.xml
 coverage.cobertura.xml
+coverage.json
 
 **/.vs/
 **/bin/
