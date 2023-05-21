@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-# Copyright (c) 2018-2022 Simply Code Ltd. All rights reserved.
+# Copyright (c) 2018-2023 Simply Code Ltd. All rights reserved.
 # Licensed under the MIT License.
 # See LICENSE file in the project root for full license information.
 
@@ -86,6 +86,7 @@ SCRIPT
 
 BASE_PRE_INSTALL = <<-SCRIPT
 apt-get install apt-transport-https
+apt-get install libxt6 libxmu6
 apt-get update
 SCRIPT
 
@@ -112,7 +113,7 @@ SERVICE_INSTALL = <<-SCRIPT
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 apt-get install python3-software-properties -y
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 apt-get install nodejs         -y
 apt-get install yarn           -y
 apt-get install nuget          -y

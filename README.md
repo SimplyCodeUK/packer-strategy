@@ -44,10 +44,10 @@
 ## Development Environment
 
 - [GIT](https://git-scm.com/)
-- [Node.Js Version 16.17.1](https://nodejs.org/)
+- [Node.Js Version 18.16.0](https://nodejs.org/)
 - [Yarn Version 1.22.19](https://yarnpkg.com/)
 - [.NET Core SDK 7.0.100](https://dotnet.microsoft.com/)
-- [Visual Studio 2022 Version 17.4.3](https://www.visualstudio.com/)
+- [Visual Studio 2022 Version 17.6.0](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -55,10 +55,10 @@
     - StyleCop
     - Markdown Editor
 - [Powershell Version 7.2.0](https://docs.microsoft.com/en-us/powershell/)
-- [VirtualBox Version 6.1.38](https://www.virtualbox.org/)
-  - Oracle VM VirtualBox Extension Pack version 6.1.38
-- [Vagrant Version 2.3.1](https://www.vagrantup.com/)
-  - Box generic/ubuntu2004 version 4.1.16
+- [VirtualBox Version 7.0.8](https://www.virtualbox.org/)
+  - Oracle VM VirtualBox Extension Pack version 7.0.8r156879
+- [Vagrant Version 2.3.4](https://www.vagrantup.com/)
+  - Box generic/ubuntu2004 version 4.2.16
 - [Doxygen Version 1.9.5](https://www.doxygen.nl/)
 
 

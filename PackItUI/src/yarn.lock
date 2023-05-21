@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@popperjs/core@2.11.6":
-  version "2.11.6"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
-  integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
+"@popperjs/core@2.11.7":
+  version "2.11.7"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.7.tgz#ccab5c8f7dc557a52ca3288c10075c9ccd37fff7"
+  integrity sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==
 
-babylonjs@5.39.0:
-  version "5.39.0"
-  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.39.0.tgz#70a9b427b362e884ed003e2b1ae87eda059b404f"
-  integrity sha512-U6nI2cGrflsL9z+SsEKzOGYGm0I6eu7d2hPO3rOxCfVFMSi9rCDI0tUPxQ7JpjQ6dkGFQafvmJnczUeFt/a16w==
+babylonjs@6.4.1:
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-6.4.1.tgz#797b3fbb360e5613abed36e996399d0428c2824e"
+  integrity sha512-dM5yURV15DgpzrocRGcBXhVMV0Mg3nrNS9UXMZZ7dbzXgne8LVukxtid3LAUTYK2mdNragoQY0U9KLA8NZKROQ==
 
 bootstrap@5.2.3:
   version "5.2.3"
@@ -35,10 +35,10 @@ jquery-validation@1.19.5, jquery-validation@>=1.19:
   resolved "https://registry.yarnpkg.com/jquery-validation/-/jquery-validation-1.19.5.tgz#557495b7cad79716897057c4447ad3cd76fda811"
   integrity sha512-X2SmnPq1mRiDecVYL8edWx+yTBZDyC8ohWXFhXdtqFHgU9Wd4KHkvcbCoIZ0JaSaumzS8s2gXSkP8F7ivg/8ZQ==
 
-jquery@3.6.3:
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.3.tgz#23ed2ffed8a19e048814f13391a19afcdba160e6"
-  integrity sha512-bZ5Sy3YzKo9Fyc8wH2iIQK4JImJ6R0GWI9kL1/k7Z91ZBNgkRXE6U0JfHIizZbort8ZunhSI3jw9I6253ahKfg==
+jquery@3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.0.tgz#fe2c01a05da500709006d8790fe21c8a39d75612"
+  integrity sha512-umpJ0/k8X0MvD1ds0P9SfowREz2LenHsQaxSohMZ5OMNEU2r0tf8pdeEFTHMFxWVxKNyU9rTtK3CWzUCTKJUeQ==
 
 jquery@^3.6.0:
   version "3.6.0"
