@@ -16,9 +16,18 @@
     }
   },
   {
+    "outputFileName": "wwwroot/js/packit.min.js",
+    "inputFiles": [
+      "wwwroot/js/packit.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "preserveImportantComments": false
+    }
+  },
+  {
     "outputFileName": "wwwroot/js/draw.min.js",
     "inputFiles": [
-      "wwwroot/js/packit.js",
       "wwwroot/js/draw.js"
     ],
     "minify": {

@@ -2,6 +2,7 @@
   "name": "packitui",
   "version": "1.0.0",
   "description": "Packit Web App",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,12 +16,12 @@
     "url": "https://github.com/SimplyCodeUK/packer-strategy"
   },
   "dependencies": {
-    "babylonjs": "6.4.1",
-    "bootstrap": "5.2.3",
+    "babylonjs": "6.8.1",
+    "bootstrap": "5.3.1",
     "font-awesome-5-css": "5.4.1",
     "jquery": "3.7.0",
     "jquery-validation": "1.19.5",
     "jquery-validation-unobtrusive": "4.0.0",
-    "@popperjs/core": "2.11.7"
+    "@popperjs/core": "2.11.8"
   }
 }
