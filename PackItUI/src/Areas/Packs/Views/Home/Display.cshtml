@@ -38,7 +38,8 @@
                 @{ await Html.RenderPartialAsync("_GraphicScriptsPartial"); }
                 <div class="form-group">
                     <canvas id="renderCanvas"></canvas>
-                    <script>
+                    <script type="module">
+                        import * as BABYLON from "/lib/@@babylonjs/core/Legacy/legacy.js"
                         drawPack(document.querySelector('#renderCanvas'), '@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model))')
                     </script>
                 </div>
@@ -53,5 +54,5 @@
     <br />
 </form>
 @section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+   @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

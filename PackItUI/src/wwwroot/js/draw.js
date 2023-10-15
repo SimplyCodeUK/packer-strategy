@@ -41,7 +41,7 @@ var drawPack = function (canvas, model_json) {
   // Create the scene
   var scene = new BABYLON.Scene(engine)
   var camera = new BABYLON.UniversalCamera('camera', new BABYLON.Vector3(-result.ExternalLength * 1.5, result.ExternalHeight * 1.5, -result.ExternalBreadth), scene)
-  camera.setTarget(new BABYLON.Vector3.Zero())
+  camera.setTarget(BABYLON.Vector3.Zero())
   camera.attachControl(canvas, false)
   var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene)
   light.diffuse = new BABYLON.Color3(1, 1, 1)

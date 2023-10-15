@@ -8,6 +8,7 @@ namespace PackItDraw.Controllers
 {
     using System;
     using System.Net;
+    using Asp.Versioning;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using PackIt.Drawing;

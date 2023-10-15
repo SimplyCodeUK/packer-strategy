@@ -8,6 +8,7 @@ namespace PackItDraw.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
+    using Asp.Versioning;
 
     /// <summary> The root controller of the service. </summary>
     [ApiVersion("1")]

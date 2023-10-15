@@ -46,8 +46,8 @@
 - [GIT](https://git-scm.com/)
 - [Node.Js Version 18.16.0](https://nodejs.org/)
 - [Yarn Version 1.22.19](https://yarnpkg.com/)
-- [.NET Core SDK 7.0.100](https://dotnet.microsoft.com/)
-- [Visual Studio 2022 Version 17.7.2](https://www.visualstudio.com/)
+- [.NET Core SDK 7.0.402](https://dotnet.microsoft.com/)
+- [Visual Studio 2022 Version 17.7.5](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript

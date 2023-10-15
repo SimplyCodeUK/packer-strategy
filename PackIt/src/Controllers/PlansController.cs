@@ -8,6 +8,7 @@ namespace PackIt.Controllers
 {
     using System;
     using System.Net;
+    using Asp.Versioning;
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;

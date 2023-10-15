@@ -13,6 +13,7 @@ namespace PackIt.Controllers
     using System.Text;
     using System.Text.Json;
     using System.Threading.Tasks;
+    using Asp.Versioning;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
