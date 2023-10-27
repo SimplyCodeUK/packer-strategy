@@ -82,19 +82,20 @@ sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubu
 apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
 wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 dpkg -i packages-microsoft-prod.deb
+systemctl disable hv-kvp-daemon.service
 SCRIPT
 
 BASE_PRE_INSTALL = <<-SCRIPT
-apt-get install apt-transport-https
-apt-get install libxt6 libxmu6
-apt-get update
+apt install apt-transport-https
+apt install libxt6 libxmu6
+apt update
 SCRIPT
 
 DATABASE_INSTALL = <<-SCRIPT
 echo 'deb http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-apt-get update
-apt-get install postgresql-10=10.* -y
+apt update
+apt install postgresql-10=10.* -y
 service postgresql stop
 echo "-------------------- fixing listen_addresses on /etc/postgresql/10/main/postgresql.conf"
 sed -i "s/#listen_address.*/listen_addresses '*'/" /etc/postgresql/10/main/postgresql.conf
@@ -110,16 +111,11 @@ sudo -u postgres psql --command "ALTER USER postgres WITH PASSWORD 'postgres';"
 SCRIPT
 
 SERVICE_INSTALL = <<-SCRIPT
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-apt-get install python3-software-properties -y
-curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-apt-get install nodejs         -y
-apt-get install yarn           -y
-apt-get install nuget          -y
-apt-get install git            -y
-apt-get install dotnet-sdk-7.0 -y
-apt-get install nginx          -y
+apt install python3-software-properties -y
+apt install nuget          -y
+apt install git            -y
+apt install dotnet-sdk-7.0 -y
+apt install nginx          -y
 service nginx stop
 rm /etc/nginx/sites-enabled/default 2> /dev/null
 SCRIPT
@@ -263,12 +259,14 @@ end
 Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "generic/ubuntu2004"
+  config.vm.box = "generic/ubuntu2204"
   config.vm.provider "virtualbox" do |vb|
     vb.cpus = 4
     vb.memory = 2048
     vb.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
-  end
+    vb.customize ['modifyvm', :id, '--clipboard-mode', 'bidirectional']
+    vb.customize ['modifyvm', :id, '--draganddrop', 'bidirectional']
+end
   config.vm.network "forwarded_port", guest: 80, host: 80
 
   MACHINES.each do |key, machine|

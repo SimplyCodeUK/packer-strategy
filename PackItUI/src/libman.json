@@ -3,7 +3,7 @@
   "defaultProvider": "jsdelivr",
   "libraries": [
     {
-      "library": "@babylonjs/core@6.24.0",
+      "library": "@babylonjs/core@6.25.0",
       "destination": "wwwroot/lib/@babylonjs/core/"
     },
     {

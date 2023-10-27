@@ -44,10 +44,8 @@
 ## Development Environment
 
 - [GIT](https://git-scm.com/)
-- [Node.Js Version 18.16.0](https://nodejs.org/)
-- [Yarn Version 1.22.19](https://yarnpkg.com/)
-- [.NET Core SDK 7.0.402](https://dotnet.microsoft.com/)
-- [Visual Studio 2022 Version 17.7.5](https://www.visualstudio.com/)
+- [Visual Studio 2022 Version 17.7.6](https://www.visualstudio.com/)
+  - .NET Core SDK 7.0.402
   - Languages
     - C#
     - JavaScript
@@ -55,10 +53,10 @@
     - StyleCop
     - Markdown Editor
 - [Powershell Version 7.2.0](https://docs.microsoft.com/en-us/powershell/)
-- [VirtualBox Version 7.0.8](https://www.virtualbox.org/)
-  - Oracle VM VirtualBox Extension Pack version 7.0.8r156879
-- [Vagrant Version 2.3.4](https://www.vagrantup.com/)
-  - Box generic/ubuntu2004 version 4.2.16
+- [VirtualBox Version 7.0.12](https://www.virtualbox.org/)
+  - Oracle VM VirtualBox Extension Pack version 7.0.12r159484
+- [Vagrant Version 2.4.0](https://www.vagrantup.com/)
+  - Box generic/ubuntu2204 version 4.3.2
 - [Doxygen Version 1.9.5](https://www.doxygen.nl/)
 
 

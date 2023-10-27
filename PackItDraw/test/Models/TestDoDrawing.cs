@@ -19,7 +19,6 @@ namespace PackItDraw.Test.Models
     public class TestDoDrawing
     {
         private IDrawingRepository repository;
-        private string drawingId;
         private PackIt.Pack.Pack pack;
 
         /// <summary> Setup for all unit tests here. </summary>
@@ -43,11 +42,11 @@ namespace PackItDraw.Test.Models
         public void TestStart()
         {
             Drawing value = new(this.pack);
-            this.drawingId = value.DrawingId;
+            string drawingId = value.DrawingId;
             this.repository.Add(value);
 
-            DoDrawing.Start(this.drawingId, this.repository);
-            var drawing = this.repository.Find(this.drawingId);
+            DoDrawing.Start(drawingId, this.repository);
+            var drawing = this.repository.Find(drawingId);
             Assert.IsTrue(drawing.Computed);
             Assert.AreEqual(2, drawing.Shapes.Count);
         }

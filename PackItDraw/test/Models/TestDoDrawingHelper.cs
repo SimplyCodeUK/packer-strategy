@@ -18,6 +18,7 @@ namespace PackItDraw.Test.Models
         [SetUp]
         public void BeforeTest()
         {
+            // Nothing to do at the moment
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
