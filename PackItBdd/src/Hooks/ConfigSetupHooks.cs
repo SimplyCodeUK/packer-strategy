@@ -18,7 +18,7 @@ namespace PackItBdd.Hooks
         private readonly IObjectContainer container;
 
         /// <summary> The configuration. Read before the start of a sceanrio. </summary>
-        private static IConfiguration _config = null;
+        private static IConfiguration _config;
 
         /// <summary> Constructor </summary>
         ///

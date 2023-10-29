@@ -3,7 +3,7 @@
  * @license Licensed under the MIT License.
  * See LICENSE file in the project root for full license information.
  */
-'use strict'
+"use strict";
 
 /**
  * Find the closest parent node with a matching node name
@@ -14,14 +14,14 @@
  * @returns {HTMLElement} The parent DOM
  */
 function closest (e, name) {
-  var parent = e.parentNode
+  var parent = e.parentNode;
   while (parent !== null) {
     if (parent.nodeName === name) {
-      return parent
+      return parent;
     }
-    parent = parent.parentNode
+    parent = parent.parentNode;
   }
-  return parent
+  return parent;
 }
 
 /**
@@ -30,8 +30,8 @@ function closest (e, name) {
  * @param {HTMLElement} e - The delete button pressed on the row to delete
  */
 var deleteRow = function (e) {
-  closest(e, 'TABLE').deleteRow(closest(e, 'TR').rowIndex)
-}
+  closest(e, "TABLE").deleteRow(closest(e, "TR").rowIndex);
+};
 
 /**
  * Add a row from a table
@@ -40,15 +40,15 @@ var deleteRow = function (e) {
  * @param {string} getUrl - The url for the partial view
  */
 var addRow = function (e, getUrl) {
-  var body = closest(e, 'TABLE').getElementsByTagName('TBODY')[0]
-  var count = body.getElementsByTagName('tr').length
-  var xhr = new XMLHttpRequest()
+  var body = closest(e, "TABLE").getElementsByTagName("TBODY")[0];
+  var count = body.getElementsByTagName("tr").length;
+  var xhr = new XMLHttpRequest();
   xhr.onload = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      body.insertAdjacentHTML('beforeend', xhr.responseText)
+      body.insertAdjacentHTML("beforeend", xhr.responseText);
     }
-  }
-  xhr.open('POST', getUrl, true)
-  xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
-  xhr.send(JSON.stringify({ index: count }))
-}
+  };
+  xhr.open("POST", getUrl, true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({ index: count }));
+};
