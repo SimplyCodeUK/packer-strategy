@@ -63,17 +63,17 @@ namespace PackItUI.Test.Areas.Plans.Controllers
 
             var result = this.controller.Index();
             result.Wait();
-            Assert.IsInstanceOf<ViewResult>(result.Result);
+            Assert.That(result.Result, Is.TypeOf<ViewResult>());
 
             var viewResult = result.Result as ViewResult;
-            Assert.AreEqual("Index", viewResult.ViewName);
-            Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<HomeViewModel>(viewResult.ViewData.Model);
+            Assert.That(viewResult.ViewName, Is.EqualTo("Index"));
+            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
+            Assert.That(viewResult.ViewData.Model, Is.TypeOf<HomeViewModel>());
 
             var model = viewResult.ViewData.Model as HomeViewModel;
-            Assert.AreEqual("Unknown", model.Information.Version);
-            Assert.AreEqual("Service down! http://localhost:8003/api/v1/", model.Information.About);
-            Assert.IsNull(model.Items);
+            Assert.That(model.Information.Version, Is.EqualTo("Unknown"));
+            Assert.That(model.Information.About, Is.EqualTo("Service down! http://localhost:8003/api/v1/"));
+            Assert.That(model.Items, Is.Null);
         }
 
         /// <summary> (Unit Test Method) index action when the service is up. </summary>
@@ -82,19 +82,19 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         {
             var result = this.controller.Index();
             result.Wait();
-            Assert.IsInstanceOf<ViewResult>(result.Result);
+            Assert.That(result.Result, Is.InstanceOf<ViewResult>());
 
             var viewResult = result.Result as ViewResult;
-            Assert.AreEqual("Index", viewResult.ViewName);
-            Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<HomeViewModel>(viewResult.ViewData.Model);
+            Assert.That(viewResult.ViewName, Is.EqualTo("Index"));
+            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
+            Assert.That(viewResult.ViewData.Model, Is.TypeOf<HomeViewModel>());
 
             var model = viewResult.ViewData.Model as HomeViewModel;
-            Assert.AreEqual("1", model.Information.Version);
-            Assert.AreEqual("Plans", model.Information.About);
-            Assert.AreEqual(2, model.Items.Count);
-            Assert.AreEqual("Id1", model.Items[0].PlanId);
-            Assert.AreEqual("Id2", model.Items[1].PlanId);
+            Assert.That(model.Information.Version, Is.EqualTo("1"));
+            Assert.That(model.Information.About, Is.EqualTo("Plans"));
+            Assert.That(model.Items.Count, Is.EqualTo(2));
+            Assert.That(model.Items[0].PlanId, Is.EqualTo("Id1"));
+            Assert.That(model.Items[1].PlanId, Is.EqualTo("Id2"));
         }
 
         /// <summary> (Unit Test Method) create get action. </summary>
@@ -102,12 +102,12 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         public void CreateGet()
         {
             var result = this.controller.Create();
-            Assert.IsInstanceOf<ViewResult>(result);
+            Assert.That(result, Is.TypeOf<ViewResult>());
 
             var viewResult = result as ViewResult;
-            Assert.AreEqual("Create", viewResult.ViewName);
-            Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<PlanEditViewModel>(viewResult.ViewData.Model);
+            Assert.That(viewResult.ViewName, Is.EqualTo("Create"));
+            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
+            Assert.That(viewResult.ViewData.Model, Is.TypeOf<PlanEditViewModel>());
         }
 
         /// <summary> (Unit Test Method) create post action. </summary>
@@ -116,10 +116,10 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         {
             var model = new PlanEditViewModel();
             var result = this.controller.Create(model);
-            Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
+            Assert.That(result.Result, Is.TypeOf<RedirectToActionResult>());
 
             var redirectResult = result.Result as RedirectToActionResult;
-            Assert.AreEqual("Index", redirectResult.ActionName);
+            Assert.That(redirectResult.ActionName, Is.EqualTo("Index"));
         }
 
         /// <summary> (Unit Test Method) create post action when disconnected. </summary>
@@ -130,10 +130,10 @@ namespace PackItUI.Test.Areas.Plans.Controllers
 
             var model = new PlanEditViewModel();
             var result = this.controller.Create(model);
-            Assert.IsInstanceOf<ViewResult>(result.Result);
+            Assert.That(result.Result, Is.TypeOf<ViewResult>());
 
             var viewResult = result.Result as ViewResult;
-            Assert.AreEqual("Create", viewResult.ViewName);
+            Assert.That(viewResult.ViewName, Is.EqualTo("Create"));
         }
 
         /// <summary> (Unit Test Method) update get action. </summary>
@@ -141,15 +141,15 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         public void UpdateGet()
         {
             var result = this.controller.Update("Id1");
-            Assert.IsInstanceOf<ViewResult>(result.Result);
+            Assert.That(result.Result, Is.TypeOf<ViewResult>());
 
             var viewResult = result.Result as ViewResult;
-            Assert.AreEqual("Update", viewResult.ViewName);
-            Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<PlanEditViewModel>(viewResult.ViewData.Model);
+            Assert.That(viewResult.ViewName, Is.EqualTo("Update"));
+            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
+            Assert.That(viewResult.ViewData.Model, Is.TypeOf<PlanEditViewModel>());
 
             var viewModel = viewResult.ViewData.Model as PlanEditViewModel;
-            Assert.AreEqual("Id1", viewModel.Data.PlanId);
+            Assert.That(viewModel.Data.PlanId, Is.EqualTo("Id1"));
         }
 
         /// <summary> (Unit Test Method) update post action. </summary>
@@ -158,10 +158,10 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         {
             var model = new PlanEditViewModel();
             var result = this.controller.Update("Id1", model);
-            Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
+            Assert.That(result.Result, Is.TypeOf<RedirectToActionResult>());
 
             var redirectResult = result.Result as RedirectToActionResult;
-            Assert.AreEqual("Index", redirectResult.ActionName);
+            Assert.That(redirectResult.ActionName, Is.EqualTo("Index"));
         }
 
         /// <summary> (Unit Test Method) update post action when disconnected. </summary>
@@ -172,10 +172,10 @@ namespace PackItUI.Test.Areas.Plans.Controllers
 
             var model = new PlanEditViewModel();
             var result = this.controller.Update("Id1", model);
-            Assert.IsInstanceOf<ViewResult>(result.Result);
+            Assert.That(result.Result, Is.TypeOf<ViewResult>());
 
             var viewResult = result.Result as ViewResult;
-            Assert.AreEqual("Update", viewResult.ViewName);
+            Assert.That(viewResult.ViewName, Is.EqualTo("Update"));
         }
 
         /// <summary> (Unit Test Method) delete get action. </summary>
@@ -183,15 +183,15 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         public void DeleteGet()
         {
             var result = this.controller.Delete("Id1");
-            Assert.IsInstanceOf<ViewResult>(result.Result);
+            Assert.That(result.Result, Is.TypeOf<ViewResult>());
 
             var viewResult = result.Result as ViewResult;
-            Assert.AreEqual("Delete", viewResult.ViewName);
-            Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<PlanEditViewModel>(viewResult.ViewData.Model);
+            Assert.That(viewResult.ViewName, Is.EqualTo("Delete"));
+            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
+            Assert.That(viewResult.ViewData.Model, Is.TypeOf<PlanEditViewModel>());
 
             var viewModel = viewResult.ViewData.Model as PlanEditViewModel;
-            Assert.AreEqual("Id1", viewModel.Data.PlanId);
+            Assert.That(viewModel.Data.PlanId, Is.EqualTo("Id1"));
         }
 
         /// <summary> (Unit Test Method) delete post action. </summary>
@@ -199,10 +199,10 @@ namespace PackItUI.Test.Areas.Plans.Controllers
         public void DeletePost()
         {
             var result = this.controller.DoDelete("Id1");
-            Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
+            Assert.That(result.Result, Is.TypeOf<RedirectToActionResult>());
 
             var redirectResult = result.Result as RedirectToActionResult;
-            Assert.AreEqual("Index", redirectResult.ActionName);
+            Assert.That(redirectResult.ActionName, Is.EqualTo("Index"));
         }
 
         /// <summary> (Unit Test Method) delete post action when disconnected. </summary>
@@ -212,10 +212,10 @@ namespace PackItUI.Test.Areas.Plans.Controllers
             this.SetupDisconnected();
 
             var result = this.controller.DoDelete("Id1");
-            Assert.IsInstanceOf<RedirectToActionResult>(result.Result);
+            Assert.That(result.Result, Is.TypeOf<RedirectToActionResult>());
 
             var redirectResult = result.Result as RedirectToActionResult;
-            Assert.AreEqual("Index", redirectResult.ActionName);
+            Assert.That(redirectResult.ActionName, Is.EqualTo("Index"));
         }
 
         /// <summary> Setup for disconnected service. </summary>
@@ -228,7 +228,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
                 {
                     TimeOut = TimeOut
                 });
-            Assert.IsNotNull(this.controller);
+            Assert.That(this.controller, Is.Not.Null);
         }
 
         /// <summary> Setup for connected services. </summary>
@@ -258,7 +258,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
                 {
                     TimeOut = TimeOut
                 });
-            Assert.IsNotNull(this.controller);
+            Assert.That(this.controller, Is.Not.Null);
         }
     }
 }

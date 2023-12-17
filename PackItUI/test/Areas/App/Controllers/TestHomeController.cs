@@ -64,11 +64,11 @@ namespace PackItUI.Test.Areas.App.Controllers
         public void Index()
         {
             var result = this.controller.Index();
-            Assert.IsInstanceOf<ViewResult>(result);
+            Assert.That(result, Is.TypeOf<ViewResult>());
 
             ViewResult viewResult = result as ViewResult;
-            Assert.AreEqual("Index", viewResult.ViewName);
-            Assert.IsNull(viewResult.ViewData.Model);
+            Assert.That(viewResult.ViewName, Is.EqualTo("Index"));
+            Assert.That(viewResult.ViewData.Model, Is.Null);
         }
 
         /// <summary> (Unit Test Method) about action when the services are not running. </summary>
@@ -77,22 +77,22 @@ namespace PackItUI.Test.Areas.App.Controllers
         {
             var result = this.controller.About();
             result.Wait();
-            Assert.IsInstanceOf<ViewResult>(result.Result);
+            Assert.That(result.Result, Is.TypeOf<ViewResult>());
 
             ViewResult viewResult = result.Result as ViewResult;
-            Assert.AreEqual("About", viewResult.ViewName);
-            Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<AboutViewModel>(viewResult.ViewData.Model);
+            Assert.That(viewResult.ViewName, Is.EqualTo("About"));
+            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
+            Assert.That(viewResult.ViewData.Model, Is.TypeOf<AboutViewModel>());
 
             AboutViewModel model = viewResult.ViewData.Model as AboutViewModel;
-            Assert.AreEqual("Unknown", model.Services["Materials"].Version);
-            Assert.AreEqual("Unknown", model.Services["Packs"].Version);
-            Assert.AreEqual("Unknown", model.Services["Plans"].Version);
-            Assert.AreEqual("Unknown", model.Services["Uploads"].Version);
-            Assert.AreEqual("Service down! http://localhost:8001/api/v1/", model.Services["Materials"].About);
-            Assert.AreEqual("Service down! http://localhost:8002/api/v1/", model.Services["Packs"].About);
-            Assert.AreEqual("Service down! http://localhost:8003/api/v1/", model.Services["Plans"].About);
-            Assert.AreEqual("Service down! http://localhost:8004/api/v1/", model.Services["Uploads"].About);
+            Assert.That(model.Services["Materials"].Version, Is.EqualTo("Unknown"));
+            Assert.That(model.Services["Packs"].Version, Is.EqualTo("Unknown"));
+            Assert.That(model.Services["Plans"].Version, Is.EqualTo("Unknown"));
+            Assert.That(model.Services["Uploads"].Version, Is.EqualTo("Unknown"));
+            Assert.That(model.Services["Materials"].About, Is.EqualTo("Service down! http://localhost:8001/api/v1/"));
+            Assert.That(model.Services["Packs"].About, Is.EqualTo("Service down! http://localhost:8002/api/v1/"));
+            Assert.That(model.Services["Plans"].About, Is.EqualTo("Service down! http://localhost:8003/api/v1/"));
+            Assert.That(model.Services["Uploads"].About, Is.EqualTo("Service down! http://localhost:8004/api/v1/"));
         }
 
         /// <summary> (Unit Test Method) about action when the services are running. </summary>
@@ -103,24 +103,25 @@ namespace PackItUI.Test.Areas.App.Controllers
 
             var result = this.controller.About();
             result.Wait();
-            Assert.IsInstanceOf<ViewResult>(result.Result);
+            Assert.That(result.Result, Is.TypeOf<ViewResult>());
 
             ViewResult viewResult = result.Result as ViewResult;
-            Assert.AreEqual("About", viewResult.ViewName);
-            Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<AboutViewModel>(viewResult.ViewData.Model);
+            Assert.That(viewResult.ViewName, Is.EqualTo("About"));
+            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
+            Assert.That(viewResult.ViewData.Model, Is.TypeOf<AboutViewModel>());
 
             AboutViewModel model = viewResult.ViewData.Model as AboutViewModel;
-            Assert.AreEqual("1", model.Services["Materials"].Version);
-            Assert.AreEqual("1", model.Services["Packs"].Version);
-            Assert.AreEqual("1", model.Services["Plans"].Version);
-            Assert.AreEqual("1", model.Services["Uploads"].Version);
-            Assert.AreEqual("1", model.Services["Drawings"].Version);
-            Assert.AreEqual("Materials", model.Services["Materials"].About);
-            Assert.AreEqual("Packs", model.Services["Packs"].About);
-            Assert.AreEqual("Plans", model.Services["Plans"].About);
-            Assert.AreEqual("Uploads", model.Services["Uploads"].About);
-            Assert.AreEqual("Draw", model.Services["Drawings"].About);
+            Assert.That(model.Services["Materials"].Version, Is.EqualTo("1"));
+            Assert.That(model.Services["Packs"].Version, Is.EqualTo("1"));
+            Assert.That(model.Services["Plans"].Version, Is.EqualTo("1"));
+            Assert.That(model.Services["Uploads"].Version, Is.EqualTo("1"));
+            Assert.That(model.Services["Drawings"].Version, Is.EqualTo("1"));
+
+            Assert.That(model.Services["Materials"].About, Is.EqualTo("Materials"));
+            Assert.That(model.Services["Packs"].About, Is.EqualTo("Packs"));
+            Assert.That(model.Services["Plans"].About, Is.EqualTo("Plans"));
+            Assert.That(model.Services["Uploads"].About, Is.EqualTo("Uploads"));
+            Assert.That(model.Services["Drawings"].About, Is.EqualTo("Draw"));
         }
 
         /// <summary> (Unit Test Method) contact action. </summary>
@@ -128,11 +129,11 @@ namespace PackItUI.Test.Areas.App.Controllers
         public void Contact()
         {
             var result = this.controller.Contact();
-            Assert.IsInstanceOf<ViewResult>(result);
+            Assert.That(result, Is.TypeOf<ViewResult>());
 
             ViewResult viewResult = result as ViewResult;
-            Assert.AreEqual("Contact", viewResult.ViewName);
-            Assert.IsNull(viewResult.ViewData.Model);
+            Assert.That(viewResult.ViewName, Is.EqualTo("Contact"));
+            Assert.That(viewResult.ViewData.Model, Is.Null);
         }
 
         /// <summary> (Unit Test Method) error action. </summary>
@@ -140,12 +141,12 @@ namespace PackItUI.Test.Areas.App.Controllers
         public void Error()
         {
             var result = this.controller.Error();
-            Assert.IsInstanceOf<ViewResult>(result);
+            Assert.That(result, Is.TypeOf<ViewResult>());
 
             ViewResult viewResult = result as ViewResult;
-            Assert.AreEqual("Error", viewResult.ViewName);
-            Assert.IsNotNull(viewResult.ViewData.Model);
-            Assert.IsInstanceOf<ErrorViewModel>(viewResult.ViewData.Model);
+            Assert.That(viewResult.ViewName, Is.EqualTo("Error"));
+            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
+            Assert.That(viewResult.ViewData.Model, Is.TypeOf<ErrorViewModel>());
         }
 
         /// <summary> Setup for disconnected services. </summary>
@@ -179,7 +180,7 @@ namespace PackItUI.Test.Areas.App.Controllers
                     HttpContext = new DefaultHttpContext()
                 }
             };
-            Assert.IsNotNull(this.controller);
+            Assert.That(this.controller, Is.Not.Null);
         }
 
         /// <summary> Setup for connected services. </summary>
@@ -215,7 +216,7 @@ namespace PackItUI.Test.Areas.App.Controllers
                     HttpContext = new DefaultHttpContext()
                 }
             };
-            Assert.IsNotNull(this.controller);
+            Assert.That(this.controller, Is.Not.Null);
         }
     }
 }

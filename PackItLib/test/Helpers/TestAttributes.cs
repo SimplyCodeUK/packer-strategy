@@ -20,7 +20,7 @@ namespace PackItLib.Test.Helpers
         {
             var name = Attributes.ShortName(MaterialType.UBoard);
 
-            Assert.AreEqual("UBoard", name);
+            Assert.That(name, Is.EqualTo("UBoard"));
         }
 
         /// <summary> (Unit Test Method) get an enum name. </summary>
@@ -29,7 +29,7 @@ namespace PackItLib.Test.Helpers
         {
             var name = Attributes.Name(MaterialType.UBoard);
 
-            Assert.AreEqual("U Board", name);
+            Assert.That(name, Is.EqualTo("U Board"));
         }
 
         /// <summary> (Unit Test Method) get an enum url name. </summary>
@@ -38,7 +38,7 @@ namespace PackItLib.Test.Helpers
         {
             var name = Attributes.UrlName(MaterialType.UBoard);
 
-            Assert.AreEqual("uboard", name);
+            Assert.That(name, Is.EqualTo("uboard"));
         }
 
         /// <summary> (Unit Test Method) get an enum short name with no attribute. </summary>
@@ -47,7 +47,7 @@ namespace PackItLib.Test.Helpers
         {
             var name = Attributes.ShortName(CostType.Area);
 
-            Assert.AreEqual("Area", name);
+            Assert.That(name, Is.EqualTo("Area"));
         }
 
         /// <summary> (Unit Test Method) get an enum name with no attribute. </summary>
@@ -56,7 +56,7 @@ namespace PackItLib.Test.Helpers
         {
             var name = Attributes.Name(CostType.Area);
 
-            Assert.AreEqual("Area", name);
+            Assert.That(name, Is.EqualTo("Area"));
         }
 
         /// <summary> (Unit Test Method) get an enum url name with no attribute. </summary>
@@ -65,7 +65,7 @@ namespace PackItLib.Test.Helpers
         {
             var name = Attributes.UrlName(CostType.Area);
 
-            Assert.AreEqual("area", name);
+            Assert.That(name, Is.EqualTo("area"));
         }
     }
 }

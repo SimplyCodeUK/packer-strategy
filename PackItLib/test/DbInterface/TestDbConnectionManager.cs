@@ -20,15 +20,15 @@ namespace PackIt.Test.DbInterface
             var manager = new DbConnectionManager();
             var inmemory = new DbContextBuilderInMemory();
             var postgres = new DbContextBuilderPostgres();
-            Assert.IsNotNull(manager);
-            Assert.IsNotNull(inmemory);
-            Assert.IsNotNull(postgres);
+            Assert.That(manager, Is.Not.Null);
+            Assert.That(inmemory, Is.Not.Null);
+            Assert.That(postgres, Is.Not.Null);
 
             manager.RegisterContextBuilder("inmemory", inmemory);
             manager.RegisterContextBuilder("postgres", postgres);
 
-            Assert.AreEqual(manager.ContextBuilder("inmemory"), inmemory);
-            Assert.AreEqual(manager.ContextBuilder("postgres"), postgres);
+            Assert.That(manager.ContextBuilder("inmemory"), Is.EqualTo(inmemory));
+            Assert.That(manager.ContextBuilder("postgres"), Is.EqualTo(postgres));
         }
 
         /// <summary> (Unit Test Method) Failed database context lookup. </summary>
@@ -38,9 +38,9 @@ namespace PackIt.Test.DbInterface
             var manager = new DbConnectionManager();
             var inmemory = new DbContextBuilderInMemory();
             var postgres = new DbContextBuilderPostgres();
-            Assert.IsNotNull(manager);
-            Assert.IsNotNull(inmemory);
-            Assert.IsNotNull(postgres);
+            Assert.That(manager, Is.Not.Null);
+            Assert.That(inmemory, Is.Not.Null);
+            Assert.That(postgres, Is.Not.Null);
 
             manager.RegisterContextBuilder("inmemory", inmemory);
             manager.RegisterContextBuilder("postgres", postgres);

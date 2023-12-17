@@ -24,7 +24,7 @@ namespace PackIt.Test.DTO
         public void BeforeTest()
         {
             this.mapper = new();
-            Assert.IsNotNull(this.mapper);
+            Assert.That(this.mapper, Is.Not.Null);
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
@@ -75,47 +75,47 @@ namespace PackIt.Test.DTO
             var material = JsonSerializer.Deserialize<Material>(text);
             var dto = this.mapper.ConvertToDto(material);
 
-            Assert.AreEqual(material.MaterialId, dto.MaterialId);
+            Assert.That(dto.MaterialId, Is.EqualTo(material.MaterialId));
 
-            Assert.AreEqual(material.Costings.Count, dto.Costings.Count);
+            Assert.That(dto.Costings.Count, Is.EqualTo(material.Costings.Count));
             foreach (var costing in dto.Costings)
             {
-                Assert.AreEqual(material.MaterialId, costing.MaterialId);
+                Assert.That(costing.MaterialId, Is.EqualTo(material.MaterialId));
             }
 
-            Assert.AreEqual(material.Layers.Count, dto.Layers.Count);
+            Assert.That(dto.Layers.Count, Is.EqualTo(material.Layers.Count));
             int layerIndex = 0;
             foreach (var layer in dto.Layers)
             {
-                Assert.AreEqual(material.MaterialId, layer.MaterialId);
-                Assert.AreEqual(layerIndex, layer.LayerIndex);
+                Assert.That(layer.MaterialId, Is.EqualTo(material.MaterialId));
+                Assert.That(layer.LayerIndex, Is.EqualTo(layerIndex));
 
-                Assert.AreEqual(material.Layers[layerIndex].Collations.Count, layer.Collations.Count);
+                Assert.That(layer.Collations.Count, Is.EqualTo(material.Layers[layerIndex].Collations.Count));
                 int collationIndex = 0;
                 foreach (var collation in layer.Collations)
                 {
-                    Assert.AreEqual(material.MaterialId, collation.MaterialId);
-                    Assert.AreEqual(layer.LayerIndex, collation.LayerIndex);
-                    Assert.AreEqual(collationIndex, collation.CollationIndex);
+                    Assert.That(collation.MaterialId, Is.EqualTo(material.MaterialId));
+                    Assert.That(collation.LayerIndex, Is.EqualTo(layer.LayerIndex));
+                    Assert.That(collation.CollationIndex, Is.EqualTo(collationIndex));
                     ++collationIndex;
                 }
                 ++layerIndex;
             }
-            Assert.AreEqual(material.Layers.Count, dto.Layers.Count);
+            Assert.That(dto.Layers.Count, Is.EqualTo(material.Layers.Count));
 
             int palletDeckIndex = 0;
             foreach (var palletDeck in dto.PalletDecks)
             {
-                Assert.AreEqual(material.MaterialId, palletDeck.MaterialId);
-                Assert.AreEqual(palletDeckIndex, palletDeck.PalletDeckIndex);
+                Assert.That(palletDeck.MaterialId, Is.EqualTo(material.MaterialId));
+                Assert.That(palletDeck.PalletDeckIndex, Is.EqualTo(palletDeckIndex));
 
-                Assert.AreEqual(material.PalletDecks[palletDeckIndex].Planks.Count, palletDeck.Planks.Count);
+                Assert.That(palletDeck.Planks.Count, Is.EqualTo(material.PalletDecks[palletDeckIndex].Planks.Count));
                 int plankIndex = 0;
                 foreach (var plank in palletDeck.Planks)
                 {
-                    Assert.AreEqual(material.MaterialId, plank.MaterialId);
-                    Assert.AreEqual(palletDeck.PalletDeckIndex, plank.PalletDeckIndex);
-                    Assert.AreEqual(plankIndex, plank.PlankIndex);
+                    Assert.That(plank.MaterialId, Is.EqualTo(material.MaterialId));
+                    Assert.That(plank.PalletDeckIndex, Is.EqualTo(palletDeck.PalletDeckIndex));
+                    Assert.That(plank.PlankIndex, Is.EqualTo(plankIndex));
                     ++plankIndex;
                 }
                 ++palletDeckIndex;
@@ -124,8 +124,8 @@ namespace PackIt.Test.DTO
             int sectionIndex = 0;
             foreach (var section in dto.Sections)
             {
-                Assert.AreEqual(material.MaterialId, section.MaterialId);
-                Assert.AreEqual(sectionIndex, section.SectionIndex);
+                Assert.That(section.MaterialId, Is.EqualTo(material.MaterialId));
+                Assert.That(section.SectionIndex, Is.EqualTo(sectionIndex));
                 ++sectionIndex;
             }
         }
@@ -137,23 +137,23 @@ namespace PackIt.Test.DTO
             var dto = this.mapper.ConvertToDto(material);
             var data = this.mapper.ConvertToData(dto);
 
-            Assert.AreEqual(material.MaterialId, data.MaterialId);
+            Assert.That(data.MaterialId, Is.EqualTo(material.MaterialId));
 
-            Assert.AreEqual(material.Costings.Count, data.Costings.Count);
+            Assert.That(data.Costings.Count, Is.EqualTo(material.Costings.Count));
 
-            Assert.AreEqual(material.Layers.Count, data.Layers.Count);
+            Assert.That(data.Layers.Count, Is.EqualTo(material.Layers.Count));
             int layerIndex = 0;
             foreach (var layer in data.Layers)
             {
-                Assert.AreEqual(material.Layers[layerIndex].Collations.Count, layer.Collations.Count);
+                Assert.That(layer.Collations.Count, Is.EqualTo(material.Layers[layerIndex].Collations.Count));
                 ++layerIndex;
             }
-            Assert.AreEqual(material.Layers.Count, data.Layers.Count);
+            Assert.That(data.Layers.Count, Is.EqualTo(material.Layers.Count));
 
             int palletDeckIndex = 0;
             foreach (var palletDeck in data.PalletDecks)
             {
-                Assert.AreEqual(material.PalletDecks[palletDeckIndex].Planks.Count, palletDeck.Planks.Count);
+                Assert.That(palletDeck.Planks.Count, Is.EqualTo(material.PalletDecks[palletDeckIndex].Planks.Count));
                 ++palletDeckIndex;
             }
         }

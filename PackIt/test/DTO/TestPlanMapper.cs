@@ -24,7 +24,7 @@ namespace PackIt.Test.DTO
         public void BeforeTest()
         {
             this.mapper = new();
-            Assert.IsNotNull(this.mapper);
+            Assert.That(this.mapper, Is.Not.Null);
         }
 
         /// <summary> (Unit Test Method) Convert a Plan to it's DTO. </summary>
@@ -35,23 +35,23 @@ namespace PackIt.Test.DTO
             var plan = JsonSerializer.Deserialize<Plan>(text);
             var dto = this.mapper.ConvertToDto(plan);
 
-            Assert.AreEqual(plan.PlanId, dto.PlanId);
+            Assert.That(dto.PlanId, Is.EqualTo(plan.PlanId));
             int minLevel = -1;
-            Assert.AreEqual(plan.Stages.Count, dto.Stages.Count);
+            Assert.That(dto.Stages.Count, Is.EqualTo(plan.Stages.Count));
             int stageIndex = 0;
             foreach (var stage in dto.Stages)
             {
-                Assert.AreEqual(plan.PlanId, stage.PlanId);
-                Assert.LessOrEqual(minLevel, (int)stage.StageLevel);
+                Assert.That(stage.PlanId, Is.EqualTo(plan.PlanId));
+                Assert.That(minLevel, Is.LessThanOrEqualTo((int)stage.StageLevel));
                 minLevel = (int)stage.StageLevel;
 
-                Assert.AreEqual(plan.Stages[stageIndex].Limits.Count, stage.Limits.Count);
+                Assert.That(stage.Limits.Count, Is.EqualTo(plan.Stages[stageIndex].Limits.Count));
                 int limitIndex = 0;
                 foreach (var limit in stage.Limits)
                 {
-                    Assert.AreEqual(plan.PlanId, limit.PlanId);
-                    Assert.AreEqual(stage.StageLevel, limit.StageLevel);
-                    Assert.AreEqual(limitIndex, limit.LimitIndex);
+                    Assert.That(limit.PlanId, Is.EqualTo(plan.PlanId));
+                    Assert.That(limit.StageLevel, Is.EqualTo(stage.StageLevel));
+                    Assert.That(limit.LimitIndex, Is.EqualTo(limitIndex));
                     ++limitIndex;
                 }
                 ++stageIndex;
@@ -67,16 +67,16 @@ namespace PackIt.Test.DTO
             var dto = this.mapper.ConvertToDto(plan);
             var data = this.mapper.ConvertToData(dto);
 
-            Assert.AreEqual(plan.PlanId, data.PlanId);
+            Assert.That(data.PlanId, Is.EqualTo(plan.PlanId));
             int minLevel = -1;
-            Assert.AreEqual(plan.Stages.Count, data.Stages.Count);
+            Assert.That(data.Stages.Count, Is.EqualTo(plan.Stages.Count));
             int stageIndex = 0;
             foreach (var stage in data.Stages)
             {
-                Assert.LessOrEqual(minLevel, (int)stage.StageLevel);
+                Assert.That(minLevel, Is.LessThanOrEqualTo((int)stage.StageLevel));
                 minLevel = (int)stage.StageLevel;
 
-                Assert.AreEqual(plan.Stages[stageIndex].Limits.Count, stage.Limits.Count);
+                Assert.That(stage.Limits.Count, Is.EqualTo(plan.Stages[stageIndex].Limits.Count));
                 ++stageIndex;
             }
         }

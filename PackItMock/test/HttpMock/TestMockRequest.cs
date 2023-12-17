@@ -19,10 +19,10 @@ namespace PackItMock.Test.HttpMock
         public void TestMockHttpGet()
         {
             var request = new MockRequest(HttpMethod.Get, "http://url.co.uk/");
-            Assert.AreEqual(HttpMethod.Get, request.Method);
-            Assert.AreEqual(new Uri("http://url.co.uk/"), request.RequestUri);
-            Assert.IsNull(request.Content);
-            Assert.AreEqual(HttpStatusCode.OK, request.StatusCode);
+            Assert.That(request.Method, Is.EqualTo(HttpMethod.Get));
+            Assert.That(request.RequestUri, Is.EqualTo(new Uri("http://url.co.uk/")));
+            Assert.That(request.Content, Is.Null);
+            Assert.That(request.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
 
         /// <summary> (Unit Test Method) Mock HTTP Post. </summary>
@@ -30,10 +30,10 @@ namespace PackItMock.Test.HttpMock
         public void TestMockHttpPost()
         {
             var request = new MockRequest(HttpMethod.Post, "http://url.co.uk/");
-            Assert.AreEqual(HttpMethod.Post, request.Method);
-            Assert.AreEqual(new Uri("http://url.co.uk/"), request.RequestUri);
-            Assert.IsNull(request.Content);
-            Assert.AreEqual(HttpStatusCode.Created, request.StatusCode);
+            Assert.That(request.Method, Is.EqualTo(HttpMethod.Post));
+            Assert.That(request.RequestUri, Is.EqualTo(new Uri("http://url.co.uk/")));
+            Assert.That(request.Content, Is.Null);
+            Assert.That(request.StatusCode, Is.EqualTo(HttpStatusCode.Created));
         }
 
         /// <summary> (Unit Test Method) Mock HTTP Put. </summary>
@@ -41,10 +41,10 @@ namespace PackItMock.Test.HttpMock
         public void TestMockHttpPut()
         {
             var request = new MockRequest(HttpMethod.Put, "http://url.co.uk/");
-            Assert.AreEqual(HttpMethod.Put, request.Method);
-            Assert.AreEqual(new Uri("http://url.co.uk/"), request.RequestUri);
-            Assert.IsNull(request.Content);
-            Assert.AreEqual(request.StatusCode, HttpStatusCode.Created);
+            Assert.That(request.Method, Is.EqualTo(HttpMethod.Put));
+            Assert.That(request.RequestUri, Is.EqualTo(new Uri("http://url.co.uk/")));
+            Assert.That(request.Content, Is.Null);
+            Assert.That(request.StatusCode, Is.EqualTo(HttpStatusCode.Created));
         }
 
         /// <summary> (Unit Test Method) Mock HTTP Delete. </summary>
@@ -52,10 +52,10 @@ namespace PackItMock.Test.HttpMock
         public void TestMockHttpDelete()
         {
             var request = new MockRequest(HttpMethod.Delete, "http://url.co.uk/");
-            Assert.AreEqual(HttpMethod.Delete, request.Method);
-            Assert.AreEqual(new Uri("http://url.co.uk/"), request.RequestUri);
-            Assert.IsNull(request.Content);
-            Assert.AreEqual(HttpStatusCode.Gone, request.StatusCode);
+            Assert.That(request.Method, Is.EqualTo(HttpMethod.Delete));
+            Assert.That(request.RequestUri, Is.EqualTo(new Uri("http://url.co.uk/")));
+            Assert.That(request.Content, Is.Null);
+            Assert.That(request.StatusCode, Is.EqualTo(HttpStatusCode.Gone));
         }
 
 
@@ -65,13 +65,13 @@ namespace PackItMock.Test.HttpMock
         {
             var request = new MockRequest(HttpMethod.Post, "http://url.co.uk/");
             request.ContentsJson("{}");
-            Assert.NotNull(request.Content.Headers.ContentType);
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-            Assert.NotNull(request.Content.Headers.ContentType.MediaType);
-            Assert.AreEqual("application/json", request.Content.Headers.ContentType.MediaType);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
-            Assert.AreEqual("utf-8", request.Content.Headers.ContentType.CharSet);
-            Assert.AreEqual(2, request.Content.Headers.ContentLength);
+            Assert.That(request.Content.Headers.ContentType, Is.Not.Null);
+#pragma warning disable CS8602, CS8604 // Dereference of a possibly null reference.
+            Assert.That(request.Content.Headers.ContentType.MediaType, Is.Not.Null);
+            Assert.That(request.Content.Headers.ContentType.MediaType, Is.EqualTo("application/json"));
+            Assert.That(request.Content.Headers.ContentType.CharSet, Is.EqualTo("utf-8"));
+            Assert.That(request.Content.Headers.ContentLength, Is.EqualTo(2));
+#pragma warning restore CS8602, CS8604 // Dereference of a possibly null reference.
         }
     }
 }

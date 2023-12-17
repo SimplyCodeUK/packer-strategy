@@ -47,8 +47,8 @@ namespace PackItDraw.Test.Models
 
             DoDrawing.Start(drawingId, this.repository);
             var drawing = this.repository.Find(drawingId);
-            Assert.IsTrue(drawing.Computed);
-            Assert.AreEqual(2, drawing.Shapes.Count);
+            Assert.That(drawing.Computed, Is.True);
+            Assert.That(drawing.Shapes.Count, Is.EqualTo(2));
         }
     }
 }

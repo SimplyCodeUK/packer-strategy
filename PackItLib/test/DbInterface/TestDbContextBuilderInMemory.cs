@@ -18,10 +18,10 @@ namespace PackIt.Test.DbInterface
         public void CreateContextOptionsBuilder()
         {
             var context = new DbContextBuilderInMemory();
-            Assert.IsNotNull(context);
+            Assert.That(context, Is.Not.Null);
 
             var action = context.CreateContextOptionsBuilder("material");
-            Assert.IsNotNull(action);
+            Assert.That(action, Is.Not.Null);
         }
     }
 }

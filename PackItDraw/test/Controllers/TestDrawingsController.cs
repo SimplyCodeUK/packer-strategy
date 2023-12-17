@@ -49,7 +49,7 @@ namespace PackItDraw.Test.Controllers
             this.controller = new(
                 Mock.Of<ILogger<DrawingsController>>(),
                 repository);
-            Assert.IsNotNull(this.controller);
+            Assert.That(this.controller, Is.Not.Null);
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
@@ -59,12 +59,12 @@ namespace PackItDraw.Test.Controllers
             this.drawingPack.PackId = Guid.NewGuid().ToString();
 
             var result = this.controller.Post(this.drawingPack);
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<CreatedAtRouteResult>(result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<CreatedAtRouteResult>());
             var res = result as CreatedAtRouteResult;
-            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
-            Assert.IsTrue(res.RouteValues.ContainsKey("id"));
-            Assert.IsInstanceOf<Drawing>(res.Value);
+            Assert.That(res.StatusCode, Is.EqualTo((int)HttpStatusCode.Created));
+            Assert.That(res.RouteValues.ContainsKey("id"), Is.True);
+            Assert.That(res.Value, Is.TypeOf<Drawing>());
         }
 
         /// <summary> (Unit Test Method) posts the no data. </summary>
@@ -72,9 +72,9 @@ namespace PackItDraw.Test.Controllers
         public void PostNoData()
         {
             var result = this.controller.Post(null);
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<BadRequestResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.BadRequest, (result as BadRequestResult).StatusCode);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<BadRequestResult>());
+            Assert.That((result as BadRequestResult).StatusCode, Is.EqualTo((int)HttpStatusCode.BadRequest));
         }
 
         /// <summary> (Unit Test Method) posts the already exists. </summary>
@@ -84,22 +84,22 @@ namespace PackItDraw.Test.Controllers
             this.drawingPack.PackId = Guid.NewGuid().ToString();
 
             var result = this.controller.Post(this.drawingPack);
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<CreatedAtRouteResult>(result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<CreatedAtRouteResult>());
             var res = result as CreatedAtRouteResult;
-            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.That(res.StatusCode, Is.EqualTo((int)HttpStatusCode.Created));
             var val1 = res.RouteValues["id"].ToString();
-            Assert.IsInstanceOf<Drawing>(res.Value);
+            Assert.That(res.Value, Is.TypeOf<Drawing>());
 
             result = this.controller.Post(this.drawingPack);
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<CreatedAtRouteResult>(result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<CreatedAtRouteResult>());
             res = result as CreatedAtRouteResult;
-            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.That(res.StatusCode, Is.EqualTo((int)HttpStatusCode.Created));
             var val2 = res.RouteValues["id"].ToString();
-            Assert.IsInstanceOf<Drawing>(res.Value);
+            Assert.That(res.Value, Is.TypeOf<Drawing>());
 
-            Assert.AreNotEqual(val1, val2);
+            Assert.That(val1, Is.Not.EqualTo(val2));
         }
 
         /// <summary> (Unit Test Method) gets all. </summary>
@@ -116,18 +116,18 @@ namespace PackItDraw.Test.Controllers
 
                 var resultPost = this.controller.Post(this.drawingPack);
                 var res = resultPost as CreatedAtRouteResult;
-                Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+                Assert.That(res.StatusCode, Is.EqualTo((int)HttpStatusCode.Created));
                 var val = res.RouteValues["id"].ToString();
                 ids.Add(val);
             }
 
             var result = this.controller.Get();
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<OkObjectResult>(result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<OkObjectResult>());
 
             var objectResult = result as OkObjectResult;
-            Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<IList<Drawing>>(objectResult.Value);
+            Assert.That(objectResult.StatusCode, Is.EqualTo((int)HttpStatusCode.OK));
+            Assert.That(objectResult.Value, Is.TypeOf<List<Drawing>>());
 
             var items = objectResult.Value as IList<Drawing>;
             foreach (var item in items)
@@ -138,7 +138,7 @@ namespace PackItDraw.Test.Controllers
                 }
             }
 
-            Assert.IsEmpty(ids, "IDS not found " + string.Join(",", ids));
+            Assert.That(ids, Is.Empty, "IDS not found " + string.Join(",", ids));
         }
 
         /// <summary> (Unit Test Method) gets this object. </summary>
@@ -151,23 +151,23 @@ namespace PackItDraw.Test.Controllers
             this.drawingPack.Name = StartName;
 
             var result = this.controller.Post(this.drawingPack);
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<CreatedAtRouteResult>(result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<CreatedAtRouteResult>());
             var res = result as CreatedAtRouteResult;
-            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.That(res.StatusCode, Is.EqualTo((int)HttpStatusCode.Created));
             var val1 = res.RouteValues["id"].ToString();
 
             result = this.controller.Get(val1);
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<OkObjectResult>(result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<OkObjectResult>());
 
             var objectResult = result as OkObjectResult;
-            Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<Drawing>(objectResult.Value);
+            Assert.That(objectResult.StatusCode, Is.EqualTo((int)HttpStatusCode.OK));
+            Assert.That(objectResult.Value, Is.TypeOf<Drawing>());
 
             var drawing = objectResult.Value as Drawing;
-            Assert.AreEqual(val1, drawing.DrawingId);
-            Assert.AreEqual(StartName, drawing.Packs[0].Name);
+            Assert.That(drawing.DrawingId, Is.EqualTo(val1));
+            Assert.That(drawing.Packs[0].Name, Is.EqualTo(StartName));
         }
 
         /// <summary> (Unit Test Method) gets not found. </summary>
@@ -177,11 +177,11 @@ namespace PackItDraw.Test.Controllers
             var id = Guid.NewGuid().ToString();
 
             var result = this.controller.Get(id);
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<NotFoundObjectResult>(result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<NotFoundObjectResult>());
             var notfound = result as NotFoundObjectResult;
-            Assert.AreEqual((int)HttpStatusCode.NotFound, notfound.StatusCode);
-            Assert.AreEqual(id, notfound.Value);
+            Assert.That(notfound.StatusCode, Is.EqualTo((int)HttpStatusCode.NotFound));
+            Assert.That(notfound.Value, Is.EqualTo(id));
         }
 
         /// <summary> (Unit Test Method) deletes this object. </summary>
@@ -192,17 +192,17 @@ namespace PackItDraw.Test.Controllers
             this.drawingPack.PackId = id;
 
             var result = this.controller.Post(this.drawingPack);
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<CreatedAtRouteResult>(result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<CreatedAtRouteResult>());
             var res = result as CreatedAtRouteResult;
-            Assert.AreEqual((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.That(res.StatusCode, Is.EqualTo((int)HttpStatusCode.Created));
             var val = res.RouteValues["id"].ToString();
-            Assert.IsInstanceOf<Drawing>(res.Value);
+            Assert.That(res.Value, Is.TypeOf<Drawing>());
 
             result = this.controller.Delete(val);
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<OkResult>(result);
-            Assert.AreEqual((int)HttpStatusCode.OK, (result as OkResult).StatusCode);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<OkResult>());
+            Assert.That((result as OkResult).StatusCode, Is.EqualTo((int)HttpStatusCode.OK));
         }
 
         /// <summary> (Unit Test Method) deletes the not found. </summary>
@@ -212,11 +212,11 @@ namespace PackItDraw.Test.Controllers
             var id = Guid.NewGuid().ToString();
 
             var result = this.controller.Delete(id);
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<NotFoundObjectResult>(result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<NotFoundObjectResult>());
             var notfound = result as NotFoundObjectResult;
-            Assert.AreEqual((int)HttpStatusCode.NotFound, notfound.StatusCode);
-            Assert.AreEqual(id, notfound.Value);
+            Assert.That(notfound.StatusCode, Is.EqualTo((int)HttpStatusCode.NotFound));
+            Assert.That(notfound.Value, Is.EqualTo(id));
         }
     }
 }

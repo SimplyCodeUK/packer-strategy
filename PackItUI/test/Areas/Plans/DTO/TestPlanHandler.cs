@@ -57,9 +57,9 @@ namespace PackItUI.Test.Areas.Plans.DTO
         {
             var result = this.handler.InformationAsync();
             result.Wait();
-            Assert.IsInstanceOf<ServiceInfo>(result.Result);
-            Assert.AreEqual("1", result.Result.Version);
-            Assert.AreEqual("Plans", result.Result.About);
+            Assert.That(result.Result, Is.TypeOf<ServiceInfo>());
+            Assert.That(result.Result.Version, Is.EqualTo("1"));
+            Assert.That(result.Result.About, Is.EqualTo("Plans"));
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
@@ -69,9 +69,9 @@ namespace PackItUI.Test.Areas.Plans.DTO
             this.SetupDisconnected();
             var result = this.handler.InformationAsync();
             result.Wait();
-            Assert.IsInstanceOf<ServiceInfo>(result.Result);
-            Assert.AreEqual("Unknown", result.Result.Version);
-            Assert.AreEqual("Service down! http://localhost:8003/api/v1/", result.Result.About);
+            Assert.That(result.Result, Is.TypeOf<ServiceInfo>());
+            Assert.That(result.Result.Version, Is.EqualTo("Unknown"));
+            Assert.That(result.Result.About, Is.EqualTo("Service down! http://localhost:8003/api/v1/"));
         }
 
         /// <summary> Setup for disconnected service. </summary>
@@ -81,8 +81,8 @@ namespace PackItUI.Test.Areas.Plans.DTO
             {
                 TimeOut = TimeOut
             };
-            Assert.IsNotNull(this.handler);
-            Assert.AreEqual(TimeOut, this.handler.TimeOut);
+            Assert.That(this.handler, Is.Not.Null);
+            Assert.That(this.handler.TimeOut, Is.EqualTo(TimeOut));
         }
 
         /// <summary> Setup for connected services. </summary>
@@ -97,8 +97,8 @@ namespace PackItUI.Test.Areas.Plans.DTO
             {
                 TimeOut = TimeOut
             };
-            Assert.IsNotNull(this.handler);
-            Assert.AreEqual(TimeOut, this.handler.TimeOut);
+            Assert.That(this.handler, Is.Not.Null);
+            Assert.That(this.handler.TimeOut, Is.EqualTo(TimeOut));
         }
     }
 }

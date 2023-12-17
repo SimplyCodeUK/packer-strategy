@@ -32,9 +32,9 @@ namespace PackItDraw.Test.Models
                 ExternalHeight = 300
             };
             Dims dims = RotateResult(result, ResultRotation.ParentHeightToHeight);
-            Assert.AreEqual(result.ExternalLength, dims.Width);
-            Assert.AreEqual(result.ExternalBreadth, dims.Depth);
-            Assert.AreEqual(result.ExternalHeight, dims.Height);
+            Assert.That(dims.Width, Is.EqualTo(result.ExternalLength));
+            Assert.That(dims.Depth, Is.EqualTo(result.ExternalBreadth));
+            Assert.That(dims.Height, Is.EqualTo(result.ExternalHeight));
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
@@ -48,9 +48,9 @@ namespace PackItDraw.Test.Models
                 ExternalHeight = 300
             };
             Dims dims = RotateResult(result, ResultRotation.ParentLengthToHeight);
-            Assert.AreEqual(result.ExternalLength, dims.Depth);
-            Assert.AreEqual(result.ExternalBreadth, dims.Width);
-            Assert.AreEqual(result.ExternalHeight, dims.Height);
+            Assert.That(dims.Depth, Is.EqualTo(result.ExternalLength));
+            Assert.That(dims.Width, Is.EqualTo(result.ExternalBreadth));
+            Assert.That(dims.Height, Is.EqualTo(result.ExternalHeight));
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
@@ -64,9 +64,9 @@ namespace PackItDraw.Test.Models
                 ExternalHeight = 300
             };
             Dims dims = RotateResult(result, ResultRotation.ParentBreadthToHeight);
-            Assert.AreEqual(result.ExternalLength, dims.Width);
-            Assert.AreEqual(result.ExternalBreadth, dims.Height);
-            Assert.AreEqual(result.ExternalHeight, dims.Depth);
+            Assert.That(dims.Width, Is.EqualTo(result.ExternalLength));
+            Assert.That(dims.Height, Is.EqualTo(result.ExternalBreadth));
+            Assert.That(dims.Depth, Is.EqualTo(result.ExternalHeight));
         }
     }
 }

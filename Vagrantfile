@@ -159,7 +159,7 @@ MACHINES.each do |_key, machine|
   end
 
   machine[:services].each do |service|
-    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/net7.0/publish"
+    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/net8.0/publish"
     buildScript += <<-SRV_SCRIPT
       systemctl stop #{service}.service
 
@@ -266,7 +266,7 @@ Vagrant.configure("2") do |config|
     vb.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
     vb.customize ['modifyvm', :id, '--clipboard-mode', 'bidirectional']
     vb.customize ['modifyvm', :id, '--draganddrop', 'bidirectional']
-end
+  end
   config.vm.network "forwarded_port", guest: 80, host: 80
 
   MACHINES.each do |key, machine|

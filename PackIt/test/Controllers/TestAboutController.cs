@@ -26,7 +26,7 @@ namespace PackIt.Test.Controllers
         {
             this.controller = new(
                 Mock.Of<ILogger<AboutController>>());
-            Assert.IsNotNull(this.controller);
+            Assert.That(this.controller, Is.Not.Null);
         }
 
         /// <summary> (Unit Test Method) gets this object. </summary>
@@ -35,16 +35,16 @@ namespace PackIt.Test.Controllers
         {
             var result = this.controller.Get();
 
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOf<OkObjectResult>(result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.TypeOf<OkObjectResult>());
 
             var objectResult = result as OkObjectResult;
-            Assert.AreEqual((int)HttpStatusCode.OK, objectResult.StatusCode);
-            Assert.IsInstanceOf<AboutController.AboutService>(objectResult.Value);
+            Assert.That(objectResult.StatusCode, Is.EqualTo((int)HttpStatusCode.OK));
+            Assert.That(objectResult.Value, Is.TypeOf<AboutController.AboutService>());
 
             var item = objectResult.Value as AboutController.AboutService;
-            Assert.IsNotEmpty(item.Version);
-            Assert.IsNotEmpty(item.About);
+            Assert.That(item.Version, Is.Not.Empty);
+            Assert.That(item.About, Is.Not.Empty);
         }
     }
 }

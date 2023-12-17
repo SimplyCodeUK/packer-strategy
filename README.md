@@ -44,8 +44,7 @@
 ## Development Environment
 
 - [GIT](https://git-scm.com/)
-- [Visual Studio 2022 Version 17.7.6](https://www.visualstudio.com/)
-  - .NET Core SDK 7.0.402
+- [Visual Studio 2022 Version 17.8.3](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript

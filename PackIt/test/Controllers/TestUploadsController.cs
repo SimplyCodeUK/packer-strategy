@@ -87,21 +87,23 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(this.bulk);
             result.Wait();
 
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.Result);
-            Assert.IsInstanceOf<ObjectResult>(result.Result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Result, Is.Not.Null);
+            Assert.That(result.Result, Is.TypeOf<ObjectResult>());
 
             var obj = result.Result as ObjectResult;
-            Assert.AreEqual((int)HttpStatusCode.Created, obj.StatusCode);
+            Assert.That(obj.StatusCode, Is.EqualTo((int)HttpStatusCode.Created));
 
-            Assert.IsInstanceOf<Dictionary<string, List<string>>>(obj.Value);
+            Assert.That(obj.Value, Is.TypeOf<Dictionary<string, List<string>>>());
             var ret = obj.Value as Dictionary<string, List<string>>;
-            Assert.AreEqual(
-                this.bulk.Materials.Count + this.bulk.Packs.Count + this.bulk.Plans.Count,
-                ret["pass"].Count);
-            Assert.AreEqual(
-                0,
-                ret["fail"].Count);
+            Assert.That(
+                ret["pass"].Count,
+                Is.EqualTo(this.bulk.Materials.Count + this.bulk.Packs.Count + this.bulk.Plans.Count)
+            );
+            Assert.That(
+                ret["fail"].Count,
+                Is.EqualTo(0)
+            );
         }
 
         /// <summary> (Unit Test Method) posts no data. </summary>
@@ -111,10 +113,10 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(null);
             result.Wait();
 
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.Result);
-            Assert.IsInstanceOf<BadRequestResult>(result.Result);
-            Assert.AreEqual((int)HttpStatusCode.BadRequest, (result.Result as BadRequestResult).StatusCode);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Result, Is.Not.Null);
+            Assert.That(result.Result, Is.TypeOf<BadRequestResult>());
+            Assert.That((result.Result as BadRequestResult).StatusCode, Is.EqualTo((int)HttpStatusCode.BadRequest));
         }
 
         /// <summary> (Unit Test Method) post disconnected. </summary>
@@ -124,21 +126,23 @@ namespace PackIt.Test.Controllers
             var result = this.controller.Post(this.bulk);
             result.Wait();
 
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.Result);
-            Assert.IsInstanceOf<ObjectResult>(result.Result);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Result, Is.Not.Null);
+            Assert.That(result.Result, Is.TypeOf<ObjectResult>());
 
             var obj = result.Result as ObjectResult;
-            Assert.AreEqual((int)HttpStatusCode.Conflict, obj.StatusCode);
+            Assert.That(obj.StatusCode, Is.EqualTo((int)HttpStatusCode.Conflict));
 
-            Assert.IsInstanceOf<Dictionary<string, List<string>>>(obj.Value);
+            Assert.That(obj.Value, Is.TypeOf<Dictionary<string, List<string>>>());
             var ret = obj.Value as Dictionary<string, List<string>>;
-            Assert.AreEqual(
-                0,
-                ret["pass"].Count);
-            Assert.AreEqual(
-                this.bulk.Materials.Count + this.bulk.Packs.Count + this.bulk.Plans.Count,
-                ret["fail"].Count);
+            Assert.That(
+                ret["pass"].Count,
+                Is.EqualTo(0)
+            );
+            Assert.That(
+                ret["fail"].Count,
+                Is.EqualTo(this.bulk.Materials.Count + this.bulk.Packs.Count + this.bulk.Plans.Count)
+            );
         }
 
         /// <summary> Setup the controller as if the services are not running. </summary>
@@ -147,7 +151,7 @@ namespace PackIt.Test.Controllers
             this.controller = new(
                 Mock.Of<ILogger<UploadsController>>(),
                 Options);
-            Assert.IsNotNull(this.controller);
+            Assert.That(this.controller, Is.Not.Null);
         }
 
         /// <summary> Setup the controller as if the services are running. </summary>
@@ -172,7 +176,7 @@ namespace PackIt.Test.Controllers
                 Mock.Of<ILogger<UploadsController>>(),
                 Options,
                 handler.Object);
-            Assert.IsNotNull(this.controller);
+            Assert.That(this.controller, Is.Not.Null);
         }
     }
 }

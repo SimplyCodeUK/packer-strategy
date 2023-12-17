@@ -43,7 +43,7 @@ namespace PackItBdd.Test.Drivers
                 .AddRequest(HttpMethod.Delete, root + "Materials/Id1");
 
             this.handler = new(httpHandler);
-            Assert.IsNotNull(this.handler);
+            Assert.That(this.handler, Is.Not.Null);
         }
 
         /// <summary> (Unit Test Method) gets this object. </summary>
@@ -51,7 +51,7 @@ namespace PackItBdd.Test.Drivers
         public void TestGet()
         {
             this.handler.Get(root);
-            Assert.AreEqual((int)HttpStatusCode.OK, this.handler.ResponseStatusCode());
+            Assert.That(this.handler.ResponseStatusCode(), Is.EqualTo((int)HttpStatusCode.OK));
         }
     }
 }

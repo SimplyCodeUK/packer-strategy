@@ -22,8 +22,8 @@ namespace PackItUI.Test.Areas.App.Controllers
 
             model.RequestId = "";
 
-            Assert.AreEqual("", model.RequestId);
-            Assert.False(model.ShowRequestId);
+            Assert.That(model.RequestId, Is.EqualTo(""));
+            Assert.That(model.ShowRequestId, Is.False);
         }
 
         /// <summary> (Unit Test Method) about action when the services are not running. </summary>
@@ -34,8 +34,8 @@ namespace PackItUI.Test.Areas.App.Controllers
 
             model.RequestId = "id";
 
-            Assert.AreEqual("id", model.RequestId);
-            Assert.True(model.ShowRequestId);
+            Assert.That(model.RequestId, Is.EqualTo("id"));
+            Assert.That(model.ShowRequestId, Is.True);
         }
     }
 }

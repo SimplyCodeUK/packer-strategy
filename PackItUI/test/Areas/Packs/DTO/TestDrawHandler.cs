@@ -58,9 +58,9 @@ namespace PackItUI.Test.Areas.Packs.DTO
         {
             var result = this.handler.InformationAsync();
             result.Wait();
-            Assert.IsInstanceOf<ServiceInfo>(result.Result);
-            Assert.AreEqual("1", result.Result.Version);
-            Assert.AreEqual("Drawings", result.Result.About);
+            Assert.That(result.Result, Is.TypeOf<ServiceInfo>());
+            Assert.That(result.Result.Version, Is.EqualTo("1"));
+            Assert.That(result.Result.About, Is.EqualTo("Drawings"));
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
@@ -70,9 +70,9 @@ namespace PackItUI.Test.Areas.Packs.DTO
             this.SetupDisconnected();
             var result = this.handler.InformationAsync();
             result.Wait();
-            Assert.IsInstanceOf<ServiceInfo>(result.Result);
-            Assert.AreEqual("Unknown", result.Result.Version);
-            Assert.AreEqual("Service down! http://localhost:8005/api/v1/", result.Result.About);
+            Assert.That(result.Result, Is.TypeOf<ServiceInfo>());
+            Assert.That(result.Result.Version, Is.EqualTo("Unknown"));
+            Assert.That(result.Result.About, Is.EqualTo("Service down! http://localhost:8005/api/v1/"));
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
@@ -81,12 +81,12 @@ namespace PackItUI.Test.Areas.Packs.DTO
         {
             var result = this.handler.CreateAsync(new());
             result.Wait();
-            Assert.IsInstanceOf<HttpResponseMessage>(result.Result);
-            Assert.AreEqual(System.Net.HttpStatusCode.Created, result.Result.StatusCode);
+            Assert.That(result.Result, Is.TypeOf<HttpResponseMessage>());
+            Assert.That(result.Result.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.Created));
             var content = result.Result.Content.ReadAsStringAsync();
             content.Wait();
             JsonDocument cont = JsonDocument.Parse(content.Result);
-            Assert.AreEqual("1111-2222-3333-4444", cont.RootElement.GetProperty("id").GetString());
+            Assert.That(cont.RootElement.GetProperty("id").GetString(), Is.EqualTo("1111-2222-3333-4444"));
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
@@ -96,7 +96,7 @@ namespace PackItUI.Test.Areas.Packs.DTO
             this.SetupDisconnected();
             var result = this.handler.CreateAsync(new());
             result.Wait();
-            Assert.IsNull(result.Result);
+            Assert.That(result.Result, Is.Null);
         }
 
         /// <summary> Setup for disconnected service. </summary>
@@ -106,8 +106,8 @@ namespace PackItUI.Test.Areas.Packs.DTO
             {
                 TimeOut = TimeOut
             };
-            Assert.IsNotNull(this.handler);
-            Assert.AreEqual(TimeOut, this.handler.TimeOut);
+            Assert.That(this.handler, Is.Not.Null);
+            Assert.That(this.handler.TimeOut, Is.EqualTo(TimeOut));
         }
 
         /// <summary> Setup for connected services. </summary>
@@ -125,8 +125,8 @@ namespace PackItUI.Test.Areas.Packs.DTO
             {
                 TimeOut = TimeOut
             };
-            Assert.IsNotNull(this.handler);
-            Assert.AreEqual(TimeOut, this.handler.TimeOut);
+            Assert.That(this.handler, Is.Not.Null);
+            Assert.That(this.handler.TimeOut, Is.EqualTo(TimeOut));
         }
     }
 }

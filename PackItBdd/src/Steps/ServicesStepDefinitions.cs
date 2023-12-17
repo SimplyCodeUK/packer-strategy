@@ -67,7 +67,7 @@ namespace PackItBdd.Steps
         [Then("we get the HTTP status code (.*)")]
         public void ThenWeGetTheHTTPStatusCode(int statusCode)
         {
-            Assert.AreEqual(statusCode, this.httpHandler.ResponseStatusCode());
+            Assert.That(this.httpHandler.ResponseStatusCode(), Is.EqualTo(statusCode));
         }
     }
 }

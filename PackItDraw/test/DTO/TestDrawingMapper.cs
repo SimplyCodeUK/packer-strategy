@@ -24,7 +24,7 @@ namespace PackIt.Test.DTO
         public void BeforeTest()
         {
             this.mapper = new();
-            Assert.IsNotNull(this.mapper);
+            Assert.That(this.mapper, Is.Not.Null);
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
@@ -35,95 +35,95 @@ namespace PackIt.Test.DTO
             var drawing = JsonSerializer.Deserialize<Drawing>(text);
             var dto = this.mapper.ConvertToDto(drawing);
 
-            Assert.AreEqual(drawing.DrawingId, dto.DrawingId);
+            Assert.That(dto.DrawingId, Is.EqualTo(drawing.DrawingId));
 
-            Assert.AreEqual(drawing.Packs[0].Costings.Count, dto.Packs[0].Costings.Count);
+            Assert.That(dto.Packs[0].Costings.Count, Is.EqualTo(drawing.Packs[0].Costings.Count));
             foreach (var costing in dto.Packs[0].Costings)
             {
-                Assert.AreEqual(drawing.DrawingId, costing.PackId);
+                Assert.That(costing.PackId, Is.EqualTo(drawing.DrawingId));
             }
 
             int minLevel = -1;
-            Assert.AreEqual(drawing.Packs[0].Stages.Count, dto.Packs[0].Stages.Count);
+            Assert.That(dto.Packs[0].Stages.Count, Is.EqualTo(drawing.Packs[0].Stages.Count));
             int stageIndex = 0;
             foreach (var stage in dto.Packs[0].Stages)
             {
-                Assert.AreEqual(drawing.DrawingId, stage.PackId);
-                Assert.LessOrEqual(minLevel, (int)stage.StageLevel);
+                Assert.That(stage.PackId, Is.EqualTo(drawing.DrawingId));
+                Assert.That(minLevel, Is.LessThanOrEqualTo((int)stage.StageLevel));
                 minLevel = (int)stage.StageLevel;
 
-                Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Limits.Count, stage.Limits.Count);
+                Assert.That(stage.Limits.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Limits.Count));
                 int limitIndex = 0;
                 foreach (var limit in stage.Limits)
                 {
-                    Assert.AreEqual(drawing.DrawingId, limit.PackId);
-                    Assert.AreEqual(stage.StageLevel, limit.StageLevel);
-                    Assert.AreEqual(limitIndex, limit.LimitIndex);
+                    Assert.That(limit.PackId, Is.EqualTo(drawing.DrawingId));
+                    Assert.That(limit.StageLevel, Is.EqualTo(stage.StageLevel));
+                    Assert.That(limit.LimitIndex, Is.EqualTo(limitIndex));
                     ++limitIndex;
                 }
 
-                Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results.Count, stage.Results.Count);
+                Assert.That(stage.Results.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results.Count));
                 int resultIndex = 0;
                 foreach (var result in stage.Results)
                 {
-                    Assert.AreEqual(drawing.DrawingId, result.PackId);
-                    Assert.AreEqual(stage.StageLevel, result.StageLevel);
-                    Assert.AreEqual(resultIndex, result.ResultIndex);
+                    Assert.That(result.PackId, Is.EqualTo(drawing.DrawingId));
+                    Assert.That(result.StageLevel, Is.EqualTo(stage.StageLevel));
+                    Assert.That(result.ResultIndex, Is.EqualTo(resultIndex));
 
-                    Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers.Count, result.Layers.Count);
+                    Assert.That(result.Layers.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers.Count));
                     int layerIndex = 0;
                     foreach (var layer in result.Layers)
                     {
-                        Assert.AreEqual(drawing.DrawingId, layer.PackId);
-                        Assert.AreEqual(stage.StageLevel, layer.StageLevel);
-                        Assert.AreEqual(result.ResultIndex, layer.ResultIndex);
-                        Assert.AreEqual(layerIndex, layer.LayerIndex);
+                        Assert.That(layer.PackId, Is.EqualTo(drawing.DrawingId));
+                        Assert.That(layer.StageLevel, Is.EqualTo(stage.StageLevel));
+                        Assert.That(layer.ResultIndex, Is.EqualTo(result.ResultIndex));
+                        Assert.That(layer.LayerIndex, Is.EqualTo(layerIndex));
 
-                        Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers[layerIndex].Collations.Count, layer.Collations.Count);
+                        Assert.That(layer.Collations.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers[layerIndex].Collations.Count));
                         int collationIndex = 0;
                         foreach (var collation in layer.Collations)
                         {
-                            Assert.AreEqual(drawing.DrawingId, collation.PackId);
-                            Assert.AreEqual(stage.StageLevel, collation.StageLevel);
-                            Assert.AreEqual(result.ResultIndex, collation.ResultIndex);
-                            Assert.AreEqual(layer.LayerIndex, collation.LayerIndex);
-                            Assert.AreEqual(collationIndex, collation.CollationIndex);
+                            Assert.That(collation.PackId, Is.EqualTo(drawing.DrawingId));
+                            Assert.That(collation.StageLevel, Is.EqualTo(stage.StageLevel));
+                            Assert.That(collation.ResultIndex, Is.EqualTo(result.ResultIndex));
+                            Assert.That(collation.LayerIndex, Is.EqualTo(layer.LayerIndex));
+                            Assert.That(collation.CollationIndex, Is.EqualTo(collationIndex));
                             ++collationIndex;
                         }
                         ++layerIndex;
                     }
 
-                    Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials.Count, result.Materials.Count);
+                    Assert.That(result.Materials.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials.Count));
                     int materialIndex = 0;
                     foreach (var material in result.Materials)
                     {
-                        Assert.AreEqual(drawing.DrawingId, material.PackId);
-                        Assert.AreEqual(stage.StageLevel, material.StageLevel);
-                        Assert.AreEqual(result.ResultIndex, material.ResultIndex);
-                        Assert.AreEqual(materialIndex, material.MaterialIndex);
+                        Assert.That(material.PackId, Is.EqualTo(drawing.DrawingId));
+                        Assert.That(material.StageLevel, Is.EqualTo(stage.StageLevel));
+                        Assert.That(material.ResultIndex, Is.EqualTo(result.ResultIndex));
+                        Assert.That(material.MaterialIndex, Is.EqualTo(materialIndex));
 
-                        Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials[materialIndex].DatabaseMaterials.Count, material.DatabaseMaterials.Count);
+                        Assert.That(material.DatabaseMaterials.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials[materialIndex].DatabaseMaterials.Count));
                         int databaseIndex = 0;
                         foreach (var databaseMaterial in material.DatabaseMaterials)
                         {
-                            Assert.AreEqual(drawing.DrawingId, databaseMaterial.PackId);
-                            Assert.AreEqual(stage.StageLevel, databaseMaterial.StageLevel);
-                            Assert.AreEqual(result.ResultIndex, databaseMaterial.ResultIndex);
-                            Assert.AreEqual(material.MaterialIndex, databaseMaterial.MaterialIndex);
-                            Assert.AreEqual(databaseIndex, databaseMaterial.DatabaseMaterialIndex);
+                            Assert.That(databaseMaterial.PackId, Is.EqualTo(drawing.DrawingId));
+                            Assert.That(databaseMaterial.StageLevel, Is.EqualTo(stage.StageLevel));
+                            Assert.That(databaseMaterial.ResultIndex, Is.EqualTo(result.ResultIndex));
+                            Assert.That(databaseMaterial.MaterialIndex, Is.EqualTo(material.MaterialIndex));
+                            Assert.That(databaseMaterial.DatabaseMaterialIndex, Is.EqualTo(databaseIndex));
                             ++databaseIndex;
                         }
                         ++materialIndex;
                     }
 
-                    Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Sections.Count, result.Sections.Count);
+                    Assert.That(result.Sections.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Sections.Count));
                     int sectionIndex = 0;
                     foreach (var section in result.Sections)
                     {
-                        Assert.AreEqual(drawing.DrawingId, section.PackId);
-                        Assert.AreEqual(stage.StageLevel, section.StageLevel);
-                        Assert.AreEqual(result.ResultIndex, section.ResultIndex);
-                        Assert.AreEqual(sectionIndex, section.SectionIndex);
+                        Assert.That(section.PackId, Is.EqualTo(drawing.DrawingId));
+                        Assert.That(section.StageLevel, Is.EqualTo(stage.StageLevel));
+                        Assert.That(section.ResultIndex, Is.EqualTo(result.ResultIndex));
+                        Assert.That(section.SectionIndex, Is.EqualTo(sectionIndex));
                         ++sectionIndex;
                     }
                     ++resultIndex;
@@ -141,41 +141,41 @@ namespace PackIt.Test.DTO
             var dto = this.mapper.ConvertToDto(drawing);
             var data = this.mapper.ConvertToData(dto);
 
-            Assert.AreEqual(drawing.DrawingId, data.DrawingId);
+            Assert.That(data.DrawingId, Is.EqualTo(drawing.DrawingId));
 
-            Assert.AreEqual(drawing.Packs[0].Costings.Count, data.Packs[0].Costings.Count);
+            Assert.That(data.Packs[0].Costings.Count, Is.EqualTo(drawing.Packs[0].Costings.Count));
 
             int minLevel = -1;
-            Assert.AreEqual(drawing.Packs[0].Stages.Count, data.Packs[0].Stages.Count);
+            Assert.That(data.Packs[0].Stages.Count, Is.EqualTo(drawing.Packs[0].Stages.Count));
             int stageIndex = 0;
             foreach (var stage in data.Packs[0].Stages)
             {
-                Assert.LessOrEqual(minLevel, (int)stage.StageLevel);
+                Assert.That(minLevel, Is.LessThanOrEqualTo((int)stage.StageLevel));
                 minLevel = (int)stage.StageLevel;
 
-                Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Limits.Count, stage.Limits.Count);
+                Assert.That(stage.Limits.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Limits.Count));
 
-                Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results.Count, stage.Results.Count);
+                Assert.That(stage.Results.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results.Count));
                 int resultIndex = 0;
                 foreach (var result in stage.Results)
                 {
-                    Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers.Count, result.Layers.Count);
+                    Assert.That(result.Layers.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers.Count));
                     int layerIndex = 0;
                     foreach (var layer in result.Layers)
                     {
-                        Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers[layerIndex].Collations.Count, layer.Collations.Count);
+                        Assert.That(layer.Collations.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Layers[layerIndex].Collations.Count));
                         ++layerIndex;
                     }
 
-                    Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials.Count, result.Materials.Count);
+                    Assert.That(result.Materials.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials.Count));
                     int materialIndex = 0;
                     foreach (var material in result.Materials)
                     {
-                        Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials[materialIndex].DatabaseMaterials.Count, material.DatabaseMaterials.Count);
+                        Assert.That(material.DatabaseMaterials.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Materials[materialIndex].DatabaseMaterials.Count));
                         ++materialIndex;
                     }
 
-                    Assert.AreEqual(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Sections.Count, result.Sections.Count);
+                    Assert.That(result.Sections.Count, Is.EqualTo(drawing.Packs[0].Stages[stageIndex].Results[resultIndex].Sections.Count));
                     ++resultIndex;
                 }
                 ++stageIndex;
