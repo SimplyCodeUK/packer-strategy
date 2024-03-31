@@ -12,15 +12,12 @@ namespace PackIt.DTO
     ///
     /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData, TMapper}"/>
     /// <seealso cref="T:PackIt.DTO.IDrawingRepository"/>
-    public class DrawingRepository : Repository<Drawing, DtoDrawing.DtoDrawing, DrawingMapper>, IDrawingRepository
+    /// <remarks>
+    /// Initialises a new instance of the <see cref="DrawingRepository" /> class.
+    /// </remarks>
+    ///
+    /// <param name="context"> The context. </param>
+    public class DrawingRepository(DrawingContext context) : Repository<Drawing, DtoDrawing.DtoDrawing, DrawingMapper>(context), IDrawingRepository
     {
-        /// <summary>
-        /// Initialises a new instance of the <see cref="DrawingRepository" /> class.
-        /// </summary>
-        ///
-        /// <param name="context"> The context. </param>
-        public DrawingRepository(DrawingContext context) : base(context)
-        {
-        }
     }
 }

@@ -11,30 +11,22 @@ namespace PackIt.Controllers
     using Microsoft.Extensions.Logging;
 
     /// <summary> The root controller of the service. </summary>
+    /// <remarks>
+    /// Initialises a new instance of the <see cref="AboutController" /> class.
+    /// </remarks>
+    ///
+    /// <param name="logger"> The logger. </param>
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}", Order = 16)]
-    public class AboutController : Controller
+    public class AboutController(ILogger<AboutController> logger) : Controller
     {
-        /// <summary> The logger. </summary>
-        private readonly ILogger<AboutController> logger;
-
-        /// <summary>
-        /// Initialises a new instance of the <see cref="AboutController" /> class.
-        /// </summary>
-        ///
-        /// <param name="logger"> The logger. </param>
-        public AboutController(ILogger<AboutController> logger)
-        {
-            this.logger = logger;
-        }
-
         /// <summary> Get service information. </summary>
         ///
         /// <returns> (An Action that handles HTTP GET requests) The service information. </returns>
         [HttpGet]
         public IActionResult Get()
         {
-            this.logger.LogInformation("Get");
+            logger.LogInformation("Get");
             return this.Ok(new AboutService());
         }
 

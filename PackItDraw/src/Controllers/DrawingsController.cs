@@ -17,36 +17,24 @@ namespace PackItDraw.Controllers
     using PackIt.Pack;
 
     /// <summary> The root controller of the service. </summary>
+    /// <remarks>
+    /// Initialises a new instance of the <see cref="DrawingsController" /> class.
+    /// </remarks>
+    ///
+    /// <param name="logger"> The logger. </param>
+    /// <param name="repository"> The repository. </param>
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class DrawingsController : Controller
+    public class DrawingsController(ILogger<DrawingsController> logger, IDrawingRepository repository) : Controller
     {
-        /// <summary> The logger. </summary>
-        private readonly ILogger<DrawingsController> logger;
-
-        /// <summary> The repository. </summary>
-        private readonly IDrawingRepository repository;
-
-        /// <summary>
-        /// Initialises a new instance of the <see cref="DrawingsController" /> class.
-        /// </summary>
-        ///
-        /// <param name="logger"> The logger. </param>
-        /// <param name="repository"> The repository. </param>
-        public DrawingsController(ILogger<DrawingsController> logger, IDrawingRepository repository)
-        {
-            this.logger = logger;
-            this.repository = repository;
-        }
-
         /// <summary> Get service information. </summary>
         ///
         /// <returns> (An Action that handles HTTP GET requests) The service information. </returns>
         [HttpGet]
         public IActionResult Get()
         {
-            this.logger.LogInformation("Get");
-            return this.Ok(this.repository.GetAll());
+            logger.LogInformation("Get");
+            return this.Ok(repository.GetAll());
         }
 
         /// <summary>
@@ -62,8 +50,8 @@ namespace PackItDraw.Controllers
         [ProducesResponseType(typeof(Drawing), 200)]
         public IActionResult Get(string id)
         {
-            this.logger.LogInformation("Get id {Id}", id);
-            var item = this.repository.Find(id);
+            logger.LogInformation("Get id {Id}", id);
+            var item = repository.Find(id);
 
             if (item == null)
             {
@@ -86,12 +74,12 @@ namespace PackItDraw.Controllers
 
             if (pack != null)
             {
-                this.logger.LogInformation("Post Drawing id {DrawingId}", value.DrawingId);
+                logger.LogInformation("Post Drawing id {DrawingId}", value.DrawingId);
                 try
                 {
-                    this.repository.Add(value);
+                    repository.Add(value);
                     // Start thread to create drawing
-                    DoDrawing.Start(value.DrawingId, this.repository);
+                    DoDrawing.Start(value.DrawingId, repository);
                     result = this.CreatedAtRoute("GetDrawing", new { id = value.DrawingId }, value);
                 }
                 catch (Exception)
@@ -115,13 +103,13 @@ namespace PackItDraw.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            this.logger.LogInformation("Delete id {Id}", id);
-            if (this.repository.Find(id) == null)
+            logger.LogInformation("Delete id {Id}", id);
+            if (repository.Find(id) == null)
             {
                 return this.NotFound(id);
             }
 
-            this.repository.Remove(id);
+            repository.Remove(id);
             return this.Ok();
         }
     }

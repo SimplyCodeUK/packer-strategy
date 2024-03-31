@@ -12,15 +12,12 @@ namespace PackIt.DTO
     ///
     /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData, TMapper}"/>
     /// <seealso cref="T:PackIt.DTO.IPackRepository"/>
-    public class PackRepository : Repository<Pack, DtoPack.DtoPack, PackMapper>, IPackRepository
+    /// <remarks>
+    /// Initialises a new instance of the <see cref="PackRepository" /> class.
+    /// </remarks>
+    ///
+    /// <param name="context"> The context. </param>
+    public class PackRepository(PackContext context) : Repository<Pack, DtoPack.DtoPack, PackMapper>(context), IPackRepository
     {
-        /// <summary>
-        /// Initialises a new instance of the <see cref="PackRepository" /> class.
-        /// </summary>
-        ///
-        /// <param name="context"> The context. </param>
-        public PackRepository(PackContext context) : base(context)
-        {
-        }
     }
 }

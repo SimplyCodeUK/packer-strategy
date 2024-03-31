@@ -13,18 +13,13 @@ namespace PackIt.DTO
     /// <summary> A pack context. </summary>
     ///
     /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData, TMapper}"/>
-    public class PackContext : PackItContext<Pack, DtoPack.DtoPack, PackMapper>
+    /// <remarks>
+    /// Initialises a new instance of the <see cref="PackContext" /> class.
+    /// </remarks>
+    ///
+    /// <param name="options"> Options for controlling the operation. </param>
+    public class PackContext(DbContextOptions<PackContext> options) : PackItContext<Pack, DtoPack.DtoPack, PackMapper>(options)
     {
-        /// <summary>
-        /// Initialises a new instance of the <see cref="PackContext" /> class.
-        /// </summary>
-        ///
-        /// <param name="options"> Options for controlling the operation. </param>
-        public PackContext(DbContextOptions<PackContext> options)
-            : base(options)
-        {
-        }
-
         /// <summary>
         /// Override this method to further configure the model that was discovered by convention
         /// from the entity types exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" />

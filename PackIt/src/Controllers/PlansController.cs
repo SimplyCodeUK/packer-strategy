@@ -16,28 +16,16 @@ namespace PackIt.Controllers
     using PackIt.Plan;
 
     /// <summary> A controller for handling plans. </summary>
+    /// <remarks>
+    /// Initialises a new instance of the <see cref="PlansController" /> class.
+    /// </remarks>
+    ///
+    /// <param name="logger"> The logger. </param>
+    /// <param name="repository"> The repository. </param>
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class PlansController : Controller
+    public class PlansController(ILogger<PlansController> logger, IPlanRepository repository) : Controller
     {
-        /// <summary> The logger. </summary>
-        private readonly ILogger<PlansController> logger;
-
-        /// <summary> The repository. </summary>
-        private readonly IPlanRepository repository;
-
-        /// <summary>
-        /// Initialises a new instance of the <see cref="PlansController" /> class.
-        /// </summary>
-        ///
-        /// <param name="logger"> The logger. </param>
-        /// <param name="repository"> The repository. </param>
-        public PlansController(ILogger<PlansController> logger, IPlanRepository repository)
-        {
-            this.logger = logger;
-            this.repository = repository;
-        }
-
         /// <summary>
         /// (An Action that handles HTTP GET requests) Enumerates all items in this collection.
         /// </summary>
@@ -46,8 +34,8 @@ namespace PackIt.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            this.logger.LogInformation("Get");
-            return this.Ok(this.repository.GetAll());
+            logger.LogInformation("Get");
+            return this.Ok(repository.GetAll());
         }
 
         /// <summary>
@@ -63,8 +51,8 @@ namespace PackIt.Controllers
         [ProducesResponseType(typeof(Plan), 200)]
         public IActionResult Get(string id)
         {
-            this.logger.LogInformation("Get id {Id}", id);
-            var item = this.repository.Find(id);
+            logger.LogInformation("Get id {Id}", id);
+            var item = repository.Find(id);
 
             if (item == null)
             {
@@ -87,10 +75,10 @@ namespace PackIt.Controllers
 
             if (value != null)
             {
-                this.logger.LogInformation("Post Plan id {PlanId}", value.PlanId);
+                logger.LogInformation("Post Plan id {PlanId}", value.PlanId);
                 try
                 {
-                    this.repository.Add(value);
+                    repository.Add(value);
                     result = this.CreatedAtRoute("GetPlan", new { id = value.PlanId }, value);
                 }
                 catch (Exception)
@@ -117,8 +105,8 @@ namespace PackIt.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] Plan value)
         {
-            this.logger.LogInformation("Put id {id} for Plan id {PlanId}", id, value.PlanId);
-            var item = this.repository.Find(id);
+            logger.LogInformation("Put id {id} for Plan id {PlanId}", id, value.PlanId);
+            var item = repository.Find(id);
 
             if (item == null)
             {
@@ -127,7 +115,7 @@ namespace PackIt.Controllers
 
             item = value;
             item.PlanId = id;
-            this.repository.Update(item);
+            repository.Update(item);
             return this.Ok();
         }
 
@@ -139,13 +127,13 @@ namespace PackIt.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            this.logger.LogInformation("Delete id {Id}", id);
-            if (this.repository.Find(id) == null)
+            logger.LogInformation("Delete id {Id}", id);
+            if (repository.Find(id) == null)
             {
                 return this.NotFound(id);
             }
 
-            this.repository.Remove(id);
+            repository.Remove(id);
             return this.Ok();
         }
 
@@ -160,8 +148,8 @@ namespace PackIt.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(string id, [FromBody] JsonPatchDocument<Plan> update)
         {
-            this.logger.LogInformation("Patch id {Id}", id);
-            var item = this.repository.Find(id);
+            logger.LogInformation("Patch id {Id}", id);
+            var item = repository.Find(id);
 
             if (item == null)
             {
@@ -169,7 +157,7 @@ namespace PackIt.Controllers
             }
 
             update.ApplyTo(item);
-            this.repository.Update(item);
+            repository.Update(item);
             return this.Ok(item);
         }
     }

@@ -20,18 +20,22 @@ namespace PackIt.Controllers
     using PackIt.Models;
 
     /// <summary> A controller for handling materials. </summary>
+    /// <remarks>
+    /// Initialises a new instance of the <see cref="UploadsController" /> class.
+    /// </remarks>
+    ///
+    /// <param name="logger"> The logger. </param>
+    /// <param name="appSettings"> The application settings. </param>
+    /// <param name="messageHandler"> The http message handler. </param>
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class UploadsController : Controller
+    public class UploadsController(ILogger<UploadsController> logger, IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler) : Controller
     {
-        /// <summary> The logger. </summary>
-        private readonly ILogger<UploadsController> logger;
-
         /// <summary> The HTTP client. </summary>
-        private readonly HttpClient httpClient;
+        private readonly HttpClient httpClient = new(messageHandler);
 
         /// <summary> Gets the application settings. </summary>
-        private readonly AppSettings appSettings;
+        private readonly AppSettings appSettings = appSettings.Value;
 
         /// <summary> Save data. </summary>
         ///
@@ -62,20 +66,6 @@ namespace PackIt.Controllers
         {
         }
 
-        /// <summary>
-        /// Initialises a new instance of the <see cref="UploadsController" /> class.
-        /// </summary>
-        ///
-        /// <param name="logger"> The logger. </param>
-        /// <param name="appSettings"> The application settings. </param>
-        /// <param name="messageHandler"> The http message handler. </param>
-        public UploadsController(ILogger<UploadsController> logger, IOptions<AppSettings> appSettings, HttpMessageHandler messageHandler)
-        {
-            this.logger = logger;
-            this.appSettings = appSettings.Value;
-            this.httpClient = new(messageHandler);
-        }
-
         /// <summary> (An Action that handles HTTP POST requests) Post this message. </summary>
         ///
         /// <param name="values"> Bulk upload of data to the databases. </param>
@@ -84,9 +74,9 @@ namespace PackIt.Controllers
         [HttpPost("{type}")]
         public async Task<IActionResult> Post([FromBody] Bulk values)
         {
-            this.logger.LogInformation("Post");
-            var pass = new List<string>();
-            var fail = new List<string>();
+            logger.LogInformation("Post");
+            List<string> pass = [];
+            List<string> fail = [];
 
             if (values == null)
             {

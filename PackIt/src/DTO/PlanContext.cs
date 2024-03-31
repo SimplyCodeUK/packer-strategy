@@ -13,18 +13,13 @@ namespace PackIt.DTO
     /// <summary> A plan context. </summary>
     ///
     /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData, TMapper}"/>
-    public class PlanContext : PackItContext<Plan, DtoPlan.DtoPlan, PlanMapper>
+    /// <remarks>
+    /// Initialises a new instance of the <see cref="PlanContext" /> class.
+    /// </remarks>
+    ///
+    /// <param name="options"> Options for controlling the operation. </param>
+    public class PlanContext(DbContextOptions<PlanContext> options) : PackItContext<Plan, DtoPlan.DtoPlan, PlanMapper>(options)
     {
-        /// <summary>
-        /// Initialises a new instance of the <see cref="PlanContext" /> class.
-        /// </summary>
-        ///
-        /// <param name="options"> Options for controlling the operation. </param>
-        public PlanContext(DbContextOptions<PlanContext> options)
-            : base(options)
-        {
-        }
-
         /// <summary>
         /// Override this method to further configure the model that was discovered by convention
         /// from the entity types exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" />

@@ -3,11 +3,11 @@
   "defaultProvider": "jsdelivr",
   "libraries": [
     {
-      "library": "@babylonjs/core@6.32.1",
+      "library": "@babylonjs/core@7.0.0",
       "destination": "wwwroot/lib/@babylonjs/core/"
     },
     {
-      "library": "bootstrap@5.3.2",
+      "library": "bootstrap@5.3.3",
       "destination": "wwwroot/lib/bootstrap/"
     },
     {

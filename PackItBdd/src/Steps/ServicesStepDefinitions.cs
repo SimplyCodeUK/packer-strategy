@@ -12,62 +12,45 @@ namespace PackItBdd.Steps
     using TechTalk.SpecFlow;
 
     /// <summary> Generic service steps </summary>
+    /// <remarks> Constructor </remarks>
+    ///
+    /// <param name="config">Configuration settings</param>
+    /// <param name="httpHandler">HTTP request handler</param>
     [Binding]
-    public sealed class ServicesStepDefinitions
+    public sealed class ServicesStepDefinitions(IConfiguration config, HttpHandler httpHandler)
     {
-        /// <summary> The Scenario context. </summary>
-        private readonly ScenarioContext scenarioContext;
-
-        /// <summary> The configuration. Contains service endpoint urls. </summary>
-        private readonly IConfiguration config;
-
-        /// <summary> The driver for HTTP requests to a service. </summary>
-        private readonly HttpHandler httpHandler;
-
-        /// <summary> Constructor </summary>
-        ///
-        /// <param name="scenarioContext">The scenario context</param>
-        /// <param name="config">Configuration settings</param>
-        /// <param name="httpHandler">HTTP request handler</param>
-        public ServicesStepDefinitions(ScenarioContext scenarioContext, IConfiguration config, HttpHandler httpHandler)
-        {
-            this.scenarioContext = scenarioContext;
-            this.config = config;
-            this.httpHandler = httpHandler;
-        }
-
         /// <summary> Check the service is running </summary>
         ///
         /// <param name="serviceName">The name of the service to check</param>
         [Given("the (.*) service")]
-        public void GivenTheServiceIsRunning(string serviceName)
+        public void TheServiceIsRunning(string serviceName)
         {
-            var obj = this.config.GetSection("service");
+            var obj = config.GetSection("service");
             Assert.NotNull(obj);
             obj = obj.GetSection(serviceName);
             Assert.NotNull(obj);
             obj = obj.GetSection("url");
             Assert.NotNull(obj);
-            this.httpHandler.ServiceName = serviceName;
+            httpHandler.ServiceName = serviceName;
         }
 
         /// <summary> Perform a HTTP Get to get the service version </summary>
         [When("we request the service version")]
-        public void WhenWeRequestTheServiceVersion()
+        public void WeRequestTheServiceVersion()
         {
-            var obj = this.config.GetSection("service");
-            obj = obj.GetSection(this.httpHandler.ServiceName);
+            var obj = config.GetSection("service");
+            obj = obj.GetSection(httpHandler.ServiceName);
             obj = obj.GetSection("url");
-            this.httpHandler.Get(obj.Value);
+            httpHandler.Get(obj.Value);
         }
 
         /// <summary> Check that the HTTP status code from the last request is correct </summary>
         ///
         /// <param name="statusCode">The expected status code</param>
         [Then("we get the HTTP status code (.*)")]
-        public void ThenWeGetTheHTTPStatusCode(int statusCode)
+        public void WeGetTheHTTPStatusCode(int statusCode)
         {
-            Assert.That(this.httpHandler.ResponseStatusCode(), Is.EqualTo(statusCode));
+            Assert.That(httpHandler.ResponseStatusCode(), Is.EqualTo(statusCode));
         }
     }
 }

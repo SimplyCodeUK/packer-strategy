@@ -17,14 +17,14 @@ namespace PackItMock.HttpMock
     public class MockHttpClientHandler : HttpClientHandler
     {
         /// <summary> Mocked requests. </summary>
-        private readonly IList<MockRequest> requests;
+        private readonly List<MockRequest> requests;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="MockHttpClientHandler" /> class.
         /// </summary>
         public MockHttpClientHandler()
         {
-            this.requests = new List<MockRequest>();
+            this.requests = [];
         }
 
         /// <summary>

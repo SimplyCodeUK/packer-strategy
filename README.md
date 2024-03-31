@@ -44,13 +44,14 @@
 ## Development Environment
 
 - [GIT](https://git-scm.com/)
-- [Visual Studio 2022 Version 17.8.3](https://www.visualstudio.com/)
+- [Visual Studio 2022 Version 17.9.2](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
   - Extensions
     - StyleCop
     - Markdown Editor
+    - SpecFlow for Visual Studio 2022
 - [Powershell Version 7.2.0](https://docs.microsoft.com/en-us/powershell/)
 - [VirtualBox Version 7.0.12](https://www.virtualbox.org/)
   - Oracle VM VirtualBox Extension Pack version 7.0.12r159484

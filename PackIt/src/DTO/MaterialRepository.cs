@@ -12,15 +12,12 @@ namespace PackIt.DTO
     ///
     /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData, TMapper}"/>
     /// <seealso cref="T:PackIt.DTO.IMaterialRepository"/>
-    public class MaterialRepository : Repository<Material, DtoMaterial.DtoMaterial, MaterialMapper>, IMaterialRepository
+    /// <remarks>
+    /// Initialises a new instance of the <see cref="MaterialRepository" /> class.
+    /// </remarks>
+    ///
+    /// <param name="context"> The context. </param>
+    public class MaterialRepository(MaterialContext context) : Repository<Material, DtoMaterial.DtoMaterial, MaterialMapper>(context), IMaterialRepository
     {
-        /// <summary>
-        /// Initialises a new instance of the <see cref="MaterialRepository" /> class.
-        /// </summary>
-        ///
-        /// <param name="context"> The context. </param>
-        public MaterialRepository(MaterialContext context) : base(context)
-        {
-        }
     }
 }

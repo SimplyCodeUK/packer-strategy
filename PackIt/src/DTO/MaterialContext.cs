@@ -13,18 +13,13 @@ namespace PackIt.DTO
     /// <summary> A material context. </summary>
     ///
     /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData, TMapper}"/>
-    public class MaterialContext : PackItContext<Material, DtoMaterial.DtoMaterial, MaterialMapper>
+    /// <remarks>
+    /// Initialises a new instance of the <see cref="MaterialContext" /> class.
+    /// </remarks>
+    ///
+    /// <param name="options"> Options for controlling the operation. </param>
+    public class MaterialContext(DbContextOptions<MaterialContext> options) : PackItContext<Material, DtoMaterial.DtoMaterial, MaterialMapper>(options)
     {
-        /// <summary>
-        /// Initialises a new instance of the <see cref="MaterialContext" /> class.
-        /// </summary>
-        ///
-        /// <param name="options"> Options for controlling the operation. </param>
-        public MaterialContext(DbContextOptions<MaterialContext> options)
-            : base(options)
-        {
-        }
-
         /// <summary>
         /// Override this method to further configure the model that was discovered by convention
         /// from the entity types exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" />

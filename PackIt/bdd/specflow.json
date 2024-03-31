@@ -1,6 +1,15 @@
 ﻿{
+  "$schema": "https://specflow.org/specflow-config.json",
+
   "bindingCulture": {
     "name": "en-us"
+  },
+  "ide": {
+    "editor": {
+      "gherkinFormat": {
+        "indentAndSteps": true
+      }
+    }
   },
   "language": {
     "feature": "en-us"

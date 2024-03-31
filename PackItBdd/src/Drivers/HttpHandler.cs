@@ -9,22 +9,16 @@ namespace PackItBdd.Drivers
     using System.Net.Http;
 
     /// <summary> Handles client side HTTP requests </summary>
-    public class HttpHandler
+    /// <remarks> Constructor </remarks>
+    ///
+    /// <param name="clientHandler">The HttpClient Handler. @see HttpClient</param>
+    public class HttpHandler(HttpClientHandler clientHandler)
     {
         /// <summary> Client for HTTP requests </summary>
-        private readonly HttpClient client;
+        private readonly HttpClient client = new HttpClient(clientHandler);
 
         /// <summary> Response of the last HTTP requests </summary>
-        private HttpResponseMessage response;
-
-        /// <summary> Constructor </summary>
-        ///
-        /// <param name="clientHandler">The HttpClient Handler. @see HttpClient</param>
-        public HttpHandler(HttpClientHandler clientHandler)
-        {
-            this.client = new HttpClient(clientHandler);
-            this.response = null;
-        }
+        private HttpResponseMessage response = null;
 
         /// <summary> The service name </summary>
         public string ServiceName { get; set; }

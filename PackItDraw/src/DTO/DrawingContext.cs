@@ -13,18 +13,13 @@ namespace PackIt.DTO
     /// <summary> A drawing context. </summary>
     ///
     /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData, TMapper}"/>
-    public class DrawingContext : PackItContext<Drawing, DtoDrawing.DtoDrawing, DrawingMapper>
+    /// <remarks>
+    /// Initialises a new instance of the <see cref="DrawingContext" /> class.
+    /// </remarks>
+    ///
+    /// <param name="options"> Options for controlling the operation. </param>
+    public class DrawingContext(DbContextOptions<DrawingContext> options) : PackItContext<Drawing, DtoDrawing.DtoDrawing, DrawingMapper>(options)
     {
-        /// <summary>
-        /// Initialises a new instance of the <see cref="DrawingContext" /> class.
-        /// </summary>
-        ///
-        /// <param name="options"> Options for controlling the operation. </param>
-        public DrawingContext(DbContextOptions<DrawingContext> options)
-            : base(options)
-        {
-        }
-
         /// <summary>
         /// Override this method to further configure the model that was discovered by convention
         /// from the entity types exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" />

@@ -11,36 +11,25 @@ namespace PackItBdd.Hooks
     using TechTalk.SpecFlow;
 
     /// <summary> Configuration files setup hooks </summary>
+    /// <remarks> Constructor </remarks>
+    ///
+    /// <param name="container">The object container</param>
     [Binding]
-    internal class ConfigSetupHooks
+    internal class ConfigSetupHooks(IObjectContainer container)
     {
-        /// <summary> The container for the configuration. </summary>
-        private readonly IObjectContainer container;
-
         /// <summary> The configuration. Read before the start of a sceanrio. </summary>
-        private static IConfiguration _config;
-
-        /// <summary> Constructor </summary>
-        ///
-        /// <param name="container">The object container</param>
-        public ConfigSetupHooks(IObjectContainer container)
-        {
-            this.container = container;
-        }
+        private static IConfiguration _config = null;
 
         /// <summary> Setup configuration </summary>
         [BeforeScenario]
         public void SetupConfiguration()
         {
-            if (_config == null)
-            {
-                _config = new ConfigurationBuilder()
+            _config ??= new ConfigurationBuilder()
                     .AddJsonFile("specflow.json", optional: false, reloadOnChange: true)
                     .AddJsonFile("specflow.local.json", optional: true, reloadOnChange: true)
                     .Build();
-            }
 
-            this.container.RegisterInstanceAs(_config);
+            container.RegisterInstanceAs(_config);
         }
     }
 }
