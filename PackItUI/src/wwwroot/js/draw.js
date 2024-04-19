@@ -21,7 +21,7 @@ var populateScene = function (scene, model) {
     var box = new BABYLON.MeshBuilder.CreateBox("box".concat(idx.toString()), parentDimensions, scene);
     box.position = new BABYLON.Vector3(shape.X, shape.Y, shape.Z);
     box.enableEdgesRendering();
-    box.edgesWidth = 4.0;
+    box.edgesWidth = (shape.Length + shape.Breadth + shape.Height)/20.0
     box.edgesColor = new BABYLON.Color4(0, 0, 1, 1);
     ++idx;
   }

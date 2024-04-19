@@ -37,7 +37,7 @@
                 </div>
                 @{ await Html.RenderPartialAsync("_GraphicScriptsPartial"); }
                 <div class="form-group">
-                    <canvas id="renderCanvas"></canvas>
+                    <canvas id="renderCanvas" width="1000" height="1000"></canvas>
                     <script type="module">
                         import * as BABYLON from "/lib/@@babylonjs/core/Legacy/legacy.js"
                         drawPack(document.querySelector('#renderCanvas'), '@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model))')

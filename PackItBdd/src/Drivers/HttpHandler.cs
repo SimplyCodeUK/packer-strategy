@@ -18,7 +18,7 @@ namespace PackItBdd.Drivers
         private readonly HttpClient client = new HttpClient(clientHandler);
 
         /// <summary> Response of the last HTTP requests </summary>
-        private HttpResponseMessage response = null;
+        private HttpResponseMessage response;
 
         /// <summary> The service name </summary>
         public string ServiceName { get; set; }

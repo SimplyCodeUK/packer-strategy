@@ -3,7 +3,7 @@
 Welcome to Packer Starategy
 
 + [Acronyms](#acronyms)
-+ [Versioning](./README-VERSIONING.md)
++ [Versioning](./VERSIONING.md)
 + [API Versioning](./API-VERSIONING.md)
 + [Service Versioning](./SERVICE-VERSIONING.md)
 

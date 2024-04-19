@@ -18,7 +18,7 @@ namespace PackItBdd.Hooks
     internal class ConfigSetupHooks(IObjectContainer container)
     {
         /// <summary> The configuration. Read before the start of a sceanrio. </summary>
-        private static IConfiguration _config = null;
+        private static IConfiguration _config;
 
         /// <summary> Setup configuration </summary>
         [BeforeScenario]

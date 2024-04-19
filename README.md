@@ -44,7 +44,7 @@
 ## Development Environment
 
 - [GIT](https://git-scm.com/)
-- [Visual Studio 2022 Version 17.9.2](https://www.visualstudio.com/)
+- [Visual Studio 2022 Version 17.9.6](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript

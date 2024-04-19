@@ -22,13 +22,13 @@ APIs are versioned using a **MAJOR** number only. The version of the API appears
 
 For example, this URI structure is used to request version 1 of the 'plans' API:
 
-```
+```text
 https://packit.org/v1/plans
 ```
 
 and this to request version 2:
 
-```
+```text
 https://packit.org/v2/plans
 ```
 
