@@ -6,9 +6,9 @@
 
 namespace PackItBdd.Hooks
 {
-    using BoDi;
     using Microsoft.Extensions.Configuration;
-    using TechTalk.SpecFlow;
+    using Reqnroll;
+    using Reqnroll.BoDi;
 
     /// <summary> Configuration files setup hooks </summary>
     /// <remarks> Constructor </remarks>
@@ -25,8 +25,8 @@ namespace PackItBdd.Hooks
         public void SetupConfiguration()
         {
             _config ??= new ConfigurationBuilder()
-                    .AddJsonFile("specflow.json", optional: false, reloadOnChange: true)
-                    .AddJsonFile("specflow.local.json", optional: true, reloadOnChange: true)
+                    .AddJsonFile("reqnroll.json", optional: false, reloadOnChange: true)
+                    .AddJsonFile("reqnroll.local.json", optional: true, reloadOnChange: true)
                     .Build();
 
             container.RegisterInstanceAs(_config);

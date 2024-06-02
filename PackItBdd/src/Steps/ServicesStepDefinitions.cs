@@ -9,7 +9,7 @@ namespace PackItBdd.Steps
     using Microsoft.Extensions.Configuration;
     using NUnit.Framework;
     using PackItBdd.Drivers;
-    using TechTalk.SpecFlow;
+    using Reqnroll;
 
     /// <summary> Generic service steps </summary>
     /// <remarks> Constructor </remarks>
@@ -17,7 +17,7 @@ namespace PackItBdd.Steps
     /// <param name="config">Configuration settings</param>
     /// <param name="httpHandler">HTTP request handler</param>
     [Binding]
-    public sealed class ServicesStepDefinitions(IConfiguration config, HttpHandler httpHandler)
+    public class ServicesStepDefinitions(IConfiguration config, HttpHandler httpHandler)
     {
         /// <summary> Check the service is running </summary>
         ///
@@ -26,11 +26,11 @@ namespace PackItBdd.Steps
         public void TheServiceIsRunning(string serviceName)
         {
             var obj = config.GetSection("service");
-            Assert.NotNull(obj);
+            Assert.That(obj, Is.Not.Null);
             obj = obj.GetSection(serviceName);
-            Assert.NotNull(obj);
+            Assert.That(obj, Is.Not.Null);
             obj = obj.GetSection("url");
-            Assert.NotNull(obj);
+            Assert.That(obj, Is.Not.Null);
             httpHandler.ServiceName = serviceName;
         }
 

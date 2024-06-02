@@ -1,8 +1,8 @@
 ﻿{
-  "$schema": "https://specflow.org/specflow-config.json",
+  "$schema": "https://schemas.reqnroll.net/reqnroll-config-latest.json",
 
   "bindingCulture": {
-    "name": "en-us"
+    "name": "en-uk"
   },
   "ide": {
     "editor": {
@@ -12,9 +12,9 @@
     }
   },
   "language": {
-    "feature": "en-us"
+    "feature": "en-uk"
   },
-  "stepAssemblies": [
+  "bindingAssemblies": [
     {
       "assembly": "PackItBdd"
     }

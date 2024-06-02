@@ -20,11 +20,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
-    <PackageReference Include="ReportGenerator" Version="5.2.4" />
-    <PackageReference Include="SpecFlow" Version="3.9.74" />
-    <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
-    <PackageReference Include="SpecFlow.NUnit" Version="3.9.74" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+    <PackageReference Include="ReportGenerator" Version="5.3.5" />
+    <PackageReference Include="Reqnroll" Version="2.0.2" />
+    <PackageReference Include="Reqnroll.NUnit" Version="2.0.2" />
     <PackageReference Include="NUnit" Version="4.1.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
@@ -37,13 +36,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="specflow.json">
+    <Content Update="reqnroll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="specflow.local.json">
-      <CopyToOutputDirectory Condition="Exists('specflow.local.json')">PreserveNewest</CopyToOutputDirectory>
+    <Content Include="reqnroll.local.json">
+      <CopyToOutputDirectory Condition="Exists('reqnroll.local.json')">PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
