@@ -11,13 +11,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set .NET version to use
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.100'
       - name: Set Node version to use
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '14'
       # Install Vagrant, libvirt and doxygen
@@ -100,12 +100,13 @@ jobs:
           path: "**/*.trx"
           reporter: dotnet-trx
       - name: Save documentation artifacts
-        uses: actions/upload-artifact@v2
+        if: ${{ matrix.config }} == Release
+        uses: actions/upload-artifact@v4
         with:
           name: packit-documentation
           path: "**/codedoc.xml"
       - name: Save packages
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
-          name: packit-packages
-          path: "**/bin/Release/*.nupkg"
+          name: packit-packages-${{ matrix.config }}
+          path: "**/bin/${{ matrix.config }}/*.nupkg"
