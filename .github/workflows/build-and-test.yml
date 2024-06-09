@@ -100,13 +100,14 @@ jobs:
           path: "**/*.trx"
           reporter: dotnet-trx
       - name: Save documentation artifacts
-        if: ${{ matrix.config }} == Release
         uses: actions/upload-artifact@v4
+        if: ${{ matrix.config == 'Release' }}
         with:
-          name: packit-documentation
+          name: packit documentation ${{ matrix.config }}
           path: "**/codedoc.xml"
       - name: Save packages
         uses: actions/upload-artifact@v4
+        if: ${{ matrix.config == 'Release' }}
         with:
-          name: packit-packages-${{ matrix.config }}
+          name: packit packages ${{ matrix.config }}
           path: "**/bin/${{ matrix.config }}/*.nupkg"
