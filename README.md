@@ -44,7 +44,7 @@
 ## Development Environment
 
 - [GIT](https://git-scm.com/)
-- [Visual Studio 2022 Version 17.10.1](https://www.visualstudio.com/)
+- [Visual Studio 2022 Version 17.11.4](https://www.visualstudio.com/)
   - Languages
     - C#
     - JavaScript
@@ -58,7 +58,6 @@
 - [Vagrant Version 2.4.0](https://www.vagrantup.com/)
   - Box generic/ubuntu2204 version 4.3.2
 - [Doxygen Version 1.9.5](https://www.doxygen.nl/)
-
 
 <a name="wsl-setup"></a>
 

@@ -6,22 +6,21 @@
 
 namespace PackIt.Test.DbInterface
 {
-    using NUnit.Framework;
+    using Xunit;
     using PackIt.DbInterface;
 
     /// <summary> (Unit Test Method) Database connection manager. </summary>
-    [TestFixture]
     public class TestDbContextBuilderInMemory
     {
         /// <summary> (Unit Test Method) Successful database context lookup. </summary>
-        [Test]
+        [Fact]
         public void CreateContextOptionsBuilder()
         {
             var context = new DbContextBuilderInMemory();
-            Assert.That(context, Is.Not.Null);
+            Assert.NotNull(context);
 
             var action = context.CreateContextOptionsBuilder("material");
-            Assert.That(action, Is.Not.Null);
+            Assert.NotNull(action);
         }
     }
 }

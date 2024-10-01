@@ -6,42 +6,41 @@
 
 namespace PackItUI.Test.Areas.Materials.Models
 {
-    using NUnit.Framework;
+    using Xunit;
     using PackItUI.Areas.Materials.Models;
 
     /// <summary> (Unit Test Fixture) Material edit view model. </summary>
-    [TestFixture]
     public class TestMaterialEditViewModel
     {
         /// <summary> The model under test. </summary>
         private MaterialEditViewModel model;
 
         /// <summary> Setup for all unit tests here. </summary>
-        [SetUp]
-        public void BeforeTest()
+        public TestMaterialEditViewModel()
         {
             this.model = new();
-            Assert.That(this.model, Is.Not.Null);
+            Assert.NotNull(this.model);
         }
 
         /// <summary> (Unit Test Method) set model sections. </summary>
-        [Test]
+        [Fact]
         public void SetCostings()
         {
             MaterialEditViewModel.Material data = new();
+            Assert.NotNull(data);
             data.Costings.Add(new());
             this.model.Data = data;
-            Assert.That(this.model.Data.Costings.Count, Is.EqualTo(1));
+            Assert.Single(this.model.Data.Costings);
         }
 
         /// <summary> (Unit Test Method) set model sections. </summary>
-        [Test]
+        [Fact]
         public void SetSections()
         {
             MaterialEditViewModel.Material data = new MaterialEditViewModel.Material();
             data.Sections.Add(new());
             this.model.Data = data;
-            Assert.That(this.model.Data.Sections.Count, Is.EqualTo(1));
+            Assert.Single(this.model.Data.Sections);
         }
     }
 }

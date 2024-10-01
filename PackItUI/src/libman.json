@@ -3,7 +3,7 @@
   "defaultProvider": "jsdelivr",
   "libraries": [
     {
-      "library": "@babylonjs/core@7.9.0",
+      "library": "@babylonjs/core@7.22.3",
       "destination": "wwwroot/lib/@babylonjs/core/"
     },
     {
@@ -19,7 +19,7 @@
       "destination": "wwwroot/lib/jquery/"
     },
     {
-      "library": "jquery-validation@1.20.0",
+      "library": "jquery-validation@1.21.0",
       "destination": "wwwroot/lib/jquery-validation/"
     },
     {

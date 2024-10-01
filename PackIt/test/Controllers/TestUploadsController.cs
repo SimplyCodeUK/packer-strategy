@@ -19,12 +19,11 @@ namespace PackIt.Test.Controllers
     using Microsoft.Extensions.Logging;
     using Moq;
     using Moq.Protected;
-    using NUnit.Framework;
+    using Xunit;
     using PackIt.Controllers;
     using PackIt.Models;
 
     /// <summary> (Unit Test Fixture) a controller for handling test plans. </summary>
-    [TestFixture]
     public class TestUploadsController
     {
         /// <summary> The service endpoints. </summary>
@@ -50,11 +49,10 @@ namespace PackIt.Test.Controllers
         private UploadsController controller;
 
         /// <summary> Data to upload. </summary>
-        private UploadsController.Bulk bulk;
+        private readonly UploadsController.Bulk bulk;
 
         /// <summary> Setup for all unit tests here. </summary>
-        [SetUp]
-        public void BeforeTest()
+        public TestUploadsController()
         {
             this.SetupServicesNotRunning();
 
@@ -79,69 +77,57 @@ namespace PackIt.Test.Controllers
         }
 
         /// <summary> (Unit Test Method) post successful. </summary>
-        [Test]
-        public void PostSuccessful()
+        [Fact]
+        public async Task PostSuccessful()
         {
             this.SetupServicesRunning();
 
-            var result = this.controller.Post(this.bulk);
-            result.Wait();
+            var result = await this.controller.Post(this.bulk);
 
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result.Result, Is.Not.Null);
-            Assert.That(result.Result, Is.TypeOf<ObjectResult>());
+            Assert.NotNull(result);
+            Assert.IsType<ObjectResult>(result);
 
-            var obj = result.Result as ObjectResult;
-            Assert.That(obj.StatusCode, Is.EqualTo((int)HttpStatusCode.Created));
+            var obj = result as ObjectResult;
+            Assert.Equal(obj.StatusCode, (int)HttpStatusCode.Created);
 
-            Assert.That(obj.Value, Is.TypeOf<Dictionary<string, List<string>>>());
+            Assert.IsType<Dictionary<string, List<string>>>(obj.Value);
             var ret = obj.Value as Dictionary<string, List<string>>;
-            Assert.That(
+            Assert.Equal(
                 ret["pass"].Count,
-                Is.EqualTo(this.bulk.Materials.Count + this.bulk.Packs.Count + this.bulk.Plans.Count)
+                this.bulk.Materials.Count + this.bulk.Packs.Count + this.bulk.Plans.Count
             );
-            Assert.That(
-                ret["fail"].Count,
-                Is.EqualTo(0)
-            );
+            Assert.Empty(ret["fail"]);
         }
 
         /// <summary> (Unit Test Method) posts no data. </summary>
-        [Test]
-        public void PostNoData()
+        [Fact]
+        public async Task PostNoData()
         {
-            var result = this.controller.Post(null);
-            result.Wait();
+            var result = await this.controller.Post(null);
 
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result.Result, Is.Not.Null);
-            Assert.That(result.Result, Is.TypeOf<BadRequestResult>());
-            Assert.That((result.Result as BadRequestResult).StatusCode, Is.EqualTo((int)HttpStatusCode.BadRequest));
+            Assert.NotNull(result);
+            Assert.IsType<BadRequestResult>(result);
+            Assert.Equal((int)HttpStatusCode.BadRequest, (result as BadRequestResult).StatusCode);
         }
 
         /// <summary> (Unit Test Method) post disconnected. </summary>
-        [Test]
-        public void PostDisconnected()
+        [Fact]
+        public async Task PostDisconnected()
         {
-            var result = this.controller.Post(this.bulk);
-            result.Wait();
+            var result = await this.controller.Post(this.bulk);
 
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result.Result, Is.Not.Null);
-            Assert.That(result.Result, Is.TypeOf<ObjectResult>());
+            Assert.NotNull(result);
+            Assert.IsType<ObjectResult>(result);
 
-            var obj = result.Result as ObjectResult;
-            Assert.That(obj.StatusCode, Is.EqualTo((int)HttpStatusCode.Conflict));
+            ObjectResult obj = result as ObjectResult;
+            Assert.Equal(obj.StatusCode, (int)HttpStatusCode.Conflict);
 
-            Assert.That(obj.Value, Is.TypeOf<Dictionary<string, List<string>>>());
+            Assert.IsType<Dictionary<string, List<string>>>(obj.Value);
             var ret = obj.Value as Dictionary<string, List<string>>;
-            Assert.That(
-                ret["pass"].Count,
-                Is.EqualTo(0)
-            );
-            Assert.That(
+            Assert.Empty(ret["pass"]);
+            Assert.Equal(
                 ret["fail"].Count,
-                Is.EqualTo(this.bulk.Materials.Count + this.bulk.Packs.Count + this.bulk.Plans.Count)
+                this.bulk.Materials.Count + this.bulk.Packs.Count + this.bulk.Plans.Count
             );
         }
 
@@ -151,7 +137,7 @@ namespace PackIt.Test.Controllers
             this.controller = new(
                 Mock.Of<ILogger<UploadsController>>(),
                 Options);
-            Assert.That(this.controller, Is.Not.Null);
+            Assert.NotNull(this.controller);
         }
 
         /// <summary> Setup the controller as if the services are running. </summary>
@@ -176,7 +162,7 @@ namespace PackIt.Test.Controllers
                 Mock.Of<ILogger<UploadsController>>(),
                 Options,
                 handler.Object);
-            Assert.That(this.controller, Is.Not.Null);
+            Assert.NotNull(this.controller);
         }
     }
 }

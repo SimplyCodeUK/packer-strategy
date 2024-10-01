@@ -6,41 +6,40 @@
 
 namespace PackIt.Test.DbInterface
 {
-    using NUnit.Framework;
+    using Xunit;
     using PackIt.DbInterface;
 
     /// <summary> (Unit Test Method) Database connection manager. </summary>
-    [TestFixture]
     public class TestDbConnectionManager
     {
         /// <summary> (Unit Test Method) Successful database context lookup. </summary>
-        [Test]
+        [Fact]
         public void DatabaseLookupOk()
         {
             var manager = new DbConnectionManager();
             var inmemory = new DbContextBuilderInMemory();
             var postgres = new DbContextBuilderPostgres();
-            Assert.That(manager, Is.Not.Null);
-            Assert.That(inmemory, Is.Not.Null);
-            Assert.That(postgres, Is.Not.Null);
+            Assert.NotNull(manager);
+            Assert.NotNull(inmemory);
+            Assert.NotNull(postgres);
 
             manager.RegisterContextBuilder("inmemory", inmemory);
             manager.RegisterContextBuilder("postgres", postgres);
 
-            Assert.That(manager.ContextBuilder("inmemory"), Is.EqualTo(inmemory));
-            Assert.That(manager.ContextBuilder("postgres"), Is.EqualTo(postgres));
+            Assert.Equal(inmemory, manager.ContextBuilder("inmemory"));
+            Assert.Equal(postgres, manager.ContextBuilder("postgres"));
         }
 
         /// <summary> (Unit Test Method) Failed database context lookup. </summary>
-        [Test]
+        [Fact]
         public void DatabaseLookupFail()
         {
             var manager = new DbConnectionManager();
             var inmemory = new DbContextBuilderInMemory();
             var postgres = new DbContextBuilderPostgres();
-            Assert.That(manager, Is.Not.Null);
-            Assert.That(inmemory, Is.Not.Null);
-            Assert.That(postgres, Is.Not.Null);
+            Assert.NotNull(manager);
+            Assert.NotNull(inmemory);
+            Assert.NotNull(postgres);
 
             manager.RegisterContextBuilder("inmemory", inmemory);
             manager.RegisterContextBuilder("postgres", postgres);

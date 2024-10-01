@@ -6,14 +6,13 @@
 
 namespace PackItBdd.Test.Drivers
 {
-    using NUnit.Framework;
+    using Xunit;
     using PackItBdd.Drivers;
     using PackItMock.HttpMock;
     using System.Net;
     using System.Net.Http;
 
     /// <summary> (Unit Test Fixture) a controller for handling test materials. </summary>
-    [TestFixture]
     public class TestsHttpHandler
     {
         /// <summary> The test root endpoint. </summary>
@@ -22,8 +21,7 @@ namespace PackItBdd.Test.Drivers
         private HttpHandler handler;
 
         /// <summary> Setup for all unit tests here. </summary>
-        [SetUp]
-        public void Setup()
+        public TestsHttpHandler()
         {
             var httpHandler = new MockHttpClientHandler();
             httpHandler
@@ -43,15 +41,15 @@ namespace PackItBdd.Test.Drivers
                 .AddRequest(HttpMethod.Delete, root + "Materials/Id1");
 
             this.handler = new(httpHandler);
-            Assert.That(this.handler, Is.Not.Null);
+            Assert.NotNull(this.handler);
         }
 
         /// <summary> (Unit Test Method) gets this object. </summary>
-        [Test]
+        [Fact]
         public void TestGet()
         {
             this.handler.Get(root);
-            Assert.That(this.handler.ResponseStatusCode(), Is.EqualTo((int)HttpStatusCode.OK));
+            Assert.Equal((int)HttpStatusCode.OK, this.handler.ResponseStatusCode());
         }
     }
 }

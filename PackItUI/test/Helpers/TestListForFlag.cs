@@ -6,26 +6,27 @@
 
 namespace PackItUI.Test.Helpers
 {
-    using NUnit.Framework;
-    using PackItUI.Helpers;
     using System;
+    using Xunit;
+    using PackItUI.Helpers;
 
     /// <summary> (Unit Test Fixture) helper for enums. </summary>
-    [TestFixture]
     public class TestListForFlag
     {
         private enum TestType { t1, t2 }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
-        [Test]
+        [Fact]
         public void EnumValid()
         {
             ListForFlag<TestType> test;
-            Assert.DoesNotThrow(delegate { test = new(0); });
+
+            var exception = Record.Exception(() => { test = new(0); });
+            Assert.Null(exception);
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
-        [Test]
+        [Fact]
         public void EnumInvalid()
         {
             ListForFlag<int> test;

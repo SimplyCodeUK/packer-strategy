@@ -8,15 +8,15 @@ namespace PackItUI.Test.Areas.Materials.DTO
 {
     using System;
     using System.Net.Http;
+    using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
-    using NUnit.Framework;
+    using Xunit;
     using PackIt.Models;
     using PackItMock.HttpMock;
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Services;
 
     /// <summary> (Unit Test Fixture) a handler for test materials. </summary>
-    [TestFixture]
     public class TestMaterialHandler
     {
         /// <summary> The service endpoints. </summary>
@@ -45,33 +45,30 @@ namespace PackItUI.Test.Areas.Materials.DTO
         private MaterialHandler handler;
 
         /// <summary> Setup for all unit tests here. </summary>
-        [SetUp]
-        public void BeforeTest()
+        public TestMaterialHandler()
         {
             this.SetupConnected();
         }
 
         /// <summary> (Unit Test Method) index action when the service is up. </summary>
-        [Test]
-        public void ConnectedInformationAsync()
+        [Fact]
+        public async Task ConnectedInformationAsync()
         {
-            var result = this.handler.InformationAsync();
-            result.Wait();
-            Assert.That(result.Result, Is.TypeOf<ServiceInfo>());
-            Assert.That(result.Result.Version, Is.EqualTo("1"));
-            Assert.That(result.Result.About, Is.EqualTo("Materials"));
+            var result = await this.handler.InformationAsync();
+            Assert.IsType<ServiceInfo>(result);
+            Assert.Equal("1", result.Version);
+            Assert.Equal("Materials", result.About);
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
-        [Test]
-        public void DisconnectedInformationAsync()
+        [Fact]
+        public async Task DisconnectedInformationAsync()
         {
             this.SetupDisconnected();
-            var result = this.handler.InformationAsync();
-            result.Wait();
-            Assert.That(result.Result, Is.TypeOf<ServiceInfo>());
-            Assert.That(result.Result.Version, Is.EqualTo("Unknown"));
-            Assert.That(result.Result.About, Is.EqualTo("Service down! http://localhost:8001/api/v1/"));
+            var result = await this.handler.InformationAsync();
+            Assert.IsType<ServiceInfo>(result);
+            Assert.Equal("Unknown", result.Version);
+            Assert.Equal("Service down! http://localhost:8001/api/v1/", result.About);
         }
 
         /// <summary> Setup for disconnected service. </summary>
@@ -81,8 +78,8 @@ namespace PackItUI.Test.Areas.Materials.DTO
             {
                 TimeOut = TimeOut
             };
-            Assert.That(this.handler, Is.Not.Null);
-            Assert.That(this.handler.TimeOut, Is.EqualTo(TimeOut));
+            Assert.NotNull(this.handler);
+            Assert.Equal(TimeOut, this.handler.TimeOut);
         }
 
         /// <summary> Setup for connected services. </summary>
@@ -97,8 +94,8 @@ namespace PackItUI.Test.Areas.Materials.DTO
             {
                 TimeOut = TimeOut
             };
-            Assert.That(this.handler, Is.Not.Null);
-            Assert.That(this.handler.TimeOut, Is.EqualTo(TimeOut));
+            Assert.NotNull(this.handler);
+            Assert.Equal(TimeOut, this.handler.TimeOut);
         }
     }
 }

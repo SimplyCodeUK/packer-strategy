@@ -7,7 +7,7 @@
 namespace PackItBdd.Steps
 {
     using Microsoft.Extensions.Configuration;
-    using NUnit.Framework;
+    using Xunit;
     using PackItBdd.Drivers;
     using Reqnroll;
 
@@ -26,11 +26,11 @@ namespace PackItBdd.Steps
         public void TheServiceIsRunning(string serviceName)
         {
             var obj = config.GetSection("service");
-            Assert.That(obj, Is.Not.Null);
+            Assert.NotNull(obj);
             obj = obj.GetSection(serviceName);
-            Assert.That(obj, Is.Not.Null);
+            Assert.NotNull(obj);
             obj = obj.GetSection("url");
-            Assert.That(obj, Is.Not.Null);
+            Assert.NotNull(obj);
             httpHandler.ServiceName = serviceName;
         }
 
@@ -50,7 +50,7 @@ namespace PackItBdd.Steps
         [Then("we get the HTTP status code (.*)")]
         public void WeGetTheHTTPStatusCode(int statusCode)
         {
-            Assert.That(httpHandler.ResponseStatusCode(), Is.EqualTo(statusCode));
+            Assert.Equal(statusCode, httpHandler.ResponseStatusCode());
         }
     }
 }

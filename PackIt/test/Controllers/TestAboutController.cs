@@ -10,41 +10,39 @@ namespace PackIt.Test.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using Moq;
-    using NUnit.Framework;
+    using Xunit;
     using PackIt.Controllers;
 
     /// <summary> (Unit Test Fixture) a controller for handling test materials. </summary>
-    [TestFixture]
     public class TestAboutController
     {
         /// <summary> The controller under test. </summary>
         private AboutController controller;
 
         /// <summary> Setup for all unit tests here. </summary>
-        [SetUp]
-        public void BeforeTest()
+        public TestAboutController()
         {
             this.controller = new(
                 Mock.Of<ILogger<AboutController>>());
-            Assert.That(this.controller, Is.Not.Null);
+            Assert.NotNull(this.controller);
         }
 
         /// <summary> (Unit Test Method) gets this object. </summary>
-        [Test]
+        [Fact]
         public void Get()
         {
             var result = this.controller.Get();
 
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result, Is.TypeOf<OkObjectResult>());
+            Assert.NotNull(result);
+            Assert.IsType<OkObjectResult>(result);
 
             var objectResult = result as OkObjectResult;
-            Assert.That(objectResult.StatusCode, Is.EqualTo((int)HttpStatusCode.OK));
-            Assert.That(objectResult.Value, Is.TypeOf<AboutController.AboutService>());
+            Assert.Equal(objectResult.StatusCode, (int)HttpStatusCode.OK);
+            Assert.IsType<AboutController.AboutService> (objectResult.Value);
 
             var item = objectResult.Value as AboutController.AboutService;
-            Assert.That(item.Version, Is.Not.Empty);
-            Assert.That(item.About, Is.Not.Empty);
+            Assert.NotEmpty(item.Version);
+            Assert.NotEmpty(item.About);
         }
     }
 }

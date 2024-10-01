@@ -6,36 +6,35 @@
 
 namespace PackItUI.Test.Areas.App.Controllers
 {
-    using NUnit.Framework;
+    using Xunit;
     using PackItUI.Areas.App.Models;
 
     /// <summary> (Unit Test Fixture) a controller for handling test materials. </summary>
-    [TestFixture]
     public class TestErrorViewModel
     {
 
         /// <summary> (Unit Test Method) index action. </summary>
-        [Test]
+        [Fact]
         public void CanShowRequestId()
         {
             ErrorViewModel model = new();
 
             model.RequestId = "";
 
-            Assert.That(model.RequestId, Is.EqualTo(""));
-            Assert.That(model.ShowRequestId, Is.False);
+            Assert.Equal("", model.RequestId);
+            Assert.False (model.ShowRequestId);
         }
 
         /// <summary> (Unit Test Method) about action when the services are not running. </summary>
-        [Test]
+        [Fact]
         public void CannotShowRequestId()
         {
             ErrorViewModel model = new();
 
             model.RequestId = "id";
 
-            Assert.That(model.RequestId, Is.EqualTo("id"));
-            Assert.That(model.ShowRequestId, Is.True);
+            Assert.Equal("id", model.RequestId);
+            Assert.True(model.ShowRequestId);
         }
     }
 }

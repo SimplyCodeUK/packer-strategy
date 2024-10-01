@@ -9,15 +9,15 @@ namespace PackItUI.Test.Areas.Packs.DTO
     using System;
     using System.Net.Http;
     using System.Text.Json;
+    using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
-    using NUnit.Framework;
+    using Xunit;
     using PackIt.Models;
     using PackItMock.HttpMock;
     using PackItUI.Areas.Packs.DTO;
     using PackItUI.Services;
 
     /// <summary> (Unit Test Fixture) a handler for test drawings. </summary>
-    [TestFixture]
     public class TestDrawHandler
     {
         /// <summary> The service endpoints. </summary>
@@ -46,57 +46,73 @@ namespace PackItUI.Test.Areas.Packs.DTO
         private DrawHandler handler;
 
         /// <summary> Setup for all unit tests here. </summary>
-        [SetUp]
-        public void BeforeTest()
+        public TestDrawHandler()
         {
             this.SetupConnected();
         }
 
         /// <summary> (Unit Test Method) index action when the service is up. </summary>
-        [Test]
-        public void ConnectedInformationAsync()
+        [Fact]
+        public async Task ConnectedInformationAsync()
         {
-            var result = this.handler.InformationAsync();
-            result.Wait();
-            Assert.That(result.Result, Is.TypeOf<ServiceInfo>());
-            Assert.That(result.Result.Version, Is.EqualTo("1"));
-            Assert.That(result.Result.About, Is.EqualTo("Drawings"));
+            var result = await this.handler.InformationAsync();
+
+            Assert.IsType<ServiceInfo>(result);
+            Assert.Equal("1", result.Version);
+            Assert.Equal("Drawings", result.About);
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
-        [Test]
-        public void DisconnectedInformationAsync()
+        [Fact]
+        public async Task  DisconnectedInformationAsync()
         {
             this.SetupDisconnected();
-            var result = this.handler.InformationAsync();
-            result.Wait();
-            Assert.That(result.Result, Is.TypeOf<ServiceInfo>());
-            Assert.That(result.Result.Version, Is.EqualTo("Unknown"));
-            Assert.That(result.Result.About, Is.EqualTo("Service down! http://localhost:8005/api/v1/"));
+            var result = await this.handler.InformationAsync();
+
+            Assert.IsType<ServiceInfo>(result);
+            Assert.Equal("Unknown", result.Version);
+            Assert.Equal("Service down! http://localhost:8005/api/v1/", result.About);
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
-        [Test]
-        public void CreateAsync()
+        [Fact]
+        public async Task CreateAsync()
         {
-            var result = this.handler.CreateAsync(new());
-            result.Wait();
-            Assert.That(result.Result, Is.TypeOf<HttpResponseMessage>());
-            Assert.That(result.Result.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.Created));
-            var content = result.Result.Content.ReadAsStringAsync();
-            content.Wait();
-            JsonDocument cont = JsonDocument.Parse(content.Result);
-            Assert.That(cont.RootElement.GetProperty("id").GetString(), Is.EqualTo("1111-2222-3333-4444"));
+            var result = await this.handler.CreateAsync(new());
+
+            Assert.IsType<HttpResponseMessage>(result);
+            Assert.Equal(System.Net.HttpStatusCode.Created, result.StatusCode);
+            var content = await result.Content.ReadAsStringAsync();
+
+            JsonDocument cont = JsonDocument.Parse(content);
+            Assert.Equal("1111-2222-3333-4444", cont.RootElement.GetProperty("id").GetString());
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
-        [Test]
-        public void CreateAsyncDisconnected()
+        [Fact]
+        public async Task CreateAsyncDisconnected()
         {
             this.SetupDisconnected();
-            var result = this.handler.CreateAsync(new());
-            result.Wait();
-            Assert.That(result.Result, Is.Null);
+            var result = await this.handler.CreateAsync(new());
+            Assert.Null(result);
+        }
+
+        /// <summary> (Unit Test Method) index action when the service is down. </summary>
+        [Fact]
+        public async Task DrawAsync()
+        {
+            var result = await this.handler.ReadAsync("id");
+            Assert.NotNull(result);
+            Assert.IsType<PackIt.Drawing.Drawing>(result);
+        }
+
+        /// <summary> (Unit Test Method) index action when the service is down. </summary>
+        [Fact]
+        public async Task DrawAsyncDisconnected()
+        {
+            this.SetupDisconnected();
+            var result = await this.handler.ReadAsync("");
+            Assert.Null(result);
         }
 
         /// <summary> Setup for disconnected service. </summary>
@@ -106,8 +122,8 @@ namespace PackItUI.Test.Areas.Packs.DTO
             {
                 TimeOut = TimeOut
             };
-            Assert.That(this.handler, Is.Not.Null);
-            Assert.That(this.handler.TimeOut, Is.EqualTo(TimeOut));
+            Assert.NotNull(this.handler);
+            Assert.Equal(TimeOut, this.handler.TimeOut);
         }
 
         /// <summary> Setup for connected services. </summary>
@@ -119,14 +135,17 @@ namespace PackItUI.Test.Areas.Packs.DTO
                 .AddRequest(HttpMethod.Get, root)
                 .ContentsJson("{\"Version\": \"1\", \"About\": \"Drawings\"}");
             httpHandler
+                .AddRequest(HttpMethod.Get, root + "Drawings/id")
+                .ContentsJson("{\"DrawingId\": \"1234-567-89\", \"Computed\": false}");
+            httpHandler
                 .AddRequest(HttpMethod.Post, root + "Drawings")
                 .ContentsJson("{\"id\": \"1111-2222-3333-4444\"}");
             this.handler = new(Options, httpHandler)
             {
                 TimeOut = TimeOut
             };
-            Assert.That(this.handler, Is.Not.Null);
-            Assert.That(this.handler.TimeOut, Is.EqualTo(TimeOut));
+            Assert.NotNull(this.handler);
+            Assert.Equal(TimeOut, this.handler.TimeOut);
         }
     }
 }

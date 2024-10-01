@@ -9,11 +9,12 @@ namespace PackItUI.Test.Areas.Packs.Controllers
     using System;
     using System.Text.Json;
     using System.Net.Http;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using Moq;
-    using NUnit.Framework;
+    using Xunit;
     using PackIt.Models;
     using PackItMock.HttpMock;
     using PackItUI.Areas.Packs.Controllers;
@@ -21,7 +22,6 @@ namespace PackItUI.Test.Areas.Packs.Controllers
     using PackItUI.Areas.Packs.Models;
 
     /// <summary> (Unit Test Fixture) a controller for handling test packs. </summary>
-    [TestFixture]
     public class TestHomeController
     {
         /// <summary> The service endpoints. </summary>
@@ -50,227 +50,224 @@ namespace PackItUI.Test.Areas.Packs.Controllers
         private HomeController controller;
 
         /// <summary> Setup for all unit tests here. </summary>
-        [SetUp]
-        public void BeforeTest()
+        public TestHomeController()
         {
             this.SetupConnected();
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
-        [Test]
-        public void IndexDisconnected()
+        [Fact]
+        public async Task IndexDisconnected()
         {
             this.SetupDisconnected();
 
-            var result = this.controller.Index();
-            result.Wait();
-            Assert.That(result.Result, Is.TypeOf<ViewResult>());
+            var result = await this.controller.Index();
+            Assert.IsType<ViewResult>(result);
 
-            var viewResult = result.Result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Index"));
-            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
-            Assert.That(viewResult.ViewData.Model, Is.TypeOf<HomeViewModel>());
+            var viewResult = result as ViewResult;
+            Assert.Equal("Index", viewResult.ViewName);
+            Assert.NotNull(viewResult.ViewData.Model);
+            Assert.IsType<HomeViewModel>(viewResult.ViewData.Model);
 
             var model = viewResult.ViewData.Model as HomeViewModel;
-            Assert.That(model.Information.Version, Is.EqualTo("Unknown"));
-            Assert.That(model.Information.About, Is.EqualTo("Service down! http://localhost:8002/api/v1/"));
-            Assert.That(model.Items, Is.Null);
+            Assert.Equal("Unknown", model.Information.Version);
+            Assert.Equal("Service down! http://localhost:8002/api/v1/", model.Information.About);
+            Assert.Null(model.Items);
         }
 
         /// <summary> (Unit Test Method) index action when the service is up. </summary>
-        [Test]
-        public void IndexConnected()
+        [Fact]
+        public async Task IndexConnected()
         {
-            var result = this.controller.Index();
-            result.Wait();
-            Assert.That(result.Result, Is.TypeOf<ViewResult>());
+            var result = await this.controller.Index();
+            Assert.IsType<ViewResult>(result);
 
-            var viewResult = result.Result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Index"));
-            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
-            Assert.That(viewResult.ViewData.Model, Is.TypeOf<HomeViewModel>());
+            var viewResult = result as ViewResult;
+            Assert.Equal("Index", viewResult.ViewName);
+            Assert.NotNull(viewResult.ViewData.Model);
+            Assert.IsType<HomeViewModel>(viewResult.ViewData.Model);
 
             var model = viewResult.ViewData.Model as HomeViewModel;
-            Assert.That(model.Information.Version, Is.EqualTo("1"));
-            Assert.That(model.Information.About, Is.EqualTo("Packs"));
-            Assert.That(model.Items.Count, Is.EqualTo(2));
-            Assert.That(model.Items[0].PackId, Is.EqualTo("Id1"));
-            Assert.That(model.Items[1].PackId, Is.EqualTo("Id2"));
+            Assert.Equal("1", model.Information.Version);
+            Assert.Equal("Packs", model.Information.About);
+            Assert.Equal(2, model.Items.Count);
+            Assert.Equal("Id1", model.Items[0].PackId);
+            Assert.Equal("Id2", model.Items[1].PackId);
         }
 
         /// <summary> (Unit Test Method) create get action. </summary>
-        [Test]
+        [Fact]
         public void CreateGet()
         {
             var result = this.controller.Create();
-            Assert.That(result, Is.TypeOf<ViewResult>());
+            Assert.IsType<ViewResult>(result);
 
             var viewResult = result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Create"));
-            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
-            Assert.That(viewResult.ViewData.Model, Is.TypeOf<PackEditViewModel>());
+            Assert.Equal("Create", viewResult.ViewName);
+            Assert.NotNull(viewResult.ViewData.Model);
+            Assert.IsType<PackEditViewModel>(viewResult.ViewData.Model);
         }
 
         /// <summary> (Unit Test Method) create post action. </summary>
-        [Test]
-        public void CreatePost()
+        [Fact]
+        public async Task CreatePost()
         {
             var model = new PackEditViewModel();
-            var result = this.controller.Create(model);
-            Assert.That(result.Result, Is.TypeOf<RedirectToActionResult>());
+            var result = await this.controller.Create(model);
+            Assert.IsType<RedirectToActionResult>(result);
 
-            var redirectResult = result.Result as RedirectToActionResult;
-            Assert.That(redirectResult.ActionName, Is.EqualTo("Index"));
+            var redirectResult = result as RedirectToActionResult;
+            Assert.Equal("Index", redirectResult.ActionName);
         }
 
         /// <summary> (Unit Test Method) create post action when disconnected. </summary>
-        [Test]
-        public void CreatePostDisconnected()
+        [Fact]
+        public async Task CreatePostDisconnected()
         {
             this.SetupDisconnected();
 
             var model = new PackEditViewModel();
-            var result = this.controller.Create(model);
-            Assert.That(result.Result, Is.TypeOf<ViewResult>());
+            var result = await this.controller.Create(model);
+            Assert.IsType<ViewResult>(result);
 
-            var viewResult = result.Result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Create"));
+            var viewResult = result as ViewResult;
+            Assert.Equal("Create", viewResult.ViewName);
         }
 
         /// <summary> (Unit Test Method) update get action. </summary>
-        [Test]
-        public void UpdateGet()
+        [Fact]
+        public async Task UpdateGet()
         {
-            var result = this.controller.Update("Id1");
-            Assert.That(result.Result, Is.TypeOf<ViewResult>());
+            var result = await this.controller.Update("Id1");
+            Assert.IsType<ViewResult>(result);
 
-            var viewResult = result.Result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Update"));
-            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
-            Assert.That(viewResult.ViewData.Model, Is.TypeOf<PackEditViewModel>());
+            var viewResult = result as ViewResult;
+            Assert.Equal("Update", viewResult.ViewName);
+            Assert.NotNull(viewResult.ViewData.Model);
+            Assert.IsType<PackEditViewModel>(viewResult.ViewData.Model);
 
             var viewModel = viewResult.ViewData.Model as PackEditViewModel;
-            Assert.That(viewModel.Data.PackId, Is.EqualTo("Id1"));
+            Assert.Equal("Id1", viewModel.Data.PackId);
         }
 
         /// <summary> (Unit Test Method) update post action. </summary>
-        [Test]
-        public void UpdatePost()
+        [Fact]
+        public async Task UpdatePost()
         {
             var model = new PackEditViewModel();
-            var result = this.controller.Update("Id1", model);
-            Assert.That(result.Result, Is.TypeOf<RedirectToActionResult>());
+            var result = await this.controller.Update("Id1", model);
+            Assert.IsType<RedirectToActionResult>(result);
 
-            var redirectResult = result.Result as RedirectToActionResult;
-            Assert.That(redirectResult.ActionName, Is.EqualTo("Index"));
+            var redirectResult = result as RedirectToActionResult;
+            Assert.Equal("Index", redirectResult.ActionName);
         }
 
         /// <summary> (Unit Test Method) update post action when disconnected. </summary>
-        [Test]
-        public void UpdatePostDisconnected()
+        [Fact]
+        public async Task UpdatePostDisconnected()
         {
             this.SetupDisconnected();
 
             var model = new PackEditViewModel();
-            var result = this.controller.Update("Id1", model);
-            Assert.That(result.Result, Is.TypeOf<ViewResult>());
+            var result = await this.controller.Update("Id1", model);
+            Assert.IsType<ViewResult>(result);
 
-            var viewResult = result.Result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Update"));
+            var viewResult = result as ViewResult;
+            Assert.Equal("Update", viewResult.ViewName);
         }
 
         /// <summary> (Unit Test Method) delete get action. </summary>
-        [Test]
-        public void DeleteGet()
+        [Fact]
+        public async Task DeleteGet()
         {
-            var result = this.controller.Delete("Id1");
-            Assert.That(result.Result, Is.TypeOf<ViewResult>());
+            var result = await this.controller.Delete("Id1");
+            Assert.IsType<ViewResult>(result);
 
-            var viewResult = result.Result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Delete"));
-            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
-            Assert.That(viewResult.ViewData.Model, Is.TypeOf<PackEditViewModel>());
+            var viewResult = result as ViewResult;
+            Assert.Equal("Delete", viewResult.ViewName);
+            Assert.NotNull(viewResult.ViewData.Model);
+            Assert.IsType<PackEditViewModel>(viewResult.ViewData.Model);
 
             var viewModel = viewResult.ViewData.Model as PackEditViewModel;
-            Assert.That(viewModel.Data.PackId,  Is.EqualTo("Id1"));
+            Assert.Equal("Id1", viewModel.Data.PackId);
         }
 
         /// <summary> (Unit Test Method) delete post action. </summary>
-        [Test]
-        public void DeletePost()
+        [Fact]
+        public async Task DeletePost()
         {
-            var result = this.controller.DoDelete("Id1");
-            Assert.That(result.Result, Is.TypeOf<RedirectToActionResult>());
+            var result = await this.controller.DoDelete("Id1");
+            Assert.IsType<RedirectToActionResult>(result);
 
-            var redirectResult = result.Result as RedirectToActionResult;
-            Assert.That(redirectResult.ActionName, Is.EqualTo("Index"));
+            var redirectResult = result as RedirectToActionResult;
+            Assert.Equal("Index", redirectResult.ActionName);
         }
 
         /// <summary> (Unit Test Method) delete post action when disconnected. </summary>
-        [Test]
-        public void DeletePostDisconnected()
+        [Fact]
+        public async Task DeletePostDisconnected()
         {
             this.SetupDisconnected();
 
-            var result = this.controller.DoDelete("Id1");
-            Assert.That(result.Result, Is.TypeOf<RedirectToActionResult>());
+            var result = await this.controller.DoDelete("Id1");
+            Assert.IsType<RedirectToActionResult>(result);
 
-            var redirectResult = result.Result as RedirectToActionResult;
-            Assert.That(redirectResult.ActionName, Is.EqualTo("Index"));
+            var redirectResult = result as RedirectToActionResult;
+            Assert.Equal("Index", redirectResult.ActionName);
         }
 
         /// <summary> (Unit Test Method) display get action. </summary>
-        [Test]
-        public void DisplayGet()
+        [Fact]
+        public async Task DisplayGet()
         {
-            var result = this.controller.Display("Id1");
-            Assert.That(result.Result, Is.TypeOf<ViewResult>());
+            var result = await this.controller.Display("Id1");
+            Assert.IsType<ViewResult>(result);
 
-            var viewResult = result.Result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Display"));
-            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
-            Assert.That(viewResult.ViewData.Model, Is.TypeOf<PackDisplayViewModel>());
+            var viewResult = result as ViewResult;
+            Assert.Equal("Display", viewResult.ViewName);
+            Assert.NotNull(viewResult.ViewData.Model);
+            Assert.IsType<PackDisplayViewModel>(viewResult.ViewData.Model);
 
             var viewModel = viewResult.ViewData.Model as PackDisplayViewModel;
-            Assert.That(viewModel.Pack.PackId, Is.EqualTo("Id1"));
+            Assert.Equal("Id1", viewModel.Pack.PackId);
         }
 
         /// <summary> (Unit Test Method) update post action. </summary>
-        [Test]
-        public void DisplayPost()
+        [Fact]
+        public async Task DisplayPost()
         {
             var model = new PackEditViewModel();
-            var result = this.controller.Display("Id1", model);
-            Assert.That(result.Result, Is.TypeOf<RedirectToActionResult>());
+            var result = await this.controller.Display("Id1", model);
+            Assert.IsType<RedirectToActionResult>(result);
 
-            var redirectResult = result.Result as RedirectToActionResult;
-            Assert.That(redirectResult.ActionName, Is.EqualTo("Index"));
+            var redirectResult = result as RedirectToActionResult;
+            Assert.Equal("Index", redirectResult.ActionName);
         }
 
         /// <summary> (Unit Test Method) update post action disconnected. </summary>
-        [Test]
-        public void DisplayPostDisconnected()
+        [Fact]
+        public async Task DisplayPostDisconnected()
         {
             this.SetupDisconnected();
 
             var model = new PackEditViewModel();
-            var result = this.controller.Display("Id1", model);
-            Assert.That(result.Result, Is.TypeOf<ViewResult>());
+            var result = await this.controller.Display("Id1", model);
+            Assert.IsType<ViewResult>(result);
 
-            var viewResult = result.Result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Update"));
+            var viewResult = result as ViewResult;
+            Assert.Equal("Update", viewResult.ViewName);
         }
 
         /// <summary> (Unit Test Method) costing row post action. </summary>
-        [Test]
+        [Fact]
         public void CostingRowPost()
         {
             var body = JsonDocument.Parse("{\"index\": 5}");
             var result = this.controller.CostingRow(body);
 
-            Assert.That(result, Is.TypeOf<PartialViewResult>());
-            Assert.That((result as PartialViewResult).Model, Is.TypeOf<PackIt.Pack.Costing>());
-            Assert.That((result as PartialViewResult).ViewName, Is.EqualTo("EditorTemplates/Costing"));
+            Assert.IsType<PartialViewResult>(result);
+            Assert.IsType<PackIt.Pack.Costing>((result as PartialViewResult).Model);
+            Assert.Equal("EditorTemplates/Costing", (result as PartialViewResult).ViewName);
         }
 
         /// <summary> Setup for disconnected service. </summary>
@@ -287,7 +284,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
                 {
                     TimeOut = TimeOut
                 });
-            Assert.That(this.controller, Is.Not.Null);
+            Assert.NotNull(this.controller);
         }
 
         /// <summary> Setup for connected services. </summary>
@@ -325,7 +322,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
                 {
                     TimeOut = TimeOut
                 });
-            Assert.That(this.controller, Is.Not.Null);
+            Assert.NotNull(this.controller);
         }
     }
 }

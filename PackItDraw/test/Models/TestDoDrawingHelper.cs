@@ -6,23 +6,21 @@
 
 namespace PackItDraw.Test.Models
 {
-    using NUnit.Framework;
+    using Xunit;
     using PackIt.Helpers.Masks;
     using static PackIt.Models.DoDrawingHelpers;
 
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
-    [TestFixture]
     public class TestDoDrawingHelper
     {
         /// <summary> Setup for all unit tests here. </summary>
-        [SetUp]
-        public void BeforeTest()
+        public TestDoDrawingHelper()
         {
             // Nothing to do at the moment
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
-        [Test]
+        [Fact]
         public void TestRotateResultHeightToHeight()
         {
             PackIt.Pack.Result result = new()
@@ -32,13 +30,13 @@ namespace PackItDraw.Test.Models
                 ExternalHeight = 300
             };
             Dims dims = RotateResult(result, ResultRotation.ParentHeightToHeight);
-            Assert.That(dims.Width, Is.EqualTo(result.ExternalLength));
-            Assert.That(dims.Depth, Is.EqualTo(result.ExternalBreadth));
-            Assert.That(dims.Height, Is.EqualTo(result.ExternalHeight));
+            Assert.Equal(result.ExternalLength, dims.Width);
+            Assert.Equal(result.ExternalBreadth, dims.Depth);
+            Assert.Equal(result.ExternalHeight, dims.Height);
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
-        [Test]
+        [Fact]
         public void TestRotateResultLenghtToHeight()
         {
             PackIt.Pack.Result result = new()
@@ -48,13 +46,13 @@ namespace PackItDraw.Test.Models
                 ExternalHeight = 300
             };
             Dims dims = RotateResult(result, ResultRotation.ParentLengthToHeight);
-            Assert.That(dims.Depth, Is.EqualTo(result.ExternalLength));
-            Assert.That(dims.Width, Is.EqualTo(result.ExternalBreadth));
-            Assert.That(dims.Height, Is.EqualTo(result.ExternalHeight));
+            Assert.Equal(result.ExternalLength, dims.Depth);
+            Assert.Equal(result.ExternalBreadth, dims.Width);
+            Assert.Equal(result.ExternalHeight, dims.Height);
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
-        [Test]
+        [Fact]
         public void TestRotateResultBreadthToHeight()
         {
             PackIt.Pack.Result result = new()
@@ -64,9 +62,9 @@ namespace PackItDraw.Test.Models
                 ExternalHeight = 300
             };
             Dims dims = RotateResult(result, ResultRotation.ParentBreadthToHeight);
-            Assert.That(dims.Width, Is.EqualTo(result.ExternalLength));
-            Assert.That(dims.Height, Is.EqualTo(result.ExternalBreadth));
-            Assert.That(dims.Depth, Is.EqualTo(result.ExternalHeight));
+            Assert.Equal(result.ExternalLength, dims.Width);
+            Assert.Equal(result.ExternalBreadth, dims.Height);
+            Assert.Equal(result.ExternalHeight, dims.Depth);
         }
     }
 }

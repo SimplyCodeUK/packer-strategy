@@ -8,15 +8,15 @@ namespace PackItUI.Test.Areas.Uploads.DTO
 {
     using System;
     using System.Net.Http;
+    using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
-    using NUnit.Framework;
+    using Xunit;
     using PackIt.Models;
     using PackItMock.HttpMock;
     using PackItUI.Areas.Uploads.DTO;
     using PackItUI.Services;
 
     /// <summary> (Unit Test Fixture) a handler for test plans. </summary>
-    [TestFixture]
     public class TestUploadHandler
     {
         /// <summary> The service endpoints. </summary>
@@ -45,42 +45,41 @@ namespace PackItUI.Test.Areas.Uploads.DTO
         private UploadHandler handler;
 
         /// <summary> Setup for all unit tests here. </summary>
-        [SetUp]
-        public void BeforeTest()
+        public TestUploadHandler()
         {
             this.SetupConnected();
         }
 
         /// <summary> (Unit Test Method) index action when the service is up. </summary>
-        [Test]
-        public void ConnectedInformationAsync()
+        [Fact]
+        public async Task ConnectedInformationAsync()
         {
-            var result = this.handler.InformationAsync();
-            result.Wait();
-            Assert.That(result.Result, Is.TypeOf<ServiceInfo>());
-            Assert.That(result.Result.Version, Is.EqualTo("1"));
-            Assert.That(result.Result.About, Is.EqualTo("Uploads"));
+            var result = await this.handler.InformationAsync();
+
+            Assert.IsType<ServiceInfo>(result);
+            Assert.Equal("1", result.Version);
+            Assert.Equal("Uploads", result.About);
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>
-        [Test]
-        public void DisconnectedInformationAsync()
+        [Fact]
+        public async Task DisconnectedInformationAsync()
         {
             this.SetupDisconnected();
-            var result = this.handler.InformationAsync();
-            result.Wait();
-            Assert.That(result.Result, Is.TypeOf<ServiceInfo>());
-            Assert.That(result.Result.Version, Is.EqualTo("Unknown"));
-            Assert.That(result.Result.About, Is.EqualTo("Service down! http://localhost:8004/api/v1/"));
+            var result = await this.handler.InformationAsync();
+
+            Assert.IsType<ServiceInfo>(result);
+            Assert.Equal("Unknown", result.Version);
+            Assert.Equal("Service down! http://localhost:8004/api/v1/", result.About);
         }
 
         /// <summary> (Unit Test Method) test set and get Timeout property. </summary>
-        [Test]
+        [Fact]
         public void Timeout()
         {
             TimeSpan span = new(0, 0, 0, 0, 10);
             this.handler.TimeOut = span;
-            Assert.That(span, Is.EqualTo(this.handler.TimeOut));
+            Assert.Equal(this.handler.TimeOut, span);
         }
 
         /// <summary> Setup for disconnected service. </summary>
@@ -90,8 +89,8 @@ namespace PackItUI.Test.Areas.Uploads.DTO
             {
                 TimeOut = TimeOut
             };
-            Assert.That(this.handler, Is.Not.Null);
-            Assert.That(this.handler.TimeOut, Is.EqualTo(TimeOut));
+            Assert.NotNull(this.handler);
+            Assert.Equal(TimeOut, this.handler.TimeOut);
         }
 
         /// <summary> Setup for connected services. </summary>
@@ -106,8 +105,8 @@ namespace PackItUI.Test.Areas.Uploads.DTO
             {
                 TimeOut = TimeOut
             };
-            Assert.That(this.handler, Is.Not.Null);
-            Assert.That(this.handler.TimeOut, Is.EqualTo(TimeOut));
+            Assert.NotNull(this.handler);
+            Assert.Equal(TimeOut, this.handler.TimeOut);
         }
     }
 }

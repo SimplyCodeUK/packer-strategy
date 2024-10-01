@@ -9,21 +9,19 @@ namespace PackItDraw.Test.Models
     using System.IO;
     using System.Text.Json;
     using Microsoft.EntityFrameworkCore;
-    using NUnit.Framework;
+    using Xunit;
     using PackIt.DTO;
     using PackIt.Drawing;
     using PackIt.Models;
 
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
-    [TestFixture]
     public class TestDoDrawing
     {
         private IDrawingRepository repository;
         private PackIt.Pack.Pack pack;
 
         /// <summary> Setup for all unit tests here. </summary>
-        [SetUp]
-        public void BeforeTest()
+        public TestDoDrawing()
         {
             var builder = new DbContextOptionsBuilder<DrawingContext>();
             builder.EnableSensitiveDataLogging();
@@ -38,7 +36,7 @@ namespace PackItDraw.Test.Models
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>
-        [Test]
+        [Fact]
         public void TestStart()
         {
             Drawing value = new(this.pack);
@@ -47,8 +45,8 @@ namespace PackItDraw.Test.Models
 
             DoDrawing.Start(drawingId, this.repository);
             var drawing = this.repository.Find(drawingId);
-            Assert.That(drawing.Computed, Is.True);
-            Assert.That(drawing.Shapes.Count, Is.EqualTo(2));
+            Assert.True(drawing.Computed);
+            Assert.Equal(2, drawing.Shapes.Count);
         }
     }
 }

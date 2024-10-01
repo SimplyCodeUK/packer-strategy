@@ -8,12 +8,13 @@ namespace PackItUI.Test.Areas.App.Controllers
 {
     using System;
     using System.Net.Http;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using Moq;
-    using NUnit.Framework;
+    using Xunit;
     using PackIt.Models;
     using PackItMock.HttpMock;
     using PackItUI.Areas.App.Controllers;
@@ -24,7 +25,6 @@ namespace PackItUI.Test.Areas.App.Controllers
     using PackItUI.Areas.Uploads.DTO;
 
     /// <summary> (Unit Test Fixture) a controller for handling test materials. </summary>
-    [TestFixture]
     public class TestHomeController
     {
         /// <summary> The service endpoints. </summary>
@@ -53,100 +53,97 @@ namespace PackItUI.Test.Areas.App.Controllers
         private HomeController controller;
 
         /// <summary> Setup for all unit tests here. </summary>
-        [SetUp]
-        public void BeforeTest()
+        public TestHomeController()
         {
             this.SetupDisconnected();
         }
 
         /// <summary> (Unit Test Method) index action. </summary>
-        [Test]
+        [Fact]
         public void Index()
         {
             var result = this.controller.Index();
-            Assert.That(result, Is.TypeOf<ViewResult>());
+            Assert.IsType<ViewResult>(result);
 
             ViewResult viewResult = result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Index"));
-            Assert.That(viewResult.ViewData.Model, Is.Null);
+            Assert.Equal("Index", viewResult.ViewName);
+            Assert.Null(viewResult.ViewData.Model);
         }
 
         /// <summary> (Unit Test Method) about action when the services are not running. </summary>
-        [Test]
-        public void AboutServicesNotRunning()
+        [Fact]
+        public async Task AboutServicesNotRunning()
         {
-            var result = this.controller.About();
-            result.Wait();
-            Assert.That(result.Result, Is.TypeOf<ViewResult>());
+            var result = await this.controller.About();
+            Assert.IsType<ViewResult>(result);
 
-            ViewResult viewResult = result.Result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("About"));
-            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
-            Assert.That(viewResult.ViewData.Model, Is.TypeOf<AboutViewModel>());
+            ViewResult viewResult = result as ViewResult;
+            Assert.Equal("About", viewResult.ViewName);
+            Assert.NotNull(viewResult.ViewData.Model);
+            Assert.IsType<AboutViewModel>(viewResult.ViewData.Model);
 
             AboutViewModel model = viewResult.ViewData.Model as AboutViewModel;
-            Assert.That(model.Services["Materials"].Version, Is.EqualTo("Unknown"));
-            Assert.That(model.Services["Packs"].Version, Is.EqualTo("Unknown"));
-            Assert.That(model.Services["Plans"].Version, Is.EqualTo("Unknown"));
-            Assert.That(model.Services["Uploads"].Version, Is.EqualTo("Unknown"));
-            Assert.That(model.Services["Materials"].About, Is.EqualTo("Service down! http://localhost:8001/api/v1/"));
-            Assert.That(model.Services["Packs"].About, Is.EqualTo("Service down! http://localhost:8002/api/v1/"));
-            Assert.That(model.Services["Plans"].About, Is.EqualTo("Service down! http://localhost:8003/api/v1/"));
-            Assert.That(model.Services["Uploads"].About, Is.EqualTo("Service down! http://localhost:8004/api/v1/"));
+            Assert.Equal("Unknown", model.Services["Materials"].Version);
+            Assert.Equal("Unknown", model.Services["Packs"].Version);
+            Assert.Equal("Unknown", model.Services["Plans"].Version);
+            Assert.Equal("Unknown", model.Services["Uploads"].Version);
+            Assert.Equal("Service down! http://localhost:8001/api/v1/", model.Services["Materials"].About);
+            Assert.Equal("Service down! http://localhost:8002/api/v1/", model.Services["Packs"].About);
+            Assert.Equal("Service down! http://localhost:8003/api/v1/", model.Services["Plans"].About);
+            Assert.Equal("Service down! http://localhost:8004/api/v1/", model.Services["Uploads"].About);
         }
 
         /// <summary> (Unit Test Method) about action when the services are running. </summary>
-        [Test]
-        public void AboutServicesRunning()
+        [Fact]
+        public async Task AboutServicesRunning()
         {
             this.SetupConnected();
 
-            var result = this.controller.About();
-            result.Wait();
-            Assert.That(result.Result, Is.TypeOf<ViewResult>());
+            var result = await this.controller.About();
+            Assert.IsType<ViewResult>(result);
 
-            ViewResult viewResult = result.Result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("About"));
-            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
-            Assert.That(viewResult.ViewData.Model, Is.TypeOf<AboutViewModel>());
+            ViewResult viewResult = result as ViewResult;
+            Assert.Equal("About", viewResult.ViewName);
+            Assert.NotNull(viewResult.ViewData.Model);
+            Assert.IsType<AboutViewModel>(viewResult.ViewData.Model);
 
             AboutViewModel model = viewResult.ViewData.Model as AboutViewModel;
-            Assert.That(model.Services["Materials"].Version, Is.EqualTo("1"));
-            Assert.That(model.Services["Packs"].Version, Is.EqualTo("1"));
-            Assert.That(model.Services["Plans"].Version, Is.EqualTo("1"));
-            Assert.That(model.Services["Uploads"].Version, Is.EqualTo("1"));
-            Assert.That(model.Services["Drawings"].Version, Is.EqualTo("1"));
+            Assert.Equal("1", model.Services["Materials"].Version);
+            Assert.Equal("1", model.Services["Packs"].Version);
+            Assert.Equal("1", model.Services["Plans"].Version);
+            Assert.Equal("1", model.Services["Uploads"].Version);
+            Assert.Equal("1", model.Services["Drawings"].Version);
 
-            Assert.That(model.Services["Materials"].About, Is.EqualTo("Materials"));
-            Assert.That(model.Services["Packs"].About, Is.EqualTo("Packs"));
-            Assert.That(model.Services["Plans"].About, Is.EqualTo("Plans"));
-            Assert.That(model.Services["Uploads"].About, Is.EqualTo("Uploads"));
-            Assert.That(model.Services["Drawings"].About, Is.EqualTo("Draw"));
+            Assert.Equal("Materials", model.Services["Materials"].About);
+            Assert.Equal("Packs", model.Services["Packs"].About);
+            Assert.Equal("Plans", model.Services["Plans"].About);
+            Assert.Equal("Uploads", model.Services["Uploads"].About);
+            Assert.Equal("Draw", model.Services["Drawings"].About);
         }
 
         /// <summary> (Unit Test Method) contact action. </summary>
-        [Test]
+        [Fact]
         public void Contact()
         {
             var result = this.controller.Contact();
-            Assert.That(result, Is.TypeOf<ViewResult>());
+            Assert.IsType<ViewResult>(result);
 
             ViewResult viewResult = result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Contact"));
-            Assert.That(viewResult.ViewData.Model, Is.Null);
+            Assert.Equal("Contact", viewResult.ViewName);
+            Assert.Null(viewResult.ViewData.Model);
         }
 
         /// <summary> (Unit Test Method) error action. </summary>
-        [Test]
+        [Fact]
         public void Error()
         {
             var result = this.controller.Error();
-            Assert.That(result, Is.TypeOf<ViewResult>());
+            Assert.IsType<ViewResult>(result);
 
             ViewResult viewResult = result as ViewResult;
-            Assert.That(viewResult.ViewName, Is.EqualTo("Error"));
-            Assert.That(viewResult.ViewData.Model, Is.Not.Null);
-            Assert.That(viewResult.ViewData.Model, Is.TypeOf<ErrorViewModel>());
+            Assert.Equal("Error", viewResult.ViewName);
+            Assert.NotNull(viewResult.ViewData.Model);
+            Assert.IsType<ErrorViewModel>(viewResult.ViewData.Model);
         }
 
         /// <summary> Setup for disconnected services. </summary>
@@ -180,7 +177,7 @@ namespace PackItUI.Test.Areas.App.Controllers
                     HttpContext = new DefaultHttpContext()
                 }
             };
-            Assert.That(this.controller, Is.Not.Null);
+            Assert.NotNull(this.controller);
         }
 
         /// <summary> Setup for connected services. </summary>
@@ -216,7 +213,7 @@ namespace PackItUI.Test.Areas.App.Controllers
                     HttpContext = new DefaultHttpContext()
                 }
             };
-            Assert.That(this.controller, Is.Not.Null);
+            Assert.NotNull(this.controller);
         }
     }
 }
