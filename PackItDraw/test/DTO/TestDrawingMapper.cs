@@ -16,7 +16,7 @@ namespace PackIt.Test.DTO
     public class TestDrawingMapper
     {
         /// <summary> The mapper under test. </summary>
-        private DrawingMapper mapper;
+        private readonly DrawingMapper mapper;
 
         /// <summary> Setup for all unit tests here. </summary>
         public TestDrawingMapper()

@@ -25,10 +25,10 @@ namespace PackItDraw.Test.Controllers
     public class TestDrawingsController
     {
         /// <summary> The controller under test. </summary>
-        private DrawingsController controller;
+        private readonly DrawingsController controller;
 
         /// <summary> The pack to draw. </summary>
-        private Pack drawingPack;
+        private readonly Pack drawingPack;
 
         /// <summary> Setup for all unit tests here. </summary>
         public TestDrawingsController()

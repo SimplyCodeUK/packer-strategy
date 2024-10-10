@@ -24,7 +24,7 @@ namespace PackIt.Test.Controllers
     public class TestMaterialsController
     {
         /// <summary> The controller under test. </summary>
-        private MaterialsController controller;
+        private readonly MaterialsController controller;
 
         /// <summary> Setup for all unit tests here. </summary>
         public TestMaterialsController()

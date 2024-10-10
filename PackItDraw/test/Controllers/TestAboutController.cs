@@ -17,7 +17,7 @@ namespace PackItDraw.Test.Controllers
     public class TestAboutController
     {
         /// <summary> The controller under test. </summary>
-        private AboutController controller;
+        private readonly AboutController controller;
 
         /// <summary> Setup for all unit tests here. </summary>
         public TestAboutController()

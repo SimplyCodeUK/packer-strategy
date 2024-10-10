@@ -16,7 +16,7 @@ namespace PackIt.Test.DTO
     public class TestPlanMapper
     {
         /// <summary> The mapper under test. </summary>
-        private PlanMapper mapper;
+        private readonly PlanMapper mapper;
 
         /// <summary> Setup for all unit tests here. </summary>
         public TestPlanMapper()

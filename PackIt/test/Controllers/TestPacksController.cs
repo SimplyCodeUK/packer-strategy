@@ -23,7 +23,7 @@ namespace PackIt.Test.Controllers
     public class TestPacksController
     {
         /// <summary> The controller under test. </summary>
-        private PacksController controller;
+        private readonly PacksController controller;
 
         /// <summary> Setup for all unit tests here. </summary>
         public TestPacksController()

@@ -16,7 +16,7 @@ namespace PackIt.Test.DTO
     public class TestMaterialMapper
     {
         /// <summary> The mapper under test. </summary>
-        private MaterialMapper mapper;
+        private readonly MaterialMapper mapper;
 
         /// <summary> Setup for all unit tests here. </summary>
         public TestMaterialMapper()

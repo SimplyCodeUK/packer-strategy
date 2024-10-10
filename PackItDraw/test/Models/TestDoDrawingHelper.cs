@@ -13,12 +13,6 @@ namespace PackItDraw.Test.Models
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
     public class TestDoDrawingHelper
     {
-        /// <summary> Setup for all unit tests here. </summary>
-        public TestDoDrawingHelper()
-        {
-            // Nothing to do at the moment
-        }
-
         /// <summary> (Unit Test Method) post this message. </summary>
         [Fact]
         public void TestRotateResultHeightToHeight()

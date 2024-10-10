@@ -17,8 +17,8 @@ namespace PackItDraw.Test.Models
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
     public class TestDoDrawing
     {
-        private IDrawingRepository repository;
-        private PackIt.Pack.Pack pack;
+        private readonly DrawingRepository repository;
+        private readonly PackIt.Pack.Pack pack;
 
         /// <summary> Setup for all unit tests here. </summary>
         public TestDoDrawing()

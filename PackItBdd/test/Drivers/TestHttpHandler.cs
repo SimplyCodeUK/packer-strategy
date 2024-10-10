@@ -18,7 +18,7 @@ namespace PackItBdd.Test.Drivers
         /// <summary> The test root endpoint. </summary>
         private static readonly string root = "http://localhost:8001/api/v1/";
 
-        private HttpHandler handler;
+        private readonly HttpHandler handler;
 
         /// <summary> Setup for all unit tests here. </summary>
         public TestsHttpHandler()
