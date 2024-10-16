@@ -13,7 +13,7 @@ namespace PackItUI.Test.Areas.Materials.Models
     public class TestMaterialEditViewModel
     {
         /// <summary> The model under test. </summary>
-        private MaterialEditViewModel model;
+        private readonly MaterialEditViewModel model;
 
         /// <summary> Setup for all unit tests here. </summary>
         public TestMaterialEditViewModel()
