@@ -70,8 +70,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D498A2E9-8
 		docs\API-VERSIONING.md = docs\API-VERSIONING.md
 		docs\doxygen = docs\doxygen
 		docs\DOXYGENHOME.md = docs\DOXYGENHOME.md
-		docs\VERSIONING.md = docs\VERSIONING.md
 		docs\SERVICE-VERSIONING.md = docs\SERVICE-VERSIONING.md
+		docs\VERSIONING.md = docs\VERSIONING.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".vscode", ".vscode", "{37C7997A-E24F-4384-8F8D-29A32E80E11B}"
