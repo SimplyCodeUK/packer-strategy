@@ -6,6 +6,7 @@
 
 namespace PackItUI.Areas.Materials.Controllers
 {
+    using System;
     using System.Text.Json;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
@@ -75,7 +76,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            this.logger.LogInformation("Update id {Id}", id);
+            this.logger.LogInformation("Update id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             var model = new MaterialEditViewModel
             {
                 Data = this.mapper.Map<MaterialEditViewModel.Material>(await this.handler.ReadAsync(id))
@@ -94,18 +95,27 @@ namespace PackItUI.Areas.Materials.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(string id, MaterialEditViewModel model)
         {
-            var data = await this.handler.ReadAsync(id);
-            this.logger.LogInformation("Update id {Id} Material id {MaterialId}", id, model.Data.MaterialId);
-
-            data = this.mapper.Map(model.Data, data);
-            if (await this.handler.UpdateAsync(id, data))
+            IActionResult ret;
+            if (!ModelState.IsValid)
             {
-                return this.RedirectToAction(nameof(this.Index));
+                ret = View(model);
             }
             else
             {
-                return this.View("Update", model);
+                var data = await this.handler.ReadAsync(id);
+                this.logger.LogInformation("Update id {Id} Material id {MaterialId}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""), model.Data.MaterialId);
+
+                data = this.mapper.Map(model.Data, data);
+                if (await this.handler.UpdateAsync(id, data))
+                {
+                    ret = this.RedirectToAction(nameof(this.Index));
+                }
+                else
+                {
+                    ret = this.View("Update", model);
+                }
             }
+            return ret;
         }
 
         /// <summary> Display a delete form for the specified material. </summary>
@@ -116,7 +126,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            this.logger.LogInformation("Delete id {Id}", id);
+            this.logger.LogInformation("Delete id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             var model = new MaterialEditViewModel
             {
                 Data = this.mapper.Map<MaterialEditViewModel.Material>(await this.handler.ReadAsync(id))
@@ -134,14 +144,22 @@ namespace PackItUI.Areas.Materials.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CostingRow([FromBody] JsonDocument body)
         {
-            var index = body.RootElement.GetProperty("index");
-            this.logger.LogInformation("CostingRow index {Index}", index);
+            IActionResult ret;
+            if (!ModelState.IsValid)
+            {
+                ret = View(body);
+            }
+            else
+            {
+                var index = body.RootElement.GetProperty("index").ToString().Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "");
+                this.logger.LogInformation("CostingRow index {Index}", index);
 
-            this.ViewBag.crud = Crud.Create;
-            this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
+                this.ViewBag.crud = Crud.Create;
+                this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
 
-            var mod = new PackIt.Material.Costing();
-            var ret = this.PartialView("EditorTemplates/Costing", mod);
+                var mod = new PackIt.Material.Costing();
+                ret = this.PartialView("EditorTemplates/Costing", mod);
+            }
 
             return ret;
         }
@@ -155,15 +173,23 @@ namespace PackItUI.Areas.Materials.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult SectionRow([FromBody] JsonDocument body)
         {
-            var index = body.RootElement.GetProperty("index");
-            this.logger.LogInformation("SectionRow index {Index}", index);
+            IActionResult ret;
+            if (!ModelState.IsValid)
+            {
+                ret = View(body);
+            }
+            else
+            {
+                var index = body.RootElement.GetProperty("index").ToString().Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "");
+                this.logger.LogInformation("SectionRow index {Index}", index);
 
-            this.ViewBag.crud = Crud.Create;
-            this.ViewBag.sectionTypes = new ListForFlag<SectionTypes>(0);
-            this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Sections[{0}]", index);
+                this.ViewBag.crud = Crud.Create;
+                this.ViewBag.sectionTypes = new ListForFlag<SectionTypes>(0);
+                this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Sections[{0}]", index);
 
-            var mod = new PackIt.Material.Section();
-            var ret = this.PartialView("EditorTemplates/Section", mod);
+                var mod = new PackIt.Material.Section();
+                ret = this.PartialView("EditorTemplates/Section", mod);
+            }
 
             return ret;
         }

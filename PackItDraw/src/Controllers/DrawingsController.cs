@@ -50,7 +50,7 @@ namespace PackItDraw.Controllers
         [ProducesResponseType(typeof(Drawing), 200)]
         public IActionResult Get(string id)
         {
-            logger.LogInformation("Get id {Id}", id);
+            logger.LogInformation("Get id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             var item = repository.Find(id);
 
             if (item == null)
@@ -69,30 +69,37 @@ namespace PackItDraw.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Pack pack)
         {
-            IActionResult result;
+            IActionResult ret;
             Drawing value = new(pack);
 
             if (pack != null)
             {
                 logger.LogInformation("Post Drawing id {DrawingId}", value.DrawingId);
-                try
+                if (!ModelState.IsValid)
                 {
-                    repository.Add(value);
-                    // Start thread to create drawing
-                    DoDrawing.Start(value.DrawingId, repository);
-                    result = this.CreatedAtRoute("GetDrawing", new { id = value.DrawingId }, value);
+                    ret = View(value);
                 }
-                catch (Exception)
+                else
                 {
-                    result = this.StatusCode((int)HttpStatusCode.Conflict);
+                    try
+                    {
+                        repository.Add(value);
+                        // Start thread to create drawing
+                        DoDrawing.Start(value.DrawingId, repository);
+                        ret = this.CreatedAtRoute("GetDrawing", new { id = value.DrawingId }, value);
+                    }
+                    catch (Exception)
+                    {
+                        ret = this.StatusCode((int)HttpStatusCode.Conflict);
+                    }
                 }
             }
             else
             {
-                result = this.BadRequest();
+                ret = this.BadRequest();
             }
 
-            return result;
+            return ret;
         }
 
         /// <summary> (An Action that handles HTTP DELETE requests) Deletes a Drawing. </summary>
@@ -103,7 +110,7 @@ namespace PackItDraw.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            logger.LogInformation("Delete id {Id}", id);
+            logger.LogInformation("Delete id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             if (repository.Find(id) == null)
             {
                 return this.NotFound(id);

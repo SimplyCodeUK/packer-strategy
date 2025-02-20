@@ -6,11 +6,12 @@
 
 namespace PackItUI.Areas.Common.Controller
 {
+    using System;
+    using System.Threading.Tasks;
     using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using PackItUI.Areas.Common.DTO;
-    using System.Threading.Tasks;
 
     /// <summary> A base class for MVC controller handling data. </summary>
     ///
@@ -24,7 +25,7 @@ namespace PackItUI.Areas.Common.Controller
         where TEditViewModel : new()
     {
         /// <summary> The logger. </summary>
-        protected readonly ILogger<TCategoryName> logger;
+        protected readonly ILogger<PackItController<TCategoryName, TData, TModel, TEditViewModel>> logger;
 
         /// <summary> The materials handler. </summary>
         protected readonly DbServiceHandler<TData> handler;
@@ -38,7 +39,7 @@ namespace PackItUI.Areas.Common.Controller
         ///
         /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        protected PackItController(ILogger<TCategoryName> logger, DbServiceHandler<TData> handler)
+        protected PackItController(ILogger<PackItController<TCategoryName, TData, TModel, TEditViewModel>> logger, DbServiceHandler<TData> handler)
         {
             this.logger = logger;
             this.handler = handler;
@@ -63,7 +64,9 @@ namespace PackItUI.Areas.Common.Controller
         /// <returns> An IActionResult. </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+#pragma warning disable S6967 // ModelState.IsValid should be called in controller actions
         public abstract Task<IActionResult> Create(TEditViewModel model);
+#pragma warning restore S6967 // ModelState.IsValid should be called in controller actions
 
         /// <summary> Display the form to create a new data item. </summary>
         ///
@@ -86,7 +89,7 @@ namespace PackItUI.Areas.Common.Controller
         [ActionName("Delete")]
         public async Task<IActionResult> DoDelete(string id)
         {
-            this.logger.LogInformation("DoDelete id {Id}", id);
+            this.logger.LogInformation("DoDelete id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             await this.handler.DeleteAsync(id);
             return this.RedirectToAction(nameof(this.Index));
         }
