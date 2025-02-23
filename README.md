@@ -56,7 +56,7 @@
   - Oracle VirtualBox Extension Pack version 7.1.6r167084
 - [Vagrant Version 2.4.3](https://www.vagrantup.com/)
   - Box generic/ubuntu2204 version 4.3.2
-- [Doxygen Version 1.9.5](https://www.doxygen.nl/)
+- [Doxygen Version 1.13.2](https://www.doxygen.nl/)
 
 <a name="wsl-setup"></a>
 

@@ -24,6 +24,8 @@ build_script:
 
     dotnet restore
 
+    doxygen --version
+
     doxygen ./docs/doxygen
 
     dotnet build /p:DocumentationFile=codedoc.xml
