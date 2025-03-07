@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         config: [Release, Debug]
-        os: [ubuntu-20.04]
+        os: [ubuntu-22.04]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
@@ -15,14 +15,14 @@ jobs:
       - name: Set .NET version to use
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.100'
+          dotnet-version: '9.0.102'
       - name: Set Node version to use
         uses: actions/setup-node@v4
         with:
           node-version: '14'
       # Install Vagrant, libvirt and doxygen
       - name: Install tools Ubuntu
-        if: ${{ matrix.os == 'ubuntu-20.04' }}
+        if: ${{ matrix.os == 'ubuntu-22.04' }}
         run: |
           curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
           sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"

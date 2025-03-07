@@ -17,5 +17,5 @@ var startup = new Startup(builder.Configuration);
 startup.ConfigureServices(builder.Services);
 
 var app = builder.Build();
-startup.Configure(app, builder.Environment);
-app.Run();
+Startup.Configure(app, builder.Environment);
+await app.RunAsync();

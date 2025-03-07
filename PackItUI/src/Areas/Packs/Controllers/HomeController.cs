@@ -6,6 +6,7 @@
 
 namespace PackItUI.Areas.Packs.Controllers
 {
+    using System;
     using System.Text.Json;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
@@ -78,7 +79,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            this.logger.LogInformation("Update id {Id}", id);
+            this.logger.LogInformation("Update id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             var model = new PackEditViewModel
             {
                 Data = this.mapper.Map<PackEditViewModel.Pack>(await this.handler.ReadAsync(id))
@@ -97,18 +98,27 @@ namespace PackItUI.Areas.Packs.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(string id, PackEditViewModel model)
         {
-            var data = await this.handler.ReadAsync(id);
-            this.logger.LogInformation("Update id {Id} Pack id {PackId}", id, model.Data.PackId);
-
-            data = this.mapper.Map(model.Data, data);
-            if (await this.handler.UpdateAsync(id, data))
+            IActionResult ret;
+            if (!ModelState.IsValid)
             {
-                return this.RedirectToAction(nameof(this.Index));
+                ret = View(model);
             }
             else
             {
-                return this.View("Update", model);
+                var data = await this.handler.ReadAsync(id);
+                this.logger.LogInformation("Update id {Id} Pack id {PackId}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""), model.Data.PackId);
+
+                data = this.mapper.Map(model.Data, data);
+                if (await this.handler.UpdateAsync(id, data))
+                {
+                    ret = this.RedirectToAction(nameof(this.Index));
+                }
+                else
+                {
+                    ret = this.View("Update", model);
+                }
             }
+            return ret;
         }
 
         /// <summary> Display a delete form for the specified pack. </summary>
@@ -119,7 +129,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            this.logger.LogInformation("Delete id {Id}", id);
+            this.logger.LogInformation("Delete id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             var model = new PackEditViewModel
             {
                 Data = this.mapper.Map<PackEditViewModel.Pack>(await this.handler.ReadAsync(id))
@@ -136,7 +146,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [HttpGet]
         public async Task<IActionResult> Display(string id)
         {
-            this.logger.LogInformation("Display id {Id}", id);
+            this.logger.LogInformation("Display id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             PackDisplayViewModel model = new()
             {
                 Pack = await this.handler.ReadAsync(id)
@@ -163,24 +173,37 @@ namespace PackItUI.Areas.Packs.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Display(string id, PackEditViewModel model)
         {
+            IActionResult ret;
             var data = await this.handler.ReadAsync(id);
 
             if (data == null)
             {
                 this.logger.LogError("Display id {0}", id);
+                ret = this.View("Update", model);
             }
             else
             {
-                this.logger.LogInformation("Display id {Id} Pack id {PackId}", id, data.PackId);
+                this.logger.LogInformation("Display id {Id} Pack id {PackId}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""), data.PackId);
 
-                data = this.mapper.Map(model.Data, data);
-                if (await this.handler.UpdateAsync(id, data))
+                if (!ModelState.IsValid)
                 {
-                    return this.RedirectToAction(nameof(this.Index));
+                    ret = View(model);
+                }
+                else
+                {
+                    data = this.mapper.Map(model.Data, data);
+                    if (await this.handler.UpdateAsync(id, data))
+                    {
+                        ret = this.RedirectToAction(nameof(this.Index));
+                    }
+                    else
+                    {
+                        ret = this.View("Update", model);
+                    }
                 }
             }
 
-            return this.View("Update", model);
+            return ret;
         }
 
         /// <summary> Get a costing row. Used when adding a new row to the html. </summary>
@@ -192,14 +215,22 @@ namespace PackItUI.Areas.Packs.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CostingRow([FromBody] JsonDocument body)
         {
-            var index = body.RootElement.GetProperty("index");
-            this.logger.LogInformation("CostingRow {Index}", index);
+            IActionResult ret;
+            if (!ModelState.IsValid)
+            {
+                ret = View(body);
+            }
+            else
+            {
+                var index = body.RootElement.GetProperty("index").ToString().Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "");
+                this.logger.LogInformation("CostingRow {Index}", index);
 
-            this.ViewBag.crud = Helpers.Crud.Create;
-            this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
+                this.ViewBag.crud = Helpers.Crud.Create;
+                this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
 
-            var mod = new PackIt.Pack.Costing();
-            var ret = this.PartialView("EditorTemplates/Costing", mod);
+                var mod = new PackIt.Pack.Costing();
+                ret = this.PartialView("EditorTemplates/Costing", mod);
+            }
 
             return ret;
         }

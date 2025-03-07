@@ -51,7 +51,7 @@ namespace PackItDraw
         /// <param name="env"> The environment. </param>
         ///
         /// <seealso cref="DbStartup.SetupApp" />
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             SetupApp(app, env);
             _ = app.UseMvc(routes =>
@@ -61,8 +61,7 @@ namespace PackItDraw
                       template: "{controller=About}/{action=Get}/{id?}");
               });
 
-            _ = app.UseHttpsRedirection()
-               .UseAuthorization()
+            _ = app.UseAuthorization()
                .UseRouting()
                .UseEndpoints(endpoints =>
                 {

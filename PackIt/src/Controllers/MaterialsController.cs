@@ -51,7 +51,7 @@ namespace PackIt.Controllers
         [ProducesResponseType(typeof(Material), 200)]
         public IActionResult Get(string id)
         {
-            logger.LogInformation("Get id {Id}", id);
+            logger.LogInformation("Get id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             var item = repository.Find(id);
 
             if (item == null)
@@ -71,27 +71,34 @@ namespace PackIt.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Post([FromBody] Material value)
         {
-            IActionResult result;
+            IActionResult ret;
 
             if (value != null)
             {
                 logger.LogInformation("Post Material id {MaterialId}", value.MaterialId);
-                try
+                if (!ModelState.IsValid)
                 {
-                    repository.Add(value);
-                    result = this.CreatedAtRoute("GetMaterial", new { id = value.MaterialId }, value);
+                    ret = this.BadRequest();
                 }
-                catch (Exception)
+                else
                 {
-                    result = this.StatusCode((int)HttpStatusCode.Conflict);
+                    try
+                    {
+                        repository.Add(value);
+                        ret = this.CreatedAtRoute("GetMaterial", new { id = value.MaterialId }, value);
+                    }
+                    catch (Exception)
+                    {
+                        ret = this.StatusCode((int)HttpStatusCode.Conflict);
+                    }
                 }
             }
             else
             {
-                result = this.BadRequest();
+                ret = this.BadRequest();
             }
 
-            return result;
+            return ret;
         }
 
         /// <summary>
@@ -105,18 +112,30 @@ namespace PackIt.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] Material value)
         {
-            logger.LogInformation("Put id {Id} for Material id {MaterialId}", id, value.MaterialId);
+            logger.LogInformation("Put id {Id} for Material id {MaterialId}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""), value.MaterialId);
+            IActionResult ret;
             var item = repository.Find(id);
 
             if (item == null)
             {
-                return this.NotFound(id);
+                ret = this.NotFound(id);
+            }
+            else
+            {
+                if (!ModelState.IsValid)
+                {
+                    ret = this.BadRequest();
+                }
+                else
+                {
+                    item = value;
+                    item.MaterialId = id;
+                    repository.Update(item);
+                    ret = this.Ok();
+                }
             }
 
-            item = value;
-            item.MaterialId = id;
-            repository.Update(item);
-            return this.Ok();
+            return ret;
         }
 
         /// <summary> (An Action that handles HTTP DELETE requests) Deletes a Material. </summary>
@@ -127,7 +146,7 @@ namespace PackIt.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            logger.LogInformation("Delete id {Id}", id);
+            logger.LogInformation("Delete id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             if (repository.Find(id) == null)
             {
                 return this.NotFound(id);
@@ -148,17 +167,28 @@ namespace PackIt.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(string id, [FromBody] JsonPatchDocument<Material> update)
         {
-            logger.LogInformation("Patch id {Id}", id);
+            logger.LogInformation("Patch id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
+            IActionResult ret;
             var item = repository.Find(id);
 
             if (item == null)
             {
-                return this.NotFound(id);
+                ret = this.NotFound(id);
             }
-
-            update.ApplyTo(item);
-            repository.Update(item);
-            return this.Ok(item);
+            else
+            {
+                if (!ModelState.IsValid)
+                {
+                    ret = this.BadRequest();
+                }
+                else
+                {
+                    update.ApplyTo(item);
+                    repository.Update(item);
+                    ret = this.Ok(item);
+                }
+            }
+            return ret;
         }
     }
 }

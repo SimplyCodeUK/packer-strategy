@@ -6,6 +6,7 @@
 
 namespace PackItUI.Areas.Plans.Controllers
 {
+    using System;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
@@ -72,7 +73,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
-            this.logger.LogInformation("Update id {Id}", id);
+            this.logger.LogInformation("Update id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             var model = new PlanEditViewModel
             {
                 Data = this.mapper.Map<PlanEditViewModel.Plan>(await this.handler.ReadAsync(id))
@@ -91,18 +92,27 @@ namespace PackItUI.Areas.Plans.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(string id, PlanEditViewModel model)
         {
-            var data = await this.handler.ReadAsync(id);
-            this.logger.LogInformation("Update id {Id} Plan id {PlanId}", id, model.Data.PlanId);
-
-            data = this.mapper.Map(model.Data, data);
-            if (await this.handler.UpdateAsync(id, data))
+            IActionResult ret;
+            if (!ModelState.IsValid)
             {
-                return this.RedirectToAction(nameof(this.Index));
+                ret = View(model);
             }
             else
             {
-                return this.View("Update", model);
+                var data = await this.handler.ReadAsync(id);
+                this.logger.LogInformation("Update id {Id} Plan id {PlanId}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""), model.Data.PlanId);
+
+                data = this.mapper.Map(model.Data, data);
+                if (await this.handler.UpdateAsync(id, data))
+                {
+                    ret = this.RedirectToAction(nameof(this.Index));
+                }
+                else
+                {
+                    ret = this.View("Update", model);
+                }
             }
+            return ret;
         }
 
         /// <summary> Display a delete form for the specified plan. </summary>
@@ -113,7 +123,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            this.logger.LogInformation("Delete id {Id}", id);
+            this.logger.LogInformation("Delete id {Id}", id.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", ""));
             var model = new PlanEditViewModel
             {
                 Data = this.mapper.Map<PlanEditViewModel.Plan>(await this.handler.ReadAsync(id))

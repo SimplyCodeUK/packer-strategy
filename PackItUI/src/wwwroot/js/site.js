@@ -14,7 +14,7 @@
  * @returns {HTMLElement} The parent DOM
  */
 function closest (e, name) {
-  var parent = e.parentNode;
+  let parent = e.parentNode;
   while (parent !== null) {
     if (parent.nodeName === name) {
       return parent;
@@ -29,7 +29,7 @@ function closest (e, name) {
  *
  * @param {HTMLElement} e - The delete button pressed on the row to delete
  */
-var deleteRow = function (e) {
+function deleteRow (e) {
   closest(e, "TABLE").deleteRow(closest(e, "TR").rowIndex);
 };
 
@@ -39,10 +39,10 @@ var deleteRow = function (e) {
  * @param {HTMLElement} e - The button pressed to add a row
  * @param {string} getUrl - The url for the partial view
  */
-var addRow = function (e, getUrl) {
-  var body = closest(e, "TABLE").getElementsByTagName("TBODY")[0];
-  var count = body.getElementsByTagName("tr").length;
-  var xhr = new XMLHttpRequest();
+function addRow (e, getUrl) {
+  let body = closest(e, "TABLE").getElementsByTagName("TBODY")[0];
+  let count = body.getElementsByTagName("tr").length;
+  let xhr = new XMLHttpRequest();
   xhr.onload = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       body.insertAdjacentHTML("beforeend", xhr.responseText);

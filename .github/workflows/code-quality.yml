@@ -6,7 +6,7 @@ jobs:
   code-quality:
     strategy:
       matrix:
-        os: [ubuntu-20.04]
+        os: [ubuntu-22.04]
         language: ['csharp']
     runs-on: ${{ matrix.os }}
     steps:
@@ -15,7 +15,7 @@ jobs:
       - name: Set .NET version to use
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.100'
+          dotnet-version: '9.0.102'
       - name: Set Node version to use
         uses: actions/setup-node@v4
         with:

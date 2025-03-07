@@ -4,6 +4,12 @@
 # Licensed under the MIT License.
 # See LICENSE file in the project root for full license information.
 
+class File
+  def self.exists?(filename)
+    self.exist?(filename)
+  end
+end
+
 required_plugins = %w( vagrant-disksize vagrant-reload vagrant-vbguest )
 required_plugins.each do |plugin|
   system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
@@ -70,6 +76,7 @@ SERVICES_DIR = "/srv"
 
 COMMON_INSTALL = <<-SCRIPT
 echo "ubuntu:ubuntu" | chpasswd
+apt update
 SCRIPT
 
 DATABASE_PRE_INSTALL = <<-SCRIPT
@@ -88,7 +95,6 @@ SCRIPT
 BASE_PRE_INSTALL = <<-SCRIPT
 apt install apt-transport-https
 apt install libxt6 libxmu6
-apt update
 SCRIPT
 
 DATABASE_INSTALL = <<-SCRIPT
@@ -114,7 +120,7 @@ SERVICE_INSTALL = <<-SCRIPT
 apt install python3-software-properties -y
 apt install nuget          -y
 apt install git            -y
-apt install dotnet-sdk-7.0 -y
+apt install dotnet-sdk-9.0 -y
 apt install nginx          -y
 service nginx stop
 rm /etc/nginx/sites-enabled/default 2> /dev/null
@@ -159,7 +165,7 @@ MACHINES.each do |_key, machine|
   end
 
   machine[:services].each do |service|
-    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/net8.0/publish"
+    workingDir = "#{SERVICES_DIR}/#{service}/#{SERVICES[service.to_sym][:build_dir]}/bin/Release/net9.0/publish"
     buildScript += <<-SRV_SCRIPT
       systemctl stop #{service}.service
 

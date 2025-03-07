@@ -55,7 +55,7 @@ namespace PackIt.Test.DTO
                 foreach (var limit in stage.Limits)
                 {
                     Assert.Equal(drawing.DrawingId, limit.PackId);
-                    Assert.Equal(stage.StageLevel ,limit.StageLevel);
+                    Assert.Equal(stage.StageLevel, limit.StageLevel);
                     Assert.Equal(limitIndex, limit.LimitIndex);
                     ++limitIndex;
                 }

@@ -51,9 +51,21 @@ namespace PackIt.Test.Controllers
             Assert.NotNull(result);
             Assert.IsType<CreatedAtRouteResult>(result);
             var res = result as CreatedAtRouteResult;
-            Assert.Equal(res.StatusCode, (int)HttpStatusCode.Created);
+            Assert.Equal((int)HttpStatusCode.Created, res.StatusCode);
             Assert.True(res.RouteValues.ContainsKey("id"));
             Assert.IsType<Pack>(res.Value);
+        }
+
+        /// <summary> (Unit Test Method) post with not valid model. </summary>
+        [Fact]
+        public void PostModelNotValid()
+        {
+            var item = new Pack { PackId = null };
+            this.controller.ModelState.AddModelError("ID", "Invalid");
+            var result = this.controller.Post(item);
+            Assert.IsType<BadRequestResult>(result);
+            var res = result as BadRequestResult;
+            Assert.Equal((int)HttpStatusCode.BadRequest, res.StatusCode);
         }
 
         /// <summary> (Unit Test Method) posts the no data. </summary>
@@ -76,7 +88,7 @@ namespace PackIt.Test.Controllers
             Assert.NotNull(result);
             Assert.IsType<CreatedAtRouteResult>(result);
             var res = result as CreatedAtRouteResult;
-            Assert.Equal(res.StatusCode, (int)HttpStatusCode.Created);
+            Assert.Equal((int)HttpStatusCode.Created, res.StatusCode);
             Assert.True(res.RouteValues.ContainsKey("id"));
             Assert.IsType<Pack>(res.Value);
 
@@ -200,6 +212,32 @@ namespace PackIt.Test.Controllers
             Assert.Equal(PutName, item.Name);
         }
 
+        /// <summary> (Unit Test Method) put with not valid model. </summary>
+        [Fact]
+        public void PutModelNotValid()
+        {
+            const string StartName = "A name";
+            const string PutName = "B name";
+            var id = Guid.NewGuid().ToString();
+            var item = new Pack { PackId = id, Name = StartName };
+
+            var result = this.controller.Post(item);
+            Assert.NotNull(result);
+            Assert.IsType<CreatedAtRouteResult>(result);
+            var res = result as CreatedAtRouteResult;
+            Assert.Equal((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.True(res.RouteValues.ContainsKey("id"));
+            Assert.IsType<Pack>(res.Value);
+
+            item.Name = PutName;
+            this.controller.ModelState.AddModelError("ID", "Invalid");
+            result = this.controller.Put(id, item);
+            Assert.NotNull(result);
+            Assert.IsType<BadRequestResult>(result);
+            var res2 = result as BadRequestResult;
+            Assert.Equal((int)HttpStatusCode.BadRequest, res2.StatusCode);
+        }
+
         /// <summary> (Unit Test Method) puts not found. </summary>
         [Fact]
         public void PutNotFound()
@@ -298,6 +336,36 @@ namespace PackIt.Test.Controllers
             Assert.Equal(PatchName, item.Name);
         }
 
+        /// <summary> (Unit Test Method) patches with not valid model. </summary>
+        [Fact]
+        public void PatchModelNotValid()
+        {
+            const string StartName = "A name";
+            const string PatchName = "B name";
+            var id = Guid.NewGuid().ToString();
+            var item = new Pack { PackId = id, Name = StartName };
+
+            // Create a new pack
+            var result = this.controller.Post(item);
+            Assert.NotNull(result);
+            Assert.IsType<CreatedAtRouteResult>(result);
+            var res = result as CreatedAtRouteResult;
+            Assert.Equal((int)HttpStatusCode.Created, res.StatusCode);
+            Assert.True(res.RouteValues.ContainsKey("id"));
+            Assert.IsType<Pack>(res.Value);
+
+            // Patch the pack with a new name
+            var patch = new JsonPatchDocument<Pack>();
+            patch.Replace(e => e.Name, PatchName);
+
+            this.controller.ModelState.AddModelError("ID", "Invalid");
+            result = this.controller.Patch(id, patch);
+            Assert.NotNull(result);
+            Assert.IsType<BadRequestResult>(result);
+            var res2 = result as BadRequestResult;
+            Assert.Equal((int)HttpStatusCode.BadRequest, res2.StatusCode);
+        }
+
         /// <summary> (Unit Test Method) patch not found. </summary>
         [Fact]
         public void PatchNotFound()
@@ -310,7 +378,7 @@ namespace PackIt.Test.Controllers
             Assert.NotNull(result);
             Assert.IsType<CreatedAtRouteResult>(result);
             var res = result as CreatedAtRouteResult;
-            Assert.Equal(res.StatusCode, (int)HttpStatusCode.Created);
+            Assert.Equal((int)HttpStatusCode.Created, res.StatusCode);
             Assert.True(res.RouteValues.ContainsKey("id"));
             Assert.IsType<Pack>(res.Value);
 
@@ -322,7 +390,7 @@ namespace PackIt.Test.Controllers
             Assert.NotNull(result);
             Assert.IsType<NotFoundObjectResult>(result);
             var notfound = result as NotFoundObjectResult;
-            Assert.Equal(notfound.StatusCode, (int)HttpStatusCode.NotFound);
+            Assert.Equal((int)HttpStatusCode.NotFound, notfound.StatusCode);
             Assert.Equal(notfound.Value, id);
         }
 
@@ -344,7 +412,7 @@ namespace PackIt.Test.Controllers
             Assert.NotNull(result);
             Assert.IsType<CreatedAtRouteResult>(result);
             var res = result as CreatedAtRouteResult;
-            Assert.Equal(res.StatusCode, (int)HttpStatusCode.Created);
+            Assert.Equal((int)HttpStatusCode.Created, res.StatusCode);
             Assert.True(res.RouteValues.ContainsKey("id"));
             Assert.IsType<Pack>(res.Value);
 
@@ -354,7 +422,7 @@ namespace PackIt.Test.Controllers
             Assert.IsType<OkObjectResult>(result);
 
             var objectResult = result as OkObjectResult;
-            Assert.Equal(objectResult.StatusCode, (int)HttpStatusCode.OK);
+            Assert.Equal((int)HttpStatusCode.OK, objectResult.StatusCode);
             Assert.IsType<Pack>(objectResult.Value);
 
             // Test the pack
