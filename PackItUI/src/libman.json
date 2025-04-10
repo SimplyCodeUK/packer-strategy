@@ -3,7 +3,7 @@
   "defaultProvider": "jsdelivr",
   "libraries": [
     {
-      "library": "@babylonjs/core@7.50.0",
+      "library": "@babylonjs/core@8.1.1",
       "destination": "wwwroot/lib/@babylonjs/core/"
     },
     {
@@ -12,7 +12,7 @@
     },
     {
       "library": "font-awesome-5-css@5.4.1",
-      "destination": "wwwroot/lib/font-awesome-5-css/"
+      "destination": "wwwroot/lib/font-awesome-5-css/" 
     },
     {
       "library": "jquery@3.7.1",

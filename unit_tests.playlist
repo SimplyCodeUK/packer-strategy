@@ -1,0 +1,1226 @@
+<Playlist Version="2.0">
+  <Rule Name="Includes" Match="Any">
+    <Rule Match="All">
+      <Property Name="Solution" />
+      <Rule Match="Any">
+        <Rule Match="All">
+          <Property Name="Project" Value="PackItMock.Test" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItMock.Test.HttpMock" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestHttpMock" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItMock.Test.HttpMock.TestHttpMock.TestMockHttpDelete" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItMock.Test.HttpMock.TestHttpMock.TestMockHttpDelete" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItMock.Test.HttpMock.TestHttpMock.TestMockHttpGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItMock.Test.HttpMock.TestHttpMock.TestMockHttpGet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItMock.Test.HttpMock.TestHttpMock.TestMockHttpPost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItMock.Test.HttpMock.TestHttpMock.TestMockHttpPost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItMock.Test.HttpMock.TestHttpMock.TestMockHttpPostContents" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItMock.Test.HttpMock.TestHttpMock.TestMockHttpPostContents" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItMock.Test.HttpMock.TestHttpMock.TestMockHttpPut" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItMock.Test.HttpMock.TestHttpMock.TestMockHttpPut" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+        <Rule Match="All">
+          <Property Name="Project" Value="PackItUI.Test" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItUI.Test.Areas.App.Controllers" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestErrorViewModel" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.App.Controllers.TestErrorViewModel.CannotShowRequestId" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.App.Controllers.TestErrorViewModel.CannotShowRequestId" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.App.Controllers.TestErrorViewModel.CanShowRequestId" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.App.Controllers.TestErrorViewModel.CanShowRequestId" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestHomeController" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.App.Controllers.TestHomeController.AboutServicesNotRunning" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.App.Controllers.TestHomeController.AboutServicesNotRunning" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.App.Controllers.TestHomeController.AboutServicesRunning" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.App.Controllers.TestHomeController.AboutServicesRunning" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.App.Controllers.TestHomeController.Contact" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.App.Controllers.TestHomeController.Contact" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.App.Controllers.TestHomeController.Error" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.App.Controllers.TestHomeController.Error" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.App.Controllers.TestHomeController.Index" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.App.Controllers.TestHomeController.Index" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItUI.Test.Areas.Materials.Controllers" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestHomeController" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.CostingRowPost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.CostingRowPost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.CreateGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.CreateGet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.CreatePost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.CreatePost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.CreatePostDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.CreatePostDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.DeleteGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.DeleteGet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.DeletePost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.DeletePost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.DeletePostDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.DeletePostDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.IndexConnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.IndexConnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.IndexDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.IndexDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.SectionRowPost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.SectionRowPost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.UpdateGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.UpdateGet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.UpdatePost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.UpdatePost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.UpdatePostDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Controllers.TestHomeController.UpdatePostDisconnected" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItUI.Test.Areas.Materials.DTO" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestMaterialHandler" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.DTO.TestMaterialHandler.ConnectedInformationAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.DTO.TestMaterialHandler.ConnectedInformationAsync" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.DTO.TestMaterialHandler.DisconnectedInformationAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.DTO.TestMaterialHandler.DisconnectedInformationAsync" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItUI.Test.Areas.Materials.Models" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestMaterialEditViewModel" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Models.TestMaterialEditViewModel.SetCostings" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Models.TestMaterialEditViewModel.SetCostings" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Materials.Models.TestMaterialEditViewModel.SetSections" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Materials.Models.TestMaterialEditViewModel.SetSections" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItUI.Test.Areas.Packs.Controllers" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestHomeController" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.CostingRowPost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.CostingRowPost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.CreateGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.CreateGet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.CreatePost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.CreatePost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.CreatePostDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.CreatePostDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DeleteGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DeleteGet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DeletePost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DeletePost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DeletePostDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DeletePostDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DisplayGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DisplayGet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DisplayPost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DisplayPost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DisplayPostDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.DisplayPostDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.IndexConnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.IndexConnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.IndexDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.IndexDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.UpdateGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.UpdateGet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.UpdatePost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.UpdatePost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.UpdatePostDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.Controllers.TestHomeController.UpdatePostDisconnected" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItUI.Test.Areas.Packs.DTO" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestDrawHandler" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.ConnectedInformationAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.ConnectedInformationAsync" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.CreateAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.CreateAsync" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.CreateAsyncDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.CreateAsyncDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.DisconnectedInformationAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.DisconnectedInformationAsync" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.DrawAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.DrawAsync" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.DrawAsyncDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.DTO.TestDrawHandler.DrawAsyncDisconnected" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestPackHandler" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.DTO.TestPackHandler.ConnectedInformationAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.DTO.TestPackHandler.ConnectedInformationAsync" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Packs.DTO.TestPackHandler.DisconnectedInformationAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Packs.DTO.TestPackHandler.DisconnectedInformationAsync" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItUI.Test.Areas.Plans.Controllers" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestHomeController" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.CreateGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.CreateGet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.CreatePost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.CreatePost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.CreatePostDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.CreatePostDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.DeleteGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.DeleteGet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.DeletePost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.DeletePost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.DeletePostDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.DeletePostDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.IndexConnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.IndexConnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.IndexDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.IndexDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.UpdateGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.UpdateGet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.UpdatePost" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.UpdatePost" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.UpdatePostDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.Controllers.TestHomeController.UpdatePostDisconnected" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItUI.Test.Areas.Plans.DTO" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestPlanHandler" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.DTO.TestPlanHandler.ConnectedInformationAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.DTO.TestPlanHandler.ConnectedInformationAsync" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Plans.DTO.TestPlanHandler.DisconnectedInformationAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Plans.DTO.TestPlanHandler.DisconnectedInformationAsync" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItUI.Test.Areas.Uploads.DTO" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestUploadHandler" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Uploads.DTO.TestUploadHandler.ConnectedInformationAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Uploads.DTO.TestUploadHandler.ConnectedInformationAsync" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Uploads.DTO.TestUploadHandler.DisconnectedInformationAsync" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Uploads.DTO.TestUploadHandler.DisconnectedInformationAsync" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Areas.Uploads.DTO.TestUploadHandler.Timeout" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Areas.Uploads.DTO.TestUploadHandler.Timeout" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItUI.Test.Helpers" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestListForFlag" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Helpers.TestListForFlag.EnumInvalid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Helpers.TestListForFlag.EnumInvalid" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItUI.Test.Helpers.TestListForFlag.EnumValid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItUI.Test.Helpers.TestListForFlag.EnumValid" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+        <Rule Match="All">
+          <Property Name="Project" Value="PackIt.Test" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackIt.Test.Controllers" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestAboutController" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestAboutController.Get" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestAboutController.Get" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestMaterialsController" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.Delete" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.Delete" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.DeleteNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.DeleteNotFound" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.Get" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.Get" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.GetAll" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.GetAll" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.GetNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.GetNotFound" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.Patch" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.Patch" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.PatchModelNotValid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.PatchModelNotValid" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.PatchNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.PatchNotFound" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.Post" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.Post" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.PostAlreadyExists" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.PostAlreadyExists" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.PostComplexMaterial" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.PostComplexMaterial" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.PostModelNotValid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.PostModelNotValid" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.PostNoData" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.PostNoData" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.Put" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.Put" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.PutModelNotValid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.PutModelNotValid" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestMaterialsController.PutNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestMaterialsController.PutNotFound" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestPacksController" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.Delete" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.Delete" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.DeleteNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.DeleteNotFound" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.Get" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.Get" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.GetAll" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.GetAll" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.GetNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.GetNotFound" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.Patch" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.Patch" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.PatchModelNotValid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.PatchModelNotValid" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.PatchNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.PatchNotFound" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.Post" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.Post" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.PostAlreadyExists" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.PostAlreadyExists" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.PostComplexPack" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.PostComplexPack" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.PostModelNotValid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.PostModelNotValid" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.PostNoData" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.PostNoData" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.Put" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.Put" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.PutModelNotValid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.PutModelNotValid" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPacksController.PutNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPacksController.PutNotFound" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestPlansController" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.Delete" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.Delete" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.DeleteNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.DeleteNotFound" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.Get" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.Get" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.GetAll" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.GetAll" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.GetNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.GetNotFound" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.Patch" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.Patch" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.PatchModelNotValid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.PatchModelNotValid" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.PatchNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.PatchNotFound" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.Post" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.Post" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.PostAlreadyExists" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.PostAlreadyExists" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.PostComplexPlan" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.PostComplexPlan" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.PostModelNotValid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.PostModelNotValid" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.PostNoData" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.PostNoData" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.Put" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.Put" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.PutModelNotValid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.PutModelNotValid" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestPlansController.PutNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestPlansController.PutNotFound" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestUploadsController" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestUploadsController.PostDisconnected" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestUploadsController.PostDisconnected" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestUploadsController.PostNoData" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestUploadsController.PostNoData" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.Controllers.TestUploadsController.PostSuccessful" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.Controllers.TestUploadsController.PostSuccessful" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackIt.Test.DTO" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestMaterialMapper" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertDtoToMaterialBottle" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertDtoToMaterialBottle" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertDtoToMaterialCrate" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertDtoToMaterialCrate" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertDtoToMaterialPallet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertDtoToMaterialPallet" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertMaterialBottleToDto" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertMaterialBottleToDto" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertMaterialCrateToDto" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertMaterialCrateToDto" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertMaterialPalletToDto" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestMaterialMapper.ConvertMaterialPalletToDto" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestPackMapper" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestPackMapper.ConvertDtoToPack" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestPackMapper.ConvertDtoToPack" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestPackMapper.ConvertPackToDto" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestPackMapper.ConvertPackToDto" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestPlanMapper" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestPlanMapper.ConvertDtoToPlan" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestPlanMapper.ConvertDtoToPlan" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestPlanMapper.ConvertPlanToDto" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestPlanMapper.ConvertPlanToDto" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+        <Rule Match="All">
+          <Property Name="Project" Value="PackItDraw.Test" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackIt.Test.DTO" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestDrawingMapper" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestDrawingMapper.ConvertDrawingToDto" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestDrawingMapper.ConvertDrawingToDto" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DTO.TestDrawingMapper.ConvertDtoDrawing" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DTO.TestDrawingMapper.ConvertDtoDrawing" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItDraw.Test.Controllers" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestAboutController" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Controllers.TestAboutController.Get" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Controllers.TestAboutController.Get" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestDrawingsController" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Controllers.TestDrawingsController.Delete" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Controllers.TestDrawingsController.Delete" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Controllers.TestDrawingsController.DeleteNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Controllers.TestDrawingsController.DeleteNotFound" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Controllers.TestDrawingsController.Get" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Controllers.TestDrawingsController.Get" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Controllers.TestDrawingsController.GetAll" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Controllers.TestDrawingsController.GetAll" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Controllers.TestDrawingsController.GetNotFound" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Controllers.TestDrawingsController.GetNotFound" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Controllers.TestDrawingsController.Post" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Controllers.TestDrawingsController.Post" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Controllers.TestDrawingsController.PostAlreadyExists" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Controllers.TestDrawingsController.PostAlreadyExists" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Controllers.TestDrawingsController.PostNoData" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Controllers.TestDrawingsController.PostNoData" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItDraw.Test.Models" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestDoDrawing" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Models.TestDoDrawing.TestStart" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Models.TestDoDrawing.TestStart" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestDoDrawingHelper" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Models.TestDoDrawingHelper.TestRotateResultBreadthToHeight" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Models.TestDoDrawingHelper.TestRotateResultBreadthToHeight" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Models.TestDoDrawingHelper.TestRotateResultHeightToHeight" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Models.TestDoDrawingHelper.TestRotateResultHeightToHeight" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItDraw.Test.Models.TestDoDrawingHelper.TestRotateResultLenghtToHeight" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItDraw.Test.Models.TestDoDrawingHelper.TestRotateResultLenghtToHeight" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+        <Rule Match="All">
+          <Property Name="Project" Value="PackItBdd.Test" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItBdd.Test.Drivers" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestsHttpHandler" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItBdd.Test.Drivers.TestsHttpHandler.TestGet" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItBdd.Test.Drivers.TestsHttpHandler.TestGet" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+        <Rule Match="All">
+          <Property Name="Project" Value="PackItLib.Test" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackIt.Test.DbInterface" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestDbConnectionManager" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DbInterface.TestDbConnectionManager.DatabaseLookupFail" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DbInterface.TestDbConnectionManager.DatabaseLookupFail" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DbInterface.TestDbConnectionManager.DatabaseLookupOk" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DbInterface.TestDbConnectionManager.DatabaseLookupOk" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestDbContextBuilderInMemory" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackIt.Test.DbInterface.TestDbContextBuilderInMemory.CreateContextOptionsBuilder" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackIt.Test.DbInterface.TestDbContextBuilderInMemory.CreateContextOptionsBuilder" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+            <Rule Match="All">
+              <Property Name="Namespace" Value="PackItLib.Test.Helpers" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestAttributes" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItLib.Test.Helpers.TestAttributes.Name" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItLib.Test.Helpers.TestAttributes.Name" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItLib.Test.Helpers.TestAttributes.NameNotSpecified" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItLib.Test.Helpers.TestAttributes.NameNotSpecified" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItLib.Test.Helpers.TestAttributes.ShortName" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItLib.Test.Helpers.TestAttributes.ShortName" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItLib.Test.Helpers.TestAttributes.ShortNameNotSpecified" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItLib.Test.Helpers.TestAttributes.ShortNameNotSpecified" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItLib.Test.Helpers.TestAttributes.UrlName" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItLib.Test.Helpers.TestAttributes.UrlName" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="PackItLib.Test.Helpers.TestAttributes.UrlNameNotSpecified" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="PackItLib.Test.Helpers.TestAttributes.UrlNameNotSpecified" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+      </Rule>
+    </Rule>
+  </Rule>
+</Playlist>
