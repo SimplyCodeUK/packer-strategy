@@ -4,14 +4,14 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO
+namespace PackItLib.DTO
 {
-    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Linq.Expressions;
+    using Microsoft.EntityFrameworkCore;
 
     /// <summary> A context. </summary>
     ///

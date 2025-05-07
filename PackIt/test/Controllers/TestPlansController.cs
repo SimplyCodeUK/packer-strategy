@@ -15,10 +15,10 @@ namespace PackIt.Test.Controllers
     using Microsoft.Extensions.Logging;
     using Moq;
     using Xunit;
+    using PackItLib.Helpers.Enums;
+    using PackItLib.Plan;
     using PackIt.Controllers;
     using PackIt.DTO;
-    using PackIt.Helpers.Enums;
-    using PackIt.Plan;
 
     /// <summary> (Unit Test Fixture) a controller for handling test plans. </summary>
     public class TestPlansController

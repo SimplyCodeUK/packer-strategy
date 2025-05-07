@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Drawing
+namespace PackItLib.Drawing
 {
     using System;
     using System.Collections.Generic;
@@ -20,8 +20,8 @@ namespace PackIt.Drawing
         public Drawing()
         {
             this.DrawingId = Guid.NewGuid().ToString();
-            this.Packs = new List<Pack.Pack>();
-            this.Packs.Add(new Pack.Pack());
+            this.Packs = new List<PackItLib.Pack.Pack>();
+            this.Packs.Add(new PackItLib.Pack.Pack());
             this.Computed = false;
             this.Shapes = new List<Shape3D>();
         }
@@ -31,7 +31,7 @@ namespace PackIt.Drawing
         /// </summary>
         ///
         /// <param name="pack"> The pack. </param>
-        public Drawing(Pack.Pack pack) : this()
+        public Drawing(PackItLib.Pack.Pack pack) : this()
         {
             this.Packs[0] = pack;
         }
@@ -50,8 +50,8 @@ namespace PackIt.Drawing
         ///
         /// <value> The Pack. </value>
         ///
-        /// <see cref="Pack.Pack"/>
-        public IList<Pack.Pack> Packs { get; set; }
+        /// <see cref="PackItLib.Pack.Pack"/>
+        public IList<PackItLib.Pack.Pack> Packs { get; set; }
 
         /// <summary> Gets or sets the collection of 3D shapes. </summary>
         ///

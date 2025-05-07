@@ -4,10 +4,10 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO.DtoPlan
+namespace PackItLib.DTO.DtoPlan
 {
     using System.Collections.Generic;
-    using PackIt.Helpers.Enums;
+    using PackItLib.Helpers.Enums;
 
     /// <summary> A dto stage. </summary>
     public class DtoStage

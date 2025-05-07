@@ -4,10 +4,10 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Test.DbInterface
+namespace PackItLib.Test.DbInterface
 {
     using Xunit;
-    using PackIt.DbInterface;
+    using PackItLib.DbInterface;
 
     /// <summary> (Unit Test Method) Database connection manager. </summary>
     public class TestDbConnectionManager

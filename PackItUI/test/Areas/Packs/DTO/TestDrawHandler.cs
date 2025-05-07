@@ -12,7 +12,7 @@ namespace PackItUI.Test.Areas.Packs.DTO
     using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
     using Xunit;
-    using PackIt.Models;
+    using PackItLib.Models;
     using PackItMock.HttpMock;
     using PackItUI.Areas.Packs.DTO;
     using PackItUI.Services;
@@ -103,7 +103,7 @@ namespace PackItUI.Test.Areas.Packs.DTO
         {
             var result = await this.handler.ReadAsync("id");
             Assert.NotNull(result);
-            Assert.IsType<PackIt.Drawing.Drawing>(result);
+            Assert.IsType<PackItLib.Drawing.Drawing>(result);
         }
 
         /// <summary> (Unit Test Method) index action when the service is down. </summary>

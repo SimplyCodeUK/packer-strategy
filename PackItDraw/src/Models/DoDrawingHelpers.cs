@@ -4,11 +4,11 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-using PackIt.Helpers.Masks;
-using PackIt.Pack;
-
-namespace PackIt.Models
+namespace PackItDraw.Models
 {
+    using PackItLib.Helpers.Masks;
+    using PackItLib.Pack;
+
     /// <summary> Helper methods for drawing. </summary>
     public class DoDrawingHelpers
     {

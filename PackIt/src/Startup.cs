@@ -16,7 +16,7 @@ namespace PackIt
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using PackIt.DbInterface;
+    using PackItLib.DbInterface;
     using PackIt.DTO;
 
     /// <summary> A start up. </summary>
@@ -86,8 +86,8 @@ namespace PackIt
         private static void InitialiseDatabase<TContext, TData, TDtoData, TMapper>(IServiceScope serviceScope, IWebHostEnvironment env, string filename)
             where TData : class
             where TDtoData : class
-            where TContext : PackItContext<TData, TDtoData, TMapper>
-            where TMapper : IPackItMapper<TData, TDtoData>, new()
+            where TContext : PackItLib.DTO.PackItContext<TData, TDtoData, TMapper>
+            where TMapper : PackItLib.DTO.IPackItMapper<TData, TDtoData>, new()
         {
             var context = serviceScope.ServiceProvider.GetService<TContext>();
 
@@ -123,13 +123,13 @@ namespace PackIt
             using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
 
             // Initialise Pack database
-            InitialiseDatabase<PackContext, Pack.Pack, DTO.DtoPack.DtoPack, PackMapper>(serviceScope, env, "Seeds/pack.json");
+            InitialiseDatabase<PackContext, PackItLib.Pack.Pack, PackItLib.DTO.DtoPack.DtoPack, PackMapper>(serviceScope, env, "Seeds/pack.json");
 
             // Initialise Plan database
-            InitialiseDatabase<PlanContext, Plan.Plan, DTO.DtoPlan.DtoPlan, PlanMapper>(serviceScope, env, "Seeds/plan.json");
+            InitialiseDatabase<PlanContext, PackItLib.Plan.Plan, PackItLib.DTO.DtoPlan.DtoPlan, PlanMapper>(serviceScope, env, "Seeds/plan.json");
 
             // Initialise Material database
-            InitialiseDatabase<MaterialContext, Material.Material, DTO.DtoMaterial.DtoMaterial, MaterialMapper>(serviceScope, env, "Seeds/material.json");
+            InitialiseDatabase<MaterialContext, PackItLib.Material.Material, PackItLib.DTO.DtoMaterial.DtoMaterial, MaterialMapper>(serviceScope, env, "Seeds/material.json");
         }
     }
 }

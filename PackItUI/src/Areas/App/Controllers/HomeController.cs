@@ -36,7 +36,7 @@ namespace PackItUI.Areas.App.Controllers
         /// <param name="planHandler"> The Plan service handler. </param>
         /// <param name="uploadHandler"> The Upload service handler. </param>
         /// <param name="drawHandler"> The Draw service handler. </param>
-        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Material.Material> materialHandler, DbServiceHandler<PackIt.Pack.Pack> packHandler, DbServiceHandler<PackIt.Plan.Plan> planHandler, IUploadHandler uploadHandler, Packs.DTO.DrawHandler drawHandler)
+        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackItLib.Material.Material> materialHandler, DbServiceHandler<PackItLib.Pack.Pack> packHandler, DbServiceHandler<PackItLib.Plan.Plan> planHandler, IUploadHandler uploadHandler, Packs.DTO.DrawHandler drawHandler)
         {
             this.logger = logger;
             this.services = new()

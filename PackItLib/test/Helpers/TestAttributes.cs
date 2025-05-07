@@ -7,8 +7,8 @@
 namespace PackItLib.Test.Helpers
 {
     using Xunit;
-    using PackIt.Helpers;
-    using PackIt.Helpers.Enums;
+    using PackItLib.Helpers;
+    using PackItLib.Helpers.Enums;
 
     /// <summary> (Unit Test Method) Enum attributes helpers. </summary>
     public class TestAttributes

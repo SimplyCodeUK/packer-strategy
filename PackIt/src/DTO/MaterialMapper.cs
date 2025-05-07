@@ -7,24 +7,24 @@
 namespace PackIt.DTO
 {
     using AutoMapper;
-    using PackIt.Material;
+    using PackItLib.Material;
 
     /// <summary> Maps from and to DtoMaterial </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.IPackItMapper{TData, TDtoData}"/>
-    public class MaterialMapper : IPackItMapper<Material, DtoMaterial.DtoMaterial>
+    /// <seealso cref="T:PackItLib.DTO.IPackItMapper{TData, TDtoData}"/>
+    public class MaterialMapper : PackItLib.DTO.IPackItMapper<Material, PackItLib.DTO.DtoMaterial.DtoMaterial>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static readonly MapperConfiguration configModelToDto = new(
             cfg =>
             {
-                cfg.CreateMap<Costing, DtoMaterial.DtoCosting>();
-                cfg.CreateMap<Layer, DtoMaterial.DtoLayer>();
-                cfg.CreateMap<PalletDeck, DtoMaterial.DtoPalletDeck>();
-                cfg.CreateMap<Section, DtoMaterial.DtoSection>();
-                cfg.CreateMap<Collation, DtoMaterial.DtoCollation>();
-                cfg.CreateMap<Plank, DtoMaterial.DtoPlank>();
-                cfg.CreateMap<Material, DtoMaterial.DtoMaterial>().AfterMap(
+                cfg.CreateMap<Costing, PackItLib.DTO.DtoMaterial.DtoCosting>();
+                cfg.CreateMap<Layer, PackItLib.DTO.DtoMaterial.DtoLayer>();
+                cfg.CreateMap<PalletDeck, PackItLib.DTO.DtoMaterial.DtoPalletDeck>();
+                cfg.CreateMap<Section, PackItLib.DTO.DtoMaterial.DtoSection>();
+                cfg.CreateMap<Collation, PackItLib.DTO.DtoMaterial.DtoCollation>();
+                cfg.CreateMap<Plank, PackItLib.DTO.DtoMaterial.DtoPlank>();
+                cfg.CreateMap<Material, PackItLib.DTO.DtoMaterial.DtoMaterial>().AfterMap(
                     (s, d) =>
                     {
                         foreach (var costing in d.Costings)
@@ -75,13 +75,13 @@ namespace PackIt.DTO
         private static readonly MapperConfiguration configDtoToModel = new(
             cfg =>
             {
-                cfg.CreateMap<DtoMaterial.DtoMaterial, Material>();
-                cfg.CreateMap<DtoMaterial.DtoCosting, Costing>();
-                cfg.CreateMap<DtoMaterial.DtoLayer, Layer>();
-                cfg.CreateMap<DtoMaterial.DtoPalletDeck, PalletDeck>();
-                cfg.CreateMap<DtoMaterial.DtoSection, Section>();
-                cfg.CreateMap<DtoMaterial.DtoCollation, Collation>();
-                cfg.CreateMap<DtoMaterial.DtoPlank, Plank>();
+                cfg.CreateMap<PackItLib.DTO.DtoMaterial.DtoMaterial, Material>();
+                cfg.CreateMap<PackItLib.DTO.DtoMaterial.DtoCosting, Costing>();
+                cfg.CreateMap<PackItLib.DTO.DtoMaterial.DtoLayer, Layer>();
+                cfg.CreateMap<PackItLib.DTO.DtoMaterial.DtoPalletDeck, PalletDeck>();
+                cfg.CreateMap<PackItLib.DTO.DtoMaterial.DtoSection, Section>();
+                cfg.CreateMap<PackItLib.DTO.DtoMaterial.DtoCollation, Collation>();
+                cfg.CreateMap<PackItLib.DTO.DtoMaterial.DtoPlank, Plank>();
             });
 
         /// <summary> The mapper from Model to Dto. </summary>
@@ -95,9 +95,9 @@ namespace PackIt.DTO
         /// <param name="data"> Data to convert. </param>
         /// 
         /// <returns> The converted DTO. </returns>
-        public DtoMaterial.DtoMaterial ConvertToDto(Material data)
+        public PackItLib.DTO.DtoMaterial.DtoMaterial ConvertToDto(Material data)
         {
-            return mapperModelToDto.Map<DtoMaterial.DtoMaterial>(data);
+            return mapperModelToDto.Map<PackItLib.DTO.DtoMaterial.DtoMaterial>(data);
         }
 
         /// <summary> Converts a DTO to its Data. </summary>
@@ -105,7 +105,7 @@ namespace PackIt.DTO
         /// <param name="dtoData"> DTO to convert. </param>
         ///
         /// <returns> The converted Data. </returns>
-        public Material ConvertToData(DtoMaterial.DtoMaterial dtoData)
+        public Material ConvertToData(PackItLib.DTO.DtoMaterial.DtoMaterial dtoData)
         {
             return mapperDtoToModel.Map<Material>(dtoData);
         }

@@ -9,8 +9,8 @@ namespace PackIt.Test.DTO
     using System.IO;
     using System.Text.Json;
     using Xunit;
+    using PackItLib.Plan;
     using PackIt.DTO;
-    using PackIt.Plan;
 
     /// <summary> (Unit Test Fixture) a mapper for plans. </summary>
     public class TestPlanMapper

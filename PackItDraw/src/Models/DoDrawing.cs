@@ -4,13 +4,13 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models
+namespace PackItDraw.Models
 {
-    using PackIt.DTO;
-    using PackIt.Drawing;
-    using PackIt.Pack;
-    using PackIt.Helpers.Enums;
-    using static PackIt.Models.DoDrawingHelpers;
+    using PackItLib.Pack;
+    using PackItLib.Helpers.Enums;
+    using PackItLib.Drawing;
+    using PackItDraw.DTO;
+    using static PackItDraw.Models.DoDrawingHelpers;
 
     /// <summary> Evaluate the drawing. </summary>
     public class DoDrawing

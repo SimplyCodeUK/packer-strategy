@@ -20,7 +20,7 @@ namespace PackItUI.Areas.Packs.Controllers
     ///
     /// <seealso cref="T:PackItUI.Areas.Common.Controller.PackItController{TCategoryName, TData, TModel, TEditViewModel}"/>
     [Area("Packs")]
-    public class HomeController : PackItController<HomeController, PackIt.Pack.Pack, PackEditViewModel.Pack, PackEditViewModel>
+    public class HomeController : PackItController<HomeController, PackItLib.Pack.Pack, PackEditViewModel.Pack, PackEditViewModel>
     {
         private readonly DrawHandler drawHandler;
 
@@ -31,7 +31,7 @@ namespace PackItUI.Areas.Packs.Controllers
         /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
         /// <param name="drawHandler"> The drawing handler. </param>
-        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Pack.Pack> handler, DrawHandler drawHandler)
+        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackItLib.Pack.Pack> handler, DrawHandler drawHandler)
             : base(logger, handler)
         {
             this.drawHandler = drawHandler;
@@ -57,7 +57,7 @@ namespace PackItUI.Areas.Packs.Controllers
         [ValidateAntiForgeryToken]
         public override async Task<IActionResult> Create(PackEditViewModel model)
         {
-            var data = new PackIt.Pack.Pack();
+            var data = new PackItLib.Pack.Pack();
             this.logger.LogInformation("Create Pack id {PackId}", data.PackId);
 
             data = this.mapper.Map(model.Data, data);
@@ -228,7 +228,7 @@ namespace PackItUI.Areas.Packs.Controllers
                 this.ViewBag.crud = Helpers.Crud.Create;
                 this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
 
-                var mod = new PackIt.Pack.Costing();
+                var mod = new PackItLib.Pack.Costing();
                 ret = this.PartialView("EditorTemplates/Costing", mod);
             }
 

@@ -11,7 +11,7 @@ namespace PackItUI.Areas.Materials.Controllers
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
-    using PackIt.Helpers.Enums;
+    using PackItLib.Helpers.Enums;
     using PackItUI.Areas.Common.Controller;
     using PackItUI.Areas.Common.DTO;
     using PackItUI.Areas.Materials.Models;
@@ -21,7 +21,7 @@ namespace PackItUI.Areas.Materials.Controllers
     ///
     /// <seealso cref="T:PackItUI.Areas.Common.Controller.PackItController{TCategoryName, TData, TModel, TEditViewModel}"/>
     [Area("Materials")]
-    public class HomeController : PackItController<HomeController, PackIt.Material.Material, MaterialEditViewModel.Material, MaterialEditViewModel>
+    public class HomeController : PackItController<HomeController, PackItLib.Material.Material, MaterialEditViewModel.Material, MaterialEditViewModel>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
@@ -29,7 +29,7 @@ namespace PackItUI.Areas.Materials.Controllers
         ///
         /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Material.Material> handler)
+        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackItLib.Material.Material> handler)
             : base(logger, handler)
         {
         }
@@ -54,7 +54,7 @@ namespace PackItUI.Areas.Materials.Controllers
         [ValidateAntiForgeryToken]
         public override async Task<IActionResult> Create(MaterialEditViewModel model)
         {
-            var data = new PackIt.Material.Material();
+            var data = new PackItLib.Material.Material();
             this.logger.LogInformation("Create Material id {MaterialId}", data.MaterialId);
 
             data = this.mapper.Map(model.Data, data);
@@ -157,7 +157,7 @@ namespace PackItUI.Areas.Materials.Controllers
                 this.ViewBag.crud = Crud.Create;
                 this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Costings[{0}]", index);
 
-                var mod = new PackIt.Material.Costing();
+                var mod = new PackItLib.Material.Costing();
                 ret = this.PartialView("EditorTemplates/Costing", mod);
             }
 
@@ -187,7 +187,7 @@ namespace PackItUI.Areas.Materials.Controllers
                 this.ViewBag.sectionTypes = new ListForFlag<SectionTypes>(0);
                 this.ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("Data.Sections[{0}]", index);
 
-                var mod = new PackIt.Material.Section();
+                var mod = new PackItLib.Material.Section();
                 ret = this.PartialView("EditorTemplates/Section", mod);
             }
 

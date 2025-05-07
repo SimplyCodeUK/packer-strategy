@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Models
+namespace PackItLib.Models
 {
     /// <summary> App settings. </summary>
     public class AppSettings

@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Helpers.Enums
+namespace PackItLib.Helpers.Enums
 {
     /// <summary> Values that represent stage levels. </summary>
     public enum StageLevel

@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO.DtoMaterial
+namespace PackItLib.DTO.DtoMaterial
 {
     /// <summary> A dto collation. </summary>
     public class DtoCollation

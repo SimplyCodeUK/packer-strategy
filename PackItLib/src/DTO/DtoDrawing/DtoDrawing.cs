@@ -4,10 +4,10 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO.DtoDrawing
+namespace PackItLib.DTO.DtoDrawing
 {
     using System.Collections.Generic;
-    using PackIt.DTO.DtoPack;
+    using PackItLib.DTO.DtoPack;
 
     /// <summary> A dto drawing. </summary>
     public class DtoDrawing

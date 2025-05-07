@@ -20,8 +20,8 @@ namespace PackIt.Test.Controllers
     using Moq;
     using Moq.Protected;
     using Xunit;
+    using PackItLib.Models;
     using PackIt.Controllers;
-    using PackIt.Models;
 
     /// <summary> (Unit Test Fixture) a controller for handling test plans. </summary>
     public class TestUploadsController

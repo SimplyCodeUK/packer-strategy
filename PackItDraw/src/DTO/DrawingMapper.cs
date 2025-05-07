@@ -4,21 +4,21 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO
+namespace PackItDraw.DTO
 {
     using AutoMapper;
-    using PackIt.Drawing;
+    using PackItLib.Drawing;
 
     /// <summary> Maps from and to DtoPack </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.IPackItMapper{TData, TDtoData}"/>
-    public class DrawingMapper : IPackItMapper<Drawing, DtoDrawing.DtoDrawing>
+    /// <seealso cref="T:PackItLib.DTO.IPackItMapper{TData, TDtoData}"/>
+    public class DrawingMapper : PackItLib.DTO.IPackItMapper<Drawing, PackItLib.DTO.DtoDrawing.DtoDrawing>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static readonly MapperConfiguration configModelToDto = new(
             cfg =>
             {
-                cfg.CreateMap<Drawing, DtoDrawing.DtoDrawing>().AfterMap(
+                cfg.CreateMap<Drawing, PackItLib.DTO.DtoDrawing.DtoDrawing>().AfterMap(
                     (s, d) =>
                     {
                         d.Packs[0].PackId = s.DrawingId;
@@ -102,35 +102,35 @@ namespace PackIt.DTO
                             }
                         }
                     });
-                cfg.CreateMap<Pack.Pack, DtoPack.DtoPack>();
-                cfg.CreateMap<Pack.Costing, DtoPack.DtoCosting>();
-                cfg.CreateMap<Pack.Stage, DtoPack.DtoStage>();
-                cfg.CreateMap<Pack.Limit, DtoPack.DtoLimit>();
-                cfg.CreateMap<Pack.Result, DtoPack.DtoResult>();
-                cfg.CreateMap<Pack.Layer, DtoPack.DtoLayer>();
-                cfg.CreateMap<Pack.Collation, DtoPack.DtoCollation>();
-                cfg.CreateMap<Pack.Material, DtoPack.DtoMaterial>();
-                cfg.CreateMap<Pack.DatabaseMaterial, DtoPack.DtoDatabaseMaterial>();
-                cfg.CreateMap<Pack.Section, DtoPack.DtoSection>();
-                cfg.CreateMap<Shape3D, DtoDrawing.DtoShape3D>();
+                cfg.CreateMap<PackItLib.Pack.Pack, PackItLib.DTO.DtoPack.DtoPack>();
+                cfg.CreateMap<PackItLib.Pack.Costing, PackItLib.DTO.DtoPack.DtoCosting>();
+                cfg.CreateMap<PackItLib.Pack.Stage, PackItLib.DTO.DtoPack.DtoStage>();
+                cfg.CreateMap<PackItLib.Pack.Limit, PackItLib.DTO.DtoPack.DtoLimit>();
+                cfg.CreateMap<PackItLib.Pack.Result, PackItLib.DTO.DtoPack.DtoResult>();
+                cfg.CreateMap<PackItLib.Pack.Layer, PackItLib.DTO.DtoPack.DtoLayer>();
+                cfg.CreateMap<PackItLib.Pack.Collation, PackItLib.DTO.DtoPack.DtoCollation>();
+                cfg.CreateMap<PackItLib.Pack.Material, PackItLib.DTO.DtoPack.DtoMaterial>();
+                cfg.CreateMap<PackItLib.Pack.DatabaseMaterial, PackItLib.DTO.DtoPack.DtoDatabaseMaterial>();
+                cfg.CreateMap<PackItLib.Pack.Section, PackItLib.DTO.DtoPack.DtoSection>();
+                cfg.CreateMap<Shape3D, PackItLib.DTO.DtoDrawing.DtoShape3D>();
             });
 
         /// <summary> Configuration of map from Dto to Model. </summary>
         private static readonly MapperConfiguration configDtoToModel = new(
             cfg =>
             {
-                cfg.CreateMap<DtoDrawing.DtoDrawing, Drawing>();
-                cfg.CreateMap<DtoDrawing.DtoShape3D, Shape3D>();
-                cfg.CreateMap<DtoPack.DtoPack, Pack.Pack>();
-                cfg.CreateMap<DtoPack.DtoCosting, Pack.Costing>();
-                cfg.CreateMap<DtoPack.DtoStage, Pack.Stage>();
-                cfg.CreateMap<DtoPack.DtoLimit, Pack.Limit>();
-                cfg.CreateMap<DtoPack.DtoResult, Pack.Result>();
-                cfg.CreateMap<DtoPack.DtoLayer, Pack.Layer>();
-                cfg.CreateMap<DtoPack.DtoCollation, Pack.Collation>();
-                cfg.CreateMap<DtoPack.DtoMaterial, Pack.Material>();
-                cfg.CreateMap<DtoPack.DtoDatabaseMaterial, Pack.DatabaseMaterial>();
-                cfg.CreateMap<DtoPack.DtoSection, Pack.Section>();
+                cfg.CreateMap<PackItLib.DTO.DtoDrawing.DtoDrawing, Drawing>();
+                cfg.CreateMap<PackItLib.DTO.DtoDrawing.DtoShape3D, Shape3D>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoPack, PackItLib.Pack.Pack>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoCosting, PackItLib.Pack.Costing>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoStage, PackItLib.Pack.Stage>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoLimit, PackItLib.Pack.Limit>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoResult, PackItLib.Pack.Result>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoLayer, PackItLib.Pack.Layer>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoCollation, PackItLib.Pack.Collation>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoMaterial, PackItLib.Pack.Material>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoDatabaseMaterial, PackItLib.Pack.DatabaseMaterial>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoSection, PackItLib.Pack.Section>();
             });
 
         /// <summary> The mapper from Model to Dto. </summary>
@@ -144,9 +144,9 @@ namespace PackIt.DTO
         /// <param name="data"> Data to convert. </param>
         /// 
         /// <returns> The converted DTO. </returns>
-        public DtoDrawing.DtoDrawing ConvertToDto(Drawing data)
+        public PackItLib.DTO.DtoDrawing.DtoDrawing ConvertToDto(Drawing data)
         {
-            return mapperModelToDto.Map<DtoDrawing.DtoDrawing>(data);
+            return mapperModelToDto.Map<PackItLib.DTO.DtoDrawing.DtoDrawing>(data);
         }
 
         /// <summary> Converts a DTO to its Data. </summary>
@@ -154,7 +154,7 @@ namespace PackIt.DTO
         /// <param name="dtoData"> DTO to convert. </param>
         ///
         /// <returns> The converted Data. </returns>
-        public Drawing ConvertToData(DtoDrawing.DtoDrawing dtoData)
+        public Drawing ConvertToData(PackItLib.DTO.DtoDrawing.DtoDrawing dtoData)
         {
             return mapperDtoToModel.Map<Drawing>(dtoData);
         }

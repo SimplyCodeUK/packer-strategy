@@ -8,17 +8,17 @@ namespace PackIt.DTO
 {
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
-    using PackIt.Material;
+    using PackItLib.Material;
 
     /// <summary> A material context. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData, TMapper}"/>
+    /// <seealso cref="T:PackItLib.DTO.PackItContext{TData, TDtoData, TMapper}"/>
     /// <remarks>
     /// Initialises a new instance of the <see cref="MaterialContext" /> class.
     /// </remarks>
     ///
     /// <param name="options"> Options for controlling the operation. </param>
-    public class MaterialContext(DbContextOptions<MaterialContext> options) : PackItContext<Material, DtoMaterial.DtoMaterial, MaterialMapper>(options)
+    public class MaterialContext(DbContextOptions<MaterialContext> options) : PackItLib.DTO.PackItContext<Material, PackItLib.DTO.DtoMaterial.DtoMaterial, MaterialMapper>(options)
     {
         /// <summary>
         /// Override this method to further configure the model that was discovered by convention
@@ -44,18 +44,18 @@ namespace PackIt.DTO
             base.OnModelCreating(modelBuilder);
 
             ConfigureDtoMaterial(modelBuilder);
-            Configure<DtoMaterial.DtoCosting>(modelBuilder, "DtoCosting", k => new { k.MaterialId, k.Quantity });
+            Configure<PackItLib.DTO.DtoMaterial.DtoCosting>(modelBuilder, "DtoCosting", k => new { k.MaterialId, k.Quantity });
             ConfigureDtoLayer(modelBuilder);
-            Configure<DtoMaterial.DtoSection>(modelBuilder, "DtoSection", k => new { k.MaterialId, k.SectionIndex });
-            Configure<DtoMaterial.DtoCollation>(modelBuilder, "DtoCollation", k => new { k.MaterialId, k.LayerIndex, k.CollationIndex });
+            Configure<PackItLib.DTO.DtoMaterial.DtoSection>(modelBuilder, "DtoSection", k => new { k.MaterialId, k.SectionIndex });
+            Configure<PackItLib.DTO.DtoMaterial.DtoCollation>(modelBuilder, "DtoCollation", k => new { k.MaterialId, k.LayerIndex, k.CollationIndex });
             ConfigureDtoPalletDeck(modelBuilder);
-            Configure<DtoMaterial.DtoPlank>(modelBuilder, "DtoPlank", k => new { k.MaterialId, k.PalletDeckIndex, k.PlankIndex });
+            Configure<PackItLib.DTO.DtoMaterial.DtoPlank>(modelBuilder, "DtoPlank", k => new { k.MaterialId, k.PalletDeckIndex, k.PlankIndex });
         }
 
         /// <summary>Construct default query.</summary>
         ///
         /// <returns> Query for list of materials. </returns>
-        protected override IQueryable<DtoMaterial.DtoMaterial> ConstructQuery()
+        protected override IQueryable<PackItLib.DTO.DtoMaterial.DtoMaterial> ConstructQuery()
         {
             var query = this.Resources
                 .Include(m => m.Costings)
@@ -73,7 +73,7 @@ namespace PackIt.DTO
         /// <param name="key"> The key to search for. </param>
         ///
         /// <returns> The find task. </returns>
-        protected override System.Threading.Tasks.Task<DtoMaterial.DtoMaterial> ConstructFindTask(string key)
+        protected override System.Threading.Tasks.Task<PackItLib.DTO.DtoMaterial.DtoMaterial> ConstructFindTask(string key)
         {
             return this.ConstructQuery().SingleAsync(p => p.MaterialId == key);
         }
@@ -83,7 +83,7 @@ namespace PackIt.DTO
         /// <param name="modelBuilder">The model builder.</param>
         private static void ConfigureDtoMaterial(ModelBuilder modelBuilder)
         {
-            var builder = Configure<DtoMaterial.DtoMaterial>(modelBuilder, "DtoMaterial", k => new { k.MaterialId });
+            var builder = Configure<PackItLib.DTO.DtoMaterial.DtoMaterial>(modelBuilder, "DtoMaterial", k => new { k.MaterialId });
             builder
                 .HasMany(m => m.Costings)
                 .WithOne()
@@ -107,7 +107,7 @@ namespace PackIt.DTO
         /// <param name="modelBuilder">The model builder.</param>
         private static void ConfigureDtoLayer(ModelBuilder modelBuilder)
         {
-            Configure<DtoMaterial.DtoLayer>(modelBuilder, "DtoLayer", k => new { k.MaterialId, k.LayerIndex })
+            Configure<PackItLib.DTO.DtoMaterial.DtoLayer>(modelBuilder, "DtoLayer", k => new { k.MaterialId, k.LayerIndex })
                 .HasMany(m => m.Collations)
                 .WithOne()
                 .HasForeignKey(c => new { c.MaterialId, c.LayerIndex });
@@ -118,7 +118,7 @@ namespace PackIt.DTO
         /// <param name="modelBuilder">The model builder.</param>
         private static void ConfigureDtoPalletDeck(ModelBuilder modelBuilder)
         {
-            Configure<DtoMaterial.DtoPalletDeck>(modelBuilder, "DtoPalletDeck", k => new { k.MaterialId, k.PalletDeckIndex })
+            Configure<PackItLib.DTO.DtoMaterial.DtoPalletDeck>(modelBuilder, "DtoPalletDeck", k => new { k.MaterialId, k.PalletDeckIndex })
                 .HasMany(p => p.Planks)
                 .WithOne()
                 .HasForeignKey(p => new { p.MaterialId, p.PalletDeckIndex });

@@ -4,10 +4,10 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Material
+namespace PackItLib.Material
 {
     using System.Diagnostics.CodeAnalysis;
-    using PackIt.Helpers.Enums;
+    using PackItLib.Helpers.Enums;
 
     /// <summary> A plank. </summary>
     [ExcludeFromCodeCoverage]

@@ -4,14 +4,14 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DbInterface
+namespace PackItLib.DbInterface
 {
     using System;
     using Microsoft.EntityFrameworkCore;
 
     /// <summary> In memory database connection. </summary>
     ///
-    /// <seealso cref="PackIt.DbInterface.IDbContextBuilder" />
+    /// <seealso cref="PackItLib.DbInterface.IDbContextBuilder" />
     public class DbContextBuilderInMemory : IDbContextBuilder
     {
         /// <summary> Creates the context options builder for an in memory database. </summary>

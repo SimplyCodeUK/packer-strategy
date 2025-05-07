@@ -16,11 +16,11 @@
     </div>
     <label asp-for="Type" class="@LabelClass"></label>
     <div class="col-sm-2">
-        <select asp-for="Type" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.MaterialType>()" class="@InputClass" disabled="@DisabledFlag"></select>
+        <select asp-for="Type" asp-items="Html.GetEnumSelectList<PackItLib.Helpers.Enums.MaterialType>()" class="@InputClass" disabled="@DisabledFlag"></select>
     </div>
     <label asp-for="Form" class="@LabelClass"></label>
     <div class="col-sm-2">
-        <select asp-for="Form" asp-items="Html.GetEnumSelectList<PackIt.Helpers.Enums.FormType>()" class="@InputClass" disabled="@DisabledFlag"></select>
+        <select asp-for="Form" asp-items="Html.GetEnumSelectList<PackItLib.Helpers.Enums.FormType>()" class="@InputClass" disabled="@DisabledFlag"></select>
     </div>
 </div>
 <div class="form-group">

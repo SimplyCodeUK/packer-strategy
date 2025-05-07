@@ -7,8 +7,8 @@
 namespace PackItDraw.Test.Models
 {
     using Xunit;
-    using PackIt.Helpers.Masks;
-    using static PackIt.Models.DoDrawingHelpers;
+    using PackItLib.Helpers.Masks;
+    using static PackItDraw.Models.DoDrawingHelpers;
 
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
     public class TestDoDrawingHelper
@@ -17,7 +17,7 @@ namespace PackItDraw.Test.Models
         [Fact]
         public void TestRotateResultHeightToHeight()
         {
-            PackIt.Pack.Result result = new()
+            PackItLib.Pack.Result result = new()
             {
                 ExternalLength = 100,
                 ExternalBreadth = 200,
@@ -33,7 +33,7 @@ namespace PackItDraw.Test.Models
         [Fact]
         public void TestRotateResultLenghtToHeight()
         {
-            PackIt.Pack.Result result = new()
+            PackItLib.Pack.Result result = new()
             {
                 ExternalLength = 100,
                 ExternalBreadth = 200,
@@ -49,7 +49,7 @@ namespace PackItDraw.Test.Models
         [Fact]
         public void TestRotateResultBreadthToHeight()
         {
-            PackIt.Pack.Result result = new()
+            PackItLib.Pack.Result result = new()
             {
                 ExternalLength = 100,
                 ExternalBreadth = 200,

@@ -10,7 +10,7 @@ namespace PackItUI.Areas.Uploads.DTO
     using System.Net.Http;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
-    using PackIt.Models;
+    using PackItLib.Models;
     using PackItUI.Services;
 
     /// <summary> Upload I/O implementation. </summary>

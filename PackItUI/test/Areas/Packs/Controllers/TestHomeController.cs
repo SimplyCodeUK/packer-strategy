@@ -15,7 +15,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
     using Microsoft.Extensions.Options;
     using Moq;
     using Xunit;
-    using PackIt.Models;
+    using PackItLib.Models;
     using PackItMock.HttpMock;
     using PackItUI.Areas.Packs.Controllers;
     using PackItUI.Areas.Packs.DTO;
@@ -266,7 +266,7 @@ namespace PackItUI.Test.Areas.Packs.Controllers
             var result = this.controller.CostingRow(body);
 
             Assert.IsType<PartialViewResult>(result);
-            Assert.IsType<PackIt.Pack.Costing>((result as PartialViewResult).Model);
+            Assert.IsType<PackItLib.Pack.Costing>((result as PartialViewResult).Model);
             Assert.Equal("EditorTemplates/Costing", (result as PartialViewResult).ViewName);
         }
 

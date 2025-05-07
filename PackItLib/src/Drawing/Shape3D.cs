@@ -4,10 +4,10 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Drawing
+namespace PackItLib.Drawing
 {
     using System.Diagnostics.CodeAnalysis;
-    using PackIt.Helpers.Enums;
+    using PackItLib.Helpers.Enums;
 
     /// <summary> A 3D shape. </summary>
     [ExcludeFromCodeCoverage]

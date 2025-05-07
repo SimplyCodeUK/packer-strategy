@@ -18,7 +18,7 @@ namespace PackItUI.Areas.Plans.Controllers
     ///
     /// <seealso cref="T:PackItUI.Areas.Common.Controller.PackItController{TCategoryName, TData, TModel, TEditViewModel}"/>
     [Area("Plans")]
-    public class HomeController : PackItController<HomeController, PackIt.Plan.Plan, PlanEditViewModel.Plan, PlanEditViewModel>
+    public class HomeController : PackItController<HomeController, PackItLib.Plan.Plan, PlanEditViewModel.Plan, PlanEditViewModel>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="HomeController" /> class.
@@ -26,7 +26,7 @@ namespace PackItUI.Areas.Plans.Controllers
         ///
         /// <param name="logger"> The logger. </param>
         /// <param name="handler"> The I/O handler. </param>
-        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackIt.Plan.Plan> handler)
+        public HomeController(ILogger<HomeController> logger, DbServiceHandler<PackItLib.Plan.Plan> handler)
             : base(logger, handler)
         {
         }
@@ -51,7 +51,7 @@ namespace PackItUI.Areas.Plans.Controllers
         [ValidateAntiForgeryToken]
         public override async Task<IActionResult> Create(PlanEditViewModel model)
         {
-            var data = new PackIt.Plan.Plan();
+            var data = new PackItLib.Plan.Plan();
             this.logger.LogInformation("Create Plan id {PlanId}", data.PlanId);
 
             data = this.mapper.Map(model.Data, data);

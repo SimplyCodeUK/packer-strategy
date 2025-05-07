@@ -7,7 +7,7 @@
 namespace PackIt.DTO
 {
     using System.Collections.Generic;
-    using PackIt.Pack;
+    using PackItLib.Pack;
 
     /// <summary> Interface for pack repository. </summary>
     public interface IPackRepository

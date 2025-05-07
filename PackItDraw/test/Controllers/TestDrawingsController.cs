@@ -16,9 +16,9 @@ namespace PackItDraw.Test.Controllers
     using Microsoft.Extensions.Logging;
     using Moq;
     using Xunit;
-    using PackIt.Drawing;
-    using PackIt.DTO;
-    using PackIt.Pack;
+    using PackItLib.Drawing;
+    using PackItLib.Pack;
+    using PackItDraw.DTO;
     using PackItDraw.Controllers;
 
     /// <summary> (Unit Test Fixture) a controller for handling test materials. </summary>

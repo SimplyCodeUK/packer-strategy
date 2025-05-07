@@ -17,7 +17,7 @@ namespace PackIt.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
-    using PackIt.Models;
+    using PackItLib.Models;
 
     /// <summary> A controller for handling materials. </summary>
     /// <remarks>
@@ -141,25 +141,25 @@ namespace PackIt.Controllers
             /// </summary>
             public Bulk()
             {
-                this.Plans = new List<Plan.Plan>();
-                this.Materials = new List<Material.Material>();
-                this.Packs = new List<Pack.Pack>();
+                this.Plans = new List<PackItLib.Plan.Plan>();
+                this.Materials = new List<PackItLib.Material.Material>();
+                this.Packs = new List<PackItLib.Pack.Pack>();
             }
 
             /// <summary> Gets or sets the collection of Plans of this object. </summary>
             ///
             /// <value> Collection of Plans. </value>
-            public IList<Plan.Plan> Plans { get; set; }
+            public IList<PackItLib.Plan.Plan> Plans { get; set; }
 
             /// <summary> Gets or sets the collection of Materials of this object. </summary>
             ///
             /// <value> Collection of Materials. </value>
-            public IList<Material.Material> Materials { get; set; }
+            public IList<PackItLib.Material.Material> Materials { get; set; }
 
             /// <summary> Gets or sets the collection of Packs of this object. </summary>
             ///
             /// <value> Collection of Packs. </value>
-            public IList<Pack.Pack> Packs { get; set; }
+            public IList<PackItLib.Pack.Pack> Packs { get; set; }
         }
     }
 }

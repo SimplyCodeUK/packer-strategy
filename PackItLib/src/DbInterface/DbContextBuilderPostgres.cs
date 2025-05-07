@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DbInterface
+namespace PackItLib.DbInterface
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -12,7 +12,7 @@ namespace PackIt.DbInterface
 
     /// <summary> Postgres database connection. </summary>
     ///
-    /// <seealso cref="PackIt.DbInterface.IDbContextBuilder" />
+    /// <seealso cref="PackItLib.DbInterface.IDbContextBuilder" />
     [ExcludeFromCodeCoverage]
     public class DbContextBuilderPostgres : IDbContextBuilder
     {

@@ -15,9 +15,9 @@ namespace PackIt.Test.Controllers
     using Microsoft.Extensions.Logging;
     using Moq;
     using Xunit;
+    using PackItLib.Pack;
     using PackIt.Controllers;
     using PackIt.DTO;
-    using PackIt.Pack;
 
     /// <summary> (Unit Test Fixture) a controller for handling test packs. </summary>
     public class TestPacksController

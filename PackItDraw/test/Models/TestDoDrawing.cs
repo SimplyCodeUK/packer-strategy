@@ -10,15 +10,15 @@ namespace PackItDraw.Test.Models
     using System.Text.Json;
     using Microsoft.EntityFrameworkCore;
     using Xunit;
-    using PackIt.DTO;
-    using PackIt.Drawing;
-    using PackIt.Models;
+    using PackItLib.Drawing;
+    using PackItDraw.DTO;
+    using PackItDraw.Models;
 
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
     public class TestDoDrawing
     {
         private readonly DrawingRepository repository;
-        private readonly PackIt.Pack.Pack pack;
+        private readonly PackItLib.Pack.Pack pack;
 
         /// <summary> Setup for all unit tests here. </summary>
         public TestDoDrawing()
@@ -32,7 +32,7 @@ namespace PackItDraw.Test.Models
 
             // Pack to draw in tests
             var text = File.ReadAllText("Models/TestData/pack.json");
-            this.pack = JsonSerializer.Deserialize<PackIt.Pack.Pack>(text);
+            this.pack = JsonSerializer.Deserialize<PackItLib.Pack.Pack>(text);
         }
 
         /// <summary> (Unit Test Method) post this message. </summary>

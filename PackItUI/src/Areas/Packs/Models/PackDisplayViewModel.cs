@@ -6,8 +6,8 @@
 
 namespace PackItUI.Areas.Packs.Models
 {
-    using PackIt.Drawing;
-    using PackIt.Pack;
+    using PackItLib.Drawing;
+    using PackItLib.Pack;
 
     /// <summary> Pack display view model. </summary>
     public class PackDisplayViewModel

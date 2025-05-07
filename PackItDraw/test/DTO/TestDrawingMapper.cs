@@ -4,13 +4,13 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Test.DTO
+namespace PackItDraw.Test.DTO
 {
     using System.IO;
-    using Xunit;
-    using PackIt.DTO;
-    using PackIt.Drawing;
     using System.Text.Json;
+    using Xunit;
+    using PackItLib.Drawing;
+    using PackItDraw.DTO;
 
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
     public class TestDrawingMapper

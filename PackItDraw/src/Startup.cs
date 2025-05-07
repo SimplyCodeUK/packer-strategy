@@ -11,8 +11,8 @@ namespace PackItDraw
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using PackIt.DbInterface;
-    using PackIt.DTO;
+    using PackItLib.DbInterface;
+    using PackItDraw.DTO;
 
     /// <summary> A start up. </summary>
     ///
@@ -81,8 +81,8 @@ namespace PackItDraw
         private static void InitialiseDatabase<TContext, TData, TDtoData, TMapper>(IServiceScope serviceScope)
             where TData : class
             where TDtoData : class
-            where TContext : PackItContext<TData, TDtoData, TMapper>
-            where TMapper : IPackItMapper<TData, TDtoData>, new()
+            where TContext : PackItLib.DTO.PackItContext<TData, TDtoData, TMapper>
+            where TMapper : PackItLib.DTO.IPackItMapper<TData, TDtoData>, new()
         {
             var context = serviceScope.ServiceProvider.GetService<TContext>();
             _ = context.Database.EnsureDeleted();
@@ -97,7 +97,7 @@ namespace PackItDraw
             using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
 
             // Seed Drawings database
-            InitialiseDatabase<DrawingContext, PackIt.Drawing.Drawing, PackIt.DTO.DtoDrawing.DtoDrawing, DrawingMapper>(serviceScope);
+            InitialiseDatabase<DrawingContext, PackItLib.Drawing.Drawing, PackItLib.DTO.DtoDrawing.DtoDrawing, DrawingMapper>(serviceScope);
         }
     }
 }

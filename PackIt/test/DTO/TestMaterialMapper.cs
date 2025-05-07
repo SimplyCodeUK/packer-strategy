@@ -9,8 +9,8 @@ namespace PackIt.Test.DTO
     using System.IO;
     using System.Text.Json;
     using Xunit;
+    using PackItLib.Material;
     using PackIt.DTO;
-    using PackIt.Material;
 
     /// <summary> (Unit Test Method) Convert a Material to it's DTO. </summary>
     public class TestMaterialMapper

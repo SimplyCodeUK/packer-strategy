@@ -11,10 +11,10 @@ namespace PackItDraw.Controllers
     using Asp.Versioning;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
-    using PackIt.Drawing;
-    using PackIt.DTO;
-    using PackIt.Models;
-    using PackIt.Pack;
+    using PackItLib.Drawing;
+    using PackItLib.Pack;
+    using PackItDraw.DTO;
+    using PackItDraw.Models;
 
     /// <summary> The root controller of the service. </summary>
     /// <remarks>

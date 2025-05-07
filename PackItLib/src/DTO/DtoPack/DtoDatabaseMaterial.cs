@@ -4,9 +4,9 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO.DtoPack
+namespace PackItLib.DTO.DtoPack
 {
-    using PackIt.Helpers.Enums;
+    using PackItLib.Helpers.Enums;
 
     /// <summary> A dto database material. </summary>
     public class DtoDatabaseMaterial

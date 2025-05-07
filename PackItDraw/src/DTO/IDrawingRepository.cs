@@ -4,10 +4,10 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO
+namespace PackItDraw.DTO
 {
     using System.Collections.Generic;
-    using PackIt.Drawing;
+    using PackItLib.Drawing;
 
     /// <summary> Interface for drawing repository. </summary>
     public interface IDrawingRepository

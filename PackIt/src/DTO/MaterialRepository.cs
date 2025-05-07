@@ -6,18 +6,18 @@
 
 namespace PackIt.DTO
 {
-    using PackIt.Material;
+    using PackItLib.Material;
 
     /// <summary> A material repository. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.Repository{TData, TDtoData, TMapper}"/>
+    /// <seealso cref="T:PackItLib.DTO.Repository{TData, TDtoData, TMapper}"/>
     /// <seealso cref="T:PackIt.DTO.IMaterialRepository"/>
     /// <remarks>
     /// Initialises a new instance of the <see cref="MaterialRepository" /> class.
     /// </remarks>
     ///
     /// <param name="context"> The context. </param>
-    public class MaterialRepository(MaterialContext context) : Repository<Material, DtoMaterial.DtoMaterial, MaterialMapper>(context), IMaterialRepository
+    public class MaterialRepository(MaterialContext context) : PackItLib.DTO.Repository<Material, PackItLib.DTO.DtoMaterial.DtoMaterial, MaterialMapper>(context), IMaterialRepository
     {
     }
 }

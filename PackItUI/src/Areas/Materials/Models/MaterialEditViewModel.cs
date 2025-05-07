@@ -8,8 +8,8 @@ namespace PackItUI.Areas.Materials.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using PackIt.Helpers.Enums;
-    using PackIt.Material;
+    using PackItLib.Helpers.Enums;
+    using PackItLib.Material;
     using PackItUI.Helpers;
 
     /// <summary> Material edit view model. </summary>

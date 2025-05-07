@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Helpers.Masks
+namespace PackItLib.Helpers.Masks
 {
     /// <summary> Values that represent result rotations. </summary>
     public static class ResultRotation

@@ -12,8 +12,8 @@ namespace PackIt.Controllers
     using Microsoft.AspNetCore.JsonPatch;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
+    using PackItLib.Plan;
     using PackIt.DTO;
-    using PackIt.Plan;
 
     /// <summary> A controller for handling plans. </summary>
     /// <remarks>

@@ -14,7 +14,7 @@ namespace PackItUI.Test.Areas.Plans.Controllers
     using Microsoft.Extensions.Options;
     using Moq;
     using Xunit;
-    using PackIt.Models;
+    using PackItLib.Models;
     using PackItMock.HttpMock;
     using PackItUI.Areas.Plans.Controllers;
     using PackItUI.Areas.Plans.DTO;

@@ -8,13 +8,13 @@ namespace PackItUI.Areas.Packs.DTO
 {
     using System.Net.Http;
     using Microsoft.Extensions.Options;
-    using PackIt.Models;
+    using PackItLib.Models;
     using PackItUI.Areas.Common.DTO;
 
     /// <summary> Pack I/O implementation. </summary>
     ///
     /// <seealso cref="T:PackItUI.Areas.Common.DTO.DbServiceHandler{TData}"/>
-    public class PackHandler : DbServiceHandler<PackIt.Pack.Pack>
+    public class PackHandler : DbServiceHandler<PackItLib.Pack.Pack>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="PackHandler" /> class.

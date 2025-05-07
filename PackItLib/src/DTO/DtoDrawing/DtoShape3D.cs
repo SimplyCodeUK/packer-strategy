@@ -4,9 +4,9 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO.DtoDrawing
+namespace PackItLib.DTO.DtoDrawing
 {
-    using PackIt.Helpers.Enums;
+    using PackItLib.Helpers.Enums;
 
     /// <summary> A dto 3D shape. </summary>
     public class DtoShape3D

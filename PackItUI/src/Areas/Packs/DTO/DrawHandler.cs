@@ -12,8 +12,8 @@ namespace PackItUI.Areas.Packs.DTO
     using System.Text.Json;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
-    using PackIt.Models;
-    using PackIt.Pack;
+    using PackItLib.Models;
+    using PackItLib.Pack;
     using PackItUI.Services;
 
     /// <summary> Pack I/O implementation. </summary>
@@ -103,7 +103,7 @@ namespace PackItUI.Areas.Packs.DTO
         /// <param name="id"> The identifier of a drawing entry. </param>
         ///
         /// <returns> The drawing entry or null if the plan could not be found. </returns>
-        public async Task<PackIt.Drawing.Drawing> ReadAsync(string id)
+        public async Task<PackItLib.Drawing.Drawing> ReadAsync(string id)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace PackItUI.Areas.Packs.DTO
                 var content = await response.Content.ReadAsStringAsync();
 
                 // Create a pack from the content
-                return JsonSerializer.Deserialize<PackIt.Drawing.Drawing>(content);
+                return JsonSerializer.Deserialize<PackItLib.Drawing.Drawing>(content);
             }
             catch (Exception)
             {

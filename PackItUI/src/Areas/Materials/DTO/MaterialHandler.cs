@@ -8,13 +8,13 @@ namespace PackItUI.Areas.Materials.DTO
 {
     using System.Net.Http;
     using Microsoft.Extensions.Options;
-    using PackIt.Models;
+    using PackItLib.Models;
     using PackItUI.Areas.Common.DTO;
 
     /// <summary> Material I/O implementation. </summary>
     ///
     /// <seealso cref="T:PackItUI.Areas.Common.DTO.DbServiceHandler{TData}"/>
-    public class MaterialHandler : DbServiceHandler<PackIt.Material.Material>
+    public class MaterialHandler : DbServiceHandler<PackItLib.Material.Material>
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="MaterialHandler" /> class.

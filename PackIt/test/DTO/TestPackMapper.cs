@@ -9,8 +9,8 @@ namespace PackIt.Test.DTO
     using System.IO;
     using System.Text.Json;
     using Xunit;
+    using PackItLib.Pack;
     using PackIt.DTO;
-    using PackIt.Pack;
 
     /// <summary> (Unit Test Method) Convert a Pack to it's DTO. </summary>
     public class TestPackMapper

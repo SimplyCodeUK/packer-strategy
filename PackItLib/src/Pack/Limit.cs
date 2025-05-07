@@ -4,10 +4,10 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.Pack
+namespace PackItLib.Pack
 {
     using System.Diagnostics.CodeAnalysis;
-    using PackIt.Helpers.Enums;
+    using PackItLib.Helpers.Enums;
 
     /// <summary> A limit. </summary>
     [ExcludeFromCodeCoverage]

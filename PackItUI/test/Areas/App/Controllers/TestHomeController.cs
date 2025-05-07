@@ -15,7 +15,7 @@ namespace PackItUI.Test.Areas.App.Controllers
     using Microsoft.Extensions.Options;
     using Moq;
     using Xunit;
-    using PackIt.Models;
+    using PackItLib.Models;
     using PackItMock.HttpMock;
     using PackItUI.Areas.App.Controllers;
     using PackItUI.Areas.App.Models;

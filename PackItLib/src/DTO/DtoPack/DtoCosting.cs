@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO.DtoPack
+namespace PackItLib.DTO.DtoPack
 {
     /// <summary> A dto costing. </summary>
     public class DtoCosting

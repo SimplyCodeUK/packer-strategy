@@ -6,7 +6,7 @@
 
 namespace PackIt.DTO
 {
-    using PackIt.Pack;
+    using PackItLib.Pack;
 
     /// <summary> A pack repository. </summary>
     ///
@@ -17,7 +17,7 @@ namespace PackIt.DTO
     /// </remarks>
     ///
     /// <param name="context"> The context. </param>
-    public class PackRepository(PackContext context) : Repository<Pack, DtoPack.DtoPack, PackMapper>(context), IPackRepository
+    public class PackRepository(PackContext context) : PackItLib.DTO.Repository<Pack, PackItLib.DTO.DtoPack.DtoPack, PackMapper>(context), IPackRepository
     {
     }
 }

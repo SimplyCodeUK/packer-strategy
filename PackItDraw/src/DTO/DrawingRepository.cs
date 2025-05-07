@@ -4,9 +4,9 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DTO
+namespace PackItDraw.DTO
 {
-    using PackIt.Drawing;
+    using PackItLib.Drawing;
 
     /// <summary> A pack repository. </summary>
     ///
@@ -17,7 +17,7 @@ namespace PackIt.DTO
     /// </remarks>
     ///
     /// <param name="context"> The context. </param>
-    public class DrawingRepository(DrawingContext context) : Repository<Drawing, DtoDrawing.DtoDrawing, DrawingMapper>(context), IDrawingRepository
+    public class DrawingRepository(DrawingContext context) : PackItLib.DTO.Repository<Drawing, PackItLib.DTO.DtoDrawing.DtoDrawing, DrawingMapper>(context), IDrawingRepository
     {
     }
 }

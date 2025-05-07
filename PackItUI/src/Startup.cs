@@ -12,7 +12,7 @@ namespace PackItUI
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using PackIt.DbInterface;
+    using PackItLib.DbInterface;
     using PackItUI.Areas.Common.DTO;
     using PackItUI.Areas.Materials.DTO;
     using PackItUI.Areas.Packs.DTO;
@@ -43,9 +43,9 @@ namespace PackItUI
         public void ConfigureServices(IServiceCollection services)
         {
             this.SetupServices(services);
-            services.AddSingleton<DbServiceHandler<PackIt.Material.Material>, MaterialHandler>()
-                    .AddSingleton<DbServiceHandler<PackIt.Pack.Pack>, PackHandler>()
-                    .AddSingleton<DbServiceHandler<PackIt.Plan.Plan>, PlanHandler>()
+            services.AddSingleton<DbServiceHandler<PackItLib.Material.Material>, MaterialHandler>()
+                    .AddSingleton<DbServiceHandler<PackItLib.Pack.Pack>, PackHandler>()
+                    .AddSingleton<DbServiceHandler<PackItLib.Plan.Plan>, PlanHandler>()
                     .AddSingleton<IUploadHandler, UploadHandler>()
                     .AddSingleton<DrawHandler, DrawHandler>()
                     .AddMvc(options => options.EnableEndpointRouting = false)

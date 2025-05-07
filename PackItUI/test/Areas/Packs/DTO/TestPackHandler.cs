@@ -11,7 +11,7 @@ namespace PackItUI.Test.Areas.Packs.DTO
     using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
     using Xunit;
-    using PackIt.Models;
+    using PackItLib.Models;
     using PackItMock.HttpMock;
     using PackItUI.Areas.Packs.DTO;
     using PackItUI.Services;

@@ -8,8 +8,8 @@ namespace PackItUI.Areas.Packs.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using PackIt.Helpers.Enums;
-    using PackIt.Pack;
+    using PackItLib.Helpers.Enums;
+    using PackItLib.Pack;
 
     /// <summary> Pack edit view model. </summary>
     public class PackEditViewModel

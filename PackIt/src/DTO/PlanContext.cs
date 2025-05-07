@@ -8,17 +8,17 @@ namespace PackIt.DTO
 {
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
-    using PackIt.Plan;
+    using PackItLib.Plan;
 
     /// <summary> A plan context. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData, TMapper}"/>
+    /// <seealso cref="T:PackItLib.DTO.PackItContext{TData, TDtoData, TMapper}"/>
     /// <remarks>
     /// Initialises a new instance of the <see cref="PlanContext" /> class.
     /// </remarks>
     ///
     /// <param name="options"> Options for controlling the operation. </param>
-    public class PlanContext(DbContextOptions<PlanContext> options) : PackItContext<Plan, DtoPlan.DtoPlan, PlanMapper>(options)
+    public class PlanContext(DbContextOptions<PlanContext> options) : PackItLib.DTO.PackItContext<Plan, PackItLib.DTO.DtoPlan.DtoPlan, PlanMapper>(options)
     {
         /// <summary>
         /// Override this method to further configure the model that was discovered by convention
@@ -45,13 +45,13 @@ namespace PackIt.DTO
 
             ConfigureDtoPlan(modelBuilder);
             ConfigureDtoStage(modelBuilder);
-            Configure<DtoPlan.DtoLimit>(modelBuilder, "DtoLimit", k => new { k.PlanId, k.StageLevel, k.LimitIndex });
+            Configure<PackItLib.DTO.DtoPlan.DtoLimit>(modelBuilder, "DtoLimit", k => new { k.PlanId, k.StageLevel, k.LimitIndex });
         }
 
         /// <summary>Construct default query.</summary>
         ///
         /// <returns> Query for list of plans. </returns>
-        protected override IQueryable<DtoPlan.DtoPlan> ConstructQuery()
+        protected override IQueryable<PackItLib.DTO.DtoPlan.DtoPlan> ConstructQuery()
         {
             var query = this.Resources
                 .Include(p => p.Stages)
@@ -65,7 +65,7 @@ namespace PackIt.DTO
         /// <param name="key"> The key to search for. </param>
         ///
         /// <returns> The find task. </returns>
-        protected override System.Threading.Tasks.Task<DtoPlan.DtoPlan> ConstructFindTask(string key)
+        protected override System.Threading.Tasks.Task<PackItLib.DTO.DtoPlan.DtoPlan> ConstructFindTask(string key)
         {
             return this.ConstructQuery().SingleAsync(p => p.PlanId == key);
         }
@@ -75,7 +75,7 @@ namespace PackIt.DTO
         /// <param name="modelBuilder">The model builder.</param>
         private static void ConfigureDtoPlan(ModelBuilder modelBuilder)
         {
-            Configure<DtoPlan.DtoPlan>(modelBuilder, "DtoPlan", k => new { k.PlanId })
+            Configure<PackItLib.DTO.DtoPlan.DtoPlan>(modelBuilder, "DtoPlan", k => new { k.PlanId })
                 .HasMany(p => p.Stages)
                 .WithOne()
                 .HasForeignKey(s => new { s.PlanId });
@@ -86,7 +86,7 @@ namespace PackIt.DTO
         /// <param name="modelBuilder">The model builder.</param>
         private static void ConfigureDtoStage(ModelBuilder modelBuilder)
         {
-            Configure<DtoPlan.DtoStage>(modelBuilder, "DtoStage", k => new { k.PlanId, k.StageLevel })
+            Configure<PackItLib.DTO.DtoPlan.DtoStage>(modelBuilder, "DtoStage", k => new { k.PlanId, k.StageLevel })
                 .HasMany(s => s.Limits)
                 .WithOne()
                 .HasForeignKey(l => new { l.PlanId, l.StageLevel });

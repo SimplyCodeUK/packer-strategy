@@ -7,27 +7,27 @@
 namespace PackIt.DTO
 {
     using AutoMapper;
-    using PackIt.Pack;
+    using PackItLib.Pack;
 
     /// <summary> Maps from and to DtoPack </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.IPackItMapper{TData, TDtoData}"/>
-    public class PackMapper : IPackItMapper<Pack, DtoPack.DtoPack>
+    /// <seealso cref="T:PackItLib.DTO.IPackItMapper{TData, TDtoData}"/>
+    public class PackMapper : PackItLib.DTO.IPackItMapper<Pack, PackItLib.DTO.DtoPack.DtoPack>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static readonly MapperConfiguration configModelToDto = new(
             cfg =>
             {
-                cfg.CreateMap<Costing, DtoPack.DtoCosting>();
-                cfg.CreateMap<Stage, DtoPack.DtoStage>();
-                cfg.CreateMap<Limit, DtoPack.DtoLimit>();
-                cfg.CreateMap<Result, DtoPack.DtoResult>();
-                cfg.CreateMap<Layer, DtoPack.DtoLayer>();
-                cfg.CreateMap<Collation, DtoPack.DtoCollation>();
-                cfg.CreateMap<Material, DtoPack.DtoMaterial>();
-                cfg.CreateMap<DatabaseMaterial, DtoPack.DtoDatabaseMaterial>();
-                cfg.CreateMap<Section, DtoPack.DtoSection>();
-                cfg.CreateMap<Pack, DtoPack.DtoPack>().AfterMap(
+                cfg.CreateMap<Costing, PackItLib.DTO.DtoPack.DtoCosting>();
+                cfg.CreateMap<Stage, PackItLib.DTO.DtoPack.DtoStage>();
+                cfg.CreateMap<Limit, PackItLib.DTO.DtoPack.DtoLimit>();
+                cfg.CreateMap<Result, PackItLib.DTO.DtoPack.DtoResult>();
+                cfg.CreateMap<Layer, PackItLib.DTO.DtoPack.DtoLayer>();
+                cfg.CreateMap<Collation, PackItLib.DTO.DtoPack.DtoCollation>();
+                cfg.CreateMap<Material, PackItLib.DTO.DtoPack.DtoMaterial>();
+                cfg.CreateMap<DatabaseMaterial, PackItLib.DTO.DtoPack.DtoDatabaseMaterial>();
+                cfg.CreateMap<Section, PackItLib.DTO.DtoPack.DtoSection>();
+                cfg.CreateMap<Pack, PackItLib.DTO.DtoPack.DtoPack>().AfterMap(
                     (s, d) =>
                     {
                         foreach (var costing in d.Costings)
@@ -109,16 +109,16 @@ namespace PackIt.DTO
         private static readonly MapperConfiguration configDtoToModel = new(
             cfg =>
             {
-                cfg.CreateMap<DtoPack.DtoPack, Pack>();
-                cfg.CreateMap<DtoPack.DtoCosting, Costing>();
-                cfg.CreateMap<DtoPack.DtoStage, Stage>();
-                cfg.CreateMap<DtoPack.DtoLimit, Limit>();
-                cfg.CreateMap<DtoPack.DtoResult, Result>();
-                cfg.CreateMap<DtoPack.DtoLayer, Layer>();
-                cfg.CreateMap<DtoPack.DtoCollation, Collation>();
-                cfg.CreateMap<DtoPack.DtoMaterial, Material>();
-                cfg.CreateMap<DtoPack.DtoDatabaseMaterial, DatabaseMaterial>();
-                cfg.CreateMap<DtoPack.DtoSection, Section>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoPack, Pack>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoCosting, Costing>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoStage, Stage>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoLimit, Limit>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoResult, Result>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoLayer, Layer>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoCollation, Collation>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoMaterial, Material>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoDatabaseMaterial, DatabaseMaterial>();
+                cfg.CreateMap<PackItLib.DTO.DtoPack.DtoSection, Section>();
             });
 
         /// <summary> The mapper from Model to Dto. </summary>
@@ -132,9 +132,9 @@ namespace PackIt.DTO
         /// <param name="data"> Data to convert. </param>
         /// 
         /// <returns> The converted DTO. </returns>
-        public DtoPack.DtoPack ConvertToDto(Pack data)
+        public PackItLib.DTO.DtoPack.DtoPack ConvertToDto(Pack data)
         {
-            return mapperModelToDto.Map<DtoPack.DtoPack>(data);
+            return mapperModelToDto.Map<PackItLib.DTO.DtoPack.DtoPack>(data);
         }
 
         /// <summary> Converts a DTO to its Data. </summary>
@@ -142,7 +142,7 @@ namespace PackIt.DTO
         /// <param name="dtoData"> DTO to convert. </param>
         ///
         /// <returns> The converted Data. </returns>
-        public Pack ConvertToData(DtoPack.DtoPack dtoData)
+        public Pack ConvertToData(PackItLib.DTO.DtoPack.DtoPack dtoData)
         {
             return mapperDtoToModel.Map<Pack>(dtoData);
         }

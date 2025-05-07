@@ -8,17 +8,17 @@ namespace PackIt.DTO
 {
     using System.Linq;
     using Microsoft.EntityFrameworkCore;
-    using PackIt.Pack;
+    using PackItLib.Pack;
 
     /// <summary> A pack context. </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.PackItContext{TData, TDtoData, TMapper}"/>
+    /// <seealso cref="T:PackItLib.DTO.PackItContext{TData, TDtoData, TMapper}"/>
     /// <remarks>
     /// Initialises a new instance of the <see cref="PackContext" /> class.
     /// </remarks>
     ///
     /// <param name="options"> Options for controlling the operation. </param>
-    public class PackContext(DbContextOptions<PackContext> options) : PackItContext<Pack, DtoPack.DtoPack, PackMapper>(options)
+    public class PackContext(DbContextOptions<PackContext> options) : PackItLib.DTO.PackItContext<Pack, PackItLib.DTO.DtoPack.DtoPack, PackMapper>(options)
     {
         /// <summary>
         /// Override this method to further configure the model that was discovered by convention
@@ -44,21 +44,21 @@ namespace PackIt.DTO
             base.OnModelCreating(modelBuilder);
 
             ConfigureDtoPack(modelBuilder);
-            Configure<DtoPack.DtoCosting>(modelBuilder, "DtoCosting", k => new { k.PackId, k.RequiredQuantity });
+            Configure<PackItLib.DTO.DtoPack.DtoCosting>(modelBuilder, "DtoCosting", k => new { k.PackId, k.RequiredQuantity });
             ConfigureDtoStage(modelBuilder);
-            Configure<DtoPack.DtoLimit>(modelBuilder, "DtoLimit", k => new { k.PackId, k.StageLevel, k.LimitIndex });
+            Configure<PackItLib.DTO.DtoPack.DtoLimit>(modelBuilder, "DtoLimit", k => new { k.PackId, k.StageLevel, k.LimitIndex });
             ConfigureDtoResult(modelBuilder);
             ConfigureDtoLayer(modelBuilder);
-            Configure<DtoPack.DtoCollation>(modelBuilder, "DtoCollation", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.LayerIndex, k.CollationIndex });
+            Configure<PackItLib.DTO.DtoPack.DtoCollation>(modelBuilder, "DtoCollation", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.LayerIndex, k.CollationIndex });
             ConfigureDtoMaterial(modelBuilder);
-            Configure<DtoPack.DtoSection>(modelBuilder, "DtoSection", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.SectionIndex });
-            Configure<DtoPack.DtoDatabaseMaterial>(modelBuilder, "DtoDatabaseMaterial", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.MaterialIndex, k.DatabaseMaterialIndex });
+            Configure<PackItLib.DTO.DtoPack.DtoSection>(modelBuilder, "DtoSection", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.SectionIndex });
+            Configure<PackItLib.DTO.DtoPack.DtoDatabaseMaterial>(modelBuilder, "DtoDatabaseMaterial", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.MaterialIndex, k.DatabaseMaterialIndex });
         }
 
         /// <summary>Construct default query.</summary>
         ///
         /// <returns> Query for list of packs. </returns>
-        protected override IQueryable<DtoPack.DtoPack> ConstructQuery()
+        protected override IQueryable<PackItLib.DTO.DtoPack.DtoPack> ConstructQuery()
         {
             var query = this.Resources
                 .Include(p => p.Costings)
@@ -79,7 +79,7 @@ namespace PackIt.DTO
         /// <param name="key"> The key to search for. </param>
         ///
         /// <returns> The find task. </returns>
-        protected override System.Threading.Tasks.Task<DtoPack.DtoPack> ConstructFindTask(string key)
+        protected override System.Threading.Tasks.Task<PackItLib.DTO.DtoPack.DtoPack> ConstructFindTask(string key)
         {
             return this.ConstructQuery().SingleAsync(p => p.PackId == key);
         }
@@ -89,7 +89,7 @@ namespace PackIt.DTO
         /// <param name="modelBuilder">The model builder.</param>
         private static void ConfigureDtoPack(ModelBuilder modelBuilder)
         {
-            var builder = Configure<DtoPack.DtoPack>(modelBuilder, "DtoPack", k => k.PackId);
+            var builder = Configure<PackItLib.DTO.DtoPack.DtoPack>(modelBuilder, "DtoPack", k => k.PackId);
             builder
                 .HasMany(p => p.Costings)
                 .WithOne()
@@ -105,7 +105,7 @@ namespace PackIt.DTO
         /// <param name="modelBuilder">The model builder.</param>
         private static void ConfigureDtoStage(ModelBuilder modelBuilder)
         {
-            var builder = Configure<DtoPack.DtoStage>(modelBuilder, "DtoStage", k => new { k.PackId, k.StageLevel });
+            var builder = Configure<PackItLib.DTO.DtoPack.DtoStage>(modelBuilder, "DtoStage", k => new { k.PackId, k.StageLevel });
             builder
                 .HasMany(s => s.Limits)
                 .WithOne()
@@ -121,7 +121,7 @@ namespace PackIt.DTO
         /// <param name="modelBuilder">The model builder.</param>
         private static void ConfigureDtoResult(ModelBuilder modelBuilder)
         {
-            var builder = Configure<DtoPack.DtoResult>(modelBuilder, "DtoResult", k => new { k.PackId, k.StageLevel, k.ResultIndex });
+            var builder = Configure<PackItLib.DTO.DtoPack.DtoResult>(modelBuilder, "DtoResult", k => new { k.PackId, k.StageLevel, k.ResultIndex });
             builder
                 .HasMany(r => r.Layers)
                 .WithOne()
@@ -141,7 +141,7 @@ namespace PackIt.DTO
         /// <param name="modelBuilder">The model builder.</param>
         private static void ConfigureDtoLayer(ModelBuilder modelBuilder)
         {
-            Configure<DtoPack.DtoLayer>(modelBuilder, "DtoLayer", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.LayerIndex })
+            Configure<PackItLib.DTO.DtoPack.DtoLayer>(modelBuilder, "DtoLayer", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.LayerIndex })
                 .HasMany(l => l.Collations)
                 .WithOne()
                 .HasForeignKey(c => new { c.PackId, c.StageLevel, c.ResultIndex, c.LayerIndex });
@@ -152,7 +152,7 @@ namespace PackIt.DTO
         /// <param name="modelBuilder">The model builder.</param>
         private static void ConfigureDtoMaterial(ModelBuilder modelBuilder)
         {
-            Configure<DtoPack.DtoMaterial>(modelBuilder, "DtoMaterial", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.MaterialIndex })
+            Configure<PackItLib.DTO.DtoPack.DtoMaterial>(modelBuilder, "DtoMaterial", k => new { k.PackId, k.StageLevel, k.ResultIndex, k.MaterialIndex })
                 .HasMany(m => m.DatabaseMaterials)
                 .WithOne()
                 .HasForeignKey(d => new { d.PackId, d.StageLevel, d.ResultIndex, d.MaterialIndex });

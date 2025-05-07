@@ -7,7 +7,7 @@
 namespace PackIt.DTO
 {
     using System.Collections.Generic;
-    using PackIt.Material;
+    using PackItLib.Material;
 
     /// <summary> Interface for material repository. </summary>
     public interface IMaterialRepository

@@ -7,20 +7,20 @@
 namespace PackIt.DTO
 {
     using AutoMapper;
-    using PackIt.Plan;
+    using PackItLib.Plan;
 
     /// <summary> Maps from and to DtoPlan </summary>
     ///
-    /// <seealso cref="T:PackIt.DTO.IPackItMapper{TData, TDtoData}"/>
-    public class PlanMapper : IPackItMapper<Plan, DtoPlan.DtoPlan>
+    /// <seealso cref="T:PackItLib.DTO.IPackItMapper{TData, TDtoData}"/>
+    public class PlanMapper : PackItLib.DTO.IPackItMapper<Plan, PackItLib.DTO.DtoPlan.DtoPlan>
     {
         /// <summary> Configuration of map from Model to Dto. </summary>
         private static readonly MapperConfiguration configModelToDto = new(
             cfg =>
             {
-                cfg.CreateMap<Limit, DtoPlan.DtoLimit>();
-                cfg.CreateMap<Stage, DtoPlan.DtoStage>();
-                cfg.CreateMap<Plan, DtoPlan.DtoPlan>().AfterMap(
+                cfg.CreateMap<Limit, PackItLib.DTO.DtoPlan.DtoLimit>();
+                cfg.CreateMap<Stage, PackItLib.DTO.DtoPlan.DtoStage>();
+                cfg.CreateMap<Plan, PackItLib.DTO.DtoPlan.DtoPlan>().AfterMap(
                     (s, d) =>
                     {
                         foreach (var stage in d.Stages)
@@ -42,9 +42,9 @@ namespace PackIt.DTO
         private static readonly MapperConfiguration configDtoToModel = new(
             cfg =>
             {
-                cfg.CreateMap<DtoPlan.DtoPlan, Plan>();
-                cfg.CreateMap<DtoPlan.DtoStage, Stage>();
-                cfg.CreateMap<DtoPlan.DtoLimit, Limit>();
+                cfg.CreateMap<PackItLib.DTO.DtoPlan.DtoPlan, Plan>();
+                cfg.CreateMap<PackItLib.DTO.DtoPlan.DtoStage, Stage>();
+                cfg.CreateMap<PackItLib.DTO.DtoPlan.DtoLimit, Limit>();
             });
 
         /// <summary> The mapper from Model to Dto. </summary>
@@ -58,9 +58,9 @@ namespace PackIt.DTO
         /// <param name="data"> Data to convert. </param>
         /// 
         /// <returns> The converted DTO. </returns>
-        public DtoPlan.DtoPlan ConvertToDto(Plan data)
+        public PackItLib.DTO.DtoPlan.DtoPlan ConvertToDto(Plan data)
         {
-            return mapperModelToDto.Map<DtoPlan.DtoPlan>(data);
+            return mapperModelToDto.Map<PackItLib.DTO.DtoPlan.DtoPlan>(data);
         }
 
         /// <summary> Converts a DTO to its Data. </summary>
@@ -68,7 +68,7 @@ namespace PackIt.DTO
         /// <param name="dtoData"> DTO to convert. </param>
         ///
         /// <returns> The converted Data. </returns>
-        public Plan ConvertToData(DtoPlan.DtoPlan dtoData)
+        public Plan ConvertToData(PackItLib.DTO.DtoPlan.DtoPlan dtoData)
         {
             return mapperDtoToModel.Map<Plan>(dtoData);
         }

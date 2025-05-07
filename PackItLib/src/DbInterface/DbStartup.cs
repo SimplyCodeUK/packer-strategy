@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace PackIt.DbInterface
+namespace PackItLib.DbInterface
 {
     using System.Diagnostics.CodeAnalysis;
     using Microsoft.AspNetCore.Builder;
@@ -14,7 +14,7 @@ namespace PackIt.DbInterface
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using PackIt.Models;
+    using PackItLib.Models;
 
     /// <summary> A start up. </summary>
     [ExcludeFromCodeCoverage]
